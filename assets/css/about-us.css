@@ -1,0 +1,842 @@
+/* newly added start*/
+
+.celebrate-ladybug{
+  margin-top: -120px;   /* adjust value */
+}
+
+.about_banner_main{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 520px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* padding: 70px 115px; */
+  background-size: cover; /* Updated to cover */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+.about_banner_1{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 520px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 70px 0px;
+  background-size: cover; /* Updated to cover */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+}
+
+.row-home-custom{
+    margin-top: 20vh;
+}
+
+.section_space_lg_about {
+  padding-top: 120px;
+  padding-bottom: none;
+}
+
+.page_banner img{
+  display:block;
+}
+
+.pt-30{
+    padding-top: 400px;
+}
+.p-30{
+    padding: 3vw!important;
+}
+
+.item_title_about {
+  color: #424143!important;
+  font-size: 40px;
+}
+
+.text-grey{
+    color: #424143!important;
+}
+
+.mb-0{
+    margin-bottom: 0px!important;
+}
+
+.text-start{
+    text-align: start!important;
+}
+
+.about-us-girl{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(-85px);
+
+}
+
+
+.site_header_2 .container {
+  max-width: 1200px;
+  /* border: 2px solid #1F1D0D; */
+  padding-top: 20px;
+  border-radius: 0 0 5px 5px;
+  background: #044BD9;
+}
+
+
+.grid-about-us-girl {
+    height: 18vw;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #1ab79a;
+    overflow:hidden;
+    min-width: 50%;
+    position: relative;
+    
+}
+
+.overflow-hidden{
+    overflow: hidden;   
+}
+
+/* .about-us-guy{
+  width:150%;
+  max-width:none;
+  transform:translateX(-20%);
+  bottom:-20px;
+} */
+ .about-us-guy{
+  position: absolute;
+  width: 20vw;
+  max-width: none!important;
+  bottom: 0.2px;
+  left: -11vw;
+  /* border:2px solid red; */
+}
+
+.grid-inner-about-us-overflow{
+  position: relative;
+  min-height: 150px; /* gives space for the image */
+  padding: none;
+  height: 100%;
+}
+
+.p-0{
+    padding: 0!important;
+}
+
+
+.p-10{
+
+    padding: 1.8vw!important;
+}
+
+
+
+/* newly added end */
+
+
+
+.row_commitment {
+    padding: 0 70px;
+    text-align: center;
+    justify-content: space-evenly;
+    /* column-gap: 10px; */
+}
+
+.col_commitment {
+    display: flex;
+    /* align-items: flex-end; */
+    background: #1ab79a;
+    height: 250px;
+    /* margin-top: auto; */
+}
+
+.row_loanbuddy_works {
+    justify-content: center;
+    margin: 0 80px;
+}
+
+.row_loanbuddy_works_2 {
+    justify-content: center;
+    margin: 0 130px;
+}
+
+/* .row_loanbuddy_works .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+} */
+
+.row_loanbuddy_works .step {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.row_loanbuddy_works .step-number {
+    margin-top: 7px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.row_loanbuddy_works .step-text {
+    max-width: 80%;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.row_loanbuddy_kelebihan {
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+}
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 40px solid #1ab79a;
+}
+
+.grid-about-us {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #1ab79a;
+    overflow:visible;
+}
+
+.grid-about-us-1 {
+    height: 100%;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    border-radius: 5px 5px 0px 0px;
+    background-color: #1ab79a;
+}
+
+.grid-about-us-2 {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 0px 5px 5px;
+    background-color: #1ab79a;
+}
+
+/* testing */
+.grid-inner-about-us img{
+    width: 100%;
+    
+}
+
+
+
+.gri-inner-about-us{
+    font-size: small;
+    line-height: 0%;
+    
+}
+
+.image-center{
+    align-items:center;
+}
+
+.text-about-h1 {
+    font-size: 28px !important;
+}
+
+@media screen and (max-width:450px){
+    .grid-inner-about-us{
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .p-col-about-us {
+        padding: 2px!important;
+    }
+
+    .image-center{
+        align-items:center;
+    }
+}
+
+.p-col-about-us {
+    padding: 3px;
+}
+
+.p-col-about-us-1 {
+    
+    padding: 3px 3px 0px 3px !important;
+
+}
+.p-col-about-us-2 {
+    
+    padding: 0px 3px 3px 3px !important;
+
+}
+
+.bg_img_1_2 {
+    background-image: url('../images/about/about_us_1_2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg_color_grey{
+    background-color: #424143;
+}
+
+.bg_color_lightgrey{
+    background-color: #909090;
+}
+
+.bg_color_white{
+    background-color: #ffffff;
+}
+
+.bg_color_1_3 {
+    background-color: #044BD9;
+    
+}
+
+.bg_color_red {
+    background-color: #FF0000;
+}
+
+.bg_color_2_2 {
+    background-color: #f9ec31;
+}
+
+.bg_color_2_3 {
+    background-color: #1067b1;
+}
+
+.p-col-1-2 {
+    padding: 40px 54px;
+}
+
+.p-col-2-1 {
+    padding: 40px 54px;
+}
+
+.p-col-2-3 {
+    padding: 40px 54px;
+}
+
+.bg_img_3_1 {
+    background-image: url('../images/about/about_us_3_1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg_img_3_3 {
+    background-image: url('../images/about/about_us_3_3.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.p-col-3-1 {
+    padding: 40px 54px;
+}
+
+.p-col-3-3 {
+    padding: 40px 54px;
+}
+
+.text-color-green-1 {
+    color: #1ab79a;
+}
+
+.text-color-blue-1 {
+    color: #1269b3;
+}
+
+.timeline-heading-mobile {
+    display: none;
+}
+
+.time-block-contents {
+    font-size: 14px;
+}
+
+.section_space_2_lg {
+    padding-top: 220px;
+    /* padding-bottom: 120px; */
+}
+
+.section_space_3_lg {
+    /* padding-bottom: 120px; */
+}
+
+.section_space_4_lg {
+    padding: 70px 100px;
+}
+
+.deco_item_about_1 {
+    position: absolute;
+    z-index: 1;
+    /* left: -65px; */
+    left: -150px;
+    margin-top: -216px;
+}
+
+.deco_item_about_2 {
+    position: absolute;
+    z-index: 1;
+    right: -30px;
+    margin-top: -375px;
+  }
+
+.deco_item_about_3 {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    margin-top: -60px;
+}
+
+.deco_item_about_4 {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-top: 0px;
+}
+
+.deco_item_about_5 {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    margin-top: -50px;
+}
+
+.deco_item_about_6 {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    /* margin-top: -50px; */
+}
+
+.deco_item_about_7 {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-top: -1000px;
+}
+
+/* TimeLine Start */
+.timeline-loanbuddy {
+    width: 0.2rem;
+    margin: 0px auto 0 3rem;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    background-image: radial-gradient(circle, black 10%, transparent 10%);
+    background-size: 3px 10px;
+    top: 10px;
+    position: relative;
+  }
+
+  #chronology ul li {
+    list-style: none;
+  }
+
+/* Add dots along the center line / timeline corresponding with the time blocks */
+.timeline-loanbuddy::before {
+    content: '';
+    align-self: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    border: 1px solid grey;
+    background: #ededed;  
+  }
+  
+  .time-block {
+    position: relative;
+    width: 70vw;
+    padding: 1rem;
+    margin-left: 5rem;
+    background: white;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+    top: -150px;
+    z-index: 3;
+  }
+
+  .timeline-left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .timeline-left-1 {
+    top: -70px;
+    position: relative;
+    left: 135px;
+  }
+  
+  .timeline-left-2 {
+    top: -310px;
+    position: relative;
+    left: 135px;
+  }
+
+  /* Alternate color for every other timeline's div */
+  /* #chronology .timeline-loanbuddy:nth-child(even) .time-block {
+    background: lightblue;
+  }
+  #chronology .timeline-loanbuddy:nth-child(even) .time-block::before {
+    border-color: transparent lightblue transparent transparent;
+  } */
+  
+  .w-0 {
+    width: 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .time-block {
+      width: 35rem;
+    }
+  }
+/* TimeLine End */
+
+
+.bg_blue_loanbuddy {
+    background-color: #1068b2;
+}
+
+.cta_loanbuddy {
+    margin: 0px 175px;
+    height: 280px;
+    align-items: center;
+}
+  
+.btn_cta_loanbuddy {
+    z-index: 3;
+    color: #1068b2;
+    border-color: #1068b2;
+    background-color: white;
+    border-radius: 45px;
+    letter-spacing: 3px;
+    line-height: 1;
+    padding: 0 20px;
+    overflow: hidden;
+    position: relative;
+    transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border: 2px solid transparent;
+    display: inline-block;
+    font-weight: 400;
+    vertical-align: middle;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, #f9ec31 5px 5px 0px 0px;
+}
+  
+.btn_cta_loanbuddy:hover {
+    border-color: #1AB79A;
+    box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1);
+}
+  
+.btn_cta_loanbuddy span small {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 14px;
+    transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.deco_item_loanbuddy_2 {
+    position: absolute;
+    z-index: 1;
+    left: 57px;
+    margin-top: -278px;
+  }
+
+.site_footer {
+    position: relative;
+    z-index: 3;
+}
+
+.about-grid-inner-title {
+    font-weight: 700;
+}
+
+@media (min-width: 768px) {
+    .cta_loanbuddy {
+        margin: 0 15px 0 170px;
+        /* text-align: center; */
+    }
+}
+
+@media (max-width: 500px) {
+    .cta_loanbuddy {
+        height: 190px;
+        padding: 15px 0px;
+    }
+
+    .deco_item_loanbuddy_2 {
+        margin-top: -200px;
+        left: 80px;
+    }
+
+    .timeline-heading-mobile {
+        display: block;
+    }
+
+    .timeline-left-col {
+        display: none;
+    }
+
+    .timeline-loanbuddy {
+        width: 0.2rem;
+        margin: 0px auto 0 1rem;
+        height: 775px;
+    }
+
+    .time-block {
+        width: 75vw;
+        margin-left: 2rem;
+    }
+
+    .w-0 {
+        width: 0;
+    }
+
+    .deco_item_about_2 {
+        /* margin-top: -260px; */
+        margin-top: -370px;
+        left: -30px;
+    }
+
+    .commitment_section {
+        /* margin-top: -194px; */
+        margin-top: -275px;
+    }
+
+    .deco_item_about_3 {
+        display: none;
+    }
+
+    .section_heading_mobile {
+        margin: 0px 33px 30px 65px;
+        font-size: 14px;    
+    }
+
+    .section_heading_mobile-about {
+        margin: 0px 33px 30px 33px;
+        font-size: 14px;    
+    }
+
+
+    .section_heading_1_mobile {
+        margin: 0px 33px;
+    }
+
+    .row_commitment {
+        position: relative;
+        z-index: 3;
+        padding: 0 37px;
+    }
+
+    .deco_item_about_4 {
+        display: none;
+    }
+
+    .triangle-right {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid #1ab79a;
+    }
+
+    .row_loanbuddy_works {
+        position: relative;
+        z-index: 3;
+        margin: 0 27px;
+    }
+
+    .row_loanbuddy_works_2 {
+        margin: 0px 33px;
+        font-size: 14px;
+    }
+
+    .deco_item_about_5 {
+        margin-top: -250px;
+    }
+
+    .row_loanbuddy_kelebihan {
+        margin: 0 -5px;
+    }
+
+    .deco_item_about_6 {
+        margin-top: 588px;
+        display: none;
+    }
+
+    .cta_loanbuddy {
+        margin: 0px 15px;
+        text-align: center;
+    }
+
+    .btn_cta_loanbuddy span small {
+        font-size: 18px;
+        line-height: 14px;
+    }
+
+    .text-cta-mobile {
+        font-size: 20px;
+    }
+
+    .deco_item_about_7 {
+        margin-top: -790px;
+    }
+
+    .grid-inner-about-us-img {
+        margin-bottom: -4px;
+    }
+}
+
+
+@media (max-width: 376px) {
+    .cta_loanbuddy {
+        height: 190px;
+        padding: 15px 0px;
+    }
+
+    .deco_item_loanbuddy_2 {
+        margin-top: -200px;
+        left: 80px;
+    }
+
+    .timeline-heading-mobile {
+        display: block;
+    }
+
+    .timeline-left-col {
+        display: none;
+    }
+
+    .timeline-loanbuddy {
+        width: 0.2rem;
+        margin: 0px auto 0 1rem;
+        height: 775px;
+    }
+
+    .time-block {
+        width: 75vw;
+        margin-left: 2rem;
+    }
+
+    .w-0 {
+        width: 0;
+    }
+
+    .deco_item_about_2 {
+        margin-top: -260px;
+    }
+
+    .commitment_section {
+        margin-top: -194px;
+    }
+
+    .deco_item_about_3 {
+        display: none;
+    }
+
+    .section_heading_mobile {
+        margin: 0px 33px 30px 65px;
+        font-size: 14px;    
+    }
+
+    .section_heading_mobile-about {
+        margin: 0px 33px 30px 33px;
+        font-size: 14px;    
+    }
+
+    .section_heading_1_mobile {
+        margin: 0px 33px;
+    }
+
+    .row_commitment {
+        position: relative;
+        z-index: 3;
+        padding: 0 37px;
+    }
+
+    .deco_item_about_4 {
+        display: none;
+    }
+
+    .triangle-right {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid #1ab79a;
+    }
+
+    .row_loanbuddy_works {
+        position: relative;
+        z-index: 3;
+        margin: 0 27px;
+    }
+
+    .row_loanbuddy_works_2 {
+        margin: 0px 33px;
+        font-size: 14px;
+    }
+
+    .deco_item_about_5 {
+        margin-top: -250px;
+    }
+
+    .row_loanbuddy_kelebihan {
+        margin: 0 -5px;
+    }
+
+    .deco_item_about_6 {
+        margin-top: 588px;
+        display: none;
+    }
+
+    .cta_loanbuddy {
+        margin: 0px 15px;
+        text-align: center;
+    }
+
+    .btn_cta_loanbuddy span small {
+        font-size: 15px;
+        line-height: 8px;
+    }
+
+    .text-cta-mobile {
+        font-size: 20px;
+    }
+
+    .deco_item_about_7 {
+        margin-top: -790px;
+    }
+}

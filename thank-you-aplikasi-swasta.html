@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>Thank You - Aplikasi Swasta</title>
+
+        <link rel="icon" href="assets/images/Green LB 1.png">
+
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+        <style>
+            .bg-blue-thank-you {
+                background-color: #1068b2;
+            }
+
+            .mrg-thank-you {
+                margin: 10px;
+            }
+
+            .vh-thank-you {
+                height: 100vh;
+            }
+
+            .notification-lb {
+                position: relative;
+                background-color: #11b89b;
+                color: #fff;
+                text-align: center;
+                font-size: 14px;
+                line-height: 2;
+                top: 0;
+            }
+
+            @media (max-width: 500px) {
+                .notification-lb {
+                    position: relative;
+                    padding: 5px;
+                    font-size: 11px;
+                    line-height: 1.5;
+                    margin-bottom: 50px;
+                    top: 0;
+                }
+                .vh-thank-you {
+                    height: auto;
+                }
+             }
+        </style>
+        
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TFPY5VCWS7"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-TFPY5VCWS7'); // Google Analytics
+            gtag('config', 'G-YMFYZL3WZ6'); // Loanfit Google Ads Google Tag
+            gtag('config', 'AW-16936103847');
+        </script>
+
+        <!-- Global scripts -->
+        <!-- <script src="assets/js/global-tracking-head.js"></script> -->
+    </head>
+
+    <body class="bg-blue-thank-you">
+        <div class="notification-lb">
+          WhatsApp kami sedang tergendala. Sila hubungi kami melalui emel di <a class="text-white text-decoration-underline" href="mailto:support@loanbuddy.com.my">support@loanbuddy.com.my</a>
+          Kami akan membalas melalui emel juga.
+        </div>
+
+        <div class="vh-thank-you d-flex justify-content-center align-items-center bg-blue-thank-you">
+            <div class="card col-md-4 bg-white shadow-md p-5 mrg-thank-you">
+                <div class="mb-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <h1>Terima Kasih !</h1>
+                    <p>Borang berjaya dihantar, pakar kewangan kami akan menyemak butiran anda dan menghubungi anda melalui WhatsApp dalam masa tiga hari bekerja. </p>
+                    <a href="/" class="btn btn-outline-success">Kembali ke Laman Utama</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script for all pages -->
+        <script src="assets/js/all-pages.js"></script>
+
+        <!-- Metricool Analytics -->
+        <script>
+            function loadScript(callback) {
+            var head = document.getElementsByTagName("head")[0];
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "https://tracker.metricool.com/resources/be.js";
+            script.onreadystatechange = callback;
+            script.onload = callback;
+            head.appendChild(script);
+            }
+    
+            // Load the Metricool script once
+            loadScript(function() {
+            // Initialize tracking for AS
+            beTracker.t({ hash: "5d7c1822d3195e96a79874785a89a356" });
+    
+            // Initialize tracking for AL
+            beTracker.t({ hash: "bd27787c8f3d58b3ee08fc70792ac903" });
+            });
+        </script>
+
+    </body>
+
+</html>

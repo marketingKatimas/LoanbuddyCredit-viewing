@@ -1,0 +1,378 @@
+/* recently added start */
+
+.mb-30{
+  margin-bottom: 10vh!important;
+}
+
+.mt-30{
+  margin-top: 30px!important;
+}
+
+.ml-150{
+    margin-left: 10vw!important;
+}
+
+.font-decrease {
+  font-size: 45px!important;
+}
+
+.text-grey {
+  color: #424143!important;
+}
+
+.ms-10{
+  margin-left: 15px!important;
+  margin-right: 15px!important;
+}
+.p-30{
+  padding: 30px!important;
+}
+/* recently added end */
+
+.img-75 {
+    height: 8vh!important;
+    align-self: center!important;
+}
+
+.btn {
+    border-radius: 100px !important;
+    padding: 0 22px !important;
+}
+.accordion .accordion-button {
+    z-index: 2;
+    position: relative;
+}
+
+.mt-n30px {
+    margin-top: -30px;
+}
+
+.notification-lb {
+    background-color: #11b89b;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2;
+    margin-top: -20px;
+}
+
+.banner-mohon-big-title {
+        color: #424143!important;
+    }
+
+/* banner start */
+@media (min-width: 501px) {
+    .carousel_item_1 {
+        background-image: url('../images/banner/home-mohon/banner-1.webp') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    .banner_image_2 .image_wrap_7 {
+        display: none;
+    }
+
+    .banner-mohon-big-title {
+        font-size: 60px;
+        font-weight: 800;
+        line-height: 68px;
+        margin-bottom: 20px;
+    }
+
+    .h-lg-110p {
+        height: 110%;
+    }
+
+    .lh-lg-28 {
+        line-height: 28px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .notification-lb {
+        padding: 5px;
+        font-size: 10px;
+        line-height: 1.5;
+        margin-top: 0;
+    }
+    /* To remove when remove notification */
+    .page_content {
+        margin-top: 25px !important;
+    }
+    .main_menu {
+        top: 115px !important;
+    }
+
+    .carousel_item_1 {
+        background-image: url('../images/banner/home-mohon/Banner-4-mobile.webp');
+        background-size: 100% 800px !important;
+        background-position: top !important;
+        background-repeat: no-repeat !important;
+        height: 800px !important;
+    }
+    .slick-dotted {
+        height: 800px !important;
+    }
+    .hero_banner.style_2 {
+        height: 585px;
+    }
+    .carousel_item_home {
+        height: 800px !important;
+    }
+    .fa,
+    .far {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+    }
+    .fa.fa-pull-left,
+    .far.fa-pull-left {
+        margin-right: .3em;
+    }
+    .fa-bars:before {
+        content: "\f0c9";
+    }
+    .far {
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: 'Font Awesome 5 Pro';
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url('../fonts/fa-solid-900.woff2') format('woff2'),
+            url('../fonts/fa-solid-900.woff') format('woff');
+    }
+    h2 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        line-height: 1.2;
+    }
+    .m5-mobile-500 {
+        margin: 5px !important;
+    }
+    .p0-mobile-500 {
+        padding: 0 !important;
+    }
+    .g15-mobile-500 {
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+    .container-banner-mohon {
+        margin: 0 265px !important;
+        height: 420px;
+        width: 100%;
+        max-width: 1200px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .banner-mohon-description {
+        margin-top: 33px;
+        margin-bottom: 5px !important;
+        font-size: 16px !important;
+        font-weight: 500;
+    }
+
+    .banner-mohon-em {
+        display: block;
+        margin-bottom: 33px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    .banner_image_2 .image_wrap_11 {
+        display: block;
+        bottom: -3vh;
+        right: -54%;
+    }
+
+    .banner_image_2 .image_wrap_12 {
+        top: 150px;
+        left: 39%;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .container-banner-mohon {
+        margin: 0 160px !important;
+        line-height: 38px;
+        height: 520px;
+        width: 100%;
+        max-width: 1200px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .banner-mohon-description {
+        font-family: 'Work Sans', sans-serif;
+        font-size: 23px !important;
+        font-weight: 600;
+        line-height: 28px !important;
+        margin-top: 37px;
+        margin-bottom: 0px !important;
+        width: 77%;
+    }
+
+    .banner-mohon-em {
+        display: block;
+        margin-bottom: 32px;
+        font-size: 14px;
+    }
+
+    .banner_image_2 .image_wrap_11 {
+        display: block;
+        bottom: -22vh;
+        right: -18%;
+    }
+
+    .banner_image_2 .image_wrap_12 {
+        top: 120px;
+        left: 17%;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .banner_image_2 .image_wrap_7 {
+        right: -15%;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 1200px) {
+    .carousel_item_home {
+        background-image: none !important;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .container-banner-mohon {
+        margin: initial !important;
+        height: 500px !important;
+    }
+
+    .banner-mohon-description {
+        width: 100%;
+        font-size: 15px !important;
+        margin-bottom: 7px !important;
+        margin-top: 16px;
+        font-weight: 600;
+    }
+
+    .banner-header-custom-13 {
+        height: 356px;
+        padding: 15px 25px !important;
+    }
+
+    .banner-mohon-big-title {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .banner-mohon-em {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width:361px) {
+    .banner-mohon-big-title {
+        font-size: 30px;
+    }
+
+    .banner-mohon-description {
+        font-size: 13px !important;
+        margin-bottom: 5px !important;
+        font-weight: 400;
+    }
+
+    .banner-mohon-em {
+        font-size: 12px;
+    }
+}
+
+/* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
+.btn_semak_layak {
+    z-index: 3;
+    color: #1068b2;
+    background-color: #f9ec31;
+    border-radius: 45px;
+    letter-spacing: 1px;
+    padding: 10px;
+    margin-left: -10px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #1068b2;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, #1068b2 4px 4px 0px 0px;
+    transition: all 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.btn_semak_layak span small {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Shimmer Effect Animation */
+.btn_semak_layak::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.9) 50%,
+        transparent 70%
+    );
+    transition: all 0.6s ease-in-out;
+    animation: shimmerMove 10s infinite linear;
+    will-change: transform;
+}
+
+/* Keyframes to make shimmer loop */
+@keyframes shimmerMove {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* Pause shimmer animation on hover */
+.btn_semak_layak:hover::before {
+    animation-play-state: paused;
+}
+
+/* Slight scale & color change on hover */
+.btn_semak_layak:hover {
+    transform: scale(1.08);
+    border-color: #1AB79A;
+    box-shadow: 0px 15px 35px rgba(26, 183, 154, 0.5);
+}
+
+@media (max-width: 500px) {
+    .btn_semak_layak {
+        letter-spacing: 0px;
+    }
+    .btn_semak_layak span small {
+        font-size: 13px;
+        line-height: 15px;
+    }
+}
+/* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */

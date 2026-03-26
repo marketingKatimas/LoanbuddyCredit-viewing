@@ -1,0 +1,692 @@
+
+.bg_perkhidmatan {
+  background: #044BD9;
+  color: white;
+}
+
+
+.banner-mohon-big-title {
+  color: #424143!important;
+  font-size: 50px;
+}
+
+
+.mt-50{
+  margin-top: 50px!important;
+}
+.about_banner .banner_description {
+  font-size: 25px!important;
+  line-height: 24px;
+  color: #424143;
+  margin-bottom: 40px;
+}
+
+/* border latest  */
+.btn.border_new {
+  color: #ffff;
+  background-color: #F20505;
+  /* border-color: #1068B2; */
+}
+.btn.border_new:hover {
+  color: #F20505;
+  background-color: #fff;
+  border-color: #F20505;
+  /* -webkit-box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B;
+          box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B; */
+}
+.btn.border_new:hover span small {
+  color: #F20505;
+}
+
+.site_header_2 .container {
+  max-width: 1200px;
+  /* border: 2px solid #1F1D0D; */
+  padding-top: 20px;
+  border-radius: 0 0 5px 5px;
+  background: #044BD9;
+}
+
+.mb-20{
+  margin-bottom: 5vh!important;
+}
+
+.service_item {
+  border-radius: 8px;
+  position: relative;
+  padding: 30px 40px 40px;
+  -webkit-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: #f3f3f3;
+  border: 2px solid #F6F6F6;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(31, 29, 13, 0.2);
+          box-shadow: 0px 1px 1px 0px rgba(31, 29, 13, 0.2);
+  aspect-ratio: 1 / 1;   /* makes it a square */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.service_item .item_icon {
+  width: 15vw;
+  height: 15vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 80px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 2px solid transparent;
+  background-color: none;
+}
+
+.service_item:hover .item_icon {
+  border: none!important;
+}
+
+.hero_banner {
+  text-align: center;
+}
+
+.row_perkhidmatan {
+  justify-content: space-evenly;
+}
+
+/* Responsive grid */
+/* .logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+  gap: 16px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+} */
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 80px 40px;
+  /* max-width: 900px; */
+  margin: auto;
+  margin-top: 92px;
+}
+
+.text-h3-custom {
+  font-size: 32px;
+}
+
+.logo-item {
+  align-self: center;
+}
+
+.logo-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hide Swiper on Desktop */
+.swiper-container {
+  display: none;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+  top: initial;
+  margin-top: 12px;
+  font-weight: 700;
+  color: #1068b2;
+  z-index: 20;
+}
+
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+  font-size: 22px;
+}
+
+.swiper-pagination {
+  bottom: initial !important;
+  margin-top: 20px;
+  /* display: none; */
+}
+
+/* Make the 19th icon span 2 columns */
+.logo-grid .logo-item:nth-child(19) {
+  grid-column: span 2;
+}
+
+/* Mobile View: Hide Grid, Show Swiper */
+@media (max-width: 768px) {
+  .logo-grid {
+      display: none;
+  }
+
+  .swiper-container {
+      display: block;
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+  }
+
+  .swiper-slide img {
+      /* width: 100px; */
+      height: auto;
+      display: block;
+      margin: auto;
+  }
+
+  .swiper-slide {
+      align-self: center;
+  }
+
+  .row_perkhidmatan {
+      padding: 0px 50px;
+  }
+
+  .section_heading_mb_0 {
+      margin-bottom: 0;
+  }
+}
+
+.bg_pembiayaan {
+  background: #1068B2;
+}
+
+.row_pembiayaan {
+  justify-content: center;
+}
+
+.card_pembiayaan {
+  min-height: 255px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 3px solid #F9EC31;
+  border-radius: 5px;
+  padding: 25px;
+  gap: 10px;
+  z-index: 2;
+}
+
+.icon-pembiayaan {
+  width: 75px;
+}
+
+.requirement-box {
+  background-color: #1ab79a;
+  color: white;
+  padding: 50px;
+  border-radius: 5px;
+  max-width: 1024px;
+  margin: 10px auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 10px 10px 5px 2px rgba(0,0,0,0.42);
+  -webkit-box-shadow: 10px 10px 5px 2px rgba(0,0,0,0.42);
+  -moz-box-shadow: 10px 10px 5px 2px rgba(0,0,0,0.42);
+}
+
+/* .requirement-btn {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+} */
+
+.row_requirement {
+  row-gap: 48px;
+}
+
+.bullet-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px !important;
+  margin-right: 25px;
+}
+
+.row_mohon_pinjaman_peribadi {
+  justify-content: center;
+  margin: 0 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.row_mohon_pinjaman_peribadi_2 {
+  justify-content: center;
+  margin: 0 130px;
+}
+
+.triangle-right {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 40px solid #F20505;
+}
+
+.section_space_custom_1 {
+  padding-top: 120px;
+  padding-bottom: 20px;
+}
+
+.row_mohon_pinjaman_peribadi .step {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.row_mohon_pinjaman_peribadi .step-number {
+  margin-top: 7px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.row_mohon_pinjaman_peribadi .step-text {
+  max-width: 80%;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+#view-more-faqs {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #29281E;
+}
+
+.accordion-button-faq1 {
+  font-size: 25px !important;
+}
+
+.btn_cta_home_1 {
+  letter-spacing: 2px;
+}
+
+.cta_pinjaman_peribadi {
+  justify-content: center;
+}
+
+.pp-floating-2 {
+  max-width: 300px !important;
+  position: absolute;
+  top: 240px;
+  right: -22%;
+}
+
+.deco_item_pp_1 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  margin-top: 75px;
+}
+
+.deco_item_pp_2 {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  margin-top: -300px;
+  max-width: 200px;
+}
+
+.deco_item_pp_3 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  margin-top: 0;
+}
+
+.deco_item_pp_4 {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  margin-top: 228px;
+}
+
+.deco_item_pp_5 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  margin-top: 0;
+}
+
+.deco_item_pp_6 {
+  position: absolute;
+  z-index: 1;
+  right: 50px;
+  margin-top: 0;
+}
+
+.deco_item_pp_7 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  margin-top: 200px;
+}
+
+.deco_item_pp_8 {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  margin-top: -300px;
+}
+
+.deco_item_pp_9 {
+  position: absolute;
+  z-index: 100;
+  right: -2vw;
+  margin-top: -38vh;
+}
+/* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
+.btn_semak_layak {
+  z-index: 3;
+  color: #1068b2;
+  background-color: #f9ec31;
+  border-radius: 45px;
+  letter-spacing: 1px;
+  padding: 10px;
+  margin-left: -10px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #1068b2;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, #1068b2 4px 4px 0px 0px;
+  transition: all 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.btn_semak_layak span small {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Shimmer Effect Animation */
+.btn_semak_layak::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.9) 50%,
+      transparent 70%
+  );
+  transition: all 0.6s ease-in-out;
+  animation: shimmerMove 10s infinite linear;
+  will-change: transform;
+}
+
+/* Keyframes to make shimmer loop */
+@keyframes shimmerMove {
+  0% {
+      left: -150%;
+  }
+  100% {
+      left: 150%;
+  }
+}
+
+/* Pause shimmer animation on hover */
+.btn_semak_layak:hover::before {
+  animation-play-state: paused;
+}
+
+/* Slight scale & color change on hover */
+.btn_semak_layak:hover {
+  transform: scale(1.08);
+  border-color: #1AB79A;
+  box-shadow: 0px 15px 35px rgba(26, 183, 154, 0.5);
+}
+
+@media (max-width: 500px) {
+  .btn_semak_layak {
+      letter-spacing: 0px;
+  }
+
+  .btn_semak_layak span small {
+      font-size: 13px;
+      line-height: 15px;
+  }
+}
+/* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
+
+
+/* ------------------ Subscribe Form ------------------------ */
+.news {
+  padding: 4.8px 0 9.6px 15px;
+  /* text-align: center; */
+  /* background: #1cb79a; */
+  border-radius: 5px;
+  /* max-width: 350px; */
+  max-width: 100%;
+}
+
+.news-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 35px;
+  margin-right: 35px;
+}
+
+.news-heading {
+  font-size: 22px;
+  line-height: 1.4;
+  color: #ffffff;
+}
+
+.news-email {
+  padding: 5px 25px;
+  border-radius: 5px;
+  border: none;
+}
+
+.bt {
+  margin-left: 9px;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 5px;
+  background-color: #f9ec31;
+  color: #1f1d0d;
+  border: 1px solid #1f1d0d;
+  box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, 
+              #1f1d0d 4px 4px 0px 0px;
+}
+
+.bt:hover {
+  border-color: #f9ec31;
+  box-shadow: 0px 20px 30px 0px rgb(31 29 13 / 0%);
+}
+
+.success-subscribe-text {
+  display: none;
+  color: #f9ec31;
+  padding: 5px;
+}
+
+.error-subscribe-text {
+  display: none;
+  color: #ffc9c9;
+  padding: 5px;
+}
+
+@media (max-width: 500px) {
+  .news-container {
+      flex-direction: column;
+      gap: 7px;
+  }
+}
+/* ------------------ Subscribe Form ------------------------ */
+
+
+@media (max-width: 500px) {
+  .section_heading_1_mobile {
+      margin: 0px 33px;
+  }
+
+  .row_mohon_pinjaman_peribadi {
+      position: relative;
+      z-index: 3;
+      margin: 0 27px;
+  }
+
+  .triangle-right {
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 30px solid #1ab79a;
+  }
+
+  .row_mohon_pinjaman_peribadi_2 {
+      margin: 0px 33px;
+      font-size: 14px;
+  }
+
+  #view-more-faqs:hover {
+      color: #29281E;
+  }
+
+  .accordion-button-faq1 {
+      font-size: 23px !important;
+  }
+  
+  .custom-margin-pp {
+      margin-top: -35vh;
+  }
+
+  .text-banner-pp-2 {
+      text-align: center;
+  }
+
+  .container_perkhidmatan {
+      padding: 0 30px;
+  }
+
+  .p-perkhidmatan {
+      font-size: 15px;
+  }
+
+  .container_pembiayaan {
+      padding: 0 40px;
+  }
+
+  .text-h3-custom {
+      font-size: 26px;
+  }
+
+  .btn-small-req {
+      font-size: 16px !important;
+  }
+
+  .section_space_partner {
+      padding-top: 45px;
+      padding-bottom: 90px;
+  }
+
+  .card_pembiayaan {
+      min-height: 190px;
+      padding: 8px;
+      font-size: 13px;
+  }
+
+  .icon-pembiayaan {
+      width: 55px;
+  }
+
+  .icon-pembiayaan-6 {
+      margin-top: 15px;
+  }
+
+  .deco_item_pp_1 {
+      display: none;
+  }
+
+  .deco_item_pp_2 {
+      margin-top: -125px;
+  }
+
+  .deco_item_pp_3 {
+      display: none;
+  }
+
+  .deco_item_pp_4 {
+      margin-top: 760px;
+  }
+
+  /* .deco_item_pp_5 {
+      display: none;
+  } */
+
+  .deco_item_pp_6 {
+      display: none;
+  }
+
+  .deco_item_pp_7 {
+      display: none;
+  }
+
+  .deco_item_pp_8 {
+      display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .custom-margin-pp {
+      margin-top: -40vh;
+  }
+}
+
+@media (max-width: 390px) {
+  .custom-margin-pp {
+      margin-top: -47vh;
+  }
+
+  .font-decrease{
+    font-size: 0.2rem!important;
+}
+
+.font-increase h2{
+    font-size: 1.5rem!important;
+}
+}
+
+.font-increase h2{
+  font-size: 2.5rem;
+}
+
+.font-decrease{
+  font-size: 0.7rem;
+}
+
+.font-decrease2 h2{
+  font-size: 1.5rem;
+}
+
+
+#view-more-faqs {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #29281E;
+}
