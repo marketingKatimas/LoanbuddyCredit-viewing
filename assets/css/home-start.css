@@ -4,6 +4,30 @@ ul {
 	margin-bottom: 1rem
 }
 
+#view-more-faqs {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #29281E;
+}
+
+.btn_blue {
+  color: #ffffff;
+  border-color: #044BD9;
+  background-color: #044BD9;
+}
+
+#view-more-faqs {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #29281E;
+}
+
 .bg_white {
 	background-color: white!important;
 }
@@ -535,7 +559,7 @@ button {
 	text-align: left;
 	list-style: none;
 	background-clip: padding-box;
-	border: 1px solid rgba(0, 0, 0, .15)
+	border: 1px solid rgba(0, 0, 0, .15);
 }
 
 .nav-link {
@@ -1226,7 +1250,7 @@ h1 {
 	padding: 0
 }
 
-.main_menu_list>li {
+/* .main_menu_list>li {
 	margin: 0 1px;
 	line-height: 1;
 	font-size: 16px
@@ -1310,7 +1334,7 @@ h1 {
 .main_menu_list .dropdown-menu .dropdown>a:after {
 	margin-top: 1px;
 	content: "\f105"
-}
+} */
 
 .header_btns_group>li {
 	margin-left: 14px

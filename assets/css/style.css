@@ -679,6 +679,8 @@ hr {
   color: #1F1D0D;
 }
 
+
+
 .btn_blue {
   color: #ffffff;
   border-color: #044BD9;
@@ -1545,6 +1547,9 @@ blockquote p {
   padding-right: 50px;
 }
 
+.p-15px {
+  padding: 15px;
+}
 
 .loan-calculator .top {
   padding: 20px;
@@ -1568,7 +1573,7 @@ blockquote p {
   }
 
   .loan-calculator .top {
-      padding: 39px 60px 52px 58px;
+      padding: 39px 60px 52px 30px;
   }
 
   /* Added styles for smaller devices */
@@ -1984,6 +1989,7 @@ color: #fff;
 
   .site_header_1 + main {
     padding-top: 83px !important;
+    padding-bottom: 50px !important;
   }
 
 }
@@ -2637,11 +2643,11 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   display: inline-block;
   cursor: pointer;
   font-weight: 600;
-  color: #000000;
+  color: #707075;
   transition: 0.5s all ease;
   padding: 7px 20px;
   text-transform: uppercase;
-  background-color: #ddd3;
+  background-color: rgb(255, 255, 255);
   margin-right: 4px;
   margin-left: 4px;
   margin-bottom: 10px;
@@ -2650,8 +2656,9 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
 
 .sorting-menu ul li.mixitup-control-active,
 .sorting-menu ul li:hover {
-  background-color: #1AB79A;
-  color: #ffffff;
+  border: 2px solid #044BD9;
+  background-color: #ffffff;
+  color: #044BD9;
 }
 
 /* test sorting menu for blog end */
@@ -2955,8 +2962,8 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   text-align: center;
   line-height: 52px;
   border-radius: 100%;
-  border-color: 20px solid #1AB79A;
-  color: #1AB79A;
+  border-color: 20px solid #044BD9;
+  color: #044BD9;
   background-color: #ffffff;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
@@ -3524,7 +3531,7 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
 }
 .service_item:hover {
   z-index: 1;
-  border-color: #1AB79A;
+  border-color: #044BD9;
   /* background-color: #F7FF62; */
   -webkit-box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1);
           box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1);
@@ -4900,8 +4907,8 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   border-radius: 8px;
 }
 .main_menu_list > li:hover > a, .main_menu_list > li.active > a {
-  color: #1F1D0D;
-  background-color: #F6F6F6;
+  color: #43433f;
+  background-color: #ffffff;
 }
 .main_menu_list > li:hover > a:after {
   -webkit-transform: rotateX(-180deg);
@@ -4931,10 +4938,10 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
           animation: unset;
   min-width: 215px;
   inset: 100% auto auto auto;
-  border-radius: 8px;
-  border: 2px solid #1F1D0D;
-  -webkit-box-shadow: -6px 6px 0 0 rgb(16, 18, 19);
-          box-shadow: -6px 6px 0 0 rgb(16, 18, 19);
+  /* border-radius: 8px; */
+  border: 2px solid #F20505;
+  -webkit-box-shadow: 0px 6px 0 0 rgb(230, 12, 12);
+          box-shadow: 0px 6px 0 0 rgb(230, 12, 12);
 }
 .main_menu_list .dropdown-menu:before {
   top: -4px;
@@ -4967,7 +4974,7 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   background-color: #1F1D0D;
 }
 .main_menu_list .dropdown-menu > li:hover > a, .main_menu_list .dropdown-menu > li.active > a {
-  background-color: #F7FF62;
+  background-color: #f2cbbf;
 }
 .main_menu_list .dropdown-menu .dropdown > a:after {
   margin-top: 1px;
@@ -5000,7 +5007,8 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
 }
 
 .site_header_1 + main {
-  padding-top: 110px;
+  padding-top: 180px;
+  /* padding-bottom: 200px */
 }
 
 .site_header_2 .container {
@@ -5019,7 +5027,11 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   
 }
 .site_footer .site_logo {
-  margin-bottom: 35px;
+  margin-bottom: 5px;
+}
+
+.site_footer .site_logo img{
+  max-height: 15vh;
 }
 .site_footer .footer_widget_area {
   padding: 130px 0 108px;
@@ -6482,6 +6494,7 @@ Responsive For Mobile & Tablet Devices
   }
   .site_header_1 + main {
     padding-top: 82px;
+    padding-bottom: 50px
   }
   .hero_banner.style_1 .content_wrap {
     padding: 80px 20px;
@@ -6679,19 +6692,19 @@ Responsive For Mobile & Tablet Devices
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 .btn_semak_layak {
   z-index: 3;
-  color: #1068b2;
-  background-color: #f9ec31;
+  color: #044BD9;
+  background-color: #ffffff;
   border-radius: 45px;
   letter-spacing: 1px;
   padding: 10px;
   margin-left: -10px;
   overflow: hidden;
   position: relative;
-  border: 2px solid #1068b2;
+  border: 2px solid #044BD9;
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
-  box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, #1068b2 4px 4px 0px 0px;
+  box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, #044BD9 4px 4px 0px 0px;
   transition: all 0.3s ease-in-out;
   will-change: transform;
 }
@@ -6706,7 +6719,7 @@ Responsive For Mobile & Tablet Devices
 }
 
 /* Shimmer Effect Animation */
-.btn_semak_layak::before {
+/* .btn_semak_layak::before {
   content: "";
   position: absolute;
   top: 0;
@@ -6722,7 +6735,7 @@ Responsive For Mobile & Tablet Devices
   transition: all 0.6s ease-in-out;
   animation: shimmerMove 10s infinite linear;
   will-change: transform;
-}
+} */
 
 /* Keyframes to make shimmer loop */
 @keyframes shimmerMove {
@@ -6742,8 +6755,8 @@ Responsive For Mobile & Tablet Devices
 /* Slight scale & color change on hover */
 .btn_semak_layak:hover {
   transform: scale(1.08);
-  border-color: #1AB79A;
-  box-shadow: 0px 15px 35px rgba(26, 183, 154, 0.5);
+  border-color: #044BD9;
+  box-shadow: 0px 15px 35px rgba(22, 39, 166, 0.5);
 }
 
 @media (max-width: 500px) {

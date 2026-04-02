@@ -14,6 +14,23 @@
     margin-top: 20px;
 }
 
+.btn_red{
+    background-color: #F20505;
+    color: white;
+}
+
+.col-contact-form{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.col-contact-btn{
+    padding-left: 100px;
+    padding-right: 100px;
+    align-items: center;
+}
+
+
 .contact-box{
     padding: 50px;
     border-radius: 5px;

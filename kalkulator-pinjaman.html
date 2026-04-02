@@ -9,7 +9,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>Kalkulator Pinjaman: Kira Kelayakan & Bayaran Pinjaman Anda</title>
-    <link rel="shortcut icon" href="assets/images/Green LB 1.png">
+    <link rel="shortcut icon" href="assets/images/icon.png">
 
     <!-- Framework - CSS Include -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -211,7 +211,7 @@
         <section class="calltoaction_section section_space_lg bg_white decoration_wrap" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="container">
             <div class="row align-items-center row_loanbuddy_works_2">
-              <div class="col col-lg-5">
+              <div class="col col-lg-5 p-20">
                 <div class="section_heading section_heading_calc mb-lg-0">
                   <h2 class="heading_text text-lightgrey font-increase line-height-custom calc-head-custom">
                     Kira Pinjaman,<br>
@@ -221,29 +221,25 @@
                     Nak tahu berapa nak bayar setiap bulan? Guna Kalkulator Pinjaman kami! Masukkan jumlah yang nak pinjam, tempoh, dan kadar faedah – tak perlu pening kepala kira sendiri. Cepat-cepat kira, boleh terus rancang nak shopping apa lepas ni!
 
                     <br><br><br><br>
-                    <em class="font-decrease text-lightgrey ">Maklumat yang dipaparkan adalah sebagai petunjuk dan untuk kegunaan peribadi sahaja. loanbuddy tidak menjamin ketepatan pengiraan dan tidak bertanggungjawab bagi apa-apa ketidaktepatan atau ketinggalan. Maklumat di atas tidak bermaksud sebagai satu tawaran kredit dan tidak menjamin bahawa kemudahan kredit yang dipohon akan diluluskan. Semua permohonan untuk pembiayaan adalah tertakluk kepada penilaian dan kelulusan dari rakan kongsi dan pembiaya di platform loanbuddy.</em>
+                    <em class="font-decrease text-lightgrey">Maklumat yang dipaparkan adalah sebagai petunjuk dan untuk kegunaan peribadi sahaja. loanbuddy tidak menjamin ketepatan pengiraan dan tidak bertanggungjawab bagi apa-apa ketidaktepatan atau ketinggalan. Maklumat di atas tidak bermaksud sebagai satu tawaran kredit dan tidak menjamin bahawa kemudahan kredit yang dipohon akan diluluskan. Semua permohonan untuk pembiayaan adalah tertakluk kepada penilaian dan kelulusan dari rakan kongsi dan pembiaya di platform loanbuddy.</em>
                   </p>
                   
                 </div>
               </div>
-              <div class="row col col-lg-7" id="calculator">
+              <div class="row col col-lg-7 " id="calculator">
                 <div class="calltoaction_form">
                   
                   <!-- calculator function -->
                   <div class="calculator w-100 ">
-                    <h3 class="form_title text-center text-blue">Kalkulator Pinjaman</h3>
-                    <p class="heading_description mb-0">
-                      Masukkan amaun pinjaman, tempoh dan kadar faedah melalui slider untuk dapatkan kiraan jumlah pinjaman. 
-                    </p>
                     
-                    
-                    <div class="loan-calculator col-lg-12">
-                      <div class="top col-lg-8">
+                    <div class="loan-calculator row mt-4">
+                      <!-- <div class="top col-lg-8"> -->
+                        <div class="row">
                         <!-- <h3 class="form_title text-center">Kalkulator Pinjaman</h3> -->
             
                         <form action="#">
                           <div class="group">
-                            <label class="title" id="textLoanAmount">Jumlah Pinjaman:</label>
+                            <label class="title text-blue" id="textLoanAmount">Jumlah Pinjaman:</label>
                             <div class="calc_output">
                               <span>RM </span><input type="number" value="10000" class="loan-amount" id="mLoanShow2" readonly>
                             </div>
@@ -254,7 +250,7 @@
                           </div>
             
                           <div class="group">
-                            <label class="title" id="textTenure">Tempoh (dalam bulan):</label>
+                            <label class="title text-blue" id="textTenure">Tempoh (dalam bulan):</label>
                             <div class="calc_output">
                               <input type="number" value="18" class="loan-tenure" id="mLoanShow3" readonly>
                             </div>
@@ -265,8 +261,11 @@
                           </div>
 
                           <div class="group">
-                            <label class="title" id="textInterest">Kadar Faedah (%):</label>
-                            <div class="calc_output">
+                            <label class="title text-blue" id="textInterest">Kadar Faedah Tahunan(%):</label>
+                            <div class="bg_grey text-blue p-15px">
+                              <strong>18%</strong>
+                            </div>
+                            <!-- <div class="calc_output">
                               <input type="number" value="1.5" class="interest-rate" id="mInterestShow" readonly>
                             </div>
                             <input type="range" class="calc__input-range1" name="mInterest" id="mInterest" value="2.0" min="0.1" max="10" step="0.1"
@@ -274,7 +273,7 @@
                                    style="background: linear-gradient(to right, #044BD9 0%, #044BD9 20%, #d3d3d3 20%, #d3d3d3 100%);">
                             <div class="calc__placeholders">
                               <span>0.1%</span> <span>10%</span>
-                            </div>
+                            </div> -->
                           </div>
 
                           
@@ -283,9 +282,10 @@
                       </div>
 
                       <!-- results -->
-                      <div class="col-lg-4 mt-50 p-50">
-                        <div class="col-12">
-                          <div class="loan-emi text-center">
+                       <div class="row mt-5">
+                      <!-- <div class="col-lg-4 mt-50"> -->
+                        <div class="col-6">
+                          <div class="loan-emi text-start">
                             <h3 class="title" id="textYourMonthlyPayment">Bayaran Bulanan: </h3>
                             <div class="value-container">
                               <span>RM &nbsp;</span>
@@ -299,10 +299,10 @@
                             <h3 class="title">Interest Paid Per Month: </h3>
                             <div class="value">1234</div>
                           </div> -->
-                        <div class="col-12">
-                          <div class="total-amount text-center">
+                        <div class="col-6">
+                          <div class="total-amount text-start">
                             <h3 class="title">
-                              <span id="textTotalAmountYouPay">Jumlah &nbsp;
+                              <span id="textTotalAmountYouPay">Jumlah: &nbsp;
                               </span>
                               <!-- <span
                                 class="loan-tenure-value" id="loanTenureInputDefault">18
@@ -362,6 +362,12 @@
                           </button>
                         </div>
                       </div> -->
+                      <button class="btn border_new w-100 mt-5">
+                        <span>
+                          <small>Dapatkan Konsultasi</small>
+                          <small>Dapatkan Konsultasi</small>
+                        </span>
+                      </button>
                     </div>
                   </div>
                   
@@ -421,14 +427,17 @@
             <img src="assets/images/about/about_deco_4.png">
           </div> -->
 
+
+
           <div class="container position-relative">
             <div class="section_heading_1 section_heading_1_mobile mb-4">
               <div class="row align-items-center justify-content-lg-between">
                 <div class="col col-lg-12">
-                  <h3 class="text-blue">
+                  <h2 class="heading_text text-lightgrey font-increase-2 line-height-custom calc-head-custom ">
                     Cara Permohonan Pinjaman Peribadi
-                  </h3>
-                  <p class="mb-0 text-lightgrey ">
+                  </h2>
+                  
+                  <p class="mb-0 mt-5 text-lightgrey ">
                     Proses pencarian pinjaman telah diperkemaskan tanpa menjejaskan kualiti perkhidmatan. 
                     <br><br>
                     Tidak perlu lagi melalui proses pengisian borang yang berpanjangan atau risau tentang kesahihan sesebuah institusi kewangan. 
@@ -498,12 +507,13 @@
             <div class="row cta_home" id="movingDiv">
               <div class="col-md-8 text-cta-mobile font-increase">
                 <h2 class="text-white ">
-                  Perlukan Pinjaman Peribadi Atau Pinjaman Koperasi? <br>
-                  Loanbuddy Sedia Berkhidmat!
+                  Perlukan pinjaman peribadi? <br>
+                  Loanbuddy Credit sedia berkhidmat <br>
+                  Untuk Anda!  
                 </h2>
               </div>
               <div class="col-md-4 z-index-3" id="movingBtnDiv">
-                <a href="mohon-sekarang" class="btn border_new cta_semak cta_mohon">
+                <a href="mohon-sekarang" class="btn border_red_new cta_semak cta_mohon">
                 <span>
                   <small>Mohon Sekarang</small>
                   <small>Mohon Sekarang</small>
@@ -583,21 +593,21 @@
                 <div class="accordion" id="faq_accordion_1">
                   <div class="accordion-item">
                     <div class="accordion-button text-blue" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_one" aria-expanded="true">
-                      Apa itu pinjaman peribadi?
+                      Apa itu Pinjaman Peribadi?
                     </div>
                     <div id="collapse_one" class="accordion-collapse collapse show" data-bs-parent="#faq_accordion_1">
                       <div class="accordion-body">
                         <p class="mb-0">
-                          Pinjaman peribadi ialah sejumlah wang yang dipinjam oleh individu daripada institusi kewangan tertentu seperti bank, pemberi pinjaman wang berlesen, dan koperasi dengan kadar faedah dan tempoh yang dipersetujui untuk pembayaran balik pinjaman.
+                          Pinjaman Peribadi ialah sejumlah wang yang dipinjam oleh individu daripada institusi kewangan seperti bank, pemberi pinjaman wang berlesen atau koperasi. Pinjaman ini dikenakan kadar faedah serta mempunyai tempoh pembayaran balik yang telah dipersetujui. 
                           <br><br>
-                          Sebaik sahaja anda menerima wang pinjaman, anda mula membayar balik pembiaya pada jadual yang telah ditetapkan sehingga jumlah pinjaman dibayar sepenuhnya.
+                          Sebaik sahaja anda menerima wang pinjaman, anda perlu mula melakukan pembayaran balik berdasarkan jadual yang ditetapkan sehingga keseluruhan jumlah pinjaman dilunaskan. 
                         </p>
                       </div>
                     </div>
                   </div>
                   <div class="accordion-item">
                     <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_two" aria-expanded="false">
-                      Apakah perbezaan jenis pinjaman peribadi yang disediakan di Malaysia?
+                      Apakah Perbezaan Jenis Pinjaman Peribadi di Malaysia?
                     </div>
                     <div id="collapse_two" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                       <div class="accordion-body">
@@ -631,7 +641,7 @@
                   </div>
                   <div class="accordion-item">
                     <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_three" aria-expanded="false">
-                      Apakah maksud terma pinjaman peribadi ini?
+                      Apakah yang Dimaksudkan dengan Terma Pinjaman Peribadi ini?
                     </div>
                     <div id="collapse_three" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                       <div class="accordion-body">
@@ -742,8 +752,8 @@
                   <div id="more-faqs" style="display: none;">
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_four" aria-expanded="false">
-                          Apakah perbezaan antara pembiayaan Islamik dan pinjaman konvensional?<br>
-                          Masa satu yang terbaik untuk saya?
+                          Apakah Perbezaan Antara Pembiayaan Islamik dan Pinjaman Konvensional? <br>
+                          Mana Satu yang Sesuai untuk Saya?
                         </div>
                         <div id="collapse_four" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
@@ -763,7 +773,7 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_five" aria-expanded="false">
-                          Apakah tujuan penggunaan pinjaman peribadi?
+                          Apakah Tujuan Penggunaan Pinjaman Peribadi?
                         </div>
                         <div id="collapse_five" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
@@ -786,7 +796,7 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_six" aria-expanded="false">
-                          Bilakah saya perlu memohon pinjaman peribadi?
+                          Bilakah Saya Perlu Memohon Pinjaman Peribadi?
                         </div>
                         <div id="collapse_six" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
@@ -794,19 +804,19 @@
                               Walaupun terdapat banyak sebab untuk mendapatkan pinjaman peribadi, kami cadangkan anda untuk memohon pinjaman peribadi yang boleh membantu anda menguruskan kredit anda dan boleh membantu anda menjana pendapatan. Antara sebab-sebab lain untuk mendapatkan pinjaman peribadi termasuklah:
                               <br><br>
                               <ul>
-                                <li><strong>Untuk menguruskan hutang anda dengan lebih baik melalui penyatuan hutang</strong><br>
+                                <li><strong>Menguruskan hutang dengan lebih baik melalui penyatuan hutang</strong><br>
                                   Jika anda mempunyai beberapa pinjaman dengan baki tertunggak – seperti pinjaman peribadi dan baki kad kredit – kaedah menyatukan hutang anda dalam satu pinjaman peribadi yang baru dengan kadar faedah yang lebih rendah akan membantu anda menguruskan hutang dengan lebih baik. Selain dapat mengurangkan jumlah bayaran faedah dan dapat menetapkan jumlah bayaran balik bulanan, ianya juga lebih senang untuk menguruskan satu akaun pinjaman sahaja. <br><br>
                                   Anggarkan penjimatan bila anda satukan semua hutang ke satu pinjaman baru dengan kalkulator pinjaman peribadi overlap.
                                   
                                 </li><br>
     
                               
-                                <li><strong>Untuk meningkatkan skor kredit anda</strong><br>
+                                <li><strong>Meningkatkan skor kredit</strong><br>
                                   Mengambil pinjaman peribadi dan pembiayaan semula pada waktu yang sesuai dan tepat dapat menunjukkan kepada institusi kewangan yang anda boleh dipercayai dengan kredit (a.k.a wang yang dipinjam). Sebagai contoh: Memilih pinjaman peribadi dengan kadar faedah rendah untuk membayar baki kad kredit anda – ini bukan sahaja menjimatkan wang tetapi juga boleh meningkatkan skor kredit anda jika anda membuat pembayaran balik tepat pada masanya!
                                 </li><br>
                               
                               
-                                <li><strong>Untuk membayar kecemasan perubatan</strong><br>
+                                <li><strong>Membiayai kecemasan perubatan</strong><br>
                                   Kesihatan fizikal anda hendaklah sentiasa diutamakan daripada kesihatan kewangan anda. Jika anda atau insan yang tersayang berhadapan dengan situasi kecemasan kesihatan yang tidak dijangka, mengambil pinjaman peribadi adalah salah satu penyelesaian paling mudah untuk dapatkan rawatan perubatan yang diperlukan.
                                 </li>
                               
@@ -818,21 +828,21 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_seven" aria-expanded="false">
-                          Berapa banyak yang boleh saya pinjam untuk pinjaman peribadi?
+                          Berapa Banyak yang Boleh Saya Pinjam untuk Pinjaman Peribadi?
                         </div>
                         <div id="collapse_seven" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Ini bergantung dengan status pekerjaan, pendapatan dan skor kredit anda. Jumlah pinjaman maksimum yang boleh anda pinjam melalui pinjaman peribadi di Malaysia ialah RM350,000, bergantung kepada institusi kewangan. Walau bagaimanapun, gaji anda juga memainkan peranan dalam menentukan jumlah pinjaman yang anda layak. Peminjam biasanya boleh meminjam sehingga empat kali ganda daripada gaji bulanannya. <br><br>
+                              Jumlah pinjaman yang layak anda terima bergantung kepada beberapa faktor, termasuk status pekerjaan, pendapatan bulanan dan skor kredit anda. Secara amnya, jumlah pinjaman maksimum bagi pinjaman peribadi di Malaysia adalah sehingga RM350,000 bergantung kepada polisi setiap institusi kewangan. Pendapatan bulanan anda juga memainkan peranan penting dalam menentukan kelayakan pinjaman, di mana peminjam biasanya boleh memohon sehingga empat kali ganda daripada jumlah gaji bulanan.  <br><br>
     
-                              Gunakan kalkulator pinjaman peribadi loanbuddy untuk menganggarkan ansuran bulanan sebelum memohon pinjaman peribadi yang bersesuaian dengan keperluan dan kelayakan anda.
+                              Untuk membantu anda merancang kewangan dengan lebih baik, gunakan kalkulator pinjaman peribadi Loanbuddy Credit untuk menganggarkan ansuran bulanan yang bersesuaian dengan keperluan dan kemampuan anda sebelum membuat permohonan. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_eight" aria-expanded="false">
-                          Apakah syarat am untuk memohon pinjaman peribadi di Malaysia?
+                          Apakah Syarat Am untuk Memohon Pinjaman Peribadi di Malaysia?
                         </div>
                         <div id="collapse_eight" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
@@ -840,96 +850,94 @@
                               Secara umumnya, terdapat tiga keperluan asas untuk memohon pinjaman peribadi di Malaysia. Ini adalah:
     
                               <ul>
-                                <li>Anda mestilah berumur antara 18 dan 65 tahun.</li>
-                                <li>Anda mestilah warganegara Malaysia (sesetengah bank akan membuat pengecualian jika anda memohon secara peribadi).</li>
-                                <li>Anda tidak muflis/bankrap.</li>
+                                <li>Pemohon mestilah berumur antara 18 hingga 60 tahun.</li>
+                                <li>Pemohon mestilah warganegara Malaysia (sesetengah institusi kewangan mungkin mempertimbangkan pengecualian dalam kes tertentu)</li>
+                                <li>Pemohon tidak mempunyai status muflis atau bankrap.</li>
+                                <li>Pemohon mempunyai pekerjaan tetap, sama ada dalam sektor swasta, kerajaan atau syarikat berkaitan kerajaan (GLC) dan telah berkhidmat sekurang-kurangnya 3 bulan.</li>
+                                <li>Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
                               </ul>
-                              Walau bagaimanapun, setiap pembiaya akan mempunyai syarat kelayakan tersendiri berdasarkan seperti status pekerjaan anda, pendapatan dan skor kredit anda.
+                              Walau bagaimanapun, setiap pembiaya atau institusi kewangan mempunyai syarat kelayakan tambahan berdasarkan faktor seperti status pekerjaan, pendapatan bulanan dan skor kredit pemohon. Oleh itum adalah penting untuk menyemak syarat kelayakan seperti pembiaya sebelum memohon pinjaman. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_nine" aria-expanded="false">
-                          Apakah dokumen yang perlu saya sediakan untuk memohon pinjaman peribadi?
+                          Apakah Dokumen yang Perlu Saya Sediakan untuk Memohon Pinjaman Peribadi?
                         </div>
                         <div id="collapse_nine" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Jenis dokumen berbeza dari pembiaya kepada pembiaya, bergantung pada jenis pekerjaan anda. Untuk mempercepatkan proses permohonan pinjaman anda, pastikan anda telah menyediakan semua dokumen yang diperlukan. Berikut adalah dokumen am yang perlu anda sediakan untuk memohon pinjaman peribadi di Malaysia: <br><br>
+                              Dokumen yang diperlukan mungkin berbeza mengikut pembiaya dan jenis pekerjaan anda. Bagi mempercepatkan proses permohonan, adalah penting untuk menyediakan semua dokumen yang relevan terlebih dahulu. Secara amnya, dokumen berikut diperlukan untuk memohon pinjaman peribadi di Malaysia: <br><br>
     
                               <ul>
-                                <li>Salinan NRIC anda</li>
-                                <li>Slip gaji 3 bulan terkini</li>
-                                <li>Penyata bank 3 bulan terkini</li>
-                                <li>Dan sekurang-kurangnya satu (1) daripada:</li>
+                                <li>Salinan kad pengenalan (depan dan belakang)</li>
+                                <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
+                                <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
+                                <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
                               </ul>
-                              <ul class="pl-80">
-                                <li>Borang cukai pendapatan terkini (Borang B atau Borang EA/EC)</li>
-                                <li>Sebarang dokumen sokongan terkini seperti penyata KWSP, jika perlu</li>
-                              </ul>
-
+                              
+                              Dengan menyediakan dokumen-dokumen ini secara lengkap, proses penilaian dan kelulusan pinjaman anda akan menjadi lebih cepat dan lancar. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_ten" aria-expanded="false">
-                          Berapa banyak yang bank boleh pinjamkan kepada saya?
+                          Berapa Banyak yang Bank Boleh Pinjamkan Kepada Saya?
                         </div>
                         <div id="collapse_ten" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Institusi kewangan menggunakan pengiraan <strong>DSR</strong> untuk melihat sama ada anda mempunyai duit yang cukup untuk membayar ansuran bulanan mengguna formula: <br><br>
+                              Institusi kewangan menggunakan Debt Service Ratio (DSR) untuk menilai sama ada anda mempunyai kemampuan kewangan yang mencukupi bagi membayar ansuran bulanan pinjaman. Formula pengiraan DSR adalah seperti berikut: 
+                              <br><br>
+                              Jumlah Komitmen Bulanan ÷ Jumlah Pendapatan Bulanan x 100% = DSR.<br>Contohnya, jika jumlah komitmen bulanan anda ialah RM1,500 dan jumlah pendapatan bulanan RM3,000, maka DSR anda ialah: <br>
+                              RM1,500 ÷ RM3,000 x 100% = 50%
+                              <br><br>
 
-                              Jumlah Komitmen Bulanan ÷ Jumlah Pendapatan Bulanan x 100% = DSR <br> 
-                              Contohnya, RM1,500 ÷ RM3,000 x 100% = 50%
+                              Secara amnya, tahap DSR yang ideal adalah supaya jumlah komitmen bulanan tidak melebihi jumlah pendapatan bulanan. Dalam contoh di atas, 50% daripada pendapatan bulanan digunakan untuk membayar hutang sahaja, meninggalkan bagi yang terhad untuk perbelanjaan lain, simpanan dan pelaburan. 
                               <br><br>
-                              Terdapat persetujuan mengenai tahap DSR yang ideal untuk meningkatkan peluang kelulusan pinjaman: jumlah komitmen bulanan anda tidak boleh melebihi jumlah pendapatan bulanan anda.
+                              Jika DSR terlalu tinggi, institusi kewangan biasanya akan menawarkan jumlah pinjaman yang lebih rendah untuk memastikan peminjam dapat menguruskan pembayaran balik dengan lebih selesa. 
                               <br><br>
-                              Dalam contoh yang diberikan di atas, jumlah komitmen pinjaman adalah 50% daripada jumlah pendapatan bulanan, yang bermaksud peminjam memperuntukkan separuh daripada pendapatan bulanannya untuk membayar hutang sahaja, dengan hanya sedikit ruang untuk menyimpan, berbelanja dan melabur (jika ada).
-                              <br><br>
-                              Dalam kes ini, institusi kewangan selalunya akan menurunkan jumlah pinjaman, yang akan menurunkan tahap DSR anda.
-                              <br><br>
-                              Anda boleh membuat pengiraan DSR anda sendiri sebelum permohonan pinjaman untuk meningkatkan peluang kelulusan.
+                              Anda juga boleh mengira DSR sendiri sebelum memohon pinjaman bagi meningkatkan peluang kelulusan dan memastikan kemampuan kewangan anda stabil sepanjang tempoh pembayaran pinjaman. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_eleven" aria-expanded="false">
-                          Bagaimana kadar faedah pinjaman peribadi dikira?
+                          Bagaimana Kadar Faedah Pinjaman Peribadi Dikira?
                         </div>
                         <div id="collapse_eleven" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Kadar faedah ditentukan oleh pemberi pinjaman berdasarkan Kadar Asas (Base Rate) dan ditambah dengan margin yang ditentukan. Nombor ini dipanggil sebagai Kadar Pinjaman Efektif (Effective Lending Rate). Sebagai contoh, Maybank mempunyai BR sebanyak 1.75% ditambah margin 1.50%; ini bermakna kadar faedah yang dikenakan kepada anda ialah 3.25%.
+                              Kadar faedah pinjaman peribadi ditentukan oleh pihak pemberi pinjaman berdasarkan Kadar Asas (Base Rate, BR) yang ditetapkan, kemudian ditambah dengan margin tertentu. Jumlah ini dikenali sebagai Kadar Pinjaman Efektif (Effective Lending Rate, ELR). 
                               <br><br>
-                              Kadar peratusan tahunan digunakan untuk menunjukkan kadar faedah (Annual Percentage Rates). Ini menunjukkan bahawa faedah dikira setiap tahun dan bukannya secara bulanan. Untuk mendapatkan kadar faedah bulanan, hanya bahagikan APR dengan 12 bulan.
+                              Sebagai contoh, sekiranya Maybank menetapkan BR pada kadar 1.75% dan menambah margin sebanyak 1.50%, maka kadar faedah keseluruhan yang dikenakan kepada anda ialah 3.25%. 
+                              <br><br>
+                              Selain itu, kadar faedah juga biasanya dinyatakan dalam bentuk Kadar Peratusan Tahunan (Annual Percentage Rate, APR). Ini bermaksud pengiraan faedah dibuat secara tahunan dan bukan bulanan. Untuk mendapatkan kadar faedah bulanan, anda hanya perlu membahagikan APR tersebut dengan 12 bulan. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twelve" aria-expanded="false">
-                          Di manakah saya boleh memohon pinjaman peribadi?
+                          Di mana dan Bagaimana saya boleh memohon pinjaman peribadi?
                         </div>
                         <div id="collapse_twelve" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Ada dua cara anda boleh memohon pinjaman peribadi di Malaysia: atas talian atau secara bersemuka.
+                              Terdapat dua cara utama untuk memohon pinjaman peribadi di Malaysia: bersemuka atau dalam talian. 
                               <br><br>
-                              Secara peribadi, anda boleh melawat cawangan institusi kewangan yang anda pilih, berjumpa dengan wakil pinjaman, melengkapkan borang permohonan, menyediakan dokumen sokongan dan menyerahkannya.
-                              <br><br>
-                              Cara lain adalah dengan menghubungi pusat hubungan perkhidmatan pelanggan institusi kewangan.
-                              <br><br>
-                              Dengan cara ini, ia memberi anda perkhidmatan yang lebih diperibadikan walaupun kelemahannya ialah, anda mungkin tidak mempunyai fleksibiliti dari segi masa dan wang.
-                              <br><br>
-                              Anda juga boleh membandingkan pinjaman peribadi dalam talian dengan mudah dan memohonnya.
-                              <br><br>
-                              Anda juga boleh menggunakan beberapa alat untuk mengetahui skor kredit anda, mengira kemampuan pinjaman, memuat turun penyata dan banyak lagi – semuanya di hujung jari anda.
-                              <br><br>
-                              Di loanbuddy, kami mempunyai pelbagai jenis pinjaman peribadi yang boleh memenuhi segala keperluan anda dan permohonan pinjaman dalam talian yang cepat dan mudah. <a class="text-green" href="loanfit">KLIK SINI</a> untuk mohon. Kadar faedah ditentukan oleh pemberi pinjaman berdasarkan Kadar Asas (Base Rate) dan ditambah dengan margin yang ditentukan. Nombor ini dipanggil sebagai Kadar Pinjaman Efektif (Effective Lending Rate). Sebagai contoh, Maybank mempunyai BR sebanyak 1.75% ditambah margin 1.50%; ini bermakna kadar faedah yang dikenakan kepada anda ialah 3.25%.
+                              <ul>
+                                <li>Permohonan secara bersemuka</li>
+                                Anda boleh terus ke cawangan institusi pilihan, berjumpa dengan pegawai pinjaman, melengkapkan borang permohonan serta menyerahkan dokumen sokongan yang diperlukan. Kaedah ini lebih diperibadikan kerana anda boleh mendapatkan penjelasan terus daripada pegawai, namun kelemahannya ialah mungkin memerlukan masa dan kos.
+                                <br><br>
+                                <li>Permohonan dalam talian</li>
+                                Kini, banyak institusi kewangan menyediakan platform digital untuk permohonan pinjaman. Anda boleh membandingkan kadar pinjaman, mengira kemampuan kewangan, menyemak skor kredit, memuat turun penyata dan menghantar permohonan — segalanya mudah hanya di hujung jari anda.
+                              </ul>
+
+                              Di Loanbuddy Credit, kami menawarkan pinjaman peribadi yang cepat, mudah dan fleksibel untuk memenuhi keperluan anda.  <a href="mohon-sekarang">KLIK SINI</a> untuk mohon.
                               
                             </p>
                           </div>
@@ -937,62 +945,67 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_thirteen" aria-expanded="false">
-                          Berapa lamakah pinjaman peribadi diluluskan?
+                          Berapa Lamakah Tempoh Kelulusan Pinjaman Peribadi?
                         </div>
                         <div id="collapse_thirteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Proses kelulusan boleh sepantas 2 hari bekerja, bergantung kepada pemberi pinjaman. Semak senarai pinjaman kelulusan pantas loanbuddy yang boleh memproses permohonan anda dan mengeluarkan pinjaman kepada anda dalam masa 48 jam.
+                              Tempoh kelulusan pinjaman peribadi lazimnya mengambil masa antara 2 hingga 7 hari bekerja, bergantung kepada polisi serta prosedur dalaman pihak pemberi pinjaman, selain faktor kelengkapan dokumen yang dikemukan oleh pemohon. 
+                              <br><br>
+                              Di Loanbuddy Credit, kami berkomited untuk memudahkan proses permohonan pelanggan kami agar lebih cepat dan efisien. Dengan sistem pemprosessan yang teratur, pinjaman boleh diluluskan serta dikeluarkan dalam tempoh seawal 24 jam sebaik sahaja semua dokumen lengkap diterima dan disahkan. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_fourteen" aria-expanded="false">
-                          Adakah saya perlu membayar sebarang yuran (bayaran pendahuluan, deposit dll) untuk memohon pinjaman peribadi?
+                          Adakah Saya Perlu Membayar Sebarang yuran (Bayaran Pendahuluan, Deposit, dll) untuk Memohon Pinjaman Peribadi?
                         </div>
                         <div id="collapse_fourteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Tidak, tiada bayaran pendahuluan diperlukan untuk memohon pinjaman peribadi atau memproses permohonan anda di Malaysia. loanbuddy menyediakan perkhidmatan yang percuma kepada pengguna mereka. Jika anda dikehendaki membayar yuran tersebut, segera hubungi pihak berkuasa. Ketahui lebih lanjut tentang penipuan pinjaman di Malaysia dengan membaca artikel di blog kami.
+                              Tidak. Anda tidak perlu membayar sebarang bayaran pendahuluan atau deposit untuk memohon pinjaman peribadi di Malaysia. Di Loanbuddy Credit, semua perkhidmatan kami adalah 100% percuma tanpa caj tersembunyi. 
+                              <br><br>
+                              Jika anda diminta membuat bayaran sebelum pinjaman diluluskan, ia kemungkinan besar adalah penipuan pinjaman. Sebaiknya, laporkan segera kepada pihak berkuasa. Untuk maklumat, anda boleh membaca artikel kami mengenai penipuan pinjaman di Malaysia di blog rasmi. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_fifteen" aria-expanded="false">
-                          Apakah faktor yang mempengaruhi kelulusan pinjaman peribadi saya?
+                          Apakah Faktor yang Mempengaruhi Kelulusan Pinjaman Peribadi Saya?
                         </div>
                         <div id="collapse_fifteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Terdapat beberapa faktor yang mempengaruhi peluang permohonan pinjaman anda diluluskan:
+                              Kelulusan pinjaman peribadi anda bergantung kepada beberapa faktor, termasuk:
                               <ul>
-                                <li>Sejarah anda membayar bil dan pinjaman lain</li>
-                                <li>Jenis pinjaman dan kad kredit lain yang anda miliki</li>
-                                <li>Tempoh masa sejarah kredit anda</li>
-                                <li>Bilangan permohonan pinjaman yang telah anda buat dalam tempoh 12 bulan yang lalu</li>
-                                <li>Sebarang tindakan undang-undang yang telah diambil terhadap anda</li>
-                                <li>Semua faktor ini dikira sebagai sebahagian daripada skor kredit anda. </li>
+                                <li>Rekod pembayaran bil dan pinjaman terdahulu </li>
+                                <li>Jenis pinjaman atau kad kredit yang dimiliki</li>
+                                <li>Tempoh sejarah kredit anda </li>
+                                <li>Bilangan permohonan kredit dalam tempoh 12 bulan</li>
+                                <li>Sebarang tindakan undang-undang terhadap anda </li>
+                                
                               </ul>
+                              Semua faktor ini akan dinilai oleh institusi kewangan melalui skor kredit anda untuk menentukan tahap kelayakan pinjaman
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_sixteen" aria-expanded="false">
-                          Apakah skor kredit? Bagaimanakah ia menjejaskan kelulusan pinjaman peribadi saya?
+                          Apakah Skor Kredit dan Bagaimana ia Mempengaruhi Kelulusan Pinjaman Peribadi Saya?
                         </div>
                         <div id="collapse_sixteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Skor kredit, ialah penarafan berangka 3 digit yang menilai kelayakan kredit peminjam yang berdasarkan sejarah kredit mereka.
-                              <br><br>
-                              Skor kredit yang baik boleh meningkatkan peluang anda untuk mendapatkan pinjaman yang diluluskan dengan kadar faedah lebih rendah dan kelulusan pinjaman lebih cepat.
-                              <br><br>
-                              Skor kredit yang tinggi bermakna anda disukai oleh pihak bank dan institusi kewangan, manakala anda mungkin tidak sesuai atau akan ditolak jika mempunyai skor kredit yang rendah. Jadi bagaimana anda boleh menyemak skor kredit anda?
-                              <br><br>
-                              Sejarah kredit anda disimpan dan direkod oleh pangkalan data Bank Negara Malaysia (BNM) yang dikenali sebagai Sistem Maklumat Rujukan Kredit Pusat (CCRIS), dan ia boleh diakses oleh Agensi Pelaporan Kredit (CRA) seperti Experian Credit & Information Services (dahulu dikenali sebagai RAM Maklumat Kredit (RAMCI)), CTOS dan Biro Kredit Malaysia untuk menjana skor kredit anda.
+                              Skor kredit ialah satu penarafan berangka (tiga digit) yang menggambarkan tahap kelayakan kredit anda berdasarkan rekod kewangan dan sejarah pembayaran. 
+                              <ul>
+                                <li>Skor kredit tinggi: Meningkatkan peluang pinjaman diluluskan dengan lebih cepat dan dengan kadar faedah yang lebih kompetitif. </li>
+                                <li>Skor kredit rendah: Boleh menyukarkan kelulusan pinjaman atau menyebabkan permohonan anda ditolak</li>
+                              </ul>
+
+                              Rekod skor kredit anda disimpan dalam sistem Central Credit Reference Information System (CCRIS) oleh Bank Negara Malaysia dan boleh diakses melalui Agensi Pelaporan Kredit (CRA) seperti CTOS, Experian (dahulu RAMCI) dan Biro Kredit Malaysia. 
                               
                             </p>
                           </div>
@@ -1000,21 +1013,18 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_seventeen" aria-expanded="false">
-                          Apakah yang saya perlu lakukan untuk meningkatkan skor kredit saya?
+                          Apa yang Boleh Saya Lakukan untuk Meningkatkan Skor Kredit Saya?
                         </div>
                         <div id="collapse_seventeen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
+                              Beberapa langkah yang boleh anda ambil untuk meningkatkan skor kredit adalah:
                               <ul>
-                                <li>
-                                  Buat pembayaran tepat pada masanya, pada atau sebelum tarikh tamat tempoh. Ia mencerminkan kredibiliti anda apabila anda tertunggak dua bulan atau lebih.
-                                </li>
-                                <li>
-                                  Elakkan permohonan kredit yang banyak dalam satu masa. Jika permohonan ditolak ianya akan direkod terus di dalam laporan kredit anda. Oleh itu, semak syarat kelayakan pinjaman dan pilih produk yang paling sesuai dengan kemampuan anda.
-                                </li>
-                                <li>
-                                  Bayar penuh hutang tertunggak yang lebih kecil. Ini memudahkan anda untuk memenuhi komitmen kewangan semasa, yang menjadikan anda kelihatan lebih baik kepada pemberi pinjaman.
-                                </li>
+                                <li>Lakukan pembayaran tepat pada masanya - Elakkan tunggakan dua bulan atau lebih kerana ia menjejaskan kredibiliti anda.</li> 
+                                <li>Elakkan terlalu banyak permohonona kredit serentak - Setiap permohonan (termasuk yang ditolak) direkodkan dalam laporan kredit.</li>
+                                <li>Bayar penuh hutang kecil terlebih dahulu - Ini bagi membantu mengurangkan komitmen kewangan anda dan meningkatkan imej di mata pemberi pinjaman. </li>
+
+
                               </ul>
                             </p>
                           </div>
@@ -1022,39 +1032,38 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_eighteen" aria-expanded="false">
-                          Siapa loanbuddy dan apakah jenis pinjaman yang disediakan oleh loanbuddy?
+                          Siapa Loanbuddy Credit dan Apakah Jenis Pinjaman yang Disediakan oleh Loanbuddy Credit?
                         </div>
                         <div id="collapse_eighteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              <ul>
-                                <li>
-                                  loanbuddy adalah platform pinjaman peribadi institusi kewangan dan koperasi yang membantu peminjam cari, mohon dan banding pembiayaan yang paling sesuai untuk anda. loanbuddy juga merupakan platform untuk belajar asas kewangan dan memastikan anda sentiasa mengikuti perkembangan isu semasa.
-                                  <br><br>
-                                  Produk pinjaman peribadi di platform loanbuddy sesuai untuk sektor swasta dan kakitangan awam di Malaysia.
-                                  <br><br>
-                                  Bagi penjawat awam, kami menawarkan pinjaman peribadi dan koperasi yang anda boleh perolehi daripada rakan kongsi pembiayaan kami yang terkenal dan berwibawa.
-                                  <br><br>
-                                  Bagi sektor swasta, anda boleh memohon pinjaman peribadi yang selamat daripada lebih 15 rakan kongsi pinjaman berlesen di Malaysia untuk memenuhi keperluan pembiayaan anda.
-                                  <br><br>
-                                  Servis kami adalah 100% PERCUMA dan kami tidak akan meminta sebarang bayaran daripada pelanggan.
-                                </li>
-                              </ul>
+                              Loanbuddy Credit Sdn. Bhd. (200901039396 / 882536-K) ialah sebuah agensi pinjaman berlesen di bawah Akta Pemberi Pinjam Wang 1951 yang dikawal selia oleh Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami beroperasi dengan cawangan di Kuala Lumpur, Kuching, Miri, dan Bintulu.
+                              <br><br>
+                              Kami menyediakan pinjaman peribadi yang sesuai untuk pekerja sektor swasta, kakitangan awam, serta syarikat berkaitan kerajaan (GLC) di seluruh Malaysia. Proses permohonan adalah selamat, mudah, telus dan diluluskan dengan pantas.
+                              <br><br>
+                              Perkhidmatan kami adalah 100% PERCUMA — tiada sebarang caj tersembunyi atau yuran pemprosesan dikenakan kepada pelanggan.
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_nineteen" aria-expanded="false">
-                          Bagaimanakah kalkulator pinjaman peribadi berfungsi?
+                          Bagaimanakah Kalkulator Pinjaman Peribadi Berfungsi?
                         </div>
                         <div id="collapse_nineteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
                               
-                              Kalkulator Pinjaman Peribadi loanbuddy direka khas untuk membantu dalam menganggarkan jumlah pembayaran balik pinjaman peribadi bulanan.
-                              <br><br>
-                              Kalkulator ini dapat memberi sedikit gambaran tentang jumlah bayaran bulanan yang anda mampu. Pertama, masukkan jumlah pinjaman, kemudian masukkan kadar faedah pinjaman dan tempoh pinjaman.
+                              Kalkulator Pinjaman Peribadi Loanbuddy Credit direka khas untuk membantu anda menganggarkan jumlah pembayaran balik pinjaman peribadi bulanan. <br><br>
+
+                              Anda hanya perlu: <br>
+                              <ul>
+                                  <li>Masukkan jumlah pinjaman</li>
+                                  <li>Tetapkan tempoh pinjaman</li>
+                              </ul>
+
+
+                              Hasilnya, kalkulator akan memaparkan anggaran bayaran bulanan anda, sekali gus membantu anda membuat perancangan kewangan yang lebih bijak.
                                 
                             </p>
                           </div>
@@ -1062,24 +1071,23 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twenty" aria-expanded="false">
-                          Sebagai penjawat awam, macam mana saya memohon pinjaman peribadi melalui platform loanbuddy?
+                          Sebagai penjawat awam, bagaimana saya boleh memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twenty" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
                               
-                              Proses permohonan pinjaman kami adalah cepat dan mudah. Dalam masa beberapa minit anda boleh mengetahui kelayakan pinjaman anda dan kadar indikatif serta-merta. Kami akan meminta anda memberikan beberapa butiran peribadi, seperti pekerjaan anda, pendapatan bulanan, komitmen pinjaman semasa dan pendidikan.
+                              Proses permohonan pinjaman kami adalah cepat, mudah dan telus. Dalam masa beberapa minit anda boleh mengetahui kelayakan pinjaman anda serta menerima kadar indikatif serta-merta. 
                               <br><br>
-                              Anda hanya perlu memberikan dokumen pengenalan diri dan pendapatan, jika anda menyukai kadar anda dan ingin meneruskan permohonan pinjaman tersebut.
+                              Untuk tujuan ini, kami akan meminta beberapa maklumat asas seperti status pekerjaan, jumlah pendapatan bulanan, komitmen pinjaman semasa dan tahap pendidikan. Sekiranya anda berpuas hati dengan kadar yang ditawarkan serta ingin meneruskan permohonan, anda hanya perlu menyediakan dokumen pengenalan diri dan bukti pendapatan.
                               <br><br>
-                              Sila pastikan maklumat yang anda berikan adalah tepat kerana maklumat tersebut akan disahkan.
-                              <br><br>
-                              Langkah 1: Klik mohon sekarang dan beritahu kami apa yang anda perlukan <br>
-                              
-                              Langkah 2: Bandingkan dan pilih produk yang paling sesuai dengan anda <br>
-                              Langkah 3: Hantarkan dokumen anda dan pegawai pinjaman kami yang mesra akan menghubungi anda untuk melengkapkan permohonan pinjaman
-                              <br><br>
-                              Mohon dan semak kelayakan anda secara percuma 100%. Tiada caj tersembunyi atau yuran pemprosesan. <a class="text-green" href="loanfit">KLIK SINI</a> untuk memohon. 
+                              Langkah permohonan adalah mudah: <br>
+                              <ul>
+                                <li>Klik Mohon Sekarang dan maklumkan keperluan pinjaman anda.</li>
+                                <li>Hantarkan dokumen anda, dan pegawai pinjaman kami yang mesra pelanggan akan menghubungi anda untuk melengkapkan proses permohonan.</li>
+                              </ul>
+
+                              Permohonan dan semakan kelayakan adalah 100% percuma, tanpa sebarang caj tersembunyi atau yuran pemprosesan. <a href="mohon-sekarang">KLIK SINI</a> untuk memohon. 
                                 
                             </p>
                           </div>
@@ -1087,20 +1095,34 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentyone" aria-expanded="false">
-                          Sebagai pekerja swasta, macam mana cara memohon pinjaman peribadi melalui platform loanbuddy?
+                          Sebagai pekerja swasta, bagaimana cara memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentyone" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Proses pendaftaran yang cepat dan mudah dalam 3 langkah mudah:
+                              Proses permohonan pinjaman di Loanbuddy Credit adalah mudah, pantas dan telus, hanya melalui 3 langkah utama:
                               <br><br>
-                              Langkah 1: Isi borang permohonan dalam talian dan pilih pemberi pinjaman yang anda ingin mohonIsi borang dalam talian kami yang ringkas dengan butiran peribadi anda yang berkaitan dan beritahu kami berapa banyak dan berapa lama anda ingin meminjam. Kemudian pilih pemberi pinjaman yang sesuai dengan anda.
+                              <strong>1. Isi borang permohonan dalam talian</strong>
+                              Lengkapkan borang permohonan ringkas kami dengan maklumat peribadi yang diperlukan, termasuk jumlah pinjaman.
                               <br><br>
-                              Langkah 2: Hubungi pemberi pinjaman untuk semakan dan pengesahan kreditPemberi pinjaman yang anda pilih akan menghubungi anda melalui e-mel atau telefon untuk jika anda memenuhi kelayakan pinjaman untuk pengesahan lanjut
+
+                              <strong> 2. Semakan dan pengesahan kelayakan</strong>
+                              Pihak Loanbuddy Credit akan menghubungi anda melalui WhatsApp atau emel untuk proses semakan awal serta pengesahan kelayakan pinjaman. 
                               <br><br>
-                              Langkah 3: Serahkan dokumen yang diperlukan dan tandatangani perjanjianSetelah proses pengesahan selesai, anda boleh mengemukakan dokumen yang diperlukan iaitu, Kad Pengenalan, slip gaji dan penyata bank 3 bulan terkini, borang pengisytiharan cukai, penyata KWSP atau cukai terkini dan bil utiliti (seperti bil elektrik, air & lain-lain) sebelum pergi ke pejabat pemberi pinjaman untuk menandatangani perjanjian.
+
+                              <strong>3. Serahkan dokumen dan tandatangan perjanjian</strong> 
+                              Setelah kelulusan diberikan, anda hanya perlu menyediakan dokumen sokongan seperti
+                              <ul>
+                                <li>Salinan kad pengenalan (depan dan belakang)</li>
+                                <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
+                                <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
+                                <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                              </ul>
+
+                              Seterusnya, anda akan dijemput ke pejabat Loanbuddy Credit untuk menandatangani perjanjian pinjaman sebelum pembiayaan diluluskan.
                               <br><br>
-                              Mohon dan semak kelayakan anda secara 100% percuma. Tiada caj tersembunyi atau yuran pemprosesan. Kad ATM tidak diperlukan. <a class="text-green" href="loanfit">KLIK SINI</a> untuk mohon.
+                              Permohonan dan semakan kelayakan adalah 100% percuma, tanpa caj tersembunti atau yuran pemprosesan. Kad ATM juga tidak diperlukan. <a href="mohon-sekarang">KLIK SINI</a> untuk mohon.
+                              
                                 
                             </p>
                           </div>
@@ -1108,39 +1130,42 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentytwo" aria-expanded="false">
-                          Adakah saya layak memohon pinjaman peribadi di platform loanbuddy jika saya seorang ekspatriat?
+                          Adakah saya layak memohon pinjaman peribadi di Loanbuddy Credit jika saya seorang ekspatriat?
                         </div>
                         <div id="collapse_twentytwo" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Kami tidak dapat memproses permohonan pinjaman peribadi untuk ekspatriat, kami nasihatkan anda untuk melawat cawangan bank ataupun institusi kewangan yang berkaitan untuk memohon.
+                              Loanbuddy Credit pada masa ini hanya menawarkan kemudahan pinjaman peribadi kepada warganegara Malaysia. Oleh itu, permohonan daripada ekspatriat tidak dapat diproses. Sebagai alternatif, kami menyarankan anda untuk berhubung terus dengan bank atau institusi kewangan yang menyediakan perkhidmatan pinjaman khusus bagi ekspatriat.
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentythree" aria-expanded="false">
-                          Jika saya menganggur, dapatkah saya memohon pinjaman peribadi melalui platform loanbuddy?
+                          Jika saya menganggur, adakah saya boleh memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentythree" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Sama seperti kebanyakan bank dan institusi kewangan, kami juga memerlukan beberapa bukti pendapatan untuk mendapatkan pinjaman peribadi. Oleh itu, kami tidak dapat memproses permohonan pinjaman untuk individu yang menganggur.
+                              Sama seperti kebanyakan bank dan institusi kewangan lain, Loanbuddy Credit memerlukan bukti pendapatan tetap sebagai syarat kelayakan. Oleh itu, permohonan pinjaman peribadi daripada individu yang menganggur tidak dapat diproses.
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentyfour" aria-expanded="false">
-                          Jika saya seorang pelajar, dapatkah saya memohon pinjaman peribadi melalui platform loanbuddy?
+                          Jika saya seorang pelajar, adakah saya boleh memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentyfour" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Syarat umur minimum untuk pinjaman peribadi di Malaysia ialah 18 tahun. Walau bagaimanapun, anda perlu mempunyai aliran pendapatan yang konsisten untuk layak mendapatkan pinjaman. Anda layak untuk mendapatkan pinjaman peribadi jika anda memenuhi semua kriteria di bawah:
+                              Syarat umur minimum untuk memohon pinjaman peribadi di Malaysia ialah 18 tahun. Namun, selain syarat umur, anda juga perlu mempunyai aliran pendapatan yang konsisten untuk status semakan kelayakan.
+                              <br><br>
+                              Anda layak memohon sekiranya memenuhi kriteria berikut:
                               <ul>
                                 <li>Berumur 18 tahun ke atas</li>
-                                <li>Mempunyai penyata pendapatan sekurang-kurangnya 3 bulan, dan surat pengesahan pekerja.</li>
+                                <li>Mempunyai penyata pendapatan sekurang-kurangnya 3 bulan</li>
+                                <li>Menyediakan surat pengesahan pekerjaan daripada majikan</li>
                               </ul>
                             </p>
                           </div>
@@ -1148,50 +1173,48 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentyfive" aria-expanded="false">
-                          Jika saya seorang pekerja kontrak, dapatkah saya memohon pinjaman peribadi melalui platform loanbuddy?
+                          Jika saya seorang pekerja kontrak, adakah saya boleh memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentyfive" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Anda layak untuk meminjam jika anda telah bekerja sekurang-kurangnya 3 bulan, dan tempoh kontrak anda tamat sekurang-kurangnya 6 bulan lagi.
+                              Ya, anda layak memohon pinjaman peribadi sekiranya anda telah bekerja sekurang-kurangnya 3 bulan, dan kontrak pekerjaan anda mempunyai tempoh baki sekurang-kurangnya 6 bulan sebelum tamat.
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentysix" aria-expanded="false">
-                          Jika saya seorang pemilik perniagaan kecil, dapatkah saya memohon pinjaman peribadi melalui platform loanbuddy?
+                          Jika saya seorang pemilik perniagaan kecil, adakah saya boleh memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentysix" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Kami ada sediakan pinjaman peribadi untuk peniaga kecil. <a class="text-green" href="loanfit">KLIK SINI</a> untuk mohon.
+                              Ya, Loanbuddy Credit menyediakan pinjaman peribadi untuk pemilik perniagaan kecil yang layak. <a href="mohon-sekarang">KLIK SINI</a> untuk mohon.
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentyseven" aria-expanded="false">
-                          Apakah julat kadar faedah pinjaman peribadi yang disediakan di loanbuddy?
+                          Apakah kadar faedah pinjaman peribadi yang disediakan di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentyseven" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Bagi pembiayaan peribadi kakitangan awam, kadar bermula dari 2.95% setahun bergantung kepada penyedia pembiayaan yang dipilih.
-                              <br><br>
-                              Bagi pinjaman wang berlesen dan pinjaman peribadi komuniti kredit, kadar faedah tidak melebihi 1.5% sebulan untuk pembiayaan tidak bercagar seperti yang ditetapkan di bawah Akta Pemberi Pinjam Wang 1951.
+                              Kadar faedah pinjaman tidak melebihi: 18% setahun (Tidak Bercagar), 12% setahun (Bercagar), tertakluk kepada terma, syarat dan penilaian kredit pemohon. 
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twentyeight" aria-expanded="false">
-                          Adakah saya memerlukan penjamin atau sebarang cagaran untuk memohon pinjaman peribadi di loanbuddy?
+                          Adakah saya memerlukan penjamin atau cagaran untuk memohon pinjaman peribadi di Loanbuddy Credit?
                         </div>
                         <div id="collapse_twentyeight" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Pinjaman peribadi adalah sejenis pinjaman tidak bercagar. Ini bermakna anda tidak perlu menyediakan sebarang cagaran atau melantik penjamin untuk membuat pinjaman wang.
+                              Tidak. Pinjaman peribadi adalah pinjaman tidak bercagar, bermakna anda tidak perlu menyediakan cagaran atau melantik pejamin bagi tujuan permohonan.
                             </p>
                           </div>
                         </div>
@@ -1203,55 +1226,22 @@
                         <div id="collapse_twentynine" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Ya, anda boleh dan ini akan membantu anda mengurangkan komitmen bulanan dan membolehkan anda mendapatkan wang tunai tanpa meningkatkan hutang. Bagi penjawat awam, overlap pinjaman dengan bank, institusi kewangan atau koperasi yang sama, anda tidak perlu memohon surat penyelesaian hutang. 
+                              Ya, anda boleh melakukan overlap pinjaman, iaitu menyatukan pinjaman sedia ada bagi mengurangkan komitmen bulanan serta mendapatkan wang tunai tambahan tanpa meningkatkan jumlah hutang keseluruhan. 
+                              <br><br>
+                              Bagi penjawat awam, proses overlap dengan bank, institusi kewangan atau koperasi yang sama tidak memerlukan surat penyelesaian hutang.  
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button id="view-more-faqs" class="btn btn_green text-white">Lihat Lagi</button>
+                    <button id="view-more-faqs" class="btn btn_blue text-white">Lihat Lagi</button>
                       
             </div>
           </div>
         </section>
         <!-- FAQ Section - End
         ================================================== -->
-
-        <!-- Newslatter Section - Start
-        ================================================== -->
-        <!-- <section class="bg_blue overflow-hidden">
-          <div class="cta_container">
-            <div class="row cta_home">
-              <div class="col-md-8 text-cta-mobile">
-                <h2 class="text-white">
-                  Perlukan Bantuan Atau Maklumat Lebih Lanjut? <br> 
-                  Kami Sedia Membantu!
-                </h2>
-              </div>
-              <div class="col-md-4">
-                <a href="contact-us" class="btn_cta_home">
-                  <span>
-                    <small>Hubungi Kami</small>
-                  </span>
-                </a>
-              </div>
-              
-            </div>
-            <div class="deco_item_home_cta_2">
-              <img src="assets/images/loanfit/Clip_path_group_2.png">
-            </div>
-            
-          </div>
-            
-   
-        </section> -->
-        <!-- Newslatter Section - End
-        ================================================== -->
-      </main>
-      <!-- Main Body - End
-      ================================================== -->
-
-      <!-- Site Footer - Start
+<!-- Site Footer - Start
       ================================================== -->
       <footer class="site_footer">
         <div class="footer_widget_area">
@@ -1262,17 +1252,11 @@
                   <div class="site_logo">
                     <a class="site_link" href="/">
                       <!-- <img src="assets/images/logo/site_logo_2.svg" alt="loanbuddy l- teman kewangan anda"> -->
-                       <img src="assets/images/logo/Loanbuddy-Logo-White.png" alt="">
+                      <img src="assets/images/logo/white-logo-footer-1.png" alt="" loading="lazy">
                     </a>
                   </div>
                   <p>
-                    loanbuddy merupakan platform dalam talian untuk peminjam mencari, memohon serta mendapatkan pinjaman terus ke akaun bank dalam 24 jam.
-                  </p>
-                  <p>
-                    <strong>Cari kami di sini:</strong><br>
-                    A-18-17, MENARA UOA BANGSAR, 
-                    JALAN BANGSAR UTAMA 1, BANGSAR 59000, 
-                    WILAYAH PERSEKUTUAN KUALA LUMPUR
+                    Loanbuddy Credit Sdn. Bhd. (200901039396 / 882536-K) ialah sebuah agensi pinjaman berlesen di bawah Akta Pemberi Pinjam Wang 1951 yang dikawal selia oleh Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami beroperasi dengan cawangan di Kuala Lumpur, Kuching, Miri, dan Bintulu.
                   </p>
                   <!-- <ul class="social_links unordered_list">
                     <li>
@@ -1286,7 +1270,7 @@
                     </li>
                   </ul> -->
 
-                  <ul class="social_links unordered_list">
+                  <!-- <ul class="social_links unordered_list">
                     <li>
                       <a href="https://www.facebook.com/loanbuddyteam/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     </li>
@@ -1294,20 +1278,20 @@
                       <a href="https://www.instagram.com/loanbuddyteam/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </li>
                     <li>
-                      <!-- Embed TikTok SVG directly -->
+                      
                       <a href="https://www.tiktok.com/@loanbuddyteam" target="_blank">
                         <svg fill="#1F1D0D" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.183-4.51v-3.5a6.329 6.329 0 0 0-5.394 10.692 6.33 6.33 0 0 0 10.857-4.424V8.687a8.182 8.182 0 0 0 4.773 1.526V6.79a4.831 4.831 0 0 1-1.003-.104z"/>
                         </svg>
                       </a>
                     </li>
-                  </ul>
+                  </ul> -->
                   
                 </div>
               </div>
-
+              
               <div class="col-lg-9">
-                <div class="row mt-3 mb-4">
+                <!-- <div class="row mt-3 mb-4">
                   <div class="news">
                     <div class="news-container">
                       <h3 class="news-heading mb-3">Langgan Surat Berita Kami</h3>
@@ -1316,12 +1300,6 @@
                           <input class="news-email" type="email" name="email" id="emailNewsletter" required placeholder="E-mel anda">
                           <button class="bt">Langgan</button>
                         </form>
-                        <!-- <p style="color: #f9ec31;">
-                          Berjaya Dilanggani. Terima Kasih.
-                        </p> -->
-                        <!-- <p style="color: #f59d9d;">
-                          Emel Anda sudah Berdaftar. Sila guna emel lain.
-                        </p> -->
                         <div id="success-subscribe-text" class="success-subscribe-text">
                           Berjaya Dilanggani. Terima Kasih.
                         </div>
@@ -1331,44 +1309,33 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="row mt-1">
-                  <div class="col col-lg-9">
+                  <div class="col col-lg-12">
                     <div class="row">
-                      <div class="col col-md-4 col-sm-4">
-                        <div class="footer_widget">
-                          <h3 class="footer_widget_title">Pautan</h3>
-                          <ul class="page_list unordered_list_block">
+                      <div class="col col-md-3 col-sm-3">
+                        <div class="footer_widget text_white">
+                          <!-- <h3 class="footer_widget_title">Pautan</h3> -->
+                          <ul class="page_list unordered_list_block ">
                             <li>
-                              <a href="/">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">Laman Utama</span>
-                              </a>
+                              <strong>Nombor lesen</strong> <br>
+                              WL7830/14/01-3/030527 <br> <br>
+                              
+                            </li>
+                            
+                            <li>
+                              <strong>Tempoh sah laku lesen</strong> <br>
+                              04/05/2025 - 03/05/2027 <br> <br>
                             </li>
                             <li>
-                              <a href="about-us">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">Tentang Kami</span>
-                              </a>
+                              <strong>Nombor permit iklan</strong> <br>
+                              WP7830/14/01-3/030527 <br> <br>
                             </li>
                             <li>
-                              <a href="contact-us">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">Hubungi Kami</span>
-                              </a>
+                              <strong>Tempoh sah laku permit iklan</strong> <br>
+                              04/05/2025 - 03/05/2027 <br> <br>
                             </li>
-                            <li>
-                              <a href="blog">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">Sumber & Blog</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="kalkulator-pinjaman">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">kalkulator</span>
-                              </a>
-                            </li>
+                            
                             <!-- <li>
                               <a href="event.html">
                                 <span class="item_icon"><i class="fas fa-caret-right"></i></span>
@@ -1378,34 +1345,17 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="col col-md-4 col-sm-4">
+                      <div class="col col-md-3 col-sm-3">
                         <div class="footer_widget">
-                          <h3 class="footer_widget_title">Perkhidmatan</h3>
+                          <h3 class="footer_widget_title">Waktu Operasi</h3>
                           <ul class="page_list unordered_list_block">
-                            <li>
-                              <a href="loanfit">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">loanfit</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="loancompare">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">loancompare</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="pinjaman-koperasi-page">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">Pinjaman Koperasi</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="pinjaman-peribadi">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
-                                <span class="item_text">Pinjaman Peribadi</span>
-                              </a>
-                            </li>
+                            
+                            <p>
+                              Isnin - Jumaat: 8am - 5pm <br>
+                              Sabtu: 8am - 1.30pm <br>
+                              Ahad & Cuti Umum: Tutup
+                            </p>
+                            
                             <!-- <li>
                               <a href="blog">
                                 <span class="item_icon"><i class="fas fa-caret-right"></i></span>
@@ -1427,19 +1377,52 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="col col-md-4 col-sm-4">
+                      <div class="col col-md-3 col-sm-3">
+                        <div class="footer_widget">
+                          <h3 class="footer_widget_title">Perkhidmatan</h3>
+                          <ul class="page_list unordered_list_block">
+                            
+                            <li>
+                              <a href="pinjaman-koperasi-page">
+                                <!-- <span class="item_icon"><i class="fas fa-caret-right"></i></span> -->
+                                <span class="item_text">Pinjaman Peribadi</span>
+                              </a>
+                            </li>
+                            
+                            <!-- <li>
+                              <a href="blog">
+                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <span class="item_text">Sumber & Blog</span>
+                              </a>
+                            </li> -->
+                            <!-- <li>
+                              <a href="#!">
+                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <span class="item_text">Engineering</span>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="#!">
+                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <span class="item_text">Photography</span>
+                              </a>
+                            </li> -->
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col col-md-3 col-sm-3">
                         <div class="footer_widget">
                           <h3 class="footer_widget_title">Khidmat Pelanggan</h3>
                           <ul class="page_list unordered_list_block">
                             <li>
                               <a href="contact-us">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <!-- <span class="item_icon"><i class="fas fa-caret-right"></i></span> -->
                                 <span class="item_text">Hubungi Kami</span>
                               </a>
                             </li>
                             <li>
                               <a href="faq">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <!-- <span class="item_icon"><i class="fas fa-caret-right"></i></span> -->
                                 <span class="item_text">FAQ</span>
                               </a>
                             </li>
@@ -1457,13 +1440,13 @@
                             </li> -->
                             <li>
                               <a href="privacy-policy">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <!-- <span class="item_icon"><i class="fas fa-caret-right"></i></span> -->
                                 <span class="item_text">Dasar Privasi</span>
                               </a>
                             </li>
                             <li>
                               <a href="terma-dan-syarat">
-                                <span class="item_icon"><i class="fas fa-caret-right"></i></span>
+                                <!-- <span class="item_icon"><i class="fas fa-caret-right"></i></span> -->
                                 <span class="item_text">Terma dan Syarat</span>
                               </a>
                             </li>
@@ -1472,37 +1455,37 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col col-lg-3 col-md-6 col-sm-6">
+                  <!-- <div class="col col-lg-3 col-md-6 col-sm-6">
                     <div class="footer_widget">
                       <h3 class="footer_widget_title">Blog Terkini</h3>
                       <ul class="blog_small_group unordered_list_block">
                         <li>
                           <a class="blog_small" href="6-aspek-utama">
                             <span class="item_image">
-                              <img src="assets/images/blog/6-aspek-small.png" alt="Blog 1">
+                              <img src="assets/images/blog/6-aspek-small.webp" alt="Blog 1" loading="lazy">
                             </span>
                             <span class="item_content">
                               <span class="item_author"><i class="fas fa-user-alt"></i> by Corabelle Durrad</span>
                               <strong class="item_title">6 Aspek Utama Literasi Kewangan</strong>
-                              <!-- <small class="item_post_date">September 3, 2024</small> -->
+                              
                             </span>
                           </a>
                         </li>
                         <li>
                           <a class="blog_small" href="tahap-pengetahuan">
                             <span class="item_image">
-                              <img src="assets/images/blog/tahap-pengetahuan-small.png">
+                              <img src="assets/images/blog/tahap-pengetahuan-small.webp" loading="lazy">
                             </span>
                             <span class="item_content">
                               <span class="item_author"><i class="fas fa-user-alt"></i> by Corabelle Durrad</span>
                               <strong class="item_title">Tahap Pengetahuan Kewangan dalam kalangan Rakyat Malaysia</strong>
-                              <!-- <small class="item_post_date">August 26, 2024</small> -->
+                              
                             </span>
                           </a>
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
@@ -1511,8 +1494,9 @@
         </div>
         <div class="copyright_widget">
           <div class="container">
+            <div class="footer-line"></div>
             <p class="copyright_text text-center mb-0">
-              loanbuddy © All rights reserved Copyrights 2025
+              © Copyright 2026 Loanbuddy Credit Sdn. Bhd. [Registration No. 200901039396 (882536-K)]. All Rights Reserved.
             </p>
           </div>
         </div>
@@ -1599,13 +1583,13 @@
         if (moreFaqs.style.display === 'none' || moreFaqs.style.display === '') {
             moreFaqs.style.display = 'block';
             this.textContent = 'Lihat Kurang';
-            this.classList.remove('btn_green', 'text-white');
+            this.classList.remove('btn_blue', 'text-white');
             this.classList.add('btn-light');
         } else {
             moreFaqs.style.display = 'none';
             this.textContent = 'Lihat Lagi';
             this.classList.remove('btn-light');
-            this.classList.add('btn_green', 'text-white');
+            this.classList.add('btn_blue', 'text-white');
         }
       });
     </script>
