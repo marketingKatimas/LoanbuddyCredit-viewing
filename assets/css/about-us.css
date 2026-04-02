@@ -4,6 +4,22 @@
   margin-top: -120px;   /* adjust value */
 }
 
+.text_white{
+    color: #ffffff!important;
+}
+
+.img-75 {
+    height: 8.5vh!important;
+    align-self: center!important;
+}
+
+.footer-line {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 30px 0;
+}
+
 .about_banner_main{
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,6 +48,23 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+}
+
+/* red border button */
+.btn.border_red_new {
+  color: #F20505;
+  background-color: #ffff;
+  border-color: #F20505;
+}
+.btn.border_red_new:hover {
+  color: #ffffff;
+  background-color: #F20505;
+  border-color: #F20505;
+  /* -webkit-box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B;
+          box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B; */
+}
+.btn.border_red_new:hover span small {
+  color: #ffffff;
 }
 
 .row-home-custom{
@@ -79,6 +112,88 @@
 
 }
 
+
+/* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
+.btn_semak_layak {
+  z-index: 3;
+  color: #044BD9;
+  background-color: #ffffff;
+  border-radius: 45px;
+  letter-spacing: 1px;
+  padding: 10px;
+  margin-left: -10px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #044BD9;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: rgba(31, 29, 13, 0.09) 2px 2px 30px, #044BD9 4px 4px 0px 0px;
+  transition: all 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.btn_semak_layak span small {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Shimmer Effect Animation */
+/* .btn_semak_layak::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.9) 50%,
+      transparent 70%
+  );
+  transition: all 0.6s ease-in-out;
+  animation: shimmerMove 10s infinite linear;
+  will-change: transform;
+} */
+
+/* Keyframes to make shimmer loop */
+@keyframes shimmerMove {
+  0% {
+      left: -150%;
+  }
+  100% {
+      left: 150%;
+  }
+}
+
+/* Pause shimmer animation on hover */
+.btn_semak_layak:hover::before {
+  animation-play-state: paused;
+}
+
+/* Slight scale & color change on hover */
+.btn_semak_layak:hover {
+  transform: scale(1.08);
+  border-color: #044BD9;
+  box-shadow: 0px 15px 35px rgba(22, 39, 166, 0.5);
+}
+
+@media (max-width: 500px) {
+  .btn_semak_layak {
+      letter-spacing: 0px;
+  }
+
+  .btn_semak_layak span small {
+      font-size: 13px;
+      line-height: 15px;
+  }
+}
+/* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 
 .site_header_2 .container {
   max-width: 1200px;
