@@ -1,0 +1,136 @@
+/* Header */
+.site_header {
+    left: 8vw;
+    right: 8vw;
+    padding: 38px 0;
+    background: #044BD9;
+}
+
+/* .main_menu_list {
+    column-gap: 33px;
+} */
+
+/* .main_menu_list .dropdown-menu {
+    border: 2px solid #044bd9;
+    box-shadow: -6px 6px 0 0 rgb(4 75 217);
+} */
+
+.container-apply-header {
+    padding-top: 80px;
+}
+
+.banner-apply-header {
+    margin-top: 50px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+@media (min-width: 1600px) {
+
+}
+
+@media (max-width: 991px) {
+    .main_menu_inner {
+        background-color: #044bd9;
+    }
+
+    .site_logo {
+        display: none;
+    }
+    
+    
+}
+
+@media (max-width: 500px) { 
+    .container-apply-header {
+        padding-top: 25px;
+    }
+
+    .site_header {
+        padding: 16px 0 !important;
+    }
+
+    .mobile_menu_btn {
+        color: #ffffff;
+    }
+
+    .mobile_menu_btn:hover {
+        color: #ffffff;
+    }
+
+    .main_menu {
+        left: 8vw;
+        right: 8vw;
+        top: 90px !important;
+    }
+
+    .main_menu_inner {
+        border-radius: 5px;
+    }
+
+    .main_menu_list .dropdown-menu {
+        border: 2px solid #044bd9;
+    }
+
+}
+
+.main_menu_list .dropdown-menu > li:hover > a,
+.main_menu_list .dropdown-menu > li.active > a {
+    background-color: #2a67e1;
+    color: white;
+}
+
+.main_menu_list .dropdown-menu > li:hover > a:before {
+    background: white;
+}
+
+@media (max-width: 425px) {
+
+}
+
+@media (max-width: 376px) {
+    
+}
+
+/* Mohon Sekarang Button */
+.btn_semak_layak {
+    color: #044bd9;
+    background-color: #ffffff;
+    border: 2px solid #044bd9;
+}
+
+.btn_semak_layak:hover {
+    transform: scale(1.08);
+    border-color: #044ad6;
+    box-shadow: 0px 15px 35px rgba(26, 183, 154, 0.2);
+}
+
+
+/* Footer */
+.site_footer .footer_widget_area {
+    padding: 80px 0 60px;
+}
+
+.item_text_1 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item_text_2 {
+    font-size: 14px;
+}
+
+.item_text_3 {
+    font-size: 14px;
+    color: #C8C8C8;
+}
+
+.item_text_3:hover {
+    color: #ffffff;
+}
+
+.copyright_widget .copyright_text {
+    border-top: 1px solid #ffffff;
+    padding: 25px 0;
+}

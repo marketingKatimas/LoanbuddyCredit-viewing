@@ -266,3 +266,18 @@
     cursor: pointer;
     color: #29281E;
 }
+
+@media (max-width: 500px) {
+    .triangle-right {
+        margin-top: 5%;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid #F20505;
+    }
+}
+
+
+
+.col-description {
+    padding-right: 20px;
+}

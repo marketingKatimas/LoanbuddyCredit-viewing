@@ -235,9 +235,9 @@
             $(this).css("background-image", "url(" + backgroundImage + ")");
 
             if (isMobileSmallSize) {
-              // "background-size": "100% 800px",
-              // "background-position": "top",
               $(this).css({
+                "background-size": "cover",
+                "background-position": "center top",
                 "background-repeat": "no-repeat"
               });
             }

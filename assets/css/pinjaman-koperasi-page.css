@@ -181,6 +181,24 @@
 /* Mobile View: Hide Grid, Show Swiper */
 @media (max-width: 768px) {
 
+  .section_heading .heading_text {
+      font-size: 25px;
+      line-height: 32px;
+  }
+
+  .about_banner_main .banner-mohon-big-title {
+      font-size: 30px;
+      line-height: 32px;
+  }
+
+  .about_banner_main .banner_description {
+  font-size: 15px!important;
+  line-height: 24px;
+  color: #424143;
+  margin-bottom: 40px;
+}
+
+
   .service_item {
   border-radius: 8px;
   position: relative;
@@ -200,7 +218,9 @@
 
   .service_item .item_icon {
   width: 50vw;
-  height: 50vh;
+  /* height: 50vh; */
+
+  margin-bottom: 5vh;
   
 }
 }
@@ -583,6 +603,11 @@
   .btn_semak_layak span small {
       font-size: 13px;
       line-height: 15px;
+  }
+
+  .about_banner_main {
+      padding: 40px 20px;
+      height: auto;
   }
 }
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
