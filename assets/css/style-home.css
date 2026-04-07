@@ -3723,15 +3723,15 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
 }
 
 
-.service_item:hover .item_icon {
+/* .service_item:hover .item_icon {
   
-}
+} */
 .service_item:hover .item_icon img {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
 }
 .service_item .item_icon {
-  width: 15vw;
+  /* width: 15vw; */
   height: 15vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5219,7 +5219,7 @@ img.perkhidmatan_image:hover {
   
 }
 .main_menu_list > li:hover > a, .main_menu_list > li.active > a {
-  color: #044BD9;
+  color: #43433f;
   background-color: #F6F6F6;
 }
 .main_menu_list > li:hover > a:after {
@@ -5270,7 +5270,7 @@ img.perkhidmatan_image:hover {
   line-height: 1;
   font-size: 16px;
   font-weight: 500;
-  color: #044BD9;
+  color: #29281E;
   position: relative;
   white-space: nowrap;
   -webkit-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -6347,6 +6347,8 @@ Responsive For Mobile & Tablet Devices
   .site_header.sticky .main_menu {
     /* top: 61px; */
     top: 80px;
+    left: 0;
+    right: 0;
   }
   .main_menu_inner {
     background-color: #ffffff;

@@ -15,15 +15,6 @@
     box-shadow: -6px 6px 0 0 rgb(4 75 217);
 } */
 
-.container-apply-header {
-    padding-top: 80px;
-}
-
-.banner-apply-header {
-    margin-top: 50px;
-    margin-bottom: 70px;
-    text-align: center;
-}
 
 @media (min-width: 1600px) {
 
@@ -42,10 +33,6 @@
 }
 
 @media (max-width: 500px) { 
-    .container-apply-header {
-        padding-top: 25px;
-    }
-
     .site_header {
         padding: 16px 0 !important;
     }
@@ -90,6 +77,23 @@
 
 @media (max-width: 376px) {
     
+}
+
+
+.container-apply-header {
+    padding-top: 80px;
+}
+
+.banner-apply-header {
+    margin-top: 50px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+@media (max-width: 500px) { 
+    .container-apply-header {
+        padding-top: 25px;
+    }
 }
 
 /* Mohon Sekarang Button */
