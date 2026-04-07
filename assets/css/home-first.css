@@ -165,16 +165,16 @@
         top: 115px !important;
     }
 
-    .carousel_item_1 {
+    /* .carousel_item_1 {
         background-image: url('../images/banner/home-mohon/Banner-4-mobile.webp');
         background-size: 100% 800px !important;
         background-position: top !important;
         background-repeat: no-repeat !important;
         height: 800px !important;
-    }
-    .slick-dotted {
+    } */
+    /* .slick-dotted {
         height: 800px !important;
-    }
+    } */
     .hero_banner.style_2 {
         height: 585px;
     }

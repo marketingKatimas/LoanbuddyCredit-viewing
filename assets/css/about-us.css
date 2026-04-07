@@ -233,7 +233,15 @@
   max-width: none!important;
   bottom: 0.2px;
   left: -11vw;
+  z-index: 100;
   /* border:2px solid red; */
+}
+
+@media (min-width: 1600px) {
+    .about-us-guy{
+        width: 15vw;
+        left: -8vw;
+    }
 }
 
 .grid-inner-about-us-overflow{
@@ -390,6 +398,21 @@
         background-position: center;
     }
 
+    .grid-about-us-girl {
+        height: auto;
+    }
+
+    .grid-about-us-1 {
+        height: 99%;
+        border-radius: 5px;
+    }
+
+    .grid-inner-about-us-2 {
+        display: flex;
+        justify-content: center;
+        width: 60%;
+    }
+
     .p-col-about-us {
         padding: 2px!important;
     }
@@ -456,6 +479,14 @@
 
 .p-col-2-1 {
     padding: 40px 54px;
+}
+
+.p-col-2-2 {
+    padding: 4vw 1.8vw;
+}
+
+.p-col-21-31 {
+    padding: 4vw 1.8vw;
 }
 
 .p-col-2-3 {
@@ -834,6 +865,26 @@
     .grid-inner-about-us-img {
         margin-bottom: -4px;
     }
+
+    img.grid-inner-about-us-img.grid-inner-3-3-img {
+        width: 70%;
+    }
+
+    .p-col-2-2 {
+        padding: 40px 54px;
+    }
+
+    .p-col-21-31 {
+        padding: 40px 54px;
+    }
+
+    .celebrate-ladybug {
+        display: none;
+    }
+
+    .section_space_4_lg {
+        padding: 70px 45px;
+    }
 }
 
 
@@ -955,3 +1006,77 @@
         margin-top: -790px;
     }
 }
+
+
+/* Header */
+.site_header {
+    left: 8vw;
+    right: 8vw;
+    padding: 22px 0;
+    background: #044BD9;
+}
+
+.site-header-logo {
+    height: 100px !important;
+}
+
+.site_header_2 .container {
+    padding-top: 0;
+}
+
+.main_menu_list {
+    column-gap: 33px;
+}
+
+.main_menu_list .dropdown-menu > li:hover > a,
+.main_menu_list .dropdown-menu > li.active > a {
+    background-color: #2a67e1;
+    color: white;
+}
+.main_menu_list .dropdown-menu > li:hover > a:before {
+    background: white;
+}
+
+@media (max-width: 991px) {
+    .main_menu_inner {
+        background-color: #044bd9;
+    }
+
+    .site_logo {
+        display: none;
+    }
+
+    .site-header-mobile-logo {
+        height: 86px !important;
+    }
+}
+
+@media (max-width: 500px) { 
+    .site_header {
+        padding: 16px 0 !important;
+    }
+
+    .mobile_menu_btn {
+        color: #ffffff;
+    }
+
+    .mobile_menu_btn:hover {
+        color: #ffffff;
+    }
+
+    .main_menu {
+        left: 8vw;
+        right: 8vw;
+        top: 90px !important;
+    }
+
+    .main_menu_inner {
+        border-radius: 5px;
+    }
+
+    .main_menu_list .dropdown-menu {
+        border: 2px solid #044bd9;
+    }
+}
+
+

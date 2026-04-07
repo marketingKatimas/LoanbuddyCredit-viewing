@@ -13,8 +13,8 @@
   // Vanilla Calendar - Start
   // --------------------------------------------------
   document.addEventListener('DOMContentLoaded', () => {
-    // const calendar = new VanillaCalendar('.vanilla-calendar');
-    // calendar.init();
+    const calendar = new VanillaCalendar('.vanilla-calendar');
+    calendar.init();
   });
   // Vanilla Calendar - End
   // --------------------------------------------------
@@ -105,10 +105,10 @@
 
   // Counter Up - Start
   // --------------------------------------------------
-  // $('.counter_value_text').counterUp({
-  //   delay: 10,
-  //   time: 1000
-  // });
+  $('.counter_value_text').counterUp({
+    delay: 10,
+    time: 1000
+  });
   // Counter Up - End
   // --------------------------------------------------
 
@@ -123,32 +123,32 @@
 
   // Videos & Images popup - Start
   // --------------------------------------------------
-  // $('.popup_video').magnificPopup({
-  //   type: 'iframe',
-  //   preloader: false,
-  //   removalDelay: 160,
-  //   mainClass: 'mfp-fade',
-  //   fixedContentPos: false
-  // });
+  $('.popup_video').magnificPopup({
+    type: 'iframe',
+    preloader: false,
+    removalDelay: 160,
+    mainClass: 'mfp-fade',
+    fixedContentPos: false
+  });
 
-  // $('.zoom-gallery').magnificPopup({
-  //   delegate: '.popup_image',
-  //   type: 'image',
-  //   closeOnContentClick: false,
-  //   closeBtnInside: false,
-  //   mainClass: 'mfp-with-zoom mfp-img-mobile',
-  //   gallery: {
-  //     enabled: true
-  //   },
-  //   zoom: {
-  //     enabled: true,
-  //     duration: 300,
-  //     opener: function(element) {
-  //       return element.find('img');
-  //     }
-  //   }
+  $('.zoom-gallery').magnificPopup({
+    delegate: '.popup_image',
+    type: 'image',
+    closeOnContentClick: false,
+    closeBtnInside: false,
+    mainClass: 'mfp-with-zoom mfp-img-mobile',
+    gallery: {
+      enabled: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300,
+      opener: function(element) {
+        return element.find('img');
+      }
+    }
     
-  // });
+  });
   // Videos & Images popup - End
   // --------------------------------------------------
 
@@ -171,7 +171,7 @@
 
   // Common Carousels - Start
   // --------------------------------------------------
-/*   $('.common_carousel_1col').slick({
+  $('.common_carousel_1col').slick({
     dots: true,
     speed: 1000,
     arrows: true,
@@ -182,7 +182,7 @@
     autoplaySpeed: 5000,
     // prevArrow: ".cc1c_left_arrow",
     // nextArrow: ".cc1c_right_arrow"
-  }); */
+  });
 
   $('.common_carousel_2col').slick({
     dots: true,
@@ -220,98 +220,55 @@
 
   // Data Image Mobile Screens - Start
   // --------------------------------------------------
-  // $(document).ready(function() {
-  //   function updateBackgrounds() {
-  //       $("[data-background]").each(function() {
-  //           // Check for mobile or desktop background based on screen width
-  //           const isMobile = window.innerWidth <= 768;
-  //           const desktopImage = $(this).attr("data-background");
-  //           const mobileImage = $(this).attr("data-background-mobile");
+  $(document).ready(function() {
+    function updateBackgrounds() {
+        $("[data-background]").each(function() {
+            // Check for mobile or desktop background based on screen width
+            const isMobile = window.innerWidth <= 768;
+            const desktopImage = $(this).attr("data-background");
+            const mobileImage = $(this).attr("data-background-mobile");
             
-  //           const isMobileSmallSize = window.innerWidth <= 500;
+            const isMobileSmallSize = window.innerWidth <= 500;
 
-  //           // Apply the appropriate background
-  //           const backgroundImage = isMobile ? mobileImage : desktopImage;
-  //           $(this).css("background-image", "url(" + backgroundImage + ")");
+            // Apply the appropriate background
+            const backgroundImage = isMobile ? mobileImage : desktopImage;
+            $(this).css("background-image", "url(" + backgroundImage + ")");
 
-  //           if (isMobileSmallSize) {
-  //             $(this).css({
-  //               "background-size": "100% 800px",
-  //               "background-position": "top",
-  //               "background-repeat": "no-repeat"
-  //             });
-  //           }
-  //           else {
-  //             $(this).css({
-  //                 "background-size": "cover",
-  //                 "background-position": "center",
-  //                 "background-repeat": "no-repeat"
-  //             });
-  //           }
+            if (isMobileSmallSize) {
+              $(this).css({
+                "background-size": "cover",
+                "background-position": "40% top",
+                "background-repeat": "no-repeat"
+              });
+            }
+            else {
+              $(this).css({
+                  "background-size": "cover",
+                  "background-position": "center",
+                  "background-repeat": "no-repeat"
+              });
+            }
 
-  //       });
-  //   }
+        });
+    }
     
-  //   // Run on page load and on window resize
-  //   updateBackgrounds();
-  //   $(window).resize(updateBackgrounds);
-  // });
+    // Run on page load and on window resize
+    updateBackgrounds();
+    $(window).resize(updateBackgrounds);
+  });
   // Data Image Mobile Screens - Start
   // --------------------------------------------------
 
-  $(document).ready(function () {
-      function updateBackgrounds() {
-          const isMobile = window.innerWidth <= 768;
-          const isMobileSmallSize = window.innerWidth <= 500;
 
-          const isIpadSize = window.innerWidth >= 500 && window.innerWidth <=1200;
-
-          $("[data-background]").each(function () {
-              const desktopImage = $(this).attr("data-background");
-              const mobileImage = $(this).attr("data-background-mobile");
-              let backgroundImage = isMobile ? mobileImage : desktopImage;
-              
-               // If it's an iPad size, remove the background image
-              if (isIpadSize) {
-                backgroundImage = "";
-              }
-
-              // Update background image only if needed
-              if ($(this).css("background-image") !== `url("${backgroundImage}")`) {
-                  // $(this).css("background-image", `url(${backgroundImage})`);
-                  if (backgroundImage === "") {
-                    $(this).css("background-image", "none"); // Remove background image
-                  } else {
-                      $(this).css("background-image", `url(${backgroundImage})`);
-                  }
-              }
-
-              // Update styles conditionally
-              const styles = isMobileSmallSize
-                  ? {
-                        "background-size": "auto",
-                        "background-position": "33% top",
-                        "background-repeat": "no-repeat",
-                    }
-                  : {
-                        "background-size": "cover",
-                        "background-position": "center",
-                        "background-repeat": "no-repeat",
-                    };
-
-              $(this).css(styles);
-          });
-      }
-
-      // Debounce resize event
-      let resizeTimer;
-      $(window).resize(function () {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(updateBackgrounds, 200);
-      });
-
-      // Initial update
-      updateBackgrounds();
-  });
 
 })(jQuery);
+
+  // sorting Js
+	// Sorting Portfolio JS
+	try {
+    var mixer = mixitup('#Container', {
+        controls: {
+            toggleDefault: 'none'
+        }
+    });
+} catch (err) {}
