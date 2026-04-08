@@ -203,3 +203,8 @@
     border-top: 1px solid #ffffff;
     padding: 25px 0;
 }
+
+.btn_blue a {
+    color: white;
+    text-decoration: none;
+}
