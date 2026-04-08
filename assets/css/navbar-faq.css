@@ -2,10 +2,13 @@
 .site_header {
     left: 8vw;
     right: 8vw;
-    padding: 38px 0;
+    padding: 22px 0;
     background: #044BD9;
 }
 
+.img-75 {
+    height: 100px !important;
+}
 /* .main_menu_list {
     column-gap: 33px;
 } */

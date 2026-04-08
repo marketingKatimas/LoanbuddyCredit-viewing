@@ -39,6 +39,7 @@
 .img-75 {
     height: 8.5vh!important;
     align-self: center!important;
+    /* width: 100px!important; */
 }
 
 .text_white {

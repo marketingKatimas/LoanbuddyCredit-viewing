@@ -11,8 +11,7 @@
 }
 
 .img-75 {
-    height: 8.5vh!important;
-    align-self: center!important;
+    height: 100px !important;
 }
 
 .mt-50{
@@ -80,7 +79,7 @@
 .site_header_2 .container {
   max-width: 1200px;
   /* border: 2px solid #1F1D0D; */
-  padding-top: 20px;
+  /* padding-top: 20px; */
   border-radius: 0 0 5px 5px;
   background: #044BD9;
 }

@@ -237,7 +237,7 @@
             if (isMobileSmallSize) {
               $(this).css({
                 "background-size": "cover",
-                "background-position": "40% top",
+                "background-position": "50% top",
                 "background-repeat": "no-repeat"
               });
             }
