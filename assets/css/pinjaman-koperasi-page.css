@@ -540,7 +540,7 @@
   margin-top: -38vh;
 }
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
-.btn_semak_layak {
+/* .btn_semak_layak {
   z-index: 3;
   color: #044BD9;
   background-color: #ffffff;
@@ -566,7 +566,7 @@
   line-height: 20px;
   position: relative;
   z-index: 2;
-}
+} */
 
 /* Shimmer Effect Animation */
 /* .btn_semak_layak::before {
