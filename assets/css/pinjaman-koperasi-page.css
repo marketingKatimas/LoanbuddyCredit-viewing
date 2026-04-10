@@ -132,6 +132,14 @@
 }
 
 
+@media (max-width: 2000px) {
+  .service_item .item_icon {
+      width: 8vw;
+      height: 8vh;
+      margin-bottom: 8vh;
+  }
+}
+
 
 .service_item:hover .item_icon {
   border: none!important;
@@ -822,6 +830,18 @@
 .font-increase h2{
     font-size: 1.5rem!important;
 }
+
+  .service_item .item_icon {
+  width: 40vw;
+  /* height: 50vh; */
+
+  margin-bottom: 5vh;
+  padding-bottom: 60px;
+  
+}
+
+
+
 }
 
 .font-increase h2{

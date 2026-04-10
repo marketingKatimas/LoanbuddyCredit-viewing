@@ -302,6 +302,17 @@
         border-left: 15px solid transparent;
         border-right: 15px solid transparent;
         border-top: 30px solid #F20505;
+        border-radius: 5px;
+    }
+
+
+
+    .font-increase h2{
+    font-size: 1.0rem!important;
+    }
+
+    .font-increase-2{
+    font-size: 2.2rem!important;
     }
 }
 

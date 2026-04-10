@@ -80,12 +80,12 @@
 
 .main_menu_list .dropdown-menu > li:hover > a,
 .main_menu_list .dropdown-menu > li.active > a {
-    background-color: #2a67e1;
+    background-color: #F20505;
     color: white;
 }
 
 .main_menu_list .dropdown-menu > li:hover > a:before {
-    background: white;
+    background: rgb(255, 255, 255);
 }
 
 @media (max-width: 425px) {
