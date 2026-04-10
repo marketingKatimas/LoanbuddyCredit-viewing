@@ -4,6 +4,13 @@
   color: white;
 }
 
+.text-dark {
+  color: #05122c!important;
+}
+
+.text-blue u{
+  color: #1969d2!important;
+}
 
 .banner-mohon-big-title {
   color: #424143!important;
@@ -105,8 +112,8 @@
   align-items: center;
 }
 .service_item .item_icon {
-  width: 15vw;
-  height: 15vh;
+  width: 11vw;
+  height: 11vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -389,7 +396,7 @@
 
 .row_mohon_pinjaman_peribadi {
   justify-content: center;
-  margin: 0 80px;
+  /* margin: 0 80px; */
   position: relative;
   z-index: 2;
 }
@@ -837,4 +844,8 @@
   border-radius: 5px;
   cursor: pointer;
   color: #29281E;
+}
+
+.bg-grey {
+	background-color: #dbdbdb!important;
 }

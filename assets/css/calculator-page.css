@@ -280,7 +280,7 @@
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 
 .font-increase h2{
-    font-size: 2.5rem;
+    font-size: 2.5rem!important;
 }
 
 .font-decrease{
@@ -309,4 +309,94 @@
 
 .col-description {
     padding-right: 20px;
+}
+
+/* 3.10 - Call To Action - Start
+================================================== */
+.calltoaction_section {
+  /* margin-bottom: 30px; */
+}
+.calltoaction_section .section_heading .heading_description {
+  max-width: 456px;
+}
+.calltoaction_section .shape_img_1 {
+  left: 44%;
+  bottom: -26px;
+  max-width: 169px;
+}
+.calltoaction_section .shape_img_2 {
+  top: -60px;
+  right: 50px;
+  max-width: 169px;
+}
+.calltoaction_section .shape_img_3 {
+  top: 85px;
+  left: -74px;
+  max-width: 148px;
+}
+.calltoaction_section .shape_img_4 {
+  left: 44%;
+  bottom: -100px;
+  max-width: 373px;
+}
+.calltoaction_section .shape_img_5 {
+  top: -56px;
+  right: -40px;
+  max-width: 148px;
+}
+.calltoaction_section .info_list {
+  margin-bottom: 40px;
+}
+.calltoaction_section .info_list i {
+  font-size: 14px;
+  margin: 6px 10px 0 0;
+}
+.calltoaction_section .boxed_wrapper {
+  margin: auto;
+  max-width: 1400px;
+  padding: 100px 115px;
+  background-color: #1F1D0D;
+  border-radius: 8px;
+}
+
+.calltoaction_form {
+  z-index: 1;
+  padding: 50px;
+  position: relative;
+  margin-bottom: -150px;
+  /* border-radius: 8px; */
+  background-color: #ffffff;
+   border: 4px solid #044BD9;
+  -webkit-box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.calltoaction_form .form_title {
+  font-size: 28px;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+.calltoaction_form .form_item input, .calltoaction_form .form_item textarea {
+  border-width: 1px;
+  background-color: #F6F6F6;
+}
+.calltoaction_form .form_item input:focus, .calltoaction_form .form_item textarea:focus {
+  background-color: #ffffff;
+}
+.calltoaction_form .form_item textarea {
+  min-height: 127px;
+}
+
+/* 3.10 - Call To Action - End
+================================================== */
+
+
+
+
+.col-calc{
+    border-radius: 7px;
+    background-color: #ededed;
+    -webkit-box-flex: unset;
+      -ms-flex: unset;
+          flex: unset;
+  padding: 30px;
 }

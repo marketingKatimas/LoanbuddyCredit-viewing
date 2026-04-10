@@ -199,22 +199,23 @@
         <section class="calltoaction_section section_space_lg bg_white decoration_wrap" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="container">
             <div class="row align-items-center row_loanbuddy_works_2">
-              <div class="col col-lg-5 col-description">
+              <div class="col col-lg-6 col-description">
                 <div class="section_heading section_heading_calc mb-lg-0">
-                  <h2 class="heading_text text-lightgrey font-increase line-height-custom calc-head-custom">
-                    Kira Pinjaman,<br>
-                    Jiwa Tenang!
-                  </h2>
+                  <h2 class=" text-blue font-increase line-height-custom calc-head-custom">
+                    Kalkulator Pinjaman Peribadi
+                  </h2><br>
                   <p class="heading_description heading_description_calc mb-0 text-lightgrey ">
-                    Nak tahu berapa nak bayar setiap bulan? Guna Kalkulator Pinjaman kami! Masukkan jumlah yang nak pinjam, tempoh, dan kadar faedah – tak perlu pening kepala kira sendiri. Cepat-cepat kira, boleh terus rancang nak shopping apa lepas ni!
+                    Berminat untuk mohon pinjaman peribadi? Gunakan kalkulator ini untuk mengira anggaran ansuran bulanan dan menyemak kelayakan pinjaman anda dengan mudah!
+                    <br><br>
+                    Masukkan jumlah pinjaman, tempoh bayaran balik dan kadar faedah menggunakan slider untuk mendapatkan anggaran ansuran bulanan anda.
 
                     <br><br><br><br>
-                    <em class="font-decrease text-lightgrey">Maklumat yang dipaparkan adalah sebagai petunjuk dan untuk kegunaan peribadi sahaja. loanbuddy tidak menjamin ketepatan pengiraan dan tidak bertanggungjawab bagi apa-apa ketidaktepatan atau ketinggalan. Maklumat di atas tidak bermaksud sebagai satu tawaran kredit dan tidak menjamin bahawa kemudahan kredit yang dipohon akan diluluskan. Semua permohonan untuk pembiayaan adalah tertakluk kepada penilaian dan kelulusan dari rakan kongsi dan pembiaya di platform loanbuddy.</em>
+                    <em class="font-decrease text-lightgrey">Maklumat yang dipaparkan adalah sebagai rujukan dan untuk kegunaan peribadi sahaja. Loanbuddy Credit tidak menjamin ketepatan pengiraan ini serta tidak bertanggungjawab terhadap sebarang ketidaktepatan atau ketinggalan. Maklumat di atas bukanlah tawaran kredit dan tidak menjamin bahawa sebarang permohonan akan diluluskan. Semua permohonan pembiayaan adalah tertakluk kepada penilaian serta kelulusan oleh pihak Loanbuddy Credit. </em>
                   </p>
                   
                 </div>
               </div>
-              <div class="row col col-lg-7 " id="calculator">
+              <div class="row col col-lg-6 " id="calculator">
                 <div class="calltoaction_form">
                   
                   <!-- calculator function -->
@@ -231,10 +232,10 @@
                             <div class="calc_output">
                               <span>RM </span><input type="number" value="10000" class="loan-amount" id="mLoanShow2" readonly>
                             </div>
-                            <input type="range" class="calc__input-range1" name="mLoan" id="mLoan" value="20000" min="1000"
-                              max="100000" step="1000" oninput="updateLoanAmount(this.value)"
+                            <input type="range" class="calc__input-range1" name="mLoan" id="mLoan" value="10000" min="1000"
+                              max="50000" step="1000" oninput="updateLoanAmount(this.value)"
                               style="background: linear-gradient(to right, #044BD9 0%, #044BD9 20%, #d3d3d3 20%, #d3d3d3 100%)">
-                            <div class="calc__placeholders"> <span>RM1,000</span> <span>RM100,000</span></div>
+                            <div class="calc__placeholders"> <span>RM1,000</span> <span>RM50,000</span></div>
                           </div>
             
                           <div class="group">
@@ -242,10 +243,10 @@
                             <div class="calc_output">
                               <input type="number" value="18" class="loan-tenure" id="mLoanShow3" readonly>
                             </div>
-                            <input type="range" class="calc__input-range2" name="mLoan" id="mLoan3" value="18" min="6" max="84"
+                            <input type="range" class="calc__input-range2" name="mLoan" id="mLoan3" value="18" min="12" max="60"
                               step="6" oninput="updateLoanTenure(this.value)"
                               style="background: linear-gradient(to right, #044BD9 0%, #044BD9 15.4%, #d3d3d3 15.4%, #d3d3d3 100%)">
-                            <div class="calc__placeholders"> <span>6 bulan</span> <span>84 bulan</span></div>
+                            <div class="calc__placeholders"> <span>6 bulan</span> <span>60 bulan</span></div>
                           </div>
 
                           <div class="group">
@@ -439,11 +440,11 @@
               </div>
             </div>
             <div class="row row_loanbuddy_works mb-4">
-              <div class="col col-lg-3 bg_grey">
+              <div class="col-calc col-lg-3">
                 <div class="step">
                   
                   <div class="mb-3">
-                    <img src="assets/images/tekan-butang.png" style="width: 75%;">
+                    <img src="assets/images/tekan-butang.png" style="width: 70%;">
                   </div>
                   <div class="step-text">Tekan butang ‘Mohon Sekarang’</div>
                 </div>
@@ -451,11 +452,11 @@
               <div class="col-lg-1 d-flex align-items-center justify-content-center">
                 <div class="triangle-right"></div>
               </div>
-              <div class="col col-lg-3 bg_grey">
+              <div class="col-lg-3 col-calc">
                 <div class="step">
                   
                   <div class="mb-3">
-                    <img src="assets/images/isi-maklumat.png" style="width: 75%;">
+                    <img src="assets/images/isi-maklumat.png" style="width: 70%;">
                   </div>
                   <div class="step-text">Isi maklumat yang diperlukan dan hantar permohonan</div>
                 </div>
@@ -463,11 +464,11 @@
               <div class="col-lg-1 d-flex align-items-center justify-content-center">
                 <div class="triangle-right"></div>
               </div>
-              <div class="col col-lg-3 bg_grey">
+              <div class="col-lg-3 col-calc">
                 <div class="step">
                   
                   <div class="mb-3">
-                    <img src="assets/images/hubungi-anda.png" style="width: 75%;">
+                    <img src="assets/images/hubungi-anda.png" style="width: 70%;">
                   </div>
                   <div class="step-text">Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat</div>
                 </div>
@@ -605,27 +606,27 @@
                         <p class="mb-0">
                           Terdapat dua jenis pinjaman peribadi yang tersedia: pinjaman bercagar dan tidak bercagar.
                           <br><br>
-                          <strong>Apa itu pinjaman bercagar?</strong>
+                          <strong>Pinjaman Bercagar (Secured Loan)</strong>
 
                           <br>
-                          Pinjaman bercagar bermaksud anda dikehendaki untuk menawarkan aset (contohnya. kereta, rumah) sebagai cagaran sekiranya anda tidak dapat membayar balik pinjaman anda.
+                          Pinjaman bercagar bermaksud anda perlu menawarkan aset seperti kereta atau rumah sebagai cagaran sekiranya anda tidak dapat membayar balik pinjaman. 
                           <br><br>
-                          Pemberi pinjaman mempunyai hak untuk merampas aset yang anda senaraikan sekiranya anda tidak dapat membayar balik pinjaman dalam terma pembayaran balik yang dipersetujui.
+                          Pihak pemberi pinjaman mempunyai hak untuk merampas aset yang disenaraikan sekiranya bayaran balik gagal dibuat mengikut terma yang dipersetujui. 
                           <br><br>
-                          Pinjaman yang lebih besar seperti pinjaman rumah mungkin memerlukan anda menyenaraikan penjamin sekiranya anda gagal membayar balik pinjaman anda.
+                          Bagi pinjaman berskala besar seperti pinjaman perumahan, anda mungkin perlu menyenaraikan penjamin sebagai syarat tambahan.
                           <br><br>
-                          <strong>Apa itu pinjaman tidak bercagar?</strong>
+                          <strong>Pinjaman Tidak Bercagar (Unsecured Loan)</strong>
 
                           <br>
-                          Pinjaman tidak bercagar ialah pinjaman di mana pemohon pinjaman tidak perlu menyenaraikan sebarang aset sebagai cagaran. Sebaliknya, pemberi pinjaman akan menilai kelayakan kredit anda berdasarkan kriteria berikut sebelum mereka meluluskan permohonan pinjaman:
+                          Pinjaman tidak bercagar ialah pinjaman di mana pemohon pinjaman tidak perlu menyenaraikan sebarang aset sebagai cagaran. Sebaliknya, pemberi pinjaman akan menilai kelayakan kredit anda berdasarkan beberapa kriteria berikut sebelum permohonan pinjaman anda diluluskan:
 
                           <ul>
                             <li>Status pekerjaan</li>
-                            <li>Penyata pendapatan anda (sekurang-kurangnya 6 bulan)</li>
+                            <li>Penyata pendapatan (sekurang-kurangnya 6 bulan)</li>
                             <li>Skor kredit</li>
                           </ul>
                           
-                          Kriteria ini akan menentukan jumlah yang anda boleh pinjam, terma dan syarat pinjaman peribadi dan kadar faedah yang ditawarkan. 
+                          Penilaian ini akan menentukan jumlah pinjaman yang diluluskan, kadar faedah yang dikenakan, serta terma dan syarat pinjaman peribadi yang ditawarkan. 
                         </p>
                       </div>
                     </div>
@@ -640,102 +641,102 @@
                           <ul>
                             <li>Kadar Faedah (Interest Rate) <br></li> 
                           </ul>
-                          Kadar faedah adalah caj yang dikenakan ke atas jumlah pinjaman kepada peminjam yang meminjam wang daripada mana-mana institusi kewangan. Kebanyakan pinjaman peribadi di Malaysia menawarkan kadar faedah tetap (fixed interest rate) di mana kadar faedah tidak berubah sepanjang tempoh pinjaman.
+                          Kadar faedah ialah caj yang dikenakan ke atas jumlah pinjaman yang dipinjam daripada institusi kewangan. Kebanyakan pinjaman peribadi di Malaysia menggunakan kadar faedah tetap (fixed interest rate), iaitu kadar faedah yang tidak berubah sepanjang tempoh pinjaman.
                           <br><br>
-                          
-                          Sebagai contoh, anda memohon pinjaman koperasi sebanyak RM10,000 dengan kadar faedah tahunan 4.50% dan tempoh pinjaman selama 10 tahun. Oleh itu, ansuran bulanan anda adalah kira-kira RM120.83.
+                          Sebagai contoh, jika anda mengambil pinjaman koperasi sebanyak RM10,000 dengan kadar faedah tahunan 4.50% dan tempoh 10 tahun, ansuran bulanan anda adalah kira-kira RM120.83. 
                           <br><br>
-                          Oleh itu, anda perlu mempertimbangkan sama ada kadar faedah yang ditawarkan sesuai dengan kedudukan kewangan anda. Kadar faedah yang lebih tinggi bermakna anda perlu membayar ansuran bulanan yang lebih tinggi. <br><br>
-
+                          Oleh itu, penting untuk mempertimbangkan sama ada kadar faedah yang ditawarkan sesuai dengan kemampuan kewangan anda. Kadar faedah yang lebih tinggi akan menyebabkan ansuran bulanan yang lebih besar. 
+                          <br><br>
                           <ul>
                             <li>Per annum (p.a.)</li>
                           </ul>
                           
-                          Kadar faedah akan dikenakan pada mengikut kiraan setahun. Jika amaun pinjaman RM10,000 dengan kadar faedah 5% p.a., caj faedah ialah RM500 setahun. Jika tempoh bayaran balik dipanjangkan kepada 3 tahun, jumlah faedah akan menjadi RM1,500 (RM500 setahun x 3 tahun). <br><br>
+                          Kadar faedah biasanya dinyatakan secara tahunan (per annum/p.a). Contohnya, jika jumlah pinjaman ialah RM10,000 dengan kadar faedah 5% p.a., caj faedah ialah RM500 setahun. Jika tempoh bayaran balik ialah 3 tahun, jumlah faedah keseluruhan ialah RM1,500 (RM500 x 3 tahun) <br><br>
 
                           <ul>
                             <li>Jumlah Pinjaman (Principal)</li>
                           </ul>
                           
-                          Jumlah pinjaman yang anda mohon. Kadar faedah akan dikira berdasarkan jumlah ini dan ditambah di atasnya. 
+                          Jumlah pinjaman ialah amaun wang yang anda mohon daripada institusi kewangan. Kadar faedah akan dikira berdasarkan jumlah ini, dan akan ditambah di atas amaun pinjaman asal. 
 
                           <br><br><ul>
                             <li>Bayaran Balik (Repayment / Instalment)</li>
                           </ul>
                           
-                          Repayment / Instalment ialah jumlah bayaran balik atau ansuran yang anda perlu bayar setiap bulan. Sepanjang tempoh pinjaman, bayaran balik bulanan atau ansuran adalah tetap setiap bulan, yang dikira pada jumlah amaun pinjaman kemudian dibahagikan dengan jumlah bilangan bulan.
+                          Repayment / Instalment ialah jumlah bayaran balik atau ansuran yang anda perlu bayar setiap bulan. Jumlah ini biasanya kekal sama setiap bulan, dikira berdasarkan amaun pinjaman dibahagikan dengan tempoh pinjaman dalam bulan. 
+
 
                           <br><br><ul>
                             <li>Yuran Penyelesaian Awal (Early Settlement Fee)</li>
                           </ul>
                           
-                          Anda mungkin dikenakan Yuran Penyelesaian Awal jika anda membayar atau menjelaskan pinjaman anda lebih awal daripada tarikh yang dinyatakan dalam perjanjian pinjaman. Caj yang akan dikenakan ini adalah dalam bentuk peratusan daripada jumlah awal pinjaman anda.
+                          Sekiranya anda memilih untuk melangsaikan pinjaman lebih awal daripada tempoh yang dipersetujui, anda mungkin akan dikenakan Yuran Penyelesaian Awal. Caj ini biasanya dikenakan dalam bentuk perarusan daripada jumlah pinjaman. 
                           <br><br>
-                          Sebagai contoh, anda mungkin dikenakan bayaran RM100 atau 1% daripada jumlah pinjaman anda, atau mana-mana lebih tinggi.
+                          Misalnya, anda mungkin dikenakan bayaran RM100 atau 1% daripada jumlah pinjaman anda, atau mana-mana lebih tinggi.
 
                           <br><br><ul>
                             <li>Caj Bayaran Lewat (Late Payment Charges)</li>
                           </ul>
                           
-                          Ini adalah caj yang akan dikenakan oleh bank dan institusi kewangan kepada anda sekiranya anda tidak dapat membayar ansuran pinjaman dalam jadual waktu yang dipersetujui. Bagi Pembiayaan Islamik, peminjam perlu membayar caj tambahan ini dan ia ditetapkan pada kadar 1% setahun, atau pada kadar yang telah dinyatakan dalam perjanjian Pinjaman Konvensional.
+                          Sekiranya anda gagal membuat bayaran ansuran pada tarikh yang ditetapkan, anda akan dikenakan Caj Bayaran Lewat oleh bank atau mana-mana institusi kewangan. Bagi Pembiayaan Islamik, peminjam perlu membayar caj tambahan ini dan ia ditetapkan pada kadar 1% setahun, atau pada kadar yang telah dinyatakan dalam perjanjian Pinjaman Konvensional.
                           <br><br>
-                          Walau bagaimanapun, cuba elakkan untuk terlepas bayaran, kerana ia akan menjejaskan skor kredit anda.
+                          Kelewatan bayaran bukan sahaja menyebabkan caj tambahan, tetapi juga boleh menjejaskan skor kredit anda.
 
                           <br><br><ul>
                             <li>Penjamin (Guarantor)</li>
                           </ul>
                           
-                          Penjamin ialah individu yang bersetuju untuk membayar pinjaman anda jika anda gagal membayar balik pinjaman. Dalam sesetengah kes, institusi kewangan mungkin memerlukan penjamin untuk meningkatkan peratus kelulusan permohonan pinjaman.
+                          Penjamin ialah individu yang bersetuju untuk membayar pinjaman anda jika anda gagal membayar balik pinjaman. Dalam sesetengah kes, institusi kewangan mungkin meminta penjamin untuk meningkatkan peluang kelulusan permohonan pinjaman.
                           <br><br>
 
-                          Sesiapa sahaja boleh menjadi penjamin asalkan orang itu dapat memenuhi syarat untuk menjadi penjamin, iaitu:
+                          Sesiapa sahaja boleh menjadi penjamin asalkan penjamin anda memenuhi syarat berikut:
 
                           <br><br><ul>
                             <li>Berumur 18 tahun dan keatas</li>
-                            <li>Tidak mempunyai status muflis</li>
+                            <li>Tidak diisytiharkan muflis</li>
                             <li>Berfikiran waras dan mempunyai keupayaan mental untuk memahami dokumen jaminan</li>
-                            <li>Sanggup terima syarat untuk jadi seorang penjamin</li>
+                            <li>Bersedia menerima tanggungjawab dan syarat sebagai penjamin</li>
                           </ul>
 
                           <br><br><ul>
                             <li>Cagaran (Collateral)</li>
                           </ul>
                           
-                          Cagaran ialah aset yang anda cagarkan sebagai jaminan untuk pinjaman. Aset tersebut seperti, rumah, kereta atau pun saham yang anda pegang. Dengan memberikan cagaran, barat anda telah berkata kepada bank atau institusi kewangan anda bahawa “Saya berjanji untuk membayar balik kepada anda. Anda boleh mengambil rumah/kereta/saham saya jika saya gagal membayar balik.”
+                          Cagaran ialah aset yang anda serahkan sebagai jaminan kepada institusi kewangan untuk pinjaman. Aset boleh berupa rumah, kereta atau saham yang anda miliki. Dengan cagaran, anda memberi komitmen kepada bank ataupun mana-mana institusi kewangan bahawa “Saya berjanji untuk membayar balik kepada anda. Anda boleh mengambil rumah/kereta/saham saya jika saya gagal membayar balik sebagai ganti.”
                           <br><br>
-                          Jika anda tidak membuat pembayaran balik pinjaman anda, bank dan institusi kewangan anda boleh mengambil cagaran anda secara sah dan menjualnya semula untuk menggantikan jumlah kerugian mereka.
+                          Jika anda tidak membuat pembayaran balik pinjaman anda, bank dan institusi kewangan boleh mengambil cagaran anda secara sah dan menjualnya semula untuk menggantikan jumlah kerugian mereka.
 
                           <br><br><ul>
                             <li>Tempoh (Tenure/Period)</li>
                           </ul>
                           
-                          Tenure / Period ialah tempoh pembayaran balik pinjaman anda. Semakin lama tempoh pinjaman, semakin rendah bayaran balik bulanan anda, tetapi semakin tinggi caj faedah yang dikenakan.
+                          Tenure / Periodmerujuk kepada jangka msa pembayaran balik pinjaman anda. Tempoh yang lebih panjang akan mengurangkan jumlah ansuran bulanan, tetapi jumlah faedah keseluruhan akan lebih tinggi. Sebaliknya, tempoh yang lebih pendek akan meningkatkan ansuran bulanan, tetapi jumlah faedah yang perlu dibayar akan lebih rendah. 
                           
                           <br><br><ul>
                             <li>Rebat (Rebate)</li>
                           </ul>
                           
-                          Sesetengah institusi kewangan menawarkan rebat untuk peminjam jika mereka berjaya membayar balik jumlah penuh pinjaman sebelum tamat tempoh pinjaman yang dipersetujui. Secara amnya, kebanyakan bank konvensional dan instutusi kewangan di Malaysia mengira rebat berdasarkan 'Peraturan 78', manakala rebat pinjaman Islamik dikira menggunakan formula 'Ibra'.
+                          Sesetengah institusi kewangan menawarkan rebat untuk peminjam jika mereka berjaya membayar balik jumlah penuh pinjaman sebelum tamat tempoh pinjaman yang dipersetujui. Secara amnya, kebanyakan bank konvensional dan institusi kewangan di Malaysia mengira rebat berdasarkan 'Peraturan 78', manakala rebat pinjaman Islamik dikira menggunakan formula 'Ibra'.
 
                           <br><br><ul>
                             <li>Jumlah Faedah Yang Dibayar</li>
                           </ul>
                           
-                          Jumlah faedah yang anda akan bayar sepanjang tempoh pinjaman. Secara umum, lebih lama tempoh bayaran balik pinjaman, semakin banyak jumlah faedah yang anda kena bayar.
+                          Jumlah faedah merujuk kepada keseluruhan caj faedah yang perlu dibayar sepanjang tempoh pinjaman. Secara umumnya, semakin panjang tempoh bayaran balik pinjaman, semakin tinggi jumlah faedah yang perlu ditanggung oleh peminjam. Oleh itu, peminjam dinasihatkan untuk menilai kemampuan kewangan mereka sebelum memilih tempoh pinjaman yang lebih panjang. 
 
                           <br><br><ul>
                             <li>Yuran Pengendalian, Yuran Pemprosesan & Duti Setem</li>
                           </ul>
                           
-                          Sesetengah institusi tidak mengenakan sebarang bayaran pengendalian atau pemprosesan. Sebaliknya, yuran duti setem adalah kira-kira 0.5% ke atas pinjaman atau dalam istilah yang lebih mudah, caj sebanyak RM5 dikenakan ke atas setiap RM1,000 pinjaman. Sebagai contoh, jika jumlah pinjaman anda ialah RM10,000, duti setem ialah RM50.
+                          Sesetengah institusi kewangan tidak mengenakan sebarang yuran pengendalian atau pemprosesan. Walau bagaimanpun, yuran duti setem biasanya dikenakan pada kadar sekitar 0.5% daripada jumlah pinjaman, atau secara mudahnya, RM5 bagi setiap RM1,000 pinjaman. Contohnya, bagi pinjaman berjumlah RM10,000, duti setem adalah sebanyak RM50.  
                           <br><br>
-                          Biasanya, sebarang caj atau yuran akan ditolak secara automatik daripada pinjaman itu sendiri. Jika anda diminta oleh pembiaya untuk membayar deposit sebagai yuran pemprosesan, ini mungkin penipuan pinjaman. Anda harus sentiasa ingat bahawa penyedia pinjaman bertauliah tidak akan meminta anda untuk sebarang bayaran sebelum anda menerima pinjaman.
+                          Lazimnya, sebrang yuran atau caj ini akan ditolak secara automatik daripada jumlah pinjaman. Sekiranya peminjam diminta membayar deposit atau yuran pemporsesan sebelum menerima pinjaman, ini mungkin menunjukkan amalan penipuan. Peminjam perlu ingat bahawa penyedia pinjaman berlesen tidak akan meminta sebarang bayaran di awal proses pinjaman. 
 
                           <br><br><ul>
                             <li>Insurans/ Takaful</li>
                           </ul>
                           
-                          Secara amnya, peminjam akan menerima perlindungan insurans untuk melindungi daripada potensi kemungkiran pinjaman akibat kemalangan yang boleh menyebabkan hilang upaya kekal menyeluruh (TPD) atau kematian. Ini adalah cara untuk melindungi kedua-dua peminjam dan pemberi pinjaman. Walau bagaimanapun, sesetengah pemberi pinjaman tidak memerlukan peminjam mereka untuk mendapatkan perlindungan insurans sama sekali terutamanya untuk pinjaman jangka pendek dengan tempoh pinjaman kurang daripada 3 tahun.
+                          Secara amnya, peminjam akan menerima perlindungan insurans untuk melindungi daripada potensi kemungkiran pinjaman akibat kemalangan yang boleh menyebabkan hilang upaya kekal menyeluruh (TPD) atau kematian. Perlindungan ini memberi manfaat kepada kedua-dua pihak peminjam dan pemberi pinjaman. Walau bagaimanapun, sesetengah pemberi pinjaman, terutamanya untuk pinjaman jangka pendek dengan tempoh kurang daripada tiga tahun, tidak mewajibkan peminjam untuk mengambil perlindungan insurans
                         </p>
                       </div>
                     </div>
@@ -749,15 +750,16 @@
                         <div id="collapse_four" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              <strong>Apa itu pinjaman konvensional?</strong> 
+                              <strong>Pinjaman Konvensional</strong> 
                               <br>
     
-                              Pinjaman konvensional mengikut prinsip pembiayaan konvensional di mana pemberi pinjaman meminjamkan wang kepada pelanggan seperti anda dan memperoleh keuntungan daripada faedah yang anda bayar ke atas pinjaman anda setiap bulan.
+                              Pinjaman konvensional adalah berdasarkan prinsip pembiayaan standard, di mana institusi kewangan meminjamkan wang kepada pelanggan dan memperoleh keuntungan melalui faedah yang dikenakan ke atas pinjaman tersebut pada setiap bulan. Bayaran ansuran bulanan termasuk jumlah pokok pinjaman ditambah caj faedah yang telah ditetapkan. 
+
+
                               <br> <br>
-                              <strong>Apa itu Pembiayaan Islamik?</strong>
+                              <strong>Pembiayaan Islamik</strong>
                               <br>
-                              Pembiayaan Islam mengikut prinsip pembiayaan Syariah yang melarang Riba (urus niaga berasaskan faedah). Sebaliknya, ia adalah berdasarkan konsep pendapatan melalui penjualan komoditi seperti:
-                              Pembayaran Tertunda: di mana anda akan membayar balik Harga Jualan Barangan Bank atas dasar tertunda melalui pembayaran bulanan.
+                              Pembiayaan Islam pula berlandaskan prinsip Syariah yang melarang riba atau sebarang urus niaga berasaskan faedah. Sebaliknya, pembiayaan ini menggunakan konsep keuntungan melalui jual beli komoditi atau aset. Contohnya, melalui konsep Pembayaran Tertunda (Deferred Payment), anda membayar balik harga jualan aset yang dibeli daripada institusi kewangan secara ansuran bulanan, tanpa dikenakan faedah.
                             </p>
                           </div>
                         </div>
@@ -769,18 +771,18 @@
                         <div id="collapse_five" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Jika kita melihat secara objektif, ada beberapa sebab praktikal untuk mohon pinjaman peribadi:
+                              Pinjaman Peribadi biasanya diambil untuk memenuhi pelbagai keperluan kewangan secara fleksibel. Antara tujuan utama permohonan pinjaman peribadi termasuk: 
     
                               <ul>
-                                <li>Pendidikan</li>
-                                <li>Pelaburan</li>
-                                <li>Wang tunai kecemasan</li>
-                                <li>Pembiayaan untuk perniagaan</li>
-                                <li>Beli aset (rumah, kereta, peralatan dll)</li>
-                                <li>Penyatuan hutang</li>
+                                <li>Pendidikan: Pembiayaan kos pengajian atau latihan profesional</li>
+                                <li>Pelaburan: Penyediaan modal untuk peluang pelaburan yang sah</li>
+                                <li>Wang tunai kecemasan: Perbelanjaan yang tidak dijangka atau kecemasan kewangan</li>
+                                <li>Pembiayaan perniagaan: Dana untuk pengembangan atau operasi perniagaan</li>
+                                <li>Pembelian aset: Pembiayaan pembelian rumah, kereta, peralatan, dll</li>
+                                <li>Penyatuan hutang: Gabungan peplbagai hutang kepada satu pinjaman untuk memudahkan pembayaran</li>
                               </ul>
     
-                              Ini adalah sebab-sebab utama kenapa orang mohon pinjaman peribadi.
+                              Secara keseluruhan, pinjaman peribadi menawarkan fleksibiliti untuk membantu individu mengurus kewangan mereka dengan lebih efisien mengikut keperluan masing-masing.
                             </p>
                           </div>
                         </div>
@@ -792,23 +794,23 @@
                         <div id="collapse_six" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Walaupun terdapat banyak sebab untuk mendapatkan pinjaman peribadi, kami cadangkan anda untuk memohon pinjaman peribadi yang boleh membantu anda menguruskan kredit anda dan boleh membantu anda menjana pendapatan. Antara sebab-sebab lain untuk mendapatkan pinjaman peribadi termasuklah:
+                              Walaupun terdapat pelbagai sebab untuk memohon pinjaman peribadi, kami mengesyorkan anda mempertimbangkan pinjaman yang dapat membantu menguruskan kewangan anda dengan lebih bijak serta berpotensi meningkatkan pendapatan. Antara sebab utama untuk mendapatkan pinjaman peribadi termasuk: 
                               <br><br>
                               <ul>
                                 <li><strong>Menguruskan hutang dengan lebih baik melalui penyatuan hutang</strong><br>
-                                  Jika anda mempunyai beberapa pinjaman dengan baki tertunggak – seperti pinjaman peribadi dan baki kad kredit – kaedah menyatukan hutang anda dalam satu pinjaman peribadi yang baru dengan kadar faedah yang lebih rendah akan membantu anda menguruskan hutang dengan lebih baik. Selain dapat mengurangkan jumlah bayaran faedah dan dapat menetapkan jumlah bayaran balik bulanan, ianya juga lebih senang untuk menguruskan satu akaun pinjaman sahaja. <br><br>
-                                  Anggarkan penjimatan bila anda satukan semua hutang ke satu pinjaman baru dengan kalkulator pinjaman peribadi overlap.
+                                  Jika anda mempunyai beberapa pinjaman dengan baki tertunggak – seperti pinjaman peribadi dan baki kad kredit –menyatukan hutang tersebut ke dalam satu pinjaman peribadi baru dengan kadar faedah yang lebih rendah boleh membantu anda menguruskan kewangan dengan lebih efisien, Kaedah ini bukan sahaja mengurangkan jumlah faedah yang perlu dibayar, mala membolehkan anda menetapkan ansuran bulanan yang lebih mudah diurus. <br><br>
+                                  Selain itu, hanya perlu memantau satu akaun pinjaman sahaja. Anda juga boleh menganggarkan penjimatan yang berpotensi dengan menyatukan semua hutang menggunakan kalkulator pinjaman peribadi.
                                   
                                 </li><br>
     
                               
-                                <li><strong>Meningkatkan skor kredit</strong><br>
-                                  Mengambil pinjaman peribadi dan pembiayaan semula pada waktu yang sesuai dan tepat dapat menunjukkan kepada institusi kewangan yang anda boleh dipercayai dengan kredit (a.k.a wang yang dipinjam). Sebagai contoh: Memilih pinjaman peribadi dengan kadar faedah rendah untuk membayar baki kad kredit anda – ini bukan sahaja menjimatkan wang tetapi juga boleh meningkatkan skor kredit anda jika anda membuat pembayaran balik tepat pada masanya!
+                                <li><strong>Meningkatkan skor kredit </strong><br>
+                                  Mengambil pinjaman peribadi dan pembiayaan semula pada masa yang sesuai dan tepat mebuktikan kepada institusi kewangan bahawa anda seorang peminjam yang bertanggungjawab dan berdisiplin. Sebagai contoj, memilih pinjaman peribadi dengan kadar faedah rendah untuk membayar baki kad kredit bukan sahaja membantu menjimatkan kos faedah, tetapi jika pembayaran balik dibuat tepat pada masanya, ia juga boleh meningkatkan skor kredit anda. 
                                 </li><br>
                               
                               
                                 <li><strong>Membiayai kecemasan perubatan</strong><br>
-                                  Kesihatan fizikal anda hendaklah sentiasa diutamakan daripada kesihatan kewangan anda. Jika anda atau insan yang tersayang berhadapan dengan situasi kecemasan kesihatan yang tidak dijangka, mengambil pinjaman peribadi adalah salah satu penyelesaian paling mudah untuk dapatkan rawatan perubatan yang diperlukan.
+                                  Kesihatan anda hendaklah sentiasa diutamakan daripada kesihatan kewangan anda. Sekiranya anda atau ahli keluarga menghadapi kecemasa perubatan yang tidak dijangka, pinjaman peribadi boleh menjadi salah satu penyelesaian yang cepat dan mudah untuk mendapatkan rawatan yang diperlukan, tanpa menggangu kestabilan kewangan jangka panjang. 
                                 </li>
                               
                               </ul>
@@ -826,7 +828,7 @@
                             <p class="mb-0">
                               Jumlah pinjaman yang layak anda terima bergantung kepada beberapa faktor, termasuk status pekerjaan, pendapatan bulanan dan skor kredit anda. Secara amnya, jumlah pinjaman maksimum bagi pinjaman peribadi di Malaysia adalah sehingga RM350,000 bergantung kepada polisi setiap institusi kewangan. Pendapatan bulanan anda juga memainkan peranan penting dalam menentukan kelayakan pinjaman, di mana peminjam biasanya boleh memohon sehingga empat kali ganda daripada jumlah gaji bulanan.  <br><br>
     
-                              Untuk membantu anda merancang kewangan dengan lebih baik, gunakan kalkulator pinjaman peribadi Loanbuddy Credit untuk menganggarkan ansuran bulanan yang bersesuaian dengan keperluan dan kemampuan anda sebelum membuat permohonan. 
+                              untuk membantu anda merancang kewangan dengan lebih baik, gunakan kalkulator pinjaman peribadi Loanbuddy Credit untuk menganggarkan ansuran bulanan yang bersesuaian dengan keperluan dan kemampuan anda sebelum membuat permohonan. 
                             </p>
                           </div>
                         </div>
@@ -838,11 +840,11 @@
                         <div id="collapse_eight" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Secara umumnya, terdapat tiga keperluan asas untuk memohon pinjaman peribadi di Malaysia. Ini adalah:
+                              Secara umumnya, terdapat beberapa keperluan asas yang perlu dipenuhi untuk memohon pinjaman peribadi di Malaysia: 
     
                               <ul>
                                 <li>Pemohon mestilah berumur antara 18 hingga 60 tahun.</li>
-                                <li>Pemohon mestilah warganegara Malaysia (sesetengah institusi kewangan mungkin mempertimbangkan pengecualian dalam kes tertentu)</li>
+                                <li>Pemohon mestilah warganegara Malaysia (<em>sesetengah institusi kewangan mungkin mempertimbangkan pengecualian dalam kes tertentu</em>)</li>
                                 <li>Pemohon tidak mempunyai status muflis atau bankrap.</li>
                                 <li>Pemohon mempunyai pekerjaan tetap, sama ada dalam sektor swasta, kerajaan atau syarikat berkaitan kerajaan (GLC) dan telah berkhidmat sekurang-kurangnya 3 bulan.</li>
                                 <li>Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
@@ -859,7 +861,7 @@
                         <div id="collapse_nine" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Dokumen yang diperlukan mungkin berbeza mengikut pembiaya dan jenis pekerjaan anda. Bagi mempercepatkan proses permohonan, adalah penting untuk menyediakan semua dokumen yang relevan terlebih dahulu. Secara amnya, dokumen berikut diperlukan untuk memohon pinjaman peribadi di Malaysia: <br><br>
+                              Dokumen yang diperlukan mungkin berbeza mengikut pembiaya dan jenis pekerjaan anda. Bagi mempercepatkan proses permohonan, adalah penting untuk menyediakan semua dokumen yang relevan terlebih dahulu. Secara amnya, dokumen berikut diperlukan untuk memohon pinjaman peribadi di Malaysia:<br><br>
     
                               <ul>
                                 <li>Salinan kad pengenalan (depan dan belakang)</li>
@@ -904,7 +906,7 @@
                             <p class="mb-0">
                               Kadar faedah pinjaman peribadi ditentukan oleh pihak pemberi pinjaman berdasarkan Kadar Asas (Base Rate, BR) yang ditetapkan, kemudian ditambah dengan margin tertentu. Jumlah ini dikenali sebagai Kadar Pinjaman Efektif (Effective Lending Rate, ELR). 
                               <br><br>
-                              Sebagai contoh, sekiranya Maybank menetapkan BR pada kadar 1.75% dan menambah margin sebanyak 1.50%, maka kadar faedah keseluruhan yang dikenakan kepada anda ialah 3.25%. 
+                              Sebagai contoh, sekiranya Maybank menetapkan BR pada kadar 1.75% dan menambah margin sebanyak 1.50%, maka kadar faedah keseluruhan yang dikenakan kepada anda ialah 3.25%.  
                               <br><br>
                               Selain itu, kadar faedah juga biasanya dinyatakan dalam bentuk Kadar Peratusan Tahunan (Annual Percentage Rate, APR). Ini bermaksud pengiraan faedah dibuat secara tahunan dan bukan bulanan. Untuk mendapatkan kadar faedah bulanan, anda hanya perlu membahagikan APR tersebut dengan 12 bulan. 
                             </p>
@@ -913,18 +915,18 @@
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_twelve" aria-expanded="false">
-                          Di mana dan Bagaimana saya boleh memohon pinjaman peribadi?
+                          Di mana dan Bagaimana Saya Boleh Memohon Pinjaman Peribadi?
                         </div>
                         <div id="collapse_twelve" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Terdapat dua cara utama untuk memohon pinjaman peribadi di Malaysia: bersemuka atau dalam talian. 
+                              Terdapat dua cara utama untuk memohon pinjaman peribadi di Malaysia: bersemuka atau dalam talian.
                               <br><br>
                               <ul>
-                                <li>Permohonan secara bersemuka</li>
+                                <li>Permohonan secara bersemuka</li> 
                                 Anda boleh terus ke cawangan institusi pilihan, berjumpa dengan pegawai pinjaman, melengkapkan borang permohonan serta menyerahkan dokumen sokongan yang diperlukan. Kaedah ini lebih diperibadikan kerana anda boleh mendapatkan penjelasan terus daripada pegawai, namun kelemahannya ialah mungkin memerlukan masa dan kos.
                                 <br><br>
-                                <li>Permohonan dalam talian</li>
+                                <li>Permohonan dalam talian</li> 
                                 Kini, banyak institusi kewangan menyediakan platform digital untuk permohonan pinjaman. Anda boleh membandingkan kadar pinjaman, mengira kemampuan kewangan, menyemak skor kredit, memuat turun penyata dan menghantar permohonan — segalanya mudah hanya di hujung jari anda.
                               </ul>
 
@@ -943,14 +945,15 @@
                             <p class="mb-0">
                               Tempoh kelulusan pinjaman peribadi lazimnya mengambil masa antara 2 hingga 7 hari bekerja, bergantung kepada polisi serta prosedur dalaman pihak pemberi pinjaman, selain faktor kelengkapan dokumen yang dikemukan oleh pemohon. 
                               <br><br>
-                              Di Loanbuddy Credit, kami berkomited untuk memudahkan proses permohonan pelanggan kami agar lebih cepat dan efisien. Dengan sistem pemprosessan yang teratur, pinjaman boleh diluluskan serta dikeluarkan dalam tempoh seawal 24 jam sebaik sahaja semua dokumen lengkap diterima dan disahkan. 
+                              Di Loanbuddy Credit, kami berkomited untuk memudahkan proses permohonan pelanggan kami agar lebih cepat dan efisien. Dengan sistem pemprosessan yang teratur, pinjaman boleh diluluskan serta dikeluarkan dalam tempoh seawal 24 jam sebaik sahaja semua dokumen lengkap diterima dan disahkan.
                             </p>
                           </div>
                         </div>
                       </div>
                       <div class="accordion-item">
                         <div class="accordion-button collapsed" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_fourteen" aria-expanded="false">
-                          Adakah Saya Perlu Membayar Sebarang yuran (Bayaran Pendahuluan, Deposit, dll) untuk Memohon Pinjaman Peribadi?
+                          Adakah Saya Perlu Membayar Sebarang yuran (Bayaran Pendahuluan, 
+                          Deposit, dll) untuk Memohon Pinjaman Peribadi?
                         </div>
                         <div id="collapse_fourteen" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
@@ -971,11 +974,11 @@
                             <p class="mb-0">
                               Kelulusan pinjaman peribadi anda bergantung kepada beberapa faktor, termasuk:
                               <ul>
-                                <li>Rekod pembayaran bil dan pinjaman terdahulu </li>
+                                <li>Rekod pembayaran bil dan pinjaman terdahulu  </li>
                                 <li>Jenis pinjaman atau kad kredit yang dimiliki</li>
-                                <li>Tempoh sejarah kredit anda </li>
+                                <li>Tempoh sejarah kredit anda</li>
                                 <li>Bilangan permohonan kredit dalam tempoh 12 bulan</li>
-                                <li>Sebarang tindakan undang-undang terhadap anda </li>
+                                <li>Sebarang tindakan undang-undang terhadap anda</li>
                                 
                               </ul>
                               Semua faktor ini akan dinilai oleh institusi kewangan melalui skor kredit anda untuk menentukan tahap kelayakan pinjaman
@@ -992,11 +995,11 @@
                             <p class="mb-0">
                               Skor kredit ialah satu penarafan berangka (tiga digit) yang menggambarkan tahap kelayakan kredit anda berdasarkan rekod kewangan dan sejarah pembayaran. 
                               <ul>
-                                <li>Skor kredit tinggi: Meningkatkan peluang pinjaman diluluskan dengan lebih cepat dan dengan kadar faedah yang lebih kompetitif. </li>
+                                <li>Skor kredit tinggi: Meningkatkan peluang pinjaman diluluskan dengan lebih cepat dan dengan kadar faedah yang lebih kompetitif.  </li>
                                 <li>Skor kredit rendah: Boleh menyukarkan kelulusan pinjaman atau menyebabkan permohonan anda ditolak</li>
                               </ul>
 
-                              Rekod skor kredit anda disimpan dalam sistem Central Credit Reference Information System (CCRIS) oleh Bank Negara Malaysia dan boleh diakses melalui Agensi Pelaporan Kredit (CRA) seperti CTOS, Experian (dahulu RAMCI) dan Biro Kredit Malaysia. 
+                              Rekod skor kredit anda disimpan dalam sistem Central Credit Reference Information System (CCRIS) oleh Bank Negara Malaysia dan boleh diakses melalui Agensi Pelaporan Kredit (CRA) seperti CTOS, Experian (dahulu RAMCI) dan Biro Kredit Malaysia.
                               
                             </p>
                           </div>
@@ -1011,7 +1014,7 @@
                             <p class="mb-0">
                               Beberapa langkah yang boleh anda ambil untuk meningkatkan skor kredit adalah:
                               <ul>
-                                <li>Lakukan pembayaran tepat pada masanya - Elakkan tunggakan dua bulan atau lebih kerana ia menjejaskan kredibiliti anda.</li> 
+                                <li>Lakukan pembayaran tepat pada masanya - Elakkan tunggakan dua bulan atau lebih kerana ia menjejaskan kredibiliti anda. </li> 
                                 <li>Elakkan terlalu banyak permohonona kredit serentak - Setiap permohonan (termasuk yang ditolak) direkodkan dalam laporan kredit.</li>
                                 <li>Bayar penuh hutang kecil terlebih dahulu - Ini bagi membantu mengurangkan komitmen kewangan anda dan meningkatkan imej di mata pemberi pinjaman. </li>
 
@@ -1045,9 +1048,9 @@
                           <div class="accordion-body">
                             <p class="mb-0">
                               
-                              Kalkulator Pinjaman Peribadi Loanbuddy Credit direka khas untuk membantu anda menganggarkan jumlah pembayaran balik pinjaman peribadi bulanan. <br><br>
+                              Kalkulator Pinjaman Peribadi Loanbuddy Credit direka khas untuk membantu anda menganggarkan jumlah pembayaran balik pinjaman peribadi bulanan.<br><br>
 
-                              Anda hanya perlu: <br>
+                              Anda hanya perlu:<br>
                               <ul>
                                   <li>Masukkan jumlah pinjaman</li>
                                   <li>Tetapkan tempoh pinjaman</li>
@@ -1093,15 +1096,15 @@
                             <p class="mb-0">
                               Proses permohonan pinjaman di Loanbuddy Credit adalah mudah, pantas dan telus, hanya melalui 3 langkah utama:
                               <br><br>
-                              <strong>1. Isi borang permohonan dalam talian</strong>
+                              <strong>1. Isi borang permohonan dalam talian</strong> <br>
                               Lengkapkan borang permohonan ringkas kami dengan maklumat peribadi yang diperlukan, termasuk jumlah pinjaman.
                               <br><br>
 
-                              <strong> 2. Semakan dan pengesahan kelayakan</strong>
+                              <strong> 2. Semakan dan pengesahan kelayakan</strong><br>
                               Pihak Loanbuddy Credit akan menghubungi anda melalui WhatsApp atau emel untuk proses semakan awal serta pengesahan kelayakan pinjaman. 
                               <br><br>
 
-                              <strong>3. Serahkan dokumen dan tandatangan perjanjian</strong> 
+                              <strong>3. Serahkan dokumen dan tandatangan perjanjian</strong> <br>
                               Setelah kelulusan diberikan, anda hanya perlu menyediakan dokumen sokongan seperti
                               <ul>
                                 <li>Salinan kad pengenalan (depan dan belakang)</li>
@@ -1150,7 +1153,7 @@
                         <div id="collapse_twentyfour" class="accordion-collapse collapse" data-bs-parent="#faq_accordion_1">
                           <div class="accordion-body">
                             <p class="mb-0">
-                              Syarat umur minimum untuk memohon pinjaman peribadi di Malaysia ialah 18 tahun. Namun, selain syarat umur, anda juga perlu mempunyai aliran pendapatan yang konsisten untuk status semakan kelayakan.
+                              Syarat umur minimum untuk memohon pinjaman peribadi di Malaysia ialah 18 tahun. Namun, selain syarat umur, anda juga perlu mempunyai aliran pendapatan yang konsisten untuk status semakan kelayakan. 
                               <br><br>
                               Anda layak memohon sekiranya memenuhi kriteria berikut:
                               <ul>
@@ -1242,7 +1245,7 @@
                 <div class="footer_widget">
                   <div class="site_logo d-block">
                     <a class="site_link" href="/">
-                       <img src="assets/images/logo/white-logo-footer.png" alt="logo-footer" loading="lazy">
+                       <img src="assets/images/logo/Keyline Horizontal .png" alt="logo-footer" loading="lazy">
                     </a>
                   </div>
                   <p>
