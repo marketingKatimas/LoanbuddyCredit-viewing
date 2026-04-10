@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/fontawesome.css" media="print" onload="this.media='all'">
 
     <!-- Cursor - CSS Include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/cursor.css" media="print" onload="this.media='all'">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/cursor.css" media="print" onload="this.media='all'"> -->
 
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" media="screen and (min-width: 501px)">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"></noscript>
@@ -119,6 +119,11 @@
                 <div class="main_menu_inner collapse navbar-collapse" id="main_menu_dropdown">
                   <ul class="main_menu_list unordered_list_center">
                     <!-- <li><a class="nav-link" href="/">Laman Utama</a></li> -->
+                    <div class="site_logo">
+                      <a class="site_link" href="/">
+                        <img src="assets/images/logo/Keyline Horizontal .png" alt="loanbuddy credit logo" class="site-header-logo">
+                      </a>
+                    </div>
                     <li class="dropdown">
                       <a class="nav-link" href="#" id="service_submenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Perkhidmatan
@@ -150,12 +155,6 @@
                         <li><a href="kalkulator-pinjaman">Kalkulator Pinjaman</a></li>
                       </ul>
                     </li>
-                    <div class="site_logo">
-                      <a class="site_link" href="/">
-                        <!-- <img src="assets/images/logo/Keyline Horizontal .png" alt="loanbuddy credit logo"> -->
-                        <img src="assets/images/logo/Keyline Horizontal .png" alt="loanbuddy credit logo" class="site-header-logo">
-                      </a>
-                    </div>
 
                     <li><a class="nav-link" href="contact-us">Hubungi Kami</a></li>
                   </ul>
@@ -199,7 +198,7 @@
             <div class="common_carousel_1col " >
               <div data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
                  <!-- Banner 1 Section - Start == -->
-                <section class="hero_banner style_2 mouse_move testimonial_carousel w-100 d-flex align-items-center">
+                <section class="hero_banner style_2 style_3 mouse_move testimonial_carousel w-100 d-flex align-items-center">
                   <div class="container ">
                     <div class="row d-flex align-items-center justify-content-center">
                       <div class="col col-12   ">
@@ -450,7 +449,7 @@
           <div class="container position-relative">            
             <div class="section_heading_1_mobile mb-4">
               <div class="row align-items-center justify-content-lg-between">
-                <div class="col col-lg-12 mb-lg-3 text-start text-white">
+                <div class="col col-lg-12 mb-lg-3 text-start text-white col-cara-1">
                   <h3 class="font-increase-2 text-white mb-30">
                     Cara Permohonan Pinjaman Peribadi
                   </h3>
@@ -653,11 +652,12 @@
         ================================================== -->
         <section class="bg_blue overflow-hidden" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="cta_container">
-            <div class="row cta_home cta_pinjaman_peribadi">
+            <div class="row cta_home cta_pinjaman_peribadi_1">
               <div class="col-md-8 text-cta-mobile">
                 <h2 class="text-white ">
-                  Perlukan pinjaman peribadi?<br>
-                  Loanbuddy Credit sedia berkhidmat <br>untuk Anda!  
+                  Perlukan Pinjaman Peribadi? <br>
+                  Loanbuddy Credit Sedia Berkhidmat <br>
+                  Untuk Anda!   
                 </h2>
               </div>
               <div class="col-md-3 z-index-3">
@@ -1159,13 +1159,13 @@
     <!-- <script src="assets/js/all-pages.js"></script> -->
 
     <script>
-      if (window.matchMedia("(min-width: 501px)").matches) {
-        console.log("load cursor");
-        const script = document.createElement("script");
-        script.src = "assets/js/cursor.js";
-        script.defer = true; // Ensures the script runs after parsing the HTML
-        document.head.appendChild(script);
-      }
+      // if (window.matchMedia("(min-width: 501px)").matches) {
+      //   console.log("load cursor");
+      //   const script = document.createElement("script");
+      //   script.src = "assets/js/cursor.js";
+      //   script.defer = true; // Ensures the script runs after parsing the HTML
+      //   document.head.appendChild(script);
+      // }
     </script>
 
     <!-- View More Faqs -->

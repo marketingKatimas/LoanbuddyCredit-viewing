@@ -362,7 +362,7 @@
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 .btn_semak_layak {
     z-index: 3;
-    color: #044BD9;
+    color: #F20505;
     background-color: #ffffff;
     border-radius: 45px;
     letter-spacing: 1px;
@@ -370,12 +370,12 @@
     margin-left: -10px;
     overflow: hidden;
     position: relative;
-    border: 2px solid #044BD9;
+    border: 2px solid #F20505;
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
-    box-shadow: rgba(32, 30, 14, 0.09) 2px 2px 30px, #044BD9 4px 4px 0px 0px;
-    transition: all 0.3s ease-in-out;
+    /* box-shadow: rgba(32, 30, 14, 0.09) 2px 2px 30px, #044BD9 4px 4px 0px 0px; */
+    /* transition: all 0.3s ease-in-out; */
     will-change: transform;
 }
 
@@ -425,8 +425,9 @@
 /* Slight scale & color change on hover */
 .btn_semak_layak:hover {
     transform: scale(1.08);
-    
-    box-shadow: 0px 15px 35px rgba(26, 183, 154, 0.5);
+    border-color: #F20505;
+    box-shadow: 0px 15px 35px rgba(26, 183, 154, 0.2);
+    color: #F20505;
 }
 
 @media (max-width: 500px) {

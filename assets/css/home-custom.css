@@ -26,7 +26,7 @@
 
 .main_menu_list .dropdown-menu > li:hover > a,
 .main_menu_list .dropdown-menu > li.active > a {
-    background-color: #2a67e1;
+    background-color: #F20505;
     color: white;
 }
 .main_menu_list .dropdown-menu > li:hover > a:before {
@@ -66,6 +66,12 @@
     width: auto;
 }
 
+@media (min-width: 992px) {
+    .col-cara-1 {
+        padding-left: 55px;
+    }
+}
+
 @media (min-width: 1601px) {
     .banner_image_2 .image_wrap_11 {
         display: block;
@@ -78,6 +84,18 @@
         flex-direction: column;
         align-items: start;
         padding-top: 120px !important;
+    }
+
+    .banner-mohon-description {
+        /* font-family: 'Work Sans', sans-serif; */
+        font-size: 20px !important;
+        width: 900px;
+        max-width: 900px !important;
+        line-height: 30px !important;
+    }
+
+    .hero_banner.style_3 {
+        height: 92vh;
     }
 }
 
@@ -158,6 +176,14 @@
 @media (max-width: 500px) { 
     .site_header {
         padding: 16px 0 !important;
+    }
+
+    .cta_home h2 {
+        font-size: 1.0rem !important;
+    }
+    
+    .carousel_item_home {
+        height: 650px !important;
     }
 
     .mobile_menu_btn {

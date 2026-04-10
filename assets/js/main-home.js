@@ -290,7 +290,7 @@
               const styles = isMobileSmallSize
                   ? {
                         "background-size": "auto",
-                        "background-position": "33% top",
+                        "background-position": "20% 50%",
                         "background-repeat": "no-repeat",
                     }
                   : {
