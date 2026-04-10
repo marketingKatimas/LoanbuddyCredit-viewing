@@ -38,11 +38,46 @@
     margin-top: 35px;
 }
 
+.item_title_perkhidmatan {
+    margin-bottom: 22px;
+}
+
+.btn-home-2 span small {
+    padding: 10px 0;
+}
+
+.service-item-img {
+    height: 115% !important;
+    width: auto;
+}
+
+.border-radius-5 {
+    border-radius: 5px;
+}
+
+.testimonial-deco-item {
+    position: absolute;
+    top: -15%;
+    left: -8%;
+}
+
+.site-footer-logo {
+    height: 142px !important;
+    width: auto;
+}
+
 @media (min-width: 1601px) {
     .banner_image_2 .image_wrap_11 {
         display: block;
         bottom: -22vh;
         right: -18%;
+    }
+
+    .perkhidmatan-padding {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding-top: 120px !important;
     }
 }
 
@@ -67,6 +102,10 @@
         display: none;
     }
 
+    .testimonial-deco-item {
+        display: none;
+    }
+
     .site_header.sticky {
         background-color: #044bd9 !important;
     }
@@ -85,6 +124,14 @@
         margin-bottom: 35px;
     }
 
+    .service_item .item_content {
+        margin-top: 25px;
+    }
+
+    .service-item-img {
+        height: 95% !important;
+    }
+
     .perkhidmatan-padding {
         padding: 50px 30px !important;
     }
@@ -96,7 +143,7 @@
     }
 
     .site-footer-logo {
-        width: 65%;
+        width: auto;
     }
 
     .faq-btn-text {

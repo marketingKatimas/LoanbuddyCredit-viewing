@@ -191,6 +191,7 @@ hr {
 
 .row .custom-row-margin{
   margin: -15px;
+  align-items: center;
 }
 
 @media screen and (max-width: 500px) {
@@ -1510,7 +1511,7 @@ blockquote p {
 .row_mohon_pinjaman_peribadi .step-number {
   margin-top: 7px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
   color: white;
 }
 
@@ -1577,7 +1578,7 @@ blockquote p {
 
 @media (min-width: 501px) {
   .row_mohon_pinjaman_peribadi .step-number-1 {
-    margin-bottom: 45px;
+    margin-bottom: 20px;
   }
   .row_mohon_pinjaman_peribadi .step-number-2 {
     margin-bottom: 33px;
@@ -3712,7 +3713,7 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   aspect-ratio: 1 / 1;   /* makes it a square */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .service_item:hover {
   z-index: 1;
@@ -3736,7 +3737,7 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -3754,7 +3755,7 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .service_item .item_title {
-  font-size: 50px;
+  font-size: 42px;
   font-weight: 700;
   line-height: 25px;
   margin-bottom: 11px;
@@ -5346,7 +5347,7 @@ img.perkhidmatan_image:hover {
   
 }
 .site_footer .site_logo {
-  margin-bottom: 35px;
+  /* margin-bottom: 35px; */
 }
 .site_footer .footer_widget_area {
   padding: 130px 0 108px;

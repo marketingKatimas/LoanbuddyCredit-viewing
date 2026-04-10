@@ -60,6 +60,11 @@
     right: 44%;
 }
 
+.contact-form-section {
+    padding-top: 30px;
+    padding-bottom: 80px;
+}
+
 @media (min-width: 1600px) {
     .contact-floating-1 {
         max-width: 260px !important;

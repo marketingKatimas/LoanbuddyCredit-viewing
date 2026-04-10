@@ -197,12 +197,12 @@
                         <div class="form-row form-row-column">
                           <div class="form-holder form-holder-mobile">
                             <label for="age">Umur</label>
-                            <input id="age" name="age" type="number" placeholder="Min. 20" min="20" class="form-control" required>
+                            <input id="age" name="age" type="number" placeholder="Min. 18 - Max. 60" min="18" max="60" class="form-control" required>
                             <div class="error-message" id="ageError"></div>
                           </div>
                           <div class="form-holder pos-relative">
                             <label for="phone">Nombor Telefon</label>
-                            <input id="phone" name="phone" type="text" placeholder="0123456789" class="form-control" required>
+                            <input id="phone" name="phone" type="text" placeholder="0123456789" pattern="[0-9]{1,12}" maxlength="12" class="form-control" required>
                             <div class="error-message" id="phoneError"></div>
                           </div>
                         </div>
@@ -217,8 +217,6 @@
                             <i class="zmdi zmdi-caret-down"></i>
                             <select id="sector" name="sector" class="form-control form-control-dropdown" required>
                               <option value="" disabled selected>Sektor Perkerjaan</option>
-                              <option value="Pekerja-Kerajaan">Pekerja Kerajaan</option>
-                              <option value="Pekerja-Pautan-Kerajaan">Pekerja Pautan Kerajaan</option>
                               <option value="Penjawat-Awam">Penjawat Awam</option>
                               <option value="Pekerja-GLC">Pekerja GLC</option>
                               <option value="Pekerja-Swasta">Pekerja Swasta</option>
@@ -226,7 +224,6 @@
                               <option value="Freelance-Pekerja-Gig">Freelance/Pekerja Gig</option>
                               <option value="Pekerja-Sambilan">Pekerja Sambilan</option>
                               <option value="Pelajar">Pelajar</option>
-                              <option value="Tidak-Bekerja">Menganggur/Bersara/Tidak Bekerja</option>
                             </select>
                             <div class="error-message" id="sectorError"></div>
                           </div> 
@@ -234,7 +231,7 @@
                         <div class="form-row form-row-reverse">
                           <div class="form-holder">
                             <label for="amount">Jumlah Yang Ingin Dipinjam</label>
-                            <input id="amount" name="amount" type="number" placeholder="Min. RM1000" class="form-control" min="0" step="1" required>
+                            <input id="amount" name="amount" type="number" placeholder="Min. RM1000  -  Max. RM50,000" min="1000" max="50000" class="form-control" required>
                             <div class="error-message" id="amountError"></div>
                           </div>
                           <div class="form-holder form-holder-mobile pos-relative">
@@ -257,10 +254,24 @@
                             <input id="salary" name="salary" type="number" placeholder="1700" class="form-control" min="0" step="1" required>
                             <div class="error-message" id="salaryError"></div>
                           </div>
-                          <div class="form-holder">
+                          <!-- <div class="form-holder">
                             <label for="nettSalary">Gaji Bersih</label>
                             <input id="nettSalary" name="nettSalary" type="number" placeholder="1500" class="form-control" min="0" step="1" required>
                             <div class="error-message" id="nettSalaryError"></div>
+                          </div> -->
+                          <div class="form-holder form-holder-mobile pos-relative">
+                            <label for="leadsWhere">Bagaimana Anda Tahu Tentang Kami</label>
+                            <i class="zmdi zmdi-caret-down"></i>
+                            <select id="leadsWhere" name="leadsWhere" class="form-control form-control-dropdown" required>
+                              <option value="" disabled selected>Sila Pilih</option>
+                              <option value="iklan-facebook-instagram" id="IklanFacebookInsta">Iklan Facebook / Instagram</option>
+                              <option value="iklan-tiktok" id="IklanTikTok">Iklan TikTok</option>
+                              <option value="pencarian-google" id="PencarianGoogle">Pencarian Google</option>
+                              <option value="rujukan-rakan-keluarga" id="RujukanRakanKeluarga">Rujukan Rakan / Keluarga</option>
+                              <option value="walk-in" id="WalkIn">Walk In</option>
+                              <option value="lain-lain" id="LainLain">Lain-lain</option>
+                            </select>
+                            <div class="error-message" id="leadsWhereError"></div>
                           </div>
                         </div>
 
@@ -347,7 +358,7 @@
                           <img src="assets/images/jompay-logo.png" alt="">
                         </div>
                         <div class="d-flex">
-                          <img src="assets/images/direct-debit-Logo.png" alt="">
+                          <img src="assets/images/direct-debit-logo.png" alt="">
                         </div>
                       </div>
                     </div>
@@ -371,12 +382,12 @@
       <footer class="site_footer">
         <div class="footer_widget_area">
           <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
               <div class="col col-lg-4 col-md-6 col-sm-6">
                 <div class="footer_widget">
                   <div class="site_logo d-block">
                     <a class="site_link" href="/">
-                       <img src="assets/images/logo/white-logo-footer.png" alt="logo-footer" loading="lazy">
+                      <img src="assets/images/logo/Keyline Horizontal .png" alt="logo-footer" loading="lazy" class="site-footer-logo">
                     </a>
                   </div>
                   <p>
@@ -1041,7 +1052,9 @@
         const amountInput = document.getElementById('amount');
         const branchInput = document.getElementById('branch');
         const salaryInput = document.getElementById('salary');
-        const nett_salaryInput = document.getElementById('nettSalary');
+        // const nett_salaryInput = document.getElementById('nettSalary');
+
+        const leadsWhereInput = document.getElementById('leadsWhere');
 
         if (nameInput.value.trim() === '') {
           displayErrorMessage('name', 'This field is required');
@@ -1053,8 +1066,11 @@
         if (ageInput.value.trim() === '') {
           displayErrorMessage('age', 'This field is required');
           isValid = false;
-        } else if (ageInput.value.trim() < 20) {
-          displayErrorMessage('age', 'Minimum age is 20 years old');
+        } else if (ageInput.value.trim() < 18) {
+          displayErrorMessage('age', 'Minimum age is 18 years old');
+          isValid = false;
+        } else if (ageInput.value.trim() > 60) {
+          displayErrorMessage('age', 'Maximum age is 60 years old');
           isValid = false;
         } else {
           displayErrorMessage('age', '');
@@ -1110,11 +1126,18 @@
           displayErrorMessage('salary', '');
         }
 
-        if (nett_salaryInput.value.trim() === '') {
-          displayErrorMessage('nettSalary', 'This field is required');
+        // if (nett_salaryInput.value.trim() === '') {
+        //   displayErrorMessage('nettSalary', 'This field is required');
+        //   isValid = false;
+        // } else {
+        //   displayErrorMessage('nettSalary', '');
+        // }
+
+        if (leadsWhereInput.value.trim() === '' || leadsWhereInput.value === 'default' ) {
+          displayErrorMessage('leadsWhere', 'Please select an option.');
           isValid = false;
         } else {
-          displayErrorMessage('nettSalary', '');
+          displayErrorMessage('leadsWhere', '');
         }
 
         if (!isValid) {
@@ -1129,13 +1152,19 @@
       }
 
       document.addEventListener('DOMContentLoaded', function () {
-        const inputFields = ['amount', 'age', 'phone', 'salary', 'nettSalary'];
+        const inputFields = ['amount', 'age', 'phone', 'salary'];
 
         inputFields.forEach(function (fieldId) {
           const inputField = document.getElementById(fieldId);
           inputField.addEventListener('input', function () {
               inputField.value = inputField.value.replace(/\D/g, '');
           });
+        });
+
+        const nameInput = document.getElementById('name');
+        
+        nameInput.addEventListener('input', function() {
+          this.value = this.value.replace(/[0-9]/g, '');
         });
       });
 

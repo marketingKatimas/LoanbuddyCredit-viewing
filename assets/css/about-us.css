@@ -66,10 +66,6 @@
   color: #ffffff;
 }
 
-.row-home-custom{
-    margin-top: 20vh;
-}
-
 .section_space_lg_about {
   padding-top: 120px;
   padding-bottom: none;
@@ -1036,6 +1032,27 @@
     background: white;
 }
 
+@media (min-width: 992px) {
+    .about-us-img-1 {
+        transform: translateY(-80px);
+    }
+
+    .about-us-section-2 {
+        position: relative;
+        z-index: 50;
+        margin-top: -15vh;
+    }
+
+    .perkhidmatan-padding {
+        margin-top: 10vh;
+    }
+
+    .about-us-deco-item-5 {
+        position: absolute;
+        top: -38%;
+    }
+}
+
 @media (max-width: 991px) {
     .main_menu_inner {
         background-color: #044bd9;
@@ -1045,6 +1062,13 @@
         display: none;
     }
 
+    .row-home-custom{
+        margin-top: 0vh;
+    }
+
+    .about_banner_1 {
+        height: 155vh;
+    }
     /* .site-header-mobile-logo {
         height: 86px !important;
     } */
