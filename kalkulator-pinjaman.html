@@ -40,6 +40,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/calculator-page.css">
 
     <!-- Custom - CSS Include -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/navbar-calculator.css"> -->
+
     <link rel="stylesheet" type="text/css" href="assets/css/navbar-calculator.css">
  
 
@@ -106,7 +108,7 @@
         <div class="container">
           <div class="row align-items-center justify-content-center">
 
-            <div class="col-lg-2 col-4 d-lg-none">
+            <div class="col-lg-2 col-5 d-lg-none ">
               <a class="site_link" href="/">
                 <img src="assets/images/logo/Keyline Horizontal .png" alt="loanbuddy credit logo">
               </a>
@@ -165,7 +167,7 @@
               </nav>
             </div>
 
-            <div class="col-lg-2 col-6 text-center">
+            <div class="col-lg-2 col-5 text-center">
               <a href="apply-form-1" class="btn_semak_layak">
                 <span>
                   <small>Mohon Sekarang</small>
@@ -198,7 +200,7 @@
         <!-- Call To Action Section - Start
         ================================================== -->
 
-        <section class="calltoaction_section section_space_lg bg_white decoration_wrap" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
+        <section class="calltoaction_section section_space_lg  section_space_lg-mobile-2 bg_white decoration_wrap" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="container">
             <div class="row align-items-center row_loanbuddy_works_2">
               <div class="col col-lg-6 col-description">
@@ -248,7 +250,7 @@
                             <input type="range" class="calc__input-range2" name="mLoan" id="mLoan3" value="18" min="12" max="60"
                               step="6" oninput="updateLoanTenure(this.value)"
                               style="background: linear-gradient(to right, #044BD9 0%, #044BD9 15.4%, #d3d3d3 15.4%, #d3d3d3 100%)">
-                            <div class="calc__placeholders"> <span>6 bulan</span> <span>60 bulan</span></div>
+                            <div class="calc__placeholders"> <span>12 bulan</span> <span>60 bulan</span></div>
                           </div>
 
                           <div class="group">
@@ -290,7 +292,7 @@
                             <h3 class="title">Interest Paid Per Month: </h3>
                             <div class="value">1234</div>
                           </div> -->
-                        <div class="col-6">
+                        <div class="col col-6">
                           <div class="total-amount text-start">
                             <h3 class="title">
                               <span id="textTotalAmountYouPay">Jumlah: &nbsp;
@@ -426,12 +428,12 @@
           <div class="container position-relative">
             <div class="section_heading_1 section_heading_1_mobile mb-4">
               <div class="row align-items-center justify-content-lg-between">
-                <div class="col col-lg-12">
+                <div class="col col-lg-12 ms-3vw content-title">
                   <h2 class="heading_text text-lightgrey font-increase-2 line-height-custom calc-head-custom ">
                     Cara Permohonan Pinjaman Peribadi
                   </h2>
                   
-                  <p class="mb-0 mt-5 text-lightgrey ">
+                  <p class="mb-0 text-lightgrey ">
                     Proses pencarian pinjaman telah diperkemaskan tanpa menjejaskan kualiti perkhidmatan. 
                     <br><br>
                     Tidak perlu lagi melalui proses pengisian borang yang berpanjangan atau risau tentang kesahihan sesebuah institusi kewangan. 
@@ -562,14 +564,14 @@
         ================================================== -->
         <section class="faq_section section_space_lg bg_white">
           <div class="container">
-            <div class="section_heading text-center mb-3">
+            <div class="section_heading text-center mb-3 col-desc">
               <div class="row justify-content-center">
-                <div class="col col-lg-10">
+                <div class="col-desc col-lg-10">
                   <h2 class="heading_text text-blue text-center">
                     Soalan Lazim
                   </h2>
-                  <div class="d-flex">
-                    <p class="heading_description mb-0 justify-content">
+                  <div class="d-flex desc-content-justify">
+                    <p class="heading_description mb-0">
                       Pinjaman peribadi boleh digunakan untuk pelbagai tujuan mengikut keperluan individu. Dengan ciri-ciri fleksibel, pinjaman peribadi menjadi antara pilihan kewangan yang popular dalam kalangan rakyat Malaysia. 
                       <br><br>
                       Kini, permohonan pinjaman peribadi boleh dibuat secara dalam talian dan kelulusan boleh diperoleh seawal satu (1) hari. Kemudahan ini memberikan ketenangan fikiran serta sokongan kewangan segera, khususnya ketika berhadapan dengan situasi kecemasan. 
@@ -583,7 +585,7 @@
             </div>
 
             <div class="row justify-content-center">
-              <div class="col col-lg-12">
+              <div class="col-faq col-lg-12">
                 <div class="accordion" id="faq_accordion_1">
                   <div class="accordion-item">
                     <div class="accordion-button text-blue" role="button" data-bs-toggle="collapse" data-bs-target="#collapse_one" aria-expanded="true">
@@ -700,7 +702,7 @@
                             <li>Bersedia menerima tanggungjawab dan syarat sebagai penjamin</li>
                           </ul>
 
-                          <br><br><ul>
+                          <br><ul>
                             <li>Cagaran (Collateral)</li>
                           </ul>
                           
@@ -1265,42 +1267,55 @@
                     <div class="row">
                       <div class="col col-md-6 col-sm-6">
                         <div class="footer_widget">
-                          <ul class="page_list unordered_list_block">
-                            <li>
-                              <span class="item_text_1">Nombor lesen</span>
-                              <br>
-                              <span class="item_text_2">WL7830/14/01-3/030527</span>
-                            </li>
-                            <li>
-                              <span class="item_text_1">Tempoh sah laku lesen</span>
-                              <br>
-                              <span class="item_text_2">04/05/2025 - 03/05/2027</span>
-                            </li>
-                            <li>
-                              <span class="item_text_1">Nombor permit iklan</span>
-                              <br>
-                              <span class="item_text_2">WP7830/14/01-3/030527</span>
-                            </li>
-                            <li>
-                              <span class="item_text_1">Tempoh sah laku permit iklan</span>
-                              <br>
-                              <span class="item_text_2">04/05/2025 - 03/05/2027</span>
-                            </li>
-                          </ul>
+                           <h3 class="footer_widget_title item_text_1 d-lg-block d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#footerCustomer-one"
+                                style="cursor: pointer;">
+                                
+                              Maklumat Lesen
+                              <span class="d-lg-none">+</span>
+                            </h3>
+
+                            <div id="footerCustomer-one" class="collapse d-lg-block">
+                              <ul class="page_list unordered_list_block">
+                                <li>
+                                  <span class="item_text_1">Nombor lesen</span><br>
+                                  <span class="item_text_2">WL7830/14/01-3/030527</span>
+                                </li>
+                                <li>
+                                  <span class="item_text_1">Tempoh sah laku lesen</span><br>
+                                  <span class="item_text_2">04/05/2025 - 03/05/2027</span>
+                                </li>
+                                <li>
+                                  <span class="item_text_1">Nombor permit iklan</span><br>
+                                  <span class="item_text_2">WP7830/14/01-3/030527</span>
+                                </li>
+                                <li>
+                                  <span class="item_text_1">Tempoh sah laku permit iklan</span><br>
+                                  <span class="item_text_2">04/05/2025 - 03/05/2027</span>
+                                </li>
+                              </ul>
+                            </div>
                         </div>
                       </div>
-                      <div class="col col-md-6 col-sm-6">
+                      <div class="col col-md-6 col-sm-6 col-foot-calc">
                         <div class="footer_widget">
-                          <h3 class="footer_widget_title item_text_1">Waktu Operasi</h3>
-                          <ul class="page_list unordered_list_block">
-                            <li>
-                              <span class="item_text_2">Isnin - Jumaat: 8am - 5pm</span>
-                              <br>
-                              <span class="item_text_2">Sabtu: 8am - 1.30pm</span>
-                              <br>
-                              <span class="item_text_2">Ahad dan Cuti Umum Tutup</span>
-                            </li>
-                          </ul>
+                           <h3 class="footer_widget_title item_text_1 d-lg-block d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#footerCustomer-two"
+                                style="cursor: pointer;">
+                                
+                              Waktu Operasi
+                              <span class="d-lg-none">+</span>
+                            </h3>
+
+                            <div id="footerCustomer-two" class="collapse d-lg-block">
+                              <ul class="page_list unordered_list_block">
+                                <li><span class="item_text_2">Isnin - Jumaat: 8am - 5pm</span></li>
+                                <li><span class="item_text_2">Sabtu: 8am - 1.30pm</span></li>
+                                <li><span class="item_text_2">Ahad dan Cuti Umum Tutup</span></li>
+                              </ul>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -1310,42 +1325,42 @@
                     <div class="row">
                       <div class="col col-md-6 col-sm-6">
                         <div class="footer_widget">
-                          <h3 class="footer_widget_title item_text_1">Perkhidmatan</h3>
-                          <ul class="page_list unordered_list_block">
-                            <li>
-                              <a href="pinjaman-peribadi-page">
-                                <span class="item_text_3">Pinjaman Peribadi</span>
-                              </a>
-                            </li>
-                          </ul>
+                           <h3 class="footer_widget_title item_text_1 d-lg-block d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#footerCustomer-three"
+                                style="cursor: pointer;">
+                                
+                              Perkhidmatan
+                              <span class="d-lg-none">+</span>
+                            </h3>
+
+                            <div id="footerCustomer-three" class="collapse d-lg-block">
+                              <ul class="page_list unordered_list_block">
+                                <li><a href="pinjaman-peribadi-page"><span class="item_text_3">Pinjaman Peribadi</span></a></li>
+                                
+                              </ul>
+                            </div>
                         </div>
                       </div>
                       <div class="col col-md-6 col-sm-6">
                         <div class="footer_widget">
-                          <h3 class="footer_widget_title item_text_1">Khidmat Pelanggan</h3>
-                          <ul class="page_list unordered_list_block">
-                            <li>
-                              <a href="contact-us">
-                                <!-- <span class="item_icon"><i class="fas fa-caret-right"></i></span> -->
-                                <span class="item_text_3">Hubungi Kami</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="faq">
-                                <span class="item_text_3">FAQ</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="privacy-policy">
-                                <span class="item_text_3">Dasar Privasi</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="terma-dan-syarat">
-                                <span class="item_text_3">Kenyataan Penafian</span>
-                              </a>
-                            </li>
-                          </ul>
+                           <h3 class="footer_widget_title item_text_1 d-lg-block d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#footerCustomer-four"
+                                style="cursor: pointer;">
+                                
+                              Khidmat Pelanggan
+                              <span class="d-lg-none">+</span>
+                            </h3>
+
+                            <div id="footerCustomer-four" class="collapse d-lg-block">
+                              <ul class="page_list unordered_list_block">
+                                <li><a href="contact-us"><span class="item_text_3">Hubungi Kami</span></a></li>
+                                <li><a href="faq"><span class="item_text_3">FAQ</span></a></li>
+                                <li><a href="privacy-policy"><span class="item_text_3">Dasar Privasi</span></a></li>
+                                <li><a href="terma-dan-syarat"><span class="item_text_3">Kenyataan Penafian</span></a></li>
+                              </ul>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -1379,7 +1394,7 @@
     <script src="assets/js/bootstrap-dropdown-ml-hack.js"></script>
 
     <!-- animation - jquery include -->
-    <script src="assets/js/cursor.js"></script>
+    <!-- <script src="assets/js/cursor.js"></script> -->
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/tilt.min.js"></script>
     <script src="assets/js/parallax.min.js"></script>
@@ -1448,11 +1463,11 @@
             moreFaqs.style.display = 'block';
             this.textContent = 'Lihat Kurang';
             this.classList.remove('btn_blue', 'text-white');
-            this.classList.add('btn-light');
+            this.classList.add('btn_blue', 'text-white');
         } else {
             moreFaqs.style.display = 'none';
             this.textContent = 'Lihat Lagi';
-            this.classList.remove('btn-light');
+            this.classList.remove('btn_blue', 'text-white');
             this.classList.add('btn_blue', 'text-white');
         }
       });

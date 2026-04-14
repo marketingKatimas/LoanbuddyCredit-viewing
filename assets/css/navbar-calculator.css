@@ -88,12 +88,8 @@
     background: rgb(255, 255, 255);
 }
 
-@media (max-width: 425px) {
-
-}
-
-@media (max-width: 376px) {
-    
+.main_menu_list .dropdown-menu > li > a:before {
+  display: none;
 }
 
 /* Mohon Sekarang Button */
@@ -118,7 +114,7 @@
   background-color: #ffffff;
   border-radius: 45px;
   letter-spacing: 1px;
-  padding: 10px;
+  padding: 10px 20px;
   margin-left: -10px;
   overflow: hidden;
   position: relative;
@@ -183,11 +179,11 @@
 
 @media (max-width: 500px) {
   .btn_semak_layak {
-      letter-spacing: 0px;
+      letter-spacing: -0.5px;
   }
 
   .btn_semak_layak span small {
-      font-size: 13px;
+      font-size: 10px;
       line-height: 15px;
   }
 }
@@ -221,3 +217,49 @@
     border-top: 1px solid #ffffff;
     padding: 25px 0;
 }
+
+.ms-3vw {
+    margin: 0px 3vw;
+}
+
+
+
+@media (max-width: 500px) { 
+  
+    /* footer start */
+    .site_footer .site_logo {
+        margin-bottom: 5px;
+        margin-left: 35px;
+        margin-right: 10px;
+    }
+
+    .site_footer p {
+        margin-bottom: 5px;
+    }
+
+    .site_footer .footer_widget_area {
+    padding: 20px 30px;
+    }
+
+
+    /* footer end */
+
+    .calc-head-custom {
+        font-size: 30px!important;
+        line-height: 2rem!important;
+    }
+
+    /* .col {
+        padding: 13px;
+    } */
+
+    .section_space_lg-mobile {
+        padding-bottom: 60px;
+        padding-top: 100px;
+    }
+    .section_space_lg-mobile-2 {
+        padding-bottom: 60px;
+        padding-top: 10px;
+    }
+}
+

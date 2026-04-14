@@ -29,7 +29,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 520px;
+  /* min-height: 520px; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -38,6 +38,14 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 60vh;
+}
+
+.banner_description {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    
+    margin: 2em;
 }
 
 .faq-floating-2 {
@@ -70,14 +78,67 @@
         font-weight: 700;
     }
 
-    .about_banner {
-        height: 500px !important;
+    .faq_container {
+        padding: 0 5vh;
+    }
+
+    .about_banner_faq {
+        height: 50vh!important;
      }
 
      .center-mobile-faq {
         margin-top: -49vh;
         padding: 0 45px;
      }
+
+     .faq_banner_main{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        /* min-height: 520px; */
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        /* padding: 70px 115px; */
+        background-size: cover; /* Updated to cover */
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 40vh;
+    }
+
+    .section_heading .heading_description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    }
+
+    .accordion {
+    font-size: 14px;
+    line-height: 24px;
+    }
+
+    .accordion p{
+    font-size: 14px;
+    line-height: 24px;
+    }
+
+    .accordion .accordion-button {
+        font-size: 18px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .faq-btn-text {
+        font-size: 18px;
+        align-items: center;
+        margin: 20px 0px;
+    }
+
+  
+
+     
 }
 
 @media (max-width: 425px) {

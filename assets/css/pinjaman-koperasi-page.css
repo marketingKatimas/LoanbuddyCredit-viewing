@@ -12,6 +12,11 @@
   color: #1969d2!important;
 }
 
+.text-lightgrey{
+    color: #424143!important;
+}
+
+
 .banner-mohon-big-title {
   color: #424143!important;
   font-size: 50px;
@@ -42,11 +47,67 @@
   color: #ffffff;
 }
 
-.about_banner_main{
+/* banner */
+
+.about_banner_main {
+      padding: 100px 20px;
+      height: auto;
+  }
+
+  
+  .section_cara_mohon {
+    padding: 80px 0px 50px;
+  }
+
+
+@media (max-width: 500px) {
+
+
+  .mascot-mobile{
+
+    margin-top: 18vh;
+    max-height: 20vh!important;
+  }
+
+  .intro_video_section {
+    padding: 50px 0px;
+  }
+
+  .item_icon {
+    width: 50%!important;
+    height: 50%!important;
+  }
+
+  .service_item{
+    padding: 18px!important;
+    height: 35vh!important;
+  }
+  /* pembiayaan peribadi */
+
+  .row .custom-row-margin {
+        padding: 0px 8vw;
+    }
+
+  /* pembiayaan peribadi end */
+
+  .about_banner-mobile {
+      min-height: 50vh!important;
+  }
+
+  .section_space_lg-mobile {
+    /* padding: none!important; */
+    max-height: 40vh!important;
+  }
+
+  .about_banner_main{
+    height: 30vh!important;
+  }
+
+  .about_banner_main{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 520px;
+  /* min-height: 520px; */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -54,9 +115,9 @@
   background-size: cover; /* Updated to cover */
   background-repeat: no-repeat;
   background-position: center;
-  height: 50vh;
+  height: 10vh;
 }
-
+}
 
 
 .about_banner_main .banner_description {
@@ -610,6 +671,8 @@
 }
 
 @media (max-width: 500px) {
+
+  
   .btn_semak_layak {
       letter-spacing: 0px;
   }
@@ -619,10 +682,8 @@
       line-height: 15px;
   }
 
-  .about_banner_main {
-      padding: 40px 20px;
-      height: auto;
-  }
+  
+  
 }
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 
@@ -810,6 +871,90 @@
   .deco_item_pp_8 {
       display: none;
   }
+
+  .row_requirement {
+    row-gap: 5px!important;
+  }
+
+  .col-mohon {
+    padding: 0 10vw!important;
+  }
+
+  .col-faq {
+        padding: 0 10vw!important;
+    }
+
+    .col-desc{
+        padding: 0 10vw!important;
+    }
+
+    .section_heading .heading_description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    }
+
+    .accordion {
+    font-size: 14px;
+    line-height: 24px;
+    }
+
+    .accordion p{
+    font-size: 14px;
+    line-height: 24px;
+    }
+
+    .accordion .accordion-button {
+        font-size: 18px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .faq-btn-text {
+        font-size: 18px;
+        align-items: center;
+        margin: 20px 0px;
+    }
+
+    .border_blue_new span small{
+        font-size: 14px;
+    }
+
+
+    .about_banner_main {
+      padding: 0px 30px;
+      /* height: auto; */
+      min-height: 45vh!important;
+    }
+
+    .site_header_1 + main {
+        padding-top: 20px!important;
+        padding-bottom: 0px!important;
+    }
+
+    .about_banner_main .banner_description {
+        font-size: 15px !important;
+        line-height: 24px;
+        color: #424143;
+        margin: 20px 0px;
+    }
+
+    .btn_wrap {
+        padding: 20px 0px!important;
+    }
+
+    .bg_perkhidmatan {
+        padding: 50px 0px!important;
+    }
+
+    .item_content p{
+        font-size: 17px;
+        line-height: 24px;
+    }
+    
+
 }
 
 @media (max-width: 425px) {
@@ -836,11 +981,9 @@
   /* height: 50vh; */
 
   margin-bottom: 5vh;
-  padding-bottom: 60px;
+  /* padding-bottom: 60px; */
   
-}
-
-
+  }
 
 }
 
