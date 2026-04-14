@@ -530,6 +530,15 @@
   justify-content: center;
 }
 
+.cta_home h2 {
+  font-size: 2.2rem;
+}
+
+.cta_home_new {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .pp-floating-2 {
   max-width: 300px !important;
   position: absolute;
@@ -766,7 +775,14 @@
       margin: 0px 33px;
   }
 
-  
+  .cta_home {
+    height: 190px;
+    padding: 25px 0px;
+  }
+
+  .cta_home h2 {
+    font-size: 1.1rem !important;
+  }
 
   .row_mohon_pinjaman_peribadi {
       position: relative;

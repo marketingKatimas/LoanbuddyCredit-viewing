@@ -261,31 +261,31 @@
 
   // --------------------------------------------------
   // Swiper Initialization (Only for Mobile) - Start
-  $(document).ready(function() {
-    if (window.innerWidth <= 768) {
-        var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 3,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 1500,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                480: { slidesPerView: 2 },
-                768: { slidesPerView: 3 }
-            }
-        });
-    }
-  });
+  // $(document).ready(function() {
+  //   if (window.innerWidth <= 768) {
+  //       var swiper = new Swiper('.swiper-container', {
+  //           slidesPerView: 3,
+  //           spaceBetween: 20,
+  //           loop: true,
+  //           autoplay: {
+  //               delay: 1500,
+  //               disableOnInteraction: false,
+  //           },
+  //           pagination: {
+  //               el: '.swiper-pagination',
+  //               clickable: true,
+  //           },
+  //           navigation: {
+  //             nextEl: '.swiper-button-next',
+  //             prevEl: '.swiper-button-prev',
+  //           },
+  //           breakpoints: {
+  //               480: { slidesPerView: 2 },
+  //               768: { slidesPerView: 3 }
+  //           }
+  //       });
+  //   }
+  // });
   // Swiper Initialization (Only for Mobile) - End
   // --------------------------------------------------
 
