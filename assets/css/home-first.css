@@ -227,6 +227,8 @@
     }
 }
 
+
+
 @media screen and (max-width: 1920px) {
     .container-banner-mohon {
         margin: 0 265px !important;
@@ -359,6 +361,10 @@
     }
 }
 
+.site_footer .site_logo {
+  margin-bottom: 5px;
+}
+
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 .btn_semak_layak {
     z-index: 3;
@@ -366,7 +372,7 @@
     background-color: #ffffff;
     border-radius: 45px;
     letter-spacing: 1px;
-    padding: 10px;
+    padding: 10px 18px;
     margin-left: -10px;
     overflow: hidden;
     position: relative;
@@ -440,3 +446,4 @@
     }
 }
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
+

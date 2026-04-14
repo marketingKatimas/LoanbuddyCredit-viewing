@@ -33,6 +33,9 @@
     background: white;
 }
 
+.main_menu_list .dropdown-menu > li > a:before {
+  display: none;
+}
 .font-ramai {
     font-size: 48px;
     margin-top: 35px;
@@ -277,6 +280,8 @@
     .section_space_faq {
         padding-top: 42px !important;
         padding-bottom: 60px;
+
+        margin: 0px 7vw!important;
     }
 
     .faq_section .accordion .accordion-button {
@@ -355,4 +360,26 @@
 .copyright_widget .copyright_text {
     border-top: 1px solid #ffffff;
     padding: 25px 0;
+}
+
+
+@media (max-width: 500px) { 
+  
+    /* footer start */
+    .site_footer .site_logo {
+        margin-bottom: 5px;
+        margin-left: 35px;
+        margin-right: 10px;
+    }
+
+    .site_footer p {
+        margin-bottom: 5px;
+    }
+
+    .site_footer .footer_widget_area {
+    padding: 20px 30px;
+    }
+
+
+    /* footer end */
 }

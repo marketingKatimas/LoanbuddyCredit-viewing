@@ -84,6 +84,9 @@
     color: white;
 }
 
+.main_menu_list .dropdown-menu > li > a:before {
+  display: none;
+}
 .main_menu_list .dropdown-menu > li:hover > a:before {
     background: rgb(255, 255, 255);
 }

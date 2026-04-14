@@ -5,6 +5,12 @@
     right: -67%;
 }
 
+
+.text-blue {
+    color: #044bd9!important;
+}
+
+
 #view-more-faqs {
     display: block;
     margin: 20px auto;
@@ -37,8 +43,10 @@
   background-size: cover; /* Updated to cover */
   background-repeat: no-repeat;
   background-position: center;
-  height: 60vh;
+  height: 38vh;
 }
+
+
 
 .banner_description {
     font-size: 18px;
@@ -83,7 +91,7 @@
     }
 
     .about_banner_faq {
-        height: 50vh!important;
+        height: 60vh!important;
      }
 
      .center-mobile-faq {
@@ -103,11 +111,11 @@
         background-size: cover; /* Updated to cover */
         background-repeat: no-repeat;
         background-position: center;
-        height: 40vh;
+        height: 30vh;
     }
 
     .section_heading .heading_description {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 24px;
     }
@@ -118,12 +126,12 @@
     }
 
     .accordion p{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     }
 
     .accordion .accordion-button {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     body {
@@ -136,8 +144,21 @@
         margin: 20px 0px;
     }
 
-  
+    .section_heading .heading_text {
+        font-size: 36px;
+        line-height: 40px;
+        margin-bottom: 18px;
+    }
 
+
+    .banner-mohon-big-title {
+        font-size: 25px!important;
+    }
+
+    .banner-mohon-description {
+        font-family: "Work Sans", sans-serif;
+        font-size: 15px!important;
+    }
      
 }
 
@@ -153,4 +174,16 @@
         margin-top: -67vh;
         padding: 10px;
     }
+}
+
+
+.banner-mohon-big-title {
+    font-size: 60px;
+    font-weight: 800;
+    color: rgb(66, 65, 67) !important;
+}
+
+.banner-mohon-description {
+    font-family: "Work Sans", sans-serif;
+    font-size: 23px;
 }

@@ -201,6 +201,11 @@ hr {
   .hero_banner.style_2 .banner_description_home {
     margin: auto auto 20px !important;
   }
+  
+  .site_footer .site_logo img {
+    max-height: 15vh;
+  }
+
 }
 .custom-row-margin {
   margin: -15px;
@@ -248,7 +253,7 @@ hr {
   -webkit-box-flex: unset;
       -ms-flex: unset;
           flex: unset;
-  padding: 13px;
+  padding: 15px;
 }
 
 .dropdown-menu {

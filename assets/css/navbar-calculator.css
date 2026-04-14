@@ -92,6 +92,13 @@
   display: none;
 }
 
+/* .main_menu_list,
+.main_menu_list ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+} */
+
 /* Mohon Sekarang Button */
 .btn_semak_layak {
     color: #F20505;
@@ -114,7 +121,7 @@
   background-color: #ffffff;
   border-radius: 45px;
   letter-spacing: 1px;
-  padding: 10px 20px;
+  padding: 10px 18px;
   margin-left: -10px;
   overflow: hidden;
   position: relative;

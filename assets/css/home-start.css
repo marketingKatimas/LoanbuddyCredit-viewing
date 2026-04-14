@@ -897,6 +897,40 @@ h1 {
 	}
 }
 
+@media (max-width: 500px) {
+   .btn_semak_layak {
+      letter-spacing: -0.5px;
+  }
+
+  .btn_semak_layak span small {
+      font-size: 10px;
+      line-height: 15px;
+  }
+
+  /* footer start */
+    .site_footer .site_logo {
+        margin-bottom: 5px;
+        margin-left: 35px;
+        margin-right: 10px;
+    }
+
+    .site_footer p {
+        margin-bottom: 5px;
+    }
+
+    .site_footer .footer_widget_area {
+    padding: 20px 30px;
+    }
+
+
+    /* footer end */
+}
+
+
+.site_footer .site_logo img{
+  max-height: 15vh;
+}
+
 .btn.border_dark {
 	color: #1f1d0d;
 	border-color: #1f1d0d

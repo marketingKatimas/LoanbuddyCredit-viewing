@@ -900,12 +900,12 @@
     }
 
     .accordion p{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     }
 
     .accordion .accordion-button {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     body {
