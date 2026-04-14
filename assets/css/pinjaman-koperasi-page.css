@@ -23,7 +23,10 @@
 
 .banner-mohon-big-title {
   color: #424143!important;
-  font-size: 50px;
+  font-size: 60px;
+  font-weight: 800;
+  line-height: 68px;
+  margin-bottom: 20px;
 }
 
 .img-75 {
@@ -55,7 +58,7 @@
 
 .about_banner_main {
       padding: 100px 20px;
-      height: auto;
+      height: 50vh;
   }
 
   
@@ -125,10 +128,15 @@
 
 
 .about_banner_main .banner_description {
-  font-size: 25px!important;
-  line-height: 24px;
+  /* font-size: 25px!important;
+  line-height: 24px; */
   color: #424143;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
+  font-family: 'Work Sans', sans-serif;
+  font-size: 23px !important;
+  line-height: 28px !important;
+  margin-top: 37px;
+  margin-bottom: 0px !important;
 }
 
 /* border latest  */
