@@ -7,6 +7,8 @@
     background: #044BD9;
 }
 
+
+
 .site-header-logo {
     height: 100px !important;
 }
@@ -193,6 +195,7 @@
     .site_header {
         padding: 16px 0 !important;
     }
+    
 
     .hero_banner.style_2 {
         height: 380px;
@@ -290,7 +293,7 @@
 
     .faq-btn-text {
         margin-bottom: 22px;
-        font-size: 25px;
+        font-size: 22px;
         justify-content: center;
     }
 

@@ -44,6 +44,9 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 38vh;
+
+  padding-top: 35px;
+    padding-bottom: 50px;
 }
 
 
@@ -153,6 +156,8 @@
 
     .banner-mohon-big-title {
         font-size: 25px!important;
+        margin-left: 4vw!important;
+        margin-right: 4vw!important;
     }
 
     .banner-mohon-description {
@@ -185,5 +190,10 @@
 
 .banner-mohon-description {
     font-family: "Work Sans", sans-serif;
-    font-size: 23px;
+    font-size: 20px;
+}
+
+.section_contact_us_lg {
+    
+    height: 38vh;
 }

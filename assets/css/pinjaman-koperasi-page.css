@@ -4,6 +4,10 @@
   color: white;
 }
 
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
 .text-dark {
   color: #05122c!important;
 }
@@ -925,13 +929,14 @@
     }
 
     body {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .faq-btn-text {
-        font-size: 18px;
-        align-items: center;
+        font-size: 22px;
+        /* align-items: center; */
         margin: 20px 0px;
+
     }
 
     .border_blue_new span small{
