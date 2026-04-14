@@ -162,13 +162,12 @@
         <section class="page_banner about_banner_1 section_space_lg overflow-hidden decoration_wrap mouse_move" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="container container_2 cta_container ">
             <div class="row z-index-3 row-home-custom">
-              <div class="col col-lg-5 p-none d-flex align-items-end">
-                    
-                <img src="assets/images/about-us-page.png" loading="lazy" class="w-100 about-us-img-1">
+              <div class="col col-lg-5 p-none d-flex align-items-end justify-content-center">
+                <img src="assets/images/about-us-page.png" loading="lazy" class="about-us-img-1">
               </div>
-              <div class="col col-lg-7 pt-30">
+              <div class="col col-lg-7 pt-30 about-us-box-mobile">
                 
-                <div class="col-lg-12 perkhidmatan-padding justify-content-start text-grey pt-30">
+                <div class="col-lg-12 perkhidmatan-padding justify-content-start text-grey">
                   <h3 class="item_title item_title_about mb-4 ">
                     Tentang Loanbuddy Credit
                   </h3>
@@ -218,7 +217,7 @@
 
          <!-- Kelebihan Loanbuddy Section - Start test
         ================================================== -->
-        <section class="section_space_lg bg_grey">
+        <section class="section_space_lg section_space_btm_lg bg_grey">
           <div class="container position-relative">
             <div class="section_heading">
               <div class="row align-items-center justify-content-lg-between">
@@ -230,9 +229,10 @@
               </div>
             </div>
             <div class="row row_loanbuddy_kelebihan text-white">
-              <img src="assets/images/about/about-us-grid-image.webp" class="d-none d-md-block">
+              <img src="assets/images/about/about-us-fullgrid-1.webp" class="d-none d-md-block">
               
-              <div class="d-block d-md-none">
+              <!-- d-block d-md-none -->
+              <div class="d-none">
                 <div class="col col-lg-4 p-col-about-us tilt">
                   <div class="grid-about-us bg_color_lightgrey p-col-2-3">
                     <div class="grid-inner-about-us">
@@ -368,6 +368,72 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Mobile change to carousel view -->
+              <div class="testimonial_carousel ml-150 ml-10s d-block d-md-none">
+                <div class="common_carousel_2col" data-cursor-text="Drag" data-slick='{"dots":false}'>
+                  <div class="carousel_item">
+                    <div class="testimonial_item carousel-slide-01">
+                      <div class="testimonial_content">
+                        <h5 class="testimonial_name text-white">Penjimatan masa:</h5><br>
+                        <p class="text-white">
+                          Proses yang biasanya mengambil masa berhari-hari kini boleh diselesaikan hanya dalam beberapa minit bersama kami.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel_item">
+                    <div class="testimonial_item carousel-slide-02">
+                      <div class="testimonial_content">
+                        <h5 class="testimonial_name text-white">Cekap:</h5> <br>
+                        <p class="text-white">
+                          Tak perlu pening kepala menyelidik banyak pemberi pinjaman. Kami sediakan pilihan terbaik yang sesuai untuk anda - semuanya sah dan boleh dipercayai. 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel_item">
+                    <div class="testimonial_item carousel-slide-03">
+                      <div class="testimonial_content">
+                        <h5 class="testimonial_name text-white">Ketenangan fikiran:</h5> <br>
+                        <p class="text-white">
+                          Hanya berurusan dengan pemberi pinjaman yang telah disemak secara menyeluruh oleh pakar-pakar kami. 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel_item">
+                    <div class="testimonial_item carousel-slide-04">
+                      <div class="testimonial_content">
+                        <h5 class="testimonial_name text-white">Kesahihan maklumat:</h5> <br>
+                        <p class="text-white">
+                          Kami menyediakan maklumat yang telah disahkan untuk anda membuat keputusan kewangan. 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel_item">
+                    <div class="testimonial_item carousel-slide-05">
+                      <div class="testimonial_content">
+                        <h5 class="testimonial_name text-white">Mengurangkan tekanan:</h5> <br>
+                        <p class="text-white">
+                          Kurangkan kemungkinan pinjaman tidak diluluskan dengan memohon pemberi pinjaman yang telah dipadankan. 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="carousel_arrow mln-10s d-lg-none d-flex justify-content-center">
+                  <button type="button" class="cc2c_left_arrow">
+                    <i class="far fa-arrow-left"></i>
+                    <i class="far fa-arrow-left"></i>
+                  </button>
+                  <button type="button" class="cc2c_right_arrow">
+                    <i class="far fa-arrow-right"></i>
+                    <i class="far fa-arrow-right"></i>
+                  </button>
+                </div> -->
+              </div>
               
             </div>
           </div>
@@ -457,20 +523,15 @@
         ================================================== -->
         <section class="bg_blue" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="cta_container">
-            <div class="row cta_home">
-              <div class="col-md-8 text-cta-mobile font-increase">
+            <div class="row cta_home cta_home_new col-md-10">
+              <div class="col-12 col-md-6 text-cta-mobile">
                 <h2 class="text-white ">
                   Perlukan Pinjaman Peribadi? <br>
                   Loanbuddy Credit Sedia Berkhidmat <br>
                   Untuk Anda!  
                 </h2>
               </div>
-              <div class="col-md-4 z-index-3">
-                <!-- <a href="contact-us" class="btn_cta_loanbuddy">
-                  <span>
-                    <small>Hubungi Kami</small>
-                  </span>
-                </a> -->
+              <div class="col-12 col-md-3 z-index-3">
                 <a href="apply-form-1" class="btn border_red_new cta_semak cta_mohon">
                 <span>
                   <small>Mohon Sekarang</small>
@@ -658,7 +719,7 @@
     <script src="assets/js/vanilla-calendar.min.js"></script>
 
     <!-- Custom - Jquery Include -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main-about-us.js"></script>
 
     <!-- Subscribe Newsletter Form -->
     <!-- <script src="assets/js/subscribe-newsletter-form.js"></script> -->

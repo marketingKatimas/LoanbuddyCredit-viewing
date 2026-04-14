@@ -673,7 +673,12 @@
 }
 
 .cta_home h2 {
-  font-size: 2.5rem !important;
+    font-size: 2.2rem;
+}
+
+.cta_home_new {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .cta_loanbuddy {
@@ -741,8 +746,66 @@
 }
 
 @media (max-width: 500px) {
+    .about-us-img-1 {
+        /* transform: translateY(-80px); */
+        width: 82%;
+    }
+
+    .about_banner_1 {
+        height: 130vh !important;
+        padding: 70px 0px 125px;
+        margin-bottom: 32px;
+    }
+
+    .item_title_about {
+        font-size: 26px;
+    }
+
+    .about-us-box-mobile {
+        padding-left: 42px;
+        padding-right: 42px;
+    }
+
+    .section_space_lg {
+        padding-top: 42px;
+    }
+
+    .section_space_btm_lg {
+        padding-bottom: 21px;
+    }
+
+    .cta_home {
+        height: 190px;
+        padding: 25px 0px;
+    }
+
     .cta_home h2 {
-        font-size: 1.0rem !important;
+        font-size: 1.1rem !important;
+    }
+
+    .carousel-slide-01 {
+        background-color: #909090;
+        color: #ffffff;
+    }
+
+    .carousel-slide-02 {
+        background-color: #034BD9;
+        color: #ffffff;
+    }
+
+    .carousel-slide-03 {
+        background-color: #034BD9;
+        color: #ffffff;
+    }
+
+    .carousel-slide-04 {
+        background-color: #414143;
+        color: #ffffff;
+    }
+
+    .carousel-slide-05 {
+        background-color: #909090;
+        color: #ffffff;
     }
 
     .cta_loanbuddy {
@@ -859,7 +922,7 @@
     }
 
     .text-cta-mobile {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .deco_item_about_7 {
@@ -882,12 +945,19 @@
         padding: 40px 54px;
     }
 
-    .celebrate-ladybug {
+    /* .celebrate-ladybug {
         display: none;
+    } */
+
+    .about-us-deco-item-5 {
+        position: absolute;
+        margin-top: 1px;
+        margin-left: 190px;
+        margin-right: -30px;
     }
 
     .section_space_4_lg {
-        padding: 70px 45px;
+        padding: 42px 45px;
     }
 }
 
@@ -1044,6 +1114,7 @@
 @media (min-width: 992px) {
     .about-us-img-1 {
         transform: translateY(-80px);
+        width: 100%;
     }
 
     .about-us-section-2 {
@@ -1053,7 +1124,7 @@
     }
 
     .perkhidmatan-padding {
-        margin-top: 10vh;
+        margin-top: 15vh;
     }
 
     .about-us-deco-item-5 {

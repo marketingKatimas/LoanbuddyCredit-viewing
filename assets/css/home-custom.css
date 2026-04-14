@@ -51,6 +51,10 @@
     width: auto;
 }
 
+.mtn-30 {
+    margin-top: -30px;
+}
+
 .border-radius-5 {
     border-radius: 5px;
 }
@@ -64,6 +68,15 @@
 .site-footer-logo {
     height: 142px !important;
     width: auto;
+}
+
+.cta_home h2 {
+    font-size: 2.2rem;
+}
+
+.cta_home_new {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media (min-width: 992px) {
@@ -178,12 +191,118 @@
         padding: 16px 0 !important;
     }
 
+    .hero_banner.style_2 {
+        height: 380px;
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .banner-mohon-big-title {
+        font-size: 26px;
+        line-height: 32px;
+    }
+
+    .banner_description {
+        font-size: 14px !important;
+        line-height: 22px !important;
+    }
+
+    .banner_image_2 .child_image .layer {
+        max-width: 180px;
+    }
+
+    .banner_image_2 .image_wrap_11 {
+        display: block;
+        bottom: -67px;
+        right: -20%;
+        transform: rotate(-36deg);
+    }
+
+    .testimonial-deco-item {
+        display: block;
+        max-width: 142px;
+    }
+
+    .testimonial-deco-item {
+        position: absolute;
+        top: -7%;
+        left: -12%;
+        z-index: 50;
+        transform: rotate(36deg);
+    }
+
+    .ml-25s {
+        margin-left: 25px;
+    }
+
+    .cta_home {
+        height: 190px;
+        padding: 25px 0px;
+    }
+
     .cta_home h2 {
-        font-size: 1.0rem !important;
+        font-size: 1.1rem !important;
     }
     
     .carousel_item_home {
-        height: 650px !important;
+        height: 320px !important;
+    }
+
+    .testimonial_carousel .slick-dots li button {
+        background-color: transparent;
+    }
+
+    .section-home-mobile {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+    .text-center-mobile {
+        text-align: center;
+    }
+
+    .intro_video_section {
+        padding-bottom: 42px;
+    }
+
+    .section-space-md-1 {
+        padding-top: 42px;
+    }
+
+    .section_space_lg {
+        padding-top: 42px !important;
+        padding-bottom: 42px;
+    }
+
+    .section_space_faq {
+        padding-top: 42px !important;
+        padding-bottom: 60px;
+    }
+
+    .faq_section .accordion .accordion-button {
+        font-size: 20px;
+    }
+
+    .faq-btn-text {
+        margin-bottom: 22px;
+        font-size: 25px;
+        justify-content: center;
+    }
+
+    .testimonial_carousel .slick-arrow {
+        display: block !important;
+    }
+
+    .ml-10s {
+        margin-left: 10px !important;
+    }
+
+    .mln-10s {
+        margin-left: -10px !important;
+    }
+
+    .font-increase-3 {
+        font-size: 26px;
     }
 
     .mobile_menu_btn {

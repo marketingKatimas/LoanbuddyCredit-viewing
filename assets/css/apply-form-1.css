@@ -45,6 +45,10 @@
         padding: 16px 0 !important;
     }
 
+    .site_header_1 + main {
+        padding-top: 55px !important;
+    }
+
     .mobile_menu_btn {
         color: #ffffff;
     }
@@ -101,6 +105,17 @@
 @media (max-width: 500px) { 
     .container-apply-header {
         padding-top: 25px;
+    }
+
+    .banner-mohon-big-title {
+        font-size: 25px;
+    }
+
+    .banner-apply-header {
+        margin-top: 20px;
+        margin-bottom: 32px;
+        text-align: center;
+        font-size: 15px;
     }
 }
 
