@@ -3593,7 +3593,7 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
 .hero_banner.style_2 .banner_big_title,
 .hero_banner.style_2 .banner_description {
   color: #424143;
-  font-weight: lighter;
+  /* font-weight: lighter; */
 }
 .hero_banner.style_2 .banner_description {
   min-width: 500px;
