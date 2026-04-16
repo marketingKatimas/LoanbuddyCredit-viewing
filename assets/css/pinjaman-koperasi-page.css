@@ -1083,7 +1083,14 @@
         line-height: 24px;
     }
     
+    /* .slight-big .item_icon img{
+        min-width: 11vw!important;
+    } */
 
+}
+
+.slight-big .item_icon img{
+  min-width: 11vw;
 }
 
 @media (max-width: 425px) {
