@@ -289,6 +289,7 @@
 
     .faq_section .accordion .accordion-button {
         font-size: 20px;
+        line-height: 22px;
     }
 
     .faq-btn-text {
@@ -296,6 +297,32 @@
         font-size: 22px;
         justify-content: center;
     }
+
+/* faq test */
+
+        /* Sticky question under header */
+    .faq-system .accordion-button {
+        position: sticky;
+        top: 30vh; /* adjust to your header height */
+        z-index: 5;
+        background: #fff;
+    }
+
+    /* Scrollable answer */
+    .faq-answer-scroll {
+        max-height: 60vh; /* sweet spot */
+        overflow-y: auto;
+        padding-right: 10px;
+    }
+
+    /* smoother reading */
+    .faq-answer-scroll {
+        line-height: 1.6;
+        font-size: 15px;
+    }
+    
+    /* faq test end */
+
 
     .testimonial_carousel .slick-arrow {
         display: block !important;

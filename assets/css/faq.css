@@ -124,21 +124,22 @@
     }
 
     .accordion {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     }
 
     .accordion p{
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     }
 
     .accordion .accordion-button {
         font-size: 20px;
+        line-height: 22px;
     }
 
     body {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .faq-btn-text {
@@ -146,6 +147,31 @@
         align-items: center;
         margin: 20px 0px;
     }
+
+    /* faq test */
+
+    /* Sticky question under header */
+  .faq-system .accordion-button {
+    /* position: sticky;
+    top: 30vh;  */
+    z-index: 5;
+    /* background: #fff; */
+  }
+
+  /* Scrollable answer */
+  .faq-answer-scroll {
+    max-height: 60vh; /* sweet spot */
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  /* smoother reading */
+  .faq-answer-scroll {
+    line-height: 1.6;
+    font-size: 15px;
+  }
+    
+    /* faq test end */
 
     .section_heading .heading_text {
         font-size: 36px;

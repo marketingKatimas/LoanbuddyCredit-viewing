@@ -54,6 +54,14 @@
   color: #ffffff;
 }
 
+@media (max-width: 490px){
+  .centre-mobile {
+    align-items: center;
+    align-self: center;
+  }
+}
+
+
 /* banner */
 
 .about_banner_main {
@@ -89,6 +97,39 @@
     padding: 18px!important;
     height: 35vh!important;
   }
+
+
+  /* service item mobile */
+  .service_item_mobile{
+    padding: 18px!important;
+    height: 35vh!important;
+  }
+
+  .service_item_mobile {
+  border-radius: 8px;
+  position: relative;
+  padding: 30px 40px 40px;
+  /* -webkit-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  background-color: #f3f3f3;
+  border: 2px solid #F6F6F6;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(31, 29, 13, 0.2);
+          box-shadow: 0px 1px 1px 0px rgba(31, 29, 13, 0.2);
+  aspect-ratio: 1 / 1;   */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+
+  
+
+  /* service item mobile end */
+
+
+
+
   /* pembiayaan peribadi */
 
   .row .custom-row-margin {
@@ -621,6 +662,24 @@
   right: -2vw;
   margin-top: -38vh;
 }
+
+/* @media (hover: hover) and (pointer: fine) {
+
+  .deco_item_pp_9 img {
+    animation: floatXY 4s ease-in-out infinite;
+  }
+
+  @keyframes floatXY {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(10px, -10px); }
+    50%  { transform: translate(20px, 0); }
+    75%  { transform: translate(10px, 10px); }
+    100% { transform: translate(0, 0); }
+  }
+
+} */
+
+
 /* ------------------ Button Semak Kelayakan at Top Navbar ----------------------- */
 /* .btn_semak_layak {
   z-index: 3;
@@ -917,23 +976,24 @@
     }
 
     .section_heading .heading_description {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 24px;
     }
 
     .accordion {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     }
 
     .accordion p{
-    font-size: 16px;
+    font-size: 15px;
     line-height: 24px;
     }
 
     .accordion .accordion-button {
-        font-size: 20px;
+      font-size: 20px;
+      line-height: 22px;
     }
 
     body {
@@ -946,6 +1006,39 @@
         margin: 20px 0px;
 
     }
+
+    .section_heading .heading_text {
+      font-size: 38px;
+      line-height: 42px;
+      text-align: center;
+  }
+
+    
+
+    /* faq test */
+
+    /* Sticky question under header */
+  .faq-system .accordion-button {
+    position: sticky;
+    top: 30vh; /* adjust to your header height */
+    z-index: 5;
+    background: #fff;
+  }
+
+  /* Scrollable answer */
+  .faq-answer-scroll {
+    max-height: 60vh; /* sweet spot */
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  /* smoother reading */
+  .faq-answer-scroll {
+    line-height: 1.6;
+    font-size: 15px;
+  }
+    
+    /* faq test end */
 
     .border_blue_new span small{
         font-size: 14px;

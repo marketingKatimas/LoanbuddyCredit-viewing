@@ -109,6 +109,8 @@
     .row_loanbuddy_works_2 {
         margin: 0px 3px;
         font-size: 14px;
+        align-items: center;
+        align-self: center;
     }
 
     .section_space_3_lg {
@@ -119,7 +121,22 @@
     .desc-content-justify {
         margin: 0px 5px!important;
     }
+
+    .loan-calculator .group{
+        /* width: 100vw; */
+    }
     
+    /* .col {
+  --bs-gutter-x: 0;
+    } */
+
+    .row {
+  justify-content: center;
+    }
+}
+
+.row{
+    justify-content: center;
 }
 
 .desc-content-justify {
@@ -260,6 +277,9 @@
 
      }
 
+     .row_loanbuddy_works .step-text {
+        font-size: 15px;
+    }
      
 }
 
@@ -383,22 +403,57 @@
     }
 
     .accordion {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 24px;
     }
 
     .accordion p{
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 24px;
+    }
+
+    .accordion p li{
+    font-size: 15px;
     line-height: 24px;
     }
 
     .accordion .accordion-button {
         font-size: 20px;
+        line-height: 22px;
     }
 
     body {
-        font-size: 14px;
+        font-size: 15px;
     }
+
+    .font-decrease {
+        font-size: 0.9rem;
+    }
+
+    /* faq test */
+
+    /* Sticky question under header */
+  .faq-system .accordion-button {
+    position: sticky;
+    top: 30vh; /* adjust to your header height */
+    z-index: 5;
+    background: #fff;
+  }
+
+  /* Scrollable answer */
+  .faq-answer-scroll {
+    max-height: 60vh; /* sweet spot */
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  /* smoother reading */
+  .faq-answer-scroll {
+    line-height: 1.6;
+    font-size: 15px;
+  }
+    
+    /* faq test end */
 }
 
 /* CTA standardized start*/
