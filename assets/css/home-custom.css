@@ -231,11 +231,18 @@
 
     .testimonial-deco-item {
         position: absolute;
+        /* top: -7%;
+        left: -12%;
+        z-index: 50; */
+        transform: rotate(36deg);
+    }
+
+     .testimonial-deco-item-inner {
         top: -7%;
         left: -12%;
         z-index: 50;
-        transform: rotate(36deg);
     }
+
 
     .ml-25s {
         margin-left: 25px;
