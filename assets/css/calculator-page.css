@@ -430,6 +430,10 @@
         font-size: 0.9rem;
     }
 
+    .mobile-margin{
+        margin-bottom: 4.18vh;
+    }
+
     /* faq test */
 
     /* Sticky question under header */
