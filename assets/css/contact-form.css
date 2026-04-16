@@ -39,9 +39,26 @@
 }
 
 .contact-box{
-    padding: 50px;
+    padding: 30px;
     border-radius: 5px;
     height: 100%;
+}
+
+
+@media (min-width: 991px) {
+    .contact-box{
+        padding-right: 25px;
+        padding-left: 35px;
+    }
+}
+
+.heading-contact {
+    font-size: 24px;
+}
+
+.section_space_lg_contact {
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .error-contact-text {
@@ -127,6 +144,11 @@
 
     .about_banner {
         height: 60vh !important;
+    }
+
+    .section_space_lg_contact {
+        padding-top: 42px;
+        padding-bottom: 42px;
     }
 
     .banner-mohon-big-title {
