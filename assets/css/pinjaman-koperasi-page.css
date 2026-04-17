@@ -1101,26 +1101,29 @@
 
 @media (max-width: 390px) {
   .custom-margin-pp {
-      margin-top: -47vh;
+    margin-top: -47vh;
   }
 
   .font-decrease{
     font-size: 0.2rem!important;
-}
-
-.font-increase h2{
-    font-size: 1.5rem!important;
-}
-
-  .service_item .item_icon {
-  width: 40vw;
-  /* height: 50vh; */
-
-  margin-bottom: 5vh;
-  /* padding-bottom: 60px; */
-  
   }
 
+  .font-increase h2{
+    font-size: 1.5rem!important;
+  }
+
+  .service_item .item_icon {
+    width: 40vw;
+    /* height: 50vh; */
+    margin-bottom: 5vh;
+    /* padding-bottom: 60px; */
+  }
+}
+
+@media (max-width: 380px) {
+  .site_header_1 + main {
+    padding-top: 60px !important;
+  }
 }
 
 .font-increase h2{
