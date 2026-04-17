@@ -44,9 +44,8 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 38vh;
-
   padding-top: 35px;
-    padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 
 
@@ -197,6 +196,17 @@
     .center-mobile-faq {
         margin-top: -53vh;
         padding: 15px;
+    }
+}
+
+@media (max-width: 380px) { 
+    .faq_banner_main{
+        padding-top: 60px;
+    }
+
+    .banner_description {
+        line-height: 25px;
+        margin: 1em 1em 2.5em;
     }
 }
 
