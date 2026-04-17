@@ -1055,12 +1055,12 @@
     .about_banner_main {
       padding: 0px 30px;
       /* height: auto; */
-      min-height: 45vh!important;
+      min-height: 35vh !important;
     }
 
     .site_header_1 + main {
-        padding-top: 20px!important;
-        padding-bottom: 0px!important;
+        padding-top: 60px !important;
+        padding-bottom: 0px !important;
     }
 
     .about_banner_main .banner_description {
@@ -1123,6 +1123,10 @@
 @media (max-width: 380px) {
   .site_header_1 + main {
     padding-top: 60px !important;
+  }
+
+  .about_banner_main {
+    min-height: 42vh !important;
   }
 }
 
