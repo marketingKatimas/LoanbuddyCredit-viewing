@@ -464,6 +464,12 @@
     /* faq test end */
 }
 
+@media  (max-width: 385px) {
+    .mobile-margin {
+        margin-bottom: 4.6vh;
+    }
+}
+
 /* CTA standardized start*/
 
 .cta_home h2 {
