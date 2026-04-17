@@ -186,6 +186,12 @@
     }
 }
 
+@media (max-width: 360px) {
+    .font-decrease {
+        font-size: 0.7rem !important;
+    }
+}
+
 .row_loanbuddy_works {
     justify-content: center;
     margin: 0 8px;
