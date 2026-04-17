@@ -178,7 +178,7 @@
     }
 
     .font-decrease{
-        font-size: 0.2rem!important;
+        font-size: 0.7rem!important;
     }
 
     .font-increase h2{
@@ -274,6 +274,7 @@
 
      .calltoaction_form{
         margin-bottom: 1vh!important;
+        
      }
 
      .value {
@@ -286,6 +287,8 @@
     }
      
 }
+
+
 
 
 
@@ -493,3 +496,10 @@
 }
 
 /* CTA standardized end */
+
+@media (max-width: 380px) {
+    .value {
+        font-size: 1.5rem!important;
+
+     }
+}
