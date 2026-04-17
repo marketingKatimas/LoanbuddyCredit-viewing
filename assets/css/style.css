@@ -1187,8 +1187,8 @@ blockquote p {
   color: #ffffff;
   /* border-color: #1F1D0D;
   background-color: #1F1D0D; */
-  border-color: #1AB79A;
-  background-color: #1AB79A;
+  border-color: #044bd9;
+  background-color: #044bd9;
 }
 .carousel_arrow button:hover:nth-child(1) i:nth-child(1) {
   left: -110%;
@@ -1211,7 +1211,7 @@ blockquote p {
           transform: translate(-50%, -50%);
 }
 .carousel_arrow button:hover i {
-  color: #F7FF62;
+  color: #fff;
 }
 
 .arrow_top_right {
