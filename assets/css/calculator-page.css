@@ -135,7 +135,15 @@
     } */
 
     .row {
-  justify-content: center;
+        justify-content: center;
+    }
+
+    .col-mobile{
+        padding: 0px !important;
+    }
+
+    .calltoaction_form {
+        padding: 25px;
     }
 }
 
@@ -189,6 +197,18 @@
 @media (max-width: 360px) {
     .font-decrease {
         font-size: 0.7rem !important;
+    }
+
+    .col-mobile{
+        padding: 0px !important;
+    }
+
+    .calltoaction_form {
+        padding: 15px!important;
+    }
+
+    .calc-button {
+        padding: 10px;
     }
 }
 
