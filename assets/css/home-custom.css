@@ -390,6 +390,14 @@
     .deco-item-mascot-1 {
         top: 6.7%;
     }
+
+    .service_item .item_title {
+        font-size: 30px;
+    }
+
+    .service_item .item_content p {
+        font-size: 16px;
+    }
 }
 
 /* Footer */
