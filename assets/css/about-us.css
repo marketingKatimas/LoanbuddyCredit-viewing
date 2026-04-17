@@ -1,7 +1,7 @@
 /* newly added start*/
 
 .celebrate-ladybug{
-  margin-top: -120px;   /* adjust value */
+    margin-top: -142px;
 }
 
 .text_white{
@@ -752,9 +752,10 @@
     }
 
     .about_banner_1 {
-        height: 130vh !important;
-        padding: 70px 0px 125px;
-        margin-bottom: 32px;
+        padding: 0px 0px 22px !important;
+        height: fit-content !important;
+        /* height: 130vh !important;
+        margin-bottom: 32px; */
     }
 
     .item_title_about {
