@@ -270,3 +270,11 @@
     }
 }
 
+.no-link,
+.no-link a,
+.no-link a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none;
+  cursor: default;
+}
