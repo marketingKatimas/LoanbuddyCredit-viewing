@@ -321,9 +321,9 @@
         justify-content: center;
     }
 
-/* faq test */
+    /* faq test */
 
-        /* Sticky question under header */
+    /* Sticky question under header */
     .faq-system .accordion-button {
         position: sticky;
         top: 30vh; /* adjust to your header height */
@@ -383,6 +383,12 @@
 
     .main_menu_list .dropdown-menu {
         border: 2px solid #044bd9;
+    }
+}
+
+@media (max-width: 380px) {
+    .deco-item-mascot-1 {
+        top: 6.7%;
     }
 }
 
