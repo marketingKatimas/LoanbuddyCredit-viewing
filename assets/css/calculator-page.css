@@ -18,6 +18,10 @@
     color: #044BD9!important;
 }
 
+.no-link {
+  pointer-events: none;
+}
+
 /* red border button */
 .btn.border_red_new {
   color: #F20505;
