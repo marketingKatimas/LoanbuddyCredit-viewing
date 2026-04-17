@@ -196,7 +196,7 @@
 
 @media (max-width: 360px) {
     .font-decrease {
-        font-size: 0.7rem !important;
+        font-size: 0.6rem !important;
     }
 
     .col-mobile{
@@ -432,7 +432,7 @@
     .section_heading .heading_description {
     font-size: 15px;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 20px;
     }
 
     .accordion {
