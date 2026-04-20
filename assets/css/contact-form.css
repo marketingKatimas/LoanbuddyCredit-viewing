@@ -27,6 +27,16 @@
     color: white;
 }
 
+.btn-contact {
+    padding: 0px 22px;
+}
+
+.btn-contact span small {
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 20px;
+}
+
 .col-contact-form{
     padding-left: 100px;
     padding-right: 100px;
