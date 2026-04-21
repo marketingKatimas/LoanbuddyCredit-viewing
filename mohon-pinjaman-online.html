@@ -5,11 +5,10 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Upload Document for Apply form step 2 pinjaman peribadi Loanbuddy Credit">
+    <meta name="description" content="Mohon pinjaman peribadi berlesen di KL, Kuching & Bintulu. Proses selamat & mudah dengan Loanbuddy Credit. Mohon sekarang untuk maklum balas segera!">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Apply Form 2 - Upload Document | LoanBuddy Credit</title>
-
+    <title>Mohon Pinjaman Peribadi Online | Loanbuddy Credit</title>
     <link rel="shortcut icon" href="assets/images/icon.png">
 
     <!-- Framework - CSS Include -->
@@ -23,9 +22,6 @@
 
     <!-- Apply Form 1 - CSS Include -->
     <link rel="stylesheet" type="text/css" href="assets/css/apply-form-1.css">
-
-    <!-- Apply Form 2 - CSS Include -->
-    <link rel="stylesheet" type="text/css" href="assets/css/apply-form-2.css">
 
     <!-- Google Recaptcha -->
     <script src="https://www.google.com/recaptcha/api.js?render=6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_"></script>
@@ -72,6 +68,7 @@
               <nav class="main_menu navbar navbar-expand-lg">
                 <div class="main_menu_inner collapse navbar-collapse" id="main_menu_dropdown">
                   <ul class="main_menu_list unordered_list_center">
+                    <!-- <li><a class="nav-link" href="/">Laman Utama</a></li> -->
                     <div class="site_logo ms-10">
                       <a class="site_link" href="/">
                         <img src="assets/images/logo/Keyline Horizontal .png" alt="loanbuddy credit logo" class="img-75">
@@ -83,7 +80,7 @@
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="service_submenu">
                         <li class="dropdown">
-                          <a class="nav-link" href="pinjaman-peribadi-page" >
+                          <a class="nav-link" href="pinjaman-peribadi-kl-sarawak" >
                             Pinjaman Peribadi
                           </a>
                         </li>
@@ -94,8 +91,10 @@
                         Tentang Kami
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="pages_submenu">
-                        <li><a href="about-us">Kenali Kami</a></li>
-                        <li><a href="faq">F.A.Q.</a></li>
+                        <li><a href="tentang-loanbuddy-credit">Kenali Kami</a></li>
+                        
+                        <li><a href="soalan-lazim-faq">F.A.Q.</a></li>
+                        
                       </ul>
                     </li>
                     <li class="dropdown">
@@ -104,18 +103,19 @@
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="blog_submenu">
                         <!-- <li><a href="blog">Blog</a></li> -->
-                        <li><a href="kalkulator-pinjaman">Kalkulator Pinjaman</a></li>
+                        <!-- <li><a href="blog_details.html">Blog Details</a></li> -->
+                        <li><a href="kalkulator-pinjaman-loanbuddy">Kalkulator Pinjaman</a></li>
                       </ul>
                     </li>
 
-                    <li><a class="nav-link" href="contact-us">Hubungi Kami</a></li>
+                    <li><a class="nav-link" href="hubungi-kami">Hubungi Kami</a></li>
                   </ul>
                 </div>
               </nav>
             </div>
 
             <div class="col-lg-2 col-5 text-center">
-              <a href="apply-form-1" class="btn_semak_layak">
+              <a href="mohon-pinjaman-online" class="btn_semak_layak">
                 <span>
                   <small>Mohon Sekarang</small>
                 </span>
@@ -144,7 +144,7 @@
 
 
         <!-- Page Section - Start
-        ================================================== -->
+        ================================ style="background-image: url('assets/images/banner/page_banner_image.png');"================== -->
         <section class="page_banner" data-background="assets/images/banner/home-mohon/white-3d-bg.webp" data-background-mobile="assets/images/banner/home-mohon/white-3d-bg.webp">
           <div class="container container-apply-header">
             <div class="row d-flex align-items-center justify-content-center">
@@ -171,146 +171,171 @@
           <div class="container container-mohon">
             <div class="row row-mohon-1 col-12 z-index-10">
 
-                <div class="course-card-mohon course-card-mohon-2 col-lg-6">
-                  <form method="post" id="applyUploadForm" enctype="multipart/form-data">
+                <div class="course-card-mohon h-max col-lg-6">
+                  <form method="post" id="applyForm">
 
                     <div class="inner-mohon">
 
                       <div class="form-mohon-content pos-relative col-lg-12" >
                         <!-- Form Input -->
-                        <div class="form-header">
-                          <h2>Permohonan telah berjaya dihantar.</h2>
-                          <span>
-                            Nota: Untuk menyokong lagi permohonan anda, anda boleh memuat naik
-                            dokumen pilihan yang berikut. Walaupun ia tidak wajib, dokumen tersebut
-                            dapat membantu dalam kerja pemprosesan. Tekan Skip jika anda
-                            memilih untuk tidak memuat naik sebarang dokumen.
-                          </span>
+                        <div class="form-header text-center">
+                          <h3>Selamat Datang ke Loanbuddy Credit!</h3>
+                          <p>Permohonan pinjaman hanya terbuka untuk warganegara Malaysia sahaja.</p>
                         </div>
                         
                         <input type="hidden" name="pageUrl" id="pageUrl" value="">
+                        <input type="hidden" name="deviceType" id="deviceType" value="">
 
-                        <div class="upload-form-section">
-                          <div class="form-row">
-                            <div class="form-holder">
-                              <label for="applicationId">ID Permohonan</label>
-                              <input id="applicationId" name="applicationId" type="text" placeholder="Id permohonan" class="form-control" onblur="this.value = this.value.trim()" required>
-                              <div class="error-message" id="applicationIdError" style="color: red;"></div>
-                              <div class="error-message" id="invalidAppIdError" style="display: none; color: red;">
-                                  ID Permohonan Tidak Sah. <br>
-                                  Sila semak sama ada terdapat kesilapan ejaan atau perbezaan huruf besar dan kecil.
-                              </div>
-                            </div>
+                        <div class="form-row">
+                          <div class="form-holder w-100">
+                            <label for="name">Nama Penuh mengikut K.P.</label>
+                            <input id="name" name="name" type="text" placeholder="Nama Penuh" class="form-control" required>
+                            <div class="error-message" id="nameError"></div>
                           </div>
-
-                          <div class="form-row form-row-column">
-                            <!-- MyKad Upload -->
-                            <div class="form-holder form-holder-mobile">
-                              <label for="upload-file-1">Salinan MyKad (Pilihan)</label>
-                              <div class="upload-container">
-                                <div class="file-name" id="file-name-1"> </div>
-                                <label class="tp-btn-3 upload-btn1" for="upload-file-1">Muat Naik</label>
-                                <input type="file" id="upload-file-1" name="myKad" accept=".pdf,.png,.jpg,.jpeg">
-                              </div>
-                              <div class="error-message" id="myKadFileSizeError" style="color: red;"></div>
-                              <div class="error-message" id="myKadFileFormatError" style="color: red;"></div>
-                            </div>
-
-                            <div class="form-holder">
-                              <label for="upload-file-2">Penyata Gaji / Bank / KWSP Terkini (Pilihan)</label>
-                                <div class="upload-container">
-                                  <div class="file-name" id="file-name-2"> </div>
-                                  <label class="tp-btn-3 upload-btn1" for="upload-file-2">Muat Naik</label>
-                                  <input type="file" id="upload-file-2" name="supportingDocument" accept=".pdf,.png,.jpg,.jpeg">
-                                </div>
-                                <div class="error-message" id="supportDocFileSizeError" style="color: red;"></div>
-                                <div class="error-message" id="supportDocFileFormatError" style="color: red;"></div>
-                            </div>
+                        </div>
+                        <div class="form-row form-row-column">
+                          <div class="form-holder form-holder-mobile">
+                            <label for="age">Umur</label>
+                            <input id="age" name="age" type="number" placeholder="Min. 18 - Max. 60" min="18" max="60" class="form-control" required>
+                            <div class="error-message" id="ageError"></div>
                           </div>
-
-                          <div class="checkbox-row">
-                            <div class="checkbox-holder">
-                              <div class="checkbox-box">
-                                <input type="checkbox" id="mohon-agree-1" name="mohon-agree-1" required>
-                              </div>
-                              <label for="mohon-agree-1" class="checkbox-text">
-                                Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh loanbuddy melalui WhatsApp;
-                              </label>
-                            </div>
-                            <div class="checkbox-holder">
-                              <div class="checkbox-box">
-                                <input type="checkbox" id="mohon-agree-2" name="mohon-agree-2" required>
-                              </div>
-                              <label for="mohon-agree-2" class="checkbox-text">
-                                Saya/Kami telah membaca, memahami dan bersetuju untuk terikat dengan 
-                                <a href="javascript:void(0)" onclick="showTermaDanSyarat()">Terma Penggunaan</a> dan
-                                <a class="a-underline" href="javascript:void(0)" onclick="showDasarPrivasi()">Notis Privasi</a>, dan 
-                                dengan ini memberi kebenaran kepada pemprosesan data peribadi saya/kami oleh Loanbuddy Credit (“Loanbuddy”) 
-                                selaras dengan Akta Perlindungan Data Peribadi 2010.
-                              </label>
-                              <!-- <label for="mohon-agree-2" class="checkbox-text">
-                                Dengan menandakan kotak, saya telah membaca, memahami dan bersetuju dengan
-                                <a href="javascript:void(0)" onclick="showDasarPrivasi()">Dasar Privasi</a> &amp;
-                                <a class="a-underline" href="javascript:void(0)" onclick="showTermaDanSyarat()">Terma & Syarat</a>; dan,
-                              </label> -->
-                            </div>
-                            <div class="checkbox-holder">
-                              <div class="checkbox-box">
-                                <input type="checkbox" id="mohon-agree-3" name="mohon-agree-3" required>
-                              </div>
-                              <label for="mohon-agree-3" class="checkbox-text">
-                                Dengan menandakan kotak, klik pada butang "Hantar" di bawah, saya mengaku dan mengesahkan 
-                                bahawa semua maklumat yang diberikan di dalam ini adalah lengkap, benar dan tepat.
-                              </label>
-                            </div>
+                          <div class="form-holder pos-relative">
+                            <label for="phone">Nombor Telefon</label>
+                            <input id="phone" name="phone" type="text" placeholder="0123456789" pattern="[0-9]{1,12}" maxlength="12" class="form-control" required>
+                            <div class="error-message" id="phoneError"></div>
                           </div>
-
-                          <div class="button-row-2">
-                            <button 
-                              type="submit" 
-                              class="btn btn-mohon-2 g-recaptcha" 
-                              data-sitekey="6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_" 
-                              data-callback='onSubmit' 
-                              data-action='submit' 
-                              id="submitBtn">
-                              Hantar
-                            </button>
-                            <button type="button" class="btn btn-mohon-3" onclick="skipUpload()">Skip</button>
+                        </div>
+                        <div class="form-row form-row-column">
+                          <div class="form-holder form-holder-mobile">
+                            <label for="email">Emel</label>
+                            <input id="email" name="email" type="email" placeholder="Emel" class="form-control" required>
+                            <div class="error-message" id="emailError"></div>
+                          </div> 
+                          <div class="form-holder pos-relative">
+                            <label for="sector">Sila Pilih Sektor Pekerjaan</label>
+                            <i class="zmdi zmdi-caret-down"></i>
+                            <select id="sector" name="sector" class="form-control form-control-dropdown" required>
+                              <option value="" disabled selected>Sektor Perkerjaan</option>
+                              <option value="Penjawat-Awam">Penjawat Awam</option>
+                              <option value="Pekerja-GLC">Pekerja GLC</option>
+                              <option value="Pekerja-Swasta">Pekerja Swasta</option>
+                              <option value="Bekerja-Sendiri">Bekerja Sendiri</option>
+                              <option value="Freelance-Pekerja-Gig">Freelance/Pekerja Gig</option>
+                              <!-- <option value="Pekerja-Sambilan">Pekerja Sambilan</option> -->
+                              <option value="Pelajar">Pelajar</option>
+                            </select>
+                            <div class="error-message" id="sectorError"></div>
+                          </div> 
+                        </div>
+                        <div class="form-row form-row-reverse">
+                          <div class="form-holder">
+                            <label for="amount">Jumlah Yang Ingin Dipinjam</label>
+                            <input id="amount" name="amount" type="number" placeholder="Min. RM1000  -  Max. RM50,000" min="1000" max="50000" class="form-control" required>
+                            <div class="error-message" id="amountError"></div>
+                          </div>
+                          <div class="form-holder form-holder-mobile pos-relative">
+                            <label for="branch">Sila Pilih Cawangan</label>
+                            <i class="zmdi zmdi-caret-down"></i>
+                            <select id="branch" name="branch" class="form-control form-control-dropdown" required>
+                              <option value="" disabled selected>Cawangan</option>
+                              <option value="bintulu" id="Bintulu">Bintulu</option>
+                              <option value="kotaSamarahan" id="KotaSamarahan">Kota Samarahan</option>
+                              <option value="kualaLumpur" id="KualaLumpur">Kuala Lumpur</option>
+                              <!-- <option value="miri" id="Miri">Miri</option> -->
+                            </select>
+                            <div class="error-message" id="branchError"></div>
                           </div>
                         </div>
 
-                        <div id="success-message"
-                          style="display: none; color: #0468BF; border: 1px solid #0468BF; padding: 20px">
-                          Terima kasih kerana menghantar permohonan anda! Kami akan menghubungi anda dalam masa terdekat.
+                        <div class="form-row form-row-column">
+                          <div class="form-holder">
+                            <label for="salary">Gaji Kasar</label>
+                            <input id="salary" name="salary" type="number" placeholder="1700" class="form-control" min="0" step="1" required>
+                            <div class="error-message" id="salaryError"></div>
+                          </div>
+                          <!-- <div class="form-holder">
+                            <label for="nettSalary">Gaji Bersih</label>
+                            <input id="nettSalary" name="nettSalary" type="number" placeholder="1500" class="form-control" min="0" step="1" required>
+                            <div class="error-message" id="nettSalaryError"></div>
+                          </div> -->
+                          <div class="form-holder form-holder-mobile pos-relative">
+                            <label for="leadsWhere">Bagaimana Anda Tahu Tentang Kami</label>
+                            <i class="zmdi zmdi-caret-down"></i>
+                            <select id="leadsWhere" name="leadsWhere" class="form-control form-control-dropdown" required>
+                              <option value="" disabled selected>Sila Pilih</option>
+                              <option value="iklan-facebook-instagram" id="IklanFacebookInsta">Iklan Facebook / Instagram</option>
+                              <option value="iklan-tiktok" id="IklanTikTok">Iklan TikTok</option>
+                              <option value="pencarian-google" id="PencarianGoogle">Pencarian Google</option>
+                              <option value="rujukan-rakan-keluarga" id="RujukanRakanKeluarga">Rujukan Rakan / Keluarga</option>
+                              <option value="walk-in" id="WalkIn">Walk In</option>
+                              <option value="lain-lain" id="LainLain">Lain-lain</option>
+                            </select>
+                            <div class="error-message" id="leadsWhereError"></div>
+                          </div>
                         </div>
 
-                        <div id="success-upload-message"
-                          style="display: none; color: #0468BF; border: 1px solid #0468BF; padding: 20px">
-                          Dokumen berjaya dimuat naik!
-                          Terima kasih dan kami akan menghubungi anda dalam masa terdekat.
-                        </div>
-  
-                        <div id="Unsuccessfully-message" class="unsuccessfully-message-2">
-                          Penghantaran borang gagal, sila refresh dan cuba sekali lagi.
+                        <div class="checkbox-row">
+                          <div class="checkbox-holder">
+                            <div class="checkbox-box">
+                              <input type="checkbox" id="mohon-agree-1" name="mohon-agree-1" required>
+                            </div>
+                            <label for="mohon-agree-1" class="checkbox-text">
+                              Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh loanbuddy melalui WhatsApp;
+                            </label>
+                          </div>
+                          <div class="checkbox-holder">
+                            <div class="checkbox-box">
+                              <input type="checkbox" id="mohon-agree-2" name="mohon-agree-2" required>
+                            </div>
+                            <label for="mohon-agree-2" class="checkbox-text">
+                              Saya/Kami telah membaca, memahami dan bersetuju untuk terikat dengan 
+                              <a href="javascript:void(0)" onclick="showTermaDanSyarat()">Terma Penggunaan</a> dan
+                              <a class="a-underline" href="javascript:void(0)" onclick="showDasarPrivasi()">Notis Privasi</a>, dan 
+                              dengan ini memberi kebenaran kepada pemprosesan data peribadi saya/kami oleh Loanbuddy Credit (“Loanbuddy”) 
+                              selaras dengan Akta Perlindungan Data Peribadi 2010.
+                            </label>
+                          </div>
+                          <div class="checkbox-holder">
+                            <div class="checkbox-box">
+                              <input type="checkbox" id="mohon-agree-3" name="mohon-agree-3" required>
+                            </div>
+                            <label for="mohon-agree-3" class="checkbox-text">
+                              Dengan menandakan kotak, klik pada butang "Hantar" di bawah, saya mengaku dan mengesahkan 
+                              bahawa semua maklumat yang diberikan di dalam ini adalah lengkap, benar dan tepat.
+                            </label>
+                          </div>
                         </div>
 
-                        <div class="error-message-2 ps-3" id="uploadFileError"></div>
-
-                        <div id="Unsuccessfully-message" class="ps-3 unsuccessful-message">
-                          Muat naik gagal.
-                          Sila <strong>Reload</strong> halaman dan cuba sekali lagi.
+                        <div class="button-row">
+                          <button 
+                            type="submit" 
+                            class="btn btn-mohon g-recaptcha"
+                            data-sitekey="6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_" 
+                            data-callback='onSubmit'
+                            data-action='submit' 
+                            id="Submit">
+                            Hantar
+                          </button>
                         </div>
-
-                        <div id="processing-message" class="process-message">
-                          Sila tunggu sebentar, dokumen sedang dimuat naik...
-                        </div>
-                        
-
                       </div>
 
                     </div>
 
                   </form>
+
+                  <div id="success-message" class="success-message-1">
+                    Terima kasih kerana menghantar permohonan anda! Kami akan menghubungi anda dalam masa terdekat.
+                  </div>
+
+                  <div id="success-upload-message" class="success-upload-message-1">
+                    Dokumen berjaya dimuat naik!
+                    Terima kasih dan kami akan menghubungi anda dalam masa terdekat.
+                  </div>
+
+                  <div id="Unsuccessfully-message" style="display: none;" class="unsuccessfully-message">
+                    Penghantaran borang gagal, sila refresh dan cuba sekali lagi.
+                  </div>
+
                 </div>
 
                 <div class="course-card-mohon col-lg-4">
@@ -450,7 +475,7 @@
 
                             <div id="footerCustomer-three" class="collapse d-lg-block">
                               <ul class="page_list unordered_list_block">
-                                <li><a href="pinjaman-peribadi-page"><span class="item_text_3">Pinjaman Peribadi</span></a></li>
+                                <li><a href="pinjaman-peribadi-kl-sarawak"><span class="item_text_3">Pinjaman Peribadi</span></a></li>
                                 
                               </ul>
                             </div>
@@ -469,8 +494,8 @@
 
                             <div id="footerCustomer-four" class="collapse d-lg-block">
                               <ul class="page_list unordered_list_block">
-                                <li><a href="contact-us"><span class="item_text_3">Hubungi Kami</span></a></li>
-                                <li><a href="faq"><span class="item_text_3">FAQ</span></a></li>
+                                <li><a href="hubungi-kami"><span class="item_text_3">Hubungi Kami</span></a></li>
+                                <li><a href="soalan-lazim-faq"><span class="item_text_3">FAQ</span></a></li>
                                 <li><a href="privacy-policy"><span class="item_text_3">Dasar Privasi</span></a></li>
                                 <li><a href="disclaimer-notice"><span class="item_text_3">Kenyataan Penafian</span></a></li>
                               </ul>
@@ -982,43 +1007,47 @@
     <!-- Script for all pages -->
     <!-- <script src="assets/js/all-pages.js"></script> -->
 
+    <!-- Check devices -->
+    <script src="assets/js/detect-devices.js"></script>
+
     <!-- Mohon Form Terms Pop up -->
     <script src="assets/js/mohon-term-popup.js"></script>
 
-    <!-- For upload link from email -->
+    <!-- For handle form step 2, skip upload or success upload -->
     <script>
       // Read the full query string from the current URL
       const params = new URLSearchParams(window.location.search);
 
-      // Get the value of the 'uploadParam'
-      const uploadParam = params.get('uploadId');
+      // Get the value of the 'formStatus' parameter
+      const formStatus = params.get('status');
 
-      // If the upload param exists and is not empty
-      if (uploadParam) {
-        // $('#successformStep1').hide();
-        // $('.uploadInfo1').hide();
-        // $('.appIdLabel1').show();
-        
-        // Fill the input field with the uploadParam value
-        document.addEventListener('DOMContentLoaded', function () {
-          const inputField = document.getElementById('applicationId');
-          if (inputField) {
-            inputField.value = uploadParam;
-          }
-        });
+      // Skip upload, submit form only
+      if (formStatus === 'form-submit') {
+        // console.log('Skipping upload step...');
+        $('#applyForm').hide();
+        $('#success-message').show();
+      }
+
+      // Upload success, submit form + upload
+      if (formStatus === 'form-with-upload') {
+        // console.log('Success upload documents');
+        $('#applyForm').hide();
+        $('#success-upload-message').show();
+      }
+
+      // Remove status param from the URL
+      if (formStatus) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('status');
+        window.history.replaceState({}, document.title, url.pathname + url.search);
       }
     </script>
 
-    <script>
-      $('#uploadFileError').hide();
-
+    <!-- Handle form step 1, validation & submit -->
+   <script>
       grecaptcha.ready(() => {
         console.log('grecaptcha is ready');
       })
-
-      function skipUpload() {
-        window.location.href = "apply-form-1?status=form-submit";
-      }
 
       function displayErrorMessage(inputFieldId, errorMessage) {
         const errorElement = document.getElementById(`${inputFieldId}Error`);
@@ -1027,90 +1056,164 @@
         }
       }
 
-      function validateUpload() {
-        // console.log("validating upload");
-        let isValidUpload = true;
-
-        const myKadFile = document.getElementById('upload-file-1').files[0];
-        const supportDocFile = document.getElementById('upload-file-2').files[0];
-
-        // Clear previous error messages
-        const uploadFileError = document.getElementById('uploadFileError');
-        uploadFileError.textContent = '';
-
-        if (!myKadFile && !supportDocFile) {
-          console.log("no files uploaded!");
-          uploadFileError.textContent = 'Sila muat naik sekurang-kurangnya satu fail.';
-          // uploadFileError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          $('#uploadFileError').show();
-          $('#submitBtn').prop('disabled', false);
-          isValidUpload = false;
-        }
-
-        return isValidUpload;
-      }
-
       function validateForm() {
         let isValid = true;
+        const nameInput = document.getElementById('name');
+        const ageInput = document.getElementById('age');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const sectorInput = document.getElementById('sector');
+        const amountInput = document.getElementById('amount');
+        const branchInput = document.getElementById('branch');
+        const salaryInput = document.getElementById('salary');
+        // const nett_salaryInput = document.getElementById('nettSalary');
 
-        const applyId = document.getElementById('applicationId');
+        const leadsWhereInput = document.getElementById('leadsWhere');
 
-        if (applyId.value.trim() === '') {
-          displayErrorMessage('applicationId', 'This fields is required');
+        if (nameInput.value.trim() === '') {
+          displayErrorMessage('name', 'This field is required');
           isValid = false;
-
-          $('#submitBtn').prop('disabled', false);
         } else {
-          displayErrorMessage('applicationId', '');
+          displayErrorMessage('name', '');
         }
 
+        if (ageInput.value.trim() === '') {
+          displayErrorMessage('age', 'This field is required');
+          isValid = false;
+        } else if (ageInput.value.trim() < 18) {
+          displayErrorMessage('age', 'Minimum age is 18 years old');
+          isValid = false;
+        } else if (ageInput.value.trim() > 60) {
+          displayErrorMessage('age', 'Maximum age is 60 years old');
+          isValid = false;
+        } else {
+          displayErrorMessage('age', '');
+        }
+
+        if (phoneInput.value.trim() === '') {
+          displayErrorMessage('phone', 'This field is required');
+          isValid = false;
+        } else {
+          displayErrorMessage('phone', '');
+        }
+
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (emailInput.value.trim() === '') {
+          displayErrorMessage('email', 'This field is required.');
+          isValid = false;
+        } else if (!emailRegex.test(emailInput.value)) {
+          displayErrorMessage('email', 'Invalid email format.');
+          isValid = false;
+        } else {
+          displayErrorMessage('email', '');
+        }
+
+        if (sectorInput.value.trim() === '' || sectorInput.value === 'default') {
+          displayErrorMessage('sector', 'Please select a sector');
+          isValid = false;
+        } else {
+          displayErrorMessage('sector', '');
+        }
+
+        const amountValue = parseFloat(amountInput.value.replace(/,/g, ''));
+        if (amountInput.value.trim() === '') {
+          displayErrorMessage('amount', 'This field is required');
+          isValid = false;
+        } else if (amountValue < 1000) {
+          displayErrorMessage('amount', 'Minimum loan amount is 1000');
+          isValid = false;
+        } else {
+          displayErrorMessage('amount', '');
+        }
+
+        if (branchInput.value.trim() === '' || branchInput.value === 'default') {
+          displayErrorMessage('branch', 'This field is required.');
+          isValid = false;
+        } else {
+          displayErrorMessage('branch', '');
+        }
+
+        if (salaryInput.value.trim() === '') {
+          displayErrorMessage('salary', 'This field is required');
+          isValid = false;
+        } else {
+          displayErrorMessage('salary', '');
+        }
+
+        // if (nett_salaryInput.value.trim() === '') {
+        //   displayErrorMessage('nettSalary', 'This field is required');
+        //   isValid = false;
+        // } else {
+        //   displayErrorMessage('nettSalary', '');
+        // }
+
+        if (leadsWhereInput.value.trim() === '' || leadsWhereInput.value === 'default' ) {
+          displayErrorMessage('leadsWhere', 'Please select an option.');
+          isValid = false;
+        } else {
+          displayErrorMessage('leadsWhere', '');
+        }
+
+        if (!isValid) {
+          // Re-enable the submit button on failure
+          $('#Submit').prop('disabled', false).removeAttr('disabled').css({
+              'pointer-events': '',
+              'opacity': '',
+              'cursor': ''
+          }).text('Hantar');
+        }
         return isValid;
       }
 
-      function sendData(formElement, quiet = false) {
-        // Display uploading text
-        $('#Unsuccessfully-message').hide();
-        $('#processing-message').show();
-        // $('#upload-btn-azio1').hide();
-        // $('#upload-btn-azio2').hide();
-        $('.upload-form-section').hide();
+      document.addEventListener('DOMContentLoaded', function () {
+        const inputFields = ['amount', 'age', 'phone', 'salary'];
+
+        inputFields.forEach(function (fieldId) {
+          const inputField = document.getElementById(fieldId);
+          inputField.addEventListener('input', function () {
+              inputField.value = inputField.value.replace(/\D/g, '');
+          });
+        });
+
+        const nameInput = document.getElementById('name');
         
-        const formData = new FormData(formElement);
+        nameInput.addEventListener('input', function() {
+          this.value = this.value.replace(/[0-9]/g, '');
+        });
+      });
 
+      function sendData(formValue, quiet = false) {
         $.ajax({
-          url: 'https://script.leadsync.com.my/applyform-step2-upload-lbc',
+          url: 'https://script.leadsync.com.my/applyform-upload-lbc',
           type: 'POST',
-          data: formData,
-          processData: false,
-          contentType: false,
+          data: formValue,
           success: function (data) {
-            // console.log('Success Upload', data);
-            // $('#applyUploadForm').hide();
-            // $('#success-message').show();
-            resetForm();
+              // console.log('Success', data);
+              $('#applyForm').hide();
+              $('#success-message').show();
+              resetForm();
 
-            // Redirect back to apply form with success message
-            window.location.href = "apply-form-1?status=form-with-upload";
+              let urlForm2 = "muat-naik-dokumen" + "?uploadId=" + data.applicationId;
+              window.location = urlForm2;
           },
           error: function (xhr, status, error) {
-            if (!quiet) {
-              console.error('An error occured:', error);
-              if (xhr.responseJSON && xhr.responseJSON.message == "Application ID not found") {
-                  $('#invalidAppIdError').show();
+              if (!quiet) {
+                console.error('An error occured:', error);
+                $('#Unsuccessfully-message').show();
+
+                // Re-enable the submit button on failure
+                $('#Submit').prop('disabled', false).removeAttr('disabled').css({
+                    'pointer-events': '',
+                    'opacity': '',
+                    'cursor': ''
+                }).text('Hantar');
               }
-              $('#processing-message').hide();
-              $('#Unsuccessfully-message').show();
-            }
-          },
-          complete: function () {
-            $('.upload-form-section').show();
-            $('#submitBtn').prop('disabled', false);
           }
         });
       }
 
       function resetForm() {
-        $(':input', '#applyUploadForm')
+        $(':input', '#applyForm')
           .not(':button, :submit, :reset, :hidden')
           .val('')
           .prop('checked', false)
@@ -1118,43 +1221,36 @@
       }
 
       function onSubmit(token, quiet = false) {
-        $('#uploadFileError').hide();
-        $('#submitBtn').prop('disabled', true);
+        const form = document.getElementById("applyForm");
 
-        const $form = $('#applyUploadForm'); // jQuery
-        const formEl = document.getElementById("applyUploadForm"); // DOM
-
-        // Trim input
-        $('#applicationId').val($('#applicationId').val().trim());
-
-        // Validate HTML form
-        if (!formEl.checkValidity()) {
-          formEl.reportValidity();
-          $('#submitBtn').prop('disabled', false);
+        // Validate
+        if (!form.checkValidity()) {
+          form.reportValidity();
           return;
         }
 
-        // Validation
-        if (!(validateForm() && validateUpload())) {
-          $('#submitBtn').prop('disabled', false);
-          return;
+        // Disable button
+        $('#Submit').prop('disabled', true).attr('disabled', true).css({
+          'pointer-events': 'none',
+          'opacity': '0.6',
+          'cursor': 'not-allowed'
+        }).text('Sedang menghantar...');
+
+        // Append token
+        const $form = $('#applyForm');
+        $form.prepend(`<input type="hidden" name="token" value="${token}" />`);
+
+        // Form Validation
+        if (validateForm()) {
+          sendData($form.serialize(), quiet);
+        } else {
+          // Re-enable if form validation fails
+          $('#Submit').prop('disabled', false).removeAttr('disabled').css({
+              'pointer-events': '',
+              'opacity': '',
+              'cursor': ''
+          }).text('Hantar');
         }
-
-        // Execute reCAPTCHA
-        grecaptcha.execute('6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_', { action: 'submit' })
-          .then((token) => {
-              // Remove existing token if any
-              $form.find('input[name="token"]').remove();
-
-              // Add new token
-              $form.prepend(`<input type="hidden" name="token" value="${token}" />`);
-
-              sendData(formEl, quiet);
-          })
-          .catch((error) => {
-              console.log('An error occurred executing grecaptcha:', error);
-              $('#submitBtn').prop('disabled', false);
-          });
       }
 
       $(document).ready(() => {
@@ -1162,81 +1258,7 @@
         $('.error_message').hide();
       });
 
-
-      // Allowed MIME types --------------------------------------------
-      const allowedTypes = [
-        'application/pdf',
-        'image/png',
-        'image/jpeg',
-        'image/jpg'
-      ];
-
-      // validate file size and file format ----------------------------
-      function validateFile(input, display, fieldName) {
-        const file = input.files[0];
-        if (file) {
-          if (file.size > 10 * 1024 * 1024) {
-            displayErrorMessage(fieldName + 'FileSize', 'File must be less than 10MB');
-            input.value = '';
-            display.textContent = '';
-          } else if (!allowedTypes.includes(file.type)) {
-            displayErrorMessage(fieldName + 'FileFormat', 'Only PDF, PNG, JPG, or JPEG file are allowed');
-            input.value = '';
-            display.textContent = '';
-          } else {
-            displayErrorMessage(fieldName + 'FileSize', '');
-            displayErrorMessage(fieldName + 'FileFormat', '');
-            display.textContent = file.name;
-          }
-        }
-      }
-
-      // File Upload 1 -------------------------------------------------
-      const fileInput1 = document.getElementById("upload-file-1");
-      const fileNameDisplay1 = document.getElementById("file-name-1");
-
-      // File 1 — monitor for cancel
-      let previousValue1 = null;
-      fileInput1.addEventListener("click", function () {
-        previousValue1 = fileInput1.value;
-        displayErrorMessage('myKadFileSize', '');
-        displayErrorMessage('myKadFileFormat', '');
-      });
-
-      fileInput1.addEventListener("change", function () {
-        const file = fileInput1.files[0];
-        if (!file) {
-          // User canceled the dialog
-          fileInput1.value = '';
-          fileNameDisplay1.textContent = '';
-          return;
-        }
-        validateFile(fileInput1, fileNameDisplay1, "myKad");
-      });
-
-      // File Upload 2 -------------------------------------------------
-      const fileInput2 = document.getElementById("upload-file-2");
-      const fileNameDisplay2 = document.getElementById("file-name-2");
-
-      // File 2 — monitor for cancel
-      let previousValue2 = null;
-      fileInput2.addEventListener("click", function () {
-        previousValue2 = fileInput2.value;
-        displayErrorMessage('supportDocFileSize', '');
-        displayErrorMessage('supportDocFileFormat', '');
-      });
-
-      fileInput2.addEventListener("change", function () {
-        const file2 = fileInput2.files[0];
-        if (!file2) {
-          // User canceled the dialog
-          fileInput2.value = '';
-          fileNameDisplay2.textContent = '';
-          return;
-        }
-        validateFile(fileInput2, fileNameDisplay2, "supportDoc");
-      });
    </script>
-
+    
   </body>
 </html>
