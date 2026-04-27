@@ -384,6 +384,10 @@
     .main_menu_list .dropdown-menu {
         border: 2px solid #044bd9;
     }
+
+    .col-mobile {
+        padding: 0px 8.5vw!important;
+    }
 }
 
 @media (max-width: 380px) {

@@ -31,3 +31,8 @@
         width: 240px;
     }
 }
+
+.sorting-menu .filter{
+    border: 1px solid white;
+}
+
