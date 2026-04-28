@@ -928,7 +928,7 @@ ol[type="1"] > li:not(:last-child) {
   float: left;
   font-size: 12px;
   margin: 5px 10px 0 0;
-  color: #F7FF62;
+  color: #ffffff;
   text-shadow: 2px 2px 0 #1F1D0D;
 }
 .info_list i[class*=check] {

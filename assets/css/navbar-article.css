@@ -305,6 +305,11 @@ body {
 
 
     /* footer end */
+
+    .article-privasi p, .article-privasi li {
+    text-align: left!important;
+    
+    }
 }
 
 
@@ -360,6 +365,78 @@ body {
   cursor: default;
 }
 
+@media (max-width: 768px) {
+
+  table {
+    width: 100%;
+    table-layout: fixed;   /* force columns to share width equally */
+    font-size: 10px;      /* smaller text */
+    word-wrap: break-word;
+  }
+
+  th, td {
+    padding: 8px 4px;
+    vertical-align: top;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  thead th {
+    font-size: 11px;
+  }
+
+}
+
+/* @media (max-width: 768px) {
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  table {
+    border: none;
+  }
+
+  tr {
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 12px;
+  }
+
+  td {
+    border: none !important;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  td::before {
+    font-weight: 700;
+    color: #044BD9;
+    min-width: 45%;
+  }
+
+  td:nth-child(1)::before { content: "Kriteria"; }
+  td:nth-child(2)::before { content: "Bank Komersial"; }
+  td:nth-child(3)::before { content: "Bank Digital"; }
+  td:nth-child(4)::before { content: "Kredit Berlesen"; }
+
+} */
 
 /* 
 main{
