@@ -387,6 +387,12 @@ body {
 
 }
 
+
+
+.info_list_article a u {
+   display: inline!important;
+}
+
 /* @media (max-width: 768px) {
 
   table,

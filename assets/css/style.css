@@ -918,7 +918,7 @@ ol[type="1"] > li:not(:last-child) {
   margin-bottom: 12px;
 }
 .info_list a {
-  display: block;
+  /* display: block; */
   color: #29281E;
 }
 .info_list a:hover {
