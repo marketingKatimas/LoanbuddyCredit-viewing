@@ -815,13 +815,13 @@ hr {
   -webkit-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   /* background-color: #1F1D0D; */
-  border: 2px solid #1AB79A;
+  border: 2px solid #FF0000;
 }
 .btn_unfill .btn_icon i {
   top: 50%;
   font-size: 14px;
   position: absolute;
-  color: #1AB79A;
+  color: #FF0000;
   -webkit-transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
