@@ -7,7 +7,7 @@
 // * Developer      :  webrok (https://www.fiverr.com/webrok?up_rollout=true)
 // ==================================================
 
-(function($) {
+(function ($) {
   "use strict";
 
   // Vanilla Calendar - Start
@@ -21,16 +21,16 @@
 
   // Back To Top - Start
   // --------------------------------------------------
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     if ($(this).scrollTop() > 200) {
       $('.backtotop:hidden').stop(true, true).fadeIn();
     } else {
       $('.backtotop').stop(true, true).fadeOut();
     }
   });
-  $(function() {
-    $(".scroll").on('click', function() {
-      $("html,body").animate({scrollTop: 0}, "slow");
+  $(function () {
+    $(".scroll").on('click', function () {
+      $("html,body").animate({ scrollTop: 0 }, "slow");
       return false
     });
   });
@@ -80,12 +80,12 @@
   // Tilt - Start
   // --------------------------------------------------
   $('.tilt').tilt({
-    maxTilt:        12,
-    perspective:    1000,
-    scale:          1,
-    speed:          1000,
-    glare:          false,
-    maxGlare:       1
+    maxTilt: 12,
+    perspective: 1000,
+    scale: 1,
+    speed: 1000,
+    glare: false,
+    maxGlare: 1
   });
   // Tilt - End
   // --------------------------------------------------
@@ -147,17 +147,17 @@
   //       return element.find('img');
   //     }
   //   }
-    
+
   // });
   // Videos & Images popup - End
   // --------------------------------------------------
 
   // Multy Countdown - Start
   // --------------------------------------------------
-  $('.countdown_timer').each(function(){
-    $('[data-countdown]').each(function() {
+  $('.countdown_timer').each(function () {
+    $('[data-countdown]').each(function () {
       var $this = $(this), finalDate = $(this).data('countdown');
-      $this.countdown(finalDate, function(event) {
+      $this.countdown(finalDate, function (event) {
         var $this = $(this).html(event.strftime(''
           + '<li class="days_count"><strong>%D</strong><span>Days</span></li>'
           + '<li class="hours_count"><strong>%H</strong><span>Hours</span></li>'
@@ -171,18 +171,18 @@
 
   // Common Carousels - Start
   // --------------------------------------------------
-/*   $('.common_carousel_1col').slick({
-    dots: true,
-    speed: 1000,
-    arrows: true,
-    infinite: true,
-    autoplay: true,
-    slidesToShow: 1,
-    pauseOnHover: true,
-    autoplaySpeed: 5000,
-    // prevArrow: ".cc1c_left_arrow",
-    // nextArrow: ".cc1c_right_arrow"
-  }); */
+  /*   $('.common_carousel_1col').slick({
+      dots: true,
+      speed: 1000,
+      arrows: true,
+      infinite: true,
+      autoplay: true,
+      slidesToShow: 1,
+      pauseOnHover: true,
+      autoplaySpeed: 5000,
+      // prevArrow: ".cc1c_left_arrow",
+      // nextArrow: ".cc1c_right_arrow"
+    }); */
 
   $('.common_carousel_2col').slick({
     dots: true,
@@ -197,13 +197,13 @@
     prevArrow: ".cc2c_left_arrow",
     nextArrow: ".cc2c_right_arrow",
     responsive: [
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
       }
-    }
     ]
   });
   // Common Carousels - End
@@ -212,8 +212,8 @@
   // Data Image - Start
   // --------------------------------------------------
   $("[data-background").each(function () {
-		$(this).css("background-image", "url( " + $(this).attr("data-background") + "  )");
-	});
+    $(this).css("background-image", "url( " + $(this).attr("data-background") + "  )");
+  });
   // Data Image - End
   // --------------------------------------------------
 
@@ -227,7 +227,7 @@
   //           const isMobile = window.innerWidth <= 768;
   //           const desktopImage = $(this).attr("data-background");
   //           const mobileImage = $(this).attr("data-background-mobile");
-            
+
   //           const isMobileSmallSize = window.innerWidth <= 500;
 
   //           // Apply the appropriate background
@@ -251,7 +251,7 @@
 
   //       });
   //   }
-    
+
   //   // Run on page load and on window resize
   //   updateBackgrounds();
   //   $(window).resize(updateBackgrounds);
@@ -260,58 +260,58 @@
   // --------------------------------------------------
 
   $(document).ready(function () {
-      function updateBackgrounds() {
-          const isMobile = window.innerWidth <= 768;
-          const isMobileSmallSize = window.innerWidth <= 500;
+    function updateBackgrounds() {
+      const isMobile = window.innerWidth <= 768;
+      const isMobileSmallSize = window.innerWidth <= 500;
 
-          const isIpadSize = window.innerWidth >= 500 && window.innerWidth <=1200;
+      const isIpadSize = window.innerWidth >= 500 && window.innerWidth <= 1200;
 
-          $("[data-background]").each(function () {
-              const desktopImage = $(this).attr("data-background");
-              const mobileImage = $(this).attr("data-background-mobile");
-              let backgroundImage = isMobile ? mobileImage : desktopImage;
-              
-               // If it's an iPad size, remove the background image
-              if (isIpadSize) {
-                backgroundImage = "";
-              }
+      $("[data-background]").each(function () {
+        const desktopImage = $(this).attr("data-background");
+        const mobileImage = $(this).attr("data-background-mobile");
+        let backgroundImage = isMobile ? mobileImage : desktopImage;
 
-              // Update background image only if needed
-              if ($(this).css("background-image") !== `url("${backgroundImage}")`) {
-                  // $(this).css("background-image", `url(${backgroundImage})`);
-                  if (backgroundImage === "") {
-                    $(this).css("background-image", "none"); // Remove background image
-                  } else {
-                      $(this).css("background-image", `url(${backgroundImage})`);
-                  }
-              }
+        // If it's an iPad size, remove the background image
+        if (isIpadSize) {
+          backgroundImage = "";
+        }
 
-              // Update styles conditionally
-              const styles = isMobileSmallSize
-                  ? {
-                        "background-size": "cover",
-                        "background-position": "center 50%",
-                        "background-repeat": "no-repeat",
-                    }
-                  : {
-                        "background-size": "cover",
-                        "background-position": "center",
-                        "background-repeat": "no-repeat",
-                    };
+        // Update background image only if needed
+        if ($(this).css("background-image") !== `url("${backgroundImage}")`) {
+          // $(this).css("background-image", `url(${backgroundImage})`);
+          if (backgroundImage === "") {
+            $(this).css("background-image", "none"); // Remove background image
+          } else {
+            $(this).css("background-image", `url(${backgroundImage})`);
+          }
+        }
 
-              $(this).css(styles);
-          });
-      }
+        // Update styles conditionally
+        const styles = isMobileSmallSize
+          ? {
+            "background-size": "cover",
+            "background-position": "center 50%",
+            "background-repeat": "no-repeat",
+          }
+          : {
+            "background-size": "cover",
+            "background-position": "center",
+            "background-repeat": "no-repeat",
+          };
 
-      // Debounce resize event
-      let resizeTimer;
-      $(window).resize(function () {
-          clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(updateBackgrounds, 200);
+        $(this).css(styles);
       });
+    }
 
-      // Initial update
-      updateBackgrounds();
+    // Debounce resize event
+    let resizeTimer;
+    $(window).resize(function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateBackgrounds, 200);
+    });
+
+    // Initial update
+    updateBackgrounds();
   });
 
 })(jQuery);

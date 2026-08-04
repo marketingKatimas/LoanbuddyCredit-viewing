@@ -3,14 +3,58 @@
     position: fixed;
     left: 8vw;
     right: 8vw;
-    padding: 22px 0;
+    padding: 17px 0;
     background: #044BD9;
+}
+
+.banner-bg-wrapper {
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 50%), #f0f0f0c4;
+    position: relative;
+    z-index: 2;
+}
+
+.main_banner_section {
+    width: calc(100vw - 17vw) !important;
+    max-width: calc(100vw - 17vw) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+@media (min-width: 501px) {
+
+    .main_banner_section,
+    .main_banner_section .carousel_item_home,
+    .main_banner_section .hero_banner.style_2 {
+        height: 34.9vw !important;
+        /* Matches 2.407 aspect ratio of 1577x655 image inside 84vw container */
+    }
+}
+
+@media (max-width: 500px) {
+
+    .main_banner_section,
+    .main_banner_section .carousel_item_home,
+    .main_banner_section .hero_banner.style_2 {
+        height: 97vw !important;
+        /* Matches 0.867 aspect ratio of 1024x1180 mobile image inside 84vw container */
+    }
+}
+
+.main_banner_section .carousel_item_home {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center top !important;
+    background-color: #f0f0f0 !important;
 }
 
 
 
 .site-header-logo {
-    height: 100px !important;
+    height: 77px !important;
 }
 
 .site_header_2 .container {
@@ -26,18 +70,20 @@
     column-gap: 33px;
 } */
 
-.main_menu_list .dropdown-menu > li:hover > a,
-.main_menu_list .dropdown-menu > li.active > a {
+.main_menu_list .dropdown-menu>li:hover>a,
+.main_menu_list .dropdown-menu>li.active>a {
     background-color: #F20505;
     color: white;
 }
-.main_menu_list .dropdown-menu > li:hover > a:before {
+
+.main_menu_list .dropdown-menu>li:hover>a:before {
     background: white;
 }
 
-.main_menu_list .dropdown-menu > li > a:before {
-  display: none;
+.main_menu_list .dropdown-menu>li>a:before {
+    display: none;
 }
+
 .font-ramai {
     font-size: 48px;
     margin-top: 35px;
@@ -91,12 +137,16 @@
     .col-cara-1 {
         padding-left: 55px;
     }
+
+    .banner_image_2 .image_wrap_11 {
+        bottom: -28vh;
+    }
 }
 
 @media (min-width: 1601px) {
     .banner_image_2 .image_wrap_11 {
         display: block;
-        bottom: -22vh;
+        bottom: -28vh;
         right: -18%;
     }
 
@@ -109,10 +159,11 @@
 
     .banner-mohon-description {
         font-family: 'Work Sans', sans-serif;
-        font-size: 20px !important;
-        width: 900px;
-        max-width: 900px !important;
-        line-height: 30px !important;
+        font-size: 16px !important;
+        width: 100%;
+        max-width: 750px !important;
+        line-height: 26px !important;
+        margin: 0 auto;
     }
 
     .hero_banner.style_3 {
@@ -194,11 +245,11 @@
     }
 }
 
-@media (max-width: 500px) { 
+@media (max-width: 500px) {
     .site_header {
         padding: 16px 0 !important;
     }
-    
+
 
     .hero_banner.style_2 {
         height: 380px;
@@ -240,7 +291,7 @@
 
     .deco-item-mascot-1 {
         position: absolute;
-        top: 4.5%;
+        top: 2%;
         right: -20%;
         z-index: 1;
         transform: rotate(-36deg);
@@ -253,7 +304,7 @@
         transform: rotate(36deg);
     }
 
-     .testimonial-deco-item-inner {
+    .testimonial-deco-item-inner {
         top: -7%;
         left: -12%;
         z-index: 50;
@@ -272,7 +323,7 @@
     .cta_home h2 {
         font-size: 1.1rem !important;
     }
-    
+
     .carousel_item_home {
         height: 320px !important;
     }
@@ -307,7 +358,7 @@
         padding-top: 42px !important;
         padding-bottom: 60px;
 
-        margin: 0px 7vw!important;
+        margin: 0px 7vw !important;
     }
 
     .faq_section .accordion .accordion-button {
@@ -326,14 +377,16 @@
     /* Sticky question under header */
     .faq-system .accordion-button {
         position: sticky;
-        top: 30vh; /* adjust to your header height */
+        top: 30vh;
+        /* adjust to your header height */
         z-index: 5;
         background: #fff;
     }
 
     /* Scrollable answer */
     .faq-answer-scroll {
-        max-height: 60vh; /* sweet spot */
+        max-height: 60vh;
+        /* sweet spot */
         overflow-y: auto;
         padding-right: 10px;
     }
@@ -343,7 +396,7 @@
         line-height: 1.6;
         font-size: 15px;
     }
-    
+
     /* faq test end */
 
 
@@ -386,7 +439,7 @@
     }
 
     .col-mobile {
-        padding: 0px 8.5vw!important;
+        padding: 0px 8.5vw !important;
     }
 }
 
@@ -396,7 +449,7 @@
     }
 
     .deco-item-mascot-1 {
-        top: 5%;
+        top: 1%;
     }
 
     .service_item .item_title {
@@ -438,8 +491,8 @@
 }
 
 
-@media (max-width: 500px) { 
-  
+@media (max-width: 500px) {
+
     /* footer start */
     .site_footer .site_logo {
         margin-bottom: 5px;
@@ -452,7 +505,7 @@
     }
 
     .site_footer .footer_widget_area {
-    padding: 20px 30px;
+        padding: 20px 30px;
     }
 
 
@@ -462,8 +515,120 @@
 .no-link,
 .no-link a,
 .no-link a[x-apple-data-detectors] {
-  color: inherit !important;
-  text-decoration: none !important;
-  pointer-events: none;
-  cursor: default;
+    color: inherit !important;
+    text-decoration: none !important;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* Position banner content a bit high */
+.banner-col-adjusted {
+    margin-top: 0px;
+    padding-top: 80px;
+    transform: scale(0.9);
+    transform-origin: top center;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 500px) {
+    .banner-col-adjusted {
+        margin-top: -30px;
+        transform: scale(0.9);
+        transform-origin: top center;
+    }
+}
+
+.banner-mohon-big-title {
+    font-size: 30px !important;
+    line-height: 48px !important;
+    font-weight: 700 !important;
+    color: #044BD9 !important;
+}
+
+@media (max-width: 500px) {
+    .banner-mohon-big-title {
+        font-size: 26px !important;
+        line-height: 32px !important;
+    }
+}
+
+/* Move ladybird mascot down */
+@media (min-width: 501px) {
+    .banner_image_2 .image_wrap_11 {
+        transform: translateY(20px) !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .banner_image_2 .image_wrap_11 {
+        bottom: 0px !important;
+    }
+}
+
+/* Header Language Switcher */
+.header_lang_switcher {
+    display: inline-flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    white-space: nowrap;
+    user-select: none;
+    margin-left: 12px;
+}
+
+.header_lang_switcher .lang_item {
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.header_lang_switcher .lang_item.active {
+    color: #f20505;
+}
+
+.header_lang_switcher .lang_item:hover:not(.active) {
+    color: #f20505;
+}
+
+.header_lang_switcher .lang_divider {
+    color: #ffffff;
+    margin: 0 4px;
+    font-weight: 700;
+}
+
+.site_header_1+main {
+    padding-top: 85px;
+}
+
+/* Red Reverse Button (red background to white on hover) */
+.btn.border_red_reverse {
+    color: #ffffff !important;
+    background-color: #F20505 !important;
+    border-color: #F20505 !important;
+}
+
+.btn.border_red_reverse span small {
+    color: #ffffff !important;
+}
+
+.btn.border_red_reverse:hover {
+    color: #F20505 !important;
+    background-color: #ffffff !important;
+    border-color: #F20505 !important;
+}
+
+.btn.border_red_reverse:hover span small {
+    color: #F20505 !important;
+}
+
+/* Background image inside "Kenapa Ramai Memilih Loanbuddy Credit?" section */
+.intro_video_section {
+    background-image: url('../images/geometric-hexagonal.png') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
