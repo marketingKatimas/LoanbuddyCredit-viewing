@@ -29,26 +29,29 @@ export default function Header() {
   return (
     <header className={`site_header site_header_1 site_header_2 ${isScrolled ? "scrolled" : ""}`}>
       <div className="container">
-        <div className="row align-items-center justify-content-center">
-          <div className="col-lg-2 col-5 d-lg-none">
-            <a className="site_link" href="/">
+        <div className="row align-items-center justify-content-between">
+          {/* Mobile Logo (Left) */}
+          <div className="col-6 col-md-4 col-lg-2 d-lg-none d-flex align-items-center">
+            <a className="site_link d-flex align-items-center" href="/">
               <img
                 src="/assets/images/logo/Keyline%20Horizontal%20.png"
                 alt="loanbuddy credit logo"
-                className="site-header-logo"
+                className="site-header-logo mobile-logo"
               />
             </a>
           </div>
 
-          <div className="col-lg-9 col-1">
+          {/* Navigation Bar / Mobile Navigation Drawer */}
+          <div className="col-lg-9 col-12 order-3 order-lg-2">
             <nav className="main_menu navbar navbar-expand-lg">
               <div
-                className={`main_menu_inner collapse navbar-collapse ${isMobileMenuOpen ? "show" : ""
-                  }`}
+                className={`main_menu_inner collapse navbar-collapse ${
+                  isMobileMenuOpen ? "show" : ""
+                }`}
                 id="main_menu_dropdown"
               >
                 <ul className="main_menu_list unordered_list_center">
-                  <li className="site_logo">
+                  <li className="site_logo d-none d-lg-block">
                     <a className="site_link" href="/">
                       <img
                         src="/assets/images/logo/Keyline%20Horizontal%20.png"
@@ -117,8 +120,9 @@ export default function Header() {
             </nav>
           </div>
 
-          <div className="col-lg-3 col-6 text-center d-flex align-items-center justify-content-center justify-content-lg-end">
-            <a href="mohon-pinjaman-online" className="btn_semak_layak">
+          {/* Right Area: CTA Button, Language Switcher, Mobile Hamburger Button */}
+          <div className="col-6 col-md-8 col-lg-3 order-2 order-lg-3 text-end d-flex align-items-center justify-content-end header_right_area">
+            <a href="mohon-pinjaman-online" className="btn_semak_layak d-none d-lg-inline-flex">
               <span>
                 <small>Mohon Sekarang</small>
                 <small>Mohon Sekarang</small>
@@ -133,21 +137,14 @@ export default function Header() {
                 EN
               </a>
             </div>
-          </div>
-
-          <div className="col-lg-3 col-1">
-            <ul className="header_btns_group unordered_list_end">
-              <li>
-                <button
-                  className="mobile_menu_btn"
-                  type="button"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  aria-label="Toggle navigation"
-                >
-                  <i className="far fa-bars"></i>
-                </button>
-              </li>
-            </ul>
+            <button
+              className="mobile_menu_btn d-lg-none ms-2"
+              type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation"
+            >
+              <i className={isMobileMenuOpen ? "far fa-times" : "far fa-bars"}></i>
+            </button>
           </div>
         </div>
       </div>
