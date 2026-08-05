@@ -1169,3 +1169,15 @@ body, button, input, select, textarea {
 .delay-500 {
   animation-delay: 0.5s;
 }
+
+/* Force Reddit Sans on all elements inside page_wrapper except icons */
+.page_wrapper,
+.page_wrapper *:not(i):not(.zmdi):not([class*="fa-"]):not([class*="zmdi-"]),
+.page_wrapper input,
+.page_wrapper select,
+.page_wrapper textarea,
+.page_wrapper label,
+.page_wrapper button,
+.page_wrapper ::placeholder {
+  font-family: 'Reddit Sans', var(--font-reddit-sans), sans-serif !important;
+}
