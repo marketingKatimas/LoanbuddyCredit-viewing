@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Header() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,19 +29,26 @@ export default function Header() {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
+  const isActive = (path: string) => {
+    if (!pathname) return false;
+    const cleanPathname = pathname.endsWith("/") && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+    const cleanTarget = path.endsWith("/") && path.length > 1 ? path.slice(0, -1) : path;
+    return cleanPathname === cleanTarget || cleanPathname === `/${cleanTarget}`;
+  };
+
   return (
     <header className={`site_header site_header_1 site_header_2 ${isScrolled ? "scrolled" : ""}`}>
       <div className="container">
         <div className="row align-items-center justify-content-between">
           {/* Mobile Logo (Left) */}
           <div className="col-6 col-md-4 col-lg-2 d-lg-none d-flex align-items-center">
-            <a className="site_link d-flex align-items-center" href="/">
+            <Link className="site_link d-flex align-items-center" href="/">
               <img
                 src="/assets/images/logo/Keyline%20Horizontal%20.png"
                 alt="loanbuddy credit logo"
                 className="site-header-logo mobile-logo"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Navigation Bar / Mobile Navigation Drawer */}
@@ -52,18 +62,18 @@ export default function Header() {
               >
                 <ul className="main_menu_list unordered_list_center">
                   <li className="site_logo d-none d-lg-block">
-                    <a className="site_link" href="/">
+                    <Link className="site_link" href="/">
                       <img
                         src="/assets/images/logo/Keyline%20Horizontal%20.png"
                         alt="loanbuddy credit logo"
                         className="site-header-logo"
                       />
-                    </a>
+                    </Link>
                   </li>
 
-                  <li className={`dropdown ${activeDropdown === "service" ? "show" : ""}`}>
+                  <li className={`dropdown ${activeDropdown === "service" || isActive("/pinjaman-peribadi-kl-sarawak") ? "active show" : ""}`}>
                     <a
-                      className="nav-link"
+                      className={`nav-link ${isActive("/pinjaman-peribadi-kl-sarawak") ? "active" : ""}`}
                       href="#"
                       id="service_submenu"
                       onClick={(e) => toggleDropdown("service", e)}
@@ -72,22 +82,22 @@ export default function Header() {
                     </a>
                     <ul className={`dropdown-menu ${activeDropdown === "service" ? "show" : ""}`}>
                       <li>
-                        <a className="nav-link" href="pinjaman-peribadi-kl-sarawak">
+                        <Link className={`nav-link ${isActive("/pinjaman-peribadi-kl-sarawak") ? "active" : ""}`} href="/pinjaman-peribadi-kl-sarawak">
                           Pinjaman Peribadi
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
 
-                  <li>
-                    <a className="nav-link" href="soalan-lazim-faq">
+                  <li className={isActive("/soalan-lazim-faq") ? "active" : ""}>
+                    <Link className={`nav-link ${isActive("/soalan-lazim-faq") ? "active" : ""}`} href="/soalan-lazim-faq">
                       Pembayaran
-                    </a>
+                    </Link>
                   </li>
 
-                  <li className={`dropdown ${activeDropdown === "pages" ? "show" : ""}`}>
+                  <li className={`dropdown ${activeDropdown === "pages" || isActive("/tentang-loanbuddy-credit") ? "active show" : ""}`}>
                     <a
-                      className="nav-link"
+                      className={`nav-link ${isActive("/tentang-loanbuddy-credit") ? "active" : ""}`}
                       href="#"
                       id="pages_submenu"
                       onClick={(e) => toggleDropdown("pages", e)}
@@ -96,24 +106,24 @@ export default function Header() {
                     </a>
                     <ul className={`dropdown-menu ${activeDropdown === "pages" ? "show" : ""}`}>
                       <li>
-                        <a href="tentang-loanbuddy-credit">Kenali Kami</a>
+                        <Link className={isActive("/tentang-loanbuddy-credit") ? "active" : ""} href="/tentang-loanbuddy-credit">Kenali Kami</Link>
                       </li>
                       <li>
-                        <a href="soalan-lazim-faq">F.A.Q.</a>
+                        <Link className={isActive("/soalan-lazim-faq") ? "active" : ""} href="/soalan-lazim-faq">F.A.Q.</Link>
                       </li>
                     </ul>
                   </li>
 
-                  <li>
-                    <a className="nav-link" href="blog">
+                  <li className={isActive("/blog") ? "active" : ""}>
+                    <Link className={`nav-link ${isActive("/blog") ? "active" : ""}`} href="/blog">
                       Blog
-                    </a>
+                    </Link>
                   </li>
 
-                  <li>
-                    <a className="nav-link" href="hubungi-kami">
+                  <li className={isActive("/hubungi-kami") ? "active" : ""}>
+                    <Link className={`nav-link ${isActive("/hubungi-kami") ? "active" : ""}`} href="/hubungi-kami">
                       Hubungi Kami
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

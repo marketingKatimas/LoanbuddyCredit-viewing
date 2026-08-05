@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 export default function HubungiKamiPage() {
-  
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -51,114 +51,186 @@ export default function HubungiKamiPage() {
       <Header />
 
       {/* Main Content */}
-      <main className="page_content">
-        <section
-          className="page_banner section_contact_us_lg overflow-hidden decoration_wrap mouse_move"
-          style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
-        >
+      <main className="page_content bg_white" style={{ backgroundColor: "#fff" }}>
+        {/* Branches and Map Section */}
+        <section className="branches_map_section bg_white" style={{ paddingTop: "30px", paddingBottom: "60px" }}>
           <div className="container">
-            <div className="row d-flex align-items-center justify-content-center">
-              <div className="col col-12">
-                <h1 className="banner-mohon-big-title text-center justify-content-center">
-                  Hubungi Kami
-                </h1>
-                <p className="banner_description banner-mohon-description text-center text-grey mt-80-30s">
-                  Ada sebarang pertanyaan? Kongsikan mesej anda di sini dan kami akan membalas secepat mungkin untuk membantu anda!
-                </p>
+            <h1 className="text-center animate-fade-in-up delay-100" style={{ color: "#0d4ed8", fontSize: "30px", fontWeight: "700", marginBottom: "40px" }}>
+              Hubungi Kami
+            </h1>
+            <div className="row d-flex align-items-center">
+              {/* Left Column: Branches Details */}
+              <div className="col col-12 col-lg-6 animate-slide-in-left delay-200">
+
+                {/* Kuala Lumpur Branch */}
+                <div className="branch_item mb-4 pb-4" style={{ borderBottom: "1px solid #ccc" }}>
+                  <h3 className="text-center text-lg-start" style={{ color: "#0d4ed8", fontSize: "20px", fontWeight: "700", marginBottom: "15px" }}>
+                    Cawangan Kuala Lumpur
+                  </h3>
+                  <div className="row align-items-center justify-content-center justify-content-lg-between g-3">
+                    <div className="col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
+                      <div className="branch-details-block text-start">
+                        <p className="mb-2 d-flex align-items-start gap-2" style={{ color: "#666", fontSize: "14px" }}>
+                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <span>No.15-4, Jalan Medan Tuanku 1, Medan Tuanku, 50300 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</span>
+                        </p>
+                        <p className="mb-0 d-flex align-items-center gap-2" style={{ color: "#666", fontSize: "14px" }}>
+                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <span>kl@loanbuddycredit.com.my</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-12 col-lg-5 text-center text-lg-end">
+                      <a
+                        href="https://wa.link/taaakr"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="d-inline-flex align-items-center justify-content-start gap-3 whatsapp-btn-hover"
+                        style={{
+                          backgroundColor: "#25D366",
+                          color: "#fff",
+                          borderRadius: "30px",
+                          padding: "10px 24px",
+                          textDecoration: "none",
+                          fontWeight: "600",
+                          boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+                        }}
+                      >
+                        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "30px", height: "30px", marginLeft: "auto" }} />
+                        <div className="text-start" style={{ lineHeight: "1.2" }}>
+                          <span style={{ fontSize: "0.75rem", display: "block" }}>WhatsApp Kami</span>
+                          <span style={{ fontSize: "1rem" }}>+6018 785 6072</span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Kuching Branch */}
+                <div className="branch_item mb-4 pb-4" style={{ borderBottom: "1px solid #ccc" }}>
+                  <h3 className="text-center text-lg-start" style={{ color: "#0d4ed8", fontSize: "20px", fontWeight: "700", marginBottom: "15px" }}>
+                    Cawangan Kuching, Sarawak
+                  </h3>
+                  <div className="row align-items-center justify-content-center justify-content-lg-between g-3">
+                    <div className="col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
+                      <div className="branch-details-block text-start">
+                        <p className="mb-2 d-flex align-items-start gap-2" style={{ color: "#666", fontSize: "14px" }}>
+                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <span>1st Floor, Lot 9269 (SL.75) Bandar Riyal, Jalan Muara Tuang Kota Samarahan, 94300 Kuching, Sarawak</span>
+                        </p>
+                        <p className="mb-0 d-flex align-items-center gap-2" style={{ color: "#666", fontSize: "14px" }}>
+                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <span>ks@loanbuddycredit.com.my</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-12 col-lg-5 text-center text-lg-end">
+                      <a
+                        href="https://wa.link/32cpg5"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="d-inline-flex align-items-center justify-content-start gap-3 whatsapp-btn-hover"
+                        style={{
+                          backgroundColor: "#25D366",
+                          color: "#fff",
+                          borderRadius: "30px",
+                          padding: "10px 24px",
+                          textDecoration: "none",
+                          fontWeight: "600",
+                          boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+                        }}
+                      >
+                        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "30px", height: "30px", marginLeft: "auto" }} />
+                        <div className="text-start" style={{ lineHeight: "1.2" }}>
+                          <span style={{ fontSize: "0.75rem", display: "block" }}>WhatsApp Kami</span>
+                          <span style={{ fontSize: "1rem" }}>+6010 932 9976</span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bintulu Branch */}
+                <div className="branch_item mb-4">
+                  <h3 className="text-center text-lg-start" style={{ color: "#0d4ed8", fontSize: "20px", fontWeight: "700", marginBottom: "15px" }}>
+                    Cawangan Bintulu, Sarawak
+                  </h3>
+                  <div className="row align-items-center justify-content-center justify-content-lg-between g-3">
+                    <div className="col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
+                      <div className="branch-details-block text-start">
+                        <p className="mb-2 d-flex align-items-start gap-2" style={{ color: "#666", fontSize: "14px" }}>
+                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <span>Lot 8093, Sublot 20, 1st Floor, Bintulu Sentral, Jln Kidurong, 97000 Bintulu, Sarawak</span>
+                        </p>
+                        <p className="mb-0 d-flex align-items-center gap-2" style={{ color: "#666", fontSize: "14px" }}>
+                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <span>bintulu@loanbuddycredit.com.my</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="col-12 col-lg-5 text-center text-lg-end">
+                      <a
+                        href="https://wa.link/6v806i"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="d-inline-flex align-items-center justify-content-start gap-3 whatsapp-btn-hover"
+                        style={{
+                          backgroundColor: "#25D366",
+                          color: "#fff",
+                          borderRadius: "30px",
+                          padding: "10px 24px",
+                          textDecoration: "none",
+                          fontWeight: "600",
+                          boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
+                        }}
+                      >
+                        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "30px", height: "30px", marginLeft: "auto" }} />
+                        <div className="text-start" style={{ lineHeight: "1.2" }}>
+                          <span style={{ fontSize: "0.75rem", display: "block" }}>WhatsApp Kami</span>
+                          <span style={{ fontSize: "1rem" }}>+6010 909 8557</span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right Column: Google Maps Interactive Embed */}
+              <div className="col col-12 col-lg-6 mt-4 mt-lg-0 animate-slide-in-right delay-300">
+                <div
+                  style={{
+                    overflow: "hidden",
+                    borderRadius: "12px",
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                    border: "1px solid #e2e8f0",
+                    height: "450px",
+                    width: "100%"
+                  }}
+                >
+                  <iframe
+                    src="https://www.google.com/maps/d/u/0/embed?mid=1u9eA-xFNCD0Ddtd3HYLSnCgvoWwOZgw"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    title="Google My Maps - Cawangan Loanbuddy Credit"
+                  ></iframe>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section
-          className="page_banner about_banner bg_blue section_space_lg overflow-hidden decoration_wrap mouse_move"
-          style={{ backgroundImage: `url('/assets/images/banner/contact-us-banner.webp')` }}
-        ></section>
 
-        {/* Branches */}
-        <section className="contact_section section_space_lg section_space_lg_contact bg_grey">
-          <div className="container">
-            <div className="row">
-              {/* KL Branch */}
-              <div className="col-contact col-12 col-md-4">
-                <div className="contact-box bg_white">
-                  <h2 className="heading_text heading-contact">
-                    Cawangan <br /> Kuala Lumpur
-                  </h2>
-                  <p className="heading_description mb-0">
-                    support@loanbuddy.com.my <br />
-                    <br />
-                    No.15-4, Jalan Medan Tuanku 1, Medan Tuanku, 50300 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur <br />
-                    <br />
-                    0187856072 (WS)
-                  </p>
-                  <button className="btn btn_blue btn-contact b-block mt-20">
-                    <a href="https://wa.link/taaakr" target="_blank" rel="noopener noreferrer">
-                      <span>
-                        <small>Whatsapp Kami</small>
-                        <small>Whatsapp Kami</small>
-                      </span>
-                    </a>
-                  </button>
-                </div>
-              </div>
 
-              {/* Kota Samarahan Branch */}
-              <div className="col-contact col-12 col-md-4">
-                <div className="contact-box bg_white">
-                  <h2 className="heading_text heading-contact">
-                    Cawangan <br /> Kota Samarahan, Sarawak
-                  </h2>
-                  <p className="heading_description mb-0">
-                    ks@loanbuddy.com.my <br />
-                    <br />
-                    1st Floor, Lot 9269 (SL.75) Bandar Riyal, Jalan Muara Tuang Kota Samarahan, 94300 Kuching, Sarawak <br />
-                    <br />
-                    0109329976 (WS)
-                  </p>
-                  <button className="btn btn_blue btn-contact b-block mt-20">
-                    <a href="https://wa.link/32cpg5" target="_blank" rel="noopener noreferrer">
-                      <span>
-                        <small>Whatsapp Kami</small>
-                        <small>Whatsapp Kami</small>
-                      </span>
-                    </a>
-                  </button>
-                </div>
-              </div>
-
-              {/* Bintulu Branch */}
-              <div className="col-contact col-12 col-md-4">
-                <div className="contact-box bg_white">
-                  <h2 className="heading_text heading-contact">
-                    Cawangan <br /> Bintulu, Sarawak
-                  </h2>
-                  <p className="heading_description mb-0">
-                    bintulu@loanbuddy.com.my <br />
-                    <br />
-                    Lot 8093, Sublot 20, 1st Floor, Bintulu Sentral, Jln Kidurong, 97000 Bintulu, Sarawak <br />
-                    <br />
-                    0109098557 (WS)
-                  </p>
-                  <button className="btn btn_blue btn-contact b-block mt-20">
-                    <a href="https://wa.link/6v806i" target="_blank" rel="noopener noreferrer">
-                      <span>
-                        <small>Whatsapp Kami</small>
-                        <small>Whatsapp Kami</small>
-                      </span>
-                    </a>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Contact Form */}
-        <section className="contact_section contact-form-section bg_green">
+        <section className="contact_section contact-form-section bg_green animate-fade-in-up delay-400">
           <div className="container">
-            <div className="row align-content-centre">
-              <div className="col col-lg-12">
+            <div className="row justify-content-center">
+              <div className="col col-12 col-md-10 col-lg-8">
                 <div className="container decoration_wrap col-contact-form">
                   {submitted ? (
                     <div id="success-message" className="contact-success-message" style={{ display: "block" }}>
@@ -166,6 +238,10 @@ export default function HubungiKamiPage() {
                     </div>
                   ) : (
                     <form id="subscribeForm" onSubmit={handleSubmit}>
+                      <p className="text-center mb-4" style={{ color: "#fff", fontSize: "1.1rem", fontWeight: "500" }}>
+                        Ada sebarang pertanyaan? Kongsikan mesej anda di sini <br />
+                        dan kami akan membalas secepat mungkin untuk membantu anda!
+                      </p>
                       <div className="row justify-content-center">
                         <div className="col w-100">
                           <div className="row">
@@ -224,7 +300,7 @@ export default function HubungiKamiPage() {
                             <div className="col col-12 col-md-6">
                               <div className="form_item m-0">
                                 <label htmlFor="branch" className="input_title">
-                                  Sila Pilih
+                                  Sila Pilih Cawangan
                                 </label>
                                 <select
                                   className="formbold-form-input-option"
@@ -281,6 +357,7 @@ export default function HubungiKamiPage() {
 
       {/* Footer */}
       <Footer />
+
     </div>
   );
 }

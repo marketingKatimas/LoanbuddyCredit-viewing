@@ -1036,3 +1036,136 @@ body, button, input, select, textarea {
 .accordion-collapse.collapse:not(.show) {
   display: none !important;
 }
+
+/* WhatsApp Hover Animation - Neon Glow & Shimmer */
+.whatsapp-btn-hover {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.whatsapp-btn-hover:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.6) !important;
+}
+
+/* Shimmer Light Swipe */
+.whatsapp-btn-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.whatsapp-btn-hover:hover::after {
+  left: 150%;
+  transition: left 0.75s ease-in-out;
+}
+
+/* Fix mobile spacing on Hubungi Kami page */
+@media (max-width: 768px) {
+  .page_content.bg_white {
+    margin-top: 0px !important;
+    padding-top: 80px !important;
+  }
+  .branches_map_section {
+    padding-top: 10px !important;
+  }
+}
+
+/* Responsive Branch Details Width */
+.branch-details-block {
+  width: 100%;
+  max-width: 480px;
+}
+@media (max-width: 768px) {
+  .branch-details-block {
+    max-width: 320px; /* Decrease width on mobile to make it compact */
+  }
+}
+
+/* Page Transition Animations */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation Delays */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
