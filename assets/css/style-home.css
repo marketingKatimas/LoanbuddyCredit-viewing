@@ -3719,18 +3719,19 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
   z-index: 1;
   border-color: #044BD9;
   /* background-color: #F7FF62; */
-  -webkit-box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1);
-          box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1);
+  /* -webkit-box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1);
+          box-shadow: 0px 20px 30px 0px rgba(31, 29, 13, 0.1); */
 }
 
 
 /* .service_item:hover .item_icon {
   
 } */
-.service_item:hover .item_icon img {
+/* .service_item:hover .item_icon img {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
-}
+} */
+
 .service_item .item_icon {
   /* width: 15vw; */
   height: 15vh;
@@ -7083,3 +7084,43 @@ Responsive For Mobile & Tablet Devices
   }
 }
 /* ------------------ Subscribe Form ------------------------ */
+
+
+/* test */
+
+/* ==================================================
+   Aplikasi Loanbuddy Page Custom Styles
+================================================== */
+
+
+/* Feature Icons Grid */
+.app-feature-grid .feature-item img {
+    transition: transform 0.3s ease;
+}
+
+.app-feature-grid .feature-item:hover img {
+    transform: translateY(-5px);
+}
+
+/* Adjustments for sticky header spacing */
+.pt-180px {
+    padding-top: 180px;
+}
+
+@media (max-width: 991px) {
+    .pt-180px {
+        padding-top: 110px;
+    }
+    
+    .app-hero-section {
+        min-height: auto;
+        padding-top: 30px;
+        padding-bottom: 100px;
+    }
+    
+    .app-hero-img {
+        max-height: 400px;
+    }
+}
+
+/* test end */

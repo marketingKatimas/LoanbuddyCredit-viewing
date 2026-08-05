@@ -1835,7 +1835,7 @@ color: #fff;
 }
 .cta_home {
   margin: 0px 10vw;
-  height: 280px;
+  height: 175px;
   align-items: center;
   
 }
@@ -3539,12 +3539,12 @@ z-index:21;opacity:0;visibility:hidden;line-height:normal}
 
 
 .service_item:hover .item_icon {
-  border-color: #1F1D0D;
+  /* border-color: #1F1D0D; */
 }
-.service_item:hover .item_icon img {
+/* .service_item:hover .item_icon img {
   -webkit-transform: scale(0.7);
           transform: scale(0.7);
-}
+} */
 .service_item .item_icon {
   width: 100px;
   height: 100px;
