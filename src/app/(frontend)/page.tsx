@@ -606,7 +606,7 @@ export default function Home() {
                     {openFaq === 1 && (
                       <div className="accordion-collapse collapse show">
                         <div className="accordion-body">
-                          <p className="mb-0">
+                          <div className="mb-0">
                             Contoh Wakil: <br />
                             Amaun Pinjaman: <strong>RM3,000</strong> <br />
                             Tempoh Pinjaman: <strong>12 bulan</strong> <br />
@@ -620,7 +620,7 @@ export default function Home() {
                               <u>KLIK SINI</u>
                             </a>{" "}
                             untuk mohon sekarang.
-                          </p>
+                          </div>
                         </div>
                       </div>
                     )}

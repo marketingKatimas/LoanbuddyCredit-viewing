@@ -230,6 +230,18 @@
 }
 
 .section_contact_us_lg {
-    
     height: 38vh;
 }
+
+/* Fix Tailwind CSS .collapse utility hiding Bootstrap accordion content */
+.accordion-collapse,
+.accordion-collapse.collapse,
+.accordion-collapse.collapse.show,
+.accordion-body {
+    visibility: visible !important;
+    display: block !important;
+}
+
+.accordion-collapse.collapse:not(.show) {
+    display: none !important;
+}
