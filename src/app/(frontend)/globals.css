@@ -654,6 +654,12 @@ body, button, input, select, textarea {
   background-color: #ffffff !important;
 }
 
+@media (min-width: 992px) {
+  .site_header .main_menu_list .dropdown:hover > .dropdown-menu {
+    display: block !important;
+  }
+}
+
 .site_header .main_menu_list .dropdown-menu>li>a {
   color: #333333 !important;
 }

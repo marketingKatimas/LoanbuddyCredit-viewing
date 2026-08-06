@@ -71,11 +71,11 @@ export default function HubungiKamiPage() {
                     <div className="col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
                       <div className="branch-details-block text-start">
                         <p className="mb-2 d-flex align-items-start gap-2" style={{ color: "#666", fontSize: "14px" }}>
-                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0 }}></i>
                           <span>No.15-4, Jalan Medan Tuanku 1, Medan Tuanku, 50300 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</span>
                         </p>
                         <p className="mb-0 d-flex align-items-center gap-2" style={{ color: "#666", fontSize: "14px" }}>
-                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0 }}></i>
                           <span>kl@loanbuddycredit.com.my</span>
                         </p>
                       </div>
@@ -115,11 +115,11 @@ export default function HubungiKamiPage() {
                     <div className="col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
                       <div className="branch-details-block text-start">
                         <p className="mb-2 d-flex align-items-start gap-2" style={{ color: "#666", fontSize: "14px" }}>
-                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0 }}></i>
                           <span>1st Floor, Lot 9269 (SL.75) Bandar Riyal, Jalan Muara Tuang Kota Samarahan, 94300 Kuching, Sarawak</span>
                         </p>
                         <p className="mb-0 d-flex align-items-center gap-2" style={{ color: "#666", fontSize: "14px" }}>
-                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0 }}></i>
                           <span>ks@loanbuddycredit.com.my</span>
                         </p>
                       </div>
@@ -159,11 +159,11 @@ export default function HubungiKamiPage() {
                     <div className="col-12 col-lg-7 d-flex justify-content-center justify-content-lg-start">
                       <div className="branch-details-block text-start">
                         <p className="mb-2 d-flex align-items-start gap-2" style={{ color: "#666", fontSize: "14px" }}>
-                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <i className="fas fa-map-marker-alt" style={{ color: "#0d4ed8", marginTop: "4px", width: "16px", flexShrink: 0 }}></i>
                           <span>Lot 8093, Sublot 20, 1st Floor, Bintulu Sentral, Jln Kidurong, 97000 Bintulu, Sarawak</span>
                         </p>
                         <p className="mb-0 d-flex align-items-center gap-2" style={{ color: "#666", fontSize: "14px" }}>
-                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0, textClassName: "text-center" }}></i>
+                          <i className="fas fa-envelope" style={{ color: "#0d4ed8", width: "16px", flexShrink: 0 }}></i>
                           <span>bintulu@loanbuddycredit.com.my</span>
                         </p>
                       </div>
