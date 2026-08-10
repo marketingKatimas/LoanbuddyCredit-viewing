@@ -14,7 +14,7 @@ export default function MohonPinjamanOnlinePage() {
     amount: "",
     branch: "",
     salary: "",
-    leadsWhere: "",
+    netSalary: "",
   });
 
   const [agree1, setAgree1] = useState(false);
@@ -69,7 +69,7 @@ export default function MohonPinjamanOnlinePage() {
 
     if (name === "name") {
       sanitizedValue = value.replace(/[0-9]/g, "");
-    } else if (["age", "phone", "amount", "salary"].includes(name)) {
+    } else if (["age", "phone", "amount", "salary", "netSalary"].includes(name)) {
       sanitizedValue = value.replace(/\D/g, "");
     }
 
@@ -90,8 +90,8 @@ export default function MohonPinjamanOnlinePage() {
     }
 
     const ageVal = parseInt(formData.age);
-    if (isNaN(ageVal) || ageVal < 18 || ageVal > 60) {
-      setError("Umur mestilah di antara 18 hingga 60 tahun.");
+    if (isNaN(ageVal) || ageVal < 20 || ageVal > 60) {
+      setError("Umur mestilah di antara 20 hingga 60 tahun.");
       return;
     }
 
@@ -127,8 +127,8 @@ export default function MohonPinjamanOnlinePage() {
       return;
     }
 
-    if (!formData.leadsWhere) {
-      setError("Sila pilih bagaimana anda tahu tentang kami.");
+    if (!formData.netSalary.trim()) {
+      setError("Gaji Bersih adalah diperlukan.");
       return;
     }
 
@@ -166,14 +166,38 @@ export default function MohonPinjamanOnlinePage() {
       urlEncodedData.append("amount", formData.amount);
       urlEncodedData.append("branch", formData.branch);
       urlEncodedData.append("salary", formData.salary);
-      urlEncodedData.append("leadsWhere", formData.leadsWhere);
+      urlEncodedData.append("netSalary", formData.netSalary);
       urlEncodedData.append("mohon-agree-1", "on");
       urlEncodedData.append("mohon-agree-2", "on");
       urlEncodedData.append("mohon-agree-3", "on");
       urlEncodedData.append("pageUrl", typeof window !== "undefined" ? window.location.href : "");
       urlEncodedData.append("deviceType", deviceType);
 
-      const response = await fetch("https://script.leadsync.com.my/applyform-upload-lbc", {
+      /* =========================================================================
+       * PRODUCTION REAL SERVER API (CURRENTLY DISCONNECTED FOR LOCAL TESTING)
+       * =========================================================================
+       * REAL API ENDPOINT: https://script.leadsync.com.my/applyform-upload-lbc
+       * RECAPTCHA SITE KEY: 6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_
+       * 
+       * TO RE-ENABLE PRODUCTION BEFORE DEPLOYING TO LIVE SERVER:
+       * 1. Comment out the local fetch call to "/api/apply" below.
+       * 2. Uncomment the LeadSync production fetch block below.
+       * =========================================================================
+       * 
+       * PRODUCTION CODE (UNCOMMENT FOR PRODUCTION):
+       * -------------------------------------------------------------------------
+       * const response = await fetch("https://script.leadsync.com.my/applyform-upload-lbc", {
+       *   method: "POST",
+       *   headers: {
+       *     "Content-Type": "application/x-www-form-urlencoded",
+       *   },
+       *   body: urlEncodedData.toString(),
+       * });
+       * =========================================================================
+       */
+
+      // LOCAL DEVELOPMENT ENDPOINT (Localhost / Local MongoDB Logging Handler)
+      const response = await fetch("/api/apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -216,7 +240,7 @@ export default function MohonPinjamanOnlinePage() {
         {/* Banner Section */}
         <section
           className="page_banner"
-          style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
+          style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')`, borderRadius: "10px", overflow: "hidden" }}
         >
           <div className="container container-apply-header">
             <div className="row d-flex align-items-center justify-content-center">
@@ -238,13 +262,13 @@ export default function MohonPinjamanOnlinePage() {
         <section className="section-space-mohon-lg sec-relative bg-apply-1">
           <div className="container container-mohon">
             <div className="row row-mohon-1 col-12 z-index-10">
-              <div className="course-card-mohon h-max col-lg-7 animate-slide-in-left delay-300">
+              <div className="course-card-mohon h-max col-lg-7 animate-slide-in-left delay-300" style={{ borderRadius: "10px" }}>
                 {formStatus === "form-submit" || submitted ? (
-                  <div id="success-message" className="success-message-1" style={{ display: "block" }}>
+                  <div id="success-message" className="success-message-1" style={{ display: "block", borderRadius: "10px" }}>
                     Terima kasih kerana menghantar permohonan anda! Kami akan menghubungi anda dalam masa terdekat.
                   </div>
                 ) : formStatus === "form-with-upload" ? (
-                  <div id="success-upload-message" className="success-upload-message-1" style={{ display: "block" }}>
+                  <div id="success-upload-message" className="success-upload-message-1" style={{ display: "block", borderRadius: "10px" }}>
                     Dokumen berjaya dimuat naik! Terima kasih dan kami akan menghubungi anda dalam masa terdekat.
                   </div>
                 ) : (
@@ -288,8 +312,8 @@ export default function MohonPinjamanOnlinePage() {
                               id="age"
                               name="age"
                               type="number"
-                              placeholder="Min. 18 - Max. 60"
-                              min="18"
+                              placeholder="Min. 20"
+                              min="20"
                               max="60"
                               className="form-control"
                               value={formData.age}
@@ -390,7 +414,7 @@ export default function MohonPinjamanOnlinePage() {
                           </div>
                         </div>
 
-                        {/* Salary & LeadsWhere Input */}
+                        {/* Salary & Net Salary Input */}
                         <div className="form-row form-row-column">
                           <div className="form-holder">
                             <label htmlFor="salary">Gaji Kasar</label>
@@ -407,27 +431,20 @@ export default function MohonPinjamanOnlinePage() {
                               required
                             />
                           </div>
-                          <div className="form-holder form-holder-mobile pos-relative">
-                            <label htmlFor="leadsWhere">Bagaimana Anda Tahu Tentang Kami</label>
-                            <i className="zmdi zmdi-caret-down"></i>
-                            <select
-                              id="leadsWhere"
-                              name="leadsWhere"
-                              className="form-control form-control-dropdown"
-                              value={formData.leadsWhere}
+                          <div className="form-holder">
+                            <label htmlFor="netSalary">Gaji Bersih</label>
+                            <input
+                              id="netSalary"
+                              name="netSalary"
+                              type="number"
+                              placeholder="1500"
+                              className="form-control"
+                              min="0"
+                              step="1"
+                              value={formData.netSalary}
                               onChange={handleInputChange}
                               required
-                            >
-                              <option value="" disabled>
-                                Sila Pilih
-                              </option>
-                              <option value="iklan-facebook-instagram">Iklan Facebook / Instagram</option>
-                              <option value="iklan-tiktok">Iklan TikTok</option>
-                              <option value="pencarian-google">Pencarian Google</option>
-                              <option value="rujukan-rakan-keluarga">Rujukan Rakan / Keluarga</option>
-                              <option value="walk-in">Walk In</option>
-                              <option value="lain-lain">Lain-lain</option>
-                            </select>
+                            />
                           </div>
                         </div>
 
@@ -448,7 +465,7 @@ export default function MohonPinjamanOnlinePage() {
                               />
                             </div>
                             <label htmlFor="mohon-agree-1" className="checkbox-text">
-                              Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh loanbuddy melalui WhatsApp;
+                              Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh Loanbuddy Credit melalui WhatsApp.
                             </label>
                           </div>
                           <div className="checkbox-holder">
@@ -466,15 +483,15 @@ export default function MohonPinjamanOnlinePage() {
                               />
                             </div>
                             <label htmlFor="mohon-agree-2" className="checkbox-text">
-                              Saya/Kami telah membaca, memahami dan bersetuju untuk terikat dengan{" "}
+                              Dengan menandakan kotak, saya telah membaca, memahami dan bersetuju dengan{" "}
                               <a href="#" onClick={(e) => { e.preventDefault(); setShowTermsModal(true); }}>
-                                Terma Penggunaan
+                                Dasar Privasi
                               </a>{" "}
-                              dan{" "}
+                              &{" "}
                               <a href="#" onClick={(e) => { e.preventDefault(); setShowPrivacyModal(true); }}>
-                                Notis Privasi
+                                Terma dan Syarat;
                               </a>
-                              , dan dengan ini memberi kebenaran kepada pemprosesan data peribadi saya/kami oleh Loanbuddy Credit (“Loanbuddy”) selaras dengan Akta Perlindungan Data Peribadi 2010.
+                              {" "}dan,
                             </label>
                           </div>
                           <div className="checkbox-holder">
@@ -519,7 +536,7 @@ export default function MohonPinjamanOnlinePage() {
               </div>
 
               {/* Sidebar Content */}
-              <div className="course-card-mohon col-lg-4 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400">
+              <div className="course-card-mohon col-lg-4 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400" style={{ borderRadius: "10px" }}>
                 <div className="form-header text-center mb-4">
                   <h3>Apa yang anda perlukan untuk memohon?</h3>
                 </div>

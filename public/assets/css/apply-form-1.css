@@ -287,7 +287,7 @@
 
 .course-card-mohon {
     padding: 30px;
-    border-radius: 1px;
+    border-radius: 10px;
     background-color: #ffffff;
     border: 2px solid #D2D2D2;
 }
@@ -487,6 +487,7 @@ div#termsOfUseModal {
     font-weight: 600;
     font-size: 20px;
     color: #1f1d0d;
+    border-radius: 10px;
 }
 
 .success-upload-message-1 {
@@ -495,6 +496,7 @@ div#termsOfUseModal {
     font-weight: 600;
     font-size: 20px;
     color: #044bd9;
+    border-radius: 10px;
 }
 
 
