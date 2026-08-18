@@ -478,10 +478,10 @@ hr {
 ================================================== */
 /* 2.5 - Spaces or Gaps - Start
 ================================================== */
-.section_space_lg {
+/* .section_space_lg {
   padding-top: 30vh;
   padding-bottom: 120px;
-}
+} */
 
 .section_space_md {
   padding-top: 70px;
