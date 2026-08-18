@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Reddit_Sans } from "next/font/google";
 import "./globals.css";
 
+
 const redditSans = Reddit_Sans({
   variable: "--font-reddit-sans",
   subsets: ["latin"],
@@ -79,7 +80,9 @@ export default function RootLayout({
           <link key={`css-${href}`} rel="stylesheet" href={href} />
         ))}
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
