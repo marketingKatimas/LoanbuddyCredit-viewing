@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function MohonPinjamanOnlinePage() {
+  const [pageData, setPageData] = useState<any>(null);
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -31,6 +33,15 @@ export default function MohonPinjamanOnlinePage() {
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
+    fetch("/api/content?slug=mohon-pinjaman-online", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => { });
+
     // Load Google reCAPTCHA v3 script dynamically
     const script = document.createElement("script");
     script.src = "https://www.google.com/recaptcha/api.js?render=6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_";
@@ -223,6 +234,39 @@ export default function MohonPinjamanOnlinePage() {
     }
   };
 
+  const bannerHeading =
+    pageData?.hero?.heading || "Pinjaman Peribadi Sehingga RM50,000\nMohon Hari ini!";
+  const bannerSubheading =
+    pageData?.hero?.subheading ||
+    "Satu Langkah mudah untuk mencapai kestabilan kewangan yang anda perlukan. Pilih Loanbuddy Credit!";
+
+  const formTitle = pageData?.hero?.badgeText || "Selamat Datang ke Loanbuddy Credit!";
+  const formSubtitle =
+    pageData?.hero?.secondaryCtaText ||
+    "Permohonan pinjaman hanya terbuka untuk warganegara Malaysia sahaja.";
+
+  const sidebarTitle =
+    pageData?.sections?.[0]?.sectionTitle || "Apa yang anda perlukan untuk memohon?";
+  const docHeading =
+    pageData?.sections?.[0]?.items?.[0]?.itemTitle || "1. Dokumen Diperlukan Untuk Permohonan";
+  const docList =
+    pageData?.sections?.[0]?.items?.[0]?.itemDescription
+      ? pageData.sections[0].items[0].itemDescription
+        .split("\n")
+        .map((line: string) => line.trim())
+        .filter(Boolean)
+      : [
+        "Salinan kad pengenalan (depan dan belakang)",
+        "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)",
+        "Slip gaji 3 bulan terkini (format PDF) dan/atau",
+        "Bil utiliti 1 bulan terkini (air, elektrik, dll.)",
+      ];
+  const paymentHeading =
+    pageData?.sections?.[0]?.items?.[1]?.itemTitle ||
+    "2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:";
+  const submitButtonText =
+    pageData?.hero?.primaryCtaText || "Hantar";
+
   return (
     <div className="page_wrapper">
       {/* Back To Top */}
@@ -245,13 +289,11 @@ export default function MohonPinjamanOnlinePage() {
           <div className="container container-apply-header">
             <div className="row d-flex align-items-center justify-content-center">
               <div className="col col-12">
-                <h1 className="banner-mohon-big-title text-center justify-content-center animate-fade-in-up">
-                  Pinjaman Peribadi Sehingga RM50,000
-                  <br />
-                  Mohon Hari ini!
+                <h1 className="banner-mohon-big-title text-center justify-content-center animate-fade-in-up whitespace-pre-line">
+                  {bannerHeading}
                 </h1>
                 <p className="banner-apply-header animate-fade-in-up delay-200">
-                  Satu Langkah mudah untuk mencapai kestabilan kewangan yang anda perlukan. Pilih Loanbuddy Credit!
+                  {bannerSubheading}
                 </p>
               </div>
             </div>
@@ -277,8 +319,8 @@ export default function MohonPinjamanOnlinePage() {
                       <div className="form-mohon-content pos-relative col-lg-12">
                         {/* Form Header */}
                         <div className="form-header text-center">
-                          <h3>Selamat Datang ke Loanbuddy Credit!</h3>
-                          <p>Permohonan pinjaman hanya terbuka untuk warganegara Malaysia sahaja.</p>
+                          <h3>{formTitle}</h3>
+                          <p>{formSubtitle}</p>
                         </div>
 
                         {error && (
@@ -524,8 +566,8 @@ export default function MohonPinjamanOnlinePage() {
                             style={{ height: "auto" }}
                           >
                             <span>
-                              <small>{isSubmitting ? "Sedang menghantar..." : "Hantar"}</small>
-                              <small>{isSubmitting ? "Sedang menghantar..." : "Hantar"}</small>
+                              <small>{isSubmitting ? "Sedang menghantar..." : submitButtonText}</small>
+                              <small>{isSubmitting ? "Sedang menghantar..." : submitButtonText}</small>
                             </span>
                           </button>
                         </div>
@@ -538,20 +580,19 @@ export default function MohonPinjamanOnlinePage() {
               {/* Sidebar Content */}
               <div className="course-card-mohon col-lg-4 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400" style={{ borderRadius: "10px" }}>
                 <div className="form-header text-center mb-4">
-                  <h3>Apa yang anda perlukan untuk memohon?</h3>
+                  <h3>{sidebarTitle}</h3>
                 </div>
                 <div className="mohon-rules-top mb-3">
                   <img src="/assets/images/dokumen-permohonan.png" alt="dokumen permohonan" className="mx-auto d-block" />
                 </div>
                 <div className="mohon-rules">
-                  <h5>1. Dokumen Diperlukan Untuk Permohonan</h5>
+                  <h5>{docHeading}</h5>
                   <ul>
-                    <li>Salinan kad pengenalan (depan dan belakang)</li>
-                    <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
-                    <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
-                    <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                    {docList.map((item: string, idx: number) => (
+                      <li key={idx}>{item}</li>
+                    ))}
                   </ul>
-                  <h5>2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:</h5>
+                  <h5>{paymentHeading}</h5>
                   <div className="mohon-rules-bottom">
                     <div className="d-flex">
                       <img src="/assets/images/jompay-logo.png" alt="JomPay" />

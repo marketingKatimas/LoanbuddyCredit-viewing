@@ -126,11 +126,46 @@ body, button, input, select, textarea {
 }
 
 @keyframes mascotFloat {
-  0%, 100% {
-    transform: translateY(0);
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-14px) rotate(1.5deg) scale(1.01);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-24px) rotate(-1deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-10px) rotate(1deg) scale(1.01);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes mascotStarFlyIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-180px, 35px, 0) rotate(-10deg) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes mascotStarFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-16px) rotate(-2deg) scale(1.02);
+  }
+  65% {
+    transform: translateY(-8px) rotate(2deg) scale(1);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
 }
 
@@ -198,6 +233,533 @@ body, button, input, select, textarea {
   box-shadow: 0 4px 8px rgba(13, 78, 216, 0.35);
 }
 
+/* =====================================================
+   Hero Banner Carousel Mobile / Tablet Redesign
+   ===================================================== */
+@media (max-width: 991.98px) {
+  .hero-carousel {
+    margin: 0 auto;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .carousel-slide {
+    min-height: 520px;
+    padding: 20px 24px 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .carousel-slide.image-only-slide,
+  .slide-2 {
+    min-height: 300px;
+    background-size: cover !important;
+    background-position: center center !important;
+    padding: 0;
+  }
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .carousel-slide h1 {
+    font-size: 26px;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .carousel-slide p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .carousel-indicators {
+    bottom: 18px !important;
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-carousel {
+    margin: 0 auto;
+    border-radius: 0;
+    touch-action: pan-y;
+  }
+
+  .carousel-slide {
+    min-height: 520px;
+    padding: 20px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover !important;
+    background-position: center bottom !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  .carousel-slide.has-text-slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 12, 35, 0.48) 0%, rgba(0, 16, 48, 0.62) 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .carousel-slide.image-only-slide,
+  .slide-2 {
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
+    max-height: 340px;
+    background-size: cover !important;
+    background-position: center center !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .carousel-slide h1 {
+    font-size: 34px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 15px !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    text-shadow: none !important;
+  }
+
+  .carousel-slide p {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 22px;
+    color: #f1f5f9 !important;
+    max-width: 100%;
+    text-shadow: none !important;
+  }
+
+  .hero-content a.btn,
+  .hero-content .btn,
+  .hero-content .cta_semak,
+  .hero-content .cta_mohon {
+    padding: 0 22px !important;
+    font-size: 13px !important;
+    min-width: unset !important;
+    border-radius: 50px !important;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.25) !important;
+    height: auto !important;
+    line-height: 1 !important;
+  }
+
+  .hero-content a.btn span,
+  .hero-content .btn span,
+  .hero-content .cta_semak span {
+    height: auto !important;
+    line-height: 1 !important;
+  }
+
+  .hero-content a.btn span small,
+  .hero-content .btn span small,
+  .hero-content .cta_semak span small {
+    padding: 7px 0 !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    font-weight: 600 !important;
+    height: auto !important;
+  }
+
+  .carousel-indicators {
+    bottom: 20px !important;
+    gap: 8px !important;
+    z-index: 2 !important;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .dot.active {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.2);
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Services Section Mobile Rearrangement - Image as Card Background */
+  .services {
+    padding: 42px 16px 40px !important;
+  }
+
+  .services h2 {
+    font-size: 21px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .services-grid {
+    flex-direction: column !important;
+    gap: 18px !important;
+    margin: 0 auto 30px !important;
+  }
+
+  .service-card {
+    position: relative !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    min-height: 250px !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    text-align: left !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.16) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    background-color: #0d2850 !important;
+  }
+
+  .service-card-bg-img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+    display: block !important;
+  }
+
+  .service-card-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(180deg, rgba(0, 15, 50, 0.08) 0%, rgba(0, 25, 80, 0.52) 40%, rgba(0, 15, 55, 0.90) 100%) !important;
+    display: block !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+
+  .service-card-inner {
+    position: relative !important;
+    z-index: 2 !important;
+    padding: 22px 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+
+  .service-card h3 {
+    color: #ffffff !important;
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .service-card p {
+    color: rgba(255, 255, 255, 0.92) !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+    padding: 0 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .service-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 7px 16px !important;
+    background: rgba(255, 255, 255, 0.22) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.45) !important;
+    color: #ffffff !important;
+    border-radius: 50px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .service-link:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+  }
+
+  /* Why Choose Section Mobile Rearrangement - Sleek Horizontal Layout */
+  .why-choose-section {
+    padding: 38px 16px 36px !important;
+  }
+
+  .why-choose-section h2 {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .why-choose-section .service_item.why-choose-mobile-card,
+  .why-choose-mobile-card {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 15px !important;
+    padding: 16px 16px !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07) !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+
+  .why-choose-section .service_item .item_icon.why-choose-mobile-icon,
+  .why-choose-mobile-icon {
+    width: 52px !important;
+    min-width: 52px !important;
+    max-width: 52px !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 2px 8px rgba(13, 78, 216, 0.12) !important;
+  }
+
+  .why-choose-section .service_item .item_icon.why-choose-mobile-icon img,
+  .why-choose-mobile-icon img {
+    max-height: 32px !important;
+    max-width: 32px !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .why-choose-mobile-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    flex: 1 !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .why-choose-mobile-content .item_title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0052cc !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+    text-align: left !important;
+  }
+
+  .why-choose-mobile-content .item_content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .why-choose-mobile-content .item_content p {
+    font-size: 12.5px !important;
+    line-height: 1.48 !important;
+    color: #4b5563 !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  /* CTA Mid Section Mobile Rearrangement */
+  .cta_banner_section {
+    padding: 36px 16px !important;
+    border-radius: 16px !important;
+    margin: 0 12px 30px !important;
+  }
+
+  .cta_banner_section h2 {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Testimonial Section Mobile Redesign */
+  .testimonial_section {
+    padding: 38px 16px 36px !important;
+    background-color: #f8fafc !important;
+  }
+
+  .testimonial_section h2 {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .testimonial_section .row.g-4 {
+    --bs-gutter-y: 12px !important;
+  }
+
+  .testimonial_item {
+    height: auto !important;
+    min-height: auto !important;
+    border-radius: 18px !important;
+    padding: 18px 18px 20px !important;
+    background: #ffffff !important;
+    border: 1px solid #edf2f7 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    transition: none !important;
+  }
+
+  .testimonial_content {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .testimonial_header_wrap {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+  }
+
+  .testimonial_avatar {
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    border: 2px solid #0052cc !important;
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.15) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .testimonial_meta {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    flex: 1 !important;
+  }
+
+  .testimonial_meta .testimonial_name {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    margin-bottom: 3px !important;
+    line-height: 1.2 !important;
+  }
+
+  .testimonial_meta .d-flex svg {
+    width: 15px !important;
+    height: 15px !important;
+    fill: #f59e0b !important; /* Premium gold / amber star rating */
+  }
+
+  .testimonial_content p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: #475569 !important;
+    margin-bottom: 0 !important;
+    text-align: left !important;
+  }
+
+  /* Blog Section Mobile Rearrangement */
+  .blog_section {
+    padding: 40px 16px !important;
+  }
+
+  .blog_section h2 {
+    font-size: 20px !important;
+  }
+
+  /* FAQ Section Mobile Rearrangement */
+  .section_space_faq {
+    padding: 40px 16px !important;
+  }
+
+  .section_space_faq h2 {
+    font-size: 20px !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide {
+    padding: 24px 12px 44px;
+  }
+
+  .carousel-slide.image-only-slide {
+    min-height: 180px;
+  }
+
+  .carousel-slide h1 {
+    font-size: 20px;
+    line-height: 1.28;
+    margin-bottom: 10px;
+  }
+
+  .carousel-slide p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .hero-content .cta_semak {
+    padding: 11px 28px !important;
+    font-size: 14px !important;
+  }
+
+  .hero-perks-mobile {
+    gap: 4px;
+    padding: 10px 8px;
+  }
+
+  .hero-perks-mobile .perk-item {
+    font-size: 10.5px;
+    gap: 4px;
+  }
+}
+
 /* Mascot Placement Between Sections */
 .mascot-divider {
   position: relative;
@@ -213,7 +775,54 @@ body, button, input, select, textarea {
   top: -350px;
   width: 420px;
   height: auto;
-  animation: mascotFloat 4s ease-in-out infinite;
+  animation: mascotFloat 5s ease-in-out infinite;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
+  cursor: pointer;
+  will-change: transform;
+}
+
+.mascot-divider img:hover {
+  transform: translateY(-26px) scale(1.06) rotate(3deg);
+  filter: drop-shadow(0 20px 30px rgba(0, 82, 204, 0.28));
+}
+
+.mascot-star-between {
+  position: relative;
+  height: 0;
+  overflow: visible;
+  z-index: 10;
+}
+
+.mascot-star-between img {
+  position: absolute;
+  left: 7%;
+  top: -80px;
+  width: 290px;
+  height: auto;
+  opacity: 0;
+  transform: translate3d(-180px, 35px, 0) rotate(-10deg) scale(0.92);
+  transition: filter 0.4s ease;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12));
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.mascot-star-between.animated-in img {
+  animation: mascotStarFlyIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             mascotStarFloat 5.5s ease-in-out 1.5s infinite;
+}
+
+.mascot-star-between.animated-in img:hover {
+  transform: translateY(-20px) scale(1.08) rotate(-4deg);
+  filter: drop-shadow(0 18px 28px rgba(255, 193, 7, 0.38));
+}
+
+@media (max-width: 991.98px) {
+  .mascot-divider,
+  .mascot-star-between {
+    display: none !important;
+  }
 }
 
 /* Services Section */
@@ -264,6 +873,15 @@ body, button, input, select, textarea {
   border-radius: 10px;
   padding: 10px;
   transition: transform 0.35s ease;
+  background-color: #ffffff;
+}
+
+.service-card-bg-img {
+  display: none;
+}
+
+.service-card-overlay {
+  display: none;
 }
 
 .services.animated-in .service-card:nth-child(1) {
@@ -596,6 +1214,7 @@ body, button, input, select, textarea {
   .carousel-slide p,
   .hero-content .cta_semak,
   .mascot-divider img,
+  .mascot-star-between img,
   .testimonial_section h2,
   .testimonial_section .row.g-4 > div,
   .cta_home_new .text-cta-mobile,
@@ -1078,12 +1697,52 @@ body, button, input, select, textarea {
   transition: left 0.75s ease-in-out;
 }
 
-/* Fix mobile spacing on Hubungi Kami page */
-@media (max-width: 768px) {
-  .page_content.bg_white {
+/* =====================================================
+   Fix Extra Top Gaps Across All Pages on Mobile (< 992px)
+   ===================================================== */
+@media (max-width: 991.98px) {
+  /* Remove legacy notification margin-top and padding-top on page_content */
+  .page_content,
+  .page_content.bg_white,
+  .page_content.bg-white,
+  body .page_content,
+  .page_wrapper .page_content,
+  main.page_content {
     margin-top: 0px !important;
-    padding-top: 80px !important;
+    padding-top: 0px !important;
   }
+
+  /* Ensure site header sits directly against page content with zero gap */
+  .site_header,
+  .site_header.site_header_1,
+  .site_header.site_header_1.site_header_2 {
+    margin-bottom: 0px !important;
+  }
+
+  /* Compact banner padding on inner pages */
+  .page_banner,
+  .page_banner.about_banner_1,
+  .page_banner.faq_banner_main,
+  .page_banner.section_space_lg,
+  .page_banner.section_space_lg_about {
+    margin-top: 0px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .container-apply-header {
+    padding-top: 14px !important;
+  }
+
+  .banner-apply-header {
+    margin-top: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .banner-mohon-big-title {
+    margin-top: 0px !important;
+  }
+
   .branches_map_section {
     padding-top: 10px !important;
   }
@@ -1174,6 +1833,19 @@ body, button, input, select, textarea {
 }
 .delay-500 {
   animation-delay: 0.5s;
+}
+
+/* Allow position: sticky on header by overriding overflow: hidden on page_wrapper */
+.page_wrapper {
+  overflow: visible !important;
+  overflow-x: clip !important;
+  overflow-y: visible !important;
+  position: relative !important;
+}
+
+html,
+body {
+  overflow-x: clip;
 }
 
 /* Force Reddit Sans on all elements inside page_wrapper except icons */

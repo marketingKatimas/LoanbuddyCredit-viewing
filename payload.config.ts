@@ -4,6 +4,11 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 
+import { Media } from './src/collections/Media'
+import { Pages } from './src/collections/Pages'
+
+import { seedDefaultPages } from './src/seed/seedPages'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -14,12 +19,17 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  onInit: async (payload) => {
+    await seedDefaultPages(payload)
+  },
   collections: [
     {
       slug: 'users',
       auth: true,
       fields: [],
     },
+    Media,
+    Pages,
   ],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

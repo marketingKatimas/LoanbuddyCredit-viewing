@@ -75,7 +75,7 @@ export default function Header() {
   };
 
   return (
-    <header ref={headerRef} className={`site_header site_header_1 site_header_2 ${isScrolled ? "scrolled" : ""}`}>
+    <header ref={headerRef} className={`site_header site_header_1 site_header_2 ${isScrolled ? "sticky scrolled" : ""}`}>
       <div className="container">
         <div className="row align-items-center justify-content-between">
           {/* Mobile Logo (Left) */}

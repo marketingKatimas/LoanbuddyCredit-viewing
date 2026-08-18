@@ -1,10 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 export default function PembayaranPage() {
+  const [pageData, setPageData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch("/api/content?slug=pembayaran", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   // Only question 0 ("Bagaimanakah cara saya meminta penyelesaian penuh/awal?") is open by default
   const [openFaqs, setOpenFaqs] = useState<{ [key: number]: boolean }>({
     0: true,
@@ -21,161 +34,122 @@ export default function PembayaranPage() {
     setOpenFaqs((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
+  const defaultBranches = [
+    {
+      name: "Cawangan Kuala Lumpur",
+      shortName: "Cawangan Kuala Lumpur",
+      email: "kl@loanbuddycredit.com.my",
+      phone: "+6018 785 6072",
+      link: "https://wa.link/taaakr",
+    },
+    {
+      name: "Cawangan Kuching, Sarawak",
+      shortName: "Cawangan Kuching",
+      email: "ks@loanbuddycredit.com.my",
+      phone: "+6010 932 9976",
+      link: "https://wa.link/32cpg5",
+    },
+    {
+      name: "Cawangan Bintulu, Sarawak",
+      shortName: "Cawangan Bintulu",
+      email: "bintulu@loanbuddycredit.com.my",
+      phone: "+6010 909 8557",
+      link: "https://wa.link/6v806i",
+    },
+  ];
+
+  const branches =
+    pageData?.sections?.[0]?.items && pageData.sections[0].items.length > 0
+      ? pageData.sections[0].items.map((item: any, idx: number) => {
+          const defaultB = defaultBranches[idx] || defaultBranches[0];
+          const parts = (item.itemDescription || "").split("|").map((s: string) => s.trim());
+          const email = parts[0]?.includes("@") ? parts[0] : defaultB.email;
+          const phone = parts[1] || (!parts[0]?.includes("@") ? parts[0] : defaultB.phone);
+          return {
+            name: item.itemTitle || defaultB.name,
+            shortName: item.itemTitle ? item.itemTitle.replace(", Sarawak", "") : defaultB.shortName,
+            email: email,
+            phone: phone,
+            link: item.itemLink || defaultB.link,
+          };
+        })
+      : defaultBranches;
+
+  const pageHeading = pageData?.hero?.heading || "Kaedah Pembayaran";
+  const pageSubheading =
+    pageData?.hero?.subheading ||
+    "Loanbuddy Credit kini menerima bayaran balik melalui Direct Debit, pemindahan bank dalam talian atau JomPay ke akaun bank rasmi Loanbuddy Credit, di mana pihak Loanbuddy Credit akan memaklumkan penerimaan bayaran balik kepada anda melalui panggilan, SMS atau WhatsApp.";
+  const secondaryNote =
+    pageData?.hero?.secondaryCtaText ||
+    "Pihak Loanbuddy Credit tidak menerima sebarang pembayaran tunai di mana-mana cawangan. Pastikan anda melakukan bayaran balik ke SATU (1) akaun bank rasmi sahaja untuk mengelakkan daripada sebarang penipuan dan penyamaran.";
+
+  const faqSectionTitle = pageData?.sections?.[1]?.sectionTitle || "Soalan Lazim";
+
+  const getFaqTitle = (idx: number, fallback: string) => {
+    return pageData?.sections?.[1]?.items?.[idx]?.itemTitle || fallback;
+  };
+
   const BranchCards = () => (
     <div className="row g-3 mt-3 mb-2 justify-content-center text-center">
-      {/* KL Branch */}
-      <div className="col-12 col-md-4 d-flex flex-column align-items-center">
-        <div className="fw-bold mb-1" style={{ color: "#0d4ed8", fontSize: "14px" }}>
-          Cawangan Kuala Lumpur
-        </div>
-        <div className="mb-2 text-muted d-flex align-items-center justify-content-center gap-1" style={{ fontSize: "13px" }}>
-          <i className="far fa-envelope" style={{ color: "#0d4ed8" }}></i>
-          <span>kl@loanbuddycredit.com.my</span>
-        </div>
-        <a
-          href="https://wa.link/taaakr"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-          style={{
-            backgroundColor: "#25D366",
-            borderRadius: "50px",
-            padding: "8px 18px",
-            fontSize: "13px",
-            fontWeight: "600",
-          }}
-        >
-          <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "20px", height: "20px" }} />
-          <div className="text-start" style={{ lineHeight: "1.2" }}>
-            <span style={{ fontSize: "10px", display: "block" }}>WhatsApp Kami</span>
-            <span>+6018 785 6072</span>
+      {branches.map((branch: any, idx: number) => (
+        <div key={idx} className="col-12 col-md-4 d-flex flex-column align-items-center">
+          <div className="fw-bold mb-1" style={{ color: "#0d4ed8", fontSize: "14px" }}>
+            {branch.name}
           </div>
-        </a>
-      </div>
-
-      {/* Kuching Branch */}
-      <div className="col-12 col-md-4 d-flex flex-column align-items-center">
-        <div className="fw-bold mb-1" style={{ color: "#0d4ed8", fontSize: "14px" }}>
-          Cawangan Kuching, Sarawak
+          {branch.email && (
+            <div className="mb-2 text-muted d-flex align-items-center justify-content-center gap-1" style={{ fontSize: "13px" }}>
+              <i className="far fa-envelope" style={{ color: "#0d4ed8" }}></i>
+              <span>{branch.email}</span>
+            </div>
+          )}
+          <a
+            href={branch.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+            style={{
+              backgroundColor: "#25D366",
+              borderRadius: "50px",
+              padding: "8px 18px",
+              fontSize: "13px",
+              fontWeight: "600",
+            }}
+          >
+            <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "20px", height: "20px" }} />
+            <div className="text-start" style={{ lineHeight: "1.2" }}>
+              <span style={{ fontSize: "10px", display: "block" }}>WhatsApp Kami</span>
+              <span>{branch.phone}</span>
+            </div>
+          </a>
         </div>
-        <div className="mb-2 text-muted d-flex align-items-center justify-content-center gap-1" style={{ fontSize: "13px" }}>
-          <i className="far fa-envelope" style={{ color: "#0d4ed8" }}></i>
-          <span>ks@loanbuddycredit.com.my</span>
-        </div>
-        <a
-          href="https://wa.link/32cpg5"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-          style={{
-            backgroundColor: "#25D366",
-            borderRadius: "50px",
-            padding: "8px 18px",
-            fontSize: "13px",
-            fontWeight: "600",
-          }}
-        >
-          <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "20px", height: "20px" }} />
-          <div className="text-start" style={{ lineHeight: "1.2" }}>
-            <span style={{ fontSize: "10px", display: "block" }}>WhatsApp Kami</span>
-            <span>+6010 932 9976</span>
-          </div>
-        </a>
-      </div>
-
-      {/* Bintulu Branch */}
-      <div className="col-12 col-md-4 d-flex flex-column align-items-center">
-        <div className="fw-bold mb-1" style={{ color: "#0d4ed8", fontSize: "14px" }}>
-          Cawangan Bintulu, Sarawak
-        </div>
-        <div className="mb-2 text-muted d-flex align-items-center justify-content-center gap-1" style={{ fontSize: "13px" }}>
-          <i className="far fa-envelope" style={{ color: "#0d4ed8" }}></i>
-          <span>bintulu@loanbuddycredit.com.my</span>
-        </div>
-        <a
-          href="https://wa.link/6v806i"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-          style={{
-            backgroundColor: "#25D366",
-            borderRadius: "50px",
-            padding: "8px 18px",
-            fontSize: "13px",
-            fontWeight: "600",
-          }}
-        >
-          <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "20px", height: "20px" }} />
-          <div className="text-start" style={{ lineHeight: "1.2" }}>
-            <span style={{ fontSize: "10px", display: "block" }}>WhatsApp Kami</span>
-            <span>+6010 909 8557</span>
-          </div>
-        </a>
-      </div>
+      ))}
     </div>
   );
 
   const BranchButtonsOnly = () => (
     <div className="d-flex flex-wrap gap-3 mt-3 mb-2 justify-content-center">
-      <a
-        href="https://wa.link/taaakr"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-        style={{
-          backgroundColor: "#25D366",
-          borderRadius: "50px",
-          padding: "8px 20px",
-          fontSize: "13px",
-          fontWeight: "600",
-        }}
-      >
-        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
-        <div className="text-start" style={{ lineHeight: "1.2" }}>
-          <span style={{ fontSize: "10px", display: "block" }}>Cawangan Kuala Lumpur</span>
-          <span>+6018 785 6072</span>
-        </div>
-      </a>
-
-      <a
-        href="https://wa.link/32cpg5"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-        style={{
-          backgroundColor: "#25D366",
-          borderRadius: "50px",
-          padding: "8px 20px",
-          fontSize: "13px",
-          fontWeight: "600",
-        }}
-      >
-        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
-        <div className="text-start" style={{ lineHeight: "1.2" }}>
-          <span style={{ fontSize: "10px", display: "block" }}>Cawangan Kuching</span>
-          <span>+6010 932 9976</span>
-        </div>
-      </a>
-
-      <a
-        href="https://wa.link/6v806i"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-        style={{
-          backgroundColor: "#25D366",
-          borderRadius: "50px",
-          padding: "8px 20px",
-          fontSize: "13px",
-          fontWeight: "600",
-        }}
-      >
-        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
-        <div className="text-start" style={{ lineHeight: "1.2" }}>
-          <span style={{ fontSize: "10px", display: "block" }}>Cawangan Bintulu</span>
-          <span>+6010 909 8557</span>
-        </div>
-      </a>
+      {branches.map((branch: any, idx: number) => (
+        <a
+          key={idx}
+          href={branch.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+          style={{
+            backgroundColor: "#25D366",
+            borderRadius: "50px",
+            padding: "8px 20px",
+            fontSize: "13px",
+            fontWeight: "600",
+          }}
+        >
+          <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+          <div className="text-start" style={{ lineHeight: "1.2" }}>
+            <span style={{ fontSize: "10px", display: "block" }}>{branch.shortName || branch.name}</span>
+            <span>{branch.phone}</span>
+          </div>
+        </a>
+      ))}
     </div>
   );
 
@@ -230,7 +204,7 @@ export default function PembayaranPage() {
                   className="fw-bold mb-4 animate-fade-in-up delay-100"
                   style={{ color: "#0d4ed8", fontSize: "28px" }}
                 >
-                  Kaedah Pembayaran
+                  {pageHeading}
                 </h2>
 
                 {/* Paragraphs */}
@@ -238,107 +212,48 @@ export default function PembayaranPage() {
                   className="mb-4 animate-fade-in-up delay-200"
                   style={{ color: "#444", fontSize: "16px", lineHeight: "1.7" }}
                 >
-                  Loanbuddy Credit kini menerima bayaran balik melalui Direct Debit, pemindahan bank dalam talian atau JomPay ke akaun bank rasmi Loanbuddy Credit, di mana pihak Loanbuddy Credit akan memaklumkan penerimaan bayaran balik kepada anda melalui panggilan, SMS atau WhatsApp.
+                  {pageSubheading}
                 </p>
 
                 <p
                   className="mb-5 animate-fade-in-up delay-200"
                   style={{ color: "#444", fontSize: "16px", lineHeight: "1.7" }}
                 >
-                  Pihak Loanbuddy Credit tidak menerima sebarang pembayaran tunai di mana-mana cawangan. Pastikan anda melakukan bayaran balik ke <strong>SATU (1)</strong> akaun bank rasmi sahaja untuk mengelakkan daripada sebarang penipuan dan penyamaran.
+                  {secondaryNote}
                 </p>
 
                 {/* Branch WhatsApp Green Pill Buttons Row */}
                 <div className="row g-3 justify-content-center animate-fade-in-up delay-300">
-                  {/* KL Branch */}
-                  <div className="col-12 col-md-auto">
-                    <a
-                      href="https://wa.link/taaakr"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="d-flex align-items-center gap-3 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-                      style={{
-                        backgroundColor: "#25D366",
-                        borderRadius: "50px",
-                        padding: "12px 28px",
-                        transition: "all 0.3s ease",
-                      }}
-                    >
-                      <img
-                        src="/assets/images/ws-logo.png"
-                        alt="WhatsApp"
-                        style={{ width: "32px", height: "32px", flexShrink: 0 }}
-                      />
-                      <div className="text-start" style={{ lineHeight: "1.2" }}>
-                        <span style={{ fontSize: "0.85rem", display: "block", fontWeight: "600" }}>
-                          Cawangan Kuala Lumpur
-                        </span>
-                        <span style={{ fontSize: "1.05rem", fontWeight: "700" }}>
-                          +6018 785 6072
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-
-                  {/* Kuching Branch */}
-                  <div className="col-12 col-md-auto">
-                    <a
-                      href="https://wa.link/32cpg5"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="d-flex align-items-center gap-3 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-                      style={{
-                        backgroundColor: "#25D366",
-                        borderRadius: "50px",
-                        padding: "12px 28px",
-                        transition: "all 0.3s ease",
-                      }}
-                    >
-                      <img
-                        src="/assets/images/ws-logo.png"
-                        alt="WhatsApp"
-                        style={{ width: "32px", height: "32px", flexShrink: 0 }}
-                      />
-                      <div className="text-start" style={{ lineHeight: "1.2" }}>
-                        <span style={{ fontSize: "0.85rem", display: "block", fontWeight: "600" }}>
-                          Cawangan Kuching
-                        </span>
-                        <span style={{ fontSize: "1.05rem", fontWeight: "700" }}>
-                          +6010 932 9976
-                        </span>
-                      </div>
-                    </a>
-                  </div>
-
-                  {/* Bintulu Branch */}
-                  <div className="col-12 col-md-auto">
-                    <a
-                      href="https://wa.link/6v806i"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="d-flex align-items-center gap-3 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
-                      style={{
-                        backgroundColor: "#25D366",
-                        borderRadius: "50px",
-                        padding: "12px 28px",
-                        transition: "all 0.3s ease",
-                      }}
-                    >
-                      <img
-                        src="/assets/images/ws-logo.png"
-                        alt="WhatsApp"
-                        style={{ width: "32px", height: "32px", flexShrink: 0 }}
-                      />
-                      <div className="text-start" style={{ lineHeight: "1.2" }}>
-                        <span style={{ fontSize: "0.85rem", display: "block", fontWeight: "600" }}>
-                          Cawangan Bintulu
-                        </span>
-                        <span style={{ fontSize: "1.05rem", fontWeight: "700" }}>
-                          +6010 909 8557
-                        </span>
-                      </div>
-                    </a>
-                  </div>
+                  {branches.map((branch: any, idx: number) => (
+                    <div key={idx} className="col-12 col-md-auto">
+                      <a
+                        href={branch.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="d-flex align-items-center gap-3 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+                        style={{
+                          backgroundColor: "#25D366",
+                          borderRadius: "50px",
+                          padding: "12px 28px",
+                          transition: "all 0.3s ease",
+                        }}
+                      >
+                        <img
+                          src="/assets/images/ws-logo.png"
+                          alt="WhatsApp"
+                          style={{ width: "32px", height: "32px", flexShrink: 0 }}
+                        />
+                        <div className="text-start" style={{ lineHeight: "1.2" }}>
+                          <span style={{ fontSize: "0.85rem", display: "block", fontWeight: "600" }}>
+                            {branch.shortName || branch.name}
+                          </span>
+                          <span style={{ fontSize: "1.05rem", fontWeight: "700" }}>
+                            {branch.phone}
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -352,7 +267,7 @@ export default function PembayaranPage() {
               className="fw-bold text-center mb-5 animate-fade-in-up delay-200"
               style={{ color: "#0d4ed8", fontSize: "28px" }}
             >
-              Soalan Lazim
+              {faqSectionTitle}
             </h2>
 
             <div className="row justify-content-center animate-fade-in-up delay-300">
@@ -371,7 +286,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimanakah cara saya meminta penyelesaian penuh/awal?
+                      {getFaqTitle(0, "Bagaimanakah cara saya meminta penyelesaian penuh/awal?")}
                     </h3>
                     <svg
                       width="28"
@@ -432,7 +347,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimana untuk menyemak jumlah ansuran bulanan saya?
+                      {getFaqTitle(1, "Bagaimana untuk menyemak jumlah ansuran bulanan saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -490,7 +405,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimanakah saya tahu jika pembayaran balik saya telah diterima?
+                      {getFaqTitle(2, "Bagaimanakah saya tahu jika pembayaran balik saya telah diterima?")}
                     </h3>
                     <svg
                       width="28"
@@ -547,7 +462,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bilakah tarikh pembayaran balik pertama saya?
+                      {getFaqTitle(3, "Bilakah tarikh pembayaran balik pertama saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -609,7 +524,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimanakah cara saya membuat pembayaran balik kepada Loanbuddy Credit?
+                      {getFaqTitle(4, "Bagaimanakah cara saya membuat pembayaran balik kepada Loanbuddy Credit?")}
                     </h3>
                     <svg
                       width="28"
@@ -666,7 +581,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimanakah saya meminta bayaran pulangan?
+                      {getFaqTitle(5, "Bagaimanakah saya meminta bayaran pulangan?")}
                     </h3>
                     <svg
                       width="28"
@@ -727,7 +642,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimana jika saya gagal membayar hutang bulanan saya?
+                      {getFaqTitle(6, "Bagaimana jika saya gagal membayar hutang bulanan saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -803,7 +718,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      Bagaimana untuk menyemak tarikh akhir pembayaran balik saya?
+                      {getFaqTitle(7, "Bagaimana untuk menyemak tarikh akhir pembayaran balik saya?")}
                     </h3>
                     <svg
                       width="28"

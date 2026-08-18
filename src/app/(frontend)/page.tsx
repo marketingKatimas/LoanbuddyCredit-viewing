@@ -4,16 +4,58 @@ import React, { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+import { getMediaUrl } from "@/lib/media";
+
 export default function Home() {
+  const [pageData, setPageData] = useState<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showMoreFaqs, setShowMoreFaqs] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 45;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) {
+      // Swiped left -> next slide
+      setCurrentSlide((prev) => (prev + 1) % bannerList.length);
+    } else if (distance < -minSwipeDistance) {
+      // Swiped right -> prev slide
+      setCurrentSlide((prev) => (prev - 1 + bannerList.length) % bannerList.length);
+    }
+  };
+
+  useEffect(() => {
+    fetch("/api/content?slug=home", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const servicesRef = useRef<HTMLElement>(null);
   const [isServicesVisible, setIsServicesVisible] = useState(false);
 
   const whyChooseRef = useRef<HTMLElement>(null);
   const [isWhyChooseVisible, setIsWhyChooseVisible] = useState(false);
+
+  const mascotStarRef = useRef<HTMLDivElement>(null);
+  const [isMascotStarVisible, setIsMascotStarVisible] = useState(false);
 
   const testimonialsRef = useRef<HTMLElement>(null);
   const [isTestimonialsVisible, setIsTestimonialsVisible] = useState(false);
@@ -28,6 +70,7 @@ export default function Home() {
     if (typeof IntersectionObserver === "undefined") {
       setIsServicesVisible(true);
       setIsWhyChooseVisible(true);
+      setIsMascotStarVisible(true);
       setIsTestimonialsVisible(true);
       setIsCtaBannerVisible(true);
       setIsBlogVisible(true);
@@ -35,16 +78,17 @@ export default function Home() {
     }
 
     const sections = [
-      { ref: servicesRef, setVisible: setIsServicesVisible },
-      { ref: whyChooseRef, setVisible: setIsWhyChooseVisible },
-      { ref: testimonialsRef, setVisible: setIsTestimonialsVisible },
-      { ref: ctaBannerRef, setVisible: setIsCtaBannerVisible },
-      { ref: blogRef, setVisible: setIsBlogVisible },
+      { ref: servicesRef, setVisible: setIsServicesVisible, rootMargin: "0px" },
+      { ref: whyChooseRef, setVisible: setIsWhyChooseVisible, rootMargin: "0px" },
+      { ref: mascotStarRef, setVisible: setIsMascotStarVisible, rootMargin: "250px 0px 50px 0px" },
+      { ref: testimonialsRef, setVisible: setIsTestimonialsVisible, rootMargin: "0px" },
+      { ref: ctaBannerRef, setVisible: setIsCtaBannerVisible, rootMargin: "0px" },
+      { ref: blogRef, setVisible: setIsBlogVisible, rootMargin: "0px" },
     ];
 
     const observers: IntersectionObserver[] = [];
 
-    sections.forEach(({ ref, setVisible }) => {
+    sections.forEach(({ ref, setVisible, rootMargin }) => {
       if (!ref.current) return;
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -53,7 +97,7 @@ export default function Home() {
             observer.disconnect();
           }
         },
-        { threshold: 0.15 }
+        { threshold: 0.1, rootMargin: rootMargin || "0px" }
       );
       observer.observe(ref.current);
       observers.push(observer);
@@ -64,12 +108,39 @@ export default function Home() {
     };
   }, []);
 
+  const defaultBanners = [
+    {
+      heading: pageData?.hero?.heading || "Selamat Datang ke Loanbuddy Credit",
+      subheading:
+        pageData?.hero?.subheading ||
+        "Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan. Dengan proses permohonan yang ringkas dan kelulusan pantas, anda boleh mendapatkan dana yang diperlukan tepat pada masanya untuk mengurus keperluan kewangan anda.",
+      primaryCtaText: pageData?.hero?.primaryCtaText || "Mohon Sekarang",
+      primaryCtaLink: pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online",
+      bannerImage: pageData?.hero?.heroImage || "/assets/images/banner-1.png",
+    },
+    {
+      bannerImage: "/assets/images/banner-2.png",
+    },
+  ];
+
+  const bannerList =
+    pageData?.banners && pageData.banners.length > 0
+      ? pageData.banners
+      : defaultBanners;
+
   useEffect(() => {
+    if (currentSlide >= bannerList.length) {
+      setCurrentSlide(0);
+    }
+  }, [bannerList.length, currentSlide]);
+
+  useEffect(() => {
+    if (bannerList.length <= 1) return;
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 2);
+      setCurrentSlide((prev) => (prev + 1) % bannerList.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [bannerList.length]);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -109,307 +180,340 @@ export default function Home() {
       <main className="page_content">
         {/* Hero Section Carousel */}
         <section className="hero-carousel">
-          <div className="carousel-track-container">
+          <div
+            className="carousel-track-container"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div
               className="carousel-track"
               id="carouselTrack"
-              style={{ transform: `translateX(-${currentSlide * 50}%)` }}
+              style={{
+                width: `${bannerList.length * 100}%`,
+                transform: `translateX(-${(currentSlide * 100) / bannerList.length}%)`,
+              }}
             >
-              <div
-                className="carousel-slide slide-1"
-                style={{ backgroundImage: `url('/assets/images/banner-1.png')` }}
-              >
-                <div className="hero-content">
-                  <h1>Selamat Datang ke Loanbuddy Credit</h1>
-                  <p>
-                    Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang
-                    kerumitan. Dengan proses permohonan yang ringkas dan kelulusan pantas, anda boleh
-                    mendapatkan dana yang diperlukan tepat pada masanya untuk mengurus keperluan kewangan
-                    anda.
-                  </p>
-                  <a href="mohon-pinjaman-online" className="btn border_red_reverse cta_semak cta_mohon">
-                    <span>
-                      <small>Mohon Sekarang</small>
-                      <small>Mohon Sekarang</small>
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div
-                className="carousel-slide slide-2"
-                style={{ backgroundImage: `url('/assets/images/banner-2.png')` }}
-              ></div>
+              {bannerList.map((banner: any, index: number) => {
+                const fallbackImg =
+                  index === 0 ? "/assets/images/banner-1.png" : "/assets/images/banner-2.png";
+                const bgImage = getMediaUrl(banner.bannerImage, fallbackImg);
+                const hasText = Boolean(
+                  banner.heading || banner.subheading || banner.primaryCtaText
+                );
+
+                return (
+                  <div
+                    key={index}
+                    className={`carousel-slide slide-${index + 1} ${
+                      hasText ? "has-text-slide" : "image-only-slide"
+                    }`}
+                    style={{
+                      width: `${100 / bannerList.length}%`,
+                      backgroundImage: `url('${bgImage}')`,
+                      backgroundSize: hasText ? "cover" : "100% auto",
+                      backgroundPosition: hasText ? "center bottom" : "center center",
+                      backgroundColor: hasText ? undefined : "#f4f6f8",
+                      cursor: !hasText && banner.primaryCtaLink ? "pointer" : "default",
+                    }}
+                    onClick={() => {
+                      if (!hasText && banner.primaryCtaLink) {
+                        window.location.href = banner.primaryCtaLink;
+                      }
+                    }}
+                  >
+                    {hasText && (
+                      <div className="hero-content">
+                        {banner.heading && <h1>{banner.heading}</h1>}
+                        {banner.subheading && <p>{banner.subheading}</p>}
+                        {banner.primaryCtaText && (
+                          <a
+                            href={banner.primaryCtaLink || "mohon-pinjaman-online"}
+                            className="btn border_red_reverse cta_semak cta_mohon"
+                          >
+                            <span>
+                              <small>{banner.primaryCtaText}</small>
+                              <small>{banner.primaryCtaText}</small>
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          <div className="carousel-indicators">
-            <div
-              className={`dot ${currentSlide === 0 ? "active" : ""}`}
-              onClick={() => setCurrentSlide(0)}
-            ></div>
-            <div
-              className={`dot ${currentSlide === 1 ? "active" : ""}`}
-              onClick={() => setCurrentSlide(1)}
-            ></div>
-          </div>
+          {bannerList.length > 1 && (
+            <div className="carousel-indicators">
+              {bannerList.map((_: any, index: number) => (
+                <div
+                  key={index}
+                  className={`dot ${currentSlide === index ? "active" : ""}`}
+                  onClick={() => setCurrentSlide(index)}
+                ></div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Mascot Divider */}
-        <div className="mascot-divider">
+        <div className="mascot-divider d-none d-lg-block">
           <img src="/assets/images/ladybird-1.png" alt="Loanbuddy Mascot" />
         </div>
 
         {/* Services Section */}
-        <section className={`services ${isServicesVisible ? "animated-in" : ""}`} ref={servicesRef}>
-          <h2>Perkhidmatan Kami</h2>
+        {(() => {
+          const servicesSection = pageData?.sections?.[0];
+          const defaultServices = [
+            {
+              itemTitle: "Pinjaman Peribadi Online",
+              itemDescription: "Mohon pinjaman peribadi dengan mudah dan pantas melalui permohonan atas talian.",
+              image: "/assets/images/fimage2.png",
+            },
+            {
+              itemTitle: "Pinjaman Tambah Nilai",
+              itemDescription: "Pinjaman peribadi tidak mencukupi? Pinjaman Tambah Nilai boleh selesaikan masalah anda.",
+              image: "/assets/images/fimage1.png",
+            },
+          ];
+          const serviceItems = servicesSection?.items?.length ? servicesSection.items : defaultServices;
 
-          <div className="services-grid">
-            <div className="service-card">
-              <img
-                src="/assets/images/fimage2.png"
-                alt="Pinjaman Peribadi Online"
-                className="service-image"
-              />
-              <h3>Pinjaman Peribadi Online</h3>
-              <p>Mohon pinjaman peribadi dengan mudah dan pantas melalui permohonan atas talian.</p>
-              <a href="pinjaman-peribadi-kl-sarawak" className="service-link">
-                Ketahui Lebih Lanjut
-              </a>
-            </div>
+          return (
+            <section className={`services ${isServicesVisible ? "animated-in" : ""}`} ref={servicesRef}>
+              <h2>{servicesSection?.sectionTitle || "Perkhidmatan Kami"}</h2>
 
-            <div className="service-card">
-              <img
-                src="/assets/images/fimage1.png"
-                alt="Pinjaman Tambah Nilai"
-                className="service-image"
-              />
-              <h3>Pinjaman Tambah Nilai</h3>
-              <p>Pinjaman peribadi tidak mencukupi? Pinjaman Tambah Nilai boleh selesaikan masalah anda.</p>
-              <a href="pinjaman-peribadi-kl-sarawak" className="service-link">
-                Ketahui Lebih Lanjut
-              </a>
-            </div>
-          </div>
+              <div className="services-grid">
+                {serviceItems.map((item: any, idx: number) => {
+                  const fallbackImg = idx === 0 ? "/assets/images/fimage2.png" : "/assets/images/fimage1.png";
+                  const imageUrl = getMediaUrl(item.itemImage, fallbackImg);
+                  return (
+                    <div key={idx} className="service-card">
+                      {/* Mobile background photo */}
+                      <img
+                        src={imageUrl}
+                        alt={item.itemTitle || "Service Background"}
+                        className="service-card-bg-img d-md-none"
+                      />
+                      {/* Mobile gradient overlay */}
+                      <div className="service-card-overlay d-md-none"></div>
 
-          <a href="mohon-pinjaman-online" className="btn border_red_reverse cta_semak cta_mohon">
-            <span>
-              <small>Mohon Sekarang</small>
-              <small>Mohon Sekarang</small>
-            </span>
-          </a>
-        </section>
-
-        {/* Why Choose Loanbuddy Section */}
-        <section
-          ref={whyChooseRef}
-          className={`intro_video_section bg_blue overflow-hidden decoration_wrap py-5 why-choose-section ${
-            isWhyChooseVisible ? "animated-in" : ""
-          }`}
-        >
-          <div className="container position-relative mb-5">
-            <div className="row justify-content-center text-center mb-4">
-              <div className="col-12 col-lg-10">
-                <h2 className="font-ramai text-white mb-2" style={{ fontSize: "24px" }}>
-                  Kenapa Ramai Memilih Loanbuddy Credit?
-                </h2>
-              </div>
-            </div>
-
-            <div className="row justify-content-center g-4">
-              {/* Card 1: Kredibel */}
-              <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-center" style={{ maxWidth: "360px" }}>
-                <div
-                  className="service_item bg_white w-100 rounded-3 text-center align-items-center"
-                  style={{ aspectRatio: "auto", padding: "22px 24px" }}
-                >
-                  <div className="item_icon flex-shrink-0 mb-3" style={{ width: "100px", height: "100px", minWidth: "100px" }}>
-                    <img
-                      src="/assets/images/kredibel-2.png"
-                      alt="Kredibel Icon"
-                      loading="lazy"
-                      style={{ maxHeight: "64px", width: "auto" }}
-                    />
-                  </div>
-                  <h4 className="item_title text-blue mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
-                    Kredibel
-                  </h4>
-                  <div className="item_content">
-                    <p className="mb-0 text-secondary" style={{ fontSize: "13.5px", lineHeight: 1.5 }}>
-                      Telus, profesional dan komited untuk perkhidmatan yang optimum - kami adalah pemberi pinjaman wang
-                      berlesen di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT).
-                    </p>
-                  </div>
-                </div>
+                      <div className="service-card-inner">
+                        {/* Desktop standard image */}
+                        <img
+                          src={imageUrl}
+                          alt={item.itemTitle || "Service Image"}
+                          className="service-image d-none d-md-block"
+                        />
+                        <h3>{item.itemTitle}</h3>
+                        <p>{item.itemDescription}</p>
+                        <a href="pinjaman-peribadi-kl-sarawak" className="service-link">
+                          <span>Ketahui Lebih Lanjut</span>
+                          <i className="far fa-arrow-right ms-2"></i>
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
-              {/* Card 2: Permohonan Mudah */}
-              <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-center" style={{ maxWidth: "360px" }}>
-                <div
-                  className="service_item bg_white w-100 rounded-3 text-center align-items-center"
-                  style={{ aspectRatio: "auto", padding: "22px 24px" }}
-                >
-                  <div className="item_icon flex-shrink-0 mb-3" style={{ width: "100px", height: "100px", minWidth: "100px" }}>
-                    <img
-                      src="/assets/images/mohon-mudah.png"
-                      alt="Permohonan Mudah Icon"
-                      loading="lazy"
-                      style={{ maxHeight: "64px", width: "auto" }}
-                    />
-                  </div>
-                  <h4 className="item_title text-blue mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
-                    Permohonan Mudah
-                  </h4>
-                  <div className="item_content">
-                    <p className="mb-0 text-secondary" style={{ fontSize: "13.5px", lineHeight: 1.5 }}>
-                      Dokumen ringkas, proses mudah. Segalanya direka untuk memudahkan proses pinjaman tanpa tekanan.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3: Kelulusan Pantas */}
-              <div className="col-12 col-md-6 col-lg-4 d-flex justify-content-center" style={{ maxWidth: "360px" }}>
-                <div
-                  className="service_item bg_white w-100 rounded-3 text-center align-items-center"
-                  style={{ aspectRatio: "auto", padding: "22px 24px" }}
-                >
-                  <div className="item_icon flex-shrink-0 mb-3" style={{ width: "100px", height: "100px", minWidth: "100px" }}>
-                    <img
-                      src="/assets/images/lulus-pantas.png"
-                      alt="Lulus Pantas Icon"
-                      loading="lazy"
-                      style={{ maxHeight: "64px", width: "auto" }}
-                    />
-                  </div>
-                  <h4 className="item_title text-blue mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
-                    Kelulusan Pantas
-                  </h4>
-                  <div className="item_content">
-                    <p className="mb-0 text-secondary" style={{ fontSize: "13.5px", lineHeight: 1.5 }}>
-                      Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama selepas permohonan diluluskan.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="btn_wrap btn_warp_home pb-0 d-lg-none text-center mt-4">
-              <a className="btn border_new" href="tentang-loanbuddy-credit">
+              <a href="mohon-pinjaman-online" className="btn border_red_reverse cta_semak cta_mohon">
                 <span>
-                  <small>Ketahui Lebih Lanjut</small>
-                  <small>Ketahui Lebih Lanjut</small>
+                  <small>Mohon Sekarang</small>
+                  <small>Mohon Sekarang</small>
                 </span>
               </a>
-            </div>
-          </div>
-        </section>
+            </section>
+          );
+        })()}
+
+        {/* Why Choose Loanbuddy Section */}
+        {(() => {
+          const whyChooseSection = pageData?.sections?.[1];
+          const defaultCards = [
+            {
+              itemTitle: "Kredibel",
+              itemDescription:
+                "Telus, profesional dan komited untuk perkhidmatan yang optimum - kami adalah pemberi pinjaman wang berlesen di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT).",
+            },
+            {
+              itemTitle: "Permohonan Mudah",
+              itemDescription:
+                "Dokumen ringkas, proses mudah. Segalanya direka untuk memudahkan proses pinjaman tanpa tekanan.",
+            },
+            {
+              itemTitle: "Kelulusan Pantas",
+              itemDescription:
+                "Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama selepas permohonan diluluskan.",
+            },
+          ];
+          const cards = whyChooseSection?.items?.length ? whyChooseSection.items : defaultCards;
+
+          return (
+            <section
+              ref={whyChooseRef}
+              className={`intro_video_section bg_blue overflow-hidden decoration_wrap py-5 why-choose-section ${
+                isWhyChooseVisible ? "animated-in" : ""
+              }`}
+            >
+              <div className="container position-relative mb-5">
+                <div className="row justify-content-center text-center mb-4">
+                  <div className="col-12 col-lg-10">
+                    <h2 className="font-ramai text-white mb-2" style={{ fontSize: "24px" }}>
+                      {whyChooseSection?.sectionTitle || "Kenapa Ramai Memilih Loanbuddy Credit?"}
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="row justify-content-center g-3 g-md-4">
+                  {cards.map((card: any, idx: number) => {
+                    const fallbackImg =
+                      idx === 0
+                        ? "/assets/images/kredibel-2.png"
+                        : idx === 1
+                        ? "/assets/images/mohon-mudah.png"
+                        : "/assets/images/lulus-pantas.png";
+                    return (
+                      <div
+                        key={idx}
+                        className="col-12 col-md-6 col-lg-4 d-flex justify-content-center"
+                        style={{ maxWidth: "360px" }}
+                      >
+                        <div
+                          className="service_item bg_white w-100 rounded-3 text-center align-items-center why-choose-mobile-card"
+                          style={{ aspectRatio: "auto", padding: "22px 24px" }}
+                        >
+                          <div
+                            className="item_icon flex-shrink-0 mb-3 why-choose-mobile-icon"
+                            style={{ width: "100px", height: "100px", minWidth: "100px" }}
+                          >
+                            <img
+                              src={getMediaUrl(card.itemImage, fallbackImg)}
+                              alt={card.itemTitle || "Icon"}
+                              loading="lazy"
+                              style={{ maxHeight: "64px", width: "auto" }}
+                            />
+                          </div>
+                          <div className="why-choose-mobile-content">
+                            <h4 className="item_title text-blue mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
+                              {card.itemTitle}
+                            </h4>
+                            <div className="item_content">
+                              <p className="mb-0 text-secondary" style={{ fontSize: "13.5px", lineHeight: 1.5 }}>
+                                {card.itemDescription}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="btn_wrap btn_warp_home pb-0 d-lg-none text-center mt-4">
+                  <a className="btn border_new" href="tentang-loanbuddy-credit">
+                    <span>
+                      <small>Ketahui Lebih Lanjut</small>
+                      <small>Ketahui Lebih Lanjut</small>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* Mascot Between Sections */}
-        <div style={{ position: "relative", height: 0, overflow: "visible", zIndex: 10 }}>
+        <div
+          ref={mascotStarRef}
+          className={`mascot-star-between d-none d-lg-block ${
+            isMascotStarVisible ? "animated-in" : ""
+          }`}
+        >
           <img
             src="/assets/images/banner/home-mohon/star-ladybug.webp"
             loading="lazy"
             alt="Mascot Star"
-            style={{ position: "absolute", left: "7%", top: "-80px", width: "290px", height: "auto" }}
           />
         </div>
 
         {/* Testimonials Section */}
-        <section
-          ref={testimonialsRef}
-          className={`testimonial_section section_space_lg bg_grey pos-relative ${
-            isTestimonialsVisible ? "animated-in" : ""
-          }`}
-        >
-          <div className="container position-relative">
-            <div className="text-center mb-5">
-              <h2 style={{ fontSize: "24px", color: "#333", fontWeight: 700, marginBottom: 0 }}>
-                Apa Kata Pelanggan Loanbuddy Credit?
-              </h2>
-            </div>
+        {(() => {
+          const testimonialSection = pageData?.sections?.[2];
+          const defaultTestimonials = [
+            {
+              itemTitle: "Encik Samsudin",
+              itemDescription:
+                "Staf sangat membantu dan soalan saya semua dijawab dengan penuh kesabaran dan boleh nampak staf tau apa yang dia nak sampaikan.",
+            },
+            {
+              itemTitle: "Fatimah binti Said",
+              itemDescription: "Sgt efisien dr segi kelulusan. Sentiasa bagi update.",
+            },
+            {
+              itemTitle: "Mr. Wong",
+              itemDescription:
+                "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging. answer many questions quite good..",
+            },
+          ];
+          const testimonials = testimonialSection?.items?.length ? testimonialSection.items : defaultTestimonials;
 
-            <div className="row justify-content-center g-4">
-              <div className="col-12 col-md-6 col-lg-4">
-                <div className="testimonial_item h-100">
-                  <div className="testimonial_content">
-                    <div className="testimonial_header_wrap">
-                      <img
-                        src="/assets/images/testimonial/samsudin.png"
-                        alt="Encik Samsudin"
-                        className="testimonial_avatar"
-                      />
-                      <div className="testimonial_meta">
-                        <div className="d-flex align-items-center gap-1 mb-1">
-                          {[...Array(5)].map((_, i) => (
-                            <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#0052cc">
-                              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
-                            </svg>
-                          ))}
+          return (
+            <section
+              ref={testimonialsRef}
+              className={`testimonial_section section_space_lg bg_grey pos-relative ${
+                isTestimonialsVisible ? "animated-in" : ""
+              }`}
+            >
+              <div className="container position-relative">
+                <div className="text-center mb-5">
+                  <h2 style={{ fontSize: "24px", color: "#333", fontWeight: 700, marginBottom: 0 }}>
+                    {testimonialSection?.sectionTitle || "Apa Kata Pelanggan Loanbuddy Credit?"}
+                  </h2>
+                </div>
+
+                <div className="row justify-content-center g-4">
+                  {testimonials.map((t: any, idx: number) => {
+                    const fallbackAvatar =
+                      idx === 0
+                        ? "/assets/images/testimonial/samsudin.png"
+                        : idx === 1
+                        ? "/assets/images/testimonial/fatimah.png"
+                        : "/assets/images/testimonial/wong.png";
+                    return (
+                      <div key={idx} className="col-12 col-md-6 col-lg-4">
+                        <div className="testimonial_item h-100">
+                          <div className="testimonial_content">
+                            <div className="testimonial_header_wrap">
+                              <img
+                                src={getMediaUrl(t.itemImage, fallbackAvatar)}
+                                alt={t.itemTitle || "Avatar"}
+                                className="testimonial_avatar"
+                              />
+                              <div className="testimonial_meta">
+                                <div className="d-flex align-items-center gap-1 mb-1">
+                                  {[...Array(5)].map((_, i) => (
+                                    <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#0052cc">
+                                      <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                                    </svg>
+                                  ))}
+                                </div>
+                                <h5 className="testimonial_name">{t.itemTitle}</h5>
+                              </div>
+                            </div>
+                            <p>{t.itemDescription}</p>
+                          </div>
                         </div>
-                        <h5 className="testimonial_name">Encik Samsudin</h5>
                       </div>
-                    </div>
-                    <p>
-                      Staf sangat membantu dan soalan saya semua dijawab dengan penuh kesabaran dan boleh nampak staf tau apa yang dia nak sampaikan.
-                    </p>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
+            </section>
+          );
+        })()}
 
-              <div className="col-12 col-md-6 col-lg-4">
-                <div className="testimonial_item h-100">
-                  <div className="testimonial_content">
-                    <div className="testimonial_header_wrap">
-                      <img
-                        src="/assets/images/testimonial/fatimah.png"
-                        alt="Fatimah binti Said"
-                        className="testimonial_avatar"
-                      />
-                      <div className="testimonial_meta">
-                        <div className="d-flex align-items-center gap-1 mb-1">
-                          {[...Array(5)].map((_, i) => (
-                            <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#0052cc">
-                              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
-                            </svg>
-                          ))}
-                        </div>
-                        <h5 className="testimonial_name">Fatimah binti Said</h5>
-                      </div>
-                    </div>
-                    <p>Sgt efisien dr segi kelulusan. Sentiasa bagi update.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-12 col-md-6 col-lg-4">
-                <div className="testimonial_item h-100">
-                  <div className="testimonial_content">
-                    <div className="testimonial_header_wrap">
-                      <img
-                        src="/assets/images/testimonial/wong.png"
-                        alt="Mr. Wong"
-                        className="testimonial_avatar"
-                      />
-                      <div className="testimonial_meta">
-                        <div className="d-flex align-items-center gap-1 mb-1">
-                          {[...Array(5)].map((_, i) => (
-                            <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#0052cc">
-                              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
-                            </svg>
-                          ))}
-                        </div>
-                        <h5 className="testimonial_name">Mr. Wong</h5>
-                      </div>
-                    </div>
-                    <p>
-                      The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging. answer many questions quite good..
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Call to Action Banner Section */}
         <section
@@ -440,121 +544,109 @@ export default function Home() {
         </section>
 
         {/* Blog & Resources Section */}
-        <section
-          ref={blogRef}
-          className={`calltoaction_section section_space_md bg_grey decoration_wrap blog_section ${
-            isBlogVisible ? "animated-in" : ""
-          }`}
-        >
-          <div className="container col-mobile">
-            <div className="section_heading">
-              <div className="row align-items-center">
-                <div className="col col-lg-7">
-                  <h2 className="heading_text mb-0" style={{ fontSize: "24px", color: "#333", fontWeight: 700 }}>Sumber & Blog</h2>
-                </div>
-                <div className="col col-lg-5 d-none d-lg-flex justify-content-end">
-                  <div className="btn_wrap p-0 z-index-3">
-                    <a className="btn border_red_new border_artikel" href="blog">
-                      <span>
-                        <small>Artikel lain</small>
-                        <small>Artikel lain</small>
-                      </span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {(() => {
+          const blogSection = pageData?.sections?.[3];
+          const defaultBlogs = [
+            {
+              itemTitle: "Penyatuan Hutang",
+              itemDescription: "Baca artikel",
+              itemLink: "penyatuan-hutang-kad-kredit-2026",
+              fallbackImg: "/assets/images/blog/penyatuan-hutang-01.png",
+              alt: "Tabiat Buruk Pengurusan Kewangan",
+            },
+            {
+              itemTitle: "Jenis-Jenis Pinjaman di Malaysia",
+              itemDescription: "Baca artikel",
+              itemLink: "kesan-opr-pinjaman-peribadi",
+              fallbackImg: "/assets/images/blog/pinjaman-my-01.png",
+              alt: "Kesan OPR Pinjaman Peribadi",
+            },
+            {
+              itemTitle: "Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit",
+              itemDescription: "Baca artikel",
+              itemLink: "pinjaman-peribadi-ccris-ptptn-2026",
+              fallbackImg: "/assets/images/blog/beban-kewangan-01.png",
+              alt: "CCRIS Sangkut PTPTN",
+            },
+          ];
 
-            <div className="row align-items-stretch">
-              <div className="col col-lg-4 z-index-3">
-                <div className="blog_item bg-white">
-                  <div className="item_image">
-                    <a href="penyatuan-hutang-kad-kredit-2026">
-                      <img
-                        src="/assets/images/blog/penyatuan-hutang-01.png"
-                        alt="Tabiat Buruk Pengurusan Kewangan"
-                        loading="lazy"
-                      />
-                    </a>
-                  </div>
-                  <div className="item_content p-15" style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
-                    <h3 className="item_title">
-                      <a href="penyatuan-hutang-kad-kredit-2026" style={{ fontSize: "18px", lineHeight: "22px" }}>
-                        Penyatuan Hutang
-                      </a>
-                    </h3>
-                    <div style={{ marginTop: "15px" }}>
-                      <a href="penyatuan-hutang-kad-kredit-2026" style={{ color: "red", fontWeight: "bold", textDecoration: "underline !important" }}>
-                        Baca artikel
-                      </a>
+          const blogItems = blogSection?.items?.length ? blogSection.items : defaultBlogs;
+
+          return (
+            <section
+              ref={blogRef}
+              className={`calltoaction_section section_space_md bg_grey decoration_wrap blog_section ${
+                isBlogVisible ? "animated-in" : ""
+              }`}
+            >
+              <div className="container col-mobile">
+                <div className="section_heading">
+                  <div className="row align-items-center">
+                    <div className="col col-lg-7">
+                      <h2 className="heading_text mb-0" style={{ fontSize: "24px", color: "#333", fontWeight: 700 }}>
+                        {blogSection?.sectionTitle || "Sumber & Blog"}
+                      </h2>
+                    </div>
+                    <div className="col col-lg-5 d-none d-lg-flex justify-content-end">
+                      <div className="btn_wrap p-0 z-index-3">
+                        <a className="btn border_red_new border_artikel" href="blog">
+                          <span>
+                            <small>Artikel lain</small>
+                            <small>Artikel lain</small>
+                          </span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="col col-lg-4 z-index-3">
-                <div className="blog_item bg-white" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                  <div className="item_image">
-                    <a href="kesan-opr-pinjaman-peribadi">
-                      <img
-                        src="/assets/images/blog/pinjaman-my-01.png"
-                        alt="Kesan OPR Pinjaman Peribadi"
-                        loading="lazy"
-                      />
-                    </a>
-                  </div>
-                  <div className="item_content p-15" style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
-                    <h3 className="item_title">
-                      <a href="kesan-opr-pinjaman-peribadi" style={{ fontSize: "18px", lineHeight: "22px" }}>
-                        Jenis-Jenis Pinjaman di Malaysia
-                      </a>
-                    </h3>
-                    <div style={{ marginTop: "15px" }}>
-                      <a href="kesan-opr-pinjaman-peribadi" style={{ color: "red", fontWeight: "bold", textDecoration: "underline !important" }}>
-                        Baca artikel
-                      </a>
-                    </div>
-                  </div>
+                <div className="row align-items-stretch">
+                  {blogItems.map((blog: any, idx: number) => {
+                    const fallbackImg = defaultBlogs[idx]?.fallbackImg || "/assets/images/blog/penyatuan-hutang-01.png";
+                    const link = blog.itemLink || defaultBlogs[idx]?.itemLink || "blog";
+                    const altText = blog.itemTitle || defaultBlogs[idx]?.alt || "Blog thumbnail";
+                    return (
+                      <div key={idx} className="col col-lg-4 z-index-3">
+                        <div className="blog_item bg-white" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+                          <div className="item_image">
+                            <a href={link}>
+                              <img
+                                src={getMediaUrl(blog.itemImage, fallbackImg)}
+                                alt={altText}
+                                loading="lazy"
+                              />
+                            </a>
+                          </div>
+                          <div className="item_content p-15" style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
+                            <h3 className="item_title">
+                              <a href={link} style={{ fontSize: "18px", lineHeight: "22px" }}>
+                                {blog.itemTitle}
+                              </a>
+                            </h3>
+                            <div style={{ marginTop: "15px" }}>
+                              <a href={link} style={{ color: "red", fontWeight: "bold", textDecoration: "underline !important" }}>
+                                {blog.itemDescription || "Baca artikel"}
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="btn_wrap d-block d-lg-none pb-0 text-center">
+                  <a className="btn border_new border_artikel" href="blog">
+                    <span>
+                      <small>Artikel Lain</small>
+                      <small>Artikel Lain</small>
+                    </span>
+                  </a>
                 </div>
               </div>
-
-              <div className="col col-lg-4 z-index-3">
-                <div className="blog_item bg-white" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                  <div className="item_image">
-                    <a href="pinjaman-peribadi-ccris-ptptn-2026">
-                      <img
-                        src="/assets/images/blog/beban-kewangan-01.png"
-                        alt="CCRIS Sangkut PTPTN"
-                        loading="lazy"
-                      />
-                    </a>
-                  </div>
-                  <div className="item_content p-15" style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
-                    <h3 className="item_title">
-                      <a href="pinjaman-peribadi-ccris-ptptn-2026" style={{ fontSize: "18px", lineHeight: "22px" }}>
-                        Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit
-                      </a>
-                    </h3>
-                    <div style={{ marginTop: "15px" }}>
-                      <a href="pinjaman-peribadi-ccris-ptptn-2026" style={{ color: "red", fontWeight: "bold", textDecoration: "underline !important" }}>
-                        Baca artikel
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="btn_wrap d-block d-lg-none pb-0 text-center">
-              <a className="btn border_new border_artikel" href="blog">
-                <span>
-                  <small>Artikel Lain</small>
-                  <small>Artikel Lain</small>
-                </span>
-              </a>
-            </div>
-          </div>
-        </section>
+            </section>
+          );
+        })()}
 
         {/* FAQ Section */}
         <section className="faq_section section_space_md section_space_faq">
