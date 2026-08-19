@@ -89,8 +89,12 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    footer: Footer;
+  };
+  globalsSelect: {
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -563,6 +567,84 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  /**
+   * The short slogan displayed under the footer logo.
+   */
+  tagline?: string | null;
+  /**
+   * The summary paragraph introducing the company in the footer.
+   */
+  description?: string | null;
+  nomborLesen?: string | null;
+  tempohLesen?: string | null;
+  nomborPermit?: string | null;
+  tempohPermit?: string | null;
+  hoursWeekdays?: string | null;
+  hoursSaturday?: string | null;
+  hoursClosed?: string | null;
+  facebookUrl?: string | null;
+  instagramUrl?: string | null;
+  tiktokUrl?: string | null;
+  servicesLinks?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  customerServiceLinks?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  tagline?: T;
+  description?: T;
+  nomborLesen?: T;
+  tempohLesen?: T;
+  nomborPermit?: T;
+  tempohPermit?: T;
+  hoursWeekdays?: T;
+  hoursSaturday?: T;
+  hoursClosed?: T;
+  facebookUrl?: T;
+  instagramUrl?: T;
+  tiktokUrl?: T;
+  servicesLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  customerServiceLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  copyrightText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

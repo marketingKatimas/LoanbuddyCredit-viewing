@@ -67,6 +67,14 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    closeAllMenus();
+    if (pathname === "/" || pathname === "") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const isActive = (path: string) => {
     if (!pathname) return false;
     const cleanPathname = pathname.endsWith("/") && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
@@ -77,37 +85,28 @@ export default function Header() {
   return (
     <header ref={headerRef} className={`site_header site_header_1 site_header_2 ${isScrolled ? "sticky scrolled" : ""}`}>
       <div className="container">
-        <div className="row align-items-center justify-content-between">
-          {/* Mobile Logo (Left) */}
-          <div className="col-6 col-md-4 col-lg-2 d-lg-none d-flex align-items-center">
-            <Link className="site_link d-flex align-items-center" href="/" onClick={closeAllMenus}>
+        <div className="row align-items-center justify-content-between flex-nowrap">
+          {/* Logo (Left Column on Desktop & Mobile) */}
+          <div className="col-auto d-flex align-items-center">
+            <Link className="site_link d-flex align-items-center" href="/" onClick={handleLogoClick}>
               <img
                 src="/assets/images/logo/Keyline%20Horizontal%20.png"
                 alt="loanbuddy credit logo"
-                className="site-header-logo mobile-logo"
+                className="site-header-logo"
               />
             </Link>
           </div>
 
-          {/* Navigation Bar / Mobile Navigation Drawer */}
-          <div className="col-lg-9 col-12 order-3 order-lg-2">
-            <nav className="main_menu navbar navbar-expand-lg">
+          {/* Navigation Bar / Mobile Navigation Drawer (Center Column) */}
+          <div className="col col-12 col-lg order-3 order-lg-2">
+            <nav className="main_menu navbar navbar-expand-lg w-100 justify-content-center">
               <div
-                className={`main_menu_inner collapse navbar-collapse ${
+                className={`main_menu_inner collapse navbar-collapse justify-content-center ${
                   isMobileMenuOpen ? "show" : ""
                 }`}
                 id="main_menu_dropdown"
               >
-                <ul className="main_menu_list unordered_list_center">
-                  <li className="site_logo d-none d-lg-block">
-                    <Link className="site_link" href="/" onClick={closeAllMenus}>
-                      <img
-                        src="/assets/images/logo/Keyline%20Horizontal%20.png"
-                        alt="loanbuddy credit logo"
-                        className="site-header-logo"
-                      />
-                    </Link>
-                  </li>
+                <ul className="main_menu_list unordered_list_center justify-content-center flex-nowrap">
 
                   <li
                     className={`dropdown ${activeDropdown === "service" ? "show" : ""} ${
@@ -209,13 +208,14 @@ export default function Header() {
           </div>
 
           {/* Right Area: CTA Button, Language Switcher, Mobile Hamburger Button */}
-          <div className="col-6 col-md-8 col-lg-3 order-2 order-lg-3 text-end d-flex align-items-center justify-content-end header_right_area">
+          <div className="col-auto order-2 order-lg-3 text-end d-flex align-items-center justify-content-end header_right_area">
             <a href="mohon-pinjaman-online" className="btn_semak_layak d-none d-lg-inline-flex">
               <span>
                 <small>Mohon Sekarang</small>
                 <small>Mohon Sekarang</small>
               </span>
             </a>
+            {/* Language switcher temporarily commented out until translations are ready
             <div className="header_lang_switcher">
               <a href="#" className="lang_item active">
                 BM
@@ -225,6 +225,7 @@ export default function Header() {
                 EN
               </a>
             </div>
+            */}
             <button
               className="mobile_menu_btn d-lg-none ms-2"
               type="button"

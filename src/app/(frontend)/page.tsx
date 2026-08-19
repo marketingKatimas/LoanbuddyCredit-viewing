@@ -493,7 +493,7 @@ export default function Home() {
                               <div className="testimonial_meta">
                                 <div className="d-flex align-items-center gap-1 mb-1">
                                   {[...Array(5)].map((_, i) => (
-                                    <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="#0052cc">
+                                    <svg key={i} width="26" height="26" viewBox="0 0 24 24" fill="#0052cc">
                                       <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
                                     </svg>
                                   ))}
@@ -522,12 +522,14 @@ export default function Home() {
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
           <div className="container">
-            <div className="cta_home_new d-flex flex-column flex-md-row align-items-center justify-content-center gap-4 text-center text-md-start">
+            <div className="cta_home_new d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 text-center text-md-start">
               <div className="text-cta-mobile">
-                <h2 className="font-ramai text-white mb-0" style={{ fontSize: "24px", lineHeight: "1.35" }}>
-                  Perlukan Pinjaman Peribadi?<br />
-                  Loanbuddy Credit Sedia Berkhidmat untuk Anda!
+                <h2 className="text-white mb-1" style={{ fontSize: "24px", fontWeight: 700, lineHeight: "1.3" }}>
+                  Perlukan Pinjaman Peribadi?
                 </h2>
+                <p className="text-white mb-0" style={{ fontSize: "16px", fontWeight: 500, opacity: 0.95, lineHeight: "1.4" }}>
+                  Loanbuddy Credit Sedia Berkhidmat untuk Anda!
+                </p>
               </div>
               <div className="z-index-3 flex-shrink-0">
                 <a href="mohon-pinjaman-online" className="btn border_red_new cta_semak cta_mohon">
