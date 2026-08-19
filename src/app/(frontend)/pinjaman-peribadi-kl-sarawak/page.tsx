@@ -6,13 +6,52 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
+// 1. Reusable WhatsApp Buttons Component defined OUTSIDE the main page
+const WhatsAppButtons = () => (
+  <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-6">
+    
+    {/* Kuala Lumpur Button */}
+    <a href="https://wa.me/60187856072" target="_blank" rel="noopener noreferrer" className="!flex !flex-row !items-center !justify-center gap-3 bg-[#25D366] !text-white px-6 py-2.5 !rounded-full hover:bg-[#1ebe57] transition-colors shadow-sm w-full md:w-auto no-underline">
+      <svg className="w-7 h-7 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      <div className="text-left leading-tight">
+        <div className="text-[14px] font-bold">Cawangan Kuala Lumpur</div>
+        <div className="text-[13px] font-normal">+6018 785 6072</div>
+      </div>
+    </a>
+
+    {/* Kuching Button */}
+    <a href="https://wa.me/60109329976" target="_blank" rel="noopener noreferrer" className="!flex !flex-row !items-center !justify-center gap-3 bg-[#25D366] !text-white px-6 py-2.5 !rounded-full hover:bg-[#1ebe57] transition-colors shadow-sm w-full md:w-auto no-underline">
+      <svg className="w-7 h-7 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      <div className="text-left leading-tight">
+        <div className="text-[14px] font-bold">Cawangan Kuching</div>
+        <div className="text-[13px] font-normal">+6010 932 9976</div>
+      </div>
+    </a>
+
+    {/* Bintulu Button */}
+    <a href="https://wa.me/60109098557" target="_blank" rel="noopener noreferrer" className="!flex !flex-row !items-center !justify-center gap-3 bg-[#25D366] !text-white px-6 py-2.5 !rounded-full hover:bg-[#1ebe57] transition-colors shadow-sm w-full md:w-auto no-underline">
+      <svg className="w-7 h-7 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      <div className="text-left leading-tight">
+        <div className="text-[14px] font-bold">Cawangan Bintulu</div>
+        <div className="text-[13px] font-normal">+6010 909 8557</div>
+      </div>
+    </a>
+
+  </div>
+);
+
+// 2. Main Page Component defined ONLY ONCE
 export default function PinjamanPeribadiPage() {
   // Calculator State
   const [loanAmount, setLoanAmount] = useState<number>(10000);
   const [loanTenure, setLoanTenure] = useState<number>(12);
 
   // FAQ State
-  const [activeFaq, setActiveFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   // Constants & Formulas
   const ANNUAL_INTEREST_RATE = 18; // 18% per year
@@ -30,25 +69,6 @@ export default function PinjamanPeribadiPage() {
   // Dynamic Slider Fill Calculation
   const amountPercentage = ((loanAmount - 1000) / (50000 - 1000)) * 100;
   const tenurePercentage = ((loanTenure - 12) / (60 - 12)) * 100;
-
-  const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
-
-  const faqs = [
-    {
-      question: "Apa itu Pinjaman Peribadi?",
-      answer: "Pinjaman Peribadi ialah sejumlah wang yang dipinjam oleh individu daripada institusi kewangan seperti bank, pemberi pinjaman wang berlesen atau koperasi. Pinjaman ini dikenakan kadar faedah serta mempunyai tempoh pembayaran balik yang telah dipersetujui."
-    },
-    {
-      question: "Apakah Perbezaan Jenis Pinjaman Peribadi di Malaysia?",
-      answer: "Terdapat dua jenis pinjaman peribadi yang tersedia: pinjaman bercagar (memerlukan aset sebagai jaminan) dan tidak bercagar (penilaian berdasarkan pendapatan, skor kredit, dan status pekerjaan tanpa memerlukan cagaran aset)."
-    },
-    {
-      question: "Apakah syarat untuk memohon pinjaman peribadi dari pemberi pinjaman wang berlesen?",
-      answer: "Anda layak meminjam sekiranya anda adalah warganegara Malaysia, berumur antara 18 sehingga 60 tahun, mempunyai pekerjaan tetap dengan minimum pendapatan RM1,700, dan tidak diisytiharkan muflis."
-    }
-  ];
 
   return (
     <div className="page_wrapper bg-white">
@@ -319,10 +339,26 @@ export default function PinjamanPeribadiPage() {
         </section>
 
         {/* 4. Steps Section */}
-        <section className="py-8 lg:py-[40px] bg-[#f2f2f2] overflow-hidden">
-          <div className="container mx-auto px-4 lg:max-w-[1200px]">
+        {/* 4. Steps Section */}
+        {/* REMOVED 'overflow-hidden' so the mascot doesn't get cut off, and ADDED 'relative' to anchor it */}
+        <section className="py-8 lg:py-[40px] bg-[#f2f2f2] relative">
+          
+          {/* Loanbuddy Mascot */}
+          {/* 
+            - top-0 & left-0 anchors it to the top left of this section.
+            - -translate-y-[60%] pushes it UP so it sits exactly between this section and the Calculator.
+            - -translate-x-[45%] pushes it LEFT so half its body is off-screen.
+            - Responsive width (140px to 320px) ensures it stays out of the way on mobile!
+          */}
+          <img 
+            src="/assets/images/Loanbuddy-Ladybug-Mirror.png" 
+            alt="Loanbuddy Mascot" 
+            className="absolute top-0 left-0 -translate-y-[35%] -translate-x-[45%] w-[250px] md:w-[220px] lg:w-[500px] object-contain z-0 pointer-events-none"
+          />
+
+          <div className="container mx-auto px-4 lg:max-w-[1200px] relative z-10">
             <div className="text-center mb-12">
-              <h2 className="text-[23px] lg:!text-[25px] font-bold text-[#044BD9] mb-4">Cara Permohonan Pinjaman Peribadi</h2>
+              <h2 className="text-[23px] lg:!text-[25px] font-bold !text-[#424143] mb-4">Cara Permohonan Pinjaman Peribadi</h2>
             </div>
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 lg:gap-12 relative z-10">
@@ -420,6 +456,8 @@ export default function PinjamanPeribadiPage() {
           </div>
         </section>
 
+        
+
         {/* 6. FAQ Section */}
         <section className="py-16 lg:py-[100px] bg-white">
           <div className="container mx-auto px-4 lg:max-w-[900px]">
@@ -427,38 +465,306 @@ export default function PinjamanPeribadiPage() {
               <h2 className="text-[28px] lg:text-[38px] font-bold text-blue">Soalan Lazim</h2>
             </div>
 
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div key={index} className=" overflow-hidden">
-                  <button
-                    className="w-full px-6 py-4 text-left bg-[#f8f9fa] !border-b !border-[#f2f2f2] hover:bg-gray-100 flex justify-between items-center transition-colors duration-300"
-                    onClick={() => toggleFaq(index)}
-                  >
-                    <span className="text-[#044BD9] font-bold text-[16px] lg:text-[18px] pr-4">{faq.question}</span>
-                    <span className="text-[#044BD9] text-xl font-bold">
-                      {activeFaq === index ? "−" : "+"}
-                    </span>
-                  </button>
+            <div>
+                  <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] pb-0 mb-4 inline-block leading-tight">
+                    Pembayaran Balik
+                  </h3>
                   
-                  {/* Smooth Animated Accordion Body */}
-                  <div
-                    className={`transition-all duration-300 ease-in-out ${
-                      activeFaq === index ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-                    }`}
-                  >
-                    <div className="px-6 py-4 bg-white text-[#424143] text-[15px] leading-relaxed border-t border-gray-100">
-                      {faq.answer}
+                  <div className="flex flex-col">
+                    {/* FAQ 0 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(0)} className="!flex !flex-row !justify-between !items-center w-full py-4 text-left group bg-transparent border-0 outline-none">
+                        <span className="text-blue font-bold !text-[15px] md:text-[20px] lg:!text-[20px] pr-4 group-hover:opacity-80 transition-opacity text-left">
+                          Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 0 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 0 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <p className="text-[#424143] text-[13px] lg:text-[15px] leading-tight ">
+                          Contoh Wakil: <br />
+                          Amaun Pinjaman: <span className="font-bold">RM3,000</span> <br />
+                          Tempoh Pinjaman: <span className="font-bold">12 bulan</span> <br />
+                          Kadar Faedah: <span className="font-bold">18.0% setahun</span> <br />
+                          Fi: <span className="font-bold">Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15</span>
+                        </p>
+
+                        <div className="w-full lg:w-6/12">
+                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" /> 
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  {/* FAQ Section: Permohonan */}
+                  <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] py-5 pb-0 mb-4 inline-block leading-tight">
+                    Permohonan
+                    </h3>
+                  <div className="flex flex-col">
+                    
+                    {/* FAQ 1 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(1)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Berapakah jumlah pinjaman yang boleh saya mohon?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 1 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 1 ? "max-h-[1500px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
+                          Anda boleh meminjam dengan minimum RM1,000 sehingga maksimum RM50,000. Amaun yang anda boleh pinjam berbeza-beza bergantung pada penilaian skor kredit individu.
+                          <br /><br/>
+                          Walau bagaimanapun, untuk Tambah Nilai dan pinjaman seterusnya, RM1,000 dan maksimum akan ditentukan oleh Loanbuddy Credit.
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 2 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(2)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Bagaimanakah cara untuk saya memohon pinjaman Loanbuddy Credit?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 2 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div> 
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 2 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[15px] leading-tight">
+                          Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp.
+                          
+                          <WhatsAppButtons />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 3 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(3)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Berapakah kadar faedah?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 3 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 3 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-relaxed">
+                          Kadar faedah tahunan adalah sehingga 18.0%.
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 4 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(4)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 4 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 4 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-relaxed">
+                          Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda. 
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 5 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(5)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Apakah dokumen dan kelayakan yang diperlukan?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 5 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 5 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
+                          <span className="font-semibold">Dokumen dan kelayakan yang diperlukan termasuk:</span>
+                          <ol className="list-decimal list-outside mt-2">
+                            <li>Salinan kad pengenalan (depan dan belakang)</li>
+                            <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
+                            <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
+                            <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                          </ol> <br />
+
+                          <span className="font-semibold">Kelayakan Pinjaman Peribadi Atas Talian</span>
+                          <ol className="list-decimal list-outside mt-2">
+                            <li>Berumur antara 18 sehingga 60 tahun</li>
+                            <li>Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)</li>
+                            <li>Pendapatan bulanan kasar minimum RM1,700</li>
+                            <li>Tidak muflis dan mampu membayar balik pinjaman</li>
+                            <li>Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
+                          </ol> <br />
+
+                          <span className="font-semibold">Kelayakan Pinjaman Tambah NIlai</span>
+                          <ol className="list-decimal list-outside mt-2">
+                            <li>Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman</li>
+                            <li>Rekod pembayaran yang baik dengan Loanbuddy Credit</li>
+                            <li>Individu berumur 18 hingga 60 tahun</li>
+                            <li>Pendapatan kasar bulanan minimum RM1,700</li>
+                            <li>Kakitangan swasta dan kerajaan sahaja</li>
+                            <li>Warganegara Malaysia</li>
+                            <li>Tidak muflis dan mampu membayar balik pinjaman</li>
+                            <li>Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
+                          </ol> <br />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 5 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(6)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Apakah tempoh pinjaman minimum dan maksimum?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 6 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 6 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[15px] leading-relaxed">
+                          Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun).
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 6 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(7)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Adakah terdapat sebarang bayaran yang perlu saya bayar untuk pendaftaran?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 7 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 7 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[15px] leading-tight">
+                          Tiada yuran pendaftaran dikenakan. Walau bagaimanapun, jika permohonan anda diluluskan, anda perlu membayar duti setem dan yuran perakuan.
+                          <br /><br />
+
+                          Yuran ini akan dikenakan bersama dengan jumlah pembayaran balik pada pembayaran balik pertama.
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  {/* FAQ Section: Kelulusan */}
+                  <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] py-5 pb-0 mb-4 inline-block leading-tight">
+                    Kelulusan
+                    </h3>
+                  <div className="flex flex-col">
+                    
+                    {/* FAQ 1 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(8)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Bagaimanakah saya akan tahu jika permohonan pinjaman saya telah diluluskan?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 8 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 8 ? "max-h-[1500px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
+                          Permohonan yang telah diluluskan akan dihubungi secara peribadi oleh pihak Loanbuddy Credit melalui panggilan telefon, SMS atau WhatsApp.
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 2 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(9)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Berapa lamakah proses kelulusan pinjaman?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 9 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div> 
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 9 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[15px] leading-tight">
+                          Proses pinjaman dalam masa 1-3 hari bekerja. Walau bagaimanapun, jika dokumen tidak lengkap, kami memerlukan 1-3 hari bekerja tambahan untuk urusan pengesahan.
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 3 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(10)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Apakah yang perlu saya lakukan apabila permohonan pinjaman saya telah diluluskan?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 10 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 10 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
+                          Sila tunggu panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit dan ikuti arahan yang diberikan. Untuk pertanyaan dan maklumat lebih lanjut, hubungi Loanbuddy Credit melalui WhatsApp:
+
+                          <WhatsAppButtons />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
 
-            <div className="text-center mt-10">
-              <Link href="/soalan-lazim-faq" className="inline-block px-8 py-3 border-2 border-[#044BD9] text-[#044BD9] font-bold rounded-full hover:bg-[#044BD9] hover:text-white transition-colors duration-300">
-                Lihat Semua FAQ
-              </Link>
-            </div>
+                  {/* FAQ Section: Pengeluaran Pinjaman */}
+                  <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] py-5 pb-0 mb-4 inline-block leading-tight">
+                  Pengeluaran Pinjaman
+                  </h3>
+
+                  <div className="flex flex-col">
+                    {/* FAQ 10 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(11)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Bagaimanakah saya akan menerima duit pinjaman saya?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 11 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 11 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-relaxed">
+                          Anda akan menerima pinjaman anda secara terus melalui akaun bank berdaftar anda.
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 5 */}
+                    <div className="border-b border-gray-200">
+                      <button onClick={() => toggleFaq(12)} className="!flex !justify-between !items-center w-full py-4 text-left group">
+                        <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
+                          Bagaimanakah saya akan tahu jika pinjaman saya telah dikeluarkan?
+                        </span>
+                        <div className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-[#044BD9] !flex !items-center !justify-center transition-transform duration-300 ${openFaq === 12 ? 'bg-[#044BD9] text-white rotate-180' : 'text-[#044BD9]'}`}>
+                          <svg fill="currentColor" viewBox="0 0 20 20" className="w-5 h-5"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        </div>
+                      </button>
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 12 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
+                        <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
+                          Setelah pinjaman telah dimasukkan ke dalam akaun anda, anda akan menerima panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit.
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
           </div>
         </section>
 
