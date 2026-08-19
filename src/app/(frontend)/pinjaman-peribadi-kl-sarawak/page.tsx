@@ -84,9 +84,6 @@ export default function PinjamanPeribadiPage() {
   const amountPercentage = ((loanAmount - 1000) / (50000 - 1000)) * 100;
   const tenurePercentage = ((loanTenure - 12) / (60 - 12)) * 100;
 
-  const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
 
   const defaultFaqs = [
     {
@@ -561,23 +558,11 @@ export default function PinjamanPeribadiPage() {
             </div>
 
             <div>
-                  <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] pb-0 mb-4 inline-block leading-tight">
-                    Pembayaran Balik
-                  </h3>
-            <div className="space-y-4">
-              {faqs.map((faq: any, index: number) => (
-                <div key={index} className=" overflow-hidden">
-                  <button
-                    className="w-full px-6 py-4 text-left bg-[#f8f9fa] !border-b !border-[#f2f2f2] hover:bg-gray-100 flex justify-between items-center transition-colors duration-300"
-                    onClick={() => toggleFaq(index)}
-                  >
-                    <span className="text-[#044BD9] font-bold text-[16px] lg:text-[18px] pr-4">{faq.question}</span>
-                    <span className="text-[#044BD9] text-xl font-bold">
-                      {activeFaq === index ? "−" : "+"}
-                    </span>
-                  </button>
-                  
-                  <div className="flex flex-col">
+              <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] pb-0 mb-4 inline-block leading-tight">
+                Pembayaran Balik
+              </h3>
+
+              <div className="flex flex-col">
                     {/* FAQ 0 */}
                     <div className="border-b border-gray-200">
                       <button onClick={() => toggleFaq(0)} className="!flex !flex-row !justify-between !items-center w-full py-4 text-left group bg-transparent border-0 outline-none">
@@ -597,8 +582,8 @@ export default function PinjamanPeribadiPage() {
                           Fi: <span className="font-bold">Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15</span>
                         </p>
 
-                        <div className="w-full lg:w-6/12">
-                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" /> 
+                        <div className="w-full mt-3">
+                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-full h-auto rounded-lg shadow-sm border border-gray-100" alt="Jadual Pembayaran Balik" /> 
                         </div>
                       </div>
                     </div>

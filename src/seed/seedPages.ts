@@ -9,6 +9,7 @@ type PageSlug =
   | 'pinjaman-peribadi'
   | 'pinjaman-koperasi'
   | 'pembayaran'
+  | 'blog'
 
 interface BannerItem {
   bannerImage?: any
@@ -778,6 +779,51 @@ export const defaultPagesData: DefaultPageData[] = [
       metaTitle: 'Kaedah Pembayaran - Loanbuddy Credit',
       metaDescription:
         'Maklumat kaedah pembayaran balik, direct debit, JomPay dan soalan lazim pembayaran pinjaman Loanbuddy Credit.',
+    },
+  },
+  {
+    title: 'Blog (Senarai Artikel)',
+    slug: 'blog',
+    hero: {
+      heading: 'Blog',
+      subheading:
+        'Dapatkan tips kewangan terkini, panduan pinjaman peribadi, dan strategi pengurusan hutang daripada pakar Loanbuddy Credit.',
+    },
+    sections: [
+      {
+        sectionBadge: 'Artikel Terbaru!',
+        sectionTitle: 'Senarai Artikel Blog',
+        sectionDescription:
+          'Koleksi artikel dan panduan kewangan untuk membantu anda membuat keputusan kewangan yang bijak.',
+        items: [
+          {
+            itemTitle: 'Penyatuan Hutang',
+            itemDescription: 'Artikel Terbaru!',
+            itemLink: 'penyatuan-hutang-kad-kredit-2026',
+          },
+          {
+            itemTitle: 'Jenis-Jenis Pinjaman di Malaysia',
+            itemDescription: 'Artikel Terbaru!',
+            itemLink: 'kesan-opr-pinjaman-peribadi',
+          },
+          {
+            itemTitle:
+              'Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit',
+            itemDescription: 'Artikel Terbaru!',
+            itemLink: 'pinjaman-peribadi-ccris-ptptn-2026',
+          },
+          {
+            itemTitle: 'Konvensional vs Islamik: Beza Pinjaman Peribadi Malaysia 2026',
+            itemDescription: 'Artikel Terbaru!',
+            itemLink: 'beza-pinjaman-konvensional-islamik-2026',
+          },
+        ],
+      },
+    ],
+    seo: {
+      metaTitle: 'Blog & Tips Kewangan - Loanbuddy Credit',
+      metaDescription:
+        'Ketahui tips kewangan terkini, strategi penyatuan hutang, dan panduan pinjaman peribadi di Loanbuddy Credit.',
     },
   },
 ]

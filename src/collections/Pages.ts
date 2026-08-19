@@ -35,6 +35,7 @@ export const Pages: CollectionConfig = {
         { label: 'Pinjaman Peribadi', value: 'pinjaman-peribadi' },
         { label: 'Pinjaman Koperasi', value: 'pinjaman-koperasi' },
         { label: 'Pembayaran (Payment)', value: 'pembayaran' },
+        { label: 'Blog (Senarai Artikel)', value: 'blog' },
       ],
       admin: {
         description: 'Select the website page you want this content to manage.',

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { getMediaUrl } from "@/lib/media";
 
-const articles = [
+const defaultArticles = [
   {
     title: "Penyatuan Hutang",
     slug: "penyatuan-hutang-kad-kredit-2026",
@@ -36,11 +37,66 @@ const articles = [
 ];
 
 export default function BlogListingPage() {
-  
+  const [pageData, setPageData] = useState<any>(null);
+  const [posts, setPosts] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredArticles = articles.filter((art) =>
-    art.title.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    // Fetch Blog Page Header Settings
+    fetch("/api/content?slug=blog", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => {});
+
+    // Fetch All Published Blog Posts
+    fetch("/api/blog-posts", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && Array.isArray(data.docs) && data.docs.length > 0) {
+          setPosts(data.docs);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const defaultImageMap: Record<string, string> = {
+    "penyatuan-hutang-kad-kredit-2026": "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif",
+    "kesan-opr-pinjaman-peribadi": "/assets/images/blog/opr-2.75-2026-macam-mana-installment-pinjaman-peribadi-berubah.png",
+    "pinjaman-peribadi-ccris-ptptn-2026": "/assets/images/blog/ccris-sangkut-ptptn-ini-cara-dapat-pinjaman-2026.avif",
+    "beza-pinjaman-konvensional-islamik-2026": "/assets/images/blog/konvensional-vs-islamik-beza-pinjaman-peribadi-2026.avif",
+  };
+
+  const articlesList =
+    posts.length > 0
+      ? posts.map((item: any) => {
+          const postSlug = item.slug || "blog";
+          const fallbackImg =
+            defaultImageMap[postSlug] ||
+            "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif";
+
+          return {
+            title: item.title || "",
+            slug: `/blog/${postSlug}`,
+            image: getMediaUrl(item.featuredImage, fallbackImg),
+            category: item.category || "kewangan",
+            tag: item.tag || "Artikel Terbaru!",
+          };
+        })
+      : defaultArticles.map((art) => ({
+          ...art,
+          slug: `/blog/${art.slug}`,
+        }));
+
+  const pageHeading = pageData?.hero?.heading || "Blog";
+
+  const filteredArticles = articlesList.filter((art: any) =>
+    art.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    art.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    art.tag.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -79,7 +135,7 @@ export default function BlogListingPage() {
           <div className="container">
             <div className="row align-items-center mb-4">
               <div className="col-lg-6 col-mobile mb-3 mb-lg-0">
-                <h1 className="blog-h1-text">Blog</h1>
+                <h1 className="blog-h1-text">{pageHeading}</h1>
               </div>
               <div className="col-lg-6 col-mobile">
                 <div className="widget-search-blog">
@@ -110,7 +166,7 @@ export default function BlogListingPage() {
                 </div>
                 {searchTerm && (
                   <div className="blog-search-count">
-                    Menunjukkan <strong>{filteredArticles.length}</strong> daripada {articles.length} artikel
+                    Menunjukkan <strong>{filteredArticles.length}</strong> daripada {articlesList.length} artikel
                   </div>
                 )}
               </div>
@@ -121,7 +177,7 @@ export default function BlogListingPage() {
                 <div id="blogList">
                   {filteredArticles.length > 0 ? (
                     <div className="row" id="Container">
-                      {filteredArticles.map((article, idx) => (
+                      {filteredArticles.map((article: any, idx: number) => (
                         <div key={idx} className="col col-lg-6 blogPost mix ui kewangan mb-4">
                           <div className="blog_item bg-white p-3" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                             <div className="item_image mb-2">

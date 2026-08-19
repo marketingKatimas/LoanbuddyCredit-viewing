@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    'blog-posts': BlogPost;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    'blog-posts': BlogPostsSelect<false> | BlogPostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -215,7 +217,8 @@ export interface Page {
     | 'mohon-pinjaman-online'
     | 'pinjaman-peribadi'
     | 'pinjaman-koperasi'
-    | 'pembayaran';
+    | 'pembayaran'
+    | 'blog';
   /**
    * Add up to 5 banner slides for the homepage carousel. You can add image-only banners or banners with titles, descriptions, and CTA buttons.
    */
@@ -318,6 +321,68 @@ export interface Page {
   createdAt: string;
 }
 /**
+ * Manage and create individual blog articles and news updates.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts".
+ */
+export interface BlogPost {
+  id: string;
+  /**
+   * Main headline for the blog article.
+   */
+  title: string;
+  /**
+   * URL identifier used to access this post (e.g. /blog/tips-pengurusan-kewangan-2026).
+   */
+  slug: string;
+  category?: string | null;
+  tag?: string | null;
+  author?: string | null;
+  publishedDate?: string | null;
+  /**
+   * Upload or choose the main cover image for this blog post.
+   */
+  featuredImage?: (string | null) | Media;
+  /**
+   * Brief overview displayed in search cards and meta descriptions.
+   */
+  summary?: string | null;
+  /**
+   * Write and format the main body of the article with headings, lists, bold text, and links.
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Call-to-action banner displayed at the end of the article.
+   */
+  ctaBox?: {
+    heading?: string | null;
+    description?: string | null;
+    buttonText?: string | null;
+    buttonLink?: string | null;
+  };
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -352,6 +417,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'blog-posts';
+        value: string | BlogPost;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -518,6 +587,37 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         id?: T;
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-posts_select".
+ */
+export interface BlogPostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  category?: T;
+  tag?: T;
+  author?: T;
+  publishedDate?: T;
+  featuredImage?: T;
+  summary?: T;
+  content?: T;
+  ctaBox?:
+    | T
+    | {
+        heading?: T;
+        description?: T;
+        buttonText?: T;
+        buttonLink?: T;
       };
   seo?:
     | T

@@ -6,9 +6,11 @@ import { fileURLToPath } from 'url'
 
 import { Media } from './src/collections/Media'
 import { Pages } from './src/collections/Pages'
+import { BlogPosts } from './src/collections/BlogPosts'
 import { Footer } from './src/globals/Footer'
 
 import { seedDefaultPages } from './src/seed/seedPages'
+import { seedBlogPosts } from './src/seed/seedBlogPosts'
 import { seedFooter } from './src/seed/seedFooter'
 
 const filename = fileURLToPath(import.meta.url)
@@ -23,6 +25,7 @@ export default buildConfig({
   },
   onInit: async (payload) => {
     await seedDefaultPages(payload)
+    await seedBlogPosts(payload)
     await seedFooter(payload)
   },
   collections: [
@@ -33,6 +36,7 @@ export default buildConfig({
     },
     Media,
     Pages,
+    BlogPosts,
   ],
   globals: [
     Footer,

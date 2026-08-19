@@ -81,13 +81,9 @@ export default function PinjamanPeribadiPage() {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  // Dynamic Slider Fill Calculation
   const amountPercentage = ((loanAmount - 1000) / (50000 - 1000)) * 100;
   const tenurePercentage = ((loanTenure - 12) / (60 - 12)) * 100;
 
-  const toggleFaq = (index: number) => {
-    setActiveFaq(activeFaq === index ? null : index);
-  };
 
   const defaultFaqs = [
     {
@@ -695,8 +691,8 @@ export default function PinjamanPeribadiPage() {
                           Fi: <span className="font-bold">Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15</span>
                         </p>
 
-                        <div className="w-full lg:w-6/12">
-                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" /> 
+                        <div className="w-full mt-3">
+                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-full h-auto rounded-lg shadow-sm border border-gray-100" alt="Jadual Pembayaran Balik" /> 
                         </div>
                       </div>
                     </div>
