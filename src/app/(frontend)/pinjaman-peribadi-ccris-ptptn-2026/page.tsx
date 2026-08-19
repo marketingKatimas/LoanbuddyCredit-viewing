@@ -77,11 +77,14 @@ export default function CCRISPTPTNArticlePage() {
                       <li><strong>Mohon Bersama Syarikat Berlesen KPKT:</strong> Dapatkan pinjaman peribadi yang meluluskan pemohon secara fleksibel.</li>
                     </ol>
 
-                    <div className="my-5 p-4 bg-light rounded text-center border-start border-primary border-4">
-                      <h4 className="text-blue mb-2">Pernah Ditolak Oleh Bank?</h4>
-                      <p className="mb-3">Loanbuddy Credit sedia membantu permohonan pinjaman peribadi anda tanpa kerumitan.</p>
-                      <a href="/mohon-pinjaman-online" className="btn btn-primary rounded-pill px-4">
-                        Mohon Pinjaman Sekarang
+                    <div className="article-cta-box">
+                      <h4 className="cta-title">Pernah Ditolak Oleh Bank?</h4>
+                      <p className="cta-desc">Loanbuddy Credit sedia membantu permohonan pinjaman peribadi anda tanpa kerumitan.</p>
+                      <a href="/mohon-pinjaman-online" className="article-cta-btn">
+                        <span>Mohon Pinjaman Sekarang</span>
+                        <span className="btn-icon">
+                          <i className="fas fa-arrow-right"></i>
+                        </span>
                       </a>
                     </div>
                   </div>

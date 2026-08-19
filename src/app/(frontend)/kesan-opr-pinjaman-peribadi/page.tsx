@@ -76,11 +76,14 @@ export default function KesanOPRPinjamanPeribadiPage() {
                       <li><strong>Bebas Kejutan OPR:</strong> Kenaikan OPR BNM tidak menjejaskan perancangan belanjawan bulanan anda.</li>
                     </ul>
 
-                    <div className="my-5 p-4 bg-light rounded text-center border-start border-primary border-4">
-                      <h4 className="text-blue mb-2">Perlukan Pinjaman Peribadi Kadar Tetap?</h4>
-                      <p className="mb-3">Ketahui kelayakan pinjaman peribadi anda di Loanbuddy Credit hari ini.</p>
-                      <a href="/mohon-pinjaman-online" className="btn btn-primary rounded-pill px-4">
-                        Semak Kelayakan Pinjaman
+                    <div className="article-cta-box">
+                      <h4 className="cta-title">Perlukan Pinjaman Peribadi Kadar Tetap?</h4>
+                      <p className="cta-desc">Ketahui kelayakan pinjaman peribadi anda di Loanbuddy Credit hari ini secara percuma dan pantas.</p>
+                      <a href="/mohon-pinjaman-online" className="article-cta-btn">
+                        <span>Semak Kelayakan Pinjaman</span>
+                        <span className="btn-icon">
+                          <i className="fas fa-arrow-right"></i>
+                        </span>
                       </a>
                     </div>
                   </div>
