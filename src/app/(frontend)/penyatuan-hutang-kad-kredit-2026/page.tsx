@@ -77,11 +77,14 @@ export default function PenyatuanHutangKadKreditPage() {
                       <li><strong>Skor Kredit Lebih Baik:</strong> Membantu membersihkan tunggakan kad kredit dan menambah baik rekod CCRIS secara berperingkat.</li>
                     </ul>
 
-                    <div className="my-5 p-4 bg-light rounded text-center border-start border-primary border-4">
-                      <h4 className="text-blue mb-2">Ingin Menyelesaikan Hutang Kad Kredit Anda?</h4>
-                      <p className="mb-3">Dapatkan khidmat nasihat pinjaman peribadi penyatuan hutang daripada Loanbuddy Credit.</p>
-                      <a href="/mohon-pinjaman-online" className="btn btn-primary rounded-pill px-4">
-                        Mohon Penyatuan Hutang Sekarang
+                    <div className="article-cta-box">
+                      <h4 className="cta-title">Ingin Menyelesaikan Hutang Kad Kredit Anda?</h4>
+                      <p className="cta-desc">Dapatkan khidmat nasihat pinjaman peribadi penyatuan hutang daripada Loanbuddy Credit hari ini.</p>
+                      <a href="/mohon-pinjaman-online" className="article-cta-btn">
+                        <span>Mohon Penyatuan Hutang Sekarang</span>
+                        <span className="btn-icon">
+                          <i className="fas fa-arrow-right"></i>
+                        </span>
                       </a>
                     </div>
                   </div>

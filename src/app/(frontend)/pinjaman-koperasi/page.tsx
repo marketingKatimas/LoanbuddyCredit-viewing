@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { getMediaUrl } from "@/lib/media";
 
 // 1. Reusable WhatsApp Buttons Component defined OUTSIDE the main page
 const WhatsAppButtons = () => (
@@ -42,6 +43,20 @@ const WhatsAppButtons = () => (
 
 
 export default function PinjamanPeribadiPage() {
+  const [pageData, setPageData] = useState<any>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/content?slug=pinjaman-koperasi", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   // Calculator State
   const [loanAmount, setLoanAmount] = useState<number>(10000);
   const [loanTenure, setLoanTenure] = useState<number>(12);
@@ -70,6 +85,74 @@ export default function PinjamanPeribadiPage() {
   const amountPercentage = ((loanAmount - 1000) / (50000 - 1000)) * 100;
   const tenurePercentage = ((loanTenure - 12) / (60 - 12)) * 100;
 
+  const toggleFaq = (index: number) => {
+    setActiveFaq(activeFaq === index ? null : index);
+  };
+
+  const defaultFaqs = [
+    {
+      question: "Apa itu Pinjaman Peribadi?",
+      answer: "Pinjaman Peribadi ialah sejumlah wang yang dipinjam oleh individu daripada institusi kewangan seperti bank, pemberi pinjaman wang berlesen atau koperasi. Pinjaman ini dikenakan kadar faedah serta mempunyai tempoh pembayaran balik yang telah dipersetujui."
+    },
+    {
+      question: "Apakah Perbezaan Jenis Pinjaman Peribadi di Malaysia?",
+      answer: "Terdapat dua jenis pinjaman peribadi yang tersedia: pinjaman bercagar (memerlukan aset sebagai jaminan) dan tidak bercagar (penilaian berdasarkan pendapatan, skor kredit, dan status pekerjaan tanpa memerlukan cagaran aset)."
+    },
+    {
+      question: "Apakah syarat untuk memohon pinjaman peribadi dari pemberi pinjaman wang berlesen?",
+      answer: "Anda layak meminjam sekiranya anda adalah warganegara Malaysia, berumur antara 18 sehingga 60 tahun, mempunyai pekerjaan tetap dengan minimum pendapatan RM1,700, dan tidak diisytiharkan muflis."
+    }
+  ];
+
+  const faqs =
+    pageData?.sections?.[5]?.items && pageData.sections[5].items.length > 0
+      ? pageData.sections[5].items.map((item: any, idx: number) => ({
+          question: item.itemTitle || defaultFaqs[idx]?.question || "",
+          answer: item.itemDescription || defaultFaqs[idx]?.answer || "",
+        }))
+      : defaultFaqs;
+
+  const heroHeading = pageData?.hero?.heading || "Pinjaman Tambah Nilai";
+  const heroSubheading =
+    pageData?.hero?.subheading ||
+    "Loanbuddy Credit menawarkan Pinjaman Tambah Nilai di mana anda boleh top up* pinjaman sedia ada anda untuk keperluan kewangan kecemasan pada bila-bila masa, di mana sahaja anda berada. \n\n*Tertakluk kepada terma dan syarat";
+  const heroCtaText = pageData?.hero?.primaryCtaText || "Top Up Sekarang";
+  const heroCtaLink = pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online";
+
+  const videoSectionTitle = pageData?.sections?.[0]?.sectionTitle || "Apa Itu Pinjaman Tambah Nilai?";
+
+  const videoUrlRaw =
+    pageData?.sections?.[0]?.videoUrl ||
+    "https://drive.google.com/file/d/1i2ifqzZ7n0sjni1v9hsa3Asf9gBup8Xv/preview";
+
+  const getEmbedUrl = (url: string) => {
+    if (!url) return "";
+    if (url.includes("drive.google.com") && url.includes("/view")) {
+      return url.replace(/\/view.*$/, "/preview");
+    }
+    if (url.includes("youtube.com/watch?v=")) {
+      return url.replace("watch?v=", "embed/");
+    }
+    if (url.includes("youtu.be/")) {
+      return url.replace("youtu.be/", "www.youtube.com/embed/");
+    }
+    return url;
+  };
+
+  const videoUrl = getEmbedUrl(videoUrlRaw);
+  const thumbnailMedia =
+    pageData?.sections?.[0]?.thumbnailImage || pageData?.sections?.[0]?.sectionImage;
+  const thumbnailUrl = getMediaUrl(thumbnailMedia, "");
+
+  const kelebihanSectionTitle = pageData?.sections?.[1]?.sectionTitle || "Kenapa Memohon untuk Tambah Nilai?";
+  const kaedahSectionTitle = pageData?.sections?.[2]?.sectionTitle || "Kaedah Tambah Nilai/Top-Up";
+  const stepsSectionTitle = pageData?.sections?.[3]?.sectionTitle || "Cara Permohonan Pinjaman Peribadi";
+  const ctaSectionTitle =
+    pageData?.sections?.[4]?.sectionTitle ||
+    "Perlukan Pinjaman Peribadi? \nLoanbuddy Credit Sedia Berkhidmat untuk Anda!";
+  const ctaButtonText = pageData?.sections?.[4]?.items?.[0]?.itemTitle || "Mohon Sekarang";
+  const ctaButtonLink = pageData?.sections?.[4]?.items?.[0]?.itemLink || "mohon-pinjaman-online";
+  const faqSectionTitle = pageData?.sections?.[5]?.sectionTitle || "Soalan Lazim";
 
   return (
     <div className="page_wrapper bg-white">
@@ -104,23 +187,21 @@ export default function PinjamanPeribadiPage() {
               {/* Content Container */}
               <div className="relative z-10 w-full lg:w-[50%] px-6 md:px-12 lg:px-16 py-12 text-left md:text-left flex flex-col items-center md:items-start">
                 <h1 className="text-[25px] md:!text-[32px] lg:!text-[35px] font-bold text-blue leading-tight mb-4">
-                  Pinjaman Tambah Nilai
+                  {heroHeading}
                 </h1>
                 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-8 font-medium max-w-[400px]">
-                  Loanbuddy Credit menawarkan Pinjaman Tambah Nilai di mana anda boleh top up* pinjaman sedia ada anda untuk keperluan kewangan kecemasan pada bila-bila masa, di mana sahaja anda berada. 
-                  <br /><br />
-                  *Tertakluk kepada terma dan syarat
+                <p className="text-[14px] md:text-[15px] text-[#424143] mb-8 font-medium max-w-[400px] whitespace-pre-line">
+                  {heroSubheading}
                 </p>
                 
                 {/* Slot Machine Red Button */}
                 <a
-                  href="mohon-pinjaman-online"
+                  href={heroCtaLink}
                   className="group relative inline-flex h-[50px] items-start justify-center overflow-hidden rounded-full border-[2px] border-[#F20505] bg-[#F20505] px-[35px] font-bold !text-white shadow-md whitespace-nowrap transition-colors duration-300 hover:!bg-white hover:!text-[#F20505]"
                 >
                   <span className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-1/2">
-                    <small className="flex h-[50px] items-center text-[16px]">Top Up Sekarang</small>
-                    <small className="flex h-[50px] items-center text-[16px]">Top Up Sekarang</small>
+                    <small className="flex h-[50px] items-center text-[16px]">{heroCtaText}</small>
+                    <small className="flex h-[50px] items-center text-[16px]">{heroCtaText}</small>
                   </span>
                 </a>
               </div>
@@ -137,20 +218,38 @@ export default function PinjamanPeribadiPage() {
             {/* Used gap-8 to separate items cleanly instead of stacking px-4 padding */}
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
               
-              {/* Left Side: Google Drive Video Player */}
+              {/* Left Side: Video Player with Optional Thumbnail */}
               <div className="w-full lg:w-7/12">
-                {/* 
-                  1. Changed `aspect-video` to `aspect-[16/11] md:aspect-video` to give the Google Drive header room on mobile.
-                  2. Added `z-20` to the wrapper so it physically sits above everything else and catches your finger taps.
-                */}
-                <div className="relative w-full aspect-[16/11] md:aspect-video shadow-[0_8px_30px_rgba(0,0,0,0.12)] bg-gray-100 relative z-20">
-                  <iframe
-                    src="https://drive.google.com/file/d/1i2ifqzZ7n0sjni1v9hsa3Asf9gBup8Xv/preview"
-                    /* Added rounded-xl, border-0, and z-10 directly to the iframe so mobile can tap it! */
-                    className="absolute top-0 left-0 w-full h-full z-10 border-0"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                  ></iframe>
+                <div className="relative w-full aspect-video shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-2xl overflow-hidden z-20">
+                  {thumbnailUrl && !isPlaying ? (
+                    <button
+                      type="button"
+                      className="absolute inset-0 w-full h-full p-0 m-0 border-0 bg-transparent cursor-pointer group select-none block overflow-hidden"
+                      onClick={() => setIsPlaying(true)}
+                      aria-label="Play video"
+                    >
+                      <img
+                        src={thumbnailUrl}
+                        alt="Video Thumbnail"
+                        className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105 block"
+                      />
+                      {/* Modern Ultra-Light Translucent Play Button */}
+                      <div className="absolute inset-0 bg-transparent group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                        <div className="relative w-14 h-14 md:w-16 md:h-16 bg-gray-900/20 backdrop-blur-[2px] border border-white/40 text-white rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all duration-300 group-hover:scale-110 group-hover:bg-gray-900/40">
+                          <svg className="w-8 h-8 md:w-9 md:h-9 fill-white/90 translate-x-[2px]" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    </button>
+                  ) : (
+                    <iframe
+                      src={videoUrl ? (thumbnailUrl && isPlaying && !videoUrl.includes("autoplay=1") ? (videoUrl.includes("?") ? `${videoUrl}&autoplay=1` : `${videoUrl}?autoplay=1`) : videoUrl) : ""}
+                      className="absolute inset-0 w-full h-full z-10 border-0 rounded-2xl"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                    ></iframe>
+                  )}
                 </div>
               </div>
 
@@ -159,7 +258,7 @@ export default function PinjamanPeribadiPage() {
               {/* Right Side: Text Content (Removed nested px-4) */}
               <div className="w-full lg:w-5/12">
                 <h3 className="text-blue text-[22px] md:text-[28px] lg:text-[30px] font-bold mb-4">
-                  Apa Itu Pinjaman Tambah Nilai?
+                  {videoSectionTitle}
                 </h3>
                 <p className="text-[14px] md:text-[15px] lg:text-[16px] leading-[1.65] text-[#424143] mb-3">
                   Pinjaman Tambah Nilai merupakan pinjaman di mana anda boleh tambah ke atas pinjaman sedia ada anda. 
@@ -182,7 +281,7 @@ export default function PinjamanPeribadiPage() {
         <section className="py-8 lg:!py-[100px] bg-[#f2f2f2] overflow-hidden">
           <div className="container mx-auto px-4 lg:max-w-[1200px]">
             <div className="text-center mb-12">
-              <h2 className="text-[23px] lg:!text-[25px] font-bold text-blue mb-4">Kenapa Memohon untuk Tambah Nilai?</h2>
+              <h2 className="text-[23px] lg:!text-[25px] font-bold text-blue mb-4">{kelebihanSectionTitle}</h2>
             </div>
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 lg:gap-12 relative z-10">
@@ -198,7 +297,6 @@ export default function PinjamanPeribadiPage() {
                   alt="Senang Top Up" 
                   width={100} 
                   height={100} 
-                  /* Removed the conflicting w-[100px] h-[100px] and inline styles */
                   className="object-contain mb-4" 
                 />
                 <p className="text-[13px] font-medium text-[#424143]">
@@ -250,7 +348,7 @@ export default function PinjamanPeribadiPage() {
               {/* Right Side: Text Content (Removed nested px-4) */}
               <div className="w-full lg:w-6/12">
                 <h3 className="text-blue text-[22px] md:text-[28px] lg:text-[30px] font-bold mb-4">
-                  Kaedah Tambah Nilai/Top-Up
+                  {kaedahSectionTitle}
                 </h3>
                 
                 <ul className="list-disc leading-[1.3] pl-5 mb-4 space-y-2 text-[#424143] text-[14px] md:text-[15px] lg:text-[16px]">
@@ -411,8 +509,8 @@ export default function PinjamanPeribadiPage() {
                   </div>
 
                   <div className="flex justify-start mt-2">
-                    <a href="mohon-pinjaman-online" className="block w-1/2 text-center bg-[#F20505] text-white font-bold py-4 rounded-full hover:bg-[#d00000] transition-colors shadow-md">
-                      Mohon Sekarang
+                    <a href={ctaButtonLink} className="block w-1/2 text-center bg-[#F20505] text-white font-bold py-4 rounded-full hover:bg-[#d00000] transition-colors shadow-md">
+                      {ctaButtonText}
                     </a>
                   </div>
                 </div>
@@ -421,66 +519,111 @@ export default function PinjamanPeribadiPage() {
             </div>
           </div>
         </section>
-
         {/* 4. Steps Section */}
-        <section className="py-8 lg:py-[40px] bg-[#f2f2f2] overflow-hidden">
-          <div className="container mx-auto px-4 lg:max-w-[1200px]">
-            <div className="text-center mb-12">
-              <h2 className="text-[23px] lg:!text-[25px] font-bold !text-[#424143] mb-4">Cara Permohonan Pinjaman Peribadi</h2>
+        <section className="py-14 lg:py-20 bg-[#f2f2f2] overflow-hidden">
+          <div className="container mx-auto px-4 max-w-[1140px]">
+            <div className="text-center mb-12 lg:mb-16">
+              <h2 className="text-[26px] lg:text-[30px] font-bold text-[#222222]">
+                {stepsSectionTitle}
+              </h2>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 lg:gap-12 relative z-10">
-              
-              {/* Step 1 */}
-              <div className="w-[250px] h-[250px] aspect-square flex flex-col items-center justify-center text-center bg-white p-6 rounded-lg shadow-md">
-                <Image 
-                  src="/assets/images/tekan-butang.png" 
-                  alt="Tekan Butang" 
-                  width={100} 
-                  height={100} 
-                  className="w-[100px] h-[100px] object-contain mb-4" 
-                  style={{ width: "auto", height: "auto" }} 
-                />
-                <p className="text-[15px] font-medium text-[#424143]">Tekan butang <br/>&apos;Mohon Sekarang&apos;</p>
+            <div className="max-w-[1040px] mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-4 relative z-10">
+                
+                {/* Step 1 */}
+                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Icon container with refined size */}
+                  <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                    <Image 
+                      src="/assets/images/tekan-butang.png" 
+                      alt="Langkah 1 - Tekan Butang" 
+                      width={90} 
+                      height={90} 
+                      className="h-[80px] lg:h-[85px] w-auto max-w-[90px] object-contain" 
+                    />
+                  </div>
+                  
+                  {/* Step Title */}
+                  <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
+                    Langkah 1
+                  </h3>
+                  
+                  {/* Step Description */}
+                  <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[240px]">
+                    Tekan butang <br />&apos;Mohon Sekarang&apos;
+                  </p>
+                </div>
+
+                {/* Arrow separator 1 */}
+                <div className="flex items-center justify-center my-1 md:my-0 flex-shrink-0">
+                  <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
+                    <path d="M6 4.5v15a1 1 0 001.52.86l13-7.5a1 1 0 000-1.72l-13-7.5A1 1 0 006 4.5z" />
+                  </svg>
+                </div>
+
+                {/* Step 2 */}
+                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Icon container with refined size */}
+                  <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                    <Image 
+                      src="/assets/images/isi-maklumat.png" 
+                      alt="Langkah 2 - Isi Maklumat" 
+                      width={90} 
+                      height={90} 
+                      className="h-[75px] lg:h-[80px] w-auto max-w-[90px] object-contain" 
+                    />
+                  </div>
+                  
+                  {/* Step Title */}
+                  <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
+                    Langkah 2
+                  </h3>
+                  
+                  {/* Step Description */}
+                  <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[240px]">
+                    Isi maklumat yang diperlukan dan <br />hantar permohonan
+                  </p>
+                </div>
+
+                {/* Arrow separator 2 */}
+                <div className="flex items-center justify-center my-1 md:my-0 flex-shrink-0">
+                  <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
+                    <path d="M6 4.5v15a1 1 0 001.52.86l13-7.5a1 1 0 000-1.72l-13-7.5A1 1 0 006 4.5z" />
+                  </svg>
+                </div>
+
+                {/* Step 3 */}
+                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Icon container with refined size */}
+                  <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                    <Image 
+                      src="/assets/images/hubungi-anda.png" 
+                      alt="Langkah 3 - Dihubungi" 
+                      width={90} 
+                      height={90} 
+                      className="h-[80px] lg:h-[85px] w-auto max-w-[90px] object-contain" 
+                    />
+                  </div>
+                  
+                  {/* Step Title */}
+                  <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
+                    Langkah 3
+                  </h3>
+                  
+                  {/* Step Description */}
+                  <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[250px]">
+                    Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat
+                  </p>
+                </div>
               </div>
 
-              {/* Arrow separator */}
-              <div className="w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-l-[30px] border-l-[#F20505] rotate-90 md:rotate-0 my-4 md:my-0 md:mx-4"></div>
-
-              {/* Step 2 */}
-              <div className="w-[250px] h-[250px] aspect-square flex flex-col items-center justify-center text-center bg-white p-6 rounded-lg shadow-md">
-                <Image 
-                  src="/assets/images/isi-maklumat.png" 
-                  alt="Isi Maklumat" 
-                  width={100} 
-                  height={100} 
-                  className="w-[100px] h-[100px] object-contain mb-4" 
-                  style={{ width: "auto", height: "auto" }} 
-                />
-                <p className="text-[15px] font-medium text-[#424143]">Isi maklumat yang diperlukan dan hantar permohonan</p>
-              </div>
-
-              {/* Arrow separator */}
-              <div className="w-0 h-0 border-t-[20px] border-t-transparent border-b-[20px] border-b-transparent border-l-[30px] border-l-[#F20505] rotate-90 md:rotate-0 my-4 md:my-0 md:mx-4"></div>
-
-              {/* Step 3 */}
-              <div className="w-[250px] h-[250px] aspect-square flex flex-col items-center justify-center text-center bg-white p-6 rounded-lg shadow-md">
-                <Image 
-                  src="/assets/images/hubungi-anda.png" 
-                  alt="Dihubungi" 
-                  width={100} 
-                  height={100} 
-                  className="w-[100px] h-[100px] object-contain mb-4" 
-                  style={{ width: "auto", height: "auto" }} 
-                />
-                <p className="text-[15px] font-medium text-[#424143]">Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel</p>
-              </div>
-            </div>
-            
-            <div className="flex flex-col md:flex-row px-16 text-start relative z-10">
-                <p className="text-[11px] lg:text-[12px] text-gray-500 pt-8 leading-relaxed">
-                  <a href="terma-dan-syarat" className="text-blue-500 hover:!underline">Terma & Syarat</a> dan <a href="dasar-privasi" className="text-blue-500 hover:!underline">Dasar Privasi.</a>
+              {/* Terms and Privacy Policy footer aligned with left edge of Step 1 card */}
+              <div className="mt-12 md:mt-14 text-left">
+                <p className="text-[12px] md:text-[13px] text-[#424143]">
+                  <Link href="/terma-dan-syarat" className="text-[#044BD9] underline hover:text-blue-700">Terma &amp; Syarat</Link> dan <Link href="/dasar-privasi" className="text-[#044BD9] underline hover:text-blue-700">Dasar Privasi</Link>
                 </p>
+              </div>
             </div>
             
           </div>
@@ -496,25 +639,24 @@ export default function PinjamanPeribadiPage() {
               
               {/* Text Left */}
               <div className="w-full md:w-8/12 text-center lg:!text-left md:text-left">
-                <h2 className="!text-[18px] md:text-[15px] lg:!text-[25px] font-bold text-white leading-tight mb-0">
-                  Perlukan Pinjaman Peribadi? <br className="hidden md:block" />
-                  Loanbuddy Credit Sedia Berkhidmat untuk Anda!
+                <h2 className="!text-[18px] md:text-[15px] lg:!text-[25px] font-bold text-white leading-tight mb-0 whitespace-pre-line">
+                  {ctaSectionTitle}
                 </h2>
               </div>
 
               {/* Button Right */}
               <div className="w-full md:w-4/12 flex justify-center md:justify-end mt-6 md:mt-0">
                 <a
-                  href="mohon-pinjaman-online"
+                  href={ctaButtonLink}
                   className="group relative inline-flex h-[60px] items-start justify-center overflow-hidden rounded-full border-[2px] border-[#F20505] bg-white px-[40px] font-bold !text-[#F20505] shadow-md whitespace-nowrap transition-colors duration-300 hover:!bg-[#F20505] hover:!text-white"
                 >
                   <span className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-1/2">
                     
                     {/* First text: Flex + items-center perfectly centers the text within this 50px block */}
-                    <small className="flex h-[60px] items-center !text-[20px]">Mohon Sekarang</small>
+                    <small className="flex h-[60px] items-center !text-[20px]">{ctaButtonText}</small>
                     
                     {/* Second text: Hidden below, slides up on hover */}
-                    <small className="flex h-[60px] items-center !text-[20px]">Mohon Sekarang</small>
+                    <small className="flex h-[60px] items-center !text-[20px]">{ctaButtonText}</small>
                     
                   </span>
                 </a>
@@ -528,7 +670,7 @@ export default function PinjamanPeribadiPage() {
         <section className="py-16 lg:py-[100px] bg-white">
           <div className="container mx-auto px-4 lg:max-w-[900px]">
             <div className="text-center mb-10">
-              <h2 className="text-[28px] lg:text-[38px] font-bold text-blue">Soalan Lazim</h2>
+              <h2 className="text-[28px] lg:text-[38px] font-bold text-blue">{faqSectionTitle}</h2>
             </div>
 
             <div>

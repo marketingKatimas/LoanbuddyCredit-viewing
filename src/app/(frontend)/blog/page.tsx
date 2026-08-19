@@ -77,59 +77,92 @@ export default function BlogListingPage() {
       <main className="page_content">
         <section className="blog_section section_space_lg header_blog">
           <div className="container">
-            <div className="row mb-4">
-              <div className="col-lg-8 col-mobile">
+            <div className="row align-items-center mb-4">
+              <div className="col-lg-6 col-mobile mb-3 mb-lg-0">
                 <h1 className="blog-h1-text">Blog</h1>
               </div>
-              <div className="col-lg-4 col-mobile">
-                <div className="ps-lg-4 ms-1 widget-search-blog">
+              <div className="col-lg-6 col-mobile">
+                <div className="widget-search-blog">
+                  <i className="fas fa-search search-icon" aria-hidden="true"></i>
                   <input
                     id="blogSearch"
-                    placeholder="Tajuk Blog..."
+                    placeholder="Cari artikel blog..."
                     className="search-blog-field"
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    aria-label="Cari artikel blog"
                   />
-                  <button className="search-blog-button" type="button" aria-label="Search">
-                    Cari
+                  {searchTerm && (
+                    <button
+                      className="search-clear-btn"
+                      type="button"
+                      onClick={() => setSearchTerm("")}
+                      title="Padam carian"
+                      aria-label="Padam carian"
+                    >
+                      <i className="fas fa-times"></i>
+                    </button>
+                  )}
+                  <button className="search-blog-button" type="button" aria-label="Cari">
+                    <span>Cari</span>
                   </button>
                 </div>
+                {searchTerm && (
+                  <div className="blog-search-count">
+                    Menunjukkan <strong>{filteredArticles.length}</strong> daripada {articles.length} artikel
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="row">
               <div className="col col-mobile col-lg-12">
                 <div id="blogList">
-                  <div className="row" id="Container">
-                    {filteredArticles.map((article, idx) => (
-                      <div key={idx} className="col col-lg-6 blogPost mix ui kewangan mb-4">
-                        <div className="blog_item bg-white p-3" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                          <div className="item_image mb-2">
-                            <a href={article.slug}>
-                              <img src={article.image} alt={article.title} className="img-fluid rounded" />
-                            </a>
-                          </div>
-                          <div className="mb-2">
-                            <ul className="meta_info_list unordered_list mb-2">
-                              <li>
-                                <i className="fas fa-thumbtack"></i>
-                                <span>{article.tag}</span>
-                              </li>
-                            </ul>
-                            <h3 className="item_title mb-0">
-                              <a href={article.slug} style={{ fontSize: "18px", lineHeight: "22px" }}>{article.title}</a>
-                            </h3>
-                          </div>
-                          <div className="item_content p-0 mt-3 mt-auto">
-                            <a href={article.slug} style={{ color: "red", fontWeight: "bold", textDecoration: "none" }}>
-                              Baca Artikel
-                            </a>
+                  {filteredArticles.length > 0 ? (
+                    <div className="row" id="Container">
+                      {filteredArticles.map((article, idx) => (
+                        <div key={idx} className="col col-lg-6 blogPost mix ui kewangan mb-4">
+                          <div className="blog_item bg-white p-3" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+                            <div className="item_image mb-2">
+                              <a href={article.slug}>
+                                <img src={article.image} alt={article.title} className="img-fluid rounded" />
+                              </a>
+                            </div>
+                            <div className="mb-2">
+                              <ul className="meta_info_list unordered_list mb-2">
+                                <li>
+                                  <i className="fas fa-thumbtack"></i>
+                                  <span>{article.tag}</span>
+                                </li>
+                              </ul>
+                              <h3 className="item_title mb-0">
+                                <a href={article.slug} style={{ fontSize: "18px", lineHeight: "22px" }}>{article.title}</a>
+                              </h3>
+                            </div>
+                            <div className="item_content p-0 mt-3 mt-auto">
+                              <a href={article.slug} style={{ color: "red", fontWeight: "bold", textDecoration: "none" }}>
+                                Baca Artikel
+                              </a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="blog-empty-state">
+                      <i className="fas fa-search"></i>
+                      <h4>Tiada artikel dijumpai</h4>
+                      <p>Tiada artikel yang sepadan dengan carian <strong>&ldquo;{searchTerm}&rdquo;</strong>.</p>
+                      <button
+                        type="button"
+                        className="btn-reset"
+                        onClick={() => setSearchTerm("")}
+                      >
+                        Lihat Semua Artikel
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

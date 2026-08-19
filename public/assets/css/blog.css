@@ -1,38 +1,273 @@
-.search-blog-button {
-    background-color: #29281e;
-    color: white;
-    width: 80px;
-    line-height: 32px;
-    margin-left: 10px;
-    border-radius: 3px;
+/* Blog Page Styles */
+.blog-h1-text {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0;
 }
 
-.search-blog-button:hover {
-    color: #000;
-    background-color: #F6F6F6;
-    border: 1px solid #000;
+.widget-search-blog {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 4px 6px 4px 14px;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin-left: auto;
+}
+
+.widget-search-blog:focus-within {
+    border-color: #044bd9;
+    box-shadow: 0 0 0 3px rgba(4, 75, 217, 0.12), 0 4px 14px rgba(4, 75, 217, 0.08);
+}
+
+.widget-search-blog .search-icon {
+    color: #94a3b8;
+    font-size: 14px;
+    margin-right: 8px;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.widget-search-blog:focus-within .search-icon {
+    color: #044bd9;
 }
 
 .search-blog-field {
-    width: 220px;
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 8px 6px;
+    font-size: 15px;
+    color: #1e293b;
+    width: 100%;
 }
 
-.blog-h1-text {
-    font-size: 30px;
+.search-blog-field::placeholder {
+    color: #94a3b8;
+    font-size: 14px;
 }
 
-@media (max-width: 376px) {
-    .widget-search-blog {
-      display: flex;
-      justify-content: center;
-    }
-
-    .search-blog-field {
-        width: 240px;
-    }
+.search-clear-btn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
 }
 
-.sorting-menu .filter{
+.search-clear-btn:hover {
+    color: #64748b;
+}
+
+.search-blog-button {
+    background-color: #044bd9;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.search-blog-button:hover {
+    background-color: #033bb0;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(4, 75, 217, 0.25);
+    transform: translateY(-1px);
+}
+
+.search-blog-button:active {
+    transform: translateY(0);
+}
+
+.blog-search-count {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 6px;
+    text-align: right;
+}
+
+.blog-empty-state {
+    text-align: center;
+    padding: 48px 20px;
+    background: #f8fafc;
+    border-radius: 16px;
+    border: 1px dashed #cbd5e1;
+    margin: 20px 0;
+}
+
+.blog-empty-state i {
+    font-size: 42px;
+    color: #94a3b8;
+    margin-bottom: 16px;
+}
+
+.blog-empty-state h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.blog-empty-state p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.blog-empty-state .btn-reset {
+    background-color: #044bd9;
+    color: #ffffff;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.blog-empty-state .btn-reset:hover {
+    background-color: #033bb0;
+}
+
+.sorting-menu .filter {
     border: 1px solid white;
+}
+
+@media (max-width: 768px) {
+    .widget-search-blog {
+        max-width: 100%;
+        margin-top: 12px;
+        margin-left: 0;
+    }
+
+    .blog-search-count {
+        text-align: left;
+    }
+}
+
+/* Article CTA Box & Modern Button */
+.article-cta-box {
+    background: linear-gradient(135deg, #f0f6ff 0%, #e8f1fd 100%);
+    border: 1px solid #d0e1fd;
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 40px 0;
+    box-shadow: 0 4px 20px rgba(4, 75, 217, 0.06);
+}
+
+.article-cta-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #044bd9, #38bdf8);
+}
+
+.article-cta-box .cta-title {
+    color: #0f172a;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.article-cta-box .cta-desc {
+    color: #475569;
+    font-size: 15px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #044bd9 0%, #033bb0 100%);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: 13px 28px;
+    border-radius: 50px;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(4, 75, 217, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.article-cta-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.article-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 75, 217, 0.45);
+    background: linear-gradient(135deg, #0553ee 0%, #044bd9 100%);
+    color: #ffffff !important;
+}
+
+.article-cta-btn:hover::after {
+    left: 100%;
+}
+
+.article-cta-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(4, 75, 217, 0.3);
+}
+
+.article-cta-btn .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.article-cta-btn:hover .btn-icon {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.3);
 }
 

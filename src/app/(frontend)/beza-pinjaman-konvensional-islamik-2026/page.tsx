@@ -77,11 +77,14 @@ export default function BezaPinjamanKonvensionalIslamikPage() {
                       <strong>Islamik:</strong> Mengenakan caj Ta&apos;widh (ganti rugi) pada kadar yang ditetapkan dan sebahagian daripadanya disalurkan kepada badan kebajikan.
                     </p>
 
-                    <div className="my-5 p-4 bg-light rounded text-center border-start border-primary border-4">
-                      <h4 className="text-blue mb-2">Perlukan Khidmat Nasihat Pembiayaan?</h4>
-                      <p className="mb-3">Hubungi perunding kewangan Loanbuddy Credit untuk rundingan percuma.</p>
-                      <a href="/mohon-pinjaman-online" className="btn btn-primary rounded-pill px-4">
-                        Mohon Pinjaman Sekarang
+                    <div className="article-cta-box">
+                      <h4 className="cta-title">Perlukan Khidmat Nasihat Pembiayaan?</h4>
+                      <p className="cta-desc">Hubungi perunding kewangan Loanbuddy Credit untuk rundingan percuma hari ini.</p>
+                      <a href="/mohon-pinjaman-online" className="article-cta-btn">
+                        <span>Mohon Pinjaman Sekarang</span>
+                        <span className="btn-icon">
+                          <i className="fas fa-arrow-right"></i>
+                        </span>
                       </a>
                     </div>
                   </div>

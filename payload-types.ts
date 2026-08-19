@@ -68,6 +68,8 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    media: Media;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,6 +78,8 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -85,8 +89,12 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    footer: Footer;
+  };
+  globalsSelect: {
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -142,6 +150,175 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: string;
+  alt: string;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    hero?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  /**
+   * Internal reference title for this page entry in Payload Admin.
+   */
+  title: string;
+  /**
+   * Select the website page you want this content to manage.
+   */
+  slug:
+    | 'home'
+    | 'tentang-loanbuddy-credit'
+    | 'hubungi-kami'
+    | 'soalan-lazim-faq'
+    | 'mohon-pinjaman-online'
+    | 'pinjaman-peribadi'
+    | 'pinjaman-koperasi'
+    | 'pembayaran';
+  /**
+   * Add up to 5 banner slides for the homepage carousel. You can add image-only banners or banners with titles, descriptions, and CTA buttons.
+   */
+  banners?:
+    | {
+        /**
+         * Select or upload a banner background image.
+         */
+        bannerImage?: (string | null) | Media;
+        /**
+         * Leave empty for an image-only banner.
+         */
+        heading?: string | null;
+        /**
+         * Descriptive paragraph text below the heading.
+         */
+        subheading?: string | null;
+        /**
+         * Button label. Leave blank if not needed.
+         */
+        primaryCtaText?: string | null;
+        /**
+         * Target page URL or external link when user clicks CTA button or banner.
+         */
+        primaryCtaLink?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Hero header content for this page.
+   */
+  hero?: {
+    /**
+     * Small tag or badge text displayed above the main heading.
+     */
+    badgeText?: string | null;
+    /**
+     * Main title displayed prominently at the top of the page.
+     */
+    heading?: string | null;
+    /**
+     * Descriptive paragraph text below the main heading.
+     */
+    subheading?: string | null;
+    /**
+     * Select or upload an image for the hero background or banner graphic.
+     */
+    heroImage?: (string | null) | Media;
+    /**
+     * Label shown on the main action button.
+     */
+    primaryCtaText?: string | null;
+    /**
+     * Target page URL or link for the main action button.
+     */
+    primaryCtaLink?: string | null;
+    secondaryCtaText?: string | null;
+    secondaryCtaLink?: string | null;
+  };
+  sections?:
+    | {
+        sectionBadge?: string | null;
+        sectionTitle?: string | null;
+        sectionDescription?: string | null;
+        /**
+         * Select or upload an image for this section.
+         */
+        sectionImage?: (string | null) | Media;
+        /**
+         * Embeddable video link (Google Drive preview link, YouTube, etc.) for video sections.
+         */
+        videoUrl?: string | null;
+        /**
+         * Upload or select a custom thumbnail poster image for the video preview.
+         */
+        thumbnailImage?: (string | null) | Media;
+        items?:
+          | {
+              itemTitle?: string | null;
+              itemDescription?: string | null;
+              /**
+               * Select or upload an image/icon for this item.
+               */
+              itemImage?: (string | null) | Media;
+              /**
+               * Link destination when user clicks on this card or article.
+               */
+              itemLink?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  seo?: {
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -163,10 +340,19 @@ export interface PayloadKv {
  */
 export interface PayloadLockedDocument {
   id: string;
-  document?: {
-    relationTo: 'users';
-    value: string | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -233,6 +419,117 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        hero?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  banners?:
+    | T
+    | {
+        bannerImage?: T;
+        heading?: T;
+        subheading?: T;
+        primaryCtaText?: T;
+        primaryCtaLink?: T;
+        id?: T;
+      };
+  hero?:
+    | T
+    | {
+        badgeText?: T;
+        heading?: T;
+        subheading?: T;
+        heroImage?: T;
+        primaryCtaText?: T;
+        primaryCtaLink?: T;
+        secondaryCtaText?: T;
+        secondaryCtaLink?: T;
+      };
+  sections?:
+    | T
+    | {
+        sectionBadge?: T;
+        sectionTitle?: T;
+        sectionDescription?: T;
+        sectionImage?: T;
+        videoUrl?: T;
+        thumbnailImage?: T;
+        items?:
+          | T
+          | {
+              itemTitle?: T;
+              itemDescription?: T;
+              itemImage?: T;
+              itemLink?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -270,6 +567,84 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  /**
+   * The short slogan displayed under the footer logo.
+   */
+  tagline?: string | null;
+  /**
+   * The summary paragraph introducing the company in the footer.
+   */
+  description?: string | null;
+  nomborLesen?: string | null;
+  tempohLesen?: string | null;
+  nomborPermit?: string | null;
+  tempohPermit?: string | null;
+  hoursWeekdays?: string | null;
+  hoursSaturday?: string | null;
+  hoursClosed?: string | null;
+  facebookUrl?: string | null;
+  instagramUrl?: string | null;
+  tiktokUrl?: string | null;
+  servicesLinks?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  customerServiceLinks?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  copyrightText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  tagline?: T;
+  description?: T;
+  nomborLesen?: T;
+  tempohLesen?: T;
+  nomborPermit?: T;
+  tempohPermit?: T;
+  hoursWeekdays?: T;
+  hoursSaturday?: T;
+  hoursClosed?: T;
+  facebookUrl?: T;
+  instagramUrl?: T;
+  tiktokUrl?: T;
+  servicesLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  customerServiceLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  copyrightText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { getMediaUrl } from "@/lib/media";
 
 // Reusable WhatsApp Buttons Component based on the Figma design
 const WhatsAppButtons = () => (
@@ -39,8 +40,20 @@ const WhatsAppButtons = () => (
 );
 
 export default function FAQPage() {
+  const [pageData, setPageData] = useState<any>(null);
   const [activeTab, setActiveTab] = useState<"all" | "umum" | "bayaran">("all");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  useEffect(() => {
+    fetch("/api/content?slug=soalan-lazim-faq")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -77,11 +90,19 @@ export default function FAQPage() {
         >
           <div className="container mx-auto px-4 lg:max-w-[1000px]">
             <div className="text-left">
-              <h1 className="text-[18px] md:text-[23px] lg:!text-[25px] !font-bold text-blue mb-4">Soalan Lazim Pelanggan Kami</h1>
+              <h1 className="text-[18px] md:text-[23px] lg:!text-[25px] !font-bold text-blue mb-4">
+                {pageData?.hero?.heading || "Soalan Lazim Pelanggan Kami"}
+              </h1>
               <p className="text-[14px] md:text-[16px] text-[#424143] leading-[24px] max-w-[850px]">
-                Di ruangan ini, anda akan mendapatkan jawapan kepada pertanyaan yang sering dikemukakan oleh pelanggan kami berkaitan perkhidmatan kami. Maklumat penting telah disusun bagi membantu anda memahami proses, prosedur dan perkhidmatan yang ditawarkan dengan lebih jelas. 
-                <br /><br/> 
-                Sebarang kemusykilan dan persoalan yang ingin diajukan, anda boleh menghubungi kami dan kami akan membantu anda!
+                {pageData?.hero?.subheading ? (
+                  pageData.hero.subheading
+                ) : (
+                  <>
+                    Di ruangan ini, anda akan mendapatkan jawapan kepada pertanyaan yang sering dikemukakan oleh pelanggan kami berkaitan perkhidmatan kami. Maklumat penting telah disusun bagi membantu anda memahami proses, prosedur dan perkhidmatan yang ditawarkan dengan lebih jelas. 
+                    <br /><br/> 
+                    Sebarang kemusykilan dan persoalan yang ingin diajukan, anda boleh menghubungi kami dan kami akan membantu anda!
+                  </>
+                )}
               </p>
             </div>
           </div>
