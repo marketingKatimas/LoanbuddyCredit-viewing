@@ -425,19 +425,6 @@ export default function Home() {
           );
         })()}
 
-        {/* Mascot Between Sections */}
-        <div
-          ref={mascotStarRef}
-          className={`mascot-star-between d-none d-lg-block ${isMascotStarVisible ? "animated-in" : ""
-            }`}
-        >
-          <img
-            src="/assets/images/banner/home-mohon/star-ladybug.webp"
-            loading="lazy"
-            alt="Mascot Star"
-          />
-        </div>
-
         {/* Testimonials Section */}
         {(() => {
           const testimonialSection = pageData?.sections?.[2];
@@ -465,6 +452,19 @@ export default function Home() {
               className={`testimonial_section section_space_lg bg_grey pos-relative ${isTestimonialsVisible ? "animated-in" : ""
                 }`}
             >
+              {/* Mascot Star (Behind Testimonial Cards) */}
+              <div
+                ref={mascotStarRef}
+                className={`mascot-star-between d-none d-lg-block ${isMascotStarVisible ? "animated-in" : ""
+                  }`}
+              >
+                <img
+                  src="/assets/images/banner/home-mohon/star-ladybug.webp"
+                  loading="lazy"
+                  alt="Mascot Star"
+                />
+              </div>
+
               <div className="container position-relative">
                 <div className="text-center mb-5">
                   <h2 style={{ fontSize: "24px", color: "#333", fontWeight: 700, marginBottom: 0 }}>
@@ -521,15 +521,15 @@ export default function Home() {
             }`}
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
-          <div className="cta_container">
-            <div className="row cta_home cta_home_new col-md-10">
-              <div className="col-12 col-md-6 text-cta-mobile">
-                <h2 className="font-ramai text-white mb-2" style={{ fontSize: "24px" }}>
+          <div className="container">
+            <div className="cta_home_new d-flex flex-column flex-md-row align-items-center justify-content-center gap-4 text-center text-md-start">
+              <div className="text-cta-mobile">
+                <h2 className="font-ramai text-white mb-0" style={{ fontSize: "24px", lineHeight: "1.35" }}>
                   Perlukan Pinjaman Peribadi?<br />
-                  Loanbuddy Credit Sedia Berkhidmat untuk Anda!<br />
+                  Loanbuddy Credit Sedia Berkhidmat untuk Anda!
                 </h2>
               </div>
-              <div className="col-12 col-md-3 z-index-3">
+              <div className="z-index-3 flex-shrink-0">
                 <a href="mohon-pinjaman-online" className="btn border_red_new cta_semak cta_mohon">
                   <span>
                     <small>Mohon Sekarang</small>
@@ -586,7 +586,7 @@ export default function Home() {
                     </div>
                     <div className="col col-lg-5 d-none d-lg-flex justify-content-end">
                       <div className="btn_wrap p-0 z-index-3">
-                        <a className="btn border_red_new border_artikel" href="blog">
+                        <a className="btn border_artikel" href="blog">
                           <span>
                             <small>Artikel lain</small>
                             <small>Artikel lain</small>

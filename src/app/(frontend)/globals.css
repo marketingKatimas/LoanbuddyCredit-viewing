@@ -15,7 +15,15 @@
   --font-mono: var(--font-geist-mono);
 }
 
-body, button, input, select, textarea {
+body {
+  zoom: 0.9;
+}
+
+body,
+button,
+input,
+select,
+textarea {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Reddit Sans', var(--font-reddit-sans), sans-serif;
@@ -97,6 +105,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(-25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -108,6 +117,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -119,6 +129,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(20px) scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -129,15 +140,19 @@ body, button, input, select, textarea {
   0% {
     transform: translateY(0) rotate(0deg);
   }
+
   25% {
     transform: translateY(-14px) rotate(1.5deg) scale(1.01);
   }
+
   50% {
     transform: translateY(-24px) rotate(-1deg) scale(1.02);
   }
+
   75% {
     transform: translateY(-10px) rotate(1deg) scale(1.01);
   }
+
   100% {
     transform: translateY(0) rotate(0deg);
   }
@@ -148,6 +163,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translate3d(-180px, 35px, 0) rotate(-10deg) scale(0.92);
   }
+
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
@@ -158,12 +174,15 @@ body, button, input, select, textarea {
   0% {
     transform: translateY(0) rotate(0deg);
   }
+
   30% {
     transform: translateY(-16px) rotate(-2deg) scale(1.02);
   }
+
   65% {
     transform: translateY(-8px) rotate(2deg) scale(1);
   }
+
   100% {
     transform: translateY(0) rotate(0deg);
   }
@@ -692,7 +711,8 @@ body, button, input, select, textarea {
   .testimonial_meta .d-flex svg {
     width: 15px !important;
     height: 15px !important;
-    fill: #f59e0b !important; /* Premium gold / amber star rating */
+    fill: #f59e0b !important;
+    /* Premium gold / amber star rating */
   }
 
   .testimonial_content p {
@@ -788,10 +808,14 @@ body, button, input, select, textarea {
 }
 
 .mascot-star-between {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 0;
   overflow: visible;
-  z-index: 10;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .mascot-star-between img {
@@ -803,19 +827,38 @@ body, button, input, select, textarea {
   opacity: 0;
   transform: translate3d(-180px, 35px, 0) rotate(-10deg) scale(0.92);
   cursor: pointer;
+  pointer-events: auto;
   will-change: transform, opacity;
 }
 
 .mascot-star-between.animated-in img {
   animation: mascotStarFlyIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             mascotStarFloat 5.5s ease-in-out 1.5s infinite;
+    mascotStarFloat 5.5s ease-in-out 1.5s infinite;
 }
 
 .mascot-star-between.animated-in img:hover {
   transform: translateY(-20px) scale(1.08) rotate(-4deg);
 }
 
+/* Laptop view adjustments: mascot peeks nicely from behind the card */
+@media (min-width: 1200px) and (max-width: 1499.98px) {
+  .mascot-star-between img {
+    left: 2%;
+    top: -80px;
+    width: 270px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .mascot-star-between img {
+    left: 1%;
+    top: -80px;
+    width: 240px;
+  }
+}
+
 @media (max-width: 991.98px) {
+
   .mascot-divider,
   .mascot-star-between {
     display: none !important;
@@ -828,6 +871,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(35px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -940,6 +984,7 @@ body, button, input, select, textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .services h2,
   .service-card,
   .services .cta_semak {
@@ -955,6 +1000,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(-25px) scale(0.92);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -966,6 +1012,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateX(-50px) scale(0.92);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0) scale(1);
@@ -977,6 +1024,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(35px) scale(0.88);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -988,6 +1036,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateX(50px) scale(0.92);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0) scale(1);
@@ -1002,19 +1051,19 @@ body, button, input, select, textarea {
   animation: whyChooseTitlePop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.why-choose-section .row.g-4 > div {
+.why-choose-section .row.g-4>div {
   opacity: 0;
 }
 
-.why-choose-section.animated-in .row.g-4 > div:nth-child(1) {
+.why-choose-section.animated-in .row.g-4>div:nth-child(1) {
   animation: whyChooseCardLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.why-choose-section.animated-in .row.g-4 > div:nth-child(2) {
+.why-choose-section.animated-in .row.g-4>div:nth-child(2) {
   animation: whyChooseCardCenter 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
-.why-choose-section.animated-in .row.g-4 > div:nth-child(3) {
+.why-choose-section.animated-in .row.g-4>div:nth-child(3) {
   animation: whyChooseCardRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
@@ -1048,8 +1097,9 @@ body, button, input, select, textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .why-choose-section .font-ramai,
-  .why-choose-section .row.g-4 > div {
+  .why-choose-section .row.g-4>div {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -1062,6 +1112,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(40px) perspective(600px) rotateX(-12deg);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) perspective(600px) rotateX(0deg);
@@ -1076,23 +1127,36 @@ body, button, input, select, textarea {
   animation: whyChooseTitlePop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.testimonial_section .row.g-4 > div {
+.testimonial_section .row.g-4>div {
   opacity: 0;
 }
 
-.testimonial_section.animated-in .row.g-4 > div:nth-child(1) {
+.testimonial_section.animated-in .row.g-4>div:nth-child(1) {
   animation: testimonialCard3D 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.testimonial_section.animated-in .row.g-4 > div:nth-child(2) {
+.testimonial_section.animated-in .row.g-4>div:nth-child(2) {
   animation: testimonialCard3D 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
-.testimonial_section.animated-in .row.g-4 > div:nth-child(3) {
+.testimonial_section.animated-in .row.g-4>div:nth-child(3) {
   animation: testimonialCard3D 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
+.testimonial_section .container {
+  position: relative;
+  z-index: 5;
+}
+
+.testimonial_section .row.g-4>div {
+  position: relative;
+  z-index: 5;
+}
+
 .testimonial_item {
+  position: relative;
+  z-index: 5;
+  background: #ffffff !important;
   transition: none;
   border-radius: 12px;
 }
@@ -1117,6 +1181,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateX(-40px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -1128,10 +1193,26 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(20px) scale(0.88);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+.cta_banner_section {
+  padding: 32px 0;
+}
+
+.cta_home_new {
+  margin: 0 auto !important;
+  max-width: 960px;
+  display: flex !important;
+  flex-direction: row;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 48px !important;
+  height: auto !important;
 }
 
 .cta_home_new .text-cta-mobile {
@@ -1150,6 +1231,18 @@ body, button, input, select, textarea {
   animation: ctaScaleUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
 }
 
+@media (max-width: 767.98px) {
+  .cta_banner_section {
+    padding: 24px 16px;
+  }
+
+  .cta_home_new {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 20px !important;
+  }
+}
+
 
 /* Blog & Resources Section Animations */
 @keyframes blogCardFadeUp {
@@ -1157,6 +1250,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(45px) scale(0.96);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -1171,19 +1265,19 @@ body, button, input, select, textarea {
   animation: ctaSlideLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.blog_section .row.align-items-stretch > div {
+.blog_section .row.align-items-stretch>div {
   opacity: 0;
 }
 
-.blog_section.animated-in .row.align-items-stretch > div:nth-child(1) {
+.blog_section.animated-in .row.align-items-stretch>div:nth-child(1) {
   animation: blogCardFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.blog_section.animated-in .row.align-items-stretch > div:nth-child(2) {
+.blog_section.animated-in .row.align-items-stretch>div:nth-child(2) {
   animation: blogCardFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
-.blog_section.animated-in .row.align-items-stretch > div:nth-child(3) {
+.blog_section.animated-in .row.align-items-stretch>div:nth-child(3) {
   animation: blogCardFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
 }
 
@@ -1207,17 +1301,18 @@ body, button, input, select, textarea {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .carousel-slide h1,
   .carousel-slide p,
   .hero-content .cta_semak,
   .mascot-divider img,
   .mascot-star-between img,
   .testimonial_section h2,
-  .testimonial_section .row.g-4 > div,
+  .testimonial_section .row.g-4>div,
   .cta_home_new .text-cta-mobile,
   .cta_home_new .z-index-3,
   .blog_section .section_heading,
-  .blog_section .row.align-items-stretch > div {
+  .blog_section .row.align-items-stretch>div {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -1271,7 +1366,7 @@ body, button, input, select, textarea {
 }
 
 @media (min-width: 992px) {
-  .site_header .main_menu_list .dropdown:hover > .dropdown-menu {
+  .site_header .main_menu_list .dropdown:hover>.dropdown-menu {
     display: block !important;
   }
 }
@@ -1364,9 +1459,28 @@ body, button, input, select, textarea {
   font-weight: 700 !important;
 }
 
-/* Remove letter spacing gap on 'Artikel Lain' button */
+/* 'Artikel Lain' Button - Dark Grey Styling */
 .btn.border_artikel {
   letter-spacing: 0 !important;
+  color: #333333 !important;
+  border-color: #333333 !important;
+  background-color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn.border_artikel span small {
+  color: #333333 !important;
+  transition: color 0.25s ease !important;
+}
+
+.btn.border_artikel:hover {
+  color: #ffffff !important;
+  background-color: #333333 !important;
+  border-color: #333333 !important;
+}
+
+.btn.border_artikel:hover span small {
+  color: #ffffff !important;
 }
 
 /* Language Switcher */
@@ -1445,6 +1559,7 @@ body, button, input, select, textarea {
    Mobile Header View Customizations (< 992px)
    ===================================================== */
 @media (max-width: 991.98px) {
+
   /* Ensure header spans 100% full width with zero side offsets across all pages */
   .site_header,
   .site_header.site_header_1,
@@ -1529,7 +1644,8 @@ body, button, input, select, textarea {
   }
 
   .site_header .main_menu_inner {
-    background-color: #0052cc !important; /* Seamless match with main header blue */
+    background-color: #0052cc !important;
+    /* Seamless match with main header blue */
     border-radius: 0 0 16px 16px !important;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25) !important;
     padding: 6px 0 16px 0 !important;
@@ -1548,17 +1664,17 @@ body, button, input, select, textarea {
     margin: 0 !important;
   }
 
-  .site_header .main_menu_list > li {
+  .site_header .main_menu_list>li {
     width: 100% !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     margin: 0 !important;
   }
 
-  .site_header .main_menu_list > li:last-child {
+  .site_header .main_menu_list>li:last-child {
     border-bottom: none !important;
   }
 
-  .site_header .main_menu_list > li:not(.site_logo) > a {
+  .site_header .main_menu_list>li:not(.site_logo)>a {
     color: #ffffff !important;
     font-size: 16px !important;
     font-weight: 600 !important;
@@ -1571,8 +1687,8 @@ body, button, input, select, textarea {
     transition: background-color 0.2s ease !important;
   }
 
-  .site_header .main_menu_list > li:not(.site_logo):hover > a,
-  .site_header .main_menu_list > li:not(.site_logo).active > a {
+  .site_header .main_menu_list>li:not(.site_logo):hover>a,
+  .site_header .main_menu_list>li:not(.site_logo).active>a {
     background-color: rgba(255, 255, 255, 0.12) !important;
     color: #ffffff !important;
   }
@@ -1589,7 +1705,7 @@ body, button, input, select, textarea {
     box-shadow: none !important;
   }
 
-  .site_header .main_menu_list .dropdown-menu > li > a {
+  .site_header .main_menu_list .dropdown-menu>li>a {
     color: #e0e7ff !important;
     font-size: 15px !important;
     padding: 10px 36px !important;
@@ -1598,7 +1714,7 @@ body, button, input, select, textarea {
     border-radius: 0 !important;
   }
 
-  .site_header .main_menu_list .dropdown-menu > li > a:hover {
+  .site_header .main_menu_list .dropdown-menu>li>a:hover {
     background-color: rgba(255, 255, 255, 0.15) !important;
     color: #ffffff !important;
   }
@@ -1608,16 +1724,30 @@ body, button, input, select, textarea {
     animation: mobileDrawerSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
   }
 
-  .site_header .main_menu_inner.show .main_menu_list > li {
+  .site_header .main_menu_inner.show .main_menu_list>li {
     opacity: 0;
     animation: mobileMenuItemFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
   }
 
-  .site_header .main_menu_inner.show .main_menu_list > li:nth-child(1) { animation-delay: 0.05s !important; }
-  .site_header .main_menu_inner.show .main_menu_list > li:nth-child(2) { animation-delay: 0.09s !important; }
-  .site_header .main_menu_inner.show .main_menu_list > li:nth-child(3) { animation-delay: 0.13s !important; }
-  .site_header .main_menu_inner.show .main_menu_list > li:nth-child(4) { animation-delay: 0.17s !important; }
-  .site_header .main_menu_inner.show .main_menu_list > li:nth-child(5) { animation-delay: 0.21s !important; }
+  .site_header .main_menu_inner.show .main_menu_list>li:nth-child(1) {
+    animation-delay: 0.05s !important;
+  }
+
+  .site_header .main_menu_inner.show .main_menu_list>li:nth-child(2) {
+    animation-delay: 0.09s !important;
+  }
+
+  .site_header .main_menu_inner.show .main_menu_list>li:nth-child(3) {
+    animation-delay: 0.13s !important;
+  }
+
+  .site_header .main_menu_inner.show .main_menu_list>li:nth-child(4) {
+    animation-delay: 0.17s !important;
+  }
+
+  .site_header .main_menu_inner.show .main_menu_list>li:nth-child(5) {
+    animation-delay: 0.21s !important;
+  }
 
   .site_header .main_menu_list .dropdown-menu.show {
     animation: mobileDrawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
@@ -1629,6 +1759,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(-14px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -1640,6 +1771,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -1679,12 +1811,10 @@ body, button, input, select, textarea {
   left: -150%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%);
   transform: skewX(-20deg);
   transition: none;
 }
@@ -1698,6 +1828,7 @@ body, button, input, select, textarea {
    Fix Extra Top Gaps Across All Pages on Mobile (< 992px)
    ===================================================== */
 @media (max-width: 991.98px) {
+
   /* Remove legacy notification margin-top and padding-top on page_content */
   .page_content,
   .page_content.bg_white,
@@ -1750,9 +1881,11 @@ body, button, input, select, textarea {
   width: 100%;
   max-width: 480px;
 }
+
 @media (max-width: 768px) {
   .branch-details-block {
-    max-width: 320px; /* Decrease width on mobile to make it compact */
+    max-width: 320px;
+    /* Decrease width on mobile to make it compact */
   }
 }
 
@@ -1778,8 +1911,13 @@ body, button, input, select, textarea {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
@@ -1787,6 +1925,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1798,6 +1937,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateX(-40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -1809,6 +1949,7 @@ body, button, input, select, textarea {
     opacity: 0;
     transform: translateX(40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -1819,15 +1960,19 @@ body, button, input, select, textarea {
 .delay-100 {
   animation-delay: 0.1s;
 }
+
 .delay-200 {
   animation-delay: 0.2s;
 }
+
 .delay-300 {
   animation-delay: 0.3s;
 }
+
 .delay-400 {
   animation-delay: 0.4s;
 }
+
 .delay-500 {
   animation-delay: 0.5s;
 }
