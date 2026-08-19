@@ -9,7 +9,6 @@ import { getMediaUrl } from "@/lib/media";
 export default function Home() {
   const [pageData, setPageData] = useState<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [showMoreFaqs, setShowMoreFaqs] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -45,7 +44,7 @@ export default function Home() {
           setPageData(data.doc);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
 
   const servicesRef = useRef<HTMLElement>(null);
@@ -205,9 +204,8 @@ export default function Home() {
                 return (
                   <div
                     key={index}
-                    className={`carousel-slide slide-${index + 1} ${
-                      hasText ? "has-text-slide" : "image-only-slide"
-                    }`}
+                    className={`carousel-slide slide-${index + 1} ${hasText ? "has-text-slide" : "image-only-slide"
+                      }`}
                     style={{
                       width: `${100 / bannerList.length}%`,
                       backgroundImage: `url('${bgImage}')`,
@@ -271,11 +269,13 @@ export default function Home() {
               itemTitle: "Pinjaman Peribadi Online",
               itemDescription: "Mohon pinjaman peribadi dengan mudah dan pantas melalui permohonan atas talian.",
               image: "/assets/images/fimage2.png",
+              itemLink: "pinjaman-peribadi-kl-sarawak",
             },
             {
               itemTitle: "Pinjaman Tambah Nilai",
               itemDescription: "Pinjaman peribadi tidak mencukupi? Pinjaman Tambah Nilai boleh selesaikan masalah anda.",
               image: "/assets/images/fimage1.png",
+              itemLink: "pinjaman-koperasi",
             },
           ];
           const serviceItems = servicesSection?.items?.length ? servicesSection.items : defaultServices;
@@ -287,6 +287,8 @@ export default function Home() {
               <div className="services-grid">
                 {serviceItems.map((item: any, idx: number) => {
                   const fallbackImg = idx === 0 ? "/assets/images/fimage2.png" : "/assets/images/fimage1.png";
+                  const fallbackLink = idx === 0 ? "pinjaman-peribadi-kl-sarawak" : "pinjaman-koperasi";
+                  const itemHref = item.itemLink || item.link || fallbackLink;
                   const imageUrl = getMediaUrl(item.itemImage, fallbackImg);
                   return (
                     <div key={idx} className="service-card">
@@ -308,7 +310,7 @@ export default function Home() {
                         />
                         <h3>{item.itemTitle}</h3>
                         <p>{item.itemDescription}</p>
-                        <a href="pinjaman-peribadi-kl-sarawak" className="service-link">
+                        <a href={itemHref} className="service-link">
                           <span>Ketahui Lebih Lanjut</span>
                           <i className="far fa-arrow-right ms-2"></i>
                         </a>
@@ -353,9 +355,8 @@ export default function Home() {
           return (
             <section
               ref={whyChooseRef}
-              className={`intro_video_section bg_blue overflow-hidden decoration_wrap py-5 why-choose-section ${
-                isWhyChooseVisible ? "animated-in" : ""
-              }`}
+              className={`intro_video_section bg_blue overflow-hidden decoration_wrap py-5 why-choose-section ${isWhyChooseVisible ? "animated-in" : ""
+                }`}
             >
               <div className="container position-relative mb-5">
                 <div className="row justify-content-center text-center mb-4">
@@ -372,8 +373,8 @@ export default function Home() {
                       idx === 0
                         ? "/assets/images/kredibel-2.png"
                         : idx === 1
-                        ? "/assets/images/mohon-mudah.png"
-                        : "/assets/images/lulus-pantas.png";
+                          ? "/assets/images/mohon-mudah.png"
+                          : "/assets/images/lulus-pantas.png";
                     return (
                       <div
                         key={idx}
@@ -427,9 +428,8 @@ export default function Home() {
         {/* Mascot Between Sections */}
         <div
           ref={mascotStarRef}
-          className={`mascot-star-between d-none d-lg-block ${
-            isMascotStarVisible ? "animated-in" : ""
-          }`}
+          className={`mascot-star-between d-none d-lg-block ${isMascotStarVisible ? "animated-in" : ""
+            }`}
         >
           <img
             src="/assets/images/banner/home-mohon/star-ladybug.webp"
@@ -462,9 +462,8 @@ export default function Home() {
           return (
             <section
               ref={testimonialsRef}
-              className={`testimonial_section section_space_lg bg_grey pos-relative ${
-                isTestimonialsVisible ? "animated-in" : ""
-              }`}
+              className={`testimonial_section section_space_lg bg_grey pos-relative ${isTestimonialsVisible ? "animated-in" : ""
+                }`}
             >
               <div className="container position-relative">
                 <div className="text-center mb-5">
@@ -479,8 +478,8 @@ export default function Home() {
                       idx === 0
                         ? "/assets/images/testimonial/samsudin.png"
                         : idx === 1
-                        ? "/assets/images/testimonial/fatimah.png"
-                        : "/assets/images/testimonial/wong.png";
+                          ? "/assets/images/testimonial/fatimah.png"
+                          : "/assets/images/testimonial/wong.png";
                     return (
                       <div key={idx} className="col-12 col-md-6 col-lg-4">
                         <div className="testimonial_item h-100">
@@ -518,9 +517,8 @@ export default function Home() {
         {/* Call to Action Banner Section */}
         <section
           ref={ctaBannerRef}
-          className={`bg_blue overflow-hidden cta_banner_section ${
-            isCtaBannerVisible ? "animated-in" : ""
-          }`}
+          className={`bg_blue overflow-hidden cta_banner_section ${isCtaBannerVisible ? "animated-in" : ""
+            }`}
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
           <div className="cta_container">
@@ -575,9 +573,8 @@ export default function Home() {
           return (
             <section
               ref={blogRef}
-              className={`calltoaction_section section_space_md bg_grey decoration_wrap blog_section ${
-                isBlogVisible ? "animated-in" : ""
-              }`}
+              className={`calltoaction_section section_space_md bg_grey decoration_wrap blog_section ${isBlogVisible ? "animated-in" : ""
+                }`}
             >
               <div className="container col-mobile">
                 <div className="section_heading">
@@ -649,18 +646,18 @@ export default function Home() {
         })()}
 
         {/* FAQ Section */}
-        <section className="faq_section section_space_md section_space_faq">
+        <section className="faq_section section_space_faq">
           <div className="container">
             <div className="section_heading text-center mb-3">
               <div className="row justify-content-center">
-                <div className="col col-lg-7">
+                <div className="col col-lg-8">
                   <h2 className="heading_text heading_text_custom text-blue">Soalan Lazim</h2>
                 </div>
               </div>
             </div>
 
             <div className="row justify-content-center">
-              <div className="col col-lg-10">
+              <div className="col-12 col-lg-8">
                 <div className="accordion faq-system" id="faq_accordion_1">
                   {/* FAQ 1 */}
                   <div className="accordion-item accordion-item-custom">
@@ -669,21 +666,23 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(0)}
                     >
-                      Siapakah Loanbuddy Credit?
+                      Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?
                     </div>
-                    {openFaq === 0 && (
-                      <div className="accordion-collapse collapse show">
-                        <div className="accordion-body">
-                          <p className="mb-0">
-                            Loanbuddy Credit Sdn. Bhd. (<span className="no-link">200901039396</span> / 882536-K) ialah sebuah
-                            syarikat pinjaman wang berlesen di bawah Akta Pemberi Pinjam Wang 1951 dan dikawal selia oleh
-                            Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami komited menyediakan pinjaman peribadi
-                            yang selamat, telus dan mudah dengan proses kelulusan yang pantas untuk membantu anda memenuhi
-                            keperluan kewangan tanpa kerumitan.
-                          </p>
+                    <div className={`faq-answer-collapse ${openFaq === 0 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <div className="mb-0">
+                          Contoh Wakil: <br />
+                          Amaun Pinjaman: <strong>RM3,000</strong> <br />
+                          Tempoh Pinjaman: <strong>12 bulan</strong> <br />
+                          Kadar Faedah: <strong>18.0% setahun</strong> <br />
+                          Fi: <strong>Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15</strong> <br />
+                          <br />
+                          <img src="/assets/images/Jadual.png" alt="Jadual Pembayaran Balik" loading="lazy" className="w-100" />
+                          <br />
+                          <br />
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* FAQ 2 */}
@@ -693,29 +692,19 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(1)}
                     >
-                      Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?
+                      Siapakah Loanbuddy Credit?
                     </div>
-                    {openFaq === 1 && (
-                      <div className="accordion-collapse collapse show">
-                        <div className="accordion-body">
-                          <div className="mb-0">
-                            Contoh Wakil: <br />
-                            Amaun Pinjaman: <strong>RM3,000</strong> <br />
-                            Tempoh Pinjaman: <strong>12 bulan</strong> <br />
-                            Kadar Faedah: <strong>18.0% setahun</strong> <br />
-                            Jumlah Bayaran Balik = <strong>RM3,540</strong>, hanya <strong>RM295</strong> sebulan <br />
-                            <br />
-                            <img src="/assets/images/kadar-table.png" alt="Kadar Table" loading="lazy" />
-                            <br />
-                            <br />
-                            <a className="mt-3" href="mohon-pinjaman-online">
-                              <u>KLIK SINI</u>
-                            </a>{" "}
-                            untuk mohon sekarang.
-                          </div>
-                        </div>
+                    <div className={`faq-answer-collapse ${openFaq === 1 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <p className="mb-0">
+                          Loanbuddy Credit Sdn. Bhd. (<span className="no-link">200901039396</span> / 882536-K) ialah sebuah
+                          syarikat pinjaman wang berlesen di bawah Akta Pemberi Pinjam Wang 1951 dan dikawal selia oleh
+                          Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami komited menyediakan pinjaman peribadi
+                          yang selamat, telus dan mudah dengan proses kelulusan yang pantas untuk membantu anda memenuhi
+                          keperluan kewangan tanpa kerumitan.
+                        </p>
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* FAQ 3 */}
@@ -727,196 +716,180 @@ export default function Home() {
                     >
                       Bagaimanakah cara untuk saya memohon pinjaman peribadi Loanbuddy Credit?
                     </div>
-                    {openFaq === 2 && (
-                      <div className="accordion-collapse collapse show">
-                        <div className="accordion-body">
-                          <div className="mb-0">
-                            Untuk permohonan pinjaman peribadi bersama Loanbuddy Credit, langkah-langkah permohonan adalah
-                            seperti berikut: <br />
-                            <br />
-                            <ol>
-                              <li>Klik butang “Mohon Sekarang” di laman web rasmi Loanbuddy Credit.</li>
-                              <li>Lengkapkan borang permohonan dengan butiran penting anda dan hantar.</li>
-                              <li>
-                                Pakar kredit Loanbuddy Credit akan menghubungi anda melalui WhatsApp atau emel untuk
-                                pengesahan maklumat dan proses seterusnya.
-                              </li>
-                            </ol>
-                            <em>
-                              Nota privasi: Maklumat peribadi anda adalah sulit dan dilindungi. Kami tidak akan meminta
-                              butiran sensitif tanpa kebenaran anda.{" "}
-                            </em>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                    <div className={`faq-answer-collapse ${openFaq === 2 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <div className="mb-0">
+                          Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp.
 
-                  {/* Expandable FAQs */}
-                  {showMoreFaqs && (
-                    <div id="more-faqs">
-                      {/* FAQ 4 */}
-                      <div className="accordion-item">
-                        <div
-                          className={`accordion-button ${openFaq === 3 ? "" : "collapsed"}`}
-                          role="button"
-                          onClick={() => toggleFaq(3)}
-                        >
-                          Apakah dokumen dan kelayakan yang diperlukan untuk memohon pinjaman peribadi?
-                        </div>
-                        {openFaq === 3 && (
-                          <div className="accordion-collapse collapse show">
-                            <div className="accordion-body">
-                              <div className="mb-0">
-                                <strong>Dokumen Diperlukan</strong>
-                                <ul>
-                                  <li>Salinan kad pengenalan (depan dan belakang)</li>
-                                  <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
-                                  <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
-                                  <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
-                                </ul>
-                                <strong>Kelayakan Permohonan</strong>
-                                <ul>
-                                  <li>Warganegara Malaysia</li>
-                                  <li>Individu berumur 18 hingga 60 tahun</li>
-                                  <li>Pendapatan kasar bulanan minimum RM1,700</li>
-                                  <li>Kakitangan swasta, GLC dan kerajaan sahaja</li>
-                                  <li>Tidak pernah diisytiharkan muflis</li>
-                                  <li>Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
-                                </ul>
+                          <div className="d-flex flex-wrap gap-3 mt-3 mb-2 justify-content-center">
+                            {/* Kuala Lumpur Button */}
+                            <a
+                              href="https://wa.link/taaakr"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+                              style={{
+                                backgroundColor: "#25D366",
+                                borderRadius: "50px",
+                                padding: "8px 20px",
+                                fontSize: "13px",
+                                fontWeight: "600",
+                                color: "#ffffff",
+                              }}
+                            >
+                              <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+                              <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
+                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>Cawangan Kuala Lumpur</span>
+                                <span className="text-white" style={{ color: "#ffffff" }}>+6018 785 6072</span>
                               </div>
-                            </div>
-                          </div>
-                        )}
-                      </div>
+                            </a>
 
-                      {/* FAQ 5 */}
-                      <div className="accordion-item">
-                        <div
-                          className={`accordion-button ${openFaq === 4 ? "" : "collapsed"}`}
-                          role="button"
-                          onClick={() => toggleFaq(4)}
-                        >
-                          Berapakah jumlah pinjaman yang boleh saya mohon?
-                        </div>
-                        {openFaq === 4 && (
-                          <div className="accordion-collapse collapse show">
-                            <div className="accordion-body">
-                              <p className="mb-0">
-                                Anda boleh memohon pinjaman serendah RM1000 sehingga maksimum RM50,000. Jumlah yang layak
-                                dipinjam adalah bergantung kepada penilaian skor kredit individu. <br /> <br />
-                                Bagi pinjaman tambahan (top-up), jumlah minimum ialah RM500 manakala jumlah maksimum akan
-                                ditentukan oleh Loanbuddy Credit berdasarkan kelayakan anda.
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* FAQ 6 */}
-                      <div className="accordion-item">
-                        <div
-                          className={`accordion-button ${openFaq === 5 ? "" : "collapsed"}`}
-                          role="button"
-                          onClick={() => toggleFaq(5)}
-                        >
-                          Berapakah kadar faedah pinjaman peribadi di Loanbuddy Credit?
-                        </div>
-                        {openFaq === 5 && (
-                          <div className="accordion-collapse collapse show">
-                            <div className="accordion-body">
-                              <p className="mb-0">
-                                Kadar faedah pinjaman tidak melebihi: 18% setahun (Tidak Bercagar), 12% setahun (Bercagar),
-                                tertakluk kepada terma, syarat dan penilaian kredit pemohon.
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* FAQ 7 */}
-                      <div className="accordion-item">
-                        <div
-                          className={`accordion-button ${openFaq === 6 ? "" : "collapsed"}`}
-                          role="button"
-                          onClick={() => toggleFaq(6)}
-                        >
-                          Apakah tempoh pinjaman minimum dan maksimum di Loanbuddy Credit?
-                        </div>
-                        {openFaq === 6 && (
-                          <div className="accordion-collapse collapse show">
-                            <div className="accordion-body">
-                              <p className="mb-0">
-                                Tempoh pinjaman minimum ialah 12 bulan (1 tahun) dan tempoh pinjaman maksimum ialah 60 bulan
-                                (5 tahun). Tempoh pinjaman akan ditentukan berdasarkan penilaian kredit individu.
-                              </p>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* FAQ 8 */}
-                      <div className="accordion-item">
-                        <div
-                          className={`accordion-button ${openFaq === 7 ? "" : "collapsed"}`}
-                          role="button"
-                          onClick={() => toggleFaq(7)}
-                        >
-                          Adakah terdapat sebarang caj tersembunyi?
-                        </div>
-                        {openFaq === 7 && (
-                          <div className="accordion-collapse collapse show">
-                            <div className="accordion-body">
-                              <div className="mb-0">
-                                <strong>Tidak.</strong> Kami mengamalkan ketelusan penuh. Semua kos akan dimaklumkan secara
-                                terperinci sebelum anda menandatangani sebarang perjanjian. <br />
-                                <br />
-                                <ul>
-                                  <li>
-                                    <strong>Duti Setem:</strong> Kadar adalah <strong>0.5%</strong> daripada jumlah pinjaman
-                                    (dibundarkan kepada <strong>RM5 terdekat</strong>) ditambah yuran setem{" "}
-                                    <strong>RM10</strong>.
-                                  </li>
-                                  <li>
-                                    <strong>Kos Lain:</strong> Sebarang kos pentadbiran atau dokumentasi tambahan akan
-                                    dinyatakan secara peribadi berdasarkan profil pinjaman anda.
-                                  </li>
-                                  <li>
-                                    <strong>Tiada Bayaran Pendahuluan:</strong> Kami tidak akan meminta sebarang bayaran
-                                    sebelum pinjaman diluluskan.
-                                  </li>
-                                </ul>
-                                Segala pecahan yuran akan diberikan secara bertulis untuk semakan anda semasa sesi perjumpaan
-                                sebelum proses menandatangani bermula.
+                            {/* Kuching Button */}
+                            <a
+                              href="https://wa.link/32cpg5"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+                              style={{
+                                backgroundColor: "#25D366",
+                                borderRadius: "50px",
+                                padding: "8px 20px",
+                                fontSize: "13px",
+                                fontWeight: "600",
+                                color: "#ffffff",
+                              }}
+                            >
+                              <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+                              <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
+                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>Cawangan Kuching</span>
+                                <span className="text-white" style={{ color: "#ffffff" }}>+6010 932 9976</span>
                               </div>
-                            </div>
+                            </a>
+
+                            {/* Bintulu Button */}
+                            <a
+                              href="https://wa.link/6v806i"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+                              style={{
+                                backgroundColor: "#25D366",
+                                borderRadius: "50px",
+                                padding: "8px 20px",
+                                fontSize: "13px",
+                                fontWeight: "600",
+                                color: "#ffffff",
+                              }}
+                            >
+                              <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+                              <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
+                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>Cawangan Bintulu</span>
+                                <span className="text-white" style={{ color: "#ffffff" }}>+6010 909 8557</span>
+                              </div>
+                            </a>
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
-                  )}
+                  </div>
 
-                  <button
-                    id="view-more-faqs"
-                    className="btn btn_blue text-white"
-                    onClick={() => setShowMoreFaqs(!showMoreFaqs)}
-                  >
-                    {showMoreFaqs ? "Lihat Kurang" : "Lihat Lagi"}
-                  </button>
-                </div>
-              </div>
+                  {/* FAQ 4 */}
+                  <div className="accordion-item">
+                    <div
+                      className={`accordion-button ${openFaq === 4 ? "" : "collapsed"}`}
+                      role="button"
+                      onClick={() => toggleFaq(4)}
+                    >
+                      Berapakah kadar faedah?
+                    </div>
+                    <div className={`faq-answer-collapse ${openFaq === 4 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <p className="mb-0">
+                          Kadar faedah tahunan adalah sehingga 18.0%.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
 
-              <div className="col col-lg-10 row mt-3">
-                <div className="col-12 col-lg-8 d-flex align-items-center faq-btn-wrap text-blue faq-btn-text">
-                  Ingin tahu maklumat lanjut?
-                </div>
-                <div className="col-12 col-lg-4 align-items-center justify-content-center d-flex">
-                  <a href="soalan-lazim-faq" className="btn btn_2 border_blue_new">
-                    <span>
-                      <small>Baca Soalan Lazim</small>
-                      <small>Baca Soalan Lazim</small>
-                    </span>
-                  </a>
+                  {/* FAQ 5 */}
+                  <div className="accordion-item">
+                    <div
+                      className={`accordion-button ${openFaq === 5 ? "" : "collapsed"}`}
+                      role="button"
+                      onClick={() => toggleFaq(5)}
+                    >
+                      Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?
+                    </div>
+                    <div className={`faq-answer-collapse ${openFaq === 5 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <p className="mb-0">
+                          Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* FAQ 6 */}
+                  <div className="accordion-item">
+                    <div
+                      className={`accordion-button ${openFaq === 3 ? "" : "collapsed"}`}
+                      role="button"
+                      onClick={() => toggleFaq(3)}
+                    >
+                      Apakah dokumen dan kelayakan yang diperlukan?
+                    </div>
+                    <div className={`faq-answer-collapse ${openFaq === 3 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <div className="mb-0">
+                          <strong>Dokumen Diperlukan</strong>
+                          <ul>
+                            <li>1. Salinan kad pengenalan (depan dan belakang)</li>
+                            <li>2. Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
+                            <li>3. Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
+                            <li>4. Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                          </ul>
+                          <strong>Kelayakan Pinjaman Peribadi Atas Talian</strong>
+                          <ul>
+                            <li>1. Warganegara Malaysia</li>
+                            <li>2. Berumur antara 18 sehingga 60 tahun</li>
+                            <li>3. Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)</li>
+                            <li>4. Pendapatan bulanan kasar minimum RM1,700</li>
+                            <li>5. Tidak muflis dan mampu membayar balik pinjaman</li>
+                            <li>6. Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
+                          </ul>
+                          <strong>Kelayakan Pinjaman Tambah Nilai</strong>
+                          <ul>
+                            <li>1. Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman</li>
+                            <li>2. Rekod pembayaran yang baik dengan Loanbuddy Credit</li>
+                            <li>3. Individu berumur 18 hingga 60 tahun</li>
+                            <li>4. Pendapatan kasar bulanan minimum RM1,700</li>
+                            <li>5. Kakitangan swasta dan kerajaan sahaja</li>
+                            <li>6. Warganegara Malaysia</li>
+                            <li>7. Tidak muflis dan mampu membayar balik pinjaman</li>
+                            <li>8. Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* FAQ 7 */}
+                  <div className="accordion-item">
+                    <div
+                      className={`accordion-button ${openFaq === 6 ? "" : "collapsed"}`}
+                      role="button"
+                      onClick={() => toggleFaq(6)}
+                    >
+                      Apakah tempoh pinjaman minimum dan maksimum?
+                    </div>
+                    <div className={`faq-answer-collapse ${openFaq === 6 ? "open" : ""}`}>
+                      <div className="accordion-body">
+                        <p className="mb-0">
+                          Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun).
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

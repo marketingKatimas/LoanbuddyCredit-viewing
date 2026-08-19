@@ -79,11 +79,13 @@ export const defaultPagesData: DefaultPageData[] = [
             itemTitle: 'Pinjaman Peribadi Online',
             itemDescription:
               'Mohon pinjaman peribadi dengan mudah dan pantas melalui permohonan atas talian.',
+            itemLink: 'pinjaman-peribadi-kl-sarawak',
           },
           {
             itemTitle: 'Pinjaman Tambah Nilai',
             itemDescription:
               'Pinjaman peribadi tidak mencukupi? Pinjaman Tambah Nilai boleh selesaikan masalah anda.',
+            itemLink: 'pinjaman-koperasi',
           },
         ],
       },

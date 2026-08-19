@@ -206,7 +206,7 @@ export default function Footer() {
                 </li>
                 <li style={{ marginBottom: "12px" }}>
                   <a
-                    href="/mohon-pinjaman-online"
+                    href="/pinjaman-koperasi"
                     style={{
                       fontSize: "13px",
                       color: "#d8d8d8",
