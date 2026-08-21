@@ -41,12 +41,70 @@
         padding: 0 !important;
     }
 
+    .site_header,
+    .site_header.site_header_1,
+    .site_header.site_header_1.site_header_2 {
+        padding: 10px 0 !important;
+    }
+
+    .site_header .container,
+    .site_header.site_header_1 .container,
+    .site_header_2 .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+
     .site_header .site-header-logo,
     .site_header .site_link img {
-        height: 70px !important;
-        max-height: 70px !important;
+        height: 85px !important;
+        max-height: 85px !important;
         width: auto !important;
         object-fit: contain;
+    }
+
+    .site_header .header_main_cluster {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 28px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .site_header .site_logo_wrap {
+        flex-shrink: 0 !important;
+        margin-right: 45px !important;
+    }
+
+    .site_header .main_menu {
+        width: auto !important;
+        flex-shrink: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .site_header .header_main_cluster .btn_semak_layak {
+        flex-shrink: 0 !important;
+        margin-left: 45px !important;
+        min-width: 190px !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    .site_header .header_right_area {
+        position: absolute !important;
+        right: 30px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 20 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .site_header .header_right_area .header_lang_switcher {
+        margin-left: 0 !important;
     }
 
     .site_header .main_menu_list {
@@ -56,6 +114,28 @@
         gap: 10px !important;
         margin: 0 !important;
         padding: 0 !important;
+    }
+
+    .site_header .main_menu_list > li > a {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .site_header .main_menu_list > li:nth-child(1) {
+        min-width: 132px !important;
+    }
+    .site_header .main_menu_list > li:nth-child(2) {
+        min-width: 114px !important;
+    }
+    .site_header .main_menu_list > li:nth-child(3) {
+        min-width: 130px !important;
+    }
+    .site_header .main_menu_list > li:nth-child(4) {
+        min-width: 58px !important;
+    }
+    .site_header .main_menu_list > li:nth-child(5) {
+        min-width: 122px !important;
     }
 
     .site_header .main_menu_list > li > a {
@@ -126,8 +206,11 @@
 
 
 
-.site-header-logo {
-    height: 77px !important;
+@media (min-width: 992px) {
+    .site-header-logo {
+        height: 85px !important;
+        max-height: 85px !important;
+    }
 }
 
 .site_header_2 .container {
@@ -623,15 +706,15 @@
 
 .banner-mohon-big-title {
     font-size: 30px !important;
-    line-height: 48px !important;
-    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
     color: #044BD9 !important;
 }
 
 @media (max-width: 500px) {
     .banner-mohon-big-title {
         font-size: 26px !important;
-        line-height: 32px !important;
+        line-height: 1.25 !important;
     }
 }
 

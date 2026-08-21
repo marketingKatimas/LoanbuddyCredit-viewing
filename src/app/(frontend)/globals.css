@@ -61,10 +61,11 @@ textarea {
 /* Hero Section */
 .hero-carousel {
   position: relative;
-  max-width: 1600px;
-  margin: -15px auto 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
   overflow: hidden;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0;
 }
 
 .carousel-track-container {
@@ -82,11 +83,12 @@ textarea {
   width: 50%;
   flex-shrink: 0;
   text-align: center;
-  padding: 35px 5% 150px;
+  padding: 35px 5% 40px;
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
-  min-height: 700px;
+  aspect-ratio: 1577 / 655;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -94,7 +96,7 @@ textarea {
 }
 
 .slide-2 {
-  background-size: 100% auto;
+  background-size: cover;
   background-position: center center;
   background-color: #f4f6f8;
 }
@@ -260,8 +262,8 @@ textarea {
 @media (max-width: 991.98px) {
   .hero-carousel {
     margin: 0 auto;
-    border-radius: 0 0 16px 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .carousel-slide {
@@ -273,11 +275,13 @@ textarea {
 
   .carousel-slide.image-only-slide,
   .slide-2 {
-    min-height: 300px;
+    min-height: auto;
+    aspect-ratio: 1577 / 655;
     background-size: cover !important;
     background-position: center center !important;
     padding: 0;
   }
+
 
   .hero-content {
     max-width: 700px;
@@ -339,9 +343,9 @@ textarea {
 
   .carousel-slide.image-only-slide,
   .slide-2 {
-    min-height: 200px;
-    aspect-ratio: 16 / 9;
-    max-height: 340px;
+    min-height: auto;
+    aspect-ratio: 1577 / 655;
+    max-height: none;
     background-size: cover !important;
     background-position: center center !important;
     padding: 0;
@@ -566,12 +570,12 @@ textarea {
 
   .why-choose-section .service_item .item_icon.why-choose-mobile-icon,
   .why-choose-mobile-icon {
-    width: 52px !important;
-    min-width: 52px !important;
-    max-width: 52px !important;
-    height: 52px !important;
-    min-height: 52px !important;
-    max-height: 52px !important;
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    max-height: 60px !important;
     border-radius: 14px !important;
     background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
     display: flex !important;
@@ -586,8 +590,8 @@ textarea {
 
   .why-choose-section .service_item .item_icon.why-choose-mobile-icon img,
   .why-choose-mobile-icon img {
-    max-height: 32px !important;
-    max-width: 32px !important;
+    max-height: 40px !important;
+    max-width: 40px !important;
     width: auto !important;
     height: auto !important;
     margin: 0 auto !important;
@@ -752,7 +756,8 @@ textarea {
   }
 
   .carousel-slide.image-only-slide {
-    min-height: 180px;
+    min-height: auto;
+    aspect-ratio: 1577 / 655;
   }
 
   .carousel-slide h1 {
@@ -841,6 +846,17 @@ textarea {
 
 .mascot-star-between.animated-in img:hover {
   transform: translateY(-20px) scale(1.08) rotate(-4deg);
+}
+
+/* Bigger monitor view: push first mascot towards the right edge without affecting laptop / 120% zoom */
+@media (min-width: 1601px) {
+  .mascot-divider {
+    max-width: 100%;
+  }
+
+  .mascot-divider img {
+    right: 1.5%;
+  }
 }
 
 /* Laptop view adjustments: mascot peeks nicely from behind the card */
@@ -1496,15 +1512,53 @@ textarea {
   color: #ffffff !important;
 }
 
-/* Header Center Navigation Alignment */
+/* Header Center Navigation Alignment & Desktop Logo */
 @media (min-width: 992px) {
-  .site_header .main_menu {
+  .site_header,
+  .site_header.site_header_1,
+  .site_header.site_header_1.site_header_2 {
+    padding: 10px 0 !important;
+  }
+
+  .site_header .container,
+  .site_header.site_header_1 .container,
+  .site_header_2 .container {
+    max-width: 100% !important;
     width: 100% !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  .site_header .site-header-logo,
+  .site_header .site_link img {
+    height: 85px !important;
+    max-height: 85px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  .site_header .header_main_cluster {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 28px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .site_header .site_logo_wrap {
+    flex-shrink: 0 !important;
+    margin-right: 45px !important;
+  }
+
+  .site_header .main_menu {
+    width: auto !important;
+    flex-shrink: 0 !important;
     display: flex !important;
     justify-content: center !important;
   }
   .site_header .main_menu_inner {
-    width: 100% !important;
+    width: auto !important;
     display: flex !important;
     justify-content: center !important;
   }
@@ -1527,6 +1581,49 @@ textarea {
     padding: 8px 12px !important;
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Fixed slot widths based on BM language dimensions to keep header layout completely static on language switch */
+  .site_header .main_menu_list > li:nth-child(1) {
+    min-width: 132px !important;
+  }
+  .site_header .main_menu_list > li:nth-child(2) {
+    min-width: 114px !important;
+  }
+  .site_header .main_menu_list > li:nth-child(3) {
+    min-width: 130px !important;
+  }
+  .site_header .main_menu_list > li:nth-child(4) {
+    min-width: 58px !important;
+  }
+  .site_header .main_menu_list > li:nth-child(5) {
+    min-width: 122px !important;
+  }
+
+  .site_header .header_main_cluster .btn_semak_layak {
+    flex-shrink: 0 !important;
+    margin-left: 45px !important;
+    min-width: 190px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Pinned Far-Right Language Switcher */
+  .site_header .header_right_area {
+    position: absolute !important;
+    right: 30px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 20 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .site_header .header_right_area .header_lang_switcher {
+    margin-left: 0 !important;
   }
 }
 
@@ -1915,21 +2012,53 @@ textarea {
   }
 
   .container-apply-header {
-    padding-top: 14px !important;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
   }
 
   .banner-apply-header {
     margin-top: 12px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 0px !important;
   }
 
   .banner-mohon-big-title {
     margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    line-height: 1.25 !important;
   }
 
   .branches_map_section {
     padding-top: 10px !important;
   }
+}
+
+.container-apply-header {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+
+.banner-mohon-big-title {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  line-height: 1.2 !important;
+  font-weight: 800 !important;
+}
+
+.banner-apply-header {
+  margin-top: 14px !important;
+  margin-bottom: 0px !important;
+  text-align: center;
+}
+
+.item_title_about,
+.blog-h1-text,
+.display-6.text-blue {
+  line-height: 1.25 !important;
+  font-weight: 800 !important;
+}
+
+.blog-h1-text {
+  color: #044BD9 !important;
 }
 
 /* Responsive Branch Details Width */

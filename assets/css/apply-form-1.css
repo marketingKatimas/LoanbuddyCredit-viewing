@@ -89,18 +89,20 @@
 
 
 .container-apply-header {
-    padding-top: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .banner-apply-header {
-    margin-top: 50px;
-    margin-bottom: 70px;
+    margin-top: 14px;
+    margin-bottom: 0px;
     text-align: center;
 }
 
 @media (max-width: 500px) {
     .container-apply-header {
         padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     .banner-mohon-big-title {
@@ -108,8 +110,8 @@
     }
 
     .banner-apply-header {
-        margin-top: 20px;
-        margin-bottom: 32px;
+        margin-top: 12px;
+        margin-bottom: 0px;
         text-align: center;
         font-size: 15px;
     }
@@ -314,9 +316,87 @@
     margin-bottom: 25px;
 }
 
+.form-header h3,
+.form-mohon-content .form-header h3 {
+    font-size: 25px;
+}
+
+.sidebar-scaled-down {
+    padding: 45px 40px !important;
+}
+
+.sidebar-scaled-down .form-header {
+    max-width: 324px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 24px !important;
+}
+
+.sidebar-scaled-down .form-header h3 {
+    font-size: 25px !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    color: #212529 !important;
+}
+
+.sidebar-scaled-down .mohon-rules-top {
+    margin-bottom: 42px !important;
+    text-align: center !important;
+}
+
+.sidebar-scaled-down .mohon-rules-top img {
+    width: 158px !important;
+    max-width: 158px !important;
+    height: auto !important;
+    object-fit: contain;
+}
+
+.sidebar-scaled-down .mohon-rules {
+    margin-top: 0 !important;
+}
+
+.sidebar-scaled-down .mohon-rules h5 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    color: #212529 !important;
+    margin-bottom: 12px !important;
+}
+
+.sidebar-scaled-down .mohon-rules ul {
+    list-style-type: disc !important;
+    margin-left: 22px !important;
+    padding-left: 0 !important;
+    margin-bottom: 42px !important;
+}
+
+.sidebar-scaled-down .mohon-rules ul li {
+    list-style-type: disc !important;
+    font-size: 16px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 1.5px !important;
+    color: #333333 !important;
+}
+
+.sidebar-scaled-down .mohon-rules-bottom {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    column-gap: 52px !important;
+    margin-top: 42px !important;
+}
+
+.sidebar-scaled-down .mohon-rules-bottom img {
+    height: 60px !important;
+    max-height: 62px !important;
+    width: auto !important;
+    object-fit: contain;
+}
+
 .form-mohon-content .form-header p {
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .form-mohon-content .form-header span {
@@ -328,16 +408,16 @@
 }
 
 .form-mohon-content .form-row label {
-    font-size: 11px;
+    font-size: 14px;
     margin-left: 10px;
 }
 
 .form-mohon-content .form-row input {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .form-mohon-content .form-row select {
-    font-size: 12px;
+    font-size: 14px;
     /* color: #6c757d; */
 }
 
@@ -352,9 +432,9 @@
 }
 
 .form-control:focus {
-    border-color: #1ab79a;
+    border-color: #044BD9;
     outline: 0;
-    box-shadow: none;
+    box-shadow: 0 0 0 3px rgba(4, 75, 217, 0.15);
 }
 
 .form-mohon-content .form-holder i.zmdi-caret-down {
@@ -393,8 +473,8 @@
 
 .checkbox-holder {
     display: flex;
-    align-items: baseline;
-    margin-bottom: 8px;
+    align-items: center;
+    margin-bottom: 18px;
 }
 
 .checkbox-box {
@@ -417,22 +497,19 @@
 }
 
 .checkbox-box input[type="checkbox"]:checked {
-    background-color: #ff0000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 13px 13px;
 }
-
+  
 .checkbox-box input[type="checkbox"]:checked::after {
-    content: "✔";
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -45%);
-    font-size: 12px;
-    font-weight: 500;
+    content: none;
 }
 
 .checkbox-text {
-    font-size: 12px;
+    font-size: 15px;
+    line-height: 1.25;
 }
 
 .checkbox-text a {
@@ -557,7 +634,7 @@ div#termsOfUseModal {
     }
 
     .checkbox-text {
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .button-row {
@@ -622,5 +699,21 @@ div#termsOfUseModal {
 
     .site_footer .footer_widget_area {
         padding: 20px 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .course-card-mohon.h-max {
+        width: 854px !important;
+        max-width: 854px !important;
+        min-height: 913px !important;
+        flex: 0 0 854px !important;
+    }
+    .sidebar-scaled-down {
+        width: 564px !important;
+        max-width: 564px !important;
+        height: 784px !important;
+        min-height: 784px !important;
+        flex: 0 0 564px !important;
     }
 }

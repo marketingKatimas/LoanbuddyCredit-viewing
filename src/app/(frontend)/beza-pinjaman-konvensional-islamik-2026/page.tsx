@@ -6,12 +6,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { RichText } from "@/components/RichText";
 import { getMediaUrl } from "@/lib/media";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BezaPinjamanKonvensionalIslamikPage() {
+  const { t, isEnglish, language } = useLanguage();
   const [post, setPost] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/blog-posts?slug=beza-pinjaman-konvensional-islamik-2026", { cache: "no-store" })
+    fetch(`/api/blog-posts?slug=beza-pinjaman-konvensional-islamik-2026&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -19,11 +21,13 @@ export default function BezaPinjamanKonvensionalIslamikPage() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
 
   const postImage = post?.featuredImage
     ? getMediaUrl(post.featuredImage)
     : "/assets/images/blog/konvensional-vs-islamik-beza-pinjaman-peribadi-2026.avif";
+
+  const d = t.articles.bezaPinjaman;
 
   return (
     <div className="page_wrapper">
@@ -68,20 +72,20 @@ export default function BezaPinjamanKonvensionalIslamikPage() {
                     style={{ gap: "6px" }}
                   >
                     <i className="fas fa-arrow-left"></i>
-                    <span>Kembali ke Senarai Blog</span>
+                    <span>{isEnglish ? t.blog.backToBlog : "Kembali ke Senarai Blog"}</span>
                   </Link>
                 </div>
 
                 <div className="blog_details_content bg-white p-4 p-md-5 rounded shadow-sm">
                   <div className="mb-4 text-center">
                     <span className="badge bg-primary text-white mb-2 fs-6 px-3 py-2">
-                      {post?.category || "Panduan Kewangan Malaysia"}
+                      {post?.category || d.category}
                     </span>
-                    <h1 className="display-6 fw-bold text-blue mb-3">
-                      {post?.title || "Konvensional vs Islamik: Beza Pinjaman Peribadi Malaysia 2026"}
+                    <h1 className="display-6 fw-bold text-blue mb-3" style={{ fontWeight: 800, lineHeight: 1.25 }}>
+                      {post?.title || d.title}
                     </h1>
                     <p className="text-muted small">
-                      Tarikh Kemaskini: {post?.publishedDate || "2026"} | Oleh {post?.author || "Pasukan Kewangan Loanbuddy Credit"}
+                      {isEnglish ? t.blog.lastUpdated : "Tarikh Kemaskini:"} {post?.publishedDate || "2026"} | {isEnglish ? t.blog.byAuthor : "Oleh"} {post?.author || (isEnglish ? t.blog.defaultAuthor : "Pasukan Kewangan Loanbuddy Credit")}
                     </p>
                   </div>
 
@@ -89,7 +93,7 @@ export default function BezaPinjamanKonvensionalIslamikPage() {
                     <img
                       src={postImage}
                       className="img-fluid rounded"
-                      alt={post?.title || "Beza Pinjaman Konvensional vs Islamik"}
+                      alt={post?.title || d.title}
                       style={{ maxHeight: "480px", objectFit: "cover", width: "100%" }}
                     />
                   </div>
@@ -99,36 +103,34 @@ export default function BezaPinjamanKonvensionalIslamikPage() {
                       <RichText content={post.content} />
                     ) : (
                       <>
+                        <p>{d.p1}</p>
+
+                        <h3 className="text-blue mt-4 mb-3 fs-4">{d.h1}</h3>
                         <p>
-                          Sebelum memohon sebarang pembiayaan peribadi di Malaysia, adalah penting untuk memahami perbezaan konsep utama antara Pinjaman Konvensional dan Pembiayaan Islamik.
+                          <strong>{d.p_konvensional_label}</strong> {d.p_konvensional_text}<br />
+                          <strong>{d.p_islamik_label}</strong> {d.p_islamik_text}
                         </p>
 
-                        <h3 className="text-blue mt-4 mb-3 fs-4">1. Konsep Perjanjian</h3>
+                        <h3 className="text-blue mt-4 mb-3 fs-4">{d.h2}</h3>
                         <p>
-                          <strong>Konvensional:</strong> Berdasarkan hubungan pemberi pinjam dan peminjam, di mana peminjam membayar balik wang prinsipal bersama kadar faedah (interest).<br />
-                          <strong>Islamik:</strong> Berdasarkan konsep Syariah seperti Murabahah (jual beli) atau Tawarruq, di mana bank menjual komoditi pada harga yang telah ditambah keuntungan (profit margin).
-                        </p>
-
-                        <h3 className="text-blue mt-4 mb-3 fs-4">2. Caj Bayaran Lewat</h3>
-                        <p>
-                          <strong>Konvensional:</strong> Mengenakan caj faedah kompaun ke atas bayaran yang terlewat.<br />
-                          <strong>Islamik:</strong> Mengenakan caj Ta&apos;widh (ganti rugi) pada kadar yang ditetapkan dan sebahagian daripadanya disalurkan kepada badan kebajikan.
+                          <strong>{d.p_konvensional_label}</strong> {d.p_caj_konvensional_text}<br />
+                          <strong>{d.p_islamik_label}</strong> {d.p_caj_islamik_text}
                         </p>
                       </>
                     )}
 
                     <div className="article-cta-box mt-5">
                       <h4 className="cta-title">
-                        {post?.ctaBox?.heading || "Perlukan Khidmat Nasihat Pembiayaan?"}
+                        {post?.ctaBox?.heading || d.ctaHeading}
                       </h4>
                       <p className="cta-desc">
-                        {post?.ctaBox?.description || "Hubungi perunding kewangan Loanbuddy Credit untuk rundingan percuma hari ini."}
+                        {post?.ctaBox?.description || d.ctaDesc}
                       </p>
                       <a
                         href={post?.ctaBox?.buttonLink || "/mohon-pinjaman-online"}
                         className="article-cta-btn"
                       >
-                        <span>{post?.ctaBox?.buttonText || "Mohon Pinjaman Sekarang"}</span>
+                        <span>{post?.ctaBox?.buttonText || d.ctaButton}</span>
                         <span className="btn-icon">
                           <i className="fas fa-arrow-right"></i>
                         </span>
@@ -147,4 +149,5 @@ export default function BezaPinjamanKonvensionalIslamikPage() {
     </div>
   );
 }
+
 

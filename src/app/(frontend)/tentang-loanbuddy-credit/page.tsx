@@ -5,12 +5,14 @@ import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getMediaUrl } from "@/lib/media";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TentangKamiPage() {
+  const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/content?slug=tentang-loanbuddy-credit", { cache: "no-store" })
+    fetch(`/api/content?slug=tentang-loanbuddy-credit&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -18,32 +20,32 @@ export default function TentangKamiPage() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
 
   const defaultKelebihan = [
     {
-      title: "Penjimatan masa:",
-      desc: "Proses yang biasanya mengambil masa berhari-hari kini boleh diselesaikan hanya dalam beberapa minit bersama kami.",
+      title: t.aboutUs.kelebihan1Title,
+      desc: t.aboutUs.kelebihan1Desc,
       bg: "#909090",
     },
     {
-      title: "Cekap:",
-      desc: "Tak perlu pening kepala menyelidik banyak pemberi pinjaman. Kami sediakan pilihan terbaik yang sesuai untuk anda - semuanya sah dan boleh dipercayai.",
+      title: t.aboutUs.kelebihan2Title,
+      desc: t.aboutUs.kelebihan2Desc,
       bg: "#034BD9",
     },
     {
-      title: "Ketenangan fikiran:",
-      desc: "Hanya berurusan dengan pemberi pinjaman yang telah disemak teliti oleh pasukan pakar kami. Jadi, anda boleh rasa lebih yakin dengan setiap langkah.",
+      title: t.aboutUs.kelebihan3Title,
+      desc: t.aboutUs.kelebihan3Desc,
       bg: "#034BD9",
     },
     {
-      title: "Kesahihan maklumat:",
-      desc: "Semua maklumat yang anda terima daripada kami telah disahkan, supaya anda boleh membuat keputusan kewangan dengan lebih tenang dan bijak.",
+      title: t.aboutUs.kelebihan4Title,
+      desc: t.aboutUs.kelebihan4Desc,
       bg: "#414143",
     },
     {
-      title: "Mengurangkan tekanan:",
-      desc: "Kurangkan kemungkinan pinjaman tidak diluluskan dengan memohon pemberi pinjaman yang telah dipadankan.",
+      title: t.aboutUs.kelebihan5Title,
+      desc: t.aboutUs.kelebihan5Desc,
       bg: "#909090",
     },
   ];
@@ -58,52 +60,66 @@ export default function TentangKamiPage() {
       : defaultKelebihan;
 
   const defaultFeatures = [
-    { img: "kadar-faedah.png", text: "Kadar faedah 1.5% sebulan atau 18% setahun (tetap)" },
-    { img: "amaun-pinjaman.png", text: "Amaun pinjaman dari RM1,000 sehingga RM50,000" },
-    { img: "tempoh-pinjaman.png", text: "Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan." },
-    { img: "kad-atm-2.png", text: "Tidak pegang kad ATM, tiada bayaran pendahuluan" },
-    { img: "lulus-pantas.png", text: "Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama" },
-    { img: "pinjaman-berlesen.png", text: "Pemberi pinjaman berlesen di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT)" },
-    { img: "permohonan-mudah.png", text: "Permohonan mudah dan pantas, dengan langkah yang jelas dan efisien" },
-    { img: "kemudahan-pembayaran.png", text: "Kemudahan pembayaran dalam talian tersedia (Direct Debit, pemindahan bank dalam talian, atau JomPay)" },
+    {
+      img: "kadar-faedah.png",
+      text: t.aboutUs.feature1,
+    },
+    {
+      img: "amaun-pinjaman.png",
+      text: t.aboutUs.feature2,
+    },
+    {
+      img: "tempoh-pinjaman.png",
+      text: t.aboutUs.feature3,
+    },
+    {
+      img: "kad-atm-2.png",
+      text: t.aboutUs.feature4,
+    },
+    {
+      img: "lulus-pantas.png",
+      text: t.aboutUs.feature5,
+    },
+    {
+      img: "pinjaman-berlesen.png",
+      text: t.aboutUs.feature6,
+    },
+    {
+      img: "permohonan-mudah.png",
+      text: t.aboutUs.feature7,
+    },
+    {
+      img: "kemudahan-pembayaran.png",
+      text: t.aboutUs.feature8,
+    },
   ];
 
   const features =
     pageData?.sections?.[3]?.items && pageData.sections[3].items.length > 0
       ? pageData.sections[3].items.map((item: any, idx: number) => ({
           img: defaultFeatures[idx]?.img || "permohonan-mudah.png",
-          text: item.itemDescription || defaultFeatures[idx]?.text || item.itemTitle,
+          text: item.itemDescription || item.itemTitle || defaultFeatures[idx]?.text || "",
         }))
       : defaultFeatures;
 
-  const blueBannerText =
-    pageData?.sections?.[0]?.sectionDescription ||
-    "Loanbuddy Credit bukan sekadar penyedia pinjaman. Kami adalah rakan perjalanan kewangan anda dalam setiap langkah, cabaran dan peluang.";
+  const heroHeading = pageData?.hero?.heading || t.aboutUs.heroTitle;
+  const heroSubheading = pageData?.hero?.subheading || t.aboutUs.heroDesc;
+  const blueBannerText = pageData?.sections?.[0]?.sectionDescription || t.aboutUs.blueBannerText;
+  const kelebihanSectionTitle = pageData?.sections?.[1]?.sectionTitle || t.aboutUs.kelebihanTitle;
+  const kpktTitle = pageData?.sections?.[2]?.sectionTitle || t.aboutUs.kpktTitle;
+  const kpktDesc = pageData?.sections?.[2]?.sectionDescription || t.aboutUs.kpktDesc;
+  const whyChooseTitle = pageData?.sections?.[3]?.sectionTitle || t.aboutUs.whyChooseTitle;
+  const rakanSetiaTitle = pageData?.sections?.[4]?.sectionTitle || t.aboutUs.rakanSetiaTitle;
+  const rakanSetiaDesc = pageData?.sections?.[4]?.sectionDescription || t.aboutUs.rakanSetiaDesc;
+  const komitedTitle = pageData?.sections?.[5]?.sectionTitle || t.aboutUs.komitedTitle;
+  const komitedDesc = pageData?.sections?.[5]?.sectionDescription || t.aboutUs.komitedDesc;
+  const ctaTitle = pageData?.sections?.[6]?.sectionTitle || t.aboutUs.ctaTitle;
 
-  const kpktTitle = pageData?.sections?.[2]?.sectionTitle || "Semakan KPKT Pinjaman Berlesen";
-  const kpktDesc =
-    pageData?.sections?.[2]?.sectionDescription ||
-    "Loanbuddy Credit merupakan pemberi pinjaman wang berlesen dan berdaftar di bawah KPKT Malaysia. Pengguna boleh membuat semakan KPKT pinjaman berlesen melalui laman rasmi KPKT untuk pengesahan status lesen dan jaminan keselamatan sebelum memohon pinjaman.";
-
-  const rakanSetiaTitle =
-    pageData?.sections?.[4]?.sectionTitle || "Rakan Setia Kewangan yang Boleh Anda Percayai";
-  const rakanSetiaDesc =
-    pageData?.sections?.[4]?.sectionDescription ||
-    "Sama ada anda ingin memulakan perniagaan, membeli rumah atau meneruskan pengajian – kami ada untuk memudahkan perjalanan anda. Bersama Loanbuddy Credit, anda berada di tangan yang selamat!";
-
-  const komitedTitle =
-    pageData?.sections?.[5]?.sectionTitle || "Loanbuddy Credit Komited Membantu Anda";
-  const komitedDesc =
-    pageData?.sections?.[5]?.sectionDescription ||
-    "Setiap hari, kami membantu rakyat Malaysia mencari jalan kewangan yang lebih teratur dengan cara yang mudah, yakin dan selamat. Dah bersedia untuk urusan pinjaman yang lebih lancar? Biarkan Loanbuddy Credit jadi panduan anda.\n\nLoanbuddy Credit – ruang pencarian pinjaman anda berakhir, impian jadi nyata dan kepercayaan anda sentiasa dihargai.";
-
-  const ctaTitle =
-    pageData?.sections?.[6]?.sectionTitle ||
-    "Perlukan Pinjaman Peribadi? \nLoanbuddy Credit Sedia Berkhidmat untuk Anda!";
   const ctaButtonText =
     pageData?.sections?.[6]?.items?.[0]?.itemTitle ||
     pageData?.hero?.primaryCtaText ||
-    "Mohon Sekarang";
+    t.aboutUs.applyNow;
+
   const ctaButtonLink =
     pageData?.sections?.[6]?.items?.[0]?.itemLink ||
     pageData?.hero?.primaryCtaLink ||
@@ -156,22 +172,21 @@ export default function TentangKamiPage() {
               </div>
               <div className="col col-lg-7 pt-30 about-us-box-mobile text-left">
                 <div className="col-lg-12 perkhidmatan-padding justify-content-start text-grey">
-                  <h3 className="item_title item_title_about mb-4 text-blue">
-                    {pageData?.hero?.heading || "Tentang Loanbuddy Credit"}
+                  <h3 className="item_title item_title_about mb-4 text-blue" style={{ fontWeight: 800, lineHeight: 1.25 }}>
+                    {heroHeading}
                   </h3>
                   <p>
-                    {pageData?.hero?.subheading ||
-                      "Loanbuddy Credit percaya setiap individu layak mendapat akses kewangan yang mudah, mesra dan meyakinkan. Selama lebih 10 tahun berkhidmat dalam dunia kewangan, kami telah membantu ramai pelanggan mencapai impian mereka melalui pembiayaan peribadi, koperasi, konsolidasi, pendidikan, perumahan hingga perniagaan - semuanya dengan proses yang cepat, telus dan selamat."}
+                    {heroSubheading}
                     <br />
                     <br />
-                    Dipacu pasukan pakar yang berkomited, misi kami jelas:
+                    {isEnglish ? t.aboutUs.missionIntro : "Dipacu pasukan pakar yang berkomited, misi kami jelas:"}
                     <br />
                   </p>
                   <ul className="list-disc pl-6 mb-0 space-y-2 text-left">
-                    <li>Menyediakan solusi kewangan moden, pantas dan berkesan untuk setiap keperluan</li>
-                    <li>Mengorak langkah sebagai peneraju kewangan utama di Malaysia</li>
-                    <li>Membuka jalan kepada peluang kredit yang setara untuk semua</li>
-                    <li>Menjadi sandaran kewangan yang boleh dipercayai di saat diperlukan</li>
+                    <li>{isEnglish ? t.aboutUs.mission1 : "Menyediakan solusi kewangan moden, pantas dan berkesan untuk setiap keperluan"}</li>
+                    <li>{isEnglish ? t.aboutUs.mission2 : "Mengorak langkah sebagai peneraju kewangan utama di Malaysia"}</li>
+                    <li>{isEnglish ? t.aboutUs.mission3 : "Membuka jalan kepada peluang kredit yang setara untuk semua"}</li>
+                    <li>{isEnglish ? t.aboutUs.mission4 : "Menjadi sandaran kewangan yang boleh dipercayai di saat diperlukan"}</li>
                   </ul>
                 </div>
               </div>
@@ -200,7 +215,7 @@ export default function TentangKamiPage() {
               <div className="row align-items-center justify-content-lg-between">
                 <div className="col col-lg-12 text-center">
                   <h3 className="mb-lg-0 text-blue">
-                    {pageData?.sections?.[1]?.sectionTitle || "Kelebihan Loanbuddy Credit"}
+                    {kelebihanSectionTitle}
                   </h3>
                 </div>
               </div>
@@ -248,7 +263,7 @@ export default function TentangKamiPage() {
           <div className="container mx-auto px-4 lg:max-w-[1200px]">
             <div className="text-center mb-10 lg:mb-12">
               <h2 className="text-blue text-[28px] lg:text-[45px] font-bold text-[#044BD9]">
-                {pageData?.sections?.[3]?.sectionTitle || "Kenapa Pilih Loanbuddy Credit?"}
+                {whyChooseTitle}
               </h2>
             </div>
 
@@ -365,4 +380,5 @@ export default function TentangKamiPage() {
     </div>
   );
 }
+
 

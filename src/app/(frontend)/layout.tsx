@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,12 +50,12 @@ export default function RootLayout({
     "/assets/css/terma-syarat.css",
     "/assets/css/loan-compare.css",
     "/assets/css/slick-custom-l.css",
-    "/assets/css/home-custom.css?v=1.5",
+    "/assets/css/home-custom.css?v=2.0",
   ];
 
   return (
     <html
-      lang="en"
+      lang="ms"
       className={`${redditSans.variable} h-full antialiased`}
     >
       <head>
@@ -81,7 +83,9 @@ export default function RootLayout({
         ))}
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

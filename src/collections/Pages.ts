@@ -74,6 +74,7 @@ export const Pages: CollectionConfig = {
                   name: 'heading',
                   type: 'text',
                   label: 'Heading / Title (Optional)',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Selamat Datang ke Loanbuddy Credit',
                     description: 'Leave empty for an image-only banner.',
@@ -83,6 +84,7 @@ export const Pages: CollectionConfig = {
                   name: 'subheading',
                   type: 'textarea',
                   label: 'Subheading / Description (Optional)',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan...',
                     description: 'Descriptive paragraph text below the heading.',
@@ -92,6 +94,7 @@ export const Pages: CollectionConfig = {
                   name: 'primaryCtaText',
                   type: 'text',
                   label: 'CTA Button Text (Optional)',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Mohon Sekarang',
                     description: 'Button label. Leave blank if not needed.',
@@ -121,6 +124,7 @@ export const Pages: CollectionConfig = {
                   name: 'badgeText',
                   type: 'text',
                   label: 'Badge Text',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Pinjaman Peribadi Lulus Segera',
                     description: 'Small tag or badge text displayed above the main heading.',
@@ -130,6 +134,7 @@ export const Pages: CollectionConfig = {
                   name: 'heading',
                   type: 'text',
                   label: 'Main Heading / Title',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Selamat Datang ke Loanbuddy Credit',
                     description: 'Main title displayed prominently at the top of the page.',
@@ -139,6 +144,7 @@ export const Pages: CollectionConfig = {
                   name: 'subheading',
                   type: 'textarea',
                   label: 'Subheading / Description',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan...',
                     description: 'Descriptive paragraph text below the main heading.',
@@ -157,6 +163,7 @@ export const Pages: CollectionConfig = {
                   name: 'primaryCtaText',
                   type: 'text',
                   label: 'Primary CTA Button Text',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Mohon Sekarang',
                     description: 'Label shown on the main action button.',
@@ -175,6 +182,7 @@ export const Pages: CollectionConfig = {
                   name: 'secondaryCtaText',
                   type: 'text',
                   label: 'Secondary CTA Button Text',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Baca Soalan Lazim',
                   },
@@ -207,6 +215,7 @@ export const Pages: CollectionConfig = {
                   name: 'sectionBadge',
                   type: 'text',
                   label: 'Section Badge Text',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Perkhidmatan Kami',
                   },
@@ -215,6 +224,7 @@ export const Pages: CollectionConfig = {
                   name: 'sectionTitle',
                   type: 'text',
                   label: 'Section Title',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Kenapa Ramai Memilih Loanbuddy Credit?',
                   },
@@ -223,6 +233,7 @@ export const Pages: CollectionConfig = {
                   name: 'sectionDescription',
                   type: 'textarea',
                   label: 'Section Description',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Di ruangan ini, anda akan mendapatkan jawapan kepada pertanyaan yang sering dikemukakan...',
                   },
@@ -263,6 +274,7 @@ export const Pages: CollectionConfig = {
                       name: 'itemTitle',
                       type: 'text',
                       label: 'Item Title',
+                      localized: true,
                       admin: {
                         placeholder: 'e.g. Kredibel / Permohonan Mudah / Proses Pantas',
                       },
@@ -271,6 +283,7 @@ export const Pages: CollectionConfig = {
                       name: 'itemDescription',
                       type: 'textarea',
                       label: 'Item Description',
+                      localized: true,
                       admin: {
                         placeholder: 'e.g. Telus, profesional dan komited untuk perkhidmatan yang optimum...',
                       },
@@ -311,6 +324,7 @@ export const Pages: CollectionConfig = {
                   name: 'metaTitle',
                   type: 'text',
                   label: 'Meta Title',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Loanbuddy Credit - Pinjaman Peribadi Lulus Segera',
                   },
@@ -319,6 +333,7 @@ export const Pages: CollectionConfig = {
                   name: 'metaDescription',
                   type: 'textarea',
                   label: 'Meta Description',
+                  localized: true,
                   admin: {
                     placeholder: 'e.g. Mohon pinjaman peribadi atas talian dengan kelulusan pantas...',
                   },

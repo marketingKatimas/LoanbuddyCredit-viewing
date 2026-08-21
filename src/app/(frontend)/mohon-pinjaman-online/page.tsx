@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function MohonPinjamanOnlinePage() {
+  const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
 
   const [formData, setFormData] = useState({
@@ -33,7 +35,7 @@ export default function MohonPinjamanOnlinePage() {
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
-    fetch("/api/content?slug=mohon-pinjaman-online", { cache: "no-store" })
+    fetch(`/api/content?slug=mohon-pinjaman-online&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -41,7 +43,9 @@ export default function MohonPinjamanOnlinePage() {
         }
       })
       .catch(() => { });
+  }, [language]);
 
+  useEffect(() => {
     // Load Google reCAPTCHA v3 script dynamically
     const script = document.createElement("script");
     script.src = "https://www.google.com/recaptcha/api.js?render=6LdmCn0nAAAAANC8dQDeC3bko97zlloPkuFcyP7_";
@@ -79,9 +83,21 @@ export default function MohonPinjamanOnlinePage() {
     let sanitizedValue = value;
 
     if (name === "name") {
-      sanitizedValue = value.replace(/[0-9]/g, "");
+      sanitizedValue = value.replace(/[0-9]/g, "").slice(0, 100);
+    } else if (name === "email") {
+      sanitizedValue = value.slice(0, 100);
     } else if (["age", "phone", "amount", "salary", "netSalary"].includes(name)) {
       sanitizedValue = value.replace(/\D/g, "");
+      if (name === "amount") {
+        const numVal = parseInt(sanitizedValue, 10);
+        if (!isNaN(numVal) && numVal > 50000) {
+          sanitizedValue = "50000";
+        }
+      } else if (name === "age") {
+        sanitizedValue = sanitizedValue.slice(0, 2);
+      } else if (["salary", "netSalary"].includes(name)) {
+        sanitizedValue = sanitizedValue.slice(0, 6);
+      }
     }
 
     setFormData((prev) => ({
@@ -96,55 +112,61 @@ export default function MohonPinjamanOnlinePage() {
 
     // Form Validation
     if (!formData.name.trim()) {
-      setError("Nama Penuh mengikut K.P. adalah diperlukan.");
+      setError(t.applyForm.valNameRequired);
       return;
     }
 
     const ageVal = parseInt(formData.age);
     if (isNaN(ageVal) || ageVal < 20 || ageVal > 60) {
-      setError("Umur mestilah di antara 20 hingga 60 tahun.");
+      setError(t.applyForm.valAgeRange);
       return;
     }
 
     if (!formData.phone.trim()) {
-      setError("Nombor telefon adalah diperlukan.");
+      setError(t.applyForm.valPhoneRequired);
+      return;
+    }
+
+    const phoneRegex = /^(01[0-9]{8,9}|0[3-9][0-9]{7,8}|601[0-9]{8,9}|60[3-9][0-9]{7,8})$/;
+    if (!phoneRegex.test(formData.phone.trim())) {
+      setError(t.applyForm.valPhoneInvalid);
       return;
     }
 
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email)) {
-      setError("Format emel tidak sah.");
+      setError(t.applyForm.valEmailInvalid);
       return;
     }
 
     if (!formData.sector) {
-      setError("Sila pilih sektor pekerjaan.");
+      setError(t.applyForm.valSectorRequired);
       return;
     }
 
     const amountVal = parseFloat(formData.amount);
     if (isNaN(amountVal) || amountVal < 1000 || amountVal > 50000) {
-      setError("Jumlah pinjaman minimum ialah RM1,000 dan maksimum RM50,000.");
+      setError(t.applyForm.valAmountRange);
       return;
     }
 
     if (!formData.branch) {
-      setError("Sila pilih cawangan.");
+      setError(t.applyForm.valBranchRequired);
       return;
     }
 
     if (!formData.salary.trim()) {
-      setError("Gaji Kasar adalah diperlukan.");
+      setError(t.applyForm.valGrossSalaryRequired);
       return;
     }
 
     if (!formData.netSalary.trim()) {
-      setError("Gaji Bersih adalah diperlukan.");
+      setError(t.applyForm.valNetSalaryRequired);
       return;
     }
 
     if (!agree1 || !agree2 || !agree3) {
-      setError("Sila tandakan semua kotak persetujuan.");
+      setError(t.applyForm.valAgreementsRequired);
       return;
     }
 
@@ -228,27 +250,19 @@ export default function MohonPinjamanOnlinePage() {
       }
     } catch (err) {
       console.error(err);
-      setError("Penghantaran borang gagal, sila refresh dan cuba sekali lagi.");
+      setError(t.applyForm.valSubmitFailed);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const bannerHeading =
-    pageData?.hero?.heading || "Pinjaman Peribadi Sehingga RM50,000\nMohon Hari ini!";
-  const bannerSubheading =
-    pageData?.hero?.subheading ||
-    "Satu Langkah mudah untuk mencapai kestabilan kewangan yang anda perlukan. Pilih Loanbuddy Credit!";
+  const bannerHeading = pageData?.hero?.heading || t.applyForm.bannerHeading;
+  const bannerSubheading = pageData?.hero?.subheading || t.applyForm.bannerSubheading;
+  const formTitle = pageData?.hero?.badgeText || t.applyForm.formTitle;
+  const formSubtitle = pageData?.hero?.secondaryCtaText || t.applyForm.formSubtitle;
+  const sidebarTitle = pageData?.sections?.[0]?.sectionTitle || t.applyForm.requirementsTitle;
+  const docHeading = pageData?.sections?.[0]?.items?.[0]?.itemTitle || t.applyForm.docHeading;
 
-  const formTitle = pageData?.hero?.badgeText || "Selamat Datang ke Loanbuddy Credit!";
-  const formSubtitle =
-    pageData?.hero?.secondaryCtaText ||
-    "Permohonan pinjaman hanya terbuka untuk warganegara Malaysia sahaja.";
-
-  const sidebarTitle =
-    pageData?.sections?.[0]?.sectionTitle || "Apa yang anda perlukan untuk memohon?";
-  const docHeading =
-    pageData?.sections?.[0]?.items?.[0]?.itemTitle || "1. Dokumen Diperlukan Untuk Permohonan";
   const docList =
     pageData?.sections?.[0]?.items?.[0]?.itemDescription
       ? pageData.sections[0].items[0].itemDescription
@@ -256,16 +270,14 @@ export default function MohonPinjamanOnlinePage() {
         .map((line: string) => line.trim())
         .filter(Boolean)
       : [
-        "Salinan kad pengenalan (depan dan belakang)",
-        "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)",
-        "Slip gaji 3 bulan terkini (format PDF) dan/atau",
-        "Bil utiliti 1 bulan terkini (air, elektrik, dll.)",
-      ];
-  const paymentHeading =
-    pageData?.sections?.[0]?.items?.[1]?.itemTitle ||
-    "2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:";
-  const submitButtonText =
-    pageData?.hero?.primaryCtaText || "Hantar";
+          t.applyForm.doc1,
+          t.applyForm.doc2,
+          t.applyForm.doc3,
+          t.applyForm.doc4,
+        ];
+
+  const paymentHeading = pageData?.sections?.[0]?.items?.[1]?.itemTitle || t.applyForm.paymentHeading;
+  const submitButtonText = pageData?.hero?.primaryCtaText || t.applyForm.submitButton;
 
   return (
     <div className="page_wrapper">
@@ -304,14 +316,17 @@ export default function MohonPinjamanOnlinePage() {
         <section className="section-space-mohon-lg sec-relative bg-apply-1">
           <div className="container container-mohon">
             <div className="row row-mohon-1 col-12 z-index-10">
-              <div className="course-card-mohon h-max col-lg-7 animate-slide-in-left delay-300" style={{ borderRadius: "10px" }}>
+              <div
+                className="course-card-mohon h-max col-12 col-lg-7 animate-slide-in-left delay-300 d-flex flex-column justify-content-between"
+                style={{ borderRadius: "10px", width: "100%", maxWidth: "854px", minHeight: "913px", padding: "70px 45px" }}
+              >
                 {formStatus === "form-submit" || submitted ? (
                   <div id="success-message" className="success-message-1" style={{ display: "block", borderRadius: "10px" }}>
-                    Terima kasih kerana menghantar permohonan anda! Kami akan menghubungi anda dalam masa terdekat.
+                    {t.applyForm.successSubmit}
                   </div>
                 ) : formStatus === "form-with-upload" ? (
                   <div id="success-upload-message" className="success-upload-message-1" style={{ display: "block", borderRadius: "10px" }}>
-                    Dokumen berjaya dimuat naik! Terima kasih dan kami akan menghubungi anda dalam masa terdekat.
+                    {t.applyForm.successUpload}
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} id="applyForm">
@@ -319,8 +334,8 @@ export default function MohonPinjamanOnlinePage() {
                       <div className="form-mohon-content pos-relative col-lg-12">
                         {/* Form Header */}
                         <div className="form-header text-center">
-                          <h3>{formTitle}</h3>
-                          <p>{formSubtitle}</p>
+                          <h3 style={{ fontSize: "25px" }}>{formTitle}</h3>
+                          <p style={{ fontSize: "16px" }}>{formSubtitle}</p>
                         </div>
 
                         {error && (
@@ -330,14 +345,15 @@ export default function MohonPinjamanOnlinePage() {
                         )}
 
                         {/* Name Input */}
-                        <div className="form-row">
+                        <div className="form-row" style={{ marginTop: "45px" }}>
                           <div className="form-holder w-100">
-                            <label htmlFor="name">Nama Penuh mengikut K.P.</label>
+                            <label htmlFor="name">{t.applyForm.fullNameLabel}</label>
                             <input
                               id="name"
                               name="name"
                               type="text"
-                              placeholder="Nama Penuh"
+                              placeholder={t.applyForm.fullNamePlaceholder}
+                              maxLength={100}
                               className="form-control"
                               value={formData.name}
                               onChange={handleInputChange}
@@ -349,12 +365,12 @@ export default function MohonPinjamanOnlinePage() {
                         {/* Age & Phone Input */}
                         <div className="form-row form-row-column">
                           <div className="form-holder form-holder-mobile">
-                            <label htmlFor="age">Umur</label>
+                            <label htmlFor="age">{t.applyForm.ageLabel}</label>
                             <input
                               id="age"
                               name="age"
                               type="number"
-                              placeholder="Min. 20"
+                              placeholder={t.applyForm.agePlaceholder}
                               min="20"
                               max="60"
                               className="form-control"
@@ -364,12 +380,12 @@ export default function MohonPinjamanOnlinePage() {
                             />
                           </div>
                           <div className="form-holder pos-relative">
-                            <label htmlFor="phone">Nombor Telefon</label>
+                            <label htmlFor="phone">{t.applyForm.phoneLabel}</label>
                             <input
                               id="phone"
                               name="phone"
                               type="text"
-                              placeholder="0123456789"
+                              placeholder={t.applyForm.phonePlaceholder}
                               maxLength={12}
                               className="form-control"
                               value={formData.phone}
@@ -382,12 +398,13 @@ export default function MohonPinjamanOnlinePage() {
                         {/* Email & Sector Input */}
                         <div className="form-row form-row-column">
                           <div className="form-holder form-holder-mobile">
-                            <label htmlFor="email">Emel</label>
+                            <label htmlFor="email">{t.applyForm.emailLabel}</label>
                             <input
                               id="email"
                               name="email"
                               type="email"
-                              placeholder="Emel"
+                              placeholder={t.applyForm.emailPlaceholder}
+                              maxLength={100}
                               className="form-control"
                               value={formData.email}
                               onChange={handleInputChange}
@@ -395,7 +412,7 @@ export default function MohonPinjamanOnlinePage() {
                             />
                           </div>
                           <div className="form-holder pos-relative">
-                            <label htmlFor="sector">Sila Pilih Sektor Pekerjaan</label>
+                            <label htmlFor="sector">{t.applyForm.sectorLabel}</label>
                             <i className="zmdi zmdi-caret-down"></i>
                             <select
                               id="sector"
@@ -406,14 +423,14 @@ export default function MohonPinjamanOnlinePage() {
                               required
                             >
                               <option value="" disabled>
-                                Sektor Pekerjaan
+                                {t.applyForm.sectorPlaceholder}
                               </option>
-                              <option value="Penjawat-Awam">Penjawat Awam</option>
-                              <option value="Pekerja-GLC">Pekerja GLC</option>
-                              <option value="Pekerja-Swasta">Pekerja Swasta</option>
-                              <option value="Bekerja-Sendiri">Bekerja Sendiri</option>
-                              <option value="Freelance-Pekerja-Gig">Freelance/Pekerja Gig</option>
-                              <option value="Pelajar">Pelajar</option>
+                              <option value="Penjawat-Awam">{t.applyForm.sectorPenjawatAwam}</option>
+                              <option value="Pekerja-GLC">{t.applyForm.sectorPekerjaGLC}</option>
+                              <option value="Pekerja-Swasta">{t.applyForm.sectorPekerjaSwasta}</option>
+                              <option value="Bekerja-Sendiri">{t.applyForm.sectorBekerjaSendiri}</option>
+                              <option value="Freelance-Pekerja-Gig">{t.applyForm.sectorGig}</option>
+                              <option value="Pelajar">{t.applyForm.sectorPelajar}</option>
                             </select>
                           </div>
                         </div>
@@ -421,12 +438,12 @@ export default function MohonPinjamanOnlinePage() {
                         {/* Amount & Branch Input */}
                         <div className="form-row form-row-reverse">
                           <div className="form-holder">
-                            <label htmlFor="amount">Jumlah Yang Ingin Dipinjam</label>
+                            <label htmlFor="amount">{t.applyForm.loanAmountLabel}</label>
                             <input
                               id="amount"
                               name="amount"
                               type="number"
-                              placeholder="Min. RM1000 - Max. RM50,000"
+                              placeholder={t.applyForm.loanAmountPlaceholder}
                               min="1000"
                               max="50000"
                               className="form-control"
@@ -436,7 +453,7 @@ export default function MohonPinjamanOnlinePage() {
                             />
                           </div>
                           <div className="form-holder form-holder-mobile pos-relative">
-                            <label htmlFor="branch">Sila Pilih Cawangan</label>
+                            <label htmlFor="branch">{t.applyForm.branchLabel}</label>
                             <i className="zmdi zmdi-caret-down"></i>
                             <select
                               id="branch"
@@ -447,11 +464,11 @@ export default function MohonPinjamanOnlinePage() {
                               required
                             >
                               <option value="" disabled>
-                                Cawangan
+                                {t.applyForm.branchPlaceholder}
                               </option>
-                              <option value="bintulu">Bintulu</option>
-                              <option value="kotaSamarahan">Kota Samarahan</option>
-                              <option value="kualaLumpur">Kuala Lumpur</option>
+                              <option value="bintulu">{t.applyForm.branchBintulu}</option>
+                              <option value="kotaSamarahan">{t.applyForm.branchKotaSamarahan}</option>
+                              <option value="kualaLumpur">{t.applyForm.branchKualaLumpur}</option>
                             </select>
                           </div>
                         </div>
@@ -459,12 +476,12 @@ export default function MohonPinjamanOnlinePage() {
                         {/* Salary & Net Salary Input */}
                         <div className="form-row form-row-column">
                           <div className="form-holder">
-                            <label htmlFor="salary">Gaji Kasar</label>
+                            <label htmlFor="salary">{t.applyForm.grossSalaryLabel}</label>
                             <input
                               id="salary"
                               name="salary"
                               type="number"
-                              placeholder="1700"
+                              placeholder={t.applyForm.grossSalaryPlaceholder}
                               className="form-control"
                               min="0"
                               step="1"
@@ -474,12 +491,12 @@ export default function MohonPinjamanOnlinePage() {
                             />
                           </div>
                           <div className="form-holder">
-                            <label htmlFor="netSalary">Gaji Bersih</label>
+                            <label htmlFor="netSalary">{t.applyForm.netSalaryLabel}</label>
                             <input
                               id="netSalary"
                               name="netSalary"
                               type="number"
-                              placeholder="1500"
+                              placeholder={t.applyForm.netSalaryPlaceholder}
                               className="form-control"
                               min="0"
                               step="1"
@@ -507,7 +524,7 @@ export default function MohonPinjamanOnlinePage() {
                               />
                             </div>
                             <label htmlFor="mohon-agree-1" className="checkbox-text">
-                              Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh Loanbuddy Credit melalui WhatsApp.
+                              {t.applyForm.checkbox1}
                             </label>
                           </div>
                           <div className="checkbox-holder">
@@ -525,15 +542,15 @@ export default function MohonPinjamanOnlinePage() {
                               />
                             </div>
                             <label htmlFor="mohon-agree-2" className="checkbox-text">
-                              Dengan menandakan kotak, saya telah membaca, memahami dan bersetuju dengan{" "}
+                              {t.applyForm.checkbox2Prefix}
                               <a href="#" onClick={(e) => { e.preventDefault(); setShowTermsModal(true); }}>
-                                Dasar Privasi
-                              </a>{" "}
-                              &{" "}
-                              <a href="#" onClick={(e) => { e.preventDefault(); setShowPrivacyModal(true); }}>
-                                Terma dan Syarat;
+                                {t.applyForm.checkbox2Privacy}
                               </a>
-                              {" "}dan,
+                              {t.applyForm.checkbox2And}
+                              <a href="#" onClick={(e) => { e.preventDefault(); setShowTermsModal(true); }}>
+                                {t.applyForm.checkbox2Terms}
+                              </a>
+                              {t.applyForm.checkbox2Suffix}
                             </label>
                           </div>
                           <div className="checkbox-holder">
@@ -545,13 +562,13 @@ export default function MohonPinjamanOnlinePage() {
                                 onChange={(e) => setAgree3(e.target.checked)}
                                 required
                                 style={{
-                                  backgroundColor: agree3 ? "#ff0000" : "white",
-                                  borderColor: agree3 ? "#ff0000" : "#c1c5c9",
+                                  backgroundColor: agree3 ? "#808080" : "white",
+                                  borderColor: agree3 ? "#808080" : "#c1c5c9",
                                 }}
                               />
                             </div>
                             <label htmlFor="mohon-agree-3" className="checkbox-text">
-                              Dengan menandakan kotak, klik pada butang "Hantar" di bawah, saya mengaku dan mengesahkan bahawa semua maklumat yang diberikan di dalam ini adalah lengkap, benar dan tepat.
+                              {t.applyForm.checkbox3}
                             </label>
                           </div>
                         </div>
@@ -566,8 +583,8 @@ export default function MohonPinjamanOnlinePage() {
                             style={{ height: "auto" }}
                           >
                             <span>
-                              <small>{isSubmitting ? "Sedang menghantar..." : submitButtonText}</small>
-                              <small>{isSubmitting ? "Sedang menghantar..." : submitButtonText}</small>
+                              <small>{isSubmitting ? t.applyForm.submittingButton : submitButtonText}</small>
+                              <small>{isSubmitting ? t.applyForm.submittingButton : submitButtonText}</small>
                             </span>
                           </button>
                         </div>
@@ -578,30 +595,35 @@ export default function MohonPinjamanOnlinePage() {
               </div>
 
               {/* Sidebar Content */}
-              <div className="course-card-mohon col-lg-4 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400" style={{ borderRadius: "10px" }}>
-                <div className="form-header text-center mb-4">
-                  <h3>{sidebarTitle}</h3>
-                </div>
-                <div className="mohon-rules-top mb-3">
-                  <img src="/assets/images/dokumen-permohonan.png" alt="dokumen permohonan" className="mx-auto d-block" />
-                </div>
-                <div className="mohon-rules">
-                  <h5>{docHeading}</h5>
-                  <ul>
-                    {docList.map((item: string, idx: number) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                  <h5>{paymentHeading}</h5>
-                  <div className="mohon-rules-bottom">
-                    <div className="d-flex">
-                      <img src="/assets/images/jompay-logo.png" alt="JomPay" />
-                    </div>
-                    <div className="d-flex">
-                      <img src="/assets/images/direct-debit-logo.png" alt="Direct Debit" />
-                    </div>
-                    <div className="d-flex">
-                      <img src="/assets/images/transfer-logo.png" alt="Bank Transfer" />
+              <div
+                className="course-card-mohon col-12 col-lg-5 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400"
+                style={{ borderRadius: "10px", width: "100%", maxWidth: "564px", minHeight: "784px" }}
+              >
+                <div style={{ margin: "auto 0", width: "100%" }}>
+                  <div className="form-header text-center">
+                    <h3>{sidebarTitle}</h3>
+                  </div>
+                  <div className="mohon-rules-top">
+                    <img src="/assets/images/dokumen-permohonan.png" alt="dokumen permohonan" className="mx-auto d-block" />
+                  </div>
+                  <div className="mohon-rules">
+                    <h5>{docHeading}</h5>
+                    <ul>
+                      {docList.map((item: string, idx: number) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                    </ul>
+                    <h5>{paymentHeading}</h5>
+                    <div className="mohon-rules-bottom">
+                      <div className="d-flex">
+                        <img src="/assets/images/jompay-logo.png" alt="JomPay" />
+                      </div>
+                      <div className="d-flex">
+                        <img src="/assets/images/direct-debit-logo.png" alt="Direct Debit" />
+                      </div>
+                      <div className="d-flex">
+                        <img src="/assets/images/transfer-logo.png" alt="Bank Transfer" />
+                      </div>
                     </div>
                   </div>
                 </div>

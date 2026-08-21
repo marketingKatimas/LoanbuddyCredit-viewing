@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HubungiKamiPage() {
+  const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/content?slug=hubungi-kami")
+    fetch(`/api/content?slug=hubungi-kami&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -16,8 +18,7 @@ export default function HubungiKamiPage() {
         }
       })
       .catch(() => {});
-  }, []);
-
+  }, [language]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -35,21 +36,21 @@ export default function HubungiKamiPage() {
 
   const defaultBranches = [
     {
-      title: "Cawangan Kuala Lumpur",
+      title: isEnglish ? t.contactUs.branchKLTitle : "Cawangan Kuala Lumpur",
       address: "No.15-4, Jalan Medan Tuanku 1, Medan Tuanku, 50300 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur",
       email: "kl@loanbuddycredit.com.my",
       phone: "+6018 785 6072",
       link: "https://wa.link/taaakr",
     },
     {
-      title: "Cawangan Kuching, Sarawak",
+      title: isEnglish ? t.contactUs.branchKuchingTitle : "Cawangan Kuching, Sarawak",
       address: "1st Floor, Lot 9269 (SL.75) Bandar Riyal, Jalan Muara Tuang Kota Samarahan, 94300 Kuching, Sarawak",
       email: "ks@loanbuddycredit.com.my",
       phone: "+6010 932 9976",
       link: "https://wa.link/32cpg5",
     },
     {
-      title: "Cawangan Bintulu, Sarawak",
+      title: isEnglish ? t.contactUs.branchBintuluTitle : "Cawangan Bintulu, Sarawak",
       address: "Lot 8093, Sublot 20, 1st Floor, Bintulu Sentral, Jln Kidurong, 97000 Bintulu, Sarawak",
       email: "bintulu@loanbuddycredit.com.my",
       phone: "+6010 909 8557",
@@ -80,13 +81,13 @@ export default function HubungiKamiPage() {
     "https://www.google.com/maps/d/u/0/embed?mid=1u9eA-xFNCD0Ddtd3HYLSnCgvoWwOZgw";
 
   const formIntro =
-    pageData?.sections?.[1]?.sectionDescription ||
-    "Ada sebarang pertanyaan? Kongsikan mesej anda di sini \ndan kami akan membalas secepat mungkin untuk membantu anda!";
+    pageData?.sections?.[1]?.sectionDescription || t.contactUs.formIntro;
 
   const submitButtonText =
-    pageData?.sections?.[1]?.items?.[0]?.itemDescription ||
-    pageData?.hero?.primaryCtaText ||
-    "Kirim Mesej";
+    pageData?.sections?.[1]?.items?.[0]?.itemDescription || pageData?.hero?.primaryCtaText || t.contactUs.submitBtn;
+
+  const pageHeading =
+    pageData?.hero?.heading || t.contactUs.pageHeading;
 
   return (
     <div className="page_wrapper">
@@ -122,8 +123,8 @@ export default function HubungiKamiPage() {
         {/* Branches and Map Section */}
         <section className="branches_map_section bg_white" style={{ paddingTop: "30px", paddingBottom: "60px" }}>
           <div className="container">
-            <h1 className="text-center animate-fade-in-up delay-100" style={{ color: "#0d4ed8", fontSize: "30px", fontWeight: "700", marginBottom: "40px" }}>
-              {pageData?.hero?.heading || "Hubungi Kami"}
+            <h1 className="text-center animate-fade-in-up delay-100" style={{ color: "#0d4ed8", fontSize: "30px", fontWeight: "800", lineHeight: "1.25", marginBottom: "40px" }}>
+              {pageHeading}
             </h1>
             <div className="row d-flex align-items-center">
               {/* Left Column: Branches Details */}
@@ -168,7 +169,7 @@ export default function HubungiKamiPage() {
                         >
                           <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "30px", height: "30px", marginLeft: "auto" }} />
                           <div className="text-start" style={{ lineHeight: "1.2" }}>
-                            <span style={{ fontSize: "0.75rem", display: "block" }}>WhatsApp Kami</span>
+                            <span style={{ fontSize: "0.75rem", display: "block" }}>{isEnglish ? t.contactUs.whatsappUs : "WhatsApp Kami"}</span>
                             <span style={{ fontSize: "1rem" }}>{branch.phone}</span>
                           </div>
                         </a>
@@ -197,7 +198,7 @@ export default function HubungiKamiPage() {
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
-                    title="Google My Maps - Cawangan Loanbuddy Credit"
+                    title={isEnglish ? t.contactUs.mapTitle : "Google My Maps - Cawangan Loanbuddy Credit"}
                   ></iframe>
                 </div>
               </div>
@@ -213,7 +214,7 @@ export default function HubungiKamiPage() {
                 <div className="container decoration_wrap col-contact-form">
                   {submitted ? (
                     <div id="success-message" className="contact-success-message" style={{ display: "block" }}>
-                      Thanks for contacting us! We will be in touch with you shortly.
+                      {isEnglish ? t.contactUs.successMessage : "Terima kasih kerana menghubungi kami! Kami akan menghubungi anda sebentar lagi."}
                     </div>
                   ) : (
                     <form id="subscribeForm" onSubmit={handleSubmit}>
@@ -226,13 +227,13 @@ export default function HubungiKamiPage() {
                             <div className="col col-12 col-md-6">
                               <div className="form_item m-0">
                                 <label htmlFor="name" className="input_title">
-                                  Nama
+                                  {isEnglish ? t.contactUs.nameLabel : "Nama"}
                                 </label>
                                 <input
                                   id="name"
                                   type="text"
                                   name="name"
-                                  placeholder="Nama"
+                                  placeholder={isEnglish ? t.contactUs.namePlaceholder : "Nama"}
                                   value={formData.name}
                                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                   required
@@ -243,13 +244,13 @@ export default function HubungiKamiPage() {
                             <div className="col col-12 col-md-6">
                               <div className="form_item m-0">
                                 <label htmlFor="phone" className="input_title">
-                                  No. Telefon
+                                  {isEnglish ? t.contactUs.phoneLabel : "No. Telefon"}
                                 </label>
                                 <input
                                   id="phone"
                                   type="tel"
                                   name="phone"
-                                  placeholder="0123456789"
+                                  placeholder={isEnglish ? t.contactUs.phonePlaceholder : "0123456789"}
                                   maxLength={12}
                                   value={formData.phone}
                                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -261,13 +262,13 @@ export default function HubungiKamiPage() {
                             <div className="col col-12 col-md-6">
                               <div className="form_item m-0">
                                 <label htmlFor="email" className="input_title">
-                                  Emel
+                                  {isEnglish ? t.contactUs.emailLabel : "Emel"}
                                 </label>
                                 <input
                                   id="email"
                                   type="email"
                                   name="email"
-                                  placeholder="Emel"
+                                  placeholder={isEnglish ? t.contactUs.emailPlaceholder : "Emel"}
                                   value={formData.email}
                                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                   required
@@ -278,7 +279,7 @@ export default function HubungiKamiPage() {
                             <div className="col col-12 col-md-6">
                               <div className="form_item m-0">
                                 <label htmlFor="branch" className="input_title">
-                                  Sila Pilih Cawangan
+                                  {isEnglish ? t.contactUs.branchLabel : "Sila Pilih Cawangan"}
                                 </label>
                                 <select
                                   className="formbold-form-input-option"
@@ -289,11 +290,11 @@ export default function HubungiKamiPage() {
                                   required
                                 >
                                   <option value="" disabled>
-                                    Cawangan
+                                    {isEnglish ? t.contactUs.branchPlaceholder : "Cawangan"}
                                   </option>
-                                  <option value="bintulu">Bintulu</option>
-                                  <option value="kotaSamarahan">Kota Samarahan</option>
-                                  <option value="kualaLumpur">Kuala Lumpur</option>
+                                  <option value="bintulu">{isEnglish ? t.contactUs.branchBintuluOpt : "Bintulu"}</option>
+                                  <option value="kotaSamarahan">{isEnglish ? t.contactUs.branchKotaSamarahanOpt : "Kota Samarahan"}</option>
+                                  <option value="kualaLumpur">{isEnglish ? t.contactUs.branchKualaLumpurOpt : "Kuala Lumpur"}</option>
                                 </select>
                               </div>
                             </div>
@@ -301,12 +302,12 @@ export default function HubungiKamiPage() {
                             <div className="col col-12">
                               <div className="form_item">
                                 <label htmlFor="message" className="input_title">
-                                  Mesej Anda
+                                  {isEnglish ? t.contactUs.messageLabel : "Mesej Anda"}
                                 </label>
                                 <textarea
                                   id="message"
                                   name="message"
-                                  placeholder="Mesej Anda"
+                                  placeholder={isEnglish ? t.contactUs.messagePlaceholder : "Mesej Anda"}
                                   value={formData.message}
                                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                   required
@@ -339,3 +340,4 @@ export default function HubungiKamiPage() {
     </div>
   );
 }
+

@@ -90,6 +90,8 @@
 .item_title_about {
     color: #424143 !important;
     font-size: 40px;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
 }
 
 .text-grey {
@@ -1095,16 +1097,22 @@
 }
 
 
-/* Header */
-.site_header {
-    left: 8vw;
-    right: 8vw;
-    padding: 17px 0;
-    background: #044BD9;
-}
-
-.site-header-logo {
-    height: 77px !important;
+@media (min-width: 992px) {
+    .site_header {
+        padding: 10px 0 !important;
+    }
+    .site_header .container,
+    .site_header.site_header_1 .container,
+    .site_header_2 .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+    .site-header-logo {
+        height: 85px !important;
+        max-height: 85px !important;
+    }
 }
 
 .site_header_2 .container {
