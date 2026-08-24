@@ -456,7 +456,7 @@ export default function PinjamanPeribadiPage() {
 
           <div className="container mx-auto px-4 lg:max-w-[1200px] relative z-10">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-[26px] lg:text-[30px] font-bold text-[#222222] mb-4">
+              <h2 className="text-[26px] lg:text-[30px] font-bold !text-[#424143] mb-4">
                 {stepsTitle}
               </h2>
             </div>
@@ -466,7 +466,7 @@ export default function PinjamanPeribadiPage() {
                 {stepsItems.map((stepItem: any, idx: number) => (
                   <React.Fragment key={idx}>
                     {/* Step Card */}
-                    <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                    <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[10px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
                       {/* Icon container with refined size */}
                       <div className="h-[95px] w-full flex items-center justify-center mb-4">
                         <Image 
@@ -479,12 +479,12 @@ export default function PinjamanPeribadiPage() {
                       </div>
                       
                       {/* Step Title */}
-                      <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
+                      <h3 className="text-[19px] lg:!text-[20px] font-bold !text-[#424143] mb-2.5">
                         {stepItem.title}
                       </h3>
                       
                       {/* Step Description */}
-                      <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[250px] whitespace-pre-line">
+                      <p className="text-[13.5px] lg:text-[14px] !text-[#555555] font-normal leading-relaxed max-w-[250px] whitespace-pre-line">
                         {stepItem.desc}
                       </p>
                     </div>
@@ -492,7 +492,7 @@ export default function PinjamanPeribadiPage() {
                     {/* Arrow separator (shown between steps) */}
                     {idx < stepsItems.length - 1 && (
                       <div className="flex items-center justify-center my-1 md:my-0 flex-shrink-0">
-                        <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
+                        <svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
                           <path d="M6 4.5v15a1 1 0 001.52.86l13-7.5a1 1 0 000-1.72l-13-7.5A1 1 0 006 4.5z" />
                         </svg>
                       </div>
@@ -503,7 +503,7 @@ export default function PinjamanPeribadiPage() {
 
               {/* Terms and Privacy Policy footer aligned with left edge of Step 1 card */}
               <div className="mt-12 md:mt-14 text-left">
-                <p className="text-[12px] md:text-[13px] text-[#424143]">
+                <p className="text-[12px] md:text-[13px] !text-[#424143]">
                   <Link href="/terma-dan-syarat" className="text-[#044BD9] underline hover:text-blue-700">Terma &amp; Syarat</Link> dan <Link href="/dasar-privasi" className="text-[#044BD9] underline hover:text-blue-700">Dasar Privasi</Link>
                 </p>
               </div>
