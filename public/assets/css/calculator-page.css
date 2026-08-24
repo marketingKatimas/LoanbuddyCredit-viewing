@@ -1,0 +1,531 @@
+.text-lightgrey{
+    color: #424143!important;
+}
+
+.p-20{
+    padding: 0px 80px  0px 0px;
+}
+
+.mt-5 {
+    margin-top: 50px!important;
+}
+
+.font-increase-2 {
+    font-size: 3.0rem;
+}
+
+.text-blue {
+    color: #044BD9!important;
+}
+
+.no-link {
+  pointer-events: none;
+}
+
+/* red border button */
+.btn.border_red_new {
+  color: #F20505;
+  background-color: #ffff;
+  border-color: #F20505;
+}
+.btn.border_red_new:hover {
+  color: #ffffff;
+  background-color: #F20505;
+  border-color: #F20505;
+  /* -webkit-box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B;
+          box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B; */
+}
+.btn.border_red_new:hover span small {
+  color: #ffffff;
+}
+
+/* red border 2 button */
+.btn.border_red2_new {
+  color: #ffffff!important;
+  background-color: #F20505;
+  border-color: #F20505;
+}
+.btn.border_red2_new:hover {
+  color: #F20505!important;
+  background-color: #ffffff;
+  border-color: #F20505;
+  /* -webkit-box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B;
+          box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 0 0 #FFD32B; */
+}
+
+.btn.border_red2_new a {
+  color: #ffffff!important;
+}
+
+.btn.border_red2_new:hover a {
+  color: #F20505!important;
+}
+
+.btn.border_red2_new:hover span small {
+  color: #F20505!important;
+}
+
+
+
+
+.section_space_3_lg {
+    padding-bottom: 120px;
+    padding-top: 120px;
+}
+
+.deco_item_about_4 {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-top: 0px;
+}
+
+@media (max-width: 500px){
+
+    .mb-4{
+        margin-bottom: 40px;
+    }
+
+    .section_heading_1_mobile {
+        margin: 0px 33px;
+    }
+
+    .deco_item_about_5 {
+        margin-top: -250px;
+    }
+
+    .deco_item_about_4 {
+        display: none;
+    }
+
+    .triangle-right {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid #1ab79a;
+    }
+
+    .row_loanbuddy_works {
+        position: relative;
+        z-index: 3;
+        margin: 0 2px;
+    }
+
+    .row_loanbuddy_works_2 {
+        margin: 0px 3px;
+        font-size: 14px;
+        align-items: center;
+        align-self: center;
+    }
+
+    .section_space_3_lg {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    }
+
+    .desc-content-justify {
+        margin: 0px 5px!important;
+    }
+
+    .loan-calculator .group{
+        /* width: 100vw; */
+    }
+    
+    /* .col {
+  --bs-gutter-x: 0;
+    } */
+
+    .row {
+        justify-content: center;
+    }
+
+    .col-mobile{
+        padding: 0px !important;
+    }
+
+    .calltoaction_form {
+        padding: 25px;
+    }
+}
+
+.row{
+    justify-content: center;
+}
+
+.desc-content-justify {
+        margin: 0px 100px;
+    }
+
+@media (max-width: 376px){
+    .section_heading_1_mobile {
+        margin: 0px 33px;
+    }
+
+    .deco_item_about_5 {
+        margin-top: -250px;
+    }
+
+    .deco_item_about_4 {
+        display: none;
+    }
+
+    .triangle-right {
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid #1ab79a;
+    }
+
+    .row_loanbuddy_works {
+        position: relative;
+        z-index: 3;
+        margin: 0 8px!important;
+    }
+
+    .row_loanbuddy_works_2 {
+        margin: 0px 33px;
+        font-size: 14px;
+    }
+
+    .font-decrease{
+        font-size: 0.7rem!important;
+    }
+
+    .font-increase h2{
+        font-size: 1.0rem!important;
+    }
+}
+
+@media (max-width: 360px) {
+    .font-decrease {
+        font-size: 0.6rem !important;
+    }
+
+    .col-mobile{
+        padding: 0px !important;
+    }
+
+    .calltoaction_form {
+        padding: 15px!important;
+    }
+
+    .calc-button {
+        padding: 10px;
+    }
+}
+
+.row_loanbuddy_works {
+    justify-content: center;
+    margin: 0 8px;
+}
+
+
+.row_loanbuddy_works .step {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.row_loanbuddy_works .step-number {
+    margin-top: 7px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.row_loanbuddy_works .step-text {
+    max-width: 80%;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 40px solid #FF0000;
+}
+
+.row_loanbuddy_works_2 {
+    justify-content: center;
+    margin: 0 13px;
+}
+
+.deco_item_about_5 {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    margin-top: -50px;
+}
+
+
+
+.font-increase h2{
+    font-size: 2.5rem!important;
+}
+
+.font-decrease{
+    font-size: 0.7rem;
+}
+
+#view-more-faqs {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #29281E;
+}
+
+@media (max-width: 500px) {
+    .triangle-right {
+        margin-top: 5%;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-top: 30px solid #F20505;
+        border-radius: 5px;
+    }
+
+
+
+    .font-increase h2{
+    font-size: 1.0rem!important;
+    }
+
+    .font-increase-2{
+    font-size: 2.2rem!important;
+    }
+
+    
+
+     .calltoaction_form{
+        margin-bottom: 1vh!important;
+        
+     }
+
+     .value {
+        font-size: 2.0rem!important;
+
+     }
+
+     .row_loanbuddy_works .step-text {
+        font-size: 15px;
+    }
+     
+}
+
+
+
+
+
+.col-description {
+    padding-right: 20px;
+}
+
+/* 3.10 - Call To Action - Start
+================================================== */
+.calltoaction_section {
+  /* margin-bottom: 30px; */
+}
+.calltoaction_section .section_heading .heading_description {
+  max-width: 456px;
+}
+.calltoaction_section .shape_img_1 {
+  left: 44%;
+  bottom: -26px;
+  max-width: 169px;
+}
+.calltoaction_section .shape_img_2 {
+  top: -60px;
+  right: 50px;
+  max-width: 169px;
+}
+.calltoaction_section .shape_img_3 {
+  top: 85px;
+  left: -74px;
+  max-width: 148px;
+}
+.calltoaction_section .shape_img_4 {
+  left: 44%;
+  bottom: -100px;
+  max-width: 373px;
+}
+.calltoaction_section .shape_img_5 {
+  top: -56px;
+  right: -40px;
+  max-width: 148px;
+}
+.calltoaction_section .info_list {
+  margin-bottom: 40px;
+}
+.calltoaction_section .info_list i {
+  font-size: 14px;
+  margin: 6px 10px 0 0;
+}
+.calltoaction_section .boxed_wrapper {
+  margin: auto;
+  max-width: 1400px;
+  padding: 100px 115px;
+  background-color: #1F1D0D;
+  border-radius: 8px;
+}
+
+.calltoaction_form {
+  z-index: 1;
+  padding: 30px;
+  position: relative;
+  margin-bottom: -150px;
+  /* border-radius: 8px; */
+  background-color: #ffffff;
+   border: 4px solid #044BD9;
+  -webkit-box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 30px rgba(31, 29, 13, 0.0894963), 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.calltoaction_form .form_title {
+  font-size: 28px;
+  line-height: 32px;
+  margin-bottom: 30px;
+}
+.calltoaction_form .form_item input, .calltoaction_form .form_item textarea {
+  border-width: 1px;
+  background-color: #F6F6F6;
+}
+.calltoaction_form .form_item input:focus, .calltoaction_form .form_item textarea:focus {
+  background-color: #ffffff;
+}
+.calltoaction_form .form_item textarea {
+  min-height: 127px;
+}
+
+/* 3.10 - Call To Action - End
+================================================== */
+
+
+
+
+.col-calc{
+    border-radius: 7px;
+    background-color: #ededed;
+    -webkit-box-flex: unset;
+      -ms-flex: unset;
+          flex: unset;
+  padding: 30px;
+}
+
+@media  (max-width: 500px) {
+    .col-calc{
+        margin: 0 8vw;
+    }
+
+    .col-desc{
+        margin: 0 8vw;
+    }
+
+    /* .heading_description {
+        margin: 0 8vw;
+        justify-self: center;
+    } */
+    
+    .col-faq {
+        padding: 0 10vw!important;
+    }
+    .section_heading .heading_description {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    }
+
+    .accordion {
+    font-size: 15px;
+    line-height: 24px;
+    }
+
+    .accordion p{
+    font-size: 15px;
+    line-height: 24px;
+    }
+
+    .accordion p li{
+    font-size: 15px;
+    line-height: 24px;
+    }
+
+    .accordion .accordion-button {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+
+    .font-decrease {
+        font-size: 0.9rem;
+    }
+
+    .mobile-margin{
+        margin-bottom: 4.18vh;
+    }
+
+    /* faq test */
+
+    /* Sticky question under header */
+  .faq-system .accordion-button {
+    position: sticky;
+    top: 30vh; /* adjust to your header height */
+    z-index: 5;
+    background: #fff;
+  }
+
+  /* Scrollable answer */
+  .faq-answer-scroll {
+    max-height: 60vh; /* sweet spot */
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  /* smoother reading */
+  .faq-answer-scroll {
+    line-height: 1.6;
+    font-size: 15px;
+  }
+    
+    /* faq test end */
+}
+
+@media  (max-width: 385px) {
+    .mobile-margin {
+        margin-bottom: 4.6vh;
+    }
+}
+
+/* CTA standardized start*/
+
+.cta_home h2 {
+    font-size: 2.2rem;
+}
+
+.cta_home_new {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 500px) {
+    .cta_home {
+        height: 190px;
+        padding: 25px 0px;
+    }
+
+    .cta_home h2 {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* CTA standardized end */
+
+@media (max-width: 380px) {
+    .value {
+        font-size: 1.5rem!important;
+
+     }
+}
