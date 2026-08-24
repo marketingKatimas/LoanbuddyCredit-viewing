@@ -504,7 +504,7 @@ export default function PinjamanPeribadiPage() {
         <section className="py-14 lg:py-20 bg-[#f2f2f2] overflow-hidden">
           <div className="container mx-auto px-4 max-w-[1140px]">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-[26px] lg:text-[30px] font-bold text-[#222222]">
+              <h2 className="text-[26px] lg:text-[30px] font-bold !text-[#424143]">
                 {stepsSectionTitle}
               </h2>
             </div>
@@ -513,7 +513,8 @@ export default function PinjamanPeribadiPage() {
               <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-4 relative z-10">
                 
                 {/* Step 1 */}
-                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[10px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Icon container with refined size */}
                   <div className="h-[95px] w-full flex items-center justify-center mb-4">
                     <Image 
                       src="/assets/images/tekan-butang.png" 
@@ -524,24 +525,27 @@ export default function PinjamanPeribadiPage() {
                     />
                   </div>
                   
-                  <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
-                    {isEnglish ? t.pinjamanPeribadiPage.step1Title : "Langkah 1"}
+                  {/* Step Title */}
+                  <h3 className="text-[19px] lg:!text-[20px] font-bold !text-[#424143] mb-2.5">
+                    Langkah 1
                   </h3>
                   
-                  <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[240px] whitespace-pre-line">
-                    {isEnglish ? t.pinjamanPeribadiPage.step1Desc : "Tekan butang \n'Mohon Sekarang'"}
+                  {/* Step Description */}
+                  <p className="text-[13.5px] lg:text-[14px] !text-[#555555] font-normal leading-relaxed max-w-[240px]">
+                    Tekan butang <br />&apos;Mohon Sekarang&apos;
                   </p>
                 </div>
 
                 {/* Arrow separator 1 */}
                 <div className="flex items-center justify-center my-1 md:my-0 flex-shrink-0">
-                  <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
+                  <svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
                     <path d="M6 4.5v15a1 1 0 001.52.86l13-7.5a1 1 0 000-1.72l-13-7.5A1 1 0 006 4.5z" />
                   </svg>
                 </div>
 
                 {/* Step 2 */}
-                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[10px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Icon container with refined size */}
                   <div className="h-[95px] w-full flex items-center justify-center mb-4">
                     <Image 
                       src="/assets/images/isi-maklumat.png" 
@@ -552,24 +556,27 @@ export default function PinjamanPeribadiPage() {
                     />
                   </div>
                   
-                  <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
-                    {isEnglish ? t.pinjamanPeribadiPage.step2Title : "Langkah 2"}
+                  {/* Step Title */}
+                  <h3 className="text-[19px] lg:!text-[20px] font-bold !text-[#424143] mb-2.5">
+                    Langkah 2
                   </h3>
                   
-                  <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[240px] whitespace-pre-line">
-                    {isEnglish ? t.pinjamanPeribadiPage.step2Desc : "Isi maklumat yang diperlukan dan \nhantar permohonan"}
+                  {/* Step Description */}
+                  <p className="text-[13.5px] lg:text-[14px] !text-[#555555] font-normal leading-relaxed max-w-[240px]">
+                    Isi maklumat yang diperlukan dan <br />hantar permohonan
                   </p>
                 </div>
 
                 {/* Arrow separator 2 */}
                 <div className="flex items-center justify-center my-1 md:my-0 flex-shrink-0">
-                  <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
+                  <svg className="w-[40px] h-[40px] lg:w-[60px] lg:h-[60px] text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
                     <path d="M6 4.5v15a1 1 0 001.52.86l13-7.5a1 1 0 000-1.72l-13-7.5A1 1 0 006 4.5z" />
                   </svg>
                 </div>
 
                 {/* Step 3 */}
-                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[10px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                  {/* Icon container with refined size */}
                   <div className="h-[95px] w-full flex items-center justify-center mb-4">
                     <Image 
                       src="/assets/images/hubungi-anda.png" 
@@ -580,12 +587,14 @@ export default function PinjamanPeribadiPage() {
                     />
                   </div>
                   
-                  <h3 className="text-[19px] lg:text-[21px] font-bold text-[#222222] mb-2.5">
-                    {isEnglish ? t.pinjamanPeribadiPage.step3Title : "Langkah 3"}
+                  {/* Step Title */}
+                  <h3 className="text-[19px] lg:!text-[20px] font-bold !text-[#424143] mb-2.5">
+                    Langkah 3
                   </h3>
                   
-                  <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[250px]">
-                    {isEnglish ? t.pinjamanPeribadiPage.step3Desc : "Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat"}
+                  {/* Step Description */}
+                  <p className="text-[13.5px] lg:text-[14px] !text-[#555555] font-normal leading-relaxed max-w-[250px]">
+                    Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat
                   </p>
                 </div>
               </div>

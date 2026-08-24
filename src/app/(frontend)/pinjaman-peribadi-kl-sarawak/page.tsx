@@ -813,4 +813,4 @@ export default function PinjamanPeribadiPage() {
       <Footer />
     </div>
   );
-}
+}
