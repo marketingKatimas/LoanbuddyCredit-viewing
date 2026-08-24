@@ -1,8 +1,9 @@
 /* Blog Page Styles */
 .blog-h1-text {
     font-size: 32px;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #044bd9;
     margin-bottom: 0;
 }
 

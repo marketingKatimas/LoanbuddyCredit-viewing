@@ -1,0 +1,619 @@
+export const bm = {
+  nav: {
+    services: "Perkhidmatan",
+    personalLoan: "Pinjaman Peribadi",
+    payment: "Pembayaran",
+    aboutUs: "Tentang Kami",
+    knowUs: "Kenali Kami",
+    faq: "F.A.Q.",
+    blog: "Blog",
+    contactUs: "Hubungi Kami",
+    applyNow: "Mohon Sekarang",
+  },
+  header: {
+    applyNow: "Mohon Sekarang",
+  },
+  footer: {
+    tagline: "Lending with Understanding",
+    description:
+      "Loanbuddy Credit Sdn. Bhd. ialah sebuah agensi pinjaman berlesen di bawah KPKT, dengan cawangan di Kuala Lumpur, Kuching, dan Bintulu.",
+    licenseNo: "No. Lesen",
+    licensePeriod: "Tempoh Lesen",
+    permitNo: "No. Permit",
+    permitPeriod: "Tempoh Permit",
+    interestRateTitle: "Kadar Faedah",
+    securedLoan: "Bercagar: Tidak melebihi 12% setahun",
+    unsecuredLoan: "Tidak Bercagar: Tidak melebihi 18% setahun",
+    operatingHoursTitle: "Waktu Operasi",
+    weekdays: "Isnin - Jumaat: 8am - 5pm",
+    saturday: "Sabtu: 8am - 1.30pm",
+    closed: "Ahad dan Cuti Umum Tutup",
+    servicesTitle: "Perkhidmatan",
+    customerServiceTitle: "Khidmat Pelanggan",
+    personalLoanOnline: "Pinjaman Peribadi Online",
+    topUpLoan: "Pinjaman Tambah Nilai",
+    privacyPolicy: "Dasar Privasi",
+    termsConditions: "Terma dan Syarat",
+    disclaimer: "Kenyataan Penafian",
+    copyright:
+      "© Copyright 2026 Loanbuddy Credit Sdn. Bhd. [Registration No. 200901039396 (882536-K)]. All Rights Reserved.",
+  },
+  applyForm: {
+    bannerHeading: "Pinjaman Peribadi Sehingga RM50,000\nMohon Hari ini!",
+    bannerSubheading:
+      "Satu Langkah mudah untuk mencapai kestabilan kewangan yang anda perlukan. Pilih Loanbuddy Credit!",
+    formTitle: "Selamat Datang ke Loanbuddy Credit!",
+    formSubtitle:
+      "Permohonan pinjaman hanya terbuka untuk warganegara Malaysia sahaja.",
+    requirementsTitle: "Apa yang anda perlukan untuk memohon?",
+    docHeading: "1. Dokumen Diperlukan Untuk Permohonan",
+    doc1: "Salinan kad pengenalan (depan dan belakang)",
+    doc2: "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)",
+    doc3: "Slip gaji 3 bulan terkini (format PDF) dan/atau",
+    doc4: "Bil utiliti 1 bulan terkini (air, elektrik, dll.)",
+    paymentHeading:
+      "2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:",
+    paymentDesc:
+      "Kami menerima pelbagai kaedah pembayaran termasuk pemindahan atas talian (Online Banking / DuitNow) dan deposit tunai di cawangan rasmi kami.",
+    branchLocationsHeading: "3. Lokasi Cawangan Kami",
+    branchKualaLumpurAddress: "No. 12, Jalan Sultan Ismail, 50250 Kuala Lumpur",
+    branchKuchingAddress: "Lot 102, Ground Floor, Jalan Tun Jugah, 93350 Kuching, Sarawak",
+    branchBintuluAddress: "Sublot 15, Ground Floor, Parkcity Commercial Square, 97000 Bintulu, Sarawak",
+    fullNameLabel: "Nama Penuh mengikut Kad Pengenalan",
+    fullNamePlaceholder: "Nama Penuh",
+    ageLabel: "Umur",
+    agePlaceholder: "Min. 20",
+    phoneLabel: "Nombor Telefon",
+    phonePlaceholder: "0123456789",
+    emailLabel: "Emel",
+    emailPlaceholder: "Emel",
+    sectorLabel: "Sila Pilih Sektor Pekerjaan",
+    sectorPlaceholder: "Sektor Pekerjaan",
+    sectorPenjawatAwam: "Penjawat Awam",
+    sectorPekerjaGLC: "Pekerja GLC",
+    sectorPekerjaSwasta: "Pekerja Swasta",
+    sectorBekerjaSendiri: "Bekerja Sendiri",
+    sectorGig: "Freelance/Pekerja Gig",
+    sectorPelajar: "Pelajar",
+    loanAmountLabel: "Jumlah Yang Ingin Dipinjam",
+    loanAmountPlaceholder: "Min. RM1000",
+    branchLabel: "Sila Pilih Cawangan",
+    branchPlaceholder: "Cawangan",
+    branchBintulu: "Bintulu",
+    branchKotaSamarahan: "Kota Samarahan",
+    branchKualaLumpur: "Kuala Lumpur",
+    grossSalaryLabel: "Gaji Kasar",
+    grossSalaryPlaceholder: "1700",
+    netSalaryLabel: "Gaji Bersih",
+    netSalaryPlaceholder: "1500",
+    checkbox1:
+      "Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh Loanbuddy Credit melalui WhatsApp.",
+    checkbox2Prefix:
+      "Dengan menandakan kotak, saya telah membaca, memahami dan bersetuju dengan ",
+    checkbox2Privacy: "Dasar Privasi",
+    checkbox2And: " & ",
+    checkbox2Terms: "Terma dan Syarat;",
+    checkbox2Suffix: " dan,",
+    checkbox3:
+      "Dengan menandakan kotak, klik pada butang \"Hantar\" di bawah, saya mengaku dan mengesahkan bahawa semua maklumat yang diberikan di dalam ini adalah lengkap, benar dan tepat.",
+    submitButton: "Hantar",
+    submittingButton: "Sedang menghantar...",
+    successSubmit:
+      "Terima kasih kerana menghantar permohonan anda! Kami akan menghubungi anda dalam masa terdekat.",
+    successUpload:
+      "Dokumen berjaya dimuat naik! Terima kasih dan kami akan menghubungi anda dalam masa terdekat.",
+    valNameRequired: "Nama Penuh mengikut Kad Pengenalan adalah diperlukan.",
+    valAgeRange: "Umur mestilah di antara 20 hingga 60 tahun.",
+    valPhoneRequired: "Nombor telefon adalah diperlukan.",
+    valPhoneInvalid: "Format nombor telefon tidak sah. Mesti nombor telefon Malaysia yang sah.",
+    valEmailInvalid: "Format emel tidak sah.",
+    valSectorRequired: "Sila pilih sektor pekerjaan.",
+    valAmountRange:
+      "Jumlah pinjaman minimum ialah RM1,000 dan maksimum RM50,000.",
+    valBranchRequired: "Sila pilih cawangan.",
+    valGrossSalaryRequired: "Gaji Kasar adalah diperlukan.",
+    valNetSalaryRequired: "Gaji Bersih adalah diperlukan.",
+    valAgreementsRequired: "Sila tandakan semua kotak persetujuan.",
+    valSubmitFailed:
+      "Penghantaran borang gagal, sila refresh dan cuba sekali lagi.",
+  },
+  uploadDoc: {
+    bannerHeading: "Muat Naik Dokumen Permohonan",
+    bannerSubheading:
+      "Sila muat naik dokumen sokongan untuk mempercepatkan proses kelulusan pinjaman anda.",
+    uploadCardTitle: "Muat Naik Dokumen",
+    icFrontLabel: "Salinan Kad Pengenalan (Depan)",
+    icBackLabel: "Salinan Kad Pengenalan (Belakang)",
+    payslipLabel: "Slip Gaji Terkini (3 Bulan)",
+    bankStatementLabel: "Penyata Bank Terkini (3 Bulan)",
+    utilityBillLabel: "Bil Utiliti Terkini (Pilihan)",
+    dropzoneText: "Klik atau seret fail ke sini untuk muat naik (PDF/JPG/PNG)",
+    submitButton: "Hantar Dokumen",
+    submittingButton: "Sedang memuat naik...",
+    successMessage:
+      "Dokumen anda telah berjaya dimuat naik! Pegawai kami akan menyemak dan menghubungi anda.",
+  },
+  home: {
+    heroHeading: "Pinjaman Peribadi Mudah & Pantas Sehingga RM50,000",
+    heroSubheading: "Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan.",
+    heroCta: "Mohon Sekarang",
+    servicesTitle: "Perkhidmatan Pinjaman Kami",
+    service1Title: "Pinjaman Peribadi Online",
+    service2Title: "Pinjaman Tambah Nilai",
+    service1Desc: "Permohonan pinjaman peribadi mudah, cepat dan telus sehingga RM50,000.",
+    service2Desc: "Tambah nilai pinjaman sedia ada anda untuk keperluan tunai kecemasan.",
+    learnMore: "Ketahui Lebih Lanjut",
+    whyChooseTitle: "Kenapa Memilih Loanbuddy Credit?",
+    whyChoose1Title: "Kadar Faedah Berpatutan",
+    whyChoose1Desc: "Kadar faedah tahunan yang kompetitif dan berpatutan mengikut undang-undang KPKT.",
+    whyChoose2Title: "Kelulusan Pantas 24 Jam",
+    whyChoose2Desc: "Proses semakan dan kelulusan dokumen pantas dalam tempoh 24 jam.",
+    whyChoose3Title: "Agensi Berlesen KPKT",
+    whyChoose3Desc: "Syarikat pinjaman wang berlesen yang sah, selamat, dan dipercayai.",
+    testimonialsTitle: "Maklum Balas Pelanggan Kami",
+    ctaTitle: "Sedia Untuk Menyelesaikan Masalah Kewangan Anda?",
+    ctaSubtitle: "Mohon pinjaman peribadi dalam talian hari ini dengan proses kelulusan yang pantas dan selamat.",
+    applyNow: "Mohon Sekarang",
+    readArticle: "Baca artikel",
+    blogTitle: "Artikel & Tips Kewangan",
+    moreArticles: "Artikel Lain",
+    faqTitle: "Soalan Lazim",
+    faq1Question: "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?",
+    faq1Example: "Contoh Wakil:",
+    faq1Amount: "Amaun Pinjaman:",
+    faq1Tenure: "Tempoh Pinjaman:",
+    faq1TenureVal: "12 bulan",
+    faq1Interest: "Kadar Faedah:",
+    faq1InterestVal: "18.0% setahun",
+    faq1Fees: "Fi:",
+    faq1FeesVal: "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15",
+    faq2Question: "Siapakah Loanbuddy Credit?",
+    faq2Answer: "Loanbuddy Credit Sdn. Bhd. (200901039396 / 882536-K) ialah sebuah syarikat pinjaman wang berlesen di bawah Akta Pemberi Pinjam Wang 1951 dan dikawal selia oleh Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami komited menyediakan pinjaman peribadi yang selamat, telus dan mudah dengan proses kelulusan yang pantas untuk membantu anda memenuhi keperluan kewangan tanpa kerumitan.",
+    faq3Question: "Bagaimanakah cara untuk saya memohon pinjaman peribadi Loanbuddy Credit?",
+    faq3Answer: "Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp.",
+    branchKL: "Cawangan Kuala Lumpur",
+    branchKuching: "Cawangan Kuching",
+    branchBintulu: "Cawangan Bintulu",
+  },
+  pembayaran: {
+    badgeText: "Panduan Pembayaran",
+    pageHeading: "Kaedah Pembayaran",
+    pageSubheading:
+      "Loanbuddy Credit kini menerima bayaran balik melalui Direct Debit, pemindahan bank dalam talian atau JomPay ke akaun bank rasmi Loanbuddy Credit, di mana pihak Loanbuddy Credit akan memaklumkan penerimaan bayaran balik kepada anda melalui panggilan, SMS atau WhatsApp.",
+    secondaryNote:
+      "Pihak Loanbuddy Credit tidak menerima sebarang pembayaran tunai di mana-mana cawangan. Pastikan anda melakukan bayaran balik ke SATU (1) akaun bank rasmi sahaja untuk mengelakkan daripada sebarang penipuan dan penyamaran.",
+    whatsappUs: "WhatsApp Kami",
+    branchKL: "Cawangan Kuala Lumpur",
+    branchKuching: "Cawangan Kuching",
+    branchBintulu: "Cawangan Bintulu",
+    branchKLFull: "Cawangan Kuala Lumpur",
+    branchKuchingFull: "Cawangan Kuching, Sarawak",
+    branchBintuluFull: "Cawangan Bintulu, Sarawak",
+    faqTitle: "Soalan Lazim",
+    faq1Question: "Bagaimanakah cara saya meminta penyelesaian penuh/awal?",
+    faq1Answer1:
+      "Anda boleh menjelaskan pinjaman sebelum tempoh matang pinjaman anda pada bila-bila masa tanpa dikenakan yuran penamatan kerana pinjaman Loanbuddy Credit tiada tempoh lock-in. Namun, anda dikehendaki untuk memaklumkan Loanbuddy Credit sekurang-kurangnya 30 hari sebelum tarikh pembayaran balik penuh/awal dan anda dikehendaki membuat pembayaran penuh bagi jumlah pokok tertunggak dan faedah yang dibilkan sahaja.",
+    faq1Answer2:
+      "Anda juga boleh menghubungi Loanbuddy Credit atau menghantar e-mel sebelum membayar jumlah pinjaman anda untuk keterangan lebih lanjut.",
+    faq2Question: "Bagaimana untuk menyemak jumlah ansuran bulanan saya?",
+    faq2Answer:
+      "Anda boleh menyemak butiran pinjaman anda dengan menghubungi pihak Loanbuddy Credit melalui WhatsApp.",
+    faq3Question: "Bagaimanakah saya tahu jika pembayaran balik saya telah diterima?",
+    faq3Answer:
+      "Setelah pembayaran balik telah diproses, anda akan menerima panggilan, SMS atau WhatsApp pengesahan daripada Loanbuddy Credit.",
+    faq4Question: "Bilakah tarikh pembayaran balik pertama saya?",
+    faq4Step1:
+      "Jika kontrak ditandatangani sebelum atau pada 14 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan seterusnya.",
+    faq4Step2:
+      "Jika kontrak ditandatangani pada atau selepas 15 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan selepas bulan seterusnya.",
+    faq5Question: "Bagaimanakah cara saya membuat pembayaran balik kepada Loanbuddy Credit?",
+    faq5Answer:
+      "Pada masa ini, Loanbuddy Credit hanya menerima pembayaran balik melalui Direct Debit, pemindahan bank dalam talian dan JomPay. Loanbuddy Credit tidak menerima pembayaran balik secara tunai di mana-mana cawangan kami.",
+    faq6Question: "Bagaimanakah saya meminta bayaran pulangan?",
+    faq6Answer1:
+      "Loanbuddy Credit akan menghubungi anda melalui panggilan, SMS atau WhatsApp. Loanbuddy Credit akan membayar balik lebihan dana apabila pihak kami mengesahkan bahawa anda telah membuat penyelesaian penuh dengan lebihan dana.",
+    faq6Answer2:
+      "Jika anda membayar ansuran bulanan anda dengan lebihan dana dan ingin meminta bayaran balik sebelum penyelesaian penuh, sila hubungi pihak kami melalui panggilan, WhatsApp atau e-mel.",
+    faq7Question: "Bagaimana jika saya gagal membayar hutang bulanan saya?",
+    faq7Call: "Wakil Loanbuddy Credit akan membuat panggilan kepada anda.",
+    faq7Charge:
+      "Anda dikehendaki membayar caj pembayaran lewat (8.0% setiap jumlah ansuran tertunggak*¹). Ia dikira setiap hari dan dicaj pada hari terakhir.",
+    faq7CalcTitle: "Kaedah Pengiraan",
+    faq7CalcFormula:
+      "Caj Pembayaran Lewat = (Amaun Ansuran Tertunggak x 8.0%) / (365 hari x Bilangan Hari Lewat Matang)*²",
+    faq7Note1:
+      "*¹ Jumlah ansuran tertunggak atau baki jumlah apabila terdapat pembayaran separa.",
+    faq7Note2:
+      "*² Loanbuddy Credit menyediakan tempoh tangguh selama 5 hari dari tarikh tamat tempoh, di mana caj pembayaran lewat tidak akan dikenakan. Namun, selepas tempoh tangguh, caj pembayaran lewat akan dikenakan termasuk 5 hari sebelumnya.",
+    faq8Question: "Bagaimana untuk menyemak tarikh akhir pembayaran balik saya?",
+    faq8Answer:
+      "Anda boleh menyemak butiran akaun anda dengan menghubungi Loanbuddy Credit melalui WhatsApp atau e-mel.",
+  },
+  aboutUs: {
+    heroTitle: "Tentang Loanbuddy Credit",
+    heroDesc:
+      "Loanbuddy Credit percaya setiap individu layak mendapat akses kewangan yang mudah, mesra dan meyakinkan. Selama lebih 10 tahun berkhidmat dalam dunia kewangan, kami telah membantu ramai pelanggan mencapai impian mereka melalui pembiayaan peribadi, koperasi, konsolidasi, pendidikan, perumahan hingga perniagaan - semuanya dengan proses yang cepat, telus dan selamat.",
+    missionIntro: "Dipacu pasukan pakar yang berkomited, misi kami jelas:",
+    mission1: "Menyediakan solusi kewangan moden, pantas dan berkesan untuk setiap keperluan",
+    mission2: "Mengorak langkah sebagai peneraju kewangan utama di Malaysia",
+    mission3: "Membuka jalan kepada peluang kredit yang setara untuk semua",
+    mission4: "Menjadi sandaran kewangan yang boleh dipercayai di saat diperlukan",
+    blueBannerText:
+      "Loanbuddy Credit bukan sekadar penyedia pinjaman. Kami adalah rakan perjalanan kewangan anda dalam setiap langkah, cabaran dan peluang.",
+    kelebihanTitle: "Kelebihan Loanbuddy Credit",
+    kelebihan1Title: "Penjimatan masa:",
+    kelebihan1Desc:
+      "Proses yang biasanya mengambil masa berhari-hari kini boleh diselesaikan hanya dalam beberapa minit bersama kami.",
+    kelebihan2Title: "Cekap:",
+    kelebihan2Desc:
+      "Tak perlu pening kepala menyelidik banyak pemberi pinjaman. Kami sediakan pilihan terbaik yang sesuai untuk anda - semuanya sah dan boleh dipercayai.",
+    kelebihan3Title: "Ketenangan fikiran:",
+    kelebihan3Desc:
+      "Hanya berurusan dengan pemberi pinjaman yang telah disemak teliti oleh pasukan pakar kami. Jadi, anda boleh rasa lebih yakin dengan setiap langkah.",
+    kelebihan4Title: "Kesahihan maklumat:",
+    kelebihan4Desc:
+      "Semua maklumat yang anda terima daripada kami telah disahkan, supaya anda boleh membuat keputusan kewangan dengan lebih tenang dan bijak.",
+    kelebihan5Title: "Mengurangkan tekanan:",
+    kelebihan5Desc:
+      "Kurangkan kemungkinan pinjaman tidak diluluskan dengan memohon pemberi pinjaman yang telah dipadankan.",
+    kpktTitle: "Semakan KPKT Pinjaman Berlesen",
+    kpktDesc:
+      "Loanbuddy Credit merupakan pemberi pinjaman wang berlesen dan berdaftar di bawah KPKT Malaysia. Pengguna boleh membuat semakan KPKT pinjaman berlesen melalui laman rasmi KPKT untuk pengesahan status lesen dan jaminan keselamatan sebelum memohon pinjaman.",
+    whyChooseTitle: "Kenapa Pilih Loanbuddy Credit?",
+    feature1: "Kadar faedah 1.5% sebulan atau 18% setahun (tetap)",
+    feature2: "Amaun pinjaman dari RM1,000 sehingga RM50,000",
+    feature3: "Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan.",
+    feature4: "Tidak pegang kad ATM, tiada bayaran pendahuluan",
+    feature5:
+      "Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama",
+    feature6:
+      "Pemberi pinjaman berlesen di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT)",
+    feature7:
+      "Permohonan mudah dan pantas, dengan langkah yang jelas dan efisien",
+    feature8:
+      "Kemudahan pembayaran dalam talian tersedia (Direct Debit, pemindahan bank dalam talian, atau JomPay)",
+    rakanSetiaTitle: "Rakan Setia Kewangan yang Boleh Anda Percayai",
+    rakanSetiaDesc:
+      "Sama ada anda ingin memulakan perniagaan, membeli rumah atau meneruskan pengajian – kami ada untuk memudahkan perjalanan anda. Bersama Loanbuddy Credit, anda berada di tangan yang selamat!",
+    komitedTitle: "Loanbuddy Credit Komited Membantu Anda",
+    komitedDesc:
+      "Setiap hari, kami membantu rakyat Malaysia mencari jalan kewangan yang lebih teratur dengan cara yang mudah, yakin dan selamat. Dah bersedia untuk urusan pinjaman yang lebih lancar? Biarkan Loanbuddy Credit jadi panduan anda.\n\nLoanbuddy Credit – ruang pencarian pinjaman anda berakhir, impian jadi nyata dan kepercayaan anda sentiasa dihargai.",
+    ctaTitle:
+      "Perlukan Pinjaman Peribadi? \nLoanbuddy Credit Sedia Berkhidmat untuk Anda!",
+    applyNow: "Mohon Sekarang",
+  },
+  faqPage: {
+    heroTitle: "Soalan Lazim Pelanggan Kami",
+    heroDesc:
+      "Di ruangan ini, anda akan mendapatkan jawapan kepada pertanyaan yang sering dikemukakan oleh pelanggan kami berkaitan perkhidmatan kami. Maklumat penting telah disusun bagi membantu anda memahami proses, prosedur dan perkhidmatan yang ditawarkan dengan lebih jelas.\n\nSebarang kemusykilan dan persoalan yang ingin diajukan, anda boleh menghubungi kami dan kami akan membantu anda!",
+    tabAll: "Semua",
+    tabGeneral: "Pertanyaan Umum",
+    tabRepayment: "Pertanyaan Bayaran Balik",
+    sectionGeneral: "Pertanyaan Umum",
+    sectionRepayment: "Pertanyaan Bayaran Balik",
+    branchKL: "Cawangan Kuala Lumpur",
+    branchKuching: "Cawangan Kuching",
+    branchBintulu: "Cawangan Bintulu",
+    branchKLFull: "Cawangan Kuala Lumpur",
+    branchKuchingFull: "Cawangan Kuching, Sarawak",
+    branchBintuluFull: "Cawangan Bintulu, Sarawak",
+    whatsappUs: "WhatsApp Kami",
+    // General FAQs
+    faq0Q: "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?",
+    faq0Example: "Contoh Wakil:",
+    faq0Amount: "Amaun Pinjaman:",
+    faq0AmountVal: "RM3,000",
+    faq0Tenure: "Tempoh Pinjaman:",
+    faq0TenureVal: "12 bulan",
+    faq0Interest: "Kadar Faedah:",
+    faq0InterestVal: "18.0% setahun",
+    faq0Fees: "Fi:",
+    faq0FeesVal: "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15",
+    faq1Q: "Berapakah jumlah pinjaman yang boleh saya mohon?",
+    faq1A1:
+      "Anda boleh meminjam dengan minimum RM1,000 sehingga maksimum RM50,000. Amaun yang anda boleh pinjam berbeza-beza bergantung pada penilaian skor kredit individu.",
+    faq1A2:
+      "Walau bagaimanapun, untuk Tambah Nilai dan pinjaman seterusnya, RM1,000 dan maksimum akan ditentukan oleh Loanbuddy Credit.",
+    faq2Q: "Bagaimanakah cara untuk saya memohon pinjaman Loanbuddy Credit?",
+    faq2A:
+      "Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp.",
+    faq3Q: "Berapakah kadar faedah?",
+    faq3A: "Kadar faedah tahunan adalah sehingga 18.0%.",
+    faq4Q: "Apakah dokumen dan kelayakan yang diperlukan?",
+    faq4DocTitle: "Dokumen dan kelayakan yang diperlukan termasuk:",
+    faq4Doc1: "Salinan kad pengenalan (depan dan belakang)",
+    faq4Doc2: "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)",
+    faq4Doc3: "Slip gaji 3 bulan terkini (format PDF) dan/atau",
+    faq4Doc4: "Bil utiliti 1 bulan terkini (air, elektrik, dll.)",
+    faq4Eligibility1Title: "Kelayakan Pinjaman Peribadi Atas Talian",
+    faq4E1: "Berumur antara 18 sehingga 60 tahun",
+    faq4E2:
+      "Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)",
+    faq4E3: "Pendapatan bulanan kasar minimum RM1,700",
+    faq4E4: "Tidak muflis dan mampu membayar balik pinjaman",
+    faq4E5: "Bukan individu berstatus Orang Terdedah Politik (PEP)",
+    faq4Eligibility2Title: "Kelayakan Pinjaman Tambah Nilai",
+    faq4TopUp1:
+      "Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman",
+    faq4TopUp2: "Rekod pembayaran yang baik dengan Loanbuddy Credit",
+    faq4TopUp3: "Individu berumur 18 hingga 60 tahun",
+    faq4TopUp4: "Pendapatan kasar bulanan minimum RM1,700",
+    faq4TopUp5: "Kakitangan swasta dan kerajaan sahaja",
+    faq4TopUp6: "Warganegara Malaysia",
+    faq4TopUp7: "Tidak muflis dan mampu membayar balik pinjaman",
+    faq4TopUp8: "Bukan individu berstatus Orang Terdedah Politik (PEP)",
+    faq5Q: "Apakah tempoh pinjaman minimum dan maksimum?",
+    faq5A:
+      "Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun).",
+    faq6Q:
+      "Adakah terdapat sebarang bayaran yang perlu saya bayar untuk pendaftaran?",
+    faq6A1:
+      "Tiada yuran pendaftaran dikenakan. Walau bagaimanapun, jika permohonan anda diluluskan, anda perlu membayar duti setem dan yuran perakuan.",
+    faq6A2:
+      "Yuran ini akan dikenakan bersama dengan jumlah pembayaran balik pada pembayaran balik pertama.",
+  },
+  blog: {
+    pageHeading: "Blog & Tips Kewangan",
+    searchPlaceholder: "Cari artikel blog...",
+    searchButton: "Cari",
+    searchClear: "Padam carian",
+    showingPrefix: "Menunjukkan",
+    showingOf: "daripada",
+    showingSuffix: "artikel",
+    readArticle: "Baca Artikel",
+    latestTag: "Artikel Terbaru!",
+    emptyTitle: "Tiada artikel dijumpai",
+    emptyDesc: "Tiada artikel yang sepadan dengan carian",
+    viewAll: "Lihat Semua Artikel",
+    backToBlog: "Kembali ke Senarai Blog",
+    loadingArticle: "Memuatkan artikel...",
+    lastUpdated: "Tarikh Kemaskini:",
+    byAuthor: "Oleh",
+    defaultAuthor: "Pasukan Kewangan Loanbuddy Credit",
+    ctaDefaultTitle: "Perlukan Pinjaman Peribadi?",
+    ctaDefaultDesc:
+      "Dapatkan khidmat nasihat pinjaman peribadi daripada Loanbuddy Credit hari ini.",
+    ctaDefaultButton: "Mohon Sekarang",
+    notFoundTitle: "Artikel Tidak Dijumpai",
+    notFoundDesc: "Artikel yang anda cari tidak wujud atau telah dipadam.",
+    art1Title: "Penyatuan Hutang",
+    art2Title: "Jenis-Jenis Pinjaman di Malaysia",
+    art3Title:
+      "Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit",
+    art4Title: "Konvensional vs Islamik: Beza Pinjaman Peribadi Malaysia 2026",
+  },
+  articles: {
+    bezaPinjaman: {
+      category: "Panduan Kewangan Malaysia",
+      title: "Konvensional vs Islamik: Beza Pinjaman Peribadi Malaysia 2026",
+      p1: "Sebelum memohon sebarang pembiayaan peribadi di Malaysia, adalah penting untuk memahami perbezaan konsep utama antara Pinjaman Konvensional dan Pembiayaan Islamik.",
+      h1: "1. Konsep Perjanjian",
+      p_konvensional_label: "Konvensional:",
+      p_konvensional_text:
+        "Berdasarkan hubungan pemberi pinjam dan peminjam, di mana peminjam membayar balik wang prinsipal bersama kadar faedah (interest).",
+      p_islamik_label: "Islamik:",
+      p_islamik_text:
+        "Berdasarkan konsep Syariah seperti Murabahah (jual beli) atau Tawarruq, di mana bank menjual komoditi pada harga yang telah ditambah keuntungan (profit margin).",
+      h2: "2. Caj Bayaran Lewat",
+      p_caj_konvensional_text:
+        "Mengenakan caj faedah kompaun ke atas bayaran yang terlewat.",
+      p_caj_islamik_text:
+        "Mengenakan caj Ta'widh (ganti rugi) pada kadar yang ditetapkan dan sebahagian daripadanya disalurkan kepada badan kebajikan.",
+      ctaHeading: "Perlukan Khidmat Nasihat Pembiayaan?",
+      ctaDesc:
+        "Hubungi perunding kewangan Loanbuddy Credit untuk rundingan percuma hari ini.",
+      ctaButton: "Mohon Pinjaman Sekarang",
+    },
+    kesanOpr: {
+      category: "Kewangan & OPR",
+      title: "Jenis-Jenis Pinjaman di Malaysia",
+      p1: "Kadar Dasar Semalaman (OPR) yang ditetapkan oleh Bank Negara Malaysia (BNM) sering menjadi bahan perbincangan panas. Namun, tahukah anda bagaimana perubahan OPR mempengaruhi ansuran pinjaman peribadi anda?",
+      h1: "Pinjaman Kadar Tetap vs Pinjaman Kadar Terapung",
+      p2: "Bagi pinjaman peribadi berasaskan kadar faedah tetap (fixed rate) seperti di Loanbuddy Credit, pergerakan OPR tidak akan mengubah jumlah ansuran bulanan yang telah dipersetujui dalam perjanjian anda!",
+      h2: "Kelebihan Kadar Faedah Tetap",
+      li1Title: "Kepastian Kewangan:",
+      li1Desc:
+        "Bayaran bulanan anda kekal dari bulan pertama hingga bulan terakhir.",
+      li2Title: "Bebas Kejutan OPR:",
+      li2Desc:
+        "Kenaikan OPR BNM tidak menjejaskan perancangan belanjawan bulanan anda.",
+      ctaHeading: "Perlukan Pinjaman Peribadi Kadar Tetap?",
+      ctaDesc:
+        "Ketahui kelayakan pinjaman peribadi anda di Loanbuddy Credit hari ini secara percuma dan pantas.",
+      ctaButton: "Semak Kelayakan Pinjaman",
+    },
+    penyatuanHutang: {
+      category: "Penyatuan Hutang & Kewangan",
+      title: "Penyatuan Hutang",
+      p1: "Adakah anda berasa sesak setiap kali menerima penyata kad kredit bulanan? Membayar bayaran minimum sahaja setiap bulan hanya akan memanjangkan tempoh hutang dan menambah beban kadar faedah yang tinggi (15% hingga 18% setahun).",
+      h1: "Apa Itu Penyatuan Hutang (Debt Consolidation)?",
+      p2: "Penyatuan hutang merujuk kepada langkah menggabungkan beberapa tunggakan kad kredit atau pinjaman kecil menjadi satu pinjaman peribadi tunggal dengan kadar faedah yang lebih rendah dan jadual bayaran balik yang tetap.",
+      h2: "Kelebihan Utama Penyatuan Hutang",
+      li1Title: "Pengurangan Kadar Faedah:",
+      li1Desc:
+        "Menggantikan faedah kad kredit tinggi dengan kadar pinjaman peribadi yang lebih rendah.",
+      li2Title: "Pengurusan Mudah:",
+      li2Desc:
+        "Hanya 1 tarikh matang bayaran setiap bulan berbanding menguruskan pelbagai akaun.",
+      li3Title: "Skor Kredit Lebih Baik:",
+      li3Desc:
+        "Membantu membersihkan tunggakan kad kredit dan menambah baik rekod CCRIS secara berperingkat.",
+      ctaHeading: "Ingin Menyelesaikan Hutang Kad Kredit Anda?",
+      ctaDesc:
+        "Dapatkan khidmat nasihat pinjaman peribadi penyatuan hutang daripada Loanbuddy Credit hari ini.",
+      ctaButton: "Mohon Penyatuan Hutang Sekarang",
+    },
+    ccrisPtptn: {
+      category: "Panduan CCRIS & PTPTN",
+      title:
+        "Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit",
+      p1: "Banyak pemohon pinjaman di Malaysia mendapati permohonan pinjaman peribadi mereka ditolak oleh bank disebabkan tunggakan bayaran PTPTN yang muncul dalam laporan CCRIS.",
+      h1: "Adakah Rekod PTPTN Menjejaskan Pinjaman Peribadi?",
+      p2: "Ya, bank komersial biasanya menyemak nisbah tunggakan kredit dalam laporan CCRIS. Walau bagaimanapun, pemberi pinjaman berlesen KPKT seperti Loanbuddy Credit mempunyai kriteria penilaian yang lebih fleksibel mengikut tahap pendapatan semasa anda.",
+      h2: "Langkah-Langkah Mendapatkan Kelulusan Pinjaman",
+      li1Title: "Semak Kelayakan Semasa:",
+      li1Desc:
+        "Pastikan anda mempunyai slip gaji 3 bulan terkini dan rekod pengkreditan gaji di bank.",
+      li2Title: "Strukturkan Semula Tunggakan:",
+      li2Desc: "Berhubung dengan PTPTN untuk jadual bayaran semula.",
+      li3Title: "Mohon Bersama Syarikat Berlesen KPKT:",
+      li3Desc: "Dapatkan pinjaman peribadi yang meluluskan pemohon secara fleksibel.",
+      ctaHeading: "Pernah Ditolak Oleh Bank?",
+      ctaDesc:
+        "Loanbuddy Credit sedia membantu permohonan pinjaman peribadi anda tanpa kerumitan.",
+      ctaButton: "Mohon Pinjaman Sekarang",
+    },
+  },
+  contactUs: {
+    pageHeading: "Hubungi Kami",
+    branchKLTitle: "Cawangan Kuala Lumpur",
+    branchKuchingTitle: "Cawangan Kuching, Sarawak",
+    branchBintuluTitle: "Cawangan Bintulu, Sarawak",
+    whatsappUs: "WhatsApp Kami",
+    mapTitle: "Google My Maps - Cawangan Loanbuddy Credit",
+    formIntro:
+      "Ada sebarang pertanyaan? Kongsikan mesej anda di sini \ndan kami akan membalas secepat mungkin untuk membantu anda!",
+    successMessage:
+      "Terima kasih kerana menghubungi kami! Kami akan menghubungi anda sebentar lagi.",
+    nameLabel: "Nama",
+    namePlaceholder: "Nama",
+    phoneLabel: "No. Telefon",
+    phonePlaceholder: "0123456789",
+    emailLabel: "Emel",
+    emailPlaceholder: "Emel",
+    branchLabel: "Sila Pilih Cawangan",
+    branchPlaceholder: "Cawangan",
+    branchBintuluOpt: "Bintulu",
+    branchKotaSamarahanOpt: "Kota Samarahan",
+    branchKualaLumpurOpt: "Kuala Lumpur",
+    messageLabel: "Mesej Anda",
+    messagePlaceholder: "Mesej Anda",
+    submitBtn: "Kirim Mesej",
+  },
+  pinjamanPeribadiPage: {
+    heroTitle: "Pinjaman Peribadi Online",
+    heroDesc:
+      "Loanbuddy Credit menyediakan Pinjaman Peribadi dalam Talian yang lebih pantas dan memudahkan anda untuk mencapai matlamat kewangan peribadi dan aliran tunai yang lebih terkawal.",
+    heroCta: "Mohon Sekarang",
+    usp1: "Kadar faedah 1.5% sebulan atau 18% setahun",
+    usp2: "Amaun pinjaman dari RM1,000 sehingga RM50,000",
+    usp3: "Tempoh pinjaman fleksibel 12 hingga 60 bulan",
+    usp4: "Tidak pegang kad ATM",
+    usp5: "Kelulusan dalam masa 1-2 hari bekerja",
+    usp6: "Pemberi pinjaman berlesen di bawah KPKT",
+    usp7: "Kelulusan dan pemindahan pada hari yang sama",
+    usp8: "Permohonan mudah, pantas dan efisien",
+    productDetailsTitle: "Butiran Produk",
+    interestRateLabel: "Kadar faedah:",
+    interestRateVal: "sehingga 18% setahun.",
+    repaymentTenureLabel: "Tempoh Bayaran Balik:",
+    repaymentTenureVal: "12 bulan hingga 60 bulan",
+    financingAmountLabel: "Jumlah Pembiayaan:",
+    financingAmountVal: "RM1,000 hingga RM50,000",
+    eligibilityTitle: "Kelayakan",
+    e1: "Individu berumur 18 tahun sehingga 60 tahun",
+    e2: "Pendapatan Bulanan minimum RM1,700",
+    e3: "Pekerja Swasta dan kerajaan",
+    e4: "Warganegara Malaysia",
+    e5: "Tidak Muflis",
+    e6: "Tidak Terlibat dengan Politik",
+    documentsTitle: "Dokumen Diperlukan",
+    doc1: "Salinan kad pengenalan (depan dan belakang)",
+    doc2: "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)",
+    doc3: "Slip gaji 3 bulan terkini (format PDF)",
+    doc4: "Bil utiliti 1 bulan terkini (air, elektrik, dll.)",
+    disclaimer:
+      "Maklumat yang dipaparkan adalah sebagai rujukan dan untuk kegunaan peribadi sahaja. Loanbuddy Credit tidak menjamin ketepatan pengiraan ini serta tidak bertanggungjawab terhadap sebarang ketidaktepatan atau ketinggalan. Maklumat di atas bukanlah tawaran kredit dan tidak menjamin bahawa sebarang permohonan akan diluluskan. Semua permohonan pembiayaan adalah tertakluk kepada penilaian serta kelulusan oleh pihak Loanbuddy Credit.",
+    calcLoanAmount: "Jumlah Pinjaman:",
+    calcTenure: "Tempoh (dalam bulan):",
+    calcInterestRate: "Kadar Faedah(%):",
+    calcMonthlyEmi: "Bayaran Bulanan",
+    calcTotalRepayment: "Jumlah Keseluruhan",
+    monthsSuffix: "bulan",
+    calcCta: "Mohon Sekarang",
+    stepsTitle: "Cara Permohonan Pinjaman Peribadi",
+    step1Title: "Langkah 1",
+    step1Desc: "Tekan butang \n'Mohon Sekarang'",
+    step2Title: "Langkah 2",
+    step2Desc: "Isi maklumat yang diperlukan dan \nhantar permohonan",
+    step3Title: "Langkah 3",
+    step3Desc:
+      "Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat",
+    termsText: "Terma & Syarat",
+    andText: "dan",
+    privacyText: "Dasar Privasi",
+    ctaBannerTitle:
+      "Perlukan Pinjaman Peribadi? \nLoanbuddy Credit Sedia Berkhidmat untuk Anda!",
+    ctaBannerBtn: "Mohon Sekarang",
+    faqTitle: "Soalan Lazim",
+    faqSectionRepayment: "Pembayaran Balik",
+    faqSectionApplication: "Permohonan",
+    faqSectionApproval: "Kelulusan",
+    faqSectionDisbursement: "Pengeluaran Pinjaman",
+    faqSelfEmployedQ:
+      "Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?",
+    faqSelfEmployedA:
+      "Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda.",
+    faqApprovalNotificationQ:
+      "Bagaimanakah saya akan tahu jika permohonan pinjaman saya telah diluluskan?",
+    faqApprovalNotificationA:
+      "Permohonan yang telah diluluskan akan dihubungi secara peribadi oleh pihak Loanbuddy Credit melalui panggilan telefon, SMS atau WhatsApp.",
+    faqApprovalTimeQ: "Berapa lamakah proses kelulusan pinjaman?",
+    faqApprovalTimeA:
+      "Proses pinjaman dalam masa 1-3 hari bekerja. Walau bagaimanapun, jika dokumen tidak lengkap, kami memerlukan 1-3 hari bekerja tambahan untuk urusan pengesahan.",
+    faqNextStepsQ:
+      "Apakah yang perlu saya lakukan apabila permohonan pinjaman saya telah diluluskan?",
+    faqNextStepsA:
+      "Sila tunggu panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit dan ikuti arahan yang diberikan. Untuk pertanyaan dan maklumat lebih lanjut, hubungi Loanbuddy Credit melalui WhatsApp:",
+    faqDisbursementMethodQ: "Bagaimanakah saya akan menerima duit pinjaman saya?",
+    faqDisbursementMethodA:
+      "Anda akan menerima pinjaman anda secara terus melalui akaun bank berdaftar anda.",
+    faqDisbursementNotificationQ:
+      "Bagaimanakah saya akan tahu jika pinjaman saya telah dikeluarkan?",
+    faqDisbursementNotificationA:
+      "Setelah pinjaman telah dimasukkan ke dalam akaun anda, anda akan menerima panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit.",
+  },
+  pinjamanKoperasiPage: {
+    heroHeading: "Pinjaman Tambah Nilai",
+    heroSubheading:
+      "Loanbuddy Credit menawarkan Pinjaman Tambah Nilai di mana anda boleh top up* pinjaman sedia ada anda untuk keperluan kewangan kecemasan pada bila-bila masa, di mana sahaja anda berada. \n\n*Tertakluk kepada terma dan syarat",
+    heroCtaText: "Top Up Sekarang",
+    videoSectionTitle: "Apa Itu Pinjaman Tambah Nilai?",
+    videoP1:
+      "Pinjaman Tambah Nilai merupakan pinjaman di mana anda boleh tambah ke atas pinjaman sedia ada anda.",
+    videoLi1:
+      "Top up pinjaman sedia ada anda untuk menampung keperluan kewangan tambahan.",
+    videoLi2:
+      "Sebarang faedah tertunggak daripada pinjaman terdahulu akan dikecualikan selepas pinjaman tambah nilai anda diluluskan.",
+    videoP2:
+      "Tiada caj tambahan atau tersembunyi, menjadikan proses lebih mudah dan lancar.",
+    kelebihanSectionTitle: "Kenapa Memohon untuk Tambah Nilai?",
+    benefit1:
+      "Tersedia untuk pelanggan Loanbuddy Credit yang mempunyai perjanjian pinjaman sedia dan rekod pembayaran baik",
+    benefit2:
+      "Senang untuk Top Up pinjaman sedia ada untuk menampung keperluan kewangan tambahan",
+    benefit3:
+      "Tiada caj tambahan atau tersembunyi—proses lebih mudah dan lancar",
+    benefit4:
+      "Selepas Top Up, sebarang faedah tertunggak daripada pinjaman terdahulu akan dikecualikan",
+    kaedahSectionTitle: "Kaedah Tambah Nilai/Top-Up",
+    kaedahLi1:
+      "Jumlah pembiayaan bagi Pinjaman Top-Up dikira dengan menolak baki pinjaman terdahulu daripada amaun prinsipal Pinjaman Top-Up yang anda mohon",
+    kaedahLi2:
+      "Sebaik sahaja permohonan Pinjaman Top-Up anda diluluskan, akaun pinjaman terdahulu anda akan dianggap selesai sepenuhnya, dan akaun Pinjaman Top-Up yang baharu akan dibuka. Jadual pembayaran balik anda juga akan dikemas kini.",
+    kaedahLi3:
+      "Jumlah Pinjaman Top-Up mesti sama atau lebih tinggi daripada jumlah pinjaman terdahulu.",
+    exampleHeading: "Sebagai contoh:",
+    previousLoanLabel: "Pinjaman Terdahulu: RM 3,000",
+    paidAmountLabel: "Amaun telah dibayar: RM1,000",
+    balanceLoanLabel: "Baki Pinjaman: RM3,000 - RM1,000 = ",
+    topupPrincipalLabel: "Jumlah Prinsipal Pinjaman Top-Up: RM5,000",
+    disbursedAmountLabel:
+      "Jumlah Pengeluaran Wang Tambah Nilai (Yang Anda Bakal Terima): RM3,000",
+  },
+  common: {
+    close: "Tutup",
+    back: "Kembali",
+    loading: "Memuatkan...",
+  },
+};

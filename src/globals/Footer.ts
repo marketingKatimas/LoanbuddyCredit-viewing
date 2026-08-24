@@ -19,6 +19,7 @@ export const Footer: GlobalConfig = {
               type: 'text',
               label: 'Tagline / Slogan',
               defaultValue: 'Lending with Understanding',
+              localized: true,
               admin: {
                 description: 'The short slogan displayed under the footer logo.',
               },
@@ -29,6 +30,7 @@ export const Footer: GlobalConfig = {
               label: 'Company Description',
               defaultValue:
                 'Loanbuddy Credit Sdn. Bhd. ialah sebuah agensi pinjaman berlesen di bawah KPKT, dengan cawangan di Kuala Lumpur, Kuching, dan Bintulu.',
+              localized: true,
               admin: {
                 description: 'The summary paragraph introducing the company in the footer.',
               },
@@ -72,18 +74,21 @@ export const Footer: GlobalConfig = {
               type: 'text',
               label: 'Waktu Operasi (Isnin - Jumaat)',
               defaultValue: 'Isnin - Jumaat: 8am - 5pm',
+              localized: true,
             },
             {
               name: 'hoursSaturday',
               type: 'text',
               label: 'Waktu Operasi (Sabtu)',
               defaultValue: 'Sabtu: 8am - 1.30pm',
+              localized: true,
             },
             {
               name: 'hoursClosed',
               type: 'text',
               label: 'Waktu Tutup / Cuti',
               defaultValue: 'Ahad dan Cuti Umum Tutup',
+              localized: true,
             },
           ],
         },
@@ -131,6 +136,7 @@ export const Footer: GlobalConfig = {
                   type: 'text',
                   required: true,
                   label: 'Link Label',
+                  localized: true,
                 },
                 {
                   name: 'url',
@@ -160,6 +166,7 @@ export const Footer: GlobalConfig = {
                   type: 'text',
                   required: true,
                   label: 'Link Label',
+                  localized: true,
                 },
                 {
                   name: 'url',
@@ -180,6 +187,7 @@ export const Footer: GlobalConfig = {
               label: 'Copyright Notice Text',
               defaultValue:
                 '© Copyright 2026 Loanbuddy Credit Sdn. Bhd. [Registration No. 200901039396 (882536-K)]. All Rights Reserved.',
+              localized: true,
             },
           ],
         },

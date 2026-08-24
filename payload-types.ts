@@ -90,14 +90,14 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('ms' | 'en') | ('ms' | 'en')[];
   globals: {
     footer: Footer;
   };
   globalsSelect: {
     footer: FooterSelect<false> | FooterSelect<true>;
   };
-  locale: null;
+  locale: 'ms' | 'en';
   widgets: {
     collections: CollectionsWidget;
   };

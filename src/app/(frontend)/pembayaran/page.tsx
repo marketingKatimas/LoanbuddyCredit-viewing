@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PembayaranPage() {
+  const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/content?slug=pembayaran", { cache: "no-store" })
+    fetch(`/api/content?slug=pembayaran&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -16,7 +18,7 @@ export default function PembayaranPage() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
 
   // Only question 0 ("Bagaimanakah cara saya meminta penyelesaian penuh/awal?") is open by default
   const [openFaqs, setOpenFaqs] = useState<{ [key: number]: boolean }>({
@@ -36,22 +38,22 @@ export default function PembayaranPage() {
 
   const defaultBranches = [
     {
-      name: "Cawangan Kuala Lumpur",
-      shortName: "Cawangan Kuala Lumpur",
+      name: t.pembayaran.branchKLFull,
+      shortName: t.pembayaran.branchKL,
       email: "kl@loanbuddycredit.com.my",
       phone: "+6018 785 6072",
       link: "https://wa.link/taaakr",
     },
     {
-      name: "Cawangan Kuching, Sarawak",
-      shortName: "Cawangan Kuching",
+      name: t.pembayaran.branchKuchingFull,
+      shortName: t.pembayaran.branchKuching,
       email: "ks@loanbuddycredit.com.my",
       phone: "+6010 932 9976",
       link: "https://wa.link/32cpg5",
     },
     {
-      name: "Cawangan Bintulu, Sarawak",
-      shortName: "Cawangan Bintulu",
+      name: t.pembayaran.branchBintuluFull,
+      shortName: t.pembayaran.branchBintulu,
       email: "bintulu@loanbuddycredit.com.my",
       phone: "+6010 909 8557",
       link: "https://wa.link/6v806i",
@@ -75,15 +77,17 @@ export default function PembayaranPage() {
         })
       : defaultBranches;
 
-  const pageHeading = pageData?.hero?.heading || "Kaedah Pembayaran";
-  const pageSubheading =
-    pageData?.hero?.subheading ||
-    "Loanbuddy Credit kini menerima bayaran balik melalui Direct Debit, pemindahan bank dalam talian atau JomPay ke akaun bank rasmi Loanbuddy Credit, di mana pihak Loanbuddy Credit akan memaklumkan penerimaan bayaran balik kepada anda melalui panggilan, SMS atau WhatsApp.";
-  const secondaryNote =
-    pageData?.hero?.secondaryCtaText ||
-    "Pihak Loanbuddy Credit tidak menerima sebarang pembayaran tunai di mana-mana cawangan. Pastikan anda melakukan bayaran balik ke SATU (1) akaun bank rasmi sahaja untuk mengelakkan daripada sebarang penipuan dan penyamaran.";
+  const pageHeading =
+    pageData?.hero?.heading || t.pembayaran.pageHeading;
 
-  const faqSectionTitle = pageData?.sections?.[1]?.sectionTitle || "Soalan Lazim";
+  const pageSubheading =
+    pageData?.hero?.subheading || t.pembayaran.pageSubheading;
+
+  const secondaryNote =
+    pageData?.hero?.secondaryCtaText || t.pembayaran.secondaryNote;
+
+  const faqSectionTitle =
+    pageData?.sections?.[1]?.sectionTitle || t.pembayaran.faqTitle;
 
   const getFaqTitle = (idx: number, fallback: string) => {
     return pageData?.sections?.[1]?.items?.[idx]?.itemTitle || fallback;
@@ -117,7 +121,7 @@ export default function PembayaranPage() {
           >
             <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "20px", height: "20px" }} />
             <div className="text-start" style={{ lineHeight: "1.2" }}>
-              <span style={{ fontSize: "10px", display: "block" }}>WhatsApp Kami</span>
+              <span style={{ fontSize: "10px", display: "block" }}>{isEnglish ? t.pembayaran.whatsappUs : "WhatsApp Kami"}</span>
               <span>{branch.phone}</span>
             </div>
           </a>
@@ -201,8 +205,8 @@ export default function PembayaranPage() {
               <div className="col-12 col-lg-10">
                 {/* Section Title */}
                 <h2
-                  className="fw-bold mb-4 animate-fade-in-up delay-100"
-                  style={{ color: "#0d4ed8", fontSize: "28px" }}
+                  className="mb-4 animate-fade-in-up delay-100"
+                  style={{ color: "#0d4ed8", fontSize: "28px", fontWeight: "800", lineHeight: "1.25" }}
                 >
                   {pageHeading}
                 </h2>
@@ -286,7 +290,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(0, "Bagaimanakah cara saya meminta penyelesaian penuh/awal?")}
+                      {getFaqTitle(0, isEnglish ? t.pembayaran.faq1Question : "Bagaimanakah cara saya meminta penyelesaian penuh/awal?")}
                     </h3>
                     <svg
                       width="28"
@@ -322,10 +326,14 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Anda boleh menjelaskan pinjaman sebelum tempoh matang pinjaman anda pada bila-bila masa tanpa dikenakan yuran penamatan kerana pinjaman Loanbuddy Credit tiada tempoh <em>lock-in</em>. Namun, anda dikehendaki untuk memaklumkan Loanbuddy Credit sekurang-kurangnya 30 hari sebelum tarikh pembayaran balik penuh/awal dan anda dikehendaki membuat pembayaran penuh bagi jumlah pokok tertunggak dan faedah yang dibilkan sahaja.
+                          {isEnglish
+                            ? t.pembayaran.faq1Answer1
+                            : "Anda boleh menjelaskan pinjaman sebelum tempoh matang pinjaman anda pada bila-bila masa tanpa dikenakan yuran penamatan kerana pinjaman Loanbuddy Credit tiada tempoh lock-in. Namun, anda dikehendaki untuk memaklumkan Loanbuddy Credit sekurang-kurangnya 30 hari sebelum tarikh pembayaran balik penuh/awal dan anda dikehendaki membuat pembayaran penuh bagi jumlah pokok tertunggak dan faedah yang dibilkan sahaja."}
                         </p>
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Anda juga boleh menghubungi Loanbuddy Credit atau menghantar e-mel sebelum membayar jumlah pinjaman anda untuk keterangan lebih lanjut.
+                          {isEnglish
+                            ? t.pembayaran.faq1Answer2
+                            : "Anda juga boleh menghubungi Loanbuddy Credit atau menghantar e-mel sebelum membayar jumlah pinjaman anda untuk keterangan lebih lanjut."}
                         </p>
                         <BranchCards />
                       </div>
@@ -347,7 +355,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(1, "Bagaimana untuk menyemak jumlah ansuran bulanan saya?")}
+                      {getFaqTitle(1, isEnglish ? t.pembayaran.faq2Question : "Bagaimana untuk menyemak jumlah ansuran bulanan saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -383,7 +391,9 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Anda boleh menyemak butiran pinjaman anda dengan menghubungi pihak Loanbuddy Credit melalui WhatsApp.
+                          {isEnglish
+                            ? t.pembayaran.faq2Answer
+                            : "Anda boleh menyemak butiran pinjaman anda dengan menghubungi pihak Loanbuddy Credit melalui WhatsApp."}
                         </p>
                         <BranchButtonsOnly />
                       </div>
@@ -405,7 +415,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(2, "Bagaimanakah saya tahu jika pembayaran balik saya telah diterima?")}
+                      {getFaqTitle(2, isEnglish ? t.pembayaran.faq3Question : "Bagaimanakah saya tahu jika pembayaran balik saya telah diterima?")}
                     </h3>
                     <svg
                       width="28"
@@ -441,7 +451,9 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Setelah pembayaran balik telah diproses, anda akan menerima panggilan, SMS atau WhatsApp pengesahan daripada Loanbuddy Credit.
+                          {isEnglish
+                            ? t.pembayaran.faq3Answer
+                            : "Setelah pembayaran balik telah diproses, anda akan menerima panggilan, SMS atau WhatsApp pengesahan daripada Loanbuddy Credit."}
                         </p>
                       </div>
                     </div>
@@ -462,7 +474,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(3, "Bilakah tarikh pembayaran balik pertama saya?")}
+                      {getFaqTitle(3, isEnglish ? t.pembayaran.faq4Question : "Bilakah tarikh pembayaran balik pertama saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -499,10 +511,14 @@ export default function PembayaranPage() {
                       <div className="pt-3">
                         <ol className="ps-3 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
                           <li className="mb-2">
-                            Jika kontrak ditandatangani sebelum atau pada 14 <em>haribulan</em>, tarikh pembayaran balik pertama anda ialah pada 1 haribulan seterusnya.
+                            {isEnglish
+                              ? t.pembayaran.faq4Step1
+                              : "Jika kontrak ditandatangani sebelum atau pada 14 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan seterusnya."}
                           </li>
                           <li>
-                            Jika kontrak ditandatangani pada atau selepas 15 <em>haribulan</em>, tarikh pembayaran balik pertama anda ialah pada 1 haribulan selepas bulan seterusnya.
+                            {isEnglish
+                              ? t.pembayaran.faq4Step2
+                              : "Jika kontrak ditandatangani pada atau selepas 15 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan selepas bulan seterusnya."}
                           </li>
                         </ol>
                       </div>
@@ -524,7 +540,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(4, "Bagaimanakah cara saya membuat pembayaran balik kepada Loanbuddy Credit?")}
+                      {getFaqTitle(4, isEnglish ? t.pembayaran.faq5Question : "Bagaimanakah cara saya membuat pembayaran balik kepada Loanbuddy Credit?")}
                     </h3>
                     <svg
                       width="28"
@@ -560,7 +576,9 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Pada masa ini, Loanbuddy Credit hanya menerima pembayaran balik melalui Direct Debit, pemindahan bank dalam talian dan JomPay. Loanbuddy Credit tidak menerima pembayaran balik secara tunai di mana-mana cawangan kami.
+                          {isEnglish
+                            ? t.pembayaran.faq5Answer
+                            : "Pada masa ini, Loanbuddy Credit hanya menerima pembayaran balik melalui Direct Debit, pemindahan bank dalam talian dan JomPay. Loanbuddy Credit tidak menerima pembayaran balik secara tunai di mana-mana cawangan kami."}
                         </p>
                       </div>
                     </div>
@@ -581,7 +599,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(5, "Bagaimanakah saya meminta bayaran pulangan?")}
+                      {getFaqTitle(5, isEnglish ? t.pembayaran.faq6Question : "Bagaimanakah saya meminta bayaran pulangan?")}
                     </h3>
                     <svg
                       width="28"
@@ -617,10 +635,14 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Loanbuddy Credit akan menghubungi anda melalui panggilan, SMS <em>atau</em> WhatsApp. Loanbuddy Credit akan membayar balik lebihan dana apabila pihak kami mengesahkan bahawa anda telah membuat penyelesaian penuh dengan lebihan dana.
+                          {isEnglish
+                            ? t.pembayaran.faq6Answer1
+                            : "Loanbuddy Credit akan menghubungi anda melalui panggilan, SMS atau WhatsApp. Loanbuddy Credit akan membayar balik lebihan dana apabila pihak kami mengesahkan bahawa anda telah membuat penyelesaian penuh dengan lebihan dana."}
                         </p>
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Jika anda membayar ansuran bulanan anda dengan lebihan dana dan ingin meminta bayaran balik sebelum penyelesaian penuh, sila hubungi pihak kami melalui panggilan, WhatsApp atau e-mel.
+                          {isEnglish
+                            ? t.pembayaran.faq6Answer2
+                            : "Jika anda membayar ansuran bulanan anda dengan lebihan dana dan ingin meminta bayaran balik sebelum penyelesaian penuh, sila hubungi pihak kami melalui panggilan, WhatsApp atau e-mel."}
                         </p>
                         <BranchCards />
                       </div>
@@ -642,7 +664,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(6, "Bagaimana jika saya gagal membayar hutang bulanan saya?")}
+                      {getFaqTitle(6, isEnglish ? t.pembayaran.faq7Question : "Bagaimana jika saya gagal membayar hutang bulanan saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -678,25 +700,33 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Wakil Loanbuddy Credit akan membuat panggilan kepada anda.
+                          {isEnglish ? t.pembayaran.faq7Call : "Wakil Loanbuddy Credit akan membuat panggilan kepada anda."}
                         </p>
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Anda dikehendaki membayar caj pembayaran lewat (8.0% setiap jumlah jumlah ansuran tertunggak<sup>*¹</sup>). Ia dikira setiap hari dan dicaj pada hari terakhir.
+                          {isEnglish
+                            ? t.pembayaran.faq7Charge
+                            : "Anda dikehendaki membayar caj pembayaran lewat (8.0% setiap jumlah jumlah ansuran tertunggak*¹). Ia dikira setiap hari dan dicaj pada hari terakhir."}
                         </p>
                         <div className="mt-3">
                           <div className="fw-bold mb-1" style={{ color: "#333", fontSize: "14px" }}>
-                            Kaedah Pengiraan
+                            {isEnglish ? t.pembayaran.faq7CalcTitle : "Kaedah Pengiraan"}
                           </div>
                           <div style={{ color: "#444", fontSize: "14px" }}>
-                            Caj Pembayaran Lewat = (Amaun Ansuran Tertunggak x 8.0%) / (365 hari x Bilangan Hari Lewat Matang)<sup>*²</sup>
+                            {isEnglish
+                              ? t.pembayaran.faq7CalcFormula
+                              : "Caj Pembayaran Lewat = (Amaun Ansuran Tertunggak x 8.0%) / (365 hari x Bilangan Hari Lewat Matang)*²"}
                           </div>
                         </div>
                         <div className="mt-3 text-secondary" style={{ fontSize: "13px", lineHeight: "1.5" }}>
                           <p className="mb-1" style={{ fontStyle: "italic" }}>
-                            <sup>*¹</sup> Jumlah ansuran tertunggak atau baki jumlah apabila terdapat pembayaran separa.
+                            {isEnglish
+                              ? t.pembayaran.faq7Note1
+                              : "*¹ Jumlah ansuran tertunggak atau baki jumlah apabila terdapat pembayaran separa."}
                           </p>
                           <p className="mb-0" style={{ fontStyle: "italic" }}>
-                            <sup>*²</sup> Loanbuddy Credit menyediakan tempoh tangguh selama 5 hari dari tarikh tamat tempoh, di mana caj pembayaran lewat tidak akan dikenakan. Namun, selepas tempoh tangguh, caj pembayaran lewat akan dikenakan termasuk 5 hari sebelumnya.
+                            {isEnglish
+                              ? t.pembayaran.faq7Note2
+                              : "*² Loanbuddy Credit menyediakan tempoh tangguh selama 5 hari dari tarikh tamat tempoh, di mana caj pembayaran lewat tidak akan dikenakan. Namun, selepas tempoh tangguh, caj pembayaran lewat akan dikenakan termasuk 5 hari sebelumnya."}
                           </p>
                         </div>
                       </div>
@@ -718,7 +748,7 @@ export default function PembayaranPage() {
                       className="fw-bold mb-0 pe-3"
                       style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                     >
-                      {getFaqTitle(7, "Bagaimana untuk menyemak tarikh akhir pembayaran balik saya?")}
+                      {getFaqTitle(7, isEnglish ? t.pembayaran.faq8Question : "Bagaimana untuk menyemak tarikh akhir pembayaran balik saya?")}
                     </h3>
                     <svg
                       width="28"
@@ -754,7 +784,9 @@ export default function PembayaranPage() {
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
                         <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                          Anda boleh menyemak butiran akaun anda dengan menghubungi Loanbuddy Credit melalui WhatsApp atau e-mel.
+                          {isEnglish
+                            ? t.pembayaran.faq8Answer
+                            : "Anda boleh menyemak butiran akaun anda dengan menghubungi Loanbuddy Credit melalui WhatsApp atau e-mel."}
                         </p>
                         <BranchCards />
                       </div>

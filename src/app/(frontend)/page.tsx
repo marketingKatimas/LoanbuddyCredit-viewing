@@ -3,10 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/LanguageContext";
 
 import { getMediaUrl } from "@/lib/media";
 
 export default function Home() {
+  const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -37,7 +39,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetch("/api/content?slug=home", { cache: "no-store" })
+    fetch(`/api/content?slug=home&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -45,7 +47,7 @@ export default function Home() {
         }
       })
       .catch(() => { });
-  }, []);
+  }, [language]);
 
   const servicesRef = useRef<HTMLElement>(null);
   const [isServicesVisible, setIsServicesVisible] = useState(false);
@@ -109,11 +111,9 @@ export default function Home() {
 
   const defaultBanners = [
     {
-      heading: pageData?.hero?.heading || "Selamat Datang ke Loanbuddy Credit",
-      subheading:
-        pageData?.hero?.subheading ||
-        "Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan. Dengan proses permohonan yang ringkas dan kelulusan pantas, anda boleh mendapatkan dana yang diperlukan tepat pada masanya untuk mengurus keperluan kewangan anda.",
-      primaryCtaText: pageData?.hero?.primaryCtaText || "Mohon Sekarang",
+      heading: pageData?.hero?.heading || t.home.heroHeading,
+      subheading: pageData?.hero?.subheading || t.home.heroSubheading,
+      primaryCtaText: pageData?.hero?.primaryCtaText || t.home.heroCta,
       primaryCtaLink: pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online",
       bannerImage: pageData?.hero?.heroImage || "/assets/images/banner-1.png",
     },
@@ -124,7 +124,14 @@ export default function Home() {
 
   const bannerList =
     pageData?.banners && pageData.banners.length > 0
-      ? pageData.banners
+      ? pageData.banners.map((b: any, idx: number) => ({
+          ...b,
+          heading: b.heading || (idx === 0 ? (pageData?.hero?.heading || t.home.heroHeading) : undefined),
+          subheading: b.subheading || (idx === 0 ? (pageData?.hero?.subheading || t.home.heroSubheading) : undefined),
+          primaryCtaText: b.primaryCtaText || (idx === 0 ? (pageData?.hero?.primaryCtaText || t.home.heroCta) : undefined),
+          primaryCtaLink: b.primaryCtaLink || (idx === 0 ? (pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online") : undefined),
+          bannerImage: b.bannerImage || (idx === 0 ? (pageData?.hero?.heroImage || "/assets/images/banner-1.png") : "/assets/images/banner-2.png"),
+        }))
       : defaultBanners;
 
   useEffect(() => {
@@ -209,7 +216,7 @@ export default function Home() {
                     style={{
                       width: `${100 / bannerList.length}%`,
                       backgroundImage: `url('${bgImage}')`,
-                      backgroundSize: hasText ? "cover" : "100% auto",
+                      backgroundSize: "cover",
                       backgroundPosition: hasText ? "center bottom" : "center center",
                       backgroundColor: hasText ? undefined : "#f4f6f8",
                       cursor: !hasText && banner.primaryCtaLink ? "pointer" : "default",
@@ -266,23 +273,30 @@ export default function Home() {
           const servicesSection = pageData?.sections?.[0];
           const defaultServices = [
             {
-              itemTitle: "Pinjaman Peribadi Online",
-              itemDescription: "Mohon pinjaman peribadi dengan mudah dan pantas melalui permohonan atas talian.",
+              itemTitle: t.home.service1Title,
+              itemDescription: t.home.service1Desc,
               image: "/assets/images/fimage2.png",
               itemLink: "pinjaman-peribadi-kl-sarawak",
             },
             {
-              itemTitle: "Pinjaman Tambah Nilai",
-              itemDescription: "Pinjaman peribadi tidak mencukupi? Pinjaman Tambah Nilai boleh selesaikan masalah anda.",
+              itemTitle: t.home.service2Title,
+              itemDescription: t.home.service2Desc,
               image: "/assets/images/fimage1.png",
               itemLink: "pinjaman-koperasi",
             },
           ];
-          const serviceItems = servicesSection?.items?.length ? servicesSection.items : defaultServices;
+          const serviceItems =
+            servicesSection?.items && servicesSection.items.length > 0
+              ? servicesSection.items.map((item: any, idx: number) => ({
+                  ...item,
+                  itemTitle: item.itemTitle || (idx === 0 ? t.home.service1Title : t.home.service2Title),
+                  itemDescription: item.itemDescription || (idx === 0 ? t.home.service1Desc : t.home.service2Desc),
+                }))
+              : defaultServices;
 
           return (
             <section className={`services ${isServicesVisible ? "animated-in" : ""}`} ref={servicesRef}>
-              <h2>{servicesSection?.sectionTitle || "Perkhidmatan Kami"}</h2>
+              <h2>{servicesSection?.sectionTitle || t.home.servicesTitle}</h2>
 
               <div className="services-grid">
                 {serviceItems.map((item: any, idx: number) => {
@@ -290,12 +304,15 @@ export default function Home() {
                   const fallbackLink = idx === 0 ? "pinjaman-peribadi-kl-sarawak" : "pinjaman-koperasi";
                   const itemHref = item.itemLink || item.link || fallbackLink;
                   const imageUrl = getMediaUrl(item.itemImage, fallbackImg);
+                  const title = item.itemTitle || (idx === 0 ? t.home.service1Title : t.home.service2Title);
+                  const description = item.itemDescription || (idx === 0 ? t.home.service1Desc : t.home.service2Desc);
+
                   return (
                     <div key={idx} className="service-card">
                       {/* Mobile background photo */}
                       <img
                         src={imageUrl}
-                        alt={item.itemTitle || "Service Background"}
+                        alt={title || "Service Background"}
                         className="service-card-bg-img d-md-none"
                       />
                       {/* Mobile gradient overlay */}
@@ -305,13 +322,13 @@ export default function Home() {
                         {/* Desktop standard image */}
                         <img
                           src={imageUrl}
-                          alt={item.itemTitle || "Service Image"}
+                          alt={title || "Service Image"}
                           className="service-image d-none d-md-block"
                         />
-                        <h3>{item.itemTitle}</h3>
-                        <p>{item.itemDescription}</p>
+                        <h3>{title}</h3>
+                        <p>{description}</p>
                         <a href={itemHref} className="service-link">
-                          <span>Ketahui Lebih Lanjut</span>
+                          <span>{t.home.learnMore}</span>
                           <i className="far fa-arrow-right ms-2"></i>
                         </a>
                       </div>
@@ -322,8 +339,8 @@ export default function Home() {
 
               <a href="mohon-pinjaman-online" className="btn border_red_reverse cta_semak cta_mohon">
                 <span>
-                  <small>Mohon Sekarang</small>
-                  <small>Mohon Sekarang</small>
+                  <small>{t.home.applyNow}</small>
+                  <small>{t.home.applyNow}</small>
                 </span>
               </a>
             </section>
@@ -335,22 +352,26 @@ export default function Home() {
           const whyChooseSection = pageData?.sections?.[1];
           const defaultCards = [
             {
-              itemTitle: "Kredibel",
-              itemDescription:
-                "Telus, profesional dan komited untuk perkhidmatan yang optimum - kami adalah pemberi pinjaman wang berlesen di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT).",
+              itemTitle: t.home.whyChoose1Title,
+              itemDescription: t.home.whyChoose1Desc,
             },
             {
-              itemTitle: "Permohonan Mudah",
-              itemDescription:
-                "Dokumen ringkas, proses mudah. Segalanya direka untuk memudahkan proses pinjaman tanpa tekanan.",
+              itemTitle: t.home.whyChoose2Title,
+              itemDescription: t.home.whyChoose2Desc,
             },
             {
-              itemTitle: "Kelulusan Pantas",
-              itemDescription:
-                "Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama selepas permohonan diluluskan.",
+              itemTitle: t.home.whyChoose3Title,
+              itemDescription: t.home.whyChoose3Desc,
             },
           ];
-          const cards = whyChooseSection?.items?.length ? whyChooseSection.items : defaultCards;
+          const cards =
+            whyChooseSection?.items && whyChooseSection.items.length > 0
+              ? whyChooseSection.items.map((card: any, idx: number) => ({
+                  ...card,
+                  itemTitle: card.itemTitle || defaultCards[idx]?.itemTitle || "",
+                  itemDescription: card.itemDescription || defaultCards[idx]?.itemDescription || "",
+                }))
+              : defaultCards;
 
           return (
             <section
@@ -362,7 +383,7 @@ export default function Home() {
                 <div className="row justify-content-center text-center mb-4">
                   <div className="col-12 col-lg-10">
                     <h2 className="font-ramai text-white mb-2" style={{ fontSize: "24px" }}>
-                      {whyChooseSection?.sectionTitle || "Kenapa Ramai Memilih Loanbuddy Credit?"}
+                      {whyChooseSection?.sectionTitle || t.home.whyChooseTitle}
                     </h2>
                   </div>
                 </div>
@@ -375,6 +396,9 @@ export default function Home() {
                         : idx === 1
                           ? "/assets/images/mohon-mudah.png"
                           : "/assets/images/lulus-pantas.png";
+                    const title = card.itemTitle || (idx === 0 ? t.home.whyChoose1Title : idx === 1 ? t.home.whyChoose2Title : t.home.whyChoose3Title);
+                    const description = card.itemDescription || (idx === 0 ? t.home.whyChoose1Desc : idx === 1 ? t.home.whyChoose2Desc : t.home.whyChoose3Desc);
+
                     return (
                       <div
                         key={idx}
@@ -387,22 +411,22 @@ export default function Home() {
                         >
                           <div
                             className="item_icon flex-shrink-0 mb-3 why-choose-mobile-icon"
-                            style={{ width: "100px", height: "100px", minWidth: "100px" }}
+                            style={{ width: "120px", height: "115px", minWidth: "120px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center" }}
                           >
                             <img
                               src={getMediaUrl(card.itemImage, fallbackImg)}
-                              alt={card.itemTitle || "Icon"}
+                              alt={title || "Icon"}
                               loading="lazy"
-                              style={{ maxHeight: "64px", width: "auto" }}
+                              style={{ maxHeight: "95px", maxWidth: "120px", width: "auto", height: "auto", objectFit: "contain" }}
                             />
                           </div>
                           <div className="why-choose-mobile-content">
                             <h4 className="item_title text-blue mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
-                              {card.itemTitle}
+                              {title}
                             </h4>
                             <div className="item_content">
                               <p className="mb-0 text-secondary" style={{ fontSize: "13.5px", lineHeight: 1.5 }}>
-                                {card.itemDescription}
+                                {description}
                               </p>
                             </div>
                           </div>
@@ -415,8 +439,8 @@ export default function Home() {
                 <div className="btn_wrap btn_warp_home pb-0 d-lg-none text-center mt-4">
                   <a className="btn border_new" href="tentang-loanbuddy-credit">
                     <span>
-                      <small>Ketahui Lebih Lanjut</small>
-                      <small>Ketahui Lebih Lanjut</small>
+                      <small>{isEnglish ? t.home.learnMore : "Ketahui Lebih Lanjut"}</small>
+                      <small>{isEnglish ? t.home.learnMore : "Ketahui Lebih Lanjut"}</small>
                     </span>
                   </a>
                 </div>
@@ -428,23 +452,47 @@ export default function Home() {
         {/* Testimonials Section */}
         {(() => {
           const testimonialSection = pageData?.sections?.[2];
-          const defaultTestimonials = [
-            {
-              itemTitle: "Encik Samsudin",
-              itemDescription:
-                "Staf sangat membantu dan soalan saya semua dijawab dengan penuh kesabaran dan boleh nampak staf tau apa yang dia nak sampaikan.",
-            },
-            {
-              itemTitle: "Fatimah binti Said",
-              itemDescription: "Sgt efisien dr segi kelulusan. Sentiasa bagi update.",
-            },
-            {
-              itemTitle: "Mr. Wong",
-              itemDescription:
-                "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging. answer many questions quite good..",
-            },
-          ];
-          const testimonials = testimonialSection?.items?.length ? testimonialSection.items : defaultTestimonials;
+          const defaultTestimonials = isEnglish
+            ? [
+                {
+                  itemTitle: "Mr. Samsudin",
+                  itemDescription:
+                    "Staff was very helpful and all my questions were answered patiently with great professionalism.",
+                },
+                {
+                  itemTitle: "Fatimah binti Said",
+                  itemDescription: "Very efficient in terms of approval. Kept me updated throughout.",
+                },
+                {
+                  itemTitle: "Mr. Wong",
+                  itemDescription:
+                    "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging.",
+                },
+              ]
+            : [
+                {
+                  itemTitle: "Encik Samsudin",
+                  itemDescription:
+                    "Staf sangat membantu dan soalan saya semua dijawab dengan penuh kesabaran dan boleh nampak staf tau apa yang dia nak sampaikan.",
+                },
+                {
+                  itemTitle: "Fatimah binti Said",
+                  itemDescription: "Sgt efisien dr segi kelulusan. Sentiasa bagi update.",
+                },
+                {
+                  itemTitle: "Mr. Wong",
+                  itemDescription:
+                    "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging. answer many questions quite good..",
+                },
+              ];
+          const testimonials =
+            testimonialSection?.items && testimonialSection.items.length > 0
+              ? testimonialSection.items.map((tItem: any, idx: number) => ({
+                  ...tItem,
+                  itemTitle: tItem.itemTitle || defaultTestimonials[idx]?.itemTitle || "",
+                  itemDescription: tItem.itemDescription || defaultTestimonials[idx]?.itemDescription || "",
+                }))
+              : defaultTestimonials;
 
           return (
             <section
@@ -468,12 +516,12 @@ export default function Home() {
               <div className="container position-relative">
                 <div className="text-center mb-5">
                   <h2 style={{ fontSize: "24px", color: "#333", fontWeight: 700, marginBottom: 0 }}>
-                    {testimonialSection?.sectionTitle || "Apa Kata Pelanggan Loanbuddy Credit?"}
+                    {isEnglish ? t.home.testimonialsTitle : (testimonialSection?.sectionTitle || t.home.testimonialsTitle)}
                   </h2>
                 </div>
 
                 <div className="row justify-content-center g-4">
-                  {testimonials.map((t: any, idx: number) => {
+                  {testimonials.map((tItem: any, idx: number) => {
                     const fallbackAvatar =
                       idx === 0
                         ? "/assets/images/testimonial/samsudin.png"
@@ -486,8 +534,8 @@ export default function Home() {
                           <div className="testimonial_content">
                             <div className="testimonial_header_wrap">
                               <img
-                                src={getMediaUrl(t.itemImage, fallbackAvatar)}
-                                alt={t.itemTitle || "Avatar"}
+                                src={getMediaUrl(tItem.itemImage, fallbackAvatar)}
+                                alt={tItem.itemTitle || "Avatar"}
                                 className="testimonial_avatar"
                               />
                               <div className="testimonial_meta">
@@ -498,10 +546,10 @@ export default function Home() {
                                     </svg>
                                   ))}
                                 </div>
-                                <h5 className="testimonial_name">{t.itemTitle}</h5>
+                                <h5 className="testimonial_name">{tItem.itemTitle}</h5>
                               </div>
                             </div>
-                            <p>{t.itemDescription}</p>
+                            <p>{tItem.itemDescription}</p>
                           </div>
                         </div>
                       </div>
@@ -525,17 +573,17 @@ export default function Home() {
             <div className="cta_home_new d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 text-center text-md-start">
               <div className="text-cta-mobile">
                 <h2 className="text-white mb-1" style={{ fontSize: "24px", fontWeight: 700, lineHeight: "1.3" }}>
-                  Perlukan Pinjaman Peribadi?
+                  {isEnglish ? t.home.ctaTitle : "Perlukan Pinjaman Peribadi?"}
                 </h2>
                 <p className="text-white mb-0" style={{ fontSize: "16px", fontWeight: 500, opacity: 0.95, lineHeight: "1.4" }}>
-                  Loanbuddy Credit Sedia Berkhidmat untuk Anda!
+                  {isEnglish ? t.home.ctaSubtitle : "Loanbuddy Credit Sedia Berkhidmat untuk Anda!"}
                 </p>
               </div>
               <div className="z-index-3 flex-shrink-0">
                 <a href="mohon-pinjaman-online" className="btn border_red_new cta_semak cta_mohon">
                   <span>
-                    <small>Mohon Sekarang</small>
-                    <small>Mohon Sekarang</small>
+                    <small>{isEnglish ? t.home.applyNow : "Mohon Sekarang"}</small>
+                    <small>{isEnglish ? t.home.applyNow : "Mohon Sekarang"}</small>
                   </span>
                 </a>
               </div>
@@ -549,21 +597,21 @@ export default function Home() {
           const defaultBlogs = [
             {
               itemTitle: "Penyatuan Hutang",
-              itemDescription: "Baca artikel",
+              itemDescription: isEnglish ? t.home.readArticle : "Baca artikel",
               itemLink: "penyatuan-hutang-kad-kredit-2026",
               fallbackImg: "/assets/images/blog/penyatuan-hutang-01.png",
               alt: "Tabiat Buruk Pengurusan Kewangan",
             },
             {
               itemTitle: "Jenis-Jenis Pinjaman di Malaysia",
-              itemDescription: "Baca artikel",
+              itemDescription: isEnglish ? t.home.readArticle : "Baca artikel",
               itemLink: "kesan-opr-pinjaman-peribadi",
               fallbackImg: "/assets/images/blog/pinjaman-my-01.png",
               alt: "Kesan OPR Pinjaman Peribadi",
             },
             {
               itemTitle: "Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit",
-              itemDescription: "Baca artikel",
+              itemDescription: isEnglish ? t.home.readArticle : "Baca artikel",
               itemLink: "pinjaman-peribadi-ccris-ptptn-2026",
               fallbackImg: "/assets/images/blog/beban-kewangan-01.png",
               alt: "CCRIS Sangkut PTPTN",
@@ -583,15 +631,15 @@ export default function Home() {
                   <div className="row align-items-center">
                     <div className="col col-lg-7">
                       <h2 className="heading_text mb-0" style={{ fontSize: "24px", color: "#333", fontWeight: 700 }}>
-                        {blogSection?.sectionTitle || "Sumber & Blog"}
+                        {isEnglish ? t.home.blogTitle : (blogSection?.sectionTitle || t.home.blogTitle)}
                       </h2>
                     </div>
                     <div className="col col-lg-5 d-none d-lg-flex justify-content-end">
                       <div className="btn_wrap p-0 z-index-3">
                         <a className="btn border_artikel" href="blog">
                           <span>
-                            <small>Artikel lain</small>
-                            <small>Artikel lain</small>
+                            <small>{isEnglish ? t.home.moreArticles : "Artikel Lain"}</small>
+                            <small>{isEnglish ? t.home.moreArticles : "Artikel Lain"}</small>
                           </span>
                         </a>
                       </div>
@@ -624,7 +672,7 @@ export default function Home() {
                             </h3>
                             <div style={{ marginTop: "15px" }}>
                               <a href={link} style={{ color: "red", fontWeight: "bold", textDecoration: "underline !important" }}>
-                                {blog.itemDescription || "Baca artikel"}
+                                {isEnglish ? t.home.readArticle : (blog.itemDescription || "Baca artikel")}
                               </a>
                             </div>
                           </div>
@@ -637,8 +685,8 @@ export default function Home() {
                 <div className="btn_wrap d-block d-lg-none pb-0 text-center">
                   <a className="btn border_new border_artikel" href="blog">
                     <span>
-                      <small>Artikel Lain</small>
-                      <small>Artikel Lain</small>
+                      <small>{isEnglish ? t.home.moreArticles : "Artikel Lain"}</small>
+                      <small>{isEnglish ? t.home.moreArticles : "Artikel Lain"}</small>
                     </span>
                   </a>
                 </div>
@@ -646,14 +694,15 @@ export default function Home() {
             </section>
           );
         })()}
-
         {/* FAQ Section */}
         <section className="faq_section section_space_faq">
           <div className="container">
             <div className="section_heading text-center mb-3">
               <div className="row justify-content-center">
                 <div className="col col-lg-8">
-                  <h2 className="heading_text heading_text_custom text-blue">Soalan Lazim</h2>
+                  <h2 className="heading_text heading_text_custom text-blue">
+                    {isEnglish ? t.home.faqTitle : "Soalan Lazim"}
+                  </h2>
                 </div>
               </div>
             </div>
@@ -668,16 +717,18 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(0)}
                     >
-                      Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?
+                      {isEnglish
+                        ? t.home.faq1Question
+                        : "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 0 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <div className="mb-0">
-                          Contoh Wakil: <br />
-                          Amaun Pinjaman: <strong>RM3,000</strong> <br />
-                          Tempoh Pinjaman: <strong>12 bulan</strong> <br />
-                          Kadar Faedah: <strong>18.0% setahun</strong> <br />
-                          Fi: <strong>Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15</strong> <br />
+                          {isEnglish ? t.home.faq1Example : "Contoh Wakil:"} <br />
+                          {isEnglish ? t.home.faq1Amount : "Amaun Pinjaman:"} <strong>RM3,000</strong> <br />
+                          {isEnglish ? t.home.faq1Tenure : "Tempoh Pinjaman:"} <strong>{isEnglish ? t.home.faq1TenureVal : "12 bulan"}</strong> <br />
+                          {isEnglish ? t.home.faq1Interest : "Kadar Faedah:"} <strong>{isEnglish ? t.home.faq1InterestVal : "18.0% setahun"}</strong> <br />
+                          {isEnglish ? t.home.faq1Fees : "Fi:"} <strong>{isEnglish ? t.home.faq1FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong> <br />
                           <br />
                           <img src="/assets/images/Jadual.png" alt="Jadual Pembayaran Balik" loading="lazy" className="w-100" />
                           <br />
@@ -694,16 +745,14 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(1)}
                     >
-                      Siapakah Loanbuddy Credit?
+                      {isEnglish ? t.home.faq2Question : "Siapakah Loanbuddy Credit?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 1 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <p className="mb-0">
-                          Loanbuddy Credit Sdn. Bhd. (<span className="no-link">200901039396</span> / 882536-K) ialah sebuah
-                          syarikat pinjaman wang berlesen di bawah Akta Pemberi Pinjam Wang 1951 dan dikawal selia oleh
-                          Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami komited menyediakan pinjaman peribadi
-                          yang selamat, telus dan mudah dengan proses kelulusan yang pantas untuk membantu anda memenuhi
-                          keperluan kewangan tanpa kerumitan.
+                          {isEnglish
+                            ? t.home.faq2Answer
+                            : "Loanbuddy Credit Sdn. Bhd. (200901039396 / 882536-K) ialah sebuah syarikat pinjaman wang berlesen di bawah Akta Pemberi Pinjam Wang 1951 dan dikawal selia oleh Kementerian Perumahan dan Kerajaan Tempatan (KPKT). Kami komited menyediakan pinjaman peribadi yang selamat, telus dan mudah dengan proses kelulusan yang pantas untuk membantu anda memenuhi keperluan kewangan tanpa kerumitan."}
                         </p>
                       </div>
                     </div>
@@ -716,12 +765,16 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(2)}
                     >
-                      Bagaimanakah cara untuk saya memohon pinjaman peribadi Loanbuddy Credit?
+                      {isEnglish
+                        ? t.home.faq3Question
+                        : "Bagaimanakah cara untuk saya memohon pinjaman peribadi Loanbuddy Credit?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 2 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <div className="mb-0">
-                          Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp.
+                          {isEnglish
+                            ? t.home.faq3Answer
+                            : "Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp."}
 
                           <div className="d-flex flex-wrap gap-3 mt-3 mb-2 justify-content-center">
                             {/* Kuala Lumpur Button */}
@@ -741,7 +794,7 @@ export default function Home() {
                             >
                               <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
                               <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
-                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>Cawangan Kuala Lumpur</span>
+                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>{isEnglish ? t.home.branchKL : "Cawangan Kuala Lumpur"}</span>
                                 <span className="text-white" style={{ color: "#ffffff" }}>+6018 785 6072</span>
                               </div>
                             </a>
@@ -763,7 +816,7 @@ export default function Home() {
                             >
                               <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
                               <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
-                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>Cawangan Kuching</span>
+                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>{isEnglish ? t.home.branchKuching : "Cawangan Kuching"}</span>
                                 <span className="text-white" style={{ color: "#ffffff" }}>+6010 932 9976</span>
                               </div>
                             </a>
@@ -785,7 +838,7 @@ export default function Home() {
                             >
                               <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
                               <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
-                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>Cawangan Bintulu</span>
+                                <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>{isEnglish ? t.home.branchBintulu : "Cawangan Bintulu"}</span>
                                 <span className="text-white" style={{ color: "#ffffff" }}>+6010 909 8557</span>
                               </div>
                             </a>
@@ -802,12 +855,12 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(4)}
                     >
-                      Berapakah kadar faedah?
+                      {isEnglish ? "What is the interest rate?" : "Berapakah kadar faedah?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 4 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <p className="mb-0">
-                          Kadar faedah tahunan adalah sehingga 18.0%.
+                          {isEnglish ? "Annual interest rate is up to 18.0%." : "Kadar faedah tahunan adalah sehingga 18.0%."}
                         </p>
                       </div>
                     </div>
@@ -820,12 +873,14 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(5)}
                     >
-                      Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?
+                      {isEnglish ? "Can I apply for a Personal Loan if I am self-employed or part-time?" : "Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 5 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <p className="mb-0">
-                          Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda.
+                          {isEnglish
+                            ? "No. You must be employed for at least 3 months with your current company."
+                            : "Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda."}
                         </p>
                       </div>
                     </div>
@@ -838,37 +893,26 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(3)}
                     >
-                      Apakah dokumen dan kelayakan yang diperlukan?
+                      {isEnglish ? "What are the required documents and eligibility criteria?" : "Apakah dokumen dan kelayakan yang diperlukan?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 3 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <div className="mb-0">
-                          <strong>Dokumen Diperlukan</strong>
+                          <strong>{isEnglish ? "Required Documents" : "Dokumen Diperlukan"}</strong>
                           <ul>
-                            <li>1. Salinan kad pengenalan (depan dan belakang)</li>
-                            <li>2. Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
-                            <li>3. Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
-                            <li>4. Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                            <li>{isEnglish ? "1. Copy of NRIC (front and back)" : "1. Salinan kad pengenalan (depan dan belakang)"}</li>
+                            <li>{isEnglish ? "2. Latest 3 months salary bank crediting statements (PDF format)" : "2. Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)"}</li>
+                            <li>{isEnglish ? "3. Latest 3 months payslips (PDF format) and/or" : "3. Slip gaji 3 bulan terkini (format PDF) dan/atau"}</li>
+                            <li>{isEnglish ? "4. Latest 1 month utility bill (water, electricity, etc.)" : "4. Bil utiliti 1 bulan terkini (air, elektrik, dll.)"}</li>
                           </ul>
-                          <strong>Kelayakan Pinjaman Peribadi Atas Talian</strong>
+                          <strong>{isEnglish ? "Online Personal Loan Eligibility" : "Kelayakan Pinjaman Peribadi Atas Talian"}</strong>
                           <ul>
-                            <li>1. Warganegara Malaysia</li>
-                            <li>2. Berumur antara 18 sehingga 60 tahun</li>
-                            <li>3. Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)</li>
-                            <li>4. Pendapatan bulanan kasar minimum RM1,700</li>
-                            <li>5. Tidak muflis dan mampu membayar balik pinjaman</li>
-                            <li>6. Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
-                          </ul>
-                          <strong>Kelayakan Pinjaman Tambah Nilai</strong>
-                          <ul>
-                            <li>1. Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman</li>
-                            <li>2. Rekod pembayaran yang baik dengan Loanbuddy Credit</li>
-                            <li>3. Individu berumur 18 hingga 60 tahun</li>
-                            <li>4. Pendapatan kasar bulanan minimum RM1,700</li>
-                            <li>5. Kakitangan swasta dan kerajaan sahaja</li>
-                            <li>6. Warganegara Malaysia</li>
-                            <li>7. Tidak muflis dan mampu membayar balik pinjaman</li>
-                            <li>8. Bukan individu berstatus Orang Terdedah Politik (PEP)</li>
+                            <li>{isEnglish ? "1. Malaysian citizen" : "1. Warganegara Malaysia"}</li>
+                            <li>{isEnglish ? "2. Aged between 18 and 60 years old" : "2. Berumur antara 18 sehingga 60 tahun"}</li>
+                            <li>{isEnglish ? "3. Permanent employment (Private/Government/GLC) with min. 3 months employment" : "3. Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)"}</li>
+                            <li>{isEnglish ? "4. Minimum gross monthly salary of RM1,700" : "4. Pendapatan bulanan kasar minimum RM1,700"}</li>
+                            <li>{isEnglish ? "5. Not bankrupt and capable of repaying the loan" : "5. Tidak muflis dan mampu membayar balik pinjaman"}</li>
+                            <li>{isEnglish ? "6. Not a Politically Exposed Person (PEP)" : "6. Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
                           </ul>
                         </div>
                       </div>
@@ -882,12 +926,14 @@ export default function Home() {
                       role="button"
                       onClick={() => toggleFaq(6)}
                     >
-                      Apakah tempoh pinjaman minimum dan maksimum?
+                      {isEnglish ? "What is the minimum and maximum loan tenure?" : "Apakah tempoh pinjaman minimum dan maksimum?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 6 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <p className="mb-0">
-                          Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun).
+                          {isEnglish
+                            ? "The minimum loan tenure is 12 months and the maximum is 60 months (5 years)."
+                            : "Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun)."}
                         </p>
                       </div>
                     </div>

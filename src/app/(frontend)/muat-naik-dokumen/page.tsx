@@ -238,7 +238,10 @@ export default function MuatNaikDokumenPage() {
         <section className="section-space-mohon-lg sec-relative bg-apply-1">
           <div className="container container-mohon">
             <div className="row row-mohon-1 col-12 z-index-10">
-              <div className="course-card-mohon h-max col-lg-7 animate-slide-in-left delay-300" style={{ borderRadius: "10px" }}>
+              <div
+                className="course-card-mohon h-max col-12 col-lg-7 animate-slide-in-left delay-300"
+                style={{ borderRadius: "10px", width: "100%", maxWidth: "854px", minHeight: "913px" }}
+              >
                 <form id="applyUploadForm" onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="inner-mohon">
                     <div className="form-mohon-content pos-relative col-lg-12">
@@ -406,8 +409,8 @@ export default function MuatNaikDokumenPage() {
                                   onChange={(e) => setAgree3(e.target.checked)}
                                   required
                                   style={{
-                                    backgroundColor: agree3 ? "#ff0000" : "white",
-                                    borderColor: agree3 ? "#ff0000" : "#c1c5c9",
+                                    backgroundColor: agree3 ? "#808080" : "white",
+                                    borderColor: agree3 ? "#808080" : "#c1c5c9",
                                   }}
                                 />
                               </div>
@@ -472,31 +475,36 @@ export default function MuatNaikDokumenPage() {
               </div>
 
               {/* Sidebar Section */}
-              <div className="course-card-mohon col-lg-4 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400" style={{ borderRadius: "10px" }}>
-                <div className="form-header text-center mb-4">
-                  <h3>Apa yang anda perlukan untuk memohon?</h3>
-                </div>
-                <div className="mohon-rules-top mb-3">
-                  <img src="/assets/images/dokumen-permohonan.png" alt="dokumen permohonan" className="mx-auto d-block" />
-                </div>
-                <div className="mohon-rules">
-                  <h5>1. Dokumen Diperlukan Untuk Permohonan</h5>
-                  <ul>
-                    <li>Salinan kad pengenalan (depan dan belakang)</li>
-                    <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
-                    <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
-                    <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
-                  </ul>
-                  <h5>2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:</h5>
-                  <div className="mohon-rules-bottom">
-                    <div className="d-flex">
-                      <img src="/assets/images/jompay-logo.png" alt="JomPay" />
-                    </div>
-                    <div className="d-flex">
-                      <img src="/assets/images/direct-debit-logo.png" alt="Direct Debit" />
-                    </div>
-                    <div className="d-flex">
-                      <img src="/assets/images/transfer-logo.png" alt="Bank Transfer" />
+              <div
+                className="course-card-mohon col-12 col-lg-5 d-flex flex-column justify-content-center sidebar-scaled-down animate-slide-in-right delay-400"
+                style={{ borderRadius: "10px", width: "100%", maxWidth: "564px", minHeight: "784px" }}
+              >
+                <div style={{ margin: "auto 0", width: "100%" }}>
+                  <div className="form-header text-center">
+                    <h3 style={{ fontSize: "25px", margin: 0 }}>Apa yang anda perlukan untuk memohon?</h3>
+                  </div>
+                  <div className="mohon-rules-top">
+                    <img src="/assets/images/dokumen-permohonan.png" alt="dokumen permohonan" className="mx-auto d-block" />
+                  </div>
+                  <div className="mohon-rules">
+                    <h5>1. Dokumen Diperlukan Untuk Permohonan</h5>
+                    <ul>
+                      <li>Salinan kad pengenalan (depan dan belakang)</li>
+                      <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
+                      <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
+                      <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                    </ul>
+                    <h5>2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:</h5>
+                    <div className="mohon-rules-bottom">
+                      <div className="d-flex">
+                        <img src="/assets/images/jompay-logo.png" alt="JomPay" />
+                      </div>
+                      <div className="d-flex">
+                        <img src="/assets/images/direct-debit-logo.png" alt="Direct Debit" />
+                      </div>
+                      <div className="d-flex">
+                        <img src="/assets/images/transfer-logo.png" alt="Bank Transfer" />
+                      </div>
                     </div>
                   </div>
                 </div>

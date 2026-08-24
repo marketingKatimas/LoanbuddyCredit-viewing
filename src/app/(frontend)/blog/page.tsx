@@ -4,46 +4,52 @@ import React, { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getMediaUrl } from "@/lib/media";
-
-const defaultArticles = [
-  {
-    title: "Penyatuan Hutang",
-    slug: "penyatuan-hutang-kad-kredit-2026",
-    image: "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif",
-    category: "kewangan",
-    tag: "Artikel Terbaru!",
-  },
-  {
-    title: "Jenis-Jenis Pinjaman di Malaysia",
-    slug: "kesan-opr-pinjaman-peribadi",
-    image: "/assets/images/blog/opr-2.75-2026-macam-mana-installment-pinjaman-peribadi-berubah.png",
-    category: "kewangan",
-    tag: "Artikel Terbaru!",
-  },
-  {
-    title: "Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit",
-    slug: "pinjaman-peribadi-ccris-ptptn-2026",
-    image: "/assets/images/blog/ccris-sangkut-ptptn-ini-cara-dapat-pinjaman-2026.avif",
-    category: "kewangan",
-    tag: "Artikel Terbaru!",
-  },
-  {
-    title: "Konvensional vs Islamik: Beza Pinjaman Peribadi Malaysia 2026",
-    slug: "beza-pinjaman-konvensional-islamik-2026",
-    image: "/assets/images/blog/konvensional-vs-islamik-beza-pinjaman-peribadi-2026.avif",
-    category: "umum",
-    tag: "Artikel Terbaru!",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BlogListingPage() {
+  const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
   const [posts, setPosts] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const defaultArticles = [
+    {
+      title: isEnglish ? t.blog.art1Title : "Penyatuan Hutang",
+      slug: "penyatuan-hutang-kad-kredit-2026",
+      image: "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif",
+      category: "kewangan",
+      tag: isEnglish ? t.blog.latestTag : "Artikel Terbaru!",
+    },
+    {
+      title: isEnglish ? t.blog.art2Title : "Jenis-Jenis Pinjaman di Malaysia",
+      slug: "kesan-opr-pinjaman-peribadi",
+      image: "/assets/images/blog/opr-2.75-2026-macam-mana-installment-pinjaman-peribadi-berubah.png",
+      category: "kewangan",
+      tag: isEnglish ? t.blog.latestTag : "Artikel Terbaru!",
+    },
+    {
+      title: isEnglish
+        ? t.blog.art3Title
+        : "Kurangkan Beban Kewangan Anda dengan Penyatuan Hutang di Loanbuddy Credit",
+      slug: "pinjaman-peribadi-ccris-ptptn-2026",
+      image: "/assets/images/blog/ccris-sangkut-ptptn-ini-cara-dapat-pinjaman-2026.avif",
+      category: "kewangan",
+      tag: isEnglish ? t.blog.latestTag : "Artikel Terbaru!",
+    },
+    {
+      title: isEnglish
+        ? t.blog.art4Title
+        : "Konvensional vs Islamik: Beza Pinjaman Peribadi Malaysia 2026",
+      slug: "beza-pinjaman-konvensional-islamik-2026",
+      image: "/assets/images/blog/konvensional-vs-islamik-beza-pinjaman-peribadi-2026.avif",
+      category: "umum",
+      tag: isEnglish ? t.blog.latestTag : "Artikel Terbaru!",
+    },
+  ];
+
   useEffect(() => {
     // Fetch Blog Page Header Settings
-    fetch("/api/content?slug=blog", { cache: "no-store" })
+    fetch(`/api/content?slug=blog&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -52,8 +58,8 @@ export default function BlogListingPage() {
       })
       .catch(() => {});
 
-    // Fetch All Published Blog Posts
-    fetch("/api/blog-posts", { cache: "no-store" })
+    // Fetch All Published Blog Posts with active locale
+    fetch(`/api/blog-posts?locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && Array.isArray(data.docs) && data.docs.length > 0) {
@@ -61,7 +67,7 @@ export default function BlogListingPage() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
 
   const defaultImageMap: Record<string, string> = {
     "penyatuan-hutang-kad-kredit-2026": "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif",
@@ -83,7 +89,7 @@ export default function BlogListingPage() {
             slug: `/blog/${postSlug}`,
             image: getMediaUrl(item.featuredImage, fallbackImg),
             category: item.category || "kewangan",
-            tag: item.tag || "Artikel Terbaru!",
+            tag: item.tag || (isEnglish ? t.blog.latestTag : "Artikel Terbaru!"),
           };
         })
       : defaultArticles.map((art) => ({
@@ -91,7 +97,8 @@ export default function BlogListingPage() {
           slug: `/blog/${art.slug}`,
         }));
 
-  const pageHeading = pageData?.hero?.heading || "Blog";
+  const pageHeading =
+    pageData?.hero?.heading || t.blog.pageHeading;
 
   const filteredArticles = articlesList.filter((art: any) =>
     art.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -135,38 +142,38 @@ export default function BlogListingPage() {
           <div className="container">
             <div className="row align-items-center mb-4">
               <div className="col-lg-6 col-mobile mb-3 mb-lg-0">
-                <h1 className="blog-h1-text">{pageHeading}</h1>
+                <h1 className="blog-h1-text text-blue">{pageHeading}</h1>
               </div>
               <div className="col-lg-6 col-mobile">
                 <div className="widget-search-blog">
                   <i className="fas fa-search search-icon" aria-hidden="true"></i>
                   <input
                     id="blogSearch"
-                    placeholder="Cari artikel blog..."
+                    placeholder={isEnglish ? t.blog.searchPlaceholder : "Cari artikel blog..."}
                     className="search-blog-field"
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    aria-label="Cari artikel blog"
+                    aria-label={isEnglish ? t.blog.searchPlaceholder : "Cari artikel blog"}
                   />
                   {searchTerm && (
                     <button
                       className="search-clear-btn"
                       type="button"
                       onClick={() => setSearchTerm("")}
-                      title="Padam carian"
-                      aria-label="Padam carian"
+                      title={isEnglish ? t.blog.searchClear : "Padam carian"}
+                      aria-label={isEnglish ? t.blog.searchClear : "Padam carian"}
                     >
                       <i className="fas fa-times"></i>
                     </button>
                   )}
-                  <button className="search-blog-button" type="button" aria-label="Cari">
-                    <span>Cari</span>
+                  <button className="search-blog-button" type="button" aria-label={isEnglish ? t.blog.searchButton : "Cari"}>
+                    <span>{isEnglish ? t.blog.searchButton : "Cari"}</span>
                   </button>
                 </div>
                 {searchTerm && (
                   <div className="blog-search-count">
-                    Menunjukkan <strong>{filteredArticles.length}</strong> daripada {articlesList.length} artikel
+                    {isEnglish ? t.blog.showingPrefix : "Menunjukkan"} <strong>{filteredArticles.length}</strong> {isEnglish ? t.blog.showingOf : "daripada"} {articlesList.length} {isEnglish ? t.blog.showingSuffix : "artikel"}
                   </div>
                 )}
               </div>
@@ -198,7 +205,7 @@ export default function BlogListingPage() {
                             </div>
                             <div className="item_content p-0 mt-3 mt-auto">
                               <a href={article.slug} style={{ color: "red", fontWeight: "bold", textDecoration: "none" }}>
-                                Baca Artikel
+                                {isEnglish ? t.blog.readArticle : "Baca Artikel"}
                               </a>
                             </div>
                           </div>
@@ -208,14 +215,17 @@ export default function BlogListingPage() {
                   ) : (
                     <div className="blog-empty-state">
                       <i className="fas fa-search"></i>
-                      <h4>Tiada artikel dijumpai</h4>
-                      <p>Tiada artikel yang sepadan dengan carian <strong>&ldquo;{searchTerm}&rdquo;</strong>.</p>
+                      <h4>{isEnglish ? t.blog.emptyTitle : "Tiada artikel dijumpai"}</h4>
+                      <p>
+                        {isEnglish ? t.blog.emptyDesc : "Tiada artikel yang sepadan dengan carian"}{" "}
+                        <strong>&ldquo;{searchTerm}&rdquo;</strong>.
+                      </p>
                       <button
                         type="button"
                         className="btn-reset"
                         onClick={() => setSearchTerm("")}
                       >
-                        Lihat Semua Artikel
+                        {isEnglish ? t.blog.viewAll : "Lihat Semua Artikel"}
                       </button>
                     </div>
                   )}

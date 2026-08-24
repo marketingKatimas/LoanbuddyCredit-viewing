@@ -263,6 +263,213 @@ export const defaultBlogPosts = [
   },
 ]
 
+export const defaultBlogPostsMs = defaultBlogPosts
+
+export const defaultBlogPostsEn = [
+  {
+    title: 'Debt Consolidation & Credit Card Management 2026',
+    slug: 'penyatuan-hutang-kad-kredit-2026',
+    category: 'Debt Consolidation & Finance',
+    tag: 'Latest Article!',
+    author: 'Loanbuddy Credit Financial Team',
+    publishedDate: '2026',
+    summary:
+      'Feeling overwhelmed by monthly credit card bills? Discover smart debt consolidation strategies to reduce high interest rates.',
+    content: {
+      root: {
+        type: 'root',
+        version: 1,
+        children: [
+          createLexicalParagraph(
+            'Do you feel overwhelmed every time you receive your monthly credit card statement? Paying only the minimum amount each month prolongs debt duration and piles on high interest rates (15% to 18% per annum).'
+          ),
+          createLexicalHeading('h3', 'What is Debt Consolidation?'),
+          createLexicalParagraph(
+            'Debt consolidation refers to combining multiple credit card balances or small loans into a single personal loan with a lower interest rate and a fixed repayment schedule.'
+          ),
+          createLexicalHeading('h3', 'Key Advantages of Debt Consolidation'),
+          createLexicalList([
+            {
+              boldText: 'Reduced Interest Rate: ',
+              normalText: 'Replace high credit card interest with lower personal loan rates.',
+            },
+            {
+              boldText: 'Simplified Management: ',
+              normalText: 'Only 1 payment due date each month instead of juggling multiple accounts.',
+            },
+            {
+              boldText: 'Improved Credit Score: ',
+              normalText: 'Helps clear credit card arrears and gradually improves your CCRIS record.',
+            },
+          ]),
+        ],
+      },
+    },
+    ctaBox: {
+      heading: 'Looking to Settle Your Credit Card Debt?',
+      description:
+        'Get professional debt consolidation advisory from Loanbuddy Credit today.',
+      buttonText: 'Apply for Debt Consolidation Now',
+      buttonLink: '/mohon-pinjaman-online',
+    },
+    seo: {
+      metaTitle: 'Credit Card Debt Consolidation 2026 - Loanbuddy Credit',
+      metaDescription:
+        'Complete guide to credit card debt consolidation and interest savings strategies with Loanbuddy Credit.',
+    },
+  },
+  {
+    title: 'OPR 2.75% in 2026: How Do Personal Loan Installments Change?',
+    slug: 'kesan-opr-pinjaman-peribadi',
+    category: 'Personal Loan & OPR',
+    tag: 'Latest Article!',
+    author: 'Loanbuddy Credit Financial Team',
+    publishedDate: '2026',
+    summary:
+      'Understand how the Overnight Policy Rate (OPR) affects fixed vs floating rate personal loans in Malaysia.',
+    content: {
+      root: {
+        type: 'root',
+        version: 1,
+        children: [
+          createLexicalParagraph(
+            'The Overnight Policy Rate (OPR) set by Bank Negara Malaysia (BNM) is frequently in the news. But do you know how OPR changes affect your personal loan monthly installments?'
+          ),
+          createLexicalHeading('h3', 'Fixed Rate vs Floating Rate Loans'),
+          createLexicalParagraph(
+            'For fixed-rate personal loans like those at Loanbuddy Credit, OPR fluctuations will not alter the monthly installment amount agreed upon in your contract!'
+          ),
+          createLexicalHeading('h3', 'Advantages of Fixed Interest Rates'),
+          createLexicalList([
+            {
+              boldText: 'Financial Certainty: ',
+              normalText: 'Your monthly payments remain constant from the first month to the last.',
+            },
+            {
+              boldText: 'Free from OPR Surprises: ',
+              normalText: 'BNM OPR rate hikes do not disrupt your planned monthly budget.',
+            },
+          ]),
+        ],
+      },
+    },
+    ctaBox: {
+      heading: 'Need a Fixed Rate Personal Loan?',
+      description:
+        'Check your personal loan eligibility at Loanbuddy Credit today quickly and free of charge.',
+      buttonText: 'Check Loan Eligibility',
+      buttonLink: '/mohon-pinjaman-online',
+    },
+    seo: {
+      metaTitle: 'Impact of OPR on Personal Loans 2026 - Loanbuddy Credit',
+      metaDescription:
+        'Learn how OPR impacts your personal loan and the differences between fixed and floating rates.',
+    },
+  },
+  {
+    title: 'CCRIS Stalled with PTPTN? How to Qualify for a Loan in 2026',
+    slug: 'pinjaman-peribadi-ccris-ptptn-2026',
+    category: 'Credit Score & CCRIS',
+    tag: 'Latest Article!',
+    author: 'Loanbuddy Credit Financial Team',
+    publishedDate: '2026',
+    summary:
+      'Having credit issues or PTPTN arrears? Here is how you can still qualify for legal personal financing.',
+    content: {
+      root: {
+        type: 'root',
+        version: 1,
+        children: [
+          createLexicalParagraph(
+            'Many loan applicants in Malaysia find their personal loan applications rejected by commercial banks due to outstanding PTPTN payments recorded on their CCRIS report.'
+          ),
+          createLexicalHeading('h3', 'Does PTPTN Record Affect Personal Loans?'),
+          createLexicalParagraph(
+            'Yes, commercial banks strictly check credit arrears ratios in CCRIS reports. However, licensed moneylenders under KPKT like Loanbuddy Credit have more flexible criteria evaluated on your current income stability.'
+          ),
+          createLexicalHeading('h3', 'Steps to Secure Loan Approval'),
+          createLexicalList(
+            [
+              {
+                boldText: 'Verify Current Eligibility: ',
+                normalText: 'Ensure you have latest 3 months payslips and salary bank crediting statements.',
+              },
+              {
+                boldText: 'Restructure Arrears: ',
+                normalText: 'Reach out to PTPTN to arrange a manageable repayment schedule.',
+              },
+              {
+                boldText: 'Apply with Licensed KPKT Agency: ',
+                normalText: 'Secure a personal loan that approves applicants with flexibility.',
+              },
+            ],
+            'number'
+          ),
+        ],
+      },
+    },
+    ctaBox: {
+      heading: 'Ever Been Rejected By Banks?',
+      description:
+        'Loanbuddy Credit is here to facilitate your personal loan application without hassle.',
+      buttonText: 'Apply for Loan Now',
+      buttonLink: '/mohon-pinjaman-online',
+    },
+    seo: {
+      metaTitle: 'CCRIS & PTPTN Personal Loan 2026 - Loanbuddy Credit',
+      metaDescription:
+        'How to apply for a personal loan even with CCRIS or PTPTN records at Loanbuddy Credit.',
+    },
+  },
+  {
+    title: 'Conventional vs Islamic: Personal Loan Comparison 2026',
+    slug: 'beza-pinjaman-konvensional-islamik-2026',
+    category: 'Islamic & Conventional Financing',
+    tag: 'Latest Article!',
+    author: 'Loanbuddy Credit Financial Team',
+    publishedDate: '2026',
+    summary:
+      'Explore the key differences between conventional interest loans and Shariah-compliant financing structures.',
+    content: {
+      root: {
+        type: 'root',
+        version: 1,
+        children: [
+          createLexicalParagraph(
+            'Before applying for personal financing in Malaysia, it is essential to understand the primary conceptual differences between Conventional Loans and Islamic Financing.'
+          ),
+          createLexicalHeading('h3', '1. Contractual Concept'),
+          createLexicalParagraph(
+            'Conventional: Based on a debtor-creditor relationship, where the borrower repays the principal together with agreed interest.'
+          ),
+          createLexicalParagraph(
+            'Islamic: Based on Shariah contracts such as Murabahah or Tawarruq, where financing is facilitated via trade commodities with an agreed profit margin.'
+          ),
+          createLexicalHeading('h3', '2. Late Payment Charges'),
+          createLexicalParagraph(
+            'Conventional: Applies compounding interest on overdue amounts.'
+          ),
+          createLexicalParagraph(
+            'Islamic: Imposes Ta’widh (compensation fee) at regulated rates, with portions allocated to charitable causes.'
+          ),
+        ],
+      },
+    },
+    ctaBox: {
+      heading: 'Need Financing Consultation?',
+      description:
+        'Contact Loanbuddy Credit loan specialists for a free consultation today.',
+      buttonText: 'Apply for Loan Now',
+      buttonLink: '/mohon-pinjaman-online',
+    },
+    seo: {
+      metaTitle: 'Conventional vs Islamic Personal Loans 2026 - Loanbuddy Credit',
+      metaDescription:
+        'Detailed comparison between conventional and Islamic personal financing in Malaysia.',
+    },
+  },
+]
+
 export async function seedBlogPosts(payload: Payload) {
   try {
     const existingPosts = await payload.find({
@@ -270,15 +477,52 @@ export async function seedBlogPosts(payload: Payload) {
       limit: 100,
     })
 
-    const existingSlugs = new Set(existingPosts.docs.map((p: any) => p.slug))
+    const existingPostsMap = new Map(existingPosts.docs.map((p: any) => [p.slug, p]))
 
-    for (const post of defaultBlogPosts) {
-      if (!existingSlugs.has(post.slug)) {
-        await payload.create({
+    for (let i = 0; i < defaultBlogPostsMs.length; i++) {
+      const postMs = defaultBlogPostsMs[i]
+      const postEn = defaultBlogPostsEn[i]
+      const existing = existingPostsMap.get(postMs.slug)
+
+      if (!existing) {
+        // Create entry in MS
+        const created = await payload.create({
           collection: 'blog-posts',
-          data: post as any,
+          data: postMs as any,
+          locale: 'ms',
         })
-        console.log(`[Seed] Created blog post: ${post.slug}`)
+
+        // Update with EN content
+        await payload.update({
+          collection: 'blog-posts',
+          id: created.id,
+          data: postEn as any,
+          locale: 'en',
+        })
+        console.log(`[Seed] Created dual-language blog post: ${postMs.slug}`)
+      } else {
+        // Update MS
+        await payload.update({
+          collection: 'blog-posts',
+          id: existing.id,
+          data: {
+            ...postMs,
+            featuredImage: existing.featuredImage || undefined,
+          } as any,
+          locale: 'ms',
+        })
+
+        // Update EN
+        await payload.update({
+          collection: 'blog-posts',
+          id: existing.id,
+          data: {
+            ...postEn,
+            featuredImage: existing.featuredImage || undefined,
+          } as any,
+          locale: 'en',
+        })
+        console.log(`[Seed] Updated dual-language blog post: ${postMs.slug}`)
       }
     }
   } catch (error) {

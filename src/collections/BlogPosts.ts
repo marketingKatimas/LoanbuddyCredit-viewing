@@ -16,6 +16,7 @@ export const BlogPosts: CollectionConfig = {
       type: 'text',
       required: true,
       label: 'Tajuk Artikel / Post Title',
+      localized: true,
       admin: {
         placeholder: 'e.g. Tips Pengurusan Kewangan & Penyatuan Hutang 2026',
         description: 'Main headline for the blog article.',
@@ -39,6 +40,7 @@ export const BlogPosts: CollectionConfig = {
           name: 'category',
           type: 'text',
           label: 'Kategori / Category',
+          localized: true,
           admin: {
             width: '50%',
             placeholder: 'e.g. Kewangan / Pinjaman / Tips',
@@ -49,6 +51,7 @@ export const BlogPosts: CollectionConfig = {
           type: 'text',
           label: 'Tag / Badge',
           defaultValue: 'Artikel Terbaru!',
+          localized: true,
           admin: {
             width: '50%',
             placeholder: 'e.g. Artikel Terbaru!',
@@ -93,6 +96,7 @@ export const BlogPosts: CollectionConfig = {
       name: 'summary',
       type: 'textarea',
       label: 'Ringkasan Artikel / Summary',
+      localized: true,
       admin: {
         description: 'Brief overview displayed in search cards and meta descriptions.',
       },
@@ -101,6 +105,7 @@ export const BlogPosts: CollectionConfig = {
       name: 'content',
       type: 'richText',
       label: 'Kandungan Artikel / Article Content',
+      localized: true,
       admin: {
         description: 'Write and format the main body of the article with headings, lists, bold text, and links.',
       },
@@ -118,12 +123,14 @@ export const BlogPosts: CollectionConfig = {
           type: 'text',
           label: 'CTA Heading',
           defaultValue: 'Perlukan Pinjaman Peribadi?',
+          localized: true,
         },
         {
           name: 'description',
           type: 'textarea',
           label: 'CTA Description',
           defaultValue: 'Dapatkan khidmat nasihat pinjaman peribadi daripada Loanbuddy Credit hari ini secara percuma dan pantas.',
+          localized: true,
         },
         {
           type: 'row',
@@ -133,6 +140,7 @@ export const BlogPosts: CollectionConfig = {
               type: 'text',
               label: 'CTA Button Text',
               defaultValue: 'Mohon Sekarang',
+              localized: true,
               admin: {
                 width: '50%',
               },
@@ -159,11 +167,13 @@ export const BlogPosts: CollectionConfig = {
           name: 'metaTitle',
           type: 'text',
           label: 'Meta Title',
+          localized: true,
         },
         {
           name: 'metaDescription',
           type: 'textarea',
           label: 'Meta Description',
+          localized: true,
         },
       ],
     },

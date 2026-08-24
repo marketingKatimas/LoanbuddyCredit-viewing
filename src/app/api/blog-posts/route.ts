@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic'
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const slug = searchParams.get('slug')
+  const locale = (searchParams.get('locale') || 'ms') as 'ms' | 'en'
 
   try {
     const payload = await getPayload({ config: configPromise })
@@ -16,6 +17,8 @@ export async function GET(request: Request) {
     if (slug) {
       const result = await payload.find({
         collection: 'blog-posts',
+        locale: locale as any,
+        fallbackLocale: false as any,
         where: {
           slug: {
             equals: slug,
@@ -60,6 +63,8 @@ export async function GET(request: Request) {
     // Otherwise, return all published blog posts
     const allPosts = await payload.find({
       collection: 'blog-posts',
+      locale: locale as any,
+      fallbackLocale: false as any,
       sort: '-createdAt',
       limit: 100,
       depth: 2,

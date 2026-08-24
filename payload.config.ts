@@ -41,6 +41,20 @@ export default buildConfig({
   globals: [
     Footer,
   ],
+  localization: {
+    locales: [
+      {
+        label: 'Bahasa Malaysia',
+        code: 'ms',
+      },
+      {
+        label: 'English',
+        code: 'en',
+      },
+    ],
+    defaultLocale: 'ms',
+    fallback: true,
+  },
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

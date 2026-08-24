@@ -3,9 +3,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,22 +86,23 @@ export default function Header() {
 
   return (
     <header ref={headerRef} className={`site_header site_header_1 site_header_2 ${isScrolled ? "sticky scrolled" : ""}`}>
-      <div className="container">
-        <div className="row align-items-center justify-content-between flex-nowrap">
-          {/* Logo (Left Column on Desktop & Mobile) */}
-          <div className="col-auto d-flex align-items-center">
-            <Link className="site_link d-flex align-items-center" href="/" onClick={handleLogoClick}>
-              <img
-                src="/assets/images/logo/Keyline%20Horizontal%20.png"
-                alt="loanbuddy credit logo"
-                className="site-header-logo"
-              />
-            </Link>
-          </div>
+      <div className="container position-relative">
+        <div className="row align-items-center justify-content-between flex-nowrap position-relative">
+          {/* Main Group (Logo + Navigation Menu + CTA Button) */}
+          <div className="col-12 col-lg d-flex align-items-center justify-content-between justify-content-lg-center header_main_cluster">
+            {/* Logo */}
+            <div className="site_logo_wrap d-flex align-items-center">
+              <Link className="site_link d-flex align-items-center" href="/" onClick={handleLogoClick}>
+                <img
+                  src="/assets/images/logo/Keyline%20Horizontal%20.png"
+                  alt="loanbuddy credit logo"
+                  className="site-header-logo"
+                />
+              </Link>
+            </div>
 
-          {/* Navigation Bar / Mobile Navigation Drawer (Center Column) */}
-          <div className="col col-12 col-lg order-3 order-lg-2">
-            <nav className="main_menu navbar navbar-expand-lg w-100 justify-content-center">
+            {/* Navigation Bar / Mobile Navigation Drawer */}
+            <nav className="main_menu navbar navbar-expand-lg">
               <div
                 className={`main_menu_inner collapse navbar-collapse justify-content-center ${
                   isMobileMenuOpen ? "show" : ""
@@ -121,7 +124,7 @@ export default function Header() {
                       id="service_submenu"
                       onClick={(e) => toggleDropdown("service", e)}
                     >
-                      Perkhidmatan
+                      {t.nav.services}
                     </a>
                     <ul className={`dropdown-menu ${activeDropdown === "service" ? "show" : ""}`}>
                       <li>
@@ -130,7 +133,7 @@ export default function Header() {
                           href="/pinjaman-peribadi-kl-sarawak"
                           onClick={closeAllMenus}
                         >
-                          Pinjaman Peribadi
+                          {t.nav.personalLoan}
                         </Link>
                       </li>
                     </ul>
@@ -142,7 +145,7 @@ export default function Header() {
                       href="/pembayaran"
                       onClick={closeAllMenus}
                     >
-                      Pembayaran
+                      {t.nav.payment}
                     </Link>
                   </li>
 
@@ -159,7 +162,7 @@ export default function Header() {
                       id="pages_submenu"
                       onClick={(e) => toggleDropdown("pages", e)}
                     >
-                      Tentang Kami
+                      {t.nav.aboutUs}
                     </a>
                     <ul className={`dropdown-menu ${activeDropdown === "pages" ? "show" : ""}`}>
                       <li>
@@ -168,7 +171,7 @@ export default function Header() {
                           href="/tentang-loanbuddy-credit"
                           onClick={closeAllMenus}
                         >
-                          Kenali Kami
+                          {t.nav.knowUs}
                         </Link>
                       </li>
                       <li>
@@ -177,7 +180,7 @@ export default function Header() {
                           href="/soalan-lazim-faq"
                           onClick={closeAllMenus}
                         >
-                          F.A.Q.
+                          {t.nav.faq}
                         </Link>
                       </li>
                     </ul>
@@ -189,7 +192,7 @@ export default function Header() {
                       href="/blog"
                       onClick={closeAllMenus}
                     >
-                      Blog
+                      {t.nav.blog}
                     </Link>
                   </li>
 
@@ -199,41 +202,56 @@ export default function Header() {
                       href="/hubungi-kami"
                       onClick={closeAllMenus}
                     >
-                      Hubungi Kami
+                      {t.nav.contactUs}
                     </Link>
                   </li>
                 </ul>
               </div>
             </nav>
+
+            {/* CTA Button (Desktop - close to nav tabs) */}
+            <Link href="/mohon-pinjaman-online" className="btn_semak_layak d-none d-lg-inline-flex">
+              <span>
+                <small>{t.header.applyNow}</small>
+                <small>{t.header.applyNow}</small>
+              </span>
+            </Link>
           </div>
 
-          {/* Right Area: CTA Button, Language Switcher, Mobile Hamburger Button */}
-          <div className="col-auto order-2 order-lg-3 text-end d-flex align-items-center justify-content-end header_right_area">
-            <a href="mohon-pinjaman-online" className="btn_semak_layak d-none d-lg-inline-flex">
-              <span>
-                <small>Mohon Sekarang</small>
-                <small>Mohon Sekarang</small>
-              </span>
-            </a>
-            {/* Language switcher temporarily commented out until translations are ready
-            <div className="header_lang_switcher">
-              <a href="#" className="lang_item active">
-                BM
-              </a>
-              <span className="lang_divider">|</span>
-              <a href="#" className="lang_item">
-                EN
-              </a>
-            </div>
-            */}
+          {/* Far Right Area: Mobile Hamburger Button & Language Switcher (Pinned to far right) */}
+          <div className="col-auto d-flex align-items-center justify-content-end header_right_area">
+            {/* Mobile Hamburger Button */}
             <button
-              className="mobile_menu_btn d-lg-none ms-2"
+              className="mobile_menu_btn d-lg-none me-2"
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation"
             >
               <i className={isMobileMenuOpen ? "far fa-times" : "far fa-bars"}></i>
             </button>
+
+            {/* Language switcher */}
+            <div className="header_lang_switcher">
+              <button
+                type="button"
+                className={`lang_item ${language === "ms" ? "active" : ""}`}
+                onClick={() => setLanguage("ms")}
+                aria-label="Tukar bahasa ke Bahasa Malaysia"
+                style={{ background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}
+              >
+                BM
+              </button>
+              <span className="lang_divider">|</span>
+              <button
+                type="button"
+                className={`lang_item ${language === "en" ? "active" : ""}`}
+                onClick={() => setLanguage("en")}
+                aria-label="Switch language to English"
+                style={{ background: "none", border: "none", cursor: "pointer", padding: "0 4px" }}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -6,12 +6,14 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { RichText } from "@/components/RichText";
 import { getMediaUrl } from "@/lib/media";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function KesanOPRPinjamanPeribadiPage() {
+  const { t, isEnglish, language } = useLanguage();
   const [post, setPost] = useState<any>(null);
 
   useEffect(() => {
-    fetch("/api/blog-posts?slug=kesan-opr-pinjaman-peribadi", { cache: "no-store" })
+    fetch(`/api/blog-posts?slug=kesan-opr-pinjaman-peribadi&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data && data.doc) {
@@ -19,11 +21,13 @@ export default function KesanOPRPinjamanPeribadiPage() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
 
   const postImage = post?.featuredImage
     ? getMediaUrl(post.featuredImage)
     : "/assets/images/blog/opr-2.75-2026-macam-mana-installment-pinjaman-peribadi-berubah.png";
+
+  const d = t.articles.kesanOpr;
 
   return (
     <div className="page_wrapper">
@@ -68,20 +72,20 @@ export default function KesanOPRPinjamanPeribadiPage() {
                     style={{ gap: "6px" }}
                   >
                     <i className="fas fa-arrow-left"></i>
-                    <span>Kembali ke Senarai Blog</span>
+                    <span>{isEnglish ? t.blog.backToBlog : "Kembali ke Senarai Blog"}</span>
                   </Link>
                 </div>
 
                 <div className="blog_details_content bg-white p-4 p-md-5 rounded shadow-sm">
                   <div className="mb-4 text-center">
                     <span className="badge bg-primary text-white mb-2 fs-6 px-3 py-2">
-                      {post?.category || "Kewangan & OPR"}
+                      {post?.category || d.category}
                     </span>
-                    <h1 className="display-6 fw-bold text-blue mb-3">
-                      {post?.title || "Jenis-Jenis Pinjaman di Malaysia"}
+                    <h1 className="display-6 fw-bold text-blue mb-3" style={{ fontWeight: 800, lineHeight: 1.25 }}>
+                      {post?.title || d.title}
                     </h1>
                     <p className="text-muted small">
-                      Tarikh Kemaskini: {post?.publishedDate || "2026"} | Oleh {post?.author || "Pasukan Kewangan Loanbuddy Credit"}
+                      {isEnglish ? t.blog.lastUpdated : "Tarikh Kemaskini:"} {post?.publishedDate || "2026"} | {isEnglish ? t.blog.byAuthor : "Oleh"} {post?.author || (isEnglish ? t.blog.defaultAuthor : "Pasukan Kewangan Loanbuddy Credit")}
                     </p>
                   </div>
 
@@ -89,7 +93,7 @@ export default function KesanOPRPinjamanPeribadiPage() {
                     <img
                       src={postImage}
                       className="img-fluid rounded"
-                      alt={post?.title || "Kesan OPR 2026"}
+                      alt={post?.title || d.title}
                       style={{ maxHeight: "480px", objectFit: "cover", width: "100%" }}
                     />
                   </div>
@@ -99,35 +103,31 @@ export default function KesanOPRPinjamanPeribadiPage() {
                       <RichText content={post.content} />
                     ) : (
                       <>
-                        <p>
-                          Kadar Dasar Semalaman (OPR) yang ditetapkan oleh Bank Negara Malaysia (BNM) sering menjadi bahan perbincangan panas. Namun, tahukah anda bagaimana perubahan OPR mempengaruhi ansuran pinjaman peribadi anda?
-                        </p>
+                        <p>{d.p1}</p>
 
-                        <h3 className="text-blue mt-4 mb-3 fs-4">Pinjaman Kadar Tetap vs Pinjaman Kadar Terapung</h3>
-                        <p>
-                          Bagi pinjaman peribadi berasaskan <strong>kadar faedah tetap (fixed rate)</strong> seperti di Loanbuddy Credit, pergerakan OPR tidak akan mengubah jumlah ansuran bulanan yang telah dipersetujui dalam perjanjian anda!
-                        </p>
+                        <h3 className="text-blue mt-4 mb-3 fs-4">{d.h1}</h3>
+                        <p>{d.p2}</p>
 
-                        <h3 className="text-blue mt-4 mb-3 fs-4">Kelebihan Kadar Faedah Tetap</h3>
+                        <h3 className="text-blue mt-4 mb-3 fs-4">{d.h2}</h3>
                         <ul>
-                          <li><strong>Kepastian Kewangan:</strong> Bayaran bulanan anda kekal dari bulan pertama hingga bulan terakhir.</li>
-                          <li><strong>Bebas Kejutan OPR:</strong> Kenaikan OPR BNM tidak menjejaskan perancangan belanjawan bulanan anda.</li>
+                          <li><strong>{d.li1Title}</strong> {d.li1Desc}</li>
+                          <li><strong>{d.li2Title}</strong> {d.li2Desc}</li>
                         </ul>
                       </>
                     )}
 
                     <div className="article-cta-box mt-5">
                       <h4 className="cta-title">
-                        {post?.ctaBox?.heading || "Perlukan Pinjaman Peribadi Kadar Tetap?"}
+                        {post?.ctaBox?.heading || d.ctaHeading}
                       </h4>
                       <p className="cta-desc">
-                        {post?.ctaBox?.description || "Ketahui kelayakan pinjaman peribadi anda di Loanbuddy Credit hari ini secara percuma dan pantas."}
+                        {post?.ctaBox?.description || d.ctaDesc}
                       </p>
                       <a
                         href={post?.ctaBox?.buttonLink || "/mohon-pinjaman-online"}
                         className="article-cta-btn"
                       >
-                        <span>{post?.ctaBox?.buttonText || "Semak Kelayakan Pinjaman"}</span>
+                        <span>{post?.ctaBox?.buttonText || d.ctaButton}</span>
                         <span className="btn-icon">
                           <i className="fas fa-arrow-right"></i>
                         </span>
@@ -146,4 +146,5 @@ export default function KesanOPRPinjamanPeribadiPage() {
     </div>
   );
 }
+
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface FooterLink {
   label: string;
@@ -54,10 +55,11 @@ const defaultFooterValues: FooterData = {
 };
 
 export default function Footer() {
+  const { t, isEnglish, language } = useLanguage();
   const [footer, setFooter] = useState<FooterData>(defaultFooterValues);
 
   useEffect(() => {
-    fetch("/api/globals/footer", { cache: "no-store" })
+    fetch(`/api/globals/footer?locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         const doc = data?.doc || data;
@@ -66,17 +68,35 @@ export default function Footer() {
         }
       })
       .catch(() => {});
-  }, []);
+  }, [language]);
+
+  const defaultServices = [
+    { label: t.footer.personalLoanOnline, url: "/mohon-pinjaman-online" },
+    { label: t.footer.topUpLoan, url: "/pinjaman-koperasi" },
+  ];
+
+  const defaultCustomerServices = [
+    { label: t.nav.contactUs, url: "/hubungi-kami" },
+    { label: t.nav.faq, url: "/soalan-lazim-faq" },
+    { label: t.footer.privacyPolicy, url: "/privacy-policy" },
+    { label: t.footer.disclaimer, url: "/disclaimer-notice" },
+  ];
 
   const services =
     footer.servicesLinks && footer.servicesLinks.length > 0
-      ? footer.servicesLinks
-      : defaultFooterValues.servicesLinks!;
+      ? footer.servicesLinks.map((s: any, idx: number) => ({
+          label: s.label || defaultServices[idx]?.label || "",
+          url: s.url || defaultServices[idx]?.url || "#",
+        }))
+      : defaultServices;
 
   const customerServices =
     footer.customerServiceLinks && footer.customerServiceLinks.length > 0
-      ? footer.customerServiceLinks
-      : defaultFooterValues.customerServiceLinks!;
+      ? footer.customerServiceLinks.map((c: any, idx: number) => ({
+          label: c.label || defaultCustomerServices[idx]?.label || "",
+          url: c.url || defaultCustomerServices[idx]?.url || "#",
+        }))
+      : defaultCustomerServices;
 
   return (
     <footer
@@ -93,9 +113,15 @@ export default function Footer() {
         className="container"
         style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "20px", paddingRight: "20px" }}
       >
-        <div className="row g-4 pb-5">
+        <div
+          className="d-flex flex-wrap justify-content-between pb-5"
+          style={{
+            rowGap: "35px",
+            columnGap: "24px",
+          }}
+        >
           {/* Column 1: Logo & Company Description */}
-          <div className="col-12 col-md-6 col-lg-3">
+          <div style={{ flex: "1 1 280px", maxWidth: "340px", minWidth: "260px" }}>
             <div className="pe-lg-3">
               <a href="/" className="d-inline-block mb-1">
                 <img
@@ -125,46 +151,46 @@ export default function Footer() {
                   margin: 0,
                 }}
               >
-                {footer.description || defaultFooterValues.description}
+                {footer.description || t.footer.description}
               </p>
             </div>
           </div>
 
           {/* Column 2: License Information */}
-          <div className="col-12 col-sm-6 col-md-6 col-lg-2">
+          <div style={{ flex: "0 1 auto" }}>
             <div className="footer_widget">
               <div className="mb-3">
                 <h5 style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
-                  Nombor Lesen
+                  {isEnglish ? t.footer.licenseNo : "Nombor Lesen"}
                 </h5>
-                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0 }}>
+                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0, whiteSpace: "nowrap" }}>
                   {footer.nomborLesen || defaultFooterValues.nomborLesen}
                 </p>
               </div>
 
               <div className="mb-3">
                 <h5 style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
-                  Tempoh Sah Laku Lesen
+                  {isEnglish ? t.footer.licensePeriod : "Tempoh Sah Laku Lesen"}
                 </h5>
-                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0 }}>
+                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0, whiteSpace: "nowrap" }}>
                   {footer.tempohLesen || defaultFooterValues.tempohLesen}
                 </p>
               </div>
 
               <div className="mb-3">
                 <h5 style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
-                  Nombor Permit Iklan
+                  {isEnglish ? t.footer.permitNo : "Nombor Permit Iklan"}
                 </h5>
-                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0 }}>
+                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0, whiteSpace: "nowrap" }}>
                   {footer.nomborPermit || defaultFooterValues.nomborPermit}
                 </p>
               </div>
 
               <div>
                 <h5 style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
-                  Tempoh Sah Laku Permit Iklan
+                  {isEnglish ? t.footer.permitPeriod : "Tempoh Sah Laku Permit Iklan"}
                 </h5>
-                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0 }}>
+                <p style={{ fontSize: "13px", color: "#d8d8d8", margin: 0, whiteSpace: "nowrap" }}>
                   {footer.tempohPermit || defaultFooterValues.tempohPermit}
                 </p>
               </div>
@@ -172,25 +198,29 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Waktu Operasi & Ikuti Kami Di */}
-          <div className="col-12 col-sm-6 col-md-6 col-lg-3">
+          <div style={{ flex: "0 1 auto" }}>
             <div className="footer_widget">
               <h5 style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "14px" }}>
-                Waktu Operasi
+                {isEnglish ? t.footer.operatingHoursTitle : "Waktu Operasi"}
               </h5>
-              <div style={{ fontSize: "13px", color: "#d8d8d8", lineHeight: "1.6" }}>
-                <p style={{ margin: "0 0 4px 0" }}>
-                  {footer.hoursWeekdays || defaultFooterValues.hoursWeekdays}
-                </p>
-                <p style={{ margin: "0 0 4px 0" }}>
-                  {footer.hoursSaturday || defaultFooterValues.hoursSaturday}
-                </p>
-                <p style={{ margin: "0 0 20px 0" }}>
-                  {footer.hoursClosed || defaultFooterValues.hoursClosed}
-                </p>
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "#d8d8d8",
+                  lineHeight: "1.35",
+                  marginBottom: "20px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {footer.hoursWeekdays || t.footer.weekdays}
+                <br />
+                {footer.hoursSaturday || t.footer.saturday}
+                <br />
+                {footer.hoursClosed || t.footer.closed}
               </div>
 
               <h5 style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "12px" }}>
-                Ikuti Kami Di
+                {isEnglish ? "Follow Us On" : "Ikuti Kami Di"}
               </h5>
               <div className="d-flex align-items-center gap-3">
                 {/* Facebook */}
@@ -266,14 +296,14 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Perkhidmatan */}
-          <div className="col-12 col-sm-6 col-md-6 col-lg-2">
+          <div style={{ flex: "0 1 auto" }}>
             <div className="footer_widget">
               <h5 style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "14px" }}>
-                Perkhidmatan
+                {isEnglish ? t.footer.servicesTitle : "Perkhidmatan"}
               </h5>
               <ul className="list-unstyled" style={{ margin: 0, padding: 0 }}>
                 {services.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: "12px" }}>
+                  <li key={idx} style={{ marginBottom: "12px", whiteSpace: "nowrap" }}>
                     <a
                       href={item.url}
                       style={{
@@ -295,14 +325,14 @@ export default function Footer() {
           </div>
 
           {/* Column 5: Khidmat Pelanggan */}
-          <div className="col-12 col-sm-6 col-md-6 col-lg-2">
+          <div style={{ flex: "0 1 auto" }}>
             <div className="footer_widget">
               <h5 style={{ fontSize: "15px", fontWeight: 700, color: "#ffffff", marginBottom: "14px" }}>
-                Khidmat Pelanggan
+                {isEnglish ? t.footer.customerServiceTitle : "Khidmat Pelanggan"}
               </h5>
               <ul className="list-unstyled" style={{ margin: 0, padding: 0 }}>
                 {customerServices.map((item, idx) => (
-                  <li key={idx} style={{ marginBottom: "12px" }}>
+                  <li key={idx} style={{ marginBottom: "12px", whiteSpace: "nowrap" }}>
                     <a
                       href={item.url}
                       style={{
@@ -346,7 +376,7 @@ export default function Footer() {
               margin: 0,
             }}
           >
-            {footer.copyrightText || defaultFooterValues.copyrightText}
+            {footer.copyrightText || t.footer.copyright}
           </p>
         </div>
       </div>
