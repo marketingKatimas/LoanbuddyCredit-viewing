@@ -113,13 +113,23 @@ export default function Header() {
 
                   <li
                     className={`dropdown ${activeDropdown === "service" ? "show" : ""} ${
-                      isActive("/pinjaman-peribadi-kl-sarawak") ? "active" : ""
+                      isActive("/pinjaman-peribadi") ||
+                      isActive("/pinjaman-peribadi-kl-sarawak") ||
+                      isActive("/pinjaman-koperasi")
+                        ? "active"
+                        : ""
                     }`}
                     onMouseEnter={() => handleMouseEnter("service")}
                     onMouseLeave={handleMouseLeave}
                   >
                     <a
-                      className={`nav-link ${isActive("/pinjaman-peribadi-kl-sarawak") ? "active" : ""}`}
+                      className={`nav-link ${
+                        isActive("/pinjaman-peribadi") ||
+                        isActive("/pinjaman-peribadi-kl-sarawak") ||
+                        isActive("/pinjaman-koperasi")
+                          ? "active"
+                          : ""
+                      }`}
                       href="#"
                       id="service_submenu"
                       onClick={(e) => toggleDropdown("service", e)}
@@ -129,11 +139,29 @@ export default function Header() {
                     <ul className={`dropdown-menu ${activeDropdown === "service" ? "show" : ""}`}>
                       <li>
                         <Link
-                          className={`nav-link ${isActive("/pinjaman-peribadi-kl-sarawak") ? "active" : ""}`}
+                          className={isActive("/pinjaman-peribadi") ? "active" : ""}
+                          href="/pinjaman-peribadi"
+                          onClick={closeAllMenus}
+                        >
+                          {t.nav.ourServices}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className={isActive("/pinjaman-peribadi-kl-sarawak") ? "active" : ""}
                           href="/pinjaman-peribadi-kl-sarawak"
                           onClick={closeAllMenus}
                         >
-                          {t.nav.personalLoan}
+                          {t.nav.personalLoanOnline}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className={isActive("/pinjaman-koperasi") ? "active" : ""}
+                          href="/pinjaman-koperasi"
+                          onClick={closeAllMenus}
+                        >
+                          {t.nav.topUpLoan}
                         </Link>
                       </li>
                     </ul>
@@ -151,13 +179,15 @@ export default function Header() {
 
                   <li
                     className={`dropdown ${activeDropdown === "pages" ? "show" : ""} ${
-                      isActive("/tentang-loanbuddy-credit") ? "active" : ""
+                      isActive("/tentang-loanbuddy-credit") || isActive("/soalan-lazim-faq") ? "active" : ""
                     }`}
                     onMouseEnter={() => handleMouseEnter("pages")}
                     onMouseLeave={handleMouseLeave}
                   >
                     <a
-                      className={`nav-link ${isActive("/tentang-loanbuddy-credit") ? "active" : ""}`}
+                      className={`nav-link ${
+                        isActive("/tentang-loanbuddy-credit") || isActive("/soalan-lazim-faq") ? "active" : ""
+                      }`}
                       href="#"
                       id="pages_submenu"
                       onClick={(e) => toggleDropdown("pages", e)}

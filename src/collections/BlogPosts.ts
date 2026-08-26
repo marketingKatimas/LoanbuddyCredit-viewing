@@ -1,7 +1,9 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateHooks } from '@/lib/revalidate'
 
 export const BlogPosts: CollectionConfig = {
   slug: 'blog-posts',
+  ...revalidateHooks,
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'category', 'updatedAt'],

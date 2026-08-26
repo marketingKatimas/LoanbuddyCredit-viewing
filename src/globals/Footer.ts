@@ -1,8 +1,10 @@
 import type { GlobalConfig } from 'payload'
+import { revalidateGlobalHooks } from '@/lib/revalidate'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
   label: 'Footer Settings',
+  ...revalidateGlobalHooks,
   access: {
     read: () => true,
     update: () => true,

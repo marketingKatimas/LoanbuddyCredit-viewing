@@ -1,41 +1,28 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateHooks } from '@/lib/revalidate'
 
 export const Media: CollectionConfig = {
   slug: 'media',
-  upload: {
-    staticDir: 'public/uploads',
-    imageSizes: [
-      {
-        name: 'thumbnail',
-        width: 400,
-        height: 300,
-        position: 'centre',
-      },
-      {
-        name: 'card',
-        width: 768,
-        height: 1024,
-        position: 'centre',
-      },
-      {
-        name: 'hero',
-        width: 1920,
-        height: 1080,
-        position: 'centre',
-      },
-    ],
-    adminThumbnail: 'thumbnail',
-    mimeTypes: ['image/*'],
-  },
+  ...revalidateHooks,
   access: {
     read: () => true,
+  },
+  admin: {
+    group: 'Library',
+  },
+  upload: {
+    // Storage is handled by the Vercel Blob adapter (see payload.config.ts).
+    mimeTypes: ['image/*'],
   },
   fields: [
     {
       name: 'alt',
       type: 'text',
-      required: true,
+      required: false,
       label: 'Alt Text',
+      admin: {
+        description: 'Describes the image for screen readers and SEO.',
+      },
     },
     {
       name: 'caption',

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
-import configPromise from '../../../../payload.config'
+import configPromise from '@payload-config'
 import { defaultBlogPosts } from '@/seed/seedBlogPosts'
 
 export const dynamic = 'force-dynamic'

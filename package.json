@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "payload generate:importmap && next build",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "postinstall": "node scripts/patch-vercel-blob.js",
     "start": "next start",
     "lint": "eslint"
   },
@@ -13,6 +16,8 @@
     "@payloadcms/db-mongodb": "^3.87.0",
     "@payloadcms/next": "^3.87.0",
     "@payloadcms/richtext-lexical": "^3.87.0",
+    "@payloadcms/storage-s3": "^3.87.0",
+    "@payloadcms/storage-vercel-blob": "^3.87.0",
     "graphql": "^16.14.2",
     "next": "16.2.12",
     "payload": "^3.87.0",

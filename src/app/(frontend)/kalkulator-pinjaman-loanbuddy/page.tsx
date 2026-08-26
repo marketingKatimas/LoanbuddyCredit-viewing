@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 export default function LoanCalculatorPage() {
-  
+
 
   // Calculator State
   const [loanAmount, setLoanAmount] = useState<number>(3000);

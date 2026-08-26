@@ -52,6 +52,14 @@ export const defaultPagesData: DefaultPageData[] = [
         primaryCtaText: 'Mohon Sekarang',
         primaryCtaLink: 'mohon-pinjaman-online',
       },
+      {
+        heading: 'Loanbuddy Credit\ndi Hujung Jari Anda',
+        subheading:
+          'Permohonan pinjaman peribadi kini lebih pantas dan mudah. Muat turun aplikasi kami sekarang untuk memohon pada bila-bila masa, di mana jua.',
+        primaryCtaText: 'Ketahui Lebih Lanjut',
+        primaryCtaLink: 'loan-compare',
+        bannerImage: '/assets/images/App-banners-No-Copy.png',
+      },
     ],
     hero: {
       heading: 'Selamat Datang ke Loanbuddy Credit',
@@ -418,6 +426,217 @@ export const defaultPagesData: DefaultPageData[] = [
     seo: {
       metaTitle: 'Mohon Pinjaman Online - Kelulusan Segera | Loanbuddy Credit',
       metaDescription: 'Borang permohonan pinjaman peribadi atas talian. Cepat, selamat dan mudah.',
+    },
+  },
+  {
+    title: 'Perkhidmatan Kami (Our Services)',
+    slug: 'perkhidmatan-kami',
+    hero: {
+      badgeText: 'Perkhidmatan Pinjaman',
+      heading: 'Terokai Perkhidmatan Pinjaman Online:\nPinjaman Peribadi Online dan Pinjaman Tambah Nilai',
+      subheading:
+        'Loanbuddy Credit menyediakan perkhidmatan pinjaman kewangan peribadi untuk anda yang mencari penyelesaian masalah kewangan. Kami amat memahami keperluan anda dan sentiasa bersedia untuk membantu anda dengan perkhidmatan kewangan yang memuaskan dan berbaloi.\n\nMatlamat kami adalah untuk memberikan bantuan kewangan yang telus, adil, dan mengikut keperluan individu.\n\nJangan bimbang, maklumat peribadi anda dijamin selamat dan terpelihara! Keselamatan data anda adalah keutamaan kami.',
+      primaryCtaText: 'Mohon Sekarang',
+      primaryCtaLink: 'mohon-pinjaman-online',
+      heroImage: '/assets/images/banner/home-mohon/white-3d-bg.webp',
+    },
+    sections: [
+      {
+        sectionBadge: 'Perkhidmatan',
+        sectionTitle: 'Perkhidmatan Pinjaman Loanbuddy Credit',
+        sectionDescription:
+          'Pilih perkhidmatan pinjaman yang bersesuaian dengan keperluan kewangan anda.',
+        items: [],
+      },
+      {
+        sectionBadge: 'Kelebihan',
+        sectionTitle: 'Pinjaman Peribadi Online',
+        sectionDescription:
+          'Dalam kehidupan yang moden, hampir setiap keperluan memerlukan peruntukan kewangan yang mencukupi. Sama ada untuk situasi kecemasan, pembiayaan pendidikan anak, pengurusan bil bulanan, atau keperluan gaya hidup, pinjaman peribadi online kami direka untuk memastikan anda mendapat akses kepada dana yang diperlukan tepat pada waktunya.',
+        items: [
+          {
+            itemTitle: 'Kelulusan Pantas',
+            itemDescription:
+              'Permohonan pinjaman peribadi Loanbuddy Credit boleh dibuat sepenuhnya secara online, dari mana-mana lokasi yang selesa untuk anda. Hanya isi maklumat ringkas, dan dengan dokumen lengkap, kelulusan boleh diperoleh seawal 24 jam*\n\n*Tertakluk kepada penilaian dan saringan individu.',
+            itemImage: '/assets/images/permohonan-mudah.png',
+          },
+          {
+            itemTitle: 'Syarat-Syarat Fleksibel',
+            itemDescription:
+              'Syarat-syarat fleksibel Loanbuddy Credit direka untuk memenuhi keperluan pelbagai lapisan masyarakat. Dari tempoh pembayaran balik hingga syarat umur dan pendapatan, setiap permohonan dipertimbangkan secara peribadi dan profesional agar selaras dengan keperluan kewangan individu.',
+            itemImage: '/assets/images/syarat-fleksibel.png',
+          },
+          {
+            itemTitle: 'Tidak Memegang Kad ATM',
+            itemDescription:
+              'Loanbuddy Credit tidak memegang sebarang kad ATM atau kad pengenalan dari peminjaman-peminjam kami, sesuai dan selaras dengan standard prosedur di bawah Kementerian Perumahanan dan Kerajaan Tempatan (KPKT).',
+            itemImage: '/assets/images/kad-atm-2.png',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Syarat & Terma',
+        sectionTitle: 'Syarat Pinjaman Fleksibel Kami',
+        sectionDescription:
+          'Syarat permohonan yang mudah difahami dan mesra pelanggan.',
+        items: [
+          {
+            itemTitle: 'Jumlah Pinjaman',
+            itemDescription:
+              'Pinjaman boleh dibuat dari serendah RM1,000 hingga maksimum RM50,000, tertakluk kepada kelayakan dan penilaian kredit.',
+          },
+          {
+            itemTitle: 'Bayaran Balik Fleksibel',
+            itemDescription:
+              'Bayaran balik yang fleksibel tanpa caj penyelesaian awal. Selesaikan pinjaman anda pada bila-bila masa dalam tempoh pinjaman, memberikan anda kawalan penuh ke atas kewangan dan kebebasan untuk melangsaikan pinjaman mengikut kemampuan anda.',
+          },
+          {
+            itemTitle: 'Pembayaran dalam Talian',
+            itemDescription:
+              'Kemudahan pembayaran dalam talian melalui Direct Debit, pemindahan bank dalam talian, dan JomPay tersedia agar bayaran balik pinjaman anda dapat dilakukan dengan lebih senang.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Tambah Nilai',
+        sectionTitle: 'Pinjaman Tambah Nilai',
+        sectionDescription:
+          'Pinjaman Tambah Nilai Loanbuddy Credit ditawar khusus kepada pelanggan sedia ada yang memerlukan kewangan tambahan. Produk ini mengekalkan komitmen kami terhadap kemudahan, ketelusan dan kebolehpercayaan.',
+        sectionImage: '/assets/images/ladybug-holding-phone.png',
+        items: [
+          {
+            itemTitle: 'Integrasi Lancar',
+            itemDescription:
+              'Nikmati akses kemudahan Pinjaman Tambah Nilai melalui aplikasi kami atau hubungi khidmat pelanggan Loanbuddy Credit untuk bantuan segera.',
+            itemImage: '/assets/images/integrasi-lancar.png',
+          },
+          {
+            itemTitle: 'Terma Pembayaran Balik Lanjutan',
+            itemDescription:
+              'Jadual pembayaran balik yang dikemas kini akan dikeluarkan selepas kelulusan Pinjaman Tambah Nilai.',
+            itemImage: '/assets/images/terma-pembayaran.png',
+          },
+          {
+            itemTitle: 'Pengecualian Faedah Tertunggak',
+            itemDescription:
+              'Faedah tertunggak daripada pinjaman asal akan diketepikan (waived).',
+            itemImage: '/assets/images/pengecualian-faedah.png',
+          },
+          {
+            itemTitle: 'Permohonan Semula Lancar',
+            itemDescription:
+              'Mudah untuk menambah pinjaman sedia ada anda dengan permohonan semula yang pantas.',
+            itemImage: '/assets/images/permohonan-semula-lancar.png',
+          },
+          {
+            itemTitle: 'Jumlah Pinjaman Lebih Besar',
+            itemDescription:
+              'Nikmati pembiayaan yang lebih tinggi tanpa peningkatan kadar faedah.',
+            itemImage: '/assets/images/jumlah-pinjaman-besar.png',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Kelayakan',
+        sectionTitle: 'Siapa yang Boleh Memohon?',
+        sectionDescription:
+          'Pinjaman online mudah lulus Loanbuddy Credit memberikan kemudahan permohonan dengan syarat yang fleksibel, memastikan anda dapat mengakses pembiayaan dengan cepat dan mudah.',
+        items: [
+          {
+            itemTitle: 'Jumlah Pinjaman',
+            itemDescription:
+              'Pinjaman boleh dibuat dari serendah RM1,000 hingga maksimum RM50,000, tertakluk kepada kelayakan dan penilaian kredit.',
+          },
+          {
+            itemTitle: 'Pekerjaan Berpendapatan Tetap',
+            itemDescription:
+              'Mempunyai pekerjaan tetap dengan pendapatan bulanan sekurang-kurangnya RM1,700 ke atas.',
+          },
+          {
+            itemTitle: 'Pengesahan Umur',
+            itemDescription:
+              'Pemohon perlulah berumur dalam lingkungan 18 tahun sehingga maksimum umur 60 tahun semasa tempoh pinjaman.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Langkah Permohonan',
+        sectionTitle: 'Proses Permohonan Mudah dan Tanpa Kerumitan',
+        sectionDescription:
+          'Permohonan pinjaman online mudah lulus Loanbuddy Credit boleh dilakukan sepenuhnya dalam talian, dengan langkah-langkah yang mudah dan efisien.',
+        items: [
+          {
+            itemTitle: 'Langkah 1: Maklumat Pemohon',
+            itemDescription:
+              'Sila berikan butiran asas dan maklumat hubungan anda bagi membolehkan kami menghubungi anda.',
+          },
+          {
+            itemTitle: 'Langkah 2: Lampirkan Dokumen',
+            itemDescription:
+              'Sila muat naik salinan MyKad dan penyata gaji / bank / KWSP terkini bagi tujuan pengesahan.',
+          },
+          {
+            itemTitle: 'Langkah 3: Proses Kelulusan',
+            itemDescription:
+              'Loanbuddy Credit akan menyemak kelayakan kredit anda dengan mengambil kira nisbah hutang kepada pendapatan dan keadaan kewangan semasa.',
+          },
+          {
+            itemTitle: 'Langkah 4: Tandatangan Kontrak dalam Talian',
+            itemDescription:
+              'Semak serta sahkan maklumat anda dan berikan tandatangan secara dalam talian untuk melengkapkan proses permohonan dalam talian.',
+          },
+          {
+            itemTitle: 'Langkah 5: Terima Dana',
+            itemDescription:
+              'Dana pinjaman akan dikreditkan ke akaun berdaftar anda dalam tempoh 24 jam bekerja selepas perjanjian ditandatangani secara dalam talian.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Komitmen Kami',
+        sectionTitle: 'Komitmen Kami kepada Anda',
+        sectionDescription:
+          'Perkhidmatan pembiayaan yang selamat, pantas dan dipercayai.',
+        items: [
+          {
+            itemTitle: 'Permohonan Mudah',
+            itemDescription:
+              'Loanbuddy Credit menekankan kecekapan dalam perkhidmatan. Proses permohonan direka untuk disiapkan dalam beberapa minit dengan keperluan dokumentasi yang minimum, memastikan pengalaman yang lancar dan mesra pelanggan.',
+          },
+          {
+            itemTitle: 'Wang Tunai Segera',
+            itemDescription:
+              'Loanbuddy Credit komited untuk pemprosesan yang pantas, dengan purata kelulusan dalam tempoh tiga hari bekerja dan/atau secepat 24 jam.\n\n*bergantung kepada kelengkapan dokumen.',
+          },
+          {
+            itemTitle: 'Penyedia yang Dipercayai',
+            itemDescription:
+              'Loanbuddy Credit didaftarkan di bawah SSM dan dilesenkan mengikut Akta Peminjam Wang serta oleh KPKT. Loanbuddy Credit memastikan setiap transaksi dijalankan selamat, terjamin, dan tahap ketelusan yang tinggi.',
+          },
+          {
+            itemTitle: 'Warisan Amanah dan Kepakaran',
+            itemDescription:
+              'Loanbuddy Credit Sdn. Bhd. (“Loanbuddy Credit”) ditubuhkan dan beroperasi sejak 2009. Sebelum ini dikenali sebagai Azio Credit, Loanbuddy Credit membawa kepakaran dalam industri pinjaman untuk menyediakan sokongan kewangan yang dipercayai kepada peminjam.',
+          },
+          {
+            itemTitle: 'Berlesen dan Diperakui Sepenuhnya',
+            itemDescription:
+              'Loanbuddy Credit berlesen sepenuhnya di bawah Kementerian Perumahanan dan Kerajaan Tempatan (KPKT) sebagai penyedia pinjaman dan perkhidmatan kewangan sejak tahun 2009.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Mulakan Sekarang',
+        sectionTitle: 'Mulakan Perjalanan Kewangan Anda dengan Loanbuddy Credit',
+        sectionDescription:
+          'Sama ada untuk kecemasan atau mendapatkan pembiayaan tambahan bagi mencapai matlamat hidup anda, Loanbuddy Credit adalah rakan kongsi dipercayai anda dalam memastikan kestabilan kewangan dan ketenangan fikiran.\n\nMohon dalam talian sekarang dan nikmati kemudahan, fleksibiliti, dan kebolehpercayaan yang kami tawarkan. Sertai kami dan rasai bagaimana perkhidmatan pinjaman Loanbuddy Credit dapat membantu merealisasikan impian kewangan anda.',
+        items: [],
+      },
+    ],
+    seo: {
+      metaTitle: 'Perkhidmatan Kami - Pinjaman Peribadi & Tambah Nilai | Loanbuddy Credit',
+      metaDescription:
+        'Terokai perkhidmatan pinjaman kewangan peribadi dan pinjaman tambah nilai atas talian dengan kelulusan pantas dari Loanbuddy Credit.',
     },
   },
   {
@@ -814,6 +1033,90 @@ export const defaultPagesData: DefaultPageData[] = [
         'Ketahui tips kewangan terkini, strategi penyatuan hutang, dan panduan pinjaman peribadi di Loanbuddy Credit.',
     },
   },
+  {
+    title: 'Aplikasi Mudah Alih (Mobile App)',
+    slug: 'loan-compare',
+    hero: {
+      badgeText: 'Aplikasi Mudah Alih',
+      heading: 'Loanbuddy Credit\ndi Hujung Jari Anda',
+      subheading:
+        'Permohonan pinjaman peribadi kini lebih pantas dan mudah. Muat turun aplikasi kami sekarang untuk memohon pada bila-bila masa, di mana jua.',
+      primaryCtaText: 'Ketahui Lebih Lanjut',
+      primaryCtaLink: '#download',
+      heroImage: '/assets/images/App-banners-No-Copy.png',
+    },
+    sections: [
+      {
+        sectionBadge: 'Ciri-Ciri Utama',
+        sectionTitle:
+          'Aplikasi Loanbuddy Credit Kini Tersedia di Google Play & Apple App Store - Permohonan Pinjaman Anda Kini Lebih Mudah & Pantas!',
+        sectionDescription:
+          'Dengan sukacitanya kami ingin memaklumkan bahawa Aplikasi Mudah Alih Loanbuddy Credit kini tersedia untuk dimuat turun di Google Play Store & Apple App Store!\n\nTidak kira anda pelanggan baharu atau pelanggan sedia ada, aplikasi ini direka untuk memudahkan anda memohon pinjaman peribadi, memantau status permohonan dan mengurus pinjaman anda. Semuanya tersedia di hujung jari!\n\nCiri-ciri utama aplikasi Loanbuddy Credit:',
+        items: [
+          {
+            itemTitle: 'Permohonan Pinjaman Segera',
+            itemDescription: 'Mohon pinjaman peribadi secara pantas terus melalui aplikasi.',
+            itemImage: '/assets/images/permohonan-segera.png',
+          },
+          {
+            itemTitle: 'Pantau Status Permohonan',
+            itemDescription: 'Semak perkembangan status permohonan pinjaman anda dalam masa nyata.',
+            itemImage: '/assets/images/pantau-status-permohonan.png',
+          },
+          {
+            itemTitle: 'Notifikasi Segera',
+            itemDescription: 'Terima kemas kini segera mengenai status kelulusan dan pemindahan dana.',
+            itemImage: '/assets/images/notifikasi-segera.png',
+          },
+          {
+            itemTitle: 'Reka Bentuk Mesra Pengguna',
+            itemDescription: 'Antara muka intuitif yang mudah digunakan oleh sesiapa sahaja.',
+            itemImage: '/assets/images/reka-bentuk-mesra.png',
+          },
+          {
+            itemTitle: 'Sokongan Pelanggan Terus dari Aplikasi',
+            itemDescription: 'Hubungi pasukan sokongan pelanggan kami secara terus bila-bila masa.',
+            itemImage: '/assets/images/sokongan-pelanggan.png',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Kenapa Pilih',
+        sectionTitle: 'Kenapa Pilih Loanbuddy Credit?',
+        sectionDescription:
+          'Sebagai rakan pinjaman peribadi anda yang diyakini di Malaysia, Loanbuddy Credit menawarkan proses yang pantas, syarat yang telus dan bantuan khidmat pelanggan yang unggul. Kini, segalanya lebih mudah dengan adanya aplikasi Loanbuddy Credit!\n\nUrus pinjaman anda dengan selamat, cepat dan fleksibel secara terus melalui telefon pintar anda, pada bila-bila masa, di mana sahaja anda berada.',
+        items: [],
+      },
+      {
+        sectionBadge: 'Panduan Muat Turun',
+        sectionTitle: 'Muat Turun Aplikasi Loanbuddy Credit',
+        sectionDescription:
+          'Muat turun sekarang di Google Play & Apple App Store dan nikmati kemudahan mengurus pinjaman di hujung jari anda!',
+        items: [
+          {
+            itemTitle: 'Langkah 1',
+            itemDescription: 'Buka Google Play atau Apple App Store di peranti anda.',
+            itemImage: '/assets/images/icon-langkah-1-app.png',
+          },
+          {
+            itemTitle: 'Langkah 2',
+            itemDescription: 'Cari "Loanbuddy Credit".',
+            itemImage: '/assets/images/icon-langkah-2-app.png',
+          },
+          {
+            itemTitle: 'Langkah 3',
+            itemDescription: 'Muat turun aplikasi "Loanbuddy Credit".',
+            itemImage: '/assets/images/icon-langkah-3-app.png',
+          },
+        ],
+      },
+    ],
+    seo: {
+      metaTitle: 'Aplikasi Mudah Alih Loanbuddy Credit - Muat Turun Sekarang',
+      metaDescription:
+        'Muat turun aplikasi mudah alih Loanbuddy Credit di Google Play & App Store untuk memohon pinjaman peribadi secara pantas dan selamat.',
+    },
+  },
 ]
 
 export const defaultPagesDataMs = defaultPagesData
@@ -1196,6 +1499,217 @@ export const defaultPagesDataEn: DefaultPageData[] = [
     seo: {
       metaTitle: 'Apply for Loan Online - Instant Approval | Loanbuddy Credit',
       metaDescription: 'Online personal loan application form. Fast, safe, and easy.',
+    },
+  },
+  {
+    title: 'Our Services (Perkhidmatan Kami)',
+    slug: 'perkhidmatan-kami',
+    hero: {
+      badgeText: 'Loan Services',
+      heading: 'Explore Online Loan Services:\nOnline Personal Loan and Top-Up Loan',
+      subheading:
+        'Loanbuddy Credit provides personal financial loan services for you who are looking for financial solutions. We understand your needs and are always ready to assist you with satisfying and worthwhile financial services.\n\nOur goal is to provide financial assistance that is transparent, fair, and tailored to individual needs.\n\nRest assured, your personal information is guaranteed safe and secure! Your data security is our top priority.',
+      primaryCtaText: 'Apply Now',
+      primaryCtaLink: 'mohon-pinjaman-online',
+      heroImage: '/assets/images/banner/home-mohon/white-3d-bg.webp',
+    },
+    sections: [
+      {
+        sectionBadge: 'Services',
+        sectionTitle: 'Loanbuddy Credit Loan Services',
+        sectionDescription:
+          'Choose the loan service tailored to your financial needs.',
+        items: [],
+      },
+      {
+        sectionBadge: 'Benefits',
+        sectionTitle: 'Online Personal Loan',
+        sectionDescription:
+          "In modern life, almost every need requires sufficient financial allocation. Whether for emergency situations, children's education funding, managing monthly bills, or lifestyle needs, our online personal loan is designed to ensure you get access to the funds you need right on time.",
+        items: [
+          {
+            itemTitle: 'Fast Approval',
+            itemDescription:
+              'Loanbuddy Credit personal loan applications can be made completely online, from wherever is convenient for you. Just fill in basic details, and with complete documents, approval can be obtained as fast as 24 hours*\n\n*Subject to individual assessment and screening.',
+            itemImage: '/assets/images/permohonan-mudah.png',
+          },
+          {
+            itemTitle: 'Flexible Terms',
+            itemDescription:
+              "Loanbuddy Credit's flexible terms are designed to meet the needs of all walks of life. From repayment tenures to age and income requirements, every application is evaluated personally and professionally to align with individual financial needs.",
+            itemImage: '/assets/images/syarat-fleksibel.png',
+          },
+          {
+            itemTitle: 'No ATM Card Retention',
+            itemDescription:
+              'Loanbuddy Credit does not hold any ATM cards or identity cards from our borrowers, strictly adhering to standard procedures under the Ministry of Housing and Local Government (KPKT).',
+            itemImage: '/assets/images/kad-atm-2.png',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Terms & Conditions',
+        sectionTitle: 'Our Flexible Loan Terms',
+        sectionDescription:
+          'Clear, customer-friendly loan conditions designed for peace of mind.',
+        items: [
+          {
+            itemTitle: 'Loan Amount',
+            itemDescription:
+              'Loans are available from as low as RM1,000 up to a maximum of RM50,000, subject to eligibility and credit assessment.',
+          },
+          {
+            itemTitle: 'Flexible Repayment',
+            itemDescription:
+              'Flexible repayment with no early settlement charges. Settle your loan at any time during the loan tenure, giving you full control over your finances and the freedom to clear your loan according to your capability.',
+          },
+          {
+            itemTitle: 'Online Payment',
+            itemDescription:
+              'Online payment facilities via Direct Debit, online bank transfer, and JomPay are available so that your loan repayments can be made more conveniently.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Top-Up Loan',
+        sectionTitle: 'Top-Up Loan',
+        sectionDescription:
+          'Loanbuddy Credit Top-Up Loan is offered specifically to existing customers who require additional financing. This product maintains our commitment to convenience, transparency, and reliability.',
+        sectionImage: '/assets/images/ladybug-holding-phone.png',
+        items: [
+          {
+            itemTitle: 'Seamless Integration',
+            itemDescription:
+              'Enjoy easy access to Top-Up Loan facilities via our app or contact Loanbuddy Credit customer service for immediate assistance.',
+            itemImage: '/assets/images/integrasi-lancar.png',
+          },
+          {
+            itemTitle: 'Extended Repayment Terms',
+            itemDescription:
+              'An updated repayment schedule will be issued upon approval of the Top-Up Loan.',
+            itemImage: '/assets/images/terma-pembayaran.png',
+          },
+          {
+            itemTitle: 'Outstanding Interest Waiver',
+            itemDescription:
+              'Outstanding interest from the original loan will be waived.',
+            itemImage: '/assets/images/pengecualian-faedah.png',
+          },
+          {
+            itemTitle: 'Seamless Reapplication',
+            itemDescription:
+              'Easily top up your existing loan with a quick and seamless reapplication.',
+            itemImage: '/assets/images/permohonan-semula-lancar.png',
+          },
+          {
+            itemTitle: 'Higher Loan Amount',
+            itemDescription:
+              'Enjoy higher financing amounts without an increase in interest rates.',
+            itemImage: '/assets/images/jumlah-pinjaman-besar.png',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Eligibility',
+        sectionTitle: 'Who Can Apply?',
+        sectionDescription:
+          'Loanbuddy Credit easy-approval online loans offer easy application with flexible terms, ensuring you can access financing quickly and conveniently.',
+        items: [
+          {
+            itemTitle: 'Loan Amount',
+            itemDescription:
+              'Loans are available from as low as RM1,000 up to a maximum of RM50,000, subject to eligibility and credit assessment.',
+          },
+          {
+            itemTitle: 'Permanent Employment',
+            itemDescription:
+              'Hold permanent employment with a minimum monthly income of RM1,700 and above.',
+          },
+          {
+            itemTitle: 'Age Requirement',
+            itemDescription:
+              'Applicants must be aged between 18 and a maximum of 60 years old during the loan tenure.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Application Steps',
+        sectionTitle: 'Simple and Hassle-Free Application Process',
+        sectionDescription:
+          'Loanbuddy Credit easy-approval online loan applications can be completed entirely online, with simple and efficient steps.',
+        items: [
+          {
+            itemTitle: 'Step 1: Applicant Information',
+            itemDescription:
+              'Please provide your basic details and contact information so we can reach out to you.',
+          },
+          {
+            itemTitle: 'Step 2: Attach Documents',
+            itemDescription:
+              'Please upload a copy of your MyKad and latest salary / bank / EPF statements for verification purposes.',
+          },
+          {
+            itemTitle: 'Step 3: Approval Process',
+            itemDescription:
+              'Loanbuddy Credit will review your credit eligibility, taking into account debt-to-income ratio and current financial status.',
+          },
+          {
+            itemTitle: 'Step 4: Sign Contract Online',
+            itemDescription:
+              'Review and confirm your information and sign online to complete the digital application process.',
+          },
+          {
+            itemTitle: 'Step 5: Receive Funds',
+            itemDescription:
+              'Loan funds will be credited to your registered bank account within 24 working hours after the agreement is signed online.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Our Commitment',
+        sectionTitle: 'Our Commitment to You',
+        sectionDescription:
+          'Safe, fast, and trusted financial financing services.',
+        items: [
+          {
+            itemTitle: 'Easy Application',
+            itemDescription:
+              'Loanbuddy Credit emphasizes service efficiency. The application process is designed to be completed in minutes with minimal documentation requirements, ensuring a seamless and customer-friendly experience.',
+          },
+          {
+            itemTitle: 'Instant Cash',
+            itemDescription:
+              'Loanbuddy Credit is committed to fast processing, with an average approval within three working days and/or as fast as 24 hours.\n\n*subject to completeness of documents.',
+          },
+          {
+            itemTitle: 'Trusted Provider',
+            itemDescription:
+              'Loanbuddy Credit is registered under SSM and licensed under the Moneylenders Act as well as by KPKT. Loanbuddy Credit ensures every transaction is conducted safely, securely, and with high transparency.',
+          },
+          {
+            itemTitle: 'Legacy of Trust and Expertise',
+            itemDescription:
+              'Loanbuddy Credit Sdn. Bhd. (“Loanbuddy Credit”) was established and operating since 2009. Formerly known as Azio Credit, Loanbuddy Credit brings deep industry expertise to provide trusted financial support to borrowers.',
+          },
+          {
+            itemTitle: 'Fully Licensed and Certified',
+            itemDescription:
+              'Loanbuddy Credit is fully licensed under the Ministry of Housing and Local Government (KPKT) as a loan and financial services provider since 2009.',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Get Started',
+        sectionTitle: 'Start Your Financial Journey with Loanbuddy Credit',
+        sectionDescription:
+          'Whether for emergencies or securing additional financing to achieve your life goals, Loanbuddy Credit is your trusted partner in ensuring financial stability and peace of mind.\n\nApply online now and enjoy the convenience, flexibility, and reliability we offer. Join us and experience how Loanbuddy Credit loan services can help realize your financial dreams.',
+        items: [],
+      },
+    ],
+    seo: {
+      metaTitle: 'Our Services - Online Personal & Top-Up Loans | Loanbuddy Credit',
+      metaDescription:
+        'Explore personal financial loan services and online top-up loans with fast approvals from Loanbuddy Credit.',
     },
   },
   {
@@ -1590,6 +2104,90 @@ export const defaultPagesDataEn: DefaultPageData[] = [
       metaTitle: 'Blog & Financial Tips - Loanbuddy Credit',
       metaDescription:
         'Read the latest financial tips, debt consolidation strategies, and personal loan guides at Loanbuddy Credit.',
+    },
+  },
+  {
+    title: 'Mobile App (Loan Compare)',
+    slug: 'loan-compare',
+    hero: {
+      badgeText: 'Mobile App',
+      heading: 'Loanbuddy Credit\nat Your Fingertips',
+      subheading:
+        'Personal loan applications are now faster and easier. Download our mobile app now to apply anytime, anywhere.',
+      primaryCtaText: 'Learn More',
+      primaryCtaLink: '#download',
+      heroImage: '/assets/images/App-banners-No-Copy.png',
+    },
+    sections: [
+      {
+        sectionBadge: 'Key Features',
+        sectionTitle:
+          'Loanbuddy Credit App Is Now Available on Google Play & Apple App Store - Your Loan Application Is Now Easier & Faster!',
+        sectionDescription:
+          'We are delighted to announce that the Loanbuddy Credit Mobile App is now available for download on Google Play Store & Apple App Store!\n\nWhether you are a new applicant or an existing borrower, this app is designed to help you apply for personal loans, track application status, and manage your account seamlessly. Everything at your fingertips!\n\nKey features of the Loanbuddy Credit app:',
+        items: [
+          {
+            itemTitle: 'Instant Loan Application',
+            itemDescription: 'Apply for personal loans quickly and easily direct from the mobile app.',
+            itemImage: '/assets/images/permohonan-segera.png',
+          },
+          {
+            itemTitle: 'Track Application Status',
+            itemDescription: 'Check real-time updates on your loan application progress.',
+            itemImage: '/assets/images/pantau-status-permohonan.png',
+          },
+          {
+            itemTitle: 'Instant Notifications',
+            itemDescription: 'Receive immediate alerts on approval status and fund disbursements.',
+            itemImage: '/assets/images/notifikasi-segera.png',
+          },
+          {
+            itemTitle: 'User-Friendly Interface',
+            itemDescription: 'An intuitive and streamlined interface designed for everyone.',
+            itemImage: '/assets/images/reka-bentuk-mesra.png',
+          },
+          {
+            itemTitle: 'Direct In-App Customer Support',
+            itemDescription: 'Get dedicated customer assistance directly within the app.',
+            itemImage: '/assets/images/sokongan-pelanggan.png',
+          },
+        ],
+      },
+      {
+        sectionBadge: 'Why Choose Us',
+        sectionTitle: 'Why Choose Loanbuddy Credit?',
+        sectionDescription:
+          'As your trusted personal loan partner in Malaysia, Loanbuddy Credit offers fast processing, transparent terms, and dedicated customer support. Everything is now even more convenient with our mobile app!\n\nManage your financing securely, quickly, and flexibly right from your smartphone, whenever and wherever you need.',
+        items: [],
+      },
+      {
+        sectionBadge: 'Download Guide',
+        sectionTitle: 'Download the Loanbuddy Credit App',
+        sectionDescription:
+          'Download now on Google Play & Apple App Store and enjoy the convenience of managing your loan at your fingertips!',
+        items: [
+          {
+            itemTitle: 'Step 1',
+            itemDescription: 'Open Google Play Store or Apple App Store on your smartphone.',
+            itemImage: '/assets/images/icon-langkah-1-app.png',
+          },
+          {
+            itemTitle: 'Step 2',
+            itemDescription: 'Search for "Loanbuddy Credit".',
+            itemImage: '/assets/images/icon-langkah-2-app.png',
+          },
+          {
+            itemTitle: 'Step 3',
+            itemDescription: 'Download and install the "Loanbuddy Credit" app.',
+            itemImage: '/assets/images/icon-langkah-3-app.png',
+          },
+        ],
+      },
+    ],
+    seo: {
+      metaTitle: 'Loanbuddy Credit Mobile App - Download Now',
+      metaDescription:
+        'Download the Loanbuddy Credit mobile app on Google Play & App Store to apply for personal loans fast and securely.',
     },
   },
 ]

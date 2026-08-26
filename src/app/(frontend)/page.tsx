@@ -118,7 +118,13 @@ export default function Home() {
       bannerImage: pageData?.hero?.heroImage || "/assets/images/banner-1.png",
     },
     {
-      bannerImage: "/assets/images/banner-2.png",
+      heading: t.home.banner2Heading || "Loanbuddy Credit di Hujung Jari Anda",
+      subheading:
+        t.home.banner2Subheading ||
+        "Permohonan pinjaman peribadi kini lebih pantas dan mudah. Muat turun aplikasi kami sekarang untuk memohon pada bila-bila masa, di mana jua.",
+      primaryCtaText: t.home.banner2Cta || "Ketahui Lebih Lanjut",
+      primaryCtaLink: t.home.banner2Link || "loan-compare",
+      bannerImage: "/assets/images/App-banners-No-Copy.png",
     },
   ];
 
@@ -126,11 +132,40 @@ export default function Home() {
     pageData?.banners && pageData.banners.length > 0
       ? pageData.banners.map((b: any, idx: number) => ({
           ...b,
-          heading: b.heading || (idx === 0 ? (pageData?.hero?.heading || t.home.heroHeading) : undefined),
-          subheading: b.subheading || (idx === 0 ? (pageData?.hero?.subheading || t.home.heroSubheading) : undefined),
-          primaryCtaText: b.primaryCtaText || (idx === 0 ? (pageData?.hero?.primaryCtaText || t.home.heroCta) : undefined),
-          primaryCtaLink: b.primaryCtaLink || (idx === 0 ? (pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online") : undefined),
-          bannerImage: b.bannerImage || (idx === 0 ? (pageData?.hero?.heroImage || "/assets/images/banner-1.png") : "/assets/images/banner-2.png"),
+          heading:
+            b.heading ||
+            (idx === 0
+              ? pageData?.hero?.heading || t.home.heroHeading
+              : idx === 1
+              ? t.home.banner2Heading || "Loanbuddy Credit di Hujung Jari Anda"
+              : undefined),
+          subheading:
+            b.subheading ||
+            (idx === 0
+              ? pageData?.hero?.subheading || t.home.heroSubheading
+              : idx === 1
+              ? t.home.banner2Subheading ||
+                "Permohonan pinjaman peribadi kini lebih pantas dan mudah. Muat turun aplikasi kami sekarang untuk memohon pada bila-bila masa, di mana jua."
+              : undefined),
+          primaryCtaText:
+            b.primaryCtaText ||
+            (idx === 0
+              ? pageData?.hero?.primaryCtaText || t.home.heroCta
+              : idx === 1
+              ? t.home.banner2Cta || "Ketahui Lebih Lanjut"
+              : undefined),
+          primaryCtaLink:
+            b.primaryCtaLink ||
+            (idx === 0
+              ? pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online"
+              : idx === 1
+              ? t.home.banner2Link || "loan-compare"
+              : undefined),
+          bannerImage:
+            b.bannerImage ||
+            (idx === 0
+              ? pageData?.hero?.heroImage || "/assets/images/banner-1.png"
+              : "/assets/images/App-banners-No-Copy.png"),
         }))
       : defaultBanners;
 
@@ -229,7 +264,18 @@ export default function Home() {
                   >
                     {hasText && (
                       <div className="hero-content">
-                        {banner.heading && <h1>{banner.heading}</h1>}
+                        {banner.heading && (
+                          <h1>
+                            {typeof banner.heading === "string" && banner.heading.includes("\n")
+                              ? banner.heading.split("\n").map((line: string, i: number) => (
+                                  <React.Fragment key={i}>
+                                    {i > 0 && <br />}
+                                    {line}
+                                  </React.Fragment>
+                                ))
+                              : banner.heading}
+                          </h1>
+                        )}
                         {banner.subheading && <p>{banner.subheading}</p>}
                         {banner.primaryCtaText && (
                           <a

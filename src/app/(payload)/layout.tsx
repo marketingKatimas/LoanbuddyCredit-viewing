@@ -1,27 +1,32 @@
-import config from '../../../payload.config'
-import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
-import { importMap } from './admin/importMap'
-import type { ServerFunctionClient } from 'payload'
-import React from 'react'
-import '@payloadcms/next/css'
+/* THIS FILE WAS GENERATED FOR THE PAYLOAD ADMIN PANEL.
+ * It provides its own <html>/<body>, separate from the site's frontend layout. */
+import type { ServerFunctionClient } from "payload";
+
+import config from "@payload-config";
+import "@payloadcms/next/css";
+import { RootLayout, handleServerFunctions } from "@payloadcms/next/layouts";
+import React from "react";
+
+import { importMap } from "./admin/importMap.js";
+import "./custom.scss";
+
+type Args = {
+  children: React.ReactNode;
+};
 
 const serverFunction: ServerFunctionClient = async function (args) {
-  'use server'
+  "use server";
   return handleServerFunctions({
     ...args,
     config,
     importMap,
-  })
-}
-
-type Args = {
-  children: React.ReactNode
-}
+  });
+};
 
 const Layout = ({ children }: Args) => (
   <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
     {children}
   </RootLayout>
-)
+);
 
-export default Layout
+export default Layout;

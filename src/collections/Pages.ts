@@ -1,7 +1,9 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateHooks } from '@/lib/revalidate'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  ...revalidateHooks,
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -28,14 +30,16 @@ export const Pages: CollectionConfig = {
       label: 'Select Target Page',
       options: [
         { label: 'Laman Utama (Home)', value: 'home' },
+        { label: 'Perkhidmatan Kami (Our Services - /pinjaman-peribadi)', value: 'perkhidmatan-kami' },
+        { label: 'Pinjaman Peribadi Online (Personal Loan - /pinjaman-peribadi-kl-sarawak)', value: 'pinjaman-peribadi' },
+        { label: 'Pinjaman Tambah Nilai (Top Up Loan - /pinjaman-koperasi)', value: 'pinjaman-koperasi' },
         { label: 'Tentang Loanbuddy Credit (About Us)', value: 'tentang-loanbuddy-credit' },
         { label: 'Hubungi Kami (Contact Us)', value: 'hubungi-kami' },
         { label: 'Soalan Lazim (FAQ)', value: 'soalan-lazim-faq' },
         { label: 'Mohon Pinjaman Online (Apply Form)', value: 'mohon-pinjaman-online' },
-        { label: 'Pinjaman Peribadi', value: 'pinjaman-peribadi' },
-        { label: 'Pinjaman Koperasi', value: 'pinjaman-koperasi' },
         { label: 'Pembayaran (Payment)', value: 'pembayaran' },
         { label: 'Blog (Senarai Artikel)', value: 'blog' },
+        { label: 'Aplikasi Mudah Alih (Mobile App - /loan-compare)', value: 'loan-compare' },
       ],
       admin: {
         description: 'Select the website page you want this content to manage.',

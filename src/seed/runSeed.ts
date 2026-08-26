@@ -1,5 +1,5 @@
 import { getPayload } from 'payload'
-import configPromise from '../../payload.config'
+import configPromise from '@payload-config'
 import { seedDefaultPages } from './seedPages'
 import { seedBlogPosts } from './seedBlogPosts'
 import { seedFooter } from './seedFooter'
