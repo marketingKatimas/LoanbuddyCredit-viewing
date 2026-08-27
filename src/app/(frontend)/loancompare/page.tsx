@@ -121,18 +121,18 @@ export default function AplikasiPage() {
       <main className="page_content">
         {/* 1. Hero Banner Section */}
         <section
-          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0 lg:h-[65vh]"
+          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0"
           style={{
             backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')`,
           }}
         >
-          <div className="container mx-auto px-4 lg:max-w-[1200px] lg:h-[100%]">
+          <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
             <div
-              className="relative w-full overflow-hidden bg-cover bg-[68%_center] md:bg-[center_top] bg-no-repeat min-h-[500px] lg:h-full flex items-start justify-end rounded-lg md:rounded-none shadow-sm md:shadow-none"
+              className="relative w-full overflow-hidden bg-cover bg-[68%_center] md:bg-[center_top] bg-no-repeat min-h-[700px] lg:min-h-0 lg:aspect-[2.4/1] flex items-start justify-end rounded-lg md:rounded-none shadow-sm md:shadow-none"
               style={{ backgroundImage: `url('${heroBannerImg}')` }}
             >
               {/* Content Container */}
-              <div className="relative z-10 w-full lg:w-[60%] px-6 md:px-12 py-10 md:py-16 text-center md:text-left flex flex-col items-center md:!items-start h-full">
+              <div className="relative z-10 w-full lg:w-[58%] px-6 md:px-12 py-10 md:py-16 text-center md:text-left flex flex-col items-center md:!items-start h-full">
                 {heroHeading ? (
                   <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-[#044BD9] leading-tight mb-4 text-center md:!text-left whitespace-pre-line">
                     {heroHeading}
@@ -144,7 +144,7 @@ export default function AplikasiPage() {
                   </h1>
                 )}
 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-6 md:!mb-10 font-bold max-w-[600px] leading-relaxed mx-auto md:mx-0 text-center md:!text-start whitespace-pre-line">
+                <p className="text-[14px] md:text-[15px] text-[#424143] mb-6 md:!mb-10 lg:!mb-5 font-bold max-w-[1200px] leading-relaxed mx-auto md:mx-0 text-center md:!text-start whitespace-pre-line">
                   {heroDesc}
                 </p>
 

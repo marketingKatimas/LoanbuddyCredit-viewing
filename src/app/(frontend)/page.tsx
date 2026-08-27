@@ -220,7 +220,7 @@ export default function Home() {
       {/* Main Content Body */}
       <main className="page_content">
         {/* Hero Section Carousel */}
-        <section className="hero-carousel">
+        <section className="hero-carousel w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
           <div
             className="carousel-track-container"
             onTouchStart={handleTouchStart}

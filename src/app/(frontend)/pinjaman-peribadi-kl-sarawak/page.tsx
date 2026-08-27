@@ -202,12 +202,12 @@ export default function PinjamanPeribadiPage() {
 
         {/* 1. Hero Section */}
         <section
-          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0 lg:h-[65vh]"
+          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0 "
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
-          <div className="container mx-auto px-4 lg:max-w-[1200px] lg:h-[100%]">
-            <div
-              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat min-h-[400px] lg:h-full flex items-center justify-start"
+          <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
+            <div 
+              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat min-h-[700px] lg:h-full flex items-center justify-start"
               style={{ backgroundImage: `url('${heroBannerBg}')` }}
             >
 
@@ -440,15 +440,19 @@ export default function PinjamanPeribadiPage() {
 
         {/* 4. Steps Section */}
         <section className="py-14 lg:py-20 bg-[#f2f2f2] relative">
-          <img
-            src="/assets/images/Loanbuddy-Ladybug-Mirror.png"
-            alt="Loanbuddy Mascot"
-            className="absolute top-0 left-0 -translate-y-[35%] -translate-x-[45%] w-[250px] md:w-[220px] lg:w-[500px] object-contain z-0 pointer-events-none"
-          />
+          {/* Mascot wrapped in a div to preserve positioning while animating */}
+          <div className="absolute left-0 -translate-y-[55%] lg:-translate-y-[45%] -translate-x-[45%] w-[250px] md:w-[220px] lg:w-[700px] z-0 pointer-events-none">
+            <img 
+              src="/assets/images/Loanbuddy-Ladybug-Mirror.png" 
+              alt="Loanbuddy Mascot" 
+              className="w-full h-full object-contain"
+              style={{ animation: "mascotFloat 5s ease-in-out infinite" }}
+            />
+          </div>
 
           <div className="container mx-auto px-4 lg:max-w-[1200px] relative z-10">
             <div className="text-center mb-12 lg:mb-16">
-              <h2 className="text-[26px] lg:text-[30px] font-bold text-[#222222] mb-4">
+              <h2 className="text-[26px] lg:text-[30px] font-bold !text-[#424143] mb-4">
                 {stepsTitle}
               </h2>
             </div>
