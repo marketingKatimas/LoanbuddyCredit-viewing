@@ -237,22 +237,28 @@ export default function Home() {
             >
               {bannerList.map((banner: any, index: number) => {
                 const fallbackImg =
-                  index === 0 ? "/assets/images/banner-1.png" : "/assets/images/banner-2.png";
+                  index === 0 ? "/assets/images/banner-1.png" : "/assets/images/App-banners-No-Copy.png";
                 const bgImage = getMediaUrl(banner.bannerImage, fallbackImg);
                 const hasText = Boolean(
                   banner.heading || banner.subheading || banner.primaryCtaText
                 );
+                
+                // Identify if this is the second banner to apply special layout
+                const isAppBanner = index === 1;
 
                 return (
                   <div
                     key={index}
-                    className={`carousel-slide slide-${index + 1} ${hasText ? "has-text-slide" : "image-only-slide"
-                      }`}
+                    // CHANGED: Added md: prefix to layout modifiers so mobile reverts to Banner 1 standard layout. 
+                    // Added bg-[25%_center] so the mobile background frames the left side correctly.
+                    className={`carousel-slide slide-${index + 1} ${hasText ? "has-text-slide" : "image-only-slide"} ${
+                      isAppBanner ? "!bg-[8%_center] md:!bg-[center_top] md:!flex-row md:!items-center md:!justify-end md:!p-0" : ""
+                    }`}
                     style={{
                       width: `${100 / bannerList.length}%`,
                       backgroundImage: `url('${bgImage}')`,
                       backgroundSize: "cover",
-                      backgroundPosition: hasText ? "center bottom" : "center center",
+                      backgroundPosition: isAppBanner ? undefined : (hasText ? "center bottom" : "center center"),
                       backgroundColor: hasText ? undefined : "#f4f6f8",
                       cursor: !hasText && banner.primaryCtaLink ? "pointer" : "default",
                     }}
@@ -262,7 +268,8 @@ export default function Home() {
                       }
                     }}
                   >
-                    {hasText && (
+                    {/* Layout for Banner 1 (Standard Layout) */}
+                    {hasText && !isAppBanner && (
                       <div className="hero-content">
                         {banner.heading && (
                           <h1>
@@ -285,6 +292,45 @@ export default function Home() {
                             <span>
                               <small>{banner.primaryCtaText}</small>
                               <small>{banner.primaryCtaText}</small>
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Layout specifically for Banner 2 (App Banner Layout) */}
+                    {hasText && isAppBanner && (
+                      // CHANGED: pt-10 to pt-0 md:pt-14, and justify-start to justify-center md:justify-start for perfect mobile centering
+                      <div className="relative z-10 w-full lg:w-[58%] px-6 md:px-12 py-30 lg:!py-10 md:pt-14 lg:pt-16 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full  md:justify-start">
+                        {banner.heading && (
+                          // CHANGED: Added !text-white for mobile, preserved md:!text-[#044BD9] for desktop
+                          <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-white md:!text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
+                            {typeof banner.heading === "string" && banner.heading.includes("\n")
+                              ? banner.heading.split("\n").map((line: string, i: number) => (
+                                  <React.Fragment key={i}>
+                                    {i > 0 && <br />}
+                                    {line}
+                                  </React.Fragment>
+                                ))
+                              : banner.heading}
+                          </h1>
+                        )}
+                        
+                        {banner.subheading && (
+                          // CHANGED: Added !text-white for mobile, preserved md:!text-[#424143] for desktop
+                          <p className="!text-[14px] md:!text-[15px] !text-white md:!text-[#424143] mb-6 md:!mb-8 font-bold max-w-[1200px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 !text-center md:!text-start whitespace-pre-line">
+                            {banner.subheading}
+                          </p>
+                        )}
+                        
+                        {banner.primaryCtaText && (
+                          <a
+                            href={banner.primaryCtaLink || "mohon-pinjaman-online"}
+                            className="group relative inline-flex h-[50px] items-start justify-center overflow-hidden rounded-full border-[2px] border-[#F20505] bg-[#F20505] px-[60px] font-bold !text-white shadow-md whitespace-nowrap transition-colors duration-300 hover:!bg-white hover:!text-[#F20505]"
+                          >
+                            <span className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-1/2">
+                              <small className="flex h-[50px] items-center text-[16px]">{banner.primaryCtaText}</small>
+                              <small className="flex h-[50px] items-center text-[16px]">{banner.primaryCtaText}</small>
                             </span>
                           </a>
                         )}

@@ -202,12 +202,12 @@ export default function PinjamanPeribadiPage() {
 
         {/* 1. Hero Section */}
         <section
-          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0 "
+          className="w-full bg-cover bg-center bg-no-repeat flex items-center lg:py-0 "
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
           <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
             <div 
-              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat min-h-[700px] lg:h-full flex items-center justify-start"
+              className="relative w-full overflow-hidden bg-cover bg-[68%_center] md:bg-[center_top] bg-no-repeat !min-h-[500px] lg:!min-h-[700px] lg:h-full flex items-center justify-start"
               style={{ backgroundImage: `url('${heroBannerBg}')` }}
             >
 
@@ -226,7 +226,7 @@ export default function PinjamanPeribadiPage() {
                   {heroHeading}
                 </h1>
 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-8 font-medium max-w-[400px]">
+                <p className="text-[14px] md:text-[15px] text-center lg:!text-start text-[#424143] mb-8 font-medium max-w-[400px] ">
                   {heroSubheading}
                 </p>
 

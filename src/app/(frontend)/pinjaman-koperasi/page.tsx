@@ -172,18 +172,18 @@ export default function PinjamanPeribadiPage() {
 
         {/* 1. Hero Section */}
         <section
-          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0"
+          className="w-full bg-cover bg-center bg-no-repeat flex items-center lg:py-0"
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
           <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
             <div 
-              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat min-h-[700px] lg:h-full flex items-center justify-start"
+              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat !min-h-[500px] lg:!min-h-[700px] lg:h-full flex items-center justify-start"
               style={{ backgroundImage: `url('/assets/images/fimage-tambah-nilai.png')` }}
             >
 
               {/* Seamless Frosted Gradient Layer */}
               <div
-                className="absolute inset-y-0 left-0 w-full lg:w-[55%] bg-white/70 backdrop-blur-lg pointer-events-none"
+                className="absolute inset-y-0 left-0 w-full lg:w-[55%] bg-white/70 lg:bg-white/70  backdrop-blur-lg pointer-events-none"
                 style={{
                   WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0) 100%)",
                   maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0) 100%)"
@@ -196,7 +196,7 @@ export default function PinjamanPeribadiPage() {
                   {heroHeading}
                 </h1>
 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-8 font-medium max-w-[400px] whitespace-pre-line">
+                <p className="text-[14px] md:text-[15px] text-center lg:!text-start text-[#424143] mb-8 font-medium max-w-[400px] whitespace-pre-line">
                   {heroSubheading}
                 </p>
 
