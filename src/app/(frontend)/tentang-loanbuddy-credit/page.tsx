@@ -338,7 +338,10 @@ export default function TentangKamiPage() {
                     alt="Celebrate Mascot"
                     width={400}
                     height={400}
-                    className="w-[130px] md:w-[250px] lg:w-[320px] object-contain transition-all duration-500 ease-out hover:-translate-y-6 hover:translate-x-2 hover:scale-110 hover:drop-shadow-2xl cursor-pointer"
+                    /* Removed the hover and transform classes, kept sizing and cursor */
+                    className="w-[130px] md:w-[250px] lg:w-[320px] object-contain cursor-pointer"
+                    /* Added the floating animation */
+                    style={{ animation: "mascotFloat 5s ease-in-out infinite" }}
                   />
                 </div>
               </div>

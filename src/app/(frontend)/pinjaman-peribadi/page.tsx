@@ -329,9 +329,19 @@ export default function PerkhidmatanKamiPage() {
                   </p>
                 )}
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:mt-20 lg:!gap-30 text-center">
+                {/* 
+                  MOBILE: flex, overflow-x-auto, snap-x for smooth scrolling. 
+                  DESKTOP: md:grid md:grid-cols-3 to restore original layout.
+                */}
+                <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-10 lg:mt-20 lg:!gap-30 text-center md:overflow-visible md:pb-0 scrollbar-hide">
+                  
                   {/* Item 1 */}
-                  <div className="flex flex-col items-start text-left">
+                  {/* 
+                    MOBILE: w-[85%] forces cards to be slightly smaller than the screen so the next card peeks in. 
+                    Added border, rounded-lg, and p-6.
+                    DESKTOP: md:w-auto, md:border-0, md:p-0 removes the mobile styling entirely. 
+                  */}
+                  <div className="flex-shrink-0 w-[85%] sm:w-[320px] md:w-auto flex flex-col items-start text-left border border-gray-200 lg:!border-0 rounded-lg p-6 md:border-0 md:p-0 md:rounded-none snap-center">
                     <img
                       src={feature1Img}
                       alt={feature1Title}
@@ -356,7 +366,7 @@ export default function PerkhidmatanKamiPage() {
                   </div>
 
                   {/* Item 2 */}
-                  <div className="flex flex-col items-start text-left">
+                  <div className="flex-shrink-0 w-[85%] sm:w-[320px] md:w-auto flex flex-col items-start text-left border border-gray-200 lg:!border-0 lg:!border-0 rounded-lg p-6 md:border-0 md:p-0 md:rounded-none snap-center">
                     <img
                       src={feature2Img}
                       alt={feature2Title}
@@ -371,7 +381,7 @@ export default function PerkhidmatanKamiPage() {
                   </div>
 
                   {/* Item 3 */}
-                  <div className="flex flex-col items-start text-left">
+                  <div className="flex-shrink-0 w-[85%] sm:w-[320px] md:w-auto flex flex-col items-start text-left border border-gray-200 lg:!border-0 rounded-lg p-6 md:border-0 md:p-0 md:rounded-none snap-center">
                     <img
                       src={feature3Img}
                       alt={feature3Title}
@@ -384,6 +394,7 @@ export default function PerkhidmatanKamiPage() {
                       {feature3Desc}
                     </p>
                   </div>
+
                 </div>
               </div>
             </section>
@@ -502,20 +513,29 @@ export default function PerkhidmatanKamiPage() {
               </p>
 
               {/* Responsive Grid with Center Mascot */}
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:gap-8 items-center justify-items-center relative max-w-[1300px] mx-auto py-8">
+              {/* 
+                MOBILE: flex flex-nowrap overflow-x-auto for horizontal scrolling.
+                DESKTOP: md:grid md:grid-cols-[1fr_auto_1fr] to restore the infographic layout.
+              */}
+              <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-0 -mx-4  md:mx-auto md:px-0 md:grid md:grid-cols-[1fr_auto_1fr] md:gap-8 items-center md:justify-items-center relative max-w-[1300px] py-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ">
+                
                 {/* === LEFT COLUMN === */}
-                <div className="flex flex-col gap-6 md:gap-8 w-full justify-center h-full py-4 md:py-8">
+                {/* 'contents' removes the wrapper on mobile so items can scroll horizontally alongside the others */}
+                <div className="contents md:flex md:flex-col md:gap-8 w-full md:justify-center h-full md:py-8">
+                  
                   {/* Item 1 */}
-                  <div className="flex flex-col md:flex-row text-center md:text-right lg:!text-start items-center md:items-start gap-4 w-full justify-end">
-                    <div className="order-1 md:order-2 flex-1">
-                      <h4 className="font-bold !text-[#044BD9] mb-2 text-[16px] md:!text-[20px]">
+                  {/* Added mobile card styling (border, rounded-xl, shadow, p-4) which is disabled on md: */}
+                  <div className="flex flex-row md:flex-row text-left md:text-right lg:!text-start items-center md:items-start gap-3 md:gap-4 w-[85%] sm:w-[320px] md:w-full md:justify-end flex-shrink-0 border border-gray-100 md:!border-0 rounded-xl md:rounded-none shadow-[0_4px_16px_rgba(0,0,0,0.06)] md:shadow-none p-4 md:p-0 snap-center bg-white md:bg-transparent">
+                    <div className="order-2 md:!order-1 flex-1">
+                      <h4 className="font-bold !text-[#044BD9] mb-1 md:mb-2 text-[15px] md:!text-[20px]">
                         {topUpFeature1Title}
                       </h4>
                       <p className="text-[13px] md:text-[16px] text-[#424143] leading-tight whitespace-pre-line">
                         {topUpFeature1Desc}
                       </p>
                     </div>
-                    <div className="order-2 md:order-1 w-[70px] h-[70px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
+                    {/* Changed mobile order to 1 so the icon sits on the left, next to the text */}
+                    <div className="order-1 md:order-1 w-[55px] h-[55px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
                       <img
                         src={topUpFeature1Img}
                         alt={topUpFeature1Title}
@@ -534,16 +554,16 @@ export default function PerkhidmatanKamiPage() {
                   </div>
 
                   {/* Item 2 */}
-                  <div className="flex flex-col md:flex-row text-center md:text-right lg:!text-start items-center md:items-start gap-4 w-full justify-end">
-                    <div className="order-1 md:order-2 flex-1">
-                      <h4 className="font-bold !text-[#044BD9] mb-2 text-[16px] md:!text-[20px]">
+                  <div className="flex flex-row md:flex-row text-left md:text-right lg:!text-start items-center md:items-start gap-3 md:gap-4 w-[85%] sm:w-[320px] md:w-full md:justify-end flex-shrink-0 border border-gray-100 md:!border-0 rounded-xl md:rounded-none shadow-[0_4px_16px_rgba(0,0,0,0.06)] md:shadow-none p-4 md:p-0 snap-center bg-white md:bg-transparent">
+                    <div className="order-2 md:!order-1 flex-1">
+                      <h4 className="font-bold !text-[#044BD9] mb-1 md:mb-2 text-[15px] md:!text-[20px]">
                         {topUpFeature2Title}
                       </h4>
                       <p className="text-[13px] md:text-[16px] text-[#424143] leading-tight whitespace-pre-line">
                         {topUpFeature2Desc}
                       </p>
                     </div>
-                    <div className="order-2 md:order-1 w-[70px] h-[70px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
+                    <div className="order-1 md:order-1 w-[55px] h-[55px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
                       <img
                         src={topUpFeature2Img}
                         alt={topUpFeature2Title}
@@ -553,8 +573,8 @@ export default function PerkhidmatanKamiPage() {
                   </div>
                 </div>
 
-                {/* === CENTER COLUMN: MASCOT === */}
-                <div className="w-full flex justify-center items-center relative py-8 md:py-0 px-2 lg:px-8">
+                {/* === CENTER COLUMN: MASCOT (Hidden on Mobile) === */}
+                <div className="hidden md:flex w-full justify-center items-center relative py-8 md:py-0 px-2 lg:px-8">
                   <Image
                     src={topUpMascotImg}
                     alt="Loanbuddy Mascot Holding Phone"
@@ -565,18 +585,18 @@ export default function PerkhidmatanKamiPage() {
                 </div>
 
                 {/* === RIGHT COLUMN === */}
-                <div className="flex flex-col gap-6 md:gap-8 w-full justify-center h-full py-4 md:py-8">
+                <div className="contents md:flex md:flex-col md:gap-8 w-full md:justify-center h-full md:py-8">
                   {/* Item 3 */}
-                  <div className="flex flex-col md:flex-row text-center md:text-right lg:!text-start items-center md:items-start gap-4 w-full justify-start">
-                    <div className="w-[70px] h-[70px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
+                  <div className="flex flex-row md:flex-row text-left md:text-right lg:!text-start items-center md:items-start gap-3 md:gap-4 w-[85%] sm:w-[320px] md:w-full justify-start flex-shrink-0 border border-gray-100 md:!border-0 rounded-xl md:rounded-none shadow-[0_4px_16px_rgba(0,0,0,0.06)] md:shadow-none p-4 md:p-0 snap-center bg-white md:bg-transparent">
+                    <div className="w-[55px] h-[55px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
                       <img
                         src={topUpFeature3Img}
                         alt={topUpFeature3Title}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <div className="flex-1 text-center md:text-left">
-                      <h4 className="font-bold !text-[#044BD9] mb-2 text-[16px] md:!text-[20px]">
+                    <div className="flex-1 text-left">
+                      <h4 className="font-bold !text-[#044BD9] mb-1 md:mb-2 text-[15px] md:!text-[20px]">
                         {topUpFeature3Title}
                       </h4>
                       <p className="text-[13px] md:text-[16px] text-[#424143] leading-tight whitespace-pre-line">
@@ -595,16 +615,16 @@ export default function PerkhidmatanKamiPage() {
                   </div>
 
                   {/* Item 4 */}
-                  <div className="flex flex-col md:flex-row text-center md:text-right lg:!text-start items-center md:items-start gap-4 w-full justify-start">
-                    <div className="w-[70px] h-[70px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
+                  <div className="flex flex-row md:flex-row text-left md:text-right lg:!text-start items-center md:items-start gap-3 md:gap-4 w-[85%] sm:w-[320px] md:w-full justify-start flex-shrink-0 border border-gray-100 md:!border-0 rounded-xl md:rounded-none shadow-[0_4px_16px_rgba(0,0,0,0.06)] md:shadow-none p-4 md:p-0 snap-center bg-white md:bg-transparent">
+                    <div className="w-[55px] h-[55px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
                       <img
                         src={topUpFeature4Img}
                         alt={topUpFeature4Title}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <div className="flex-1 text-center md:text-left">
-                      <h4 className="font-bold !text-[#044BD9] mb-2 text-[16px] md:!text-[20px]">
+                    <div className="flex-1 text-left">
+                      <h4 className="font-bold !text-[#044BD9] mb-1 md:mb-2 text-[15px] md:!text-[20px]">
                         {topUpFeature4Title}
                       </h4>
                       <p className="text-[13px] md:text-[16px] text-[#424143] leading-tight whitespace-pre-line">
@@ -615,7 +635,7 @@ export default function PerkhidmatanKamiPage() {
                 </div>
 
                 {/* === BOTTOM CENTER ITEM === */}
-                <div className="md:col-span-3 mt-4 md:mt-8 flex flex-col items-center justify-center w-full">
+                <div className="contents md:block md:col-span-3  md:flex md:flex-col md:items-center md:justify-center w-full">
                   {/* Arrow Down (Hidden on Mobile) stacked on top */}
                   <img
                     src="/assets/images/arrow-down.png"
@@ -623,16 +643,17 @@ export default function PerkhidmatanKamiPage() {
                     className="hidden md:block h-[40px] lg:h-[60px] w-auto object-contain mb-6 lg:mb-8"
                   />
 
-                  <div className="flex flex-col md:flex-row text-center md:text-right lg:!text-start items-center md:items-start gap-4 w-full max-w-[400px]">
-                    <div className="w-[70px] h-[70px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
+                  {/* Applied Mobile Card Styling to the inner div to match the scrolling items */}
+                  <div className="flex flex-row md:flex-row text-left md:text-right lg:!text-start items-center md:items-start gap-3 md:gap-4 w-[85%] sm:w-[320px] md:w-full md:max-w-[400px] flex-shrink-0 border border-gray-100 md:!border-0 rounded-xl md:rounded-none shadow-[0_4px_16px_rgba(0,0,0,0.06)] md:shadow-none p-4 md:p-0 snap-center bg-white md:bg-transparent">
+                    <div className="w-[55px] h-[55px] md:w-[80px] md:h-[80px] flex-shrink-0 flex items-center justify-center">
                       <img
                         src={topUpFeature5Img}
                         alt={topUpFeature5Title}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    <div className="flex-1 text-center md:text-left">
-                      <h4 className="font-bold !text-[#044BD9] mb-2 text-[16px] md:!text-[20px]">
+                    <div className="flex-1 text-left">
+                      <h4 className="font-bold !text-[#044BD9] mb-1 md:mb-2 text-[15px] md:!text-[20px]">
                         {topUpFeature5Title}
                       </h4>
                       <p className="text-[13px] md:!text-[16px] text-[#424143] leading-tight whitespace-pre-line">

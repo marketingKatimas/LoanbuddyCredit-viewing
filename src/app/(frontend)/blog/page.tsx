@@ -185,7 +185,7 @@ export default function BlogListingPage() {
                   {filteredArticles.length > 0 ? (
                     <div className="row" id="Container">
                       {filteredArticles.map((article: any, idx: number) => (
-                        <div key={idx} className="col col-lg-6 blogPost mix ui kewangan mb-4">
+                        <div key={idx} className="col col-lg-4 blogPost mix ui kewangan mb-4">
                           <div className="blog_item bg-white p-3" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
                             <div className="item_image mb-2">
                               <a href={article.slug}>

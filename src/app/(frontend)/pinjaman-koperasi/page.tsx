@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getMediaUrl } from "@/lib/media";
 import { useLanguage } from "@/context/LanguageContext";
+
 
 // 1. Reusable WhatsApp Buttons Component
 const WhatsAppButtons = () => {
@@ -43,6 +44,7 @@ const WhatsAppButtons = () => {
   );
 };
 
+
 // 2. Circular outline downward arrow matching FAQ page
 const FaqArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
   <svg
@@ -73,6 +75,7 @@ export default function PinjamanPeribadiPage() {
   const { t, isEnglish, language } = useLanguage();
   const [pageData, setPageData] = useState<any>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const mascotStarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch(`/api/content?slug=pinjaman-koperasi&locale=${language}`, { cache: "no-store" })
@@ -169,18 +172,18 @@ export default function PinjamanPeribadiPage() {
 
         {/* 1. Hero Section */}
         <section
-          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0 lg:h-[65vh]"
+          className="w-full bg-cover bg-center bg-no-repeat flex items-center lg:py-0"
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
-          <div className="container mx-auto px-4 lg:max-w-[1200px] lg:h-[100%]">
-            <div
-              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat min-h-[400px] lg:h-full flex items-center justify-start"
+          <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
+            <div 
+              className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat !min-h-[500px] lg:!min-h-[700px] lg:h-full flex items-center justify-start"
               style={{ backgroundImage: `url('/assets/images/fimage-tambah-nilai.png')` }}
             >
 
               {/* Seamless Frosted Gradient Layer */}
               <div
-                className="absolute inset-y-0 left-0 w-full lg:w-[55%] bg-white/70 backdrop-blur-lg pointer-events-none"
+                className="absolute inset-y-0 left-0 w-full lg:w-[55%] bg-white/70 lg:bg-white/70  backdrop-blur-lg pointer-events-none"
                 style={{
                   WebkitMaskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0) 100%)",
                   maskImage: "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0) 100%)"
@@ -193,7 +196,7 @@ export default function PinjamanPeribadiPage() {
                   {heroHeading}
                 </h1>
 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-8 font-medium max-w-[400px] whitespace-pre-line">
+                <p className="text-[14px] md:text-[15px] text-center lg:!text-start text-[#424143] mb-8 font-medium max-w-[400px] whitespace-pre-line">
                   {heroSubheading}
                 </p>
 
@@ -316,11 +319,15 @@ export default function PinjamanPeribadiPage() {
 
         {/* Kaedah Tambah Nilai */}
         <section className="py-12 lg:py-20 bg-white relative z-20">
-          <img
-            src="/assets/images/Loanbuddy-Ladybug-Mirror.png"
-            alt="Loanbuddy Mascot"
-            className="absolute left-0 -translate-y-[35%] -translate-x-[45%] w-[250px] md:w-[200px] lg:w-[500px] object-contain z-0 pointer-events-none"
-          />
+          {/* Mascot wrapped in a div to preserve positioning while animating */}
+          <div className="absolute left-0 -translate-y-[35%] -translate-x-[45%] w-[250px] md:w-[200px] lg:w-[600px] z-0 pointer-events-none">
+            <img 
+              src="/assets/images/Loanbuddy-Ladybug-Mirror.png" 
+              alt="Loanbuddy Mascot" 
+              className="w-full h-full object-contain"
+              style={{ animation: "mascotFloat 5s ease-in-out infinite" }}
+            />
+          </div>
 
           <div className="container mx-auto px-4 lg:max-w-[1200px] relative z-10">
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">

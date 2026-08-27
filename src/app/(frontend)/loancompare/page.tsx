@@ -121,30 +121,30 @@ export default function AplikasiPage() {
       <main className="page_content">
         {/* 1. Hero Banner Section */}
         <section
-          className="w-full bg-cover bg-center bg-no-repeat flex items-center py-6 lg:py-0 lg:h-[65vh]"
+          className="w-full bg-cover bg-center bg-no-repeat flex items-center lg:py-0"
           style={{
             backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')`,
           }}
         >
-          <div className="container mx-auto px-4 lg:max-w-[1200px] lg:h-[100%]">
+          <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
             <div
-              className="relative w-full overflow-hidden bg-cover bg-[68%_center] md:bg-[center_top] bg-no-repeat min-h-[500px] lg:h-full flex items-start justify-end rounded-lg md:rounded-none shadow-sm md:shadow-none"
+              className="relative w-full overflow-hidden bg-cover bg-[68%_center] md:bg-[center_top] bg-no-repeat !min-h-[500px] lg:!min-h-0 lg:aspect-[2.4/1] flex items-start justify-end  md:rounded-none shadow-sm md:shadow-none"
               style={{ backgroundImage: `url('${heroBannerImg}')` }}
             >
               {/* Content Container */}
-              <div className="relative z-10 w-full lg:w-[60%] px-6 md:px-12 py-10 md:py-16 text-center md:text-left flex flex-col items-center md:!items-start h-full">
+              <div className="relative z-10 w-full lg:w-[58%] px-6 md:px-12 py-10 md:py-16 text-center md:text-left flex flex-col items-center md:!items-start h-full">
                 {heroHeading ? (
                   <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-[#044BD9] leading-tight mb-4 text-center md:!text-left whitespace-pre-line">
                     {heroHeading}
                   </h1>
                 ) : (
-                  <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-[#044BD9] leading-tight mb-4 text-center md:!text-left">
+                  <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-[#044BD9] leading-tight mb-4 !text-center lg:!text-start whitespace-pre-line">
                     {t.loanComparePage.heroTitlePart1} <br className="hidden md:block" />{" "}
                     {t.loanComparePage.heroTitlePart2}
                   </h1>
                 )}
 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-6 md:!mb-10 font-bold max-w-[600px] leading-relaxed mx-auto md:mx-0 text-center md:!text-start whitespace-pre-line">
+                <p className="text-[14px] md:text-[15px] text-[#424143] mb-6 md:!mb-10 lg:!mb-5 font-bold max-w-[1200px] leading-relaxed mx-auto md:mx-0 text-center md:!text-start whitespace-pre-line">
                   {heroDesc}
                 </p>
 
@@ -186,10 +186,21 @@ export default function AplikasiPage() {
               </div>
             )}
 
-            {/* 5 Icons Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-4 justify-items-center text-center">
+            {/* 5 Icons Grid / Mobile Slider */}
+            {/* 
+              MOBILE: flex, flex-nowrap, overflow-x-auto for horizontal scrolling.
+              DESKTOP: md:grid md:grid-cols-5 to restore the original 5-column layout. 
+            */}
+            <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-5 md:justify-items-center text-center md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
               {featuresList.map((feature: any, idx: number) => (
-                <div key={idx} className="flex flex-col items-center max-w-[200px]">
+                <div 
+                  key={idx} 
+                  /* 
+                    MOBILE: flex-shrink-0, fixed width, border, padding, and rounded corners.
+                    DESKTOP: md:w-full, md:border-0, md:p-0, md:bg-transparent removes the mobile card styling.
+                  */
+                  className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-full max-w-[200px] flex flex-col items-center justify-start border border-gray-200 md:!border-0 rounded-xl md:rounded-none bg-white md:!bg-transparent p-6 md:p-0 shadow-[0_4px_16px_rgba(0,0,0,0.04)] md:shadow-none snap-center"
+                >
                   <div className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] flex items-center justify-center mb-4">
                     <img
                       src={feature.img}
@@ -203,6 +214,7 @@ export default function AplikasiPage() {
                 </div>
               ))}
             </div>
+
           </div>
         </section>
 
