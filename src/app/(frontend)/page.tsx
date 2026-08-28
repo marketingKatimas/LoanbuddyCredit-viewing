@@ -318,7 +318,7 @@ export default function Home() {
                         
                         {banner.subheading && (
                           // CHANGED: Added !text-white for mobile, preserved md:!text-[#424143] for desktop
-                          <p className="!text-[14px] md:!text-[15px] !text-white md:!text-[#424143] mb-6 md:!mb-8 font-bold max-w-[1200px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 !text-center md:!text-start whitespace-pre-line">
+                          <p className="!text-[14px] md:!text-[15px] !text-white md:!text-[#424143] mb-6 md:!mb-8 font-bold max-w-[1500px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 !text-center md:!text-start whitespace-pre-line">
                             {banner.subheading}
                           </p>
                         )}

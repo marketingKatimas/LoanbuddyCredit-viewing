@@ -208,7 +208,7 @@ export default function AplikasiPage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h4 className="text-[13px] md:!text-[20px] font-bold !text-[#424143] leading-tight">
+                  <h4 className="!text-[13px] md:!text-[20px] font-bold !text-[#424143] leading-tight">
                     {feature.title}
                   </h4>
                 </div>
