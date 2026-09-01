@@ -639,7 +639,7 @@ export default function PinjamanPeribadiPage() {
 
         {/* 6. FAQ Section */}
         <section className="py-16 lg:py-[100px] bg-white">
-          <div className="container mx-auto px-4 lg:max-w-[900px]">
+          <div className="container mx-auto px-4 lg:!max-w-[900px]">
             <div className="text-center mb-10">
               <h2 className="text-[28px] lg:text-[38px] font-bold text-blue">{faqSectionTitle}</h2>
             </div>
