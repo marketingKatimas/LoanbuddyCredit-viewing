@@ -76,9 +76,15 @@ export default function HubungiKamiPage() {
         })
       : defaultBranches;
 
-  const mapUrl =
+  const rawMapUrl =
     pageData?.hero?.secondaryCtaText ||
-    "https://www.google.com/maps/d/u/0/embed?mid=1u9eA-xFNCD0Ddtd3HYLSnCgvoWwOZgw";
+    "https://www.google.com/maps/d/embed?mid=1_Q6pIm1rAxMyXKvZ4nAlypvYi3L9ruM";
+
+  // Automatically convert edit or sharing links to embed format
+  const mapUrl = rawMapUrl
+    .replace("/edit", "/embed")
+    .replace(/([?&])usp=sharing&?/, "$1")
+    .replace(/[?&]$/, "");
 
   const formIntro =
     pageData?.sections?.[1]?.sectionDescription || t.contactUs.formIntro;
@@ -249,11 +255,40 @@ export default function HubungiKamiPage() {
                                 <input
                                   id="phone"
                                   type="tel"
+                                  inputMode="numeric"
+                                  pattern="[0-9]*"
                                   name="phone"
                                   placeholder={isEnglish ? t.contactUs.phonePlaceholder : "0123456789"}
                                   maxLength={12}
                                   value={formData.phone}
-                                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                  onKeyDown={(e) => {
+                                    if (
+                                      [
+                                        "Backspace",
+                                        "Delete",
+                                        "Tab",
+                                        "Escape",
+                                        "Enter",
+                                        "ArrowLeft",
+                                        "ArrowRight",
+                                        "ArrowUp",
+                                        "ArrowDown",
+                                      ].includes(e.key) ||
+                                      e.ctrlKey ||
+                                      e.metaKey
+                                    ) {
+                                      return;
+                                    }
+                                    if (!/^[0-9]$/.test(e.key)) {
+                                      e.preventDefault();
+                                    }
+                                  }}
+                                  onChange={(e) =>
+                                    setFormData({
+                                      ...formData,
+                                      phone: e.target.value.replace(/\D/g, ""),
+                                    })
+                                  }
                                   required
                                 />
                               </div>

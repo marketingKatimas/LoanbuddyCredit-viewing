@@ -115,7 +115,8 @@ export default function Header() {
                     className={`dropdown ${activeDropdown === "service" ? "show" : ""} ${
                       isActive("/pinjaman-peribadi") ||
                       isActive("/pinjaman-peribadi-kl-sarawak") ||
-                      isActive("/pinjaman-koperasi")
+                      isActive("/pinjaman-koperasi") ||
+                      isActive("/loan-compare")
                         ? "active"
                         : ""
                     }`}
@@ -126,7 +127,8 @@ export default function Header() {
                       className={`nav-link ${
                         isActive("/pinjaman-peribadi") ||
                         isActive("/pinjaman-peribadi-kl-sarawak") ||
-                        isActive("/pinjaman-koperasi")
+                        isActive("/pinjaman-koperasi") ||
+                        isActive("/loan-compare")
                           ? "active"
                           : ""
                       }`}
@@ -162,6 +164,15 @@ export default function Header() {
                           onClick={closeAllMenus}
                         >
                           {t.nav.topUpLoan}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className={isActive("/loan-compare") ? "active" : ""}
+                          href="/loan-compare"
+                          onClick={closeAllMenus}
+                        >
+                          {t.nav.loanbuddyApp}
                         </Link>
                       </li>
                     </ul>

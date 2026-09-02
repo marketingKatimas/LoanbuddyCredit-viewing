@@ -41,7 +41,7 @@ const defaultFooterValues: FooterData = {
   instagramUrl: "https://instagram.com",
   tiktokUrl: "https://tiktok.com",
   servicesLinks: [
-    { label: "Pinjaman Peribadi Online", url: "/mohon-pinjaman-online" },
+    { label: "Pinjaman Peribadi Online", url: "/pinjaman-peribadi-kl-sarawak" },
     { label: "Pinjaman Tambah Nilai", url: "/pinjaman-koperasi" },
   ],
   customerServiceLinks: [
@@ -71,7 +71,7 @@ export default function Footer() {
   }, [language]);
 
   const defaultServices = [
-    { label: t.footer.personalLoanOnline, url: "/mohon-pinjaman-online" },
+    { label: t.footer.personalLoanOnline, url: "/pinjaman-peribadi-kl-sarawak" },
     { label: t.footer.topUpLoan, url: "/pinjaman-koperasi" },
   ];
 
@@ -84,10 +84,16 @@ export default function Footer() {
 
   const services =
     footer.servicesLinks && footer.servicesLinks.length > 0
-      ? footer.servicesLinks.map((s: any, idx: number) => ({
-          label: s.label || defaultServices[idx]?.label || "",
-          url: s.url || defaultServices[idx]?.url || "#",
-        }))
+      ? footer.servicesLinks.map((s: any, idx: number) => {
+          let url = s.url || defaultServices[idx]?.url || "#";
+          if (url === "/mohon-pinjaman-online" || url === "mohon-pinjaman-online") {
+            url = "/pinjaman-peribadi-kl-sarawak";
+          }
+          return {
+            label: s.label || defaultServices[idx]?.label || "",
+            url,
+          };
+        })
       : defaultServices;
 
   const customerServices =

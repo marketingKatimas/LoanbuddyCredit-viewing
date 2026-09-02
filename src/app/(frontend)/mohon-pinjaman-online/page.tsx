@@ -117,7 +117,7 @@ export default function MohonPinjamanOnlinePage() {
     }
 
     const ageVal = parseInt(formData.age);
-    if (isNaN(ageVal) || ageVal < 20 || ageVal > 60) {
+    if (isNaN(ageVal) || ageVal < 18 || ageVal > 60) {
       setError(t.applyForm.valAgeRange);
       return;
     }
@@ -371,7 +371,7 @@ export default function MohonPinjamanOnlinePage() {
                               name="age"
                               type="number"
                               placeholder={t.applyForm.agePlaceholder}
-                              min="20"
+                              min="18"
                               max="60"
                               className="form-control"
                               value={formData.age}

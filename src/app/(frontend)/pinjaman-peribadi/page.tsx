@@ -160,7 +160,7 @@ export default function PerkhidmatanKamiPage() {
   const reqAmountTitle =
     pageData?.sections?.[4]?.items?.[0]?.itemTitle || t.ourServicesPage.reqAmountTitle;
   const reqAmountDesc =
-    pageData?.sections?.[4]?.items?.[0]?.itemDescription;
+    pageData?.sections?.[4]?.items?.[0]?.itemDescription || t.ourServicesPage.reqAmountDesc;
 
   const reqJobTitle =
     pageData?.sections?.[4]?.items?.[1]?.itemTitle || t.ourServicesPage.reqJobTitle;
@@ -408,17 +408,11 @@ export default function PerkhidmatanKamiPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-12">
                   <div className="flex items-start gap-3">
-                    <svg
-                      className="w-15 h-15 text-[#044BD9] flex-shrink-0 mt-1"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <img
+                      src="/assets/images/check-icon.png"
+                      alt="Check"
+                      className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-1 object-contain"
+                    />
                     <div>
                       <h4 className="font-bold text-[16px] lg:!text-[20px] text-blue mb-2">
                         {termLoanAmountTitle}
@@ -444,17 +438,11 @@ export default function PerkhidmatanKamiPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <svg
-                      className="w-15 h-15 text-[#044BD9] flex-shrink-0 mt-1"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <img
+                      src="/assets/images/check-icon.png"
+                      alt="Check"
+                      className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-1 object-contain"
+                    />
                     <div>
                       <h4 className="font-bold text-[16px] lg:!text-[20px] text-blue mb-2">
                         {termRepaymentTitle}
@@ -466,17 +454,11 @@ export default function PerkhidmatanKamiPage() {
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <svg
-                      className="w-15 h-15 text-[#044BD9] flex-shrink-0 mt-1"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
+                    <img
+                      src="/assets/images/check-icon.png"
+                      alt="Check"
+                      className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-1 object-contain"
+                    />
                     <div>
                       <h4 className="font-bold text-[16px] lg:!text-[20px] text-blue mb-2">
                         {termOnlinePaymentTitle}
@@ -685,53 +667,27 @@ export default function PerkhidmatanKamiPage() {
 
             <div className="space-y-5">
               <div className="flex items-start gap-3 ">
-                <svg
-                  className="w-15 h-15 text-[#044BD9] flex-shrink-0"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <img
+                  src="/assets/images/check-icon.png"
+                  alt="Check"
+                  className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-0.5 object-contain"
+                />
                 <div>
                   <h4 className="font-bold text-[16px] lg:!text-[20px] text-blue mb-2">
                     {reqAmountTitle}
                   </h4>
-                  {reqAmountDesc ? (
-                    <p className="text-[16px] lg:!text-[16px] text-[#424143] leading-tight whitespace-pre-line">
-                      {reqAmountDesc}
-                    </p>
-                  ) : (
-                    <p className="text-[16px] lg:!text-[16px] text-[#424143] leading-tight">
-                      {t.ourServicesPage.reqAmountDescPart1}
-                      <span className="font-bold">
-                        {t.ourServicesPage.reqAmountMin}
-                      </span>
-                      {t.ourServicesPage.reqAmountDescPart2}
-                      <span className="font-bold">
-                        {t.ourServicesPage.reqAmountMax}
-                      </span>
-                      {t.ourServicesPage.reqAmountDescPart3}
-                    </p>
-                  )}
+                  <p className="text-[16px] lg:!text-[16px] text-[#424143] leading-tight whitespace-pre-line">
+                    {reqAmountDesc}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 ">
-                <svg
-                  className="w-15 h-15 text-[#044BD9] flex-shrink-0"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <img
+                  src="/assets/images/check-icon.png"
+                  alt="Check"
+                  className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-0.5 object-contain"
+                />
                 <div>
                   <h4 className="font-bold text-[16px] lg:!text-[20px] text-blue mb-2">
                     {reqJobTitle}
@@ -743,17 +699,11 @@ export default function PerkhidmatanKamiPage() {
               </div>
 
               <div className="flex items-start gap-3 ">
-                <svg
-                  className="w-15 h-15 text-[#044BD9] flex-shrink-0"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <img
+                  src="/assets/images/check-icon.png"
+                  alt="Check"
+                  className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-0.5 object-contain"
+                />
                 <div>
                   <h4 className="font-bold text-[16px] lg:!text-[20px] text-blue mb-2">
                     {reqAgeTitle}
@@ -922,17 +872,11 @@ export default function PerkhidmatanKamiPage() {
             {/* Checkmark Items */}
             <div className="max-w-[1000px] mx-auto flex flex-col gap-8 pt-12">
               <div className="flex gap-4 md:gap-6 items-start">
-                <svg
-                  className="w-8 h-8 md:w-10 md:h-10 text-[#044BD9] flex-shrink-0 mt-0.5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5l-4-4 1.41-1.41L11 13.67l6.59-6.59L19 8.5l-8 8z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <img
+                  src="/assets/images/check-icon.png"
+                  alt="Check"
+                  className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-0.5 object-contain"
+                />
                 <div>
                   <h4 className="font-bold !text-[#044BD9] text-[16px] md:text-[18px] lg:!text-[20px] mb-1">
                     {trustHeritageTitle}
@@ -944,17 +888,11 @@ export default function PerkhidmatanKamiPage() {
               </div>
 
               <div className="flex gap-4 md:gap-6 items-start">
-                <svg
-                  className="w-8 h-8 md:w-10 md:h-10 text-[#044BD9] flex-shrink-0 mt-0.5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5l-4-4 1.41-1.41L11 13.67l6.59-6.59L19 8.5l-8 8z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <img
+                  src="/assets/images/check-icon.png"
+                  alt="Check"
+                  className="w-[30px] h-[30px] lg:w-[34px] lg:h-[34px] flex-shrink-0 mt-0.5 object-contain"
+                />
                 <div>
                   <h4 className="font-bold !text-[#044BD9] text-[16px] md:text-[18px] lg:!text-[20px] mb-1">
                     {licensedTitle}

@@ -300,11 +300,9 @@ export default function Home() {
 
                     {/* Layout specifically for Banner 2 (App Banner Layout) */}
                     {hasText && isAppBanner && (
-                      // CHANGED: pt-10 to pt-0 md:pt-14, and justify-start to justify-center md:justify-start for perfect mobile centering
-                      <div className="relative z-10 w-full lg:w-[58%] px-6 md:px-12 py-30 lg:!py-10 md:pt-14 lg:pt-16 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full  md:justify-start">
+                      <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
                         {banner.heading && (
-                          // CHANGED: Added !text-white for mobile, preserved md:!text-[#044BD9] for desktop
-                          <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-white md:!text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
+                          <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-white md:!text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
                             {typeof banner.heading === "string" && banner.heading.includes("\n")
                               ? banner.heading.split("\n").map((line: string, i: number) => (
                                   <React.Fragment key={i}>
@@ -317,8 +315,7 @@ export default function Home() {
                         )}
                         
                         {banner.subheading && (
-                          // CHANGED: Added !text-white for mobile, preserved md:!text-[#424143] for desktop
-                          <p className="!text-[14px] md:!text-[15px] !text-white md:!text-[#424143] mb-6 md:!mb-8 font-bold max-w-[1200px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 !text-center md:!text-start whitespace-pre-line">
+                          <p className="!text-[14px] md:!text-[15px] !text-white md:!text-[#424143] mb-6 md:!mb-8 font-bold md:!font-medium !max-w-[440px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 lg:!mx-0 !text-center md:!text-start whitespace-pre-line">
                             {banner.subheading}
                           </p>
                         )}

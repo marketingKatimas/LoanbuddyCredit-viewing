@@ -157,21 +157,27 @@ export default function TentangKamiPage() {
       {/* Main Body */}
       <main className="page_content">
         <section
-          className="page_banner about_banner_1 section_space_lg overflow-hidden decoration_wrap mouse_move"
+          className="page_banner about_banner_1 !overflow-visible decoration_wrap mouse_move !h-auto !min-h-0 !pt-[60px] lg:!pt-[100px] !pb-0"
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
-          <div className="container container_2 cta_container">
-            <div className="row z-index-3 row-home-custom">
-              <div className="col col-lg-5 p-none d-flex align-items-end justify-content-center">
+          <div className="container container_2 !overflow-visible !pb-0">
+            <div className="row z-index-3 row-home-custom items-end align-items-end">
+              <div className="col col-lg-5 p-none d-flex align-items-end justify-content-center self-end">
                 <img
                   src={getMediaUrl(pageData?.hero?.heroImage, "/assets/images/about-us-page-new.png")}
                   loading="lazy"
-                  className="about-us-img-1"
+                  className="about-us-img-1 !transform-none !mb-0 block align-bottom !rounded-t-[5px] !rounded-b-none"
+                  style={{
+                    borderTopLeftRadius: "5px",
+                    borderTopRightRadius: "5px",
+                    borderBottomLeftRadius: "0px",
+                    borderBottomRightRadius: "0px",
+                  }}
                   alt="About Us"
                 />
               </div>
-              <div className="col col-lg-7 pt-30 about-us-box-mobile text-left">
-                <div className="col-lg-12 perkhidmatan-padding justify-content-start text-grey">
+              <div className="col col-lg-7 about-us-box-mobile text-left flex flex-col justify-center self-center py-4 lg:!py-6 lg:!pl-[70px]">
+                <div className="col-lg-12 !mt-0 justify-content-start text-grey">
                   <h3 className="item_title item_title_about mb-4 text-blue" style={{ fontWeight: 800, lineHeight: 1.25 }}>
                     {heroHeading}
                   </h3>
@@ -195,7 +201,7 @@ export default function TentangKamiPage() {
         </section>
 
         {/* Section 2: Blue Banner */}
-        <section className="bg-[#044BD9] relative z-10 lg:-mt-[10vh]">
+        <section className="bg-[#044BD9] relative z-10">
           <div className="container mx-auto px-4 py-10 lg:py-0 lg:h-[200px] flex items-center justify-center">
             <div className="w-full max-w-6xl mx-auto text-center">
               <h2 className="text-white !text-[16px] md:!text-[18px] lg:!text-[24px] italic !font-medium leading-relaxed m-0 px-4">
@@ -222,7 +228,12 @@ export default function TentangKamiPage() {
             </div>
             <div className="row row_loanbuddy_kelebihan text-white">
               <img
-                src="/assets/images/about/about-us-fullgrid-1.png"
+                src={getMediaUrl(
+                  pageData?.sections?.[1]?.sectionImage,
+                  isEnglish
+                    ? "/assets/images/about/about-us-eng.png"
+                    : "/assets/images/about/about-us-bm.png"
+                )}
                 className="d-none d-md-block"
                 alt="Kelebihan Grid"
               />

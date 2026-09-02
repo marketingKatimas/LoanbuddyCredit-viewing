@@ -113,6 +113,28 @@ export default function AplikasiPage() {
   const downloadCtaText =
     pageData?.sections?.[2]?.sectionDescription || t.loanComparePage.downloadCtaText;
 
+  const formatIntroText = (text: string) => {
+    if (!text) return null;
+    const BOLD_PHRASES = [
+      "Aplikasi Mudah Alih Loanbuddy Credit",
+      "Google Play Store & Apple App Store!",
+      "Google Play Store & Apple App Store",
+      "Loanbuddy Credit Mobile App",
+    ];
+    const regex =
+      /(Aplikasi Mudah Alih Loanbuddy Credit|Google Play Store & Apple App Store!?|Loanbuddy Credit Mobile App)/g;
+    return text.split(regex).map((part, i) => {
+      const isBold = BOLD_PHRASES.includes(part.trim());
+      return isBold ? (
+        <strong key={i} className="font-bold text-[#1F1D0D]">
+          {part}
+        </strong>
+      ) : (
+        part
+      );
+    });
+  };
+
   return (
     <div className="page_wrapper bg-white">
       {/* Header */}
@@ -132,19 +154,26 @@ export default function AplikasiPage() {
               style={{ backgroundImage: `url('${heroBannerImg}')` }}
             >
               {/* Content Container */}
-              <div className="relative z-10 w-full lg:w-[58%] px-6 md:px-12 py-10 md:py-16 text-center md:text-left flex flex-col items-center md:!items-start h-full">
+              <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
                 {heroHeading ? (
-                  <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-[#044BD9] leading-tight mb-4 text-center md:!text-left whitespace-pre-line">
-                    {heroHeading}
+                  <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
+                    {typeof heroHeading === "string" && heroHeading.includes("\n")
+                      ? heroHeading.split("\n").map((line: string, i: number) => (
+                          <React.Fragment key={i}>
+                            {i > 0 && <br />}
+                            {line}
+                          </React.Fragment>
+                        ))
+                      : heroHeading}
                   </h1>
                 ) : (
-                  <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-bold !text-[#044BD9] leading-tight mb-4 !text-center lg:!text-start whitespace-pre-line">
+                  <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
                     {t.loanComparePage.heroTitlePart1} <br className="hidden md:block" />{" "}
                     {t.loanComparePage.heroTitlePart2}
                   </h1>
                 )}
 
-                <p className="text-[14px] md:text-[15px] text-[#424143] mb-6 md:!mb-10 lg:!mb-5 font-bold max-w-[1200px] leading-relaxed mx-auto md:mx-0 text-center md:!text-start whitespace-pre-line">
+                <p className="!text-[14px] md:!text-[15px] !text-[#424143] mb-6 md:!mb-8 font-medium !font-[500] !max-w-[440px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 lg:!mx-0 !text-center md:!text-start whitespace-pre-line">
                   {heroDesc}
                 </p>
 
@@ -170,17 +199,17 @@ export default function AplikasiPage() {
         {/* 2. Intro & Features Section */}
         <section className="py-12 md:py-20 bg-[#F2F2F2]">
           <div className="container mx-auto px-4 lg:max-w-[1000px]">
-            <h2 className="text-[18px] md:!text-[25px] font-bold !text-[#044BD9] mb-6 lg:!mb-10 leading-tight">
+            <h2 className="!text-[25px] font-extrabold !font-[800] !text-[#044BD9] mb-6 lg:!mb-10 leading-tight">
               {introHeading}
             </h2>
 
             {introDesc ? (
-              <div className="text-[14px] md:text-[15px] text-[#424143] space-y-4 mb-12 lg:!mb-20 leading-relaxed whitespace-pre-line">
-                <p>{introDesc}</p>
+              <div className="text-[15px] md:text-[16px] text-[#424143] font-medium space-y-4 mb-12 lg:!mb-20 leading-[1.6] whitespace-pre-line">
+                <p>{formatIntroText(introDesc)}</p>
               </div>
             ) : (
-              <div className="text-[14px] md:text-[15px] text-[#424143] space-y-4 mb-12 lg:!mb-20 leading-relaxed">
-                <p>{t.loanComparePage.introP1}</p>
+              <div className="text-[15px] md:text-[16px] text-[#424143] font-medium space-y-4 mb-12 lg:!mb-20 leading-[1.6]">
+                <p>{formatIntroText(t.loanComparePage.introP1)}</p>
                 <p>{t.loanComparePage.introP2}</p>
                 <p>{t.loanComparePage.introP3}</p>
               </div>
@@ -208,7 +237,7 @@ export default function AplikasiPage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h4 className="text-[13px] md:!text-[20px] font-bold !text-[#424143] leading-tight">
+                  <h4 className="!text-[13px] md:!text-[20px] font-bold !text-[#424143] leading-tight">
                     {feature.title}
                   </h4>
                 </div>
@@ -221,15 +250,15 @@ export default function AplikasiPage() {
         {/* 3. Kenapa Pilih Section */}
         <section className="py-8 md:py-12 bg-[#F2F2F2]">
           <div className="container mx-auto px-4 lg:max-w-[1000px]">
-            <h2 className="text-[18px] md:text-[22px] font-bold !text-[#044BD9] mb-4">
+            <h2 className="!text-[25px] font-extrabold !font-[800] !text-[#044BD9] mb-4 leading-tight">
               {whyChooseTitle}
             </h2>
             {whyChooseDesc ? (
-              <div className="text-[14px] md:text-[15px] text-[#424143] space-y-4 leading-relaxed whitespace-pre-line">
+              <div className="text-[15px] md:text-[16px] text-[#424143] font-medium space-y-4 leading-[1.6] whitespace-pre-line">
                 <p>{whyChooseDesc}</p>
               </div>
             ) : (
-              <div className="text-[14px] md:text-[15px] text-[#424143] space-y-4 leading-relaxed">
+              <div className="text-[15px] md:text-[16px] text-[#424143] font-medium space-y-4 leading-[1.6]">
                 <p>{t.loanComparePage.whyChooseP1}</p>
                 <p>{t.loanComparePage.whyChooseP2}</p>
               </div>
@@ -284,12 +313,12 @@ export default function AplikasiPage() {
             </div>
 
             {/* Bottom Call To Action */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white pt-10">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-14 bg-white pt-10">
               <p className="text-[14px] md:text-[15px] font-bold text-[#044BD9] text-center md:!text-start max-w-[500px] whitespace-pre-line">
                 {downloadCtaText}
               </p>
 
-              <div className="flex gap-4">
+              <div className="flex gap-4 items-center justify-center">
                 <a
                   href="https://play.google.com/store/apps/details?id=com.loanbuddycredit"
                   target="_blank"

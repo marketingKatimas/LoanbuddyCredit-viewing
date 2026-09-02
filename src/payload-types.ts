@@ -255,6 +255,9 @@ export interface Page {
      * Target page URL or link for the main action button.
      */
     primaryCtaLink?: string | null;
+    /**
+     * For Hubungi Kami: Google My Maps URL. For other pages: Secondary CTA text or subtitle.
+     */
     secondaryCtaText?: string | null;
     secondaryCtaLink?: string | null;
   };
