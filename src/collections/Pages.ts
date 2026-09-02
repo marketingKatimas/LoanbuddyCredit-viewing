@@ -185,10 +185,12 @@ export const Pages: CollectionConfig = {
                 {
                   name: 'secondaryCtaText',
                   type: 'text',
-                  label: 'Secondary CTA Button Text',
+                  label: 'Google Map Embed URL (Hubungi Kami) / Secondary CTA Text',
                   localized: true,
                   admin: {
-                    placeholder: 'e.g. Baca Soalan Lazim',
+                    placeholder: 'e.g. https://www.google.com/maps/d/embed?mid=...',
+                    description:
+                      'For Hubungi Kami: Google My Maps URL. For other pages: Secondary CTA text or subtitle.',
                   },
                 },
                 {

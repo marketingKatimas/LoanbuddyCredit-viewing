@@ -15,7 +15,7 @@ export const defaultFooterDataMs = {
   instagramUrl: 'https://instagram.com',
   tiktokUrl: 'https://tiktok.com',
   servicesLinks: [
-    { label: 'Pinjaman Peribadi Online', url: '/mohon-pinjaman-online' },
+    { label: 'Pinjaman Peribadi Online', url: '/pinjaman-peribadi-kl-sarawak' },
     { label: 'Pinjaman Tambah Nilai', url: '/pinjaman-koperasi' },
   ],
   customerServiceLinks: [
@@ -45,7 +45,7 @@ export const defaultFooterDataEn = {
   instagramUrl: 'https://instagram.com',
   tiktokUrl: 'https://tiktok.com',
   servicesLinks: [
-    { label: 'Online Personal Loan', url: '/mohon-pinjaman-online' },
+    { label: 'Online Personal Loan', url: '/pinjaman-peribadi-kl-sarawak' },
     { label: 'Top-Up Loan', url: '/pinjaman-koperasi' },
   ],
   customerServiceLinks: [

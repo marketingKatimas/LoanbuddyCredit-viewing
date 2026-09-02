@@ -129,7 +129,7 @@ export const Footer: GlobalConfig = {
                 plural: 'Links',
               },
               defaultValue: [
-                { label: 'Pinjaman Peribadi Online', url: '/mohon-pinjaman-online' },
+                { label: 'Pinjaman Peribadi Online', url: '/pinjaman-peribadi-kl-sarawak' },
                 { label: 'Pinjaman Tambah Nilai', url: '/pinjaman-koperasi' },
               ],
               fields: [

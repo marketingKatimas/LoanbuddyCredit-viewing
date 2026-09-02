@@ -301,7 +301,7 @@ export const defaultPagesData: DefaultPageData[] = [
       primaryCtaText: 'Kirim Mesej',
       primaryCtaLink: '#subscribeForm',
       secondaryCtaText:
-        'https://www.google.com/maps/d/u/0/embed?mid=1u9eA-xFNCD0Ddtd3HYLSnCgvoWwOZgw',
+        'https://www.google.com/maps/d/embed?mid=1_Q6pIm1rAxMyXKvZ4nAlypvYi3L9ruM',
     },
     sections: [
       {
@@ -543,19 +543,19 @@ export const defaultPagesData: DefaultPageData[] = [
           'Pinjaman online mudah lulus Loanbuddy Credit memberikan kemudahan permohonan dengan syarat yang fleksibel, memastikan anda dapat mengakses pembiayaan dengan cepat dan mudah.',
         items: [
           {
-            itemTitle: 'Jumlah Pinjaman',
+            itemTitle: 'Umur Pemohon',
             itemDescription:
-              'Pinjaman boleh dibuat dari serendah RM1,000 hingga maksimum RM50,000, tertakluk kepada kelayakan dan penilaian kredit.',
+              'Pemohon yang berumur antara 18 hingga 60 tahun, mempunyai bukti kewarganegaraan Malaysia, serta bekerja dan menetap di Malaysia.',
           },
           {
-            itemTitle: 'Pekerjaan Berpendapatan Tetap',
+            itemTitle: 'Keperluan Pendapatan',
             itemDescription:
-              'Mempunyai pekerjaan tetap dengan pendapatan bulanan sekurang-kurangnya RM1,700 ke atas.',
+              'Dengan syarat pendapatan kasar bulanan serendah RM1,700, Loanbuddy Credit menawarkan pinjaman yang mesra pelanggan dan mudah diakses di Malaysia.',
           },
           {
-            itemTitle: 'Pengesahan Umur',
+            itemTitle: 'Pengecualian',
             itemDescription:
-              'Pemohon perlulah berumur dalam lingkungan 18 tahun sehingga maksimum umur 60 tahun semasa tempoh pinjaman.',
+              'Pemohon tidak boleh diisytiharkan muflis atau terdedah kepada aktiviti politik. Individu yang bekerja secara bebas (freelance) juga tidak layak memohon.',
           },
         ],
       },
@@ -1374,7 +1374,7 @@ export const defaultPagesDataEn: DefaultPageData[] = [
       primaryCtaText: 'Send Message',
       primaryCtaLink: '#subscribeForm',
       secondaryCtaText:
-        'https://www.google.com/maps/d/u/0/embed?mid=1u9eA-xFNCD0Ddtd3HYLSnCgvoWwOZgw',
+        'https://www.google.com/maps/d/embed?mid=1_Q6pIm1rAxMyXKvZ4nAlypvYi3L9ruM',
     },
     sections: [
       {
@@ -1426,7 +1426,7 @@ export const defaultPagesDataEn: DefaultPageData[] = [
     title: 'Frequently Asked Questions (FAQ)',
     slug: 'soalan-lazim-faq',
     hero: {
-      badgeText: 'F.A.Q.',
+      badgeText: 'FAQ',
       heading: 'Frequently Asked Questions About Loanbuddy Credit',
       subheading:
         'Find detailed answers to common inquiries and get the information you need quickly.',
@@ -1616,19 +1616,19 @@ export const defaultPagesDataEn: DefaultPageData[] = [
           'Loanbuddy Credit easy-approval online loans offer easy application with flexible terms, ensuring you can access financing quickly and conveniently.',
         items: [
           {
-            itemTitle: 'Loan Amount',
+            itemTitle: 'Applicant Age',
             itemDescription:
-              'Loans are available from as low as RM1,000 up to a maximum of RM50,000, subject to eligibility and credit assessment.',
+              'Applicants aged between 18 and 60 years old, with proof of Malaysian citizenship, and working and residing in Malaysia.',
           },
           {
-            itemTitle: 'Permanent Employment',
+            itemTitle: 'Income Requirement',
             itemDescription:
-              'Hold permanent employment with a minimum monthly income of RM1,700 and above.',
+              'With a minimum gross monthly income requirement of RM1,700, Loanbuddy Credit offers customer-friendly and accessible loans in Malaysia.',
           },
           {
-            itemTitle: 'Age Requirement',
+            itemTitle: 'Exclusions',
             itemDescription:
-              'Applicants must be aged between 18 and a maximum of 60 years old during the loan tenure.',
+              'Applicants must not be declared bankrupt or politically exposed. Freelance individuals are also not eligible to apply.',
           },
         ],
       },

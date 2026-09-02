@@ -3,8 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function MuatNaikDokumenPage() {
+  const { t, isEnglish, language } = useLanguage();
+  const [pageData, setPageData] = useState<any>(null);
+
   const [applicationId, setApplicationId] = useState("");
   const [myKadFile, setMyKadFile] = useState<File | null>(null);
   const [supportDocFile, setSupportDocFile] = useState<File | null>(null);
@@ -30,6 +34,17 @@ export default function MuatNaikDokumenPage() {
   const [showTermsModal, setShowTermsModal] = useState(false);
 
   const allowedTypes = ["application/pdf", "image/png", "image/jpeg", "image/jpg"];
+
+  useEffect(() => {
+    fetch(`/api/content?slug=mohon-pinjaman-online&locale=${language}`, { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.doc) {
+          setPageData(data.doc);
+        }
+      })
+      .catch(() => {});
+  }, [language]);
 
   useEffect(() => {
     // Load reCAPTCHA script dynamically
@@ -62,11 +77,11 @@ export default function MuatNaikDokumenPage() {
     }
 
     if (file.size > 10 * 1024 * 1024) {
-      setMyKadSizeError("File must be less than 10MB");
+      setMyKadSizeError(t.uploadDoc.fileSizeError);
       setMyKadFile(null);
       e.target.value = "";
     } else if (!allowedTypes.includes(file.type)) {
-      setMyKadFormatError("Only PDF, PNG, JPG, or JPEG file are allowed");
+      setMyKadFormatError(t.uploadDoc.fileFormatError);
       setMyKadFile(null);
       e.target.value = "";
     } else {
@@ -86,11 +101,11 @@ export default function MuatNaikDokumenPage() {
     }
 
     if (file.size > 10 * 1024 * 1024) {
-      setSupportDocSizeError("File must be less than 10MB");
+      setSupportDocSizeError(t.uploadDoc.fileSizeError);
       setSupportDocFile(null);
       e.target.value = "";
     } else if (!allowedTypes.includes(file.type)) {
-      setSupportDocFormatError("Only PDF, PNG, JPG, or JPEG file are allowed");
+      setSupportDocFormatError(t.uploadDoc.fileFormatError);
       setSupportDocFile(null);
       e.target.value = "";
     } else {
@@ -112,12 +127,12 @@ export default function MuatNaikDokumenPage() {
     // Validation
     const trimmedId = applicationId.trim();
     if (!trimmedId) {
-      setAppIdError("This fields is required");
+      setAppIdError(t.uploadDoc.appIdRequired);
       return;
     }
 
     if (!myKadFile && !supportDocFile) {
-      setUploadFileError("Sila muat naik sekurang-kurangnya satu fail.");
+      setUploadFileError(t.uploadDoc.atLeastOneRequired);
       return;
     }
 
@@ -199,6 +214,26 @@ export default function MuatNaikDokumenPage() {
     }
   };
 
+  const bannerHeading = pageData?.hero?.heading || t.applyForm.bannerHeading;
+  const bannerSubheading = pageData?.hero?.subheading || t.applyForm.bannerSubheading;
+  const sidebarTitle = pageData?.sections?.[0]?.sectionTitle || t.applyForm.requirementsTitle;
+  const docHeading = pageData?.sections?.[0]?.items?.[0]?.itemTitle || t.applyForm.docHeading;
+
+  const docList =
+    pageData?.sections?.[0]?.items?.[0]?.itemDescription
+      ? pageData.sections[0].items[0].itemDescription
+        .split("\n")
+        .map((line: string) => line.trim())
+        .filter(Boolean)
+      : [
+          t.applyForm.doc1,
+          t.applyForm.doc2,
+          t.applyForm.doc3,
+          t.applyForm.doc4,
+        ];
+
+  const paymentHeading = pageData?.sections?.[0]?.items?.[1]?.itemTitle || t.applyForm.paymentHeading;
+
   return (
     <div className="page_wrapper">
       {/* Back To Top */}
@@ -221,13 +256,11 @@ export default function MuatNaikDokumenPage() {
           <div className="container container-apply-header">
             <div className="row d-flex align-items-center justify-content-center">
               <div className="col col-12">
-                <h1 className="banner-mohon-big-title text-center justify-content-center">
-                  Pinjaman Peribadi Sehingga RM50,000
-                  <br />
-                  Mohon Hari ini!
+                <h1 className="banner-mohon-big-title text-center justify-content-center whitespace-pre-line">
+                  {bannerHeading}
                 </h1>
                 <p className="banner-apply-header">
-                  Satu Langkah mudah untuk mencapai kestabilan kewangan yang anda perlukan. Pilih Loanbuddy Credit!
+                  {bannerSubheading}
                 </p>
               </div>
             </div>
@@ -257,12 +290,9 @@ export default function MuatNaikDokumenPage() {
                           margin: "0 0 25px 0"
                         }}
                       >
-                        <h3 style={{ margin: "0 0 15px 0" }}>Permohonan Telah Berjaya Dihantar!</h3>
+                        <h3 style={{ margin: "0 0 15px 0" }}>{t.uploadDoc.formHeaderSuccess}</h3>
                         <p style={{ fontStyle: "italic", color: "#6c757d", margin: 0 }}>
-                          Nota: Untuk menyokong lagi permohonan anda, anda boleh memuat naik
-                          dokumen pilihan yang berikut. Walaupun ia tidak wajib, dokumen tersebut
-                          dapat membantu dalam kerja pemprosesan. Tekan Langkau jika anda
-                          memilih untuk tidak memuat naik sebarang dokumen.
+                          {t.uploadDoc.formHeaderNote}
                         </p>
                       </div>
 
@@ -271,20 +301,20 @@ export default function MuatNaikDokumenPage() {
                           id="success-upload-message"
                           style={{ display: "block", color: "#0468BF", border: "1px solid #0468BF", padding: "20px", borderRadius: "10px" }}
                         >
-                          Dokumen berjaya dimuat naik!
+                          {t.uploadDoc.uploadSuccessTitle}
                           <br />
-                          Terima kasih dan kami akan menghubungi anda dalam masa terdekat.
+                          {t.uploadDoc.uploadSuccessDesc}
                         </div>
                       ) : (
                         <div className="upload-form-section" style={{ display: isSubmitting ? "none" : "block" }}>
                           <div className="form-row">
                             <div className="form-holder w-100">
-                              <label htmlFor="applicationId">ID Permohonan</label>
+                              <label htmlFor="applicationId">{t.uploadDoc.appIdLabel}</label>
                               <input
                                 id="applicationId"
                                 name="applicationId"
                                 type="text"
-                                placeholder="Id permohonan"
+                                placeholder={t.uploadDoc.appIdPlaceholder}
                                 className="form-control"
                                 value={applicationId}
                                 onChange={(e) => setApplicationId(e.target.value)}
@@ -294,8 +324,7 @@ export default function MuatNaikDokumenPage() {
                               {appIdError && <div className="error-message" style={{ color: "red" }}>{appIdError}</div>}
                               {invalidAppIdError && (
                                 <div className="error-message" style={{ color: "red" }}>
-                                  ID Permohonan Tidak Sah. <br />
-                                  Sila semak sama ada terdapat kesilapan ejaan atau perbezaan huruf besar dan kecil.
+                                  {t.uploadDoc.appIdInvalid}
                                 </div>
                               )}
                             </div>
@@ -304,13 +333,13 @@ export default function MuatNaikDokumenPage() {
                           <div className="form-row form-row-column">
                             {/* MyKad Upload */}
                             <div className="form-holder form-holder-mobile">
-                              <label htmlFor="upload-file-1">Salinan MyKad (Pilihan)</label>
+                              <label htmlFor="upload-file-1">{t.uploadDoc.myKadLabel}</label>
                               <div className="upload-container">
                                 <div className="file-name" id="file-name-1">
                                   {myKadFile ? myKadFile.name : ""}
                                 </div>
                                 <label className="tp-btn-3 upload-btn1" htmlFor="upload-file-1">
-                                  Muat Naik
+                                  {t.uploadDoc.uploadBtn}
                                 </label>
                                 <input
                                   type="file"
@@ -327,13 +356,13 @@ export default function MuatNaikDokumenPage() {
 
                             {/* Supporting Document Upload */}
                             <div className="form-holder">
-                              <label htmlFor="upload-file-2">Penyata Gaji / Bank / KWSP Terkini (Pilihan)</label>
+                              <label htmlFor="upload-file-2">{t.uploadDoc.supportDocLabel}</label>
                               <div className="upload-container">
                                 <div className="file-name" id="file-name-2">
                                   {supportDocFile ? supportDocFile.name : ""}
                                 </div>
                                 <label className="tp-btn-3 upload-btn1" htmlFor="upload-file-2">
-                                  Muat Naik
+                                  {t.uploadDoc.uploadBtn}
                                 </label>
                                 <input
                                   type="file"
@@ -367,7 +396,7 @@ export default function MuatNaikDokumenPage() {
                                 />
                               </div>
                               <label htmlFor="mohon-agree-1" className="checkbox-text">
-                                Dengan menandakan kotak, saya bersetuju untuk dihubungi oleh Loanbuddy Credit melalui WhatsApp.
+                                {t.applyForm.checkbox1}
                               </label>
                             </div>
 
@@ -387,15 +416,15 @@ export default function MuatNaikDokumenPage() {
                                 />
                               </div>
                               <label htmlFor="mohon-agree-2" className="checkbox-text">
-                                Dengan menandakan kotak, saya telah membaca, memahami dan bersetuju dengan{" "}
+                                {t.applyForm.checkbox2Prefix}
                                 <a href="#" onClick={(e) => { e.preventDefault(); setShowTermsModal(true); }}>
-                                  Dasar Privasi
+                                  {t.applyForm.checkbox2Privacy}
                                 </a>{" "}
                                 &{" "}
                                 <a href="#" onClick={(e) => { e.preventDefault(); setShowPrivacyModal(true); }}>
-                                  Terma dan Syarat;
+                                  {t.applyForm.checkbox2Terms}
                                 </a>
-                                {" "}dan,
+                                {t.applyForm.checkbox2Suffix}
                               </label>
                             </div>
 
@@ -415,7 +444,7 @@ export default function MuatNaikDokumenPage() {
                                 />
                               </div>
                               <label htmlFor="mohon-agree-3" className="checkbox-text">
-                                Dengan menandakan kotak, klik pada butang "Hantar" di bawah, saya mengaku dan mengesahkan bahawa semua maklumat yang diberikan di dalam ini adalah lengkap, benar dan tepat.
+                                {t.applyForm.checkbox3}
                               </label>
                             </div>
                           </div>
@@ -430,8 +459,8 @@ export default function MuatNaikDokumenPage() {
                               style={{ height: "auto" }}
                             >
                               <span>
-                                <small>{isSubmitting ? "Sedang memuat..." : "Hantar"}</small>
-                                <small>{isSubmitting ? "Sedang memuat..." : "Hantar"}</small>
+                                <small>{isSubmitting ? t.uploadDoc.submittingBtn : t.uploadDoc.submitBtn}</small>
+                                <small>{isSubmitting ? t.uploadDoc.submittingBtn : t.uploadDoc.submitBtn}</small>
                               </span>
                             </button>
                             <button
@@ -441,8 +470,8 @@ export default function MuatNaikDokumenPage() {
                               style={{ height: "auto" }}
                             >
                               <span>
-                                <small>Langkau</small>
-                                <small>Langkau</small>
+                                <small>{t.uploadDoc.skipBtn}</small>
+                                <small>{t.uploadDoc.skipBtn}</small>
                               </span>
                             </button>
                           </div>
@@ -458,15 +487,13 @@ export default function MuatNaikDokumenPage() {
 
                       {uploadFailed && (
                         <div id="Unsuccessfully-message" className="ps-3 unsuccessful-message" style={{ display: "block" }}>
-                          Muat naik gagal.
-                          <br />
-                          Sila <strong>Reload</strong> halaman dan cuba sekali lagi.
+                          {t.uploadDoc.uploadFailedMsg}
                         </div>
                       )}
 
                       {isSubmitting && (
                         <div id="processing-message" className="process-message" style={{ display: "block" }}>
-                          Sila tunggu sebentar, dokumen sedang dimuat naik...
+                          {t.uploadDoc.processingMsg}
                         </div>
                       )}
                     </div>
@@ -481,20 +508,19 @@ export default function MuatNaikDokumenPage() {
               >
                 <div style={{ margin: "auto 0", width: "100%" }}>
                   <div className="form-header text-center">
-                    <h3 style={{ fontSize: "25px", margin: 0 }}>Apa yang anda perlukan untuk memohon?</h3>
+                    <h3 style={{ fontSize: "25px", margin: 0 }}>{sidebarTitle}</h3>
                   </div>
                   <div className="mohon-rules-top">
                     <img src="/assets/images/dokumen-permohonan.png" alt="dokumen permohonan" className="mx-auto d-block" />
                   </div>
                   <div className="mohon-rules">
-                    <h5>1. Dokumen Diperlukan Untuk Permohonan</h5>
+                    <h5>{docHeading}</h5>
                     <ul>
-                      <li>Salinan kad pengenalan (depan dan belakang)</li>
-                      <li>Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)</li>
-                      <li>Slip gaji 3 bulan terkini (format PDF) dan/atau</li>
-                      <li>Bil utiliti 1 bulan terkini (air, elektrik, dll.)</li>
+                      {docList.map((item: string, idx: number) => (
+                        <li key={idx}>{item}</li>
+                      ))}
                     </ul>
-                    <h5>2. Semua transaksi pembayaran boleh dilakukan melalui saluran berikut:</h5>
+                    <h5>{paymentHeading}</h5>
                     <div className="mohon-rules-bottom">
                       <div className="d-flex">
                         <img src="/assets/images/jompay-logo.png" alt="JomPay" />
@@ -528,7 +554,9 @@ export default function MuatNaikDokumenPage() {
           <div className="modal-dialog modal-xl modal-dialog-scrollable">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title modal-title-custom-1">DASAR PRIVASI</h5>
+                <h5 className="modal-title modal-title-custom-1">
+                  {isEnglish ? "PRIVACY POLICY" : "DASAR PRIVASI"}
+                </h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -652,7 +680,9 @@ export default function MuatNaikDokumenPage() {
           <div className="modal-dialog modal-xl modal-dialog-scrollable">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title modal-title-custom-1">TERMA & SYARAT</h5>
+                <h5 className="modal-title modal-title-custom-1">
+                  {isEnglish ? "TERMS & CONDITIONS" : "TERMA & SYARAT"}
+                </h5>
                 <button
                   type="button"
                   className="btn-close"

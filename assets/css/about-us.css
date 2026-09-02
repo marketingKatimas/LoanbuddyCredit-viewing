@@ -39,16 +39,16 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    min-height: 520px;
+    min-height: auto;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 70px 0px;
+    padding: 60px 0px;
     background-size: cover;
     /* Updated to cover */
     background-repeat: no-repeat;
     background-position: center;
-    height: 100vh;
+    height: auto;
 }
 
 /* red border button */
@@ -80,7 +80,7 @@
 }
 
 .pt-30 {
-    padding-top: 400px;
+    padding-top: 30px;
 }
 
 .p-30 {
@@ -1173,7 +1173,7 @@
     }
 
     .about_banner_1 {
-        height: 155vh;
+        height: auto;
     }
 
     /* .site-header-mobile-logo {

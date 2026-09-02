@@ -12,62 +12,75 @@ import { useLanguage } from "@/context/LanguageContext";
 const WhatsAppButtons = () => {
   const { t, isEnglish } = useLanguage();
   return (
-    <div className="flex flex-col md:flex-row flex-wrap gap-4 mt-6">
+    <div className="d-flex flex-wrap gap-3 mt-3 mb-2 justify-content-center">
       {/* Kuala Lumpur Button */}
-      <a href="https://wa.me/60187856072" target="_blank" rel="noopener noreferrer" className="!flex !flex-row !items-center !justify-center gap-3 bg-[#25D366] !text-white px-6 py-2.5 !rounded-full hover:bg-[#1ebe57] transition-colors shadow-sm w-full md:w-auto no-underline">
-        <svg className="w-7 h-7 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" /></svg>
-        <div className="text-left leading-tight">
-          <div className="text-[14px] font-bold">{isEnglish ? t.faqPage.branchKL : "Cawangan Kuala Lumpur"}</div>
-          <div className="text-[13px] font-normal">+6018 785 6072</div>
+      <a
+        href="https://wa.link/taaakr"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+        style={{
+          backgroundColor: "#25D366",
+          borderRadius: "50px",
+          padding: "8px 20px",
+          fontSize: "13px",
+          fontWeight: "600",
+          color: "#ffffff",
+        }}
+      >
+        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+        <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
+          <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>{isEnglish ? t.faqPage.branchKL : "Cawangan Kuala Lumpur"}</span>
+          <span className="text-white" style={{ color: "#ffffff" }}>+6018 785 6072</span>
         </div>
       </a>
 
       {/* Kuching Button */}
-      <a href="https://wa.me/60109329976" target="_blank" rel="noopener noreferrer" className="!flex !flex-row !items-center !justify-center gap-3 bg-[#25D366] !text-white px-6 py-2.5 !rounded-full hover:bg-[#1ebe57] transition-colors shadow-sm w-full md:w-auto no-underline">
-        <svg className="w-7 h-7 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" /></svg>
-        <div className="text-left leading-tight">
-          <div className="text-[14px] font-bold">{isEnglish ? t.faqPage.branchKuching : "Cawangan Kuching"}</div>
-          <div className="text-[13px] font-normal">+6010 932 9976</div>
+      <a
+        href="https://wa.link/32cpg5"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+        style={{
+          backgroundColor: "#25D366",
+          borderRadius: "50px",
+          padding: "8px 20px",
+          fontSize: "13px",
+          fontWeight: "600",
+          color: "#ffffff",
+        }}
+      >
+        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+        <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
+          <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>{isEnglish ? t.faqPage.branchKuching : "Cawangan Kuching"}</span>
+          <span className="text-white" style={{ color: "#ffffff" }}>+6010 932 9976</span>
         </div>
       </a>
 
       {/* Bintulu Button */}
-      <a href="https://wa.me/60109098557" target="_blank" rel="noopener noreferrer" className="!flex !flex-row !items-center !justify-center gap-3 bg-[#25D366] !text-white px-6 py-2.5 !rounded-full hover:bg-[#1ebe57] transition-colors shadow-sm w-full md:w-auto no-underline">
-        <svg className="w-7 h-7 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" /></svg>
-        <div className="text-left leading-tight">
-          <div className="text-[14px] font-bold">{isEnglish ? t.faqPage.branchBintulu : "Cawangan Bintulu"}</div>
-          <div className="text-[13px] font-normal">+6010 909 8557</div>
+      <a
+        href="https://wa.link/6v806i"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="d-inline-flex align-items-center gap-2 text-white text-decoration-none shadow-sm whatsapp-btn-hover"
+        style={{
+          backgroundColor: "#25D366",
+          borderRadius: "50px",
+          padding: "8px 20px",
+          fontSize: "13px",
+          fontWeight: "600",
+          color: "#ffffff",
+        }}
+      >
+        <img src="/assets/images/ws-logo.png" alt="WhatsApp" style={{ width: "22px", height: "22px" }} />
+        <div className="text-start text-white" style={{ lineHeight: "1.2", color: "#ffffff" }}>
+          <span className="text-white" style={{ fontSize: "10px", display: "block", color: "#ffffff" }}>{isEnglish ? t.faqPage.branchBintulu : "Cawangan Bintulu"}</span>
+          <span className="text-white" style={{ color: "#ffffff" }}>+6010 909 8557</span>
         </div>
       </a>
     </div>
   );
 };
-
-// 2. Circular outline downward arrow matching FAQ page
-const FaqArrowIcon = ({ isOpen }: { isOpen: boolean }) => (
-  <svg
-    width="28"
-    height="28"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{
-      transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-      transition: "transform 0.35s ease",
-      flexShrink: 0,
-      marginLeft: "auto",
-    }}
-  >
-    <circle cx="12" cy="12" r="10" stroke="#0d4ed8" strokeWidth="2" />
-    <path
-      d="M12 8V16M8 12L12 16L16 12"
-      stroke="#0d4ed8"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 // 3. Main Page Component
 export default function PinjamanPeribadiPage() {
@@ -535,278 +548,364 @@ export default function PinjamanPeribadiPage() {
         </section>
 
         {/* 6. FAQ Section */}
-        <section className="py-16 lg:py-[100px] bg-white">
-          <div className="container mx-auto px-4 lg:max-w-[900px]">
-            <div className="text-center mb-10">
-              <h2 className="text-[28px] lg:text-[38px] font-bold text-blue">{faqTitle}</h2>
+        <section className="faq_section section_space_faq">
+          <div className="container">
+            <div className="section_heading text-center mb-3">
+              <div className="row justify-content-center">
+                <div className="col col-lg-8">
+                  <h2 className="heading_text heading_text_custom text-blue">{faqTitle}</h2>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] pb-0 mb-4 inline-block leading-tight">
-                {isEnglish ? t.pinjamanPeribadiPage.faqSectionRepayment : "Pembayaran Balik"}
-              </h3>
+            <div className="row justify-content-center">
+              <div className="col-12 col-lg-8">
+                <div>
+                  <h3
+                    className="text-blue"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      borderBottom: "2px solid #044bd9",
+                      display: "inline-block",
+                      marginBottom: "12px",
+                      paddingBottom: "2px",
+                    }}
+                  >
+                    {isEnglish ? t.pinjamanPeribadiPage.faqSectionRepayment : "Pembayaran Balik"}
+                  </h3>
 
-              <div className="flex flex-col">
-                {/* FAQ 0 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(0)} className="!flex !flex-row !justify-between !items-center w-full py-4 text-left group bg-transparent border-0 outline-none">
-                    <span className="text-blue font-bold !text-[15px] md:text-[20px] lg:!text-[20px] pr-4 group-hover:opacity-80 transition-opacity text-left">
-                      {isEnglish ? t.faqPage.faq0Q : "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 0} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 0 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <p className="text-[#424143] text-[13px] lg:text-[15px] leading-tight ">
-                      {isEnglish ? t.faqPage.faq0Example : "Contoh Wakil:"} <br />
-                      {isEnglish ? t.faqPage.faq0Amount : "Amaun Pinjaman:"} <span className="font-bold">{isEnglish ? t.faqPage.faq0AmountVal : "RM3,000"}</span> <br />
-                      {isEnglish ? t.faqPage.faq0Tenure : "Tempoh Pinjaman:"} <span className="font-bold">{isEnglish ? t.faqPage.faq0TenureVal : "12 bulan"}</span> <br />
-                      {isEnglish ? t.faqPage.faq0Interest : "Kadar Faedah:"} <span className="font-bold">{isEnglish ? t.faqPage.faq0InterestVal : "18.0% setahun"}</span> <br />
-                      {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <span className="font-bold">{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</span>
-                    </p>
+                  <div className="accordion faq-system" id="faq_accordion_repayment">
+                    {/* FAQ 0 */}
+                    <div className="accordion-item accordion-item-custom">
+                      <div
+                        className={`accordion-button text-blue ${openFaq === 0 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(0)}
+                      >
+                        {isEnglish ? t.faqPage.faq0Q : "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 0 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.faqPage.faq0Example : "Contoh Wakil:"} <br />
+                            {isEnglish ? t.faqPage.faq0Amount : "Amaun Pinjaman:"} <strong>{isEnglish ? t.faqPage.faq0AmountVal : "RM3,000"}</strong> <br />
+                            {isEnglish ? t.faqPage.faq0Tenure : "Tempoh Pinjaman:"} <strong>{isEnglish ? t.faqPage.faq0TenureVal : "12 bulan"}</strong> <br />
+                            {isEnglish ? t.faqPage.faq0Interest : "Kadar Faedah:"} <strong>{isEnglish ? t.faqPage.faq0InterestVal : "18.0% setahun"}</strong> <br />
+                            {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <strong>{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong> <br />
+                            <br />
+                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" />
+                            <br />
+                            <br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                    <div className="w-full mt-3">
-                      <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-full h-auto rounded-lg shadow-sm border border-gray-100" alt="Jadual Pembayaran Balik" />
+                  {/* FAQ Section: Permohonan */}
+                  <h3
+                    className="text-blue"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      borderBottom: "2px solid #044bd9",
+                      display: "inline-block",
+                      marginTop: "24px",
+                      marginBottom: "12px",
+                      paddingBottom: "2px",
+                    }}
+                  >
+                    {isEnglish ? t.pinjamanPeribadiPage.faqSectionApplication : "Permohonan"}
+                  </h3>
+
+                  <div className="accordion faq-system" id="faq_accordion_application">
+                    {/* FAQ 1 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 1 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(1)}
+                      >
+                        {isEnglish ? t.faqPage.faq1Q : "Berapakah jumlah pinjaman yang boleh saya mohon?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 1 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.faqPage.faq1A1 : "Anda boleh meminjam dengan minimum RM1,000 sehingga maksimum RM50,000. Amaun yang anda boleh pinjam berbeza-beza bergantung pada penilaian skor kredit individu."}
+                            <br /><br />
+                            {isEnglish ? t.faqPage.faq1A2 : "Walau bagaimanapun, untuk Tambah Nilai dan pinjaman seterusnya, RM1,000 dan maksimum akan ditentukan oleh Loanbuddy Credit."}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 2 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 2 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(2)}
+                      >
+                        {isEnglish ? t.faqPage.faq2Q : "Bagaimanakah cara untuk saya memohon pinjaman Loanbuddy Credit?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 2 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.faqPage.faq2A : "Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp."}
+                            <WhatsAppButtons />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 3 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 3 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(3)}
+                      >
+                        {isEnglish ? t.faqPage.faq3Q : "Berapakah kadar faedah?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 3 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <p className="mb-0">
+                            {isEnglish ? t.faqPage.faq3A : "Kadar faedah tahunan adalah sehingga 18.0%."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 4 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 4 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(4)}
+                      >
+                        {isEnglish ? t.pinjamanPeribadiPage.faqSelfEmployedQ : "Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 4 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <p className="mb-0">
+                            {isEnglish ? t.pinjamanPeribadiPage.faqSelfEmployedA : "Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 5 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 5 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(5)}
+                      >
+                        {isEnglish ? t.faqPage.faq4Q : "Apakah dokumen dan kelayakan yang diperlukan?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 5 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            <strong>{isEnglish ? t.faqPage.faq4DocTitle : "Dokumen dan kelayakan yang diperlukan termasuk:"}</strong>
+                            <ol className="list-decimal list-outside mt-2 mb-3">
+                              <li>{isEnglish ? t.faqPage.faq4Doc1 : "Salinan kad pengenalan (depan dan belakang)"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4Doc2 : "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4Doc3 : "Slip gaji 3 bulan terkini (format PDF) dan/atau"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4Doc4 : "Bil utiliti 1 bulan terkini (air, elektrik, dll.)"}</li>
+                            </ol>
+
+                            <strong>{isEnglish ? t.faqPage.faq4Eligibility1Title : "Kelayakan Pinjaman Peribadi Atas Talian"}</strong>
+                            <ol className="list-decimal list-outside mt-2 mb-3">
+                              <li>{isEnglish ? t.faqPage.faq4E1 : "Berumur antara 18 sehingga 60 tahun"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4E2 : "Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4E3 : "Pendapatan bulanan kasar minimum RM1,700"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4E4 : "Tidak muflis dan mampu membayar balik pinjaman"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4E5 : "Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
+                            </ol>
+
+                            <strong>{isEnglish ? t.faqPage.faq4Eligibility2Title : "Kelayakan Pinjaman Tambah Nilai"}</strong>
+                            <ol className="list-decimal list-outside mt-2">
+                              <li>{isEnglish ? t.faqPage.faq4TopUp1 : "Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp2 : "Rekod pembayaran yang baik dengan Loanbuddy Credit"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp3 : "Individu berumur 18 hingga 60 tahun"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp4 : "Pendapatan kasar bulanan minimum RM1,700"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp5 : "Kakitangan swasta dan kerajaan sahaja"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp6 : "Warganegara Malaysia"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp7 : "Tidak muflis dan mampu membayar balik pinjaman"}</li>
+                              <li>{isEnglish ? t.faqPage.faq4TopUp8 : "Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 6 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 6 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(6)}
+                      >
+                        {isEnglish ? t.faqPage.faq5Q : "Apakah tempoh pinjaman minimum dan maksimum?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 6 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <p className="mb-0">
+                            {isEnglish ? t.faqPage.faq5A : "Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun)."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 7 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 7 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(7)}
+                      >
+                        {isEnglish ? t.faqPage.faq6Q : "Adakah terdapat sebarang bayaran yang perlu saya bayar untuk pendaftaran?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 7 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.faqPage.faq6A1 : "Tiada yuran pendaftaran dikenakan. Walau bagaimanapun, jika permohonan anda diluluskan, anda perlu membayar duti setem dan yuran perakuan."}
+                            <br /><br />
+                            {isEnglish ? t.faqPage.faq6A2 : "Yuran ini akan dikenakan bersama dengan jumlah pembayaran balik pada pembayaran balik pertama."}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* FAQ Section: Kelulusan */}
+                  <h3
+                    className="text-blue"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      borderBottom: "2px solid #044bd9",
+                      display: "inline-block",
+                      marginTop: "24px",
+                      marginBottom: "12px",
+                      paddingBottom: "2px",
+                    }}
+                  >
+                    {isEnglish ? t.pinjamanPeribadiPage.faqSectionApproval : "Kelulusan"}
+                  </h3>
+
+                  <div className="accordion faq-system" id="faq_accordion_approval">
+                    {/* FAQ 8 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 8 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(8)}
+                      >
+                        {isEnglish ? t.pinjamanPeribadiPage.faqApprovalNotificationQ : "Bagaimanakah saya akan tahu jika permohonan pinjaman saya telah diluluskan?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 8 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.pinjamanPeribadiPage.faqApprovalNotificationA : "Permohonan yang telah diluluskan akan dihubungi secara peribadi oleh pihak Loanbuddy Credit melalui panggilan telefon, SMS atau WhatsApp."}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 9 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 9 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(9)}
+                      >
+                        {isEnglish ? t.pinjamanPeribadiPage.faqApprovalTimeQ : "Berapa lamakah proses kelulusan pinjaman?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 9 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.pinjamanPeribadiPage.faqApprovalTimeA : "Proses pinjaman dalam masa 1-3 hari bekerja. Walau bagaimanapun, jika dokumen tidak lengkap, kami memerlukan 1-3 hari bekerja tambahan untuk urusan pengesahan."}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 10 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 10 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(10)}
+                      >
+                        {isEnglish ? t.pinjamanPeribadiPage.faqNextStepsQ : "Apakah yang perlu saya lakukan apabila permohonan pinjaman saya telah diluluskan?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 10 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.pinjamanPeribadiPage.faqNextStepsA : "Sila tunggu panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit dan ikuti arahan yang diberikan. Untuk pertanyaan dan maklumat lebih lanjut, hubungi Loanbuddy Credit melalui WhatsApp:"}
+                            <WhatsAppButtons />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* FAQ Section: Pengeluaran Pinjaman */}
+                  <h3
+                    className="text-blue"
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      borderBottom: "2px solid #044bd9",
+                      display: "inline-block",
+                      marginTop: "24px",
+                      marginBottom: "12px",
+                      paddingBottom: "2px",
+                    }}
+                  >
+                    {isEnglish ? t.pinjamanPeribadiPage.faqSectionDisbursement : "Pengeluaran Pinjaman"}
+                  </h3>
+
+                  <div className="accordion faq-system" id="faq_accordion_disbursement">
+                    {/* FAQ 11 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 11 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(11)}
+                      >
+                        {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementMethodQ : "Bagaimanakah saya akan menerima duit pinjaman saya?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 11 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <p className="mb-0">
+                            {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementMethodA : "Anda akan menerima pinjaman anda secara terus melalui akaun bank berdaftar anda."}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* FAQ 12 */}
+                    <div className="accordion-item">
+                      <div
+                        className={`accordion-button ${openFaq === 12 ? "" : "collapsed"}`}
+                        role="button"
+                        onClick={() => toggleFaq(12)}
+                      >
+                        {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementNotificationQ : "Bagaimanakah saya akan tahu jika pinjaman saya telah dikeluarkan?"}
+                      </div>
+                      <div className={`faq-answer-collapse ${openFaq === 12 ? "open" : ""}`}>
+                        <div className="accordion-body">
+                          <div className="mb-0">
+                            {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementNotificationA : "Setelah pinjaman telah dimasukkan ke dalam akaun anda, anda akan menerima panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit."}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* FAQ Section: Permohonan */}
-              <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] py-5 pb-0 mb-4 inline-block leading-tight">
-                {isEnglish ? t.pinjamanPeribadiPage.faqSectionApplication : "Permohonan"}
-              </h3>
-              <div className="flex flex-col">
-
-                {/* FAQ 1 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(1)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.faqPage.faq1Q : "Berapakah jumlah pinjaman yang boleh saya mohon?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 1} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 1 ? "max-h-[1500px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
-                      {isEnglish ? t.faqPage.faq1A1 : "Anda boleh meminjam dengan minimum RM1,000 sehingga maksimum RM50,000. Amaun yang anda boleh pinjam berbeza-beza bergantung pada penilaian skor kredit individu."}
-                      <br /><br />
-                      {isEnglish ? t.faqPage.faq1A2 : "Walau bagaimanapun, untuk Tambah Nilai dan pinjaman seterusnya, RM1,000 dan maksimum akan ditentukan oleh Loanbuddy Credit."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 2 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(2)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.faqPage.faq2Q : "Bagaimanakah cara untuk saya memohon pinjaman Loanbuddy Credit?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 2} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 2 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[15px] leading-tight">
-                      {isEnglish ? t.faqPage.faq2A : "Anda boleh memohon dalam talian di sini, pada bila-bila masa. Sekiranya anda memerlukan bantuan atau maklumat lanjut, hubungi Loanbuddy Credit melalui WhatsApp."}
-
-                      <WhatsAppButtons />
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 3 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(3)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.faqPage.faq3Q : "Berapakah kadar faedah?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 3} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 3 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-relaxed">
-                      {isEnglish ? t.faqPage.faq3A : "Kadar faedah tahunan adalah sehingga 18.0%."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 4 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(4)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqSelfEmployedQ : "Bolehkah saya memohon Pinjaman Peribadi jika saya bekerja sendiri atau bekerja sambilan?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 4} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 4 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-relaxed">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqSelfEmployedA : "Tidak. Anda mesti bekerja sekurang-kurangnya 3 bulan dengan syarikat semasa anda."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 5 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(5)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.faqPage.faq4Q : "Apakah dokumen dan kelayakan yang diperlukan?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 5} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 5 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
-                      <span className="font-semibold">{isEnglish ? t.faqPage.faq4DocTitle : "Dokumen dan kelayakan yang diperlukan termasuk:"}</span>
-                      <ol className="list-decimal list-outside mt-2">
-                        <li>{isEnglish ? t.faqPage.faq4Doc1 : "Salinan kad pengenalan (depan dan belakang)"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4Doc2 : "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4Doc3 : "Slip gaji 3 bulan terkini (format PDF) dan/atau"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4Doc4 : "Bil utiliti 1 bulan terkini (air, elektrik, dll.)"}</li>
-                      </ol> <br />
-
-                      <span className="font-semibold">{isEnglish ? t.faqPage.faq4Eligibility1Title : "Kelayakan Pinjaman Peribadi Atas Talian"}</span>
-                      <ol className="list-decimal list-outside mt-2">
-                        <li>{isEnglish ? t.faqPage.faq4E1 : "Berumur antara 18 sehingga 60 tahun"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4E2 : "Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4E3 : "Pendapatan bulanan kasar minimum RM1,700"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4E4 : "Tidak muflis dan mampu membayar balik pinjaman"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4E5 : "Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
-                      </ol> <br />
-
-                      <span className="font-semibold">{isEnglish ? t.faqPage.faq4Eligibility2Title : "Kelayakan Pinjaman Tambah Nilai"}</span>
-                      <ol className="list-decimal list-outside mt-2">
-                        <li>{isEnglish ? t.faqPage.faq4TopUp1 : "Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp2 : "Rekod pembayaran yang baik dengan Loanbuddy Credit"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp3 : "Individu berumur 18 hingga 60 tahun"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp4 : "Pendapatan kasar bulanan minimum RM1,700"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp5 : "Kakitangan swasta dan kerajaan sahaja"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp6 : "Warganegara Malaysia"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp7 : "Tidak muflis dan mampu membayar balik pinjaman"}</li>
-                        <li>{isEnglish ? t.faqPage.faq4TopUp8 : "Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
-                      </ol> <br />
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 6 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(6)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.faqPage.faq5Q : "Apakah tempoh pinjaman minimum dan maksimum?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 6} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 6 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[15px] leading-relaxed">
-                      {isEnglish ? t.faqPage.faq5A : "Tempoh pinjaman minimum ialah 12 bulan dan tempoh pinjaman maksimum ialah 60 bulan (5 tahun)."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 7 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(7)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.faqPage.faq6Q : "Adakah terdapat sebarang bayaran yang perlu saya bayar untuk pendaftaran?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 7} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 7 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[15px] leading-tight">
-                      {isEnglish ? t.faqPage.faq6A1 : "Tiada yuran pendaftaran dikenakan. Walau bagaimanapun, jika permohonan anda diluluskan, anda perlu membayar duti setem dan yuran perakuan."}
-                      <br /><br />
-                      {isEnglish ? t.faqPage.faq6A2 : "Yuran ini akan dikenakan bersama dengan jumlah pembayaran balik pada pembayaran balik pertama."}
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* FAQ Section: Kelulusan */}
-              <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] py-5 pb-0 mb-4 inline-block leading-tight">
-                {isEnglish ? t.pinjamanPeribadiPage.faqSectionApproval : "Kelulusan"}
-              </h3>
-              <div className="flex flex-col">
-
-                {/* FAQ 8 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(8)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqApprovalNotificationQ : "Bagaimanakah saya akan tahu jika permohonan pinjaman saya telah diluluskan?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 8} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 8 ? "max-h-[1500px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqApprovalNotificationA : "Permohonan yang telah diluluskan akan dihubungi secara peribadi oleh pihak Loanbuddy Credit melalui panggilan telefon, SMS atau WhatsApp."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 9 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(9)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqApprovalTimeQ : "Berapa lamakah proses kelulusan pinjaman?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 9} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 9 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[15px] leading-tight">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqApprovalTimeA : "Proses pinjaman dalam masa 1-3 hari bekerja. Walau bagaimanapun, jika dokumen tidak lengkap, kami memerlukan 1-3 hari bekerja tambahan untuk urusan pengesahan."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 10 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(10)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqNextStepsQ : "Apakah yang perlu saya lakukan apabila permohonan pinjaman saya telah diluluskan?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 10} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 10 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqNextStepsA : "Sila tunggu panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit dan ikuti arahan yang diberikan. Untuk pertanyaan dan maklumat lebih lanjut, hubungi Loanbuddy Credit melalui WhatsApp:"}
-
-                      <WhatsAppButtons />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ Section: Pengeluaran Pinjaman */}
-              <h3 className="text-blue text-[22px] font-bold border-b border-[#044BD9] py-5 pb-0 mb-4 inline-block leading-tight">
-                {isEnglish ? t.pinjamanPeribadiPage.faqSectionDisbursement : "Pengeluaran Pinjaman"}
-              </h3>
-
-              <div className="flex flex-col">
-                {/* FAQ 11 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(11)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementMethodQ : "Bagaimanakah saya akan menerima duit pinjaman saya?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 11} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 11 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-relaxed">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementMethodA : "Anda akan menerima pinjaman anda secara terus melalui akaun bank berdaftar anda."}
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ 12 */}
-                <div className="border-b border-gray-200">
-                  <button onClick={() => toggleFaq(12)} className="!flex !justify-between !items-center w-full py-4 text-left group">
-                    <span className="text-[#044BD9] font-bold text-[15px] md:text-[18px] lg:text-[20px] pr-4 group-hover:opacity-80 transition-opacity">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementNotificationQ : "Bagaimanakah saya akan tahu jika pinjaman saya telah dikeluarkan?"}
-                    </span>
-                    <FaqArrowIcon isOpen={openFaq === 12} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openFaq === 12 ? "max-h-[1000px] opacity-100 pb-6" : "max-h-0 opacity-0"}`}>
-                    <div className="text-[#424143] text-[13px] lg:text-[15px] leading-tight">
-                      {isEnglish ? t.pinjamanPeribadiPage.faqDisbursementNotificationA : "Setelah pinjaman telah dimasukkan ke dalam akaun anda, anda akan menerima panggilan, SMS atau WhatsApp dari pihak Loanbuddy Credit."}
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
