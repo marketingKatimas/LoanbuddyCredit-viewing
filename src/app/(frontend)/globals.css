@@ -1777,6 +1777,17 @@ textarea {
   align-items: flex-start !important;
 }
 
+/* Hide mobile-only CTA on desktop (lg and above) */
+@media (min-width: 992px) {
+  .site_header .mobile-header-cta {
+    display: none !important;
+  }
+  /* Hide hamburger on desktop — visibility controlled by CSS not Bootstrap d-lg-none */
+  .site_header .mobile_menu_btn {
+    display: none !important;
+  }
+}
+
 /* =====================================================
    Mobile Header View Customizations (< 992px)
    ===================================================== */
@@ -1816,11 +1827,42 @@ textarea {
   /* Right controls area */
   .site_header .header_right_area {
     gap: 8px !important;
+    flex-shrink: 0 !important;   /* Prevent right area from being compressed */
   }
 
-  /* Hide "Mohon Sekarang" button on mobile view header */
+  /* CRITICAL: col-12 forces header_main_cluster to 100% width on mobile,
+     leaving no real space for the right area. Override to allow natural flex sizing. */
+  .site_header .header_main_cluster {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 80px !important;  /* Ensure logo always has room and doesn't get squished */
+    max-width: none !important;
+    overflow: visible !important;
+  }
+
+  /* Protect logo from squishing */
+  .site_header .site_logo_wrap {
+    flex-shrink: 0 !important;
+    min-width: 80px !important;
+  }
+
+  /* Explicitly hide the desktop CTA inside header_main_cluster on mobile
+     (belt-and-suspenders over Bootstrap d-none in case of any override) */
+  .site_header .header_main_cluster .btn_semak_layak {
+    display: none !important;
+  }
+
+  /* Hide "Mohon Sekarang" button in header_right_area on mobile by default */
   .site_header .header_right_area .btn_semak_layak {
     display: none !important;
+  }
+
+  /* But show the mobile-only CTA (overrides the rule above) */
+  .site_header .header_right_area .mobile-header-cta {
+    display: inline-flex !important;
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+    white-space: nowrap !important;
   }
 
   /* Language switcher alignment */
@@ -1834,7 +1876,7 @@ textarea {
     font-size: 13px !important;
   }
 
-  /* Hamburger Menu Button */
+  /* Hamburger Menu Button — white so visible on blue (#044BD9) container background */
   .site_header .mobile_menu_btn {
     background: transparent !important;
     border: none !important;
@@ -1852,6 +1894,22 @@ textarea {
   .site_header .mobile_menu_btn i {
     color: #ffffff !important;
     font-size: 22px !important;
+  }
+
+  /* Custom hamburger button — forces visibility on mobile */
+  .site_header .hamburger-btn-mobile {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 6px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    outline: none !important;
+    box-shadow: none !important;
+    flex-shrink: 0 !important;
   }
 
   /* Full-width Edge-to-Edge Mobile Navigation Menu Drawer */

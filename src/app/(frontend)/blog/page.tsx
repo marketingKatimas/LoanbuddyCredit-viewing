@@ -56,7 +56,7 @@ export default function BlogListingPage() {
           setPageData(data.doc);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
 
     // Fetch All Published Blog Posts with active locale
     fetch(`/api/blog-posts?locale=${language}`, { cache: "no-store" })
@@ -66,7 +66,7 @@ export default function BlogListingPage() {
           setPosts(data.docs);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [language]);
 
   const defaultImageMap: Record<string, string> = {
@@ -79,23 +79,23 @@ export default function BlogListingPage() {
   const articlesList =
     posts.length > 0
       ? posts.map((item: any) => {
-          const postSlug = item.slug || "blog";
-          const fallbackImg =
-            defaultImageMap[postSlug] ||
-            "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif";
+        const postSlug = item.slug || "blog";
+        const fallbackImg =
+          defaultImageMap[postSlug] ||
+          "/assets/images/blog/tersepit-hutang-kad-kredit-ini-strategi-penyatuan-hutang-bijak.avif";
 
-          return {
-            title: item.title || "",
-            slug: `/blog/${postSlug}`,
-            image: getMediaUrl(item.featuredImage, fallbackImg),
-            category: item.category || "kewangan",
-            tag: item.tag || (isEnglish ? t.blog.latestTag : "Artikel Terbaru!"),
-          };
-        })
+        return {
+          title: item.title || "",
+          slug: `/blog/${postSlug}`,
+          image: getMediaUrl(item.featuredImage, fallbackImg),
+          category: item.category || "kewangan",
+          tag: item.tag || (isEnglish ? t.blog.latestTag : "Artikel Terbaru!"),
+        };
+      })
       : defaultArticles.map((art) => ({
-          ...art,
-          slug: `/blog/${art.slug}`,
-        }));
+        ...art,
+        slug: `/blog/${art.slug}`,
+      }));
 
   const pageHeading =
     pageData?.hero?.heading || t.blog.pageHeading;
@@ -138,7 +138,7 @@ export default function BlogListingPage() {
 
       {/* Main Content */}
       <main className="page_content">
-        <section className="blog_section section_space_lg header_blog">
+        <section className="blog_section section_space_lg header_blog bg-white">
           <div className="container">
             <div className="row align-items-center mb-4">
               <div className="col-lg-6 col-mobile mb-3 mb-lg-0">
@@ -179,57 +179,81 @@ export default function BlogListingPage() {
               </div>
             </div>
 
-            <div className="row">
-              <div className="col col-mobile col-lg-12">
-                <div id="blogList">
-                  {filteredArticles.length > 0 ? (
-                    <div className="row" id="Container">
-                      {filteredArticles.map((article: any, idx: number) => (
-                        <div key={idx} className="col col-lg-4 blogPost mix ui kewangan mb-4">
-                          <div className="blog_item bg-white p-3" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-                            <div className="item_image mb-2">
-                              <a href={article.slug}>
-                                <img src={article.image} alt={article.title} className="img-fluid rounded" />
-                              </a>
-                            </div>
-                            <div className="mb-2">
-                              <ul className="meta_info_list unordered_list mb-2">
-                                <li>
-                                  <i className="fas fa-thumbtack"></i>
-                                  <span>{article.tag}</span>
-                                </li>
-                              </ul>
-                              <h3 className="item_title mb-0">
-                                <a href={article.slug} style={{ fontSize: "18px", lineHeight: "22px" }}>{article.title}</a>
-                              </h3>
-                            </div>
-                            <div className="item_content p-0 mt-3 mt-auto">
-                              <a href={article.slug} style={{ color: "red", fontWeight: "bold", textDecoration: "none" }}>
-                                {isEnglish ? t.blog.readArticle : "Baca Artikel"}
-                              </a>
-                            </div>
-                          </div>
+            {/* Article Grid */}
+            <div id="blogList">
+              {filteredArticles.length > 0 ? (
+                <div id="Container" className="blog-grid">
+                  {filteredArticles.map((article: any, idx: number) => (
+                    <a
+                      key={idx}
+                      href={article.slug}
+                      className="blog-card-link"
+                      style={{ textDecoration: "none", color: "inherit", display: "block" }}
+                    >
+                      <div className="blog-card">
+                        {/* Image with overlaid badge */}
+                        <div className="blog-card-img-wrap">
+                          <img
+                            src={article.image}
+                            alt={article.title}
+                            className="blog-card-img"
+                          />
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="blog-empty-state">
-                      <i className="fas fa-search"></i>
-                      <h4>{isEnglish ? t.blog.emptyTitle : "Tiada artikel dijumpai"}</h4>
-                      <p>
-                        {isEnglish ? t.blog.emptyDesc : "Tiada artikel yang sepadan dengan carian"}{" "}
-                        <strong>&ldquo;{searchTerm}&rdquo;</strong>.
-                      </p>
-                      <button
-                        type="button"
-                        className="btn-reset"
-                        onClick={() => setSearchTerm("")}
-                      >
-                        {isEnglish ? t.blog.viewAll : "Lihat Semua Artikel"}
-                      </button>
-                    </div>
-                  )}
+                        {/* Card body */}
+                        <div className="blog-card-body">
+                          <h3 className="blog-card-title">{article.title}</h3>
+                          <span className="blog-card-read-link">
+                            {isEnglish ? t.blog.readArticle : "Baca artikel"}
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
                 </div>
+              ) : (
+                <div className="blog-empty-state">
+                  <i className="fas fa-search"></i>
+                  <h4>{isEnglish ? t.blog.emptyTitle : "Tiada artikel dijumpai"}</h4>
+                  <p>
+                    {isEnglish ? t.blog.emptyDesc : "Tiada artikel yang sepadan dengan carian"}{" "}
+                    <strong>&ldquo;{searchTerm}&rdquo;</strong>.
+                  </p>
+                  <button
+                    type="button"
+                    className="btn-reset"
+                    onClick={() => setSearchTerm("")}
+                  >
+                    {isEnglish ? t.blog.viewAll : "Lihat Semua Artikel"}
+                  </button>
+                </div>
+              )}
+            </div>
+
+          </div>
+        </section>
+
+        {/* Call to Action Banner Section */}
+        <section
+          className="bg_blue overflow-hidden cta_banner_section animated-in"
+          style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
+        >
+          <div className="container">
+            <div className="cta_home_new d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 text-center text-md-start">
+              <div className="text-cta-mobile">
+                <h2 className="text-white mb-1" style={{ fontSize: "25px", fontWeight: 700, lineHeight: "1.3" }}>
+                  {isEnglish ? t.home.ctaTitle : "Perlukan Pinjaman Peribadi?"}
+                </h2>
+                <p className="text-white mb-0" style={{ fontSize: "25px", fontWeight: 700, opacity: 0.95, lineHeight: "1.4" }}>
+                  {isEnglish ? t.home.ctaSubtitle : "Loanbuddy Credit Sedia Berkhidmat untuk Anda!"}
+                </p>
+              </div>
+              <div className="z-index-3 flex-shrink-0">
+                <a href="mohon-pinjaman-online" className="btn border_red_new cta_semak cta_mohon">
+                  <span>
+                    <small>{isEnglish ? t.home.applyNow : "Mohon Sekarang"}</small>
+                    <small>{isEnglish ? t.home.applyNow : "Mohon Sekarang"}</small>
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -238,6 +262,127 @@ export default function BlogListingPage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Blog card responsive styles */}
+      <style>{`
+        .blog-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 28px;
+        }
+
+        .blog-card {
+          background: #fff;
+          border-radius: 10px;
+          overflow: hidden;
+          transition: box-shadow 0.2s ease, transform 0.2s ease;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .blog-card-link:hover .blog-card {
+          box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+          transform: translateY(-3px);
+        }
+
+        .blog-card-img-wrap {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 10;
+          overflow: hidden;
+        }
+
+        .blog-card-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: 10px 10px 0 0;
+          transition: transform 0.3s ease;
+        }
+
+        .blog-card-link:hover .blog-card-img {
+          transform: scale(1.04);
+        }
+
+        .blog-card-badge {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background: #1a3fac;
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 5px 10px 5px 6px;
+          max-width: calc(100% - 20px);
+        }
+
+        .blog-badge-logo {
+          width: 22px;
+          height: 22px;
+          object-fit: contain;
+          flex-shrink: 0;
+          border-radius: 3px;
+        }
+
+        .blog-badge-text {
+          color: #fff;
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 1.3;
+          white-space: normal;
+          word-break: break-word;
+        }
+
+        .blog-card-body {
+          padding: 14px 16px 16px;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        .blog-card-title {
+          font-size: 16px;
+          font-weight: 600;
+          color: #1a1a2e;
+          line-height: 1.45;
+          margin: 0 0 12px;
+          flex: 1;
+        }
+
+        .blog-card-read-link {
+          color: #e02020;
+          font-size: 13px;
+          font-weight: 700;
+          text-decoration: none;
+          cursor: pointer;
+          display: inline-block;
+        }
+
+        @media (max-width: 991px) {
+          .blog-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+        }
+
+        @media (max-width: 575px) {
+          .blog-grid {
+            grid-template-columns: 1fr;
+            gap: 18px;
+          }
+
+          .blog-card-img-wrap {
+            aspect-ratio: 16 / 9;
+          }
+
+          .blog-card-title {
+            font-size: 15px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

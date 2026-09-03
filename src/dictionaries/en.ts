@@ -316,7 +316,7 @@ export const en = {
   faqPage: {
     heroTitle: "Frequently Asked Questions From Our Clients",
     heroDesc:
-      "In this section, you will find answers to frequently asked questions from our clients regarding our financing services. Important details have been organized to help you better understand our processes, procedures, and loan offerings clearly.\n\nIf you have any questions or require further clarification, feel free to reach out to us and we'll be glad to help!",
+      "In this section, you will find answers to frequently asked questions regarding our financing services. We've organized key details to help you understand our processes and loan offerings clearly.\n\nFor any further inquiries or clarifications, feel free to reach out—we are always happy to help!",
     tabAll: "All",
     tabGeneral: "General Inquiries",
     tabRepayment: "Repayment Inquiries",
@@ -529,14 +529,12 @@ export const en = {
     heroDesc:
       "Loanbuddy Credit provides fast Online Personal Loans designed to help you achieve your personal financial goals and manage cash flow with ease.",
     heroCta: "Apply Now",
-    usp1: "Interest rate 1.5% monthly or 18% per annum",
+    usp1: "Interest rate 1.5% monthly or 18% per annum (fixed)",
     usp2: "Loan amounts from RM1,000 up to RM50,000",
-    usp3: "Flexible loan tenure from 12 to 60 months",
-    usp4: "No ATM card retention",
-    usp5: "Approval within 1-2 business days",
-    usp6: "Licensed moneylender under KPKT",
-    usp7: "Same-day approval and fund disbursement",
-    usp8: "Easy, fast and efficient application",
+    usp3: "Flexible loan tenure from 12 months up to 60 months",
+    usp4: "No ATM card retention, no upfront fees",
+    usp5: "Loan approval within 1-2 business days with same-day fund disbursement",
+    usp6: "Licensed moneylender under the Ministry of Housing and Local Government (KPKT)",
     productDetailsTitle: "Product Details",
     interestRateLabel: "Interest Rate:",
     interestRateVal: "up to 18% per annum.",

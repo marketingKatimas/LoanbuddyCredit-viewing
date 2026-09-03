@@ -98,6 +98,51 @@ export default function PinjamanPeribadiPage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  // Steps Slider State (Mobile)
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [isInteracting, setIsInteracting] = useState<boolean>(false);
+
+  const handlePrevStep = () => {
+    setActiveStep((prev) => Math.max(0, prev - 1));
+  };
+
+  const handleNextStep = (totalSteps: number) => {
+    setActiveStep((prev) => Math.min(totalSteps - 1, prev + 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsInteracting(true);
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = (totalSteps: number) => {
+    setIsInteracting(false);
+    if (touchStartX === null || touchEndX === null) return;
+    const diff = touchStartX - touchEndX;
+    if (diff > 45) {
+      handleNextStep(totalSteps);
+    } else if (diff < -45) {
+      handlePrevStep();
+    }
+  };
+
+  useEffect(() => {
+    if (isInteracting) return;
+    const interval = setInterval(() => {
+      // Assuming 3 steps if stepsItems is not in scope here
+      setActiveStep((prev) => (prev >= 2 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isInteracting]);
+
+
   useEffect(() => {
     fetch(`/api/content?slug=pinjaman-peribadi&locale=${language}`, { cache: "no-store" })
       .then((res) => res.json())
@@ -133,8 +178,6 @@ export default function PinjamanPeribadiPage() {
     { img: "kad-atm-2.png", text: t.pinjamanPeribadiPage.usp4 },
     { img: "lulus-pantas.png", text: t.pinjamanPeribadiPage.usp5 },
     { img: "pinjaman-berlesen.png", text: t.pinjamanPeribadiPage.usp6 },
-    { img: "kelulusan-pinjaman.png", text: t.pinjamanPeribadiPage.usp7 },
-    { img: "permohonan-mudah.png", text: t.pinjamanPeribadiPage.usp8 },
   ];
 
   const defaultSteps = [
@@ -158,13 +201,16 @@ export default function PinjamanPeribadiPage() {
     },
   ];
 
-  // Dynamic Data with safe fallbacks
-  const heroHeading =
-    pageData?.hero?.heading || t.pinjamanPeribadiPage.heroTitle;
-  const heroSubheading =
-    pageData?.hero?.subheading || t.pinjamanPeribadiPage.heroDesc;
-  const heroCtaText =
-    pageData?.hero?.primaryCtaText || t.pinjamanPeribadiPage.heroCta;
+  // Dynamic Data with safe fallbacks (Language switcher aware)
+  const heroHeading = isEnglish
+    ? t.pinjamanPeribadiPage.heroTitle
+    : (pageData?.hero?.heading || t.pinjamanPeribadiPage.heroTitle);
+  const heroSubheading = isEnglish
+    ? t.pinjamanPeribadiPage.heroDesc
+    : (pageData?.hero?.subheading || t.pinjamanPeribadiPage.heroDesc);
+  const heroCtaText = isEnglish
+    ? t.pinjamanPeribadiPage.heroCta
+    : (pageData?.hero?.primaryCtaText || t.pinjamanPeribadiPage.heroCta);
   const heroCtaLink = pageData?.hero?.primaryCtaLink || "/mohon-pinjaman-online";
   const heroBannerBg = pageData?.hero?.heroImage
     ? getMediaUrl(pageData.hero.heroImage, "/assets/images/banner/home-mohon/pinjaman-peribadi-banner.webp")
@@ -176,35 +222,41 @@ export default function PinjamanPeribadiPage() {
         img: item.itemImage
           ? getMediaUrl(item.itemImage, `/assets/images/${defaultUspItems[idx % defaultUspItems.length].img}`)
           : `/assets/images/${defaultUspItems[idx % defaultUspItems.length].img}`,
-        text: item.itemDescription || item.itemTitle || defaultUspItems[idx % defaultUspItems.length].text,
+        text: isEnglish
+          ? defaultUspItems[idx % defaultUspItems.length].text
+          : (item.itemDescription || item.itemTitle || defaultUspItems[idx % defaultUspItems.length].text),
       }))
       : defaultUspItems.map((item) => ({
         img: `/assets/images/${item.img}`,
         text: item.text,
       }));
 
-  const stepsTitle =
-    pageData?.sections?.[1]?.sectionTitle || t.pinjamanPeribadiPage.stepsTitle;
+  const stepsTitle = isEnglish
+    ? t.pinjamanPeribadiPage.stepsTitle
+    : (pageData?.sections?.[1]?.sectionTitle || t.pinjamanPeribadiPage.stepsTitle);
   const stepsItems =
     pageData?.sections?.[1]?.items && pageData.sections[1].items.length > 0
       ? pageData.sections[1].items.map((item: any, idx: number) => ({
-        title: item.itemTitle || defaultSteps[idx]?.title || `Langkah ${idx + 1}`,
-        desc: item.itemDescription || defaultSteps[idx]?.desc || "",
+        title: isEnglish ? (defaultSteps[idx]?.title || `Step ${idx + 1}`) : (item.itemTitle || defaultSteps[idx]?.title || `Langkah ${idx + 1}`),
+        desc: isEnglish ? (defaultSteps[idx]?.desc || "") : (item.itemDescription || defaultSteps[idx]?.desc || ""),
         img: item.itemImage
           ? getMediaUrl(item.itemImage, defaultSteps[idx]?.img || "/assets/images/tekan-butang.png")
           : (defaultSteps[idx]?.img || "/assets/images/tekan-butang.png"),
-        alt: defaultSteps[idx]?.alt || item.itemTitle || `Langkah ${idx + 1}`,
+        alt: isEnglish ? (defaultSteps[idx]?.alt || `Step ${idx + 1}`) : (defaultSteps[idx]?.alt || item.itemTitle || `Langkah ${idx + 1}`),
       }))
       : defaultSteps;
 
-  const ctaHeading =
-    pageData?.sections?.[2]?.sectionTitle || t.pinjamanPeribadiPage.ctaBannerTitle;
-  const ctaButtonText =
-    pageData?.sections?.[2]?.items?.[0]?.itemTitle || t.pinjamanPeribadiPage.ctaBannerBtn;
+  const ctaHeading = isEnglish
+    ? t.pinjamanPeribadiPage.ctaBannerTitle
+    : (pageData?.sections?.[2]?.sectionTitle || t.pinjamanPeribadiPage.ctaBannerTitle);
+  const ctaButtonText = isEnglish
+    ? t.pinjamanPeribadiPage.ctaBannerBtn
+    : (pageData?.sections?.[2]?.items?.[0]?.itemTitle || t.pinjamanPeribadiPage.ctaBannerBtn);
   const ctaButtonLink = "/mohon-pinjaman-online";
 
-  const faqTitle =
-    pageData?.sections?.[3]?.sectionTitle || t.pinjamanPeribadiPage.faqTitle;
+  const faqTitle = isEnglish
+    ? t.pinjamanPeribadiPage.faqTitle
+    : (pageData?.sections?.[3]?.sectionTitle || t.pinjamanPeribadiPage.faqTitle);
 
   return (
     <div className="page_wrapper bg-white">
@@ -219,7 +271,7 @@ export default function PinjamanPeribadiPage() {
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
           <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
-            <div 
+            <div
               className="relative w-full overflow-hidden bg-cover bg-[68%_center] md:bg-[center_top] bg-no-repeat !min-h-[500px] lg:!min-h-[700px] lg:h-full flex items-center justify-start"
               style={{ backgroundImage: `url('${heroBannerBg}')` }}
             >
@@ -260,7 +312,7 @@ export default function PinjamanPeribadiPage() {
         </section>
 
         {/* 2. USP Auto Side Scroll (Marquee) */}
-        <section className="py-6 lg:py-10 bg-white overflow-hidden relative border-b border-gray-100">
+        <section className="pt-16 pb-6 md:py-8 lg:py-10 bg-white overflow-hidden relative border-b border-gray-100">
 
           <style dangerouslySetInnerHTML={{
             __html: `
@@ -302,10 +354,10 @@ export default function PinjamanPeribadiPage() {
           </div>
 
           {/* Modern Draggable Indicator */}
-          <div className="flex justify-center items-center mt-6 md:mt-8 gap-1.5 opacity-60">
-            <div className="w-8 h-1.5 rounded-full bg-[#044BD9]"></div>
-            <div className="w-2 h-1.5 rounded-full bg-[#d1d5db]"></div>
-            <div className="w-2 h-1.5 rounded-full bg-[#d1d5db]"></div>
+          <div className="flex justify-center items-center mt-10 md:mt-12 gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#044BD9]"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#d1d5db]"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-[#d1d5db]"></div>
           </div>
 
         </section>
@@ -455,9 +507,9 @@ export default function PinjamanPeribadiPage() {
         <section className="py-14 lg:py-20 bg-[#f2f2f2] relative">
           {/* Mascot wrapped in a div to preserve positioning while animating */}
           <div className="absolute left-0 -translate-y-[55%] lg:-translate-y-[45%] -translate-x-[45%] w-[250px] md:w-[220px] lg:w-[700px] z-0 pointer-events-none">
-            <img 
-              src="/assets/images/Loanbuddy-Ladybug-Mirror.png" 
-              alt="Loanbuddy Mascot" 
+            <img
+              src="/assets/images/Loanbuddy-Ladybug-Mirror.png"
+              alt="Loanbuddy Mascot"
               className="w-full h-full object-contain"
               style={{ animation: "mascotFloat 5s ease-in-out infinite" }}
             />
@@ -471,11 +523,12 @@ export default function PinjamanPeribadiPage() {
             </div>
 
             <div className="max-w-[1040px] mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-4 relative z-10">
+              {/* Desktop Steps Layout (>= md) - Unchanged & clean */}
+              <div className="hidden md:flex flex-row justify-between items-center gap-6 lg:gap-4 relative z-10">
                 {stepsItems.map((stepItem: any, idx: number) => (
                   <React.Fragment key={idx}>
                     {/* Step Card */}
-                    <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
+                    <div className="w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
                       <div className="h-[95px] w-full flex items-center justify-center mb-4">
                         <Image
                           src={stepItem.img}
@@ -498,13 +551,101 @@ export default function PinjamanPeribadiPage() {
                     {/* Arrow separator */}
                     {idx < stepsItems.length - 1 && (
                       <div className="flex items-center justify-center my-1 md:my-0 flex-shrink-0">
-                        <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505] rotate-90 md:rotate-0" viewBox="0 0 24 24">
+                        <svg className="w-7 h-7 md:w-8 md:h-8 text-[#F20505] fill-[#F20505]" viewBox="0 0 24 24">
                           <path d="M6 4.5v15a1 1 0 001.52.86l13-7.5a1 1 0 000-1.72l-13-7.5A1 1 0 006 4.5z" />
                         </svg>
                       </div>
                     )}
                   </React.Fragment>
                 ))}
+              </div>
+
+              {/* Mobile Steps Slider (< md) with side navigation arrows (no repeat) */}
+              <div className="md:hidden flex flex-col items-center relative z-10">
+                <div className="flex items-center justify-center w-full gap-2 sm:gap-4">
+                  {/* Left Side Arrow */}
+                  <button
+                    type="button"
+                    onClick={handlePrevStep}
+                    disabled={activeStep === 0}
+                    aria-label={isEnglish ? "Previous step" : "Langkah sebelumnya"}
+                    className={`flex-shrink-0 w-10 h-10 rounded-full  flex items-center justify-center text-[#044BD9] transition-all duration-200 ${activeStep === 0
+                      ? "opacity-30 cursor-not-allowed"
+                      : "opacity-100 hover:bg-gray-50 active:scale-95 cursor-pointer"
+                      }`}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Step Card Viewport */}
+                  <div
+                    className="overflow-hidden w-[300px] sm:w-[280px]"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={() => handleTouchEnd(stepsItems.length)}
+                  >
+                    <div
+                      className="flex transition-transform duration-300 ease-out"
+                      style={{ transform: `translateX(-${activeStep * 100}%)` }}
+                    >
+                      {stepsItems.map((stepItem: any, idx: number) => (
+                        <div key={idx} className="w-full flex-shrink-0 flex justify-center px-1">
+                          <div className="w-full h-[340px] flex flex-col items-center justify-center text-center bg-white p-6 rounded-[10px]">
+                            <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                              <Image
+                                src={stepItem.img}
+                                alt={stepItem.alt || stepItem.title}
+                                width={90}
+                                height={90}
+                                className="h-[80px] w-auto max-w-[90px] object-contain"
+                              />
+                            </div>
+
+                            <h3 className="text-[19px] font-bold text-[#222222] mb-2.5">
+                              {stepItem.title}
+                            </h3>
+
+                            <p className="text-[13.5px] text-[#555555] font-normal leading-relaxed max-w-[220px] whitespace-pre-line">
+                              {stepItem.desc}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Side Arrow */}
+                  <button
+                    type="button"
+                    onClick={() => handleNextStep(stepsItems.length)}
+                    disabled={activeStep === stepsItems.length - 1}
+                    aria-label={isEnglish ? "Next step" : "Langkah seterusnya"}
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-[#044BD9] transition-all duration-200 ${activeStep === stepsItems.length - 1
+                      ? "opacity-30 cursor-not-allowed"
+                      : "opacity-100 hover:bg-gray-50 active:scale-95 cursor-pointer"
+                      }`}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Step Indicator Dots for Mobile */}
+                <div className="flex justify-center items-center mt-8 gap-3">
+                  {stepsItems.map((_: any, dotIdx: number) => (
+                    <div
+                      key={dotIdx}
+                      onClick={() => setActiveStep(dotIdx)}
+                      aria-label={`${isEnglish ? "Step" : "Langkah"} ${dotIdx + 1}`}
+                      className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${
+                        activeStep === dotIdx ? "w-8 bg-blue-600" : "w-3 bg-gray-300"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Terms and Privacy Policy footer */}
@@ -594,7 +735,7 @@ export default function PinjamanPeribadiPage() {
                             {isEnglish ? t.faqPage.faq0Interest : "Kadar Faedah:"} <strong>{isEnglish ? t.faqPage.faq0InterestVal : "18.0% setahun"}</strong> <br />
                             {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <strong>{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong> <br />
                             <br />
-                            <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" />
+                            <img src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"} loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" />
                             <br />
                             <br />
                           </div>

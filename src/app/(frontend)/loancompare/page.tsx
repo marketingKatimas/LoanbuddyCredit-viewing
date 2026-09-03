@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -19,8 +19,81 @@ export default function AplikasiPage() {
           setPageData(data.doc);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [language]);
+
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const [isInteracting, setIsInteracting] = useState<boolean>(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsInteracting(true);
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    setIsInteracting(false);
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+
+    // We have 3 steps in the download section
+    if (isLeftSwipe && activeStep < 2) {
+      setActiveStep((prev) => prev + 1);
+    }
+    if (isRightSwipe && activeStep > 0) {
+      setActiveStep((prev) => prev - 1);
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  useEffect(() => {
+    if (isInteracting) return;
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isInteracting]);
+
+  // Features Slider States
+  const [activeFeatureStep, setActiveFeatureStep] = useState<number>(0);
+  const featureTouchStartX = useRef<number | null>(null);
+  const featureTouchEndX = useRef<number | null>(null);
+
+  const handleFeatureTouchStart = (e: React.TouchEvent) => {
+    featureTouchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleFeatureTouchMove = (e: React.TouchEvent) => {
+    featureTouchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleFeatureTouchEnd = () => {
+    if (!featureTouchStartX.current || !featureTouchEndX.current) return;
+    const distance = featureTouchStartX.current - featureTouchEndX.current;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+
+    // We have 5 steps in the features section
+    if (isLeftSwipe && activeFeatureStep < 4) {
+      setActiveFeatureStep((prev) => prev + 1);
+    }
+    if (isRightSwipe && activeFeatureStep > 0) {
+      setActiveFeatureStep((prev) => prev - 1);
+    }
+    featureTouchStartX.current = null;
+    featureTouchEndX.current = null;
+  };
+
+  const handleFeatureNext = () => setActiveFeatureStep((p) => (p < 4 ? p + 1 : p));
+  const handleFeaturePrev = () => setActiveFeatureStep((p) => (p > 0 ? p - 1 : p));
 
   // 1. Dynamic Hero Banner Data
   const heroBannerImg = pageData?.hero?.heroImage
@@ -63,12 +136,12 @@ export default function AplikasiPage() {
   const featuresList =
     pageData?.sections?.[0]?.items && pageData.sections[0].items.length > 0
       ? pageData.sections[0].items.map((item: any, idx: number) => ({
-          title: item.itemTitle || defaultFeatures[idx]?.title || "",
-          img: getMediaUrl(
-            item.itemImage,
-            defaultFeatures[idx]?.img || "/assets/images/permohonan-segera.png"
-          ),
-        }))
+        title: item.itemTitle || defaultFeatures[idx]?.title || "",
+        img: getMediaUrl(
+          item.itemImage,
+          defaultFeatures[idx]?.img || "/assets/images/permohonan-segera.png"
+        ),
+      }))
       : defaultFeatures;
 
   // 3. Dynamic Section 1: Why Choose Loanbuddy Credit
@@ -101,13 +174,13 @@ export default function AplikasiPage() {
   const stepsList =
     pageData?.sections?.[2]?.items && pageData.sections[2].items.length > 0
       ? pageData.sections[2].items.map((step: any, idx: number) => ({
-          stepLabel: step.itemTitle || defaultSteps[idx]?.stepLabel || "",
-          desc: step.itemDescription || defaultSteps[idx]?.desc || "",
-          img: getMediaUrl(
-            step.itemImage,
-            defaultSteps[idx]?.img || "/assets/images/icon-langkah-1-app.png"
-          ),
-        }))
+        stepLabel: step.itemTitle || defaultSteps[idx]?.stepLabel || "",
+        desc: step.itemDescription || defaultSteps[idx]?.desc || "",
+        img: getMediaUrl(
+          step.itemImage,
+          defaultSteps[idx]?.img || "/assets/images/icon-langkah-1-app.png"
+        ),
+      }))
       : defaultSteps;
 
   const downloadCtaText =
@@ -154,16 +227,16 @@ export default function AplikasiPage() {
               style={{ backgroundImage: `url('${heroBannerImg}')` }}
             >
               {/* Content Container */}
-              <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
+              <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-10 md:!pt-20 lg:!pt-4 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
                 {heroHeading ? (
                   <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
                     {typeof heroHeading === "string" && heroHeading.includes("\n")
                       ? heroHeading.split("\n").map((line: string, i: number) => (
-                          <React.Fragment key={i}>
-                            {i > 0 && <br />}
-                            {line}
-                          </React.Fragment>
-                        ))
+                        <React.Fragment key={i}>
+                          {i > 0 && <br />}
+                          {line}
+                        </React.Fragment>
+                      ))
                       : heroHeading}
                   </h1>
                 ) : (
@@ -215,33 +288,93 @@ export default function AplikasiPage() {
               </div>
             )}
 
-            {/* 5 Icons Grid / Mobile Slider */}
-            {/* 
-              MOBILE: flex, flex-nowrap, overflow-x-auto for horizontal scrolling.
-              DESKTOP: md:grid md:grid-cols-5 to restore the original 5-column layout. 
-            */}
-            <div className="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-4 pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-5 md:justify-items-center text-center md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {/* DESKTOP: 5 Icons Grid */}
+            <div className="hidden md:grid md:grid-cols-5 md:justify-items-center text-center gap-4">
               {featuresList.map((feature: any, idx: number) => (
-                <div 
-                  key={idx} 
-                  /* 
-                    MOBILE: flex-shrink-0, fixed width, border, padding, and rounded corners.
-                    DESKTOP: md:w-full, md:border-0, md:p-0, md:bg-transparent removes the mobile card styling.
-                  */
-                  className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-full max-w-[200px] flex flex-col items-center justify-start border border-gray-200 md:!border-0 rounded-xl md:rounded-none bg-white md:!bg-transparent p-6 md:p-0 shadow-[0_4px_16px_rgba(0,0,0,0.04)] md:shadow-none snap-center"
+                <div
+                  key={idx}
+                  className="w-full flex flex-col items-center justify-start text-center"
                 >
-                  <div className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] flex items-center justify-center mb-4">
+                  <div className="w-[80px] h-[80px] flex items-center justify-center mb-4">
                     <img
                       src={feature.img}
                       alt={feature.title}
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <h4 className="!text-[13px] md:!text-[20px] font-bold !text-[#424143] leading-tight">
+                  <h4 className="!text-[14px] lg:!text-[20px] font-bold !text-[#424143] leading-tight">
                     {feature.title}
                   </h4>
                 </div>
               ))}
+            </div>
+
+            {/* MOBILE: Interactive Slider */}
+            <div className="block md:hidden relative max-w-[300px] mx-auto px-10">
+              {/* Left Arrow */}
+              <button
+                onClick={handleFeaturePrev}
+                disabled={activeFeatureStep === 0}
+                className={`absolute left-0 top-[40%] -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition-opacity duration-300 ${activeFeatureStep === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-gray-100"}`}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="#044BD9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              {/* Slider Container */}
+              <div
+                className="overflow-hidden w-full relative touch-pan-y"
+                onTouchStart={handleFeatureTouchStart}
+                onTouchMove={handleFeatureTouchMove}
+                onTouchEnd={handleFeatureTouchEnd}
+              >
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${activeFeatureStep * 100}%)` }}
+                >
+                  {featuresList.map((feature: any, idx: number) => (
+                    <div
+                      key={idx}
+                      className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center px-4"
+                    >
+                      <div className="w-[100px] h-[100px] flex items-center justify-center mb-4">
+                        <img
+                          src={feature.img}
+                          alt={feature.title}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <h4 className="!text-[14px] lg:!text-[20px] font-bold !text-[#424143] leading-tight">
+                        {feature.title}
+                      </h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={handleFeatureNext}
+                disabled={activeFeatureStep === featuresList.length - 1}
+                className={`absolute right-0 top-[40%] -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition-opacity duration-300 ${activeFeatureStep === featuresList.length - 1 ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-gray-100"}`}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18L15 12L9 6" stroke="#044BD9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              {/* Pagination Dots */}
+              <div className="flex justify-center mt-6 gap-2">
+                {featuresList.map((feature: any, dotIdx: number) => (
+                  <div
+                    key={dotIdx}
+                    data-feature={feature?.title || dotIdx}
+                    onClick={() => setActiveFeatureStep(dotIdx)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${activeFeatureStep === dotIdx ? "w-6 bg-[#044BD9]" : "w-2 bg-gray-300"}`}
+                  />
+                ))}
+              </div>
             </div>
 
           </div>
@@ -273,7 +406,7 @@ export default function AplikasiPage() {
               {downloadStepsTitle}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-4 relative justify-items-center text-center mb-16">
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-4 relative justify-items-center text-center mb-16">
               {stepsList.map((step: any, idx: number) => (
                 <div
                   key={idx}
@@ -310,6 +443,77 @@ export default function AplikasiPage() {
                   )}
                 </div>
               ))}
+            </div>
+
+            {/* Mobile Slider View */}
+            <div className="block md:hidden relative max-w-[300px] mx-auto mb-16 px-10">
+              {/* Left Arrow */}
+              <button
+                onClick={() => setActiveStep((p) => (p > 0 ? p - 1 : p))}
+                disabled={activeStep === 0}
+                className={`absolute left-0 top-[40%] -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition-opacity duration-300 ${activeStep === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-gray-100"}`}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="#044BD9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <div
+                className="overflow-hidden w-full relative touch-pan-y"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <div
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${activeStep * 100}%)` }}
+                >
+                  {stepsList.map((step: any, idx: number) => (
+                    <div
+                      key={idx}
+                      className="w-full flex-shrink-0 flex flex-col items-center justify-center text-center px-4"
+                    >
+                      <div className="w-[120px] h-[120px] mb-4">
+                        <img
+                          src={step.img}
+                          alt={step.stepLabel}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <h4 className="font-bold !text-[#424143] mb-2 text-[16px]">
+                        {step.stepLabel}
+                      </h4>
+                      <p className="text-[14px] text-[#424143] leading-tight whitespace-pre-line">
+                        {step.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Arrow */}
+              <button
+                onClick={() => setActiveStep((p) => (p < 2 ? p + 1 : p))}
+                disabled={activeStep === stepsList.length - 1}
+                className={`absolute right-0 top-[40%] -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full text-white transition-opacity duration-300 ${activeStep === stepsList.length - 1 ? "opacity-50 cursor-not-allowed" : "opacity-100 hover:bg-gray-100"}`}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18L15 12L9 6" stroke="#044BD9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              {/* Slider Pagination Dots */}
+              <div className="flex justify-center mt-8 gap-2">
+                {stepsList.map((step: any, dotIdx: number) => (
+                  <div
+                    key={dotIdx}
+                    data-step={step?.stepLabel || dotIdx}
+                    onClick={() => setActiveStep(dotIdx)}
+                    className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${activeStep === dotIdx ? "w-8 bg-[#044BD9]" : "w-3 bg-gray-300"
+                      }`}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Bottom Call To Action */}

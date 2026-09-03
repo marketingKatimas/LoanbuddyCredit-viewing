@@ -104,34 +104,31 @@ export default function Header() {
             {/* Navigation Bar / Mobile Navigation Drawer */}
             <nav className="main_menu navbar navbar-expand-lg">
               <div
-                className={`main_menu_inner collapse navbar-collapse justify-content-center ${
-                  isMobileMenuOpen ? "show" : ""
-                }`}
+                className={`main_menu_inner collapse navbar-collapse justify-content-center ${isMobileMenuOpen ? "show" : ""
+                  }`}
                 id="main_menu_dropdown"
               >
                 <ul className="main_menu_list unordered_list_center justify-content-center flex-nowrap">
 
                   <li
-                    className={`dropdown ${activeDropdown === "service" ? "show" : ""} ${
-                      isActive("/pinjaman-peribadi") ||
+                    className={`dropdown ${activeDropdown === "service" ? "show" : ""} ${isActive("/pinjaman-peribadi") ||
                       isActive("/pinjaman-peribadi-kl-sarawak") ||
                       isActive("/pinjaman-koperasi") ||
                       isActive("/loan-compare")
-                        ? "active"
-                        : ""
-                    }`}
+                      ? "active"
+                      : ""
+                      }`}
                     onMouseEnter={() => handleMouseEnter("service")}
                     onMouseLeave={handleMouseLeave}
                   >
                     <a
-                      className={`nav-link ${
-                        isActive("/pinjaman-peribadi") ||
+                      className={`nav-link ${isActive("/pinjaman-peribadi") ||
                         isActive("/pinjaman-peribadi-kl-sarawak") ||
                         isActive("/pinjaman-koperasi") ||
                         isActive("/loan-compare")
-                          ? "active"
-                          : ""
-                      }`}
+                        ? "active"
+                        : ""
+                        }`}
                       href="#"
                       id="service_submenu"
                       onClick={(e) => toggleDropdown("service", e)}
@@ -189,16 +186,14 @@ export default function Header() {
                   </li>
 
                   <li
-                    className={`dropdown ${activeDropdown === "pages" ? "show" : ""} ${
-                      isActive("/tentang-loanbuddy-credit") || isActive("/soalan-lazim-faq") ? "active" : ""
-                    }`}
+                    className={`dropdown ${activeDropdown === "pages" ? "show" : ""} ${isActive("/tentang-loanbuddy-credit") || isActive("/soalan-lazim-faq") ? "active" : ""
+                      }`}
                     onMouseEnter={() => handleMouseEnter("pages")}
                     onMouseLeave={handleMouseLeave}
                   >
                     <a
-                      className={`nav-link ${
-                        isActive("/tentang-loanbuddy-credit") || isActive("/soalan-lazim-faq") ? "active" : ""
-                      }`}
+                      className={`nav-link ${isActive("/tentang-loanbuddy-credit") || isActive("/soalan-lazim-faq") ? "active" : ""
+                        }`}
                       href="#"
                       id="pages_submenu"
                       onClick={(e) => toggleDropdown("pages", e)}
@@ -259,16 +254,57 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Far Right Area: Mobile Hamburger Button & Language Switcher (Pinned to far right) */}
+          {/* Far Right Area: Mobile CTA + Hamburger & Language Switcher */}
           <div className="col-auto d-flex align-items-center justify-content-end header_right_area">
-            {/* Mobile Hamburger Button */}
+
+            {/* Mobile-only CTA — uses mobile-header-cta class (shown on mobile, hidden on desktop via CSS) */}
+            <Link
+              href="/mohon-pinjaman-online"
+              className="btn_semak_layak mobile-header-cta me-2"
+            >
+              <span>
+                <small>{t.header.applyNow}</small>
+                <small>{t.header.applyNow}</small>
+              </span>
+            </Link>
+
+
+            {/* Hamburger — uses existing mobile_menu_btn CSS (display:inline-flex !important already works) */}
+            {/* SVG replaces the broken FontAwesome <i> icon */}
             <button
-              className="mobile_menu_btn d-lg-none me-2"
+              className="mobile_menu_btn me-2"
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle navigation"
             >
-              <i className={isMobileMenuOpen ? "far fa-times" : "far fa-bars"}></i>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line
+                  x1="3" y1="6" x2="21" y2="6"
+                  stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round"
+                  style={{
+                    transformOrigin: "12px 6px",
+                    transform: isMobileMenuOpen ? "translateY(6px) rotate(45deg)" : "translateY(0) rotate(0)",
+                    transition: "transform 0.3s ease",
+                  }}
+                />
+                <line
+                  x1="3" y1="12" x2="21" y2="12"
+                  stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round"
+                  style={{
+                    opacity: isMobileMenuOpen ? 0 : 1,
+                    transition: "opacity 0.2s ease",
+                  }}
+                />
+                <line
+                  x1="3" y1="18" x2="21" y2="18"
+                  stroke="#ffffff" strokeWidth="2.5" strokeLinecap="round"
+                  style={{
+                    transformOrigin: "12px 18px",
+                    transform: isMobileMenuOpen ? "translateY(-6px) rotate(-45deg)" : "translateY(0) rotate(0)",
+                    transition: "transform 0.3s ease",
+                  }}
+                />
+              </svg>
             </button>
 
             {/* Language switcher */}

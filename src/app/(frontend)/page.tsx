@@ -131,42 +131,42 @@ export default function Home() {
   const bannerList =
     pageData?.banners && pageData.banners.length > 0
       ? pageData.banners.map((b: any, idx: number) => ({
-          ...b,
-          heading:
-            b.heading ||
-            (idx === 0
-              ? pageData?.hero?.heading || t.home.heroHeading
-              : idx === 1
+        ...b,
+        heading:
+          b.heading ||
+          (idx === 0
+            ? pageData?.hero?.heading || t.home.heroHeading
+            : idx === 1
               ? t.home.banner2Heading || "Loanbuddy Credit di Hujung Jari Anda"
               : undefined),
-          subheading:
-            b.subheading ||
-            (idx === 0
-              ? pageData?.hero?.subheading || t.home.heroSubheading
-              : idx === 1
+        subheading:
+          b.subheading ||
+          (idx === 0
+            ? pageData?.hero?.subheading || t.home.heroSubheading
+            : idx === 1
               ? t.home.banner2Subheading ||
-                "Permohonan pinjaman peribadi kini lebih pantas dan mudah. Muat turun aplikasi kami sekarang untuk memohon pada bila-bila masa, di mana jua."
+              "Permohonan pinjaman peribadi kini lebih pantas dan mudah. Muat turun aplikasi kami sekarang untuk memohon pada bila-bila masa, di mana jua."
               : undefined),
-          primaryCtaText:
-            b.primaryCtaText ||
-            (idx === 0
-              ? pageData?.hero?.primaryCtaText || t.home.heroCta
-              : idx === 1
+        primaryCtaText:
+          b.primaryCtaText ||
+          (idx === 0
+            ? pageData?.hero?.primaryCtaText || t.home.heroCta
+            : idx === 1
               ? t.home.banner2Cta || "Ketahui Lebih Lanjut"
               : undefined),
-          primaryCtaLink:
-            b.primaryCtaLink ||
-            (idx === 0
-              ? pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online"
-              : idx === 1
+        primaryCtaLink:
+          b.primaryCtaLink ||
+          (idx === 0
+            ? pageData?.hero?.primaryCtaLink || "mohon-pinjaman-online"
+            : idx === 1
               ? t.home.banner2Link || "loan-compare"
               : undefined),
-          bannerImage:
-            b.bannerImage ||
-            (idx === 0
-              ? pageData?.hero?.heroImage || "/assets/images/banner-1.png"
-              : "/assets/images/App-banners-No-Copy.png"),
-        }))
+        bannerImage:
+          b.bannerImage ||
+          (idx === 0
+            ? pageData?.hero?.heroImage || "/assets/images/banner-1.png"
+            : "/assets/images/App-banners-No-Copy.png"),
+      }))
       : defaultBanners;
 
   useEffect(() => {
@@ -242,7 +242,7 @@ export default function Home() {
                 const hasText = Boolean(
                   banner.heading || banner.subheading || banner.primaryCtaText
                 );
-                
+
                 // Identify if this is the second banner to apply special layout
                 const isAppBanner = index === 1;
 
@@ -251,9 +251,8 @@ export default function Home() {
                     key={index}
                     // CHANGED: Added md: prefix to layout modifiers so mobile reverts to Banner 1 standard layout. 
                     // Added bg-[25%_center] so the mobile background frames the left side correctly.
-                    className={`carousel-slide slide-${index + 1} ${hasText ? "has-text-slide" : "image-only-slide"} ${
-                      isAppBanner ? "!bg-[8%_center] md:!bg-[center_top] md:!flex-row md:!items-center md:!justify-end md:!p-0" : ""
-                    }`}
+                    className={`carousel-slide slide-${index + 1} ${hasText ? "has-text-slide" : "image-only-slide"} ${isAppBanner ? "!bg-[8%_center] md:!bg-[center_top] md:!flex-row md:!items-center md:!justify-end md:!p-0" : ""
+                      }`}
                     style={{
                       width: `${100 / bannerList.length}%`,
                       backgroundImage: `url('${bgImage}')`,
@@ -275,11 +274,11 @@ export default function Home() {
                           <h1>
                             {typeof banner.heading === "string" && banner.heading.includes("\n")
                               ? banner.heading.split("\n").map((line: string, i: number) => (
-                                  <React.Fragment key={i}>
-                                    {i > 0 && <br />}
-                                    {line}
-                                  </React.Fragment>
-                                ))
+                                <React.Fragment key={i}>
+                                  {i > 0 && <br />}
+                                  {line}
+                                </React.Fragment>
+                              ))
                               : banner.heading}
                           </h1>
                         )}
@@ -300,26 +299,26 @@ export default function Home() {
 
                     {/* Layout specifically for Banner 2 (App Banner Layout) */}
                     {hasText && isAppBanner && (
-                      <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
+                      <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-4 lg:pb-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
                         {banner.heading && (
                           <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-white md:!text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
                             {typeof banner.heading === "string" && banner.heading.includes("\n")
                               ? banner.heading.split("\n").map((line: string, i: number) => (
-                                  <React.Fragment key={i}>
-                                    {i > 0 && <br />}
-                                    {line}
-                                  </React.Fragment>
-                                ))
+                                <React.Fragment key={i}>
+                                  {i > 0 && <br />}
+                                  {line}
+                                </React.Fragment>
+                              ))
                               : banner.heading}
                           </h1>
                         )}
-                        
+
                         {banner.subheading && (
                           <p className="!text-[14px] md:!text-[15px] !text-white md:!text-[#424143] mb-6 md:!mb-8 font-bold md:!font-medium !max-w-[440px] !leading-relaxed lg:!leading-relaxed mx-auto md:mx-0 lg:!mx-0 !text-center md:!text-start whitespace-pre-line">
                             {banner.subheading}
                           </p>
                         )}
-                        
+
                         {banner.primaryCtaText && (
                           <a
                             href={banner.primaryCtaLink || "mohon-pinjaman-online"}
@@ -377,10 +376,10 @@ export default function Home() {
           const serviceItems =
             servicesSection?.items && servicesSection.items.length > 0
               ? servicesSection.items.map((item: any, idx: number) => ({
-                  ...item,
-                  itemTitle: item.itemTitle || (idx === 0 ? t.home.service1Title : t.home.service2Title),
-                  itemDescription: item.itemDescription || (idx === 0 ? t.home.service1Desc : t.home.service2Desc),
-                }))
+                ...item,
+                itemTitle: item.itemTitle || (idx === 0 ? t.home.service1Title : t.home.service2Title),
+                itemDescription: item.itemDescription || (idx === 0 ? t.home.service1Desc : t.home.service2Desc),
+              }))
               : defaultServices;
 
           return (
@@ -456,10 +455,10 @@ export default function Home() {
           const cards =
             whyChooseSection?.items && whyChooseSection.items.length > 0
               ? whyChooseSection.items.map((card: any, idx: number) => ({
-                  ...card,
-                  itemTitle: card.itemTitle || defaultCards[idx]?.itemTitle || "",
-                  itemDescription: card.itemDescription || defaultCards[idx]?.itemDescription || "",
-                }))
+                ...card,
+                itemTitle: card.itemTitle || defaultCards[idx]?.itemTitle || "",
+                itemDescription: card.itemDescription || defaultCards[idx]?.itemDescription || "",
+              }))
               : defaultCards;
 
           return (
@@ -543,44 +542,44 @@ export default function Home() {
           const testimonialSection = pageData?.sections?.[2];
           const defaultTestimonials = isEnglish
             ? [
-                {
-                  itemTitle: "Mr. Samsudin",
-                  itemDescription:
-                    "Staff was very helpful and all my questions were answered patiently with great professionalism.",
-                },
-                {
-                  itemTitle: "Fatimah binti Said",
-                  itemDescription: "Very efficient in terms of approval. Kept me updated throughout.",
-                },
-                {
-                  itemTitle: "Mr. Wong",
-                  itemDescription:
-                    "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging.",
-                },
-              ]
+              {
+                itemTitle: "Mr. Samsudin",
+                itemDescription:
+                  "Staff was very helpful and all my questions were answered patiently with great professionalism.",
+              },
+              {
+                itemTitle: "Fatimah binti Said",
+                itemDescription: "Very efficient in terms of approval. Kept me updated throughout.",
+              },
+              {
+                itemTitle: "Mr. Wong",
+                itemDescription:
+                  "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging.",
+              },
+            ]
             : [
-                {
-                  itemTitle: "Encik Samsudin",
-                  itemDescription:
-                    "Staf sangat membantu dan soalan saya semua dijawab dengan penuh kesabaran dan boleh nampak staf tau apa yang dia nak sampaikan.",
-                },
-                {
-                  itemTitle: "Fatimah binti Said",
-                  itemDescription: "Sgt efisien dr segi kelulusan. Sentiasa bagi update.",
-                },
-                {
-                  itemTitle: "Mr. Wong",
-                  itemDescription:
-                    "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging. answer many questions quite good..",
-                },
-              ];
+              {
+                itemTitle: "Encik Samsudin",
+                itemDescription:
+                  "Staf sangat membantu dan soalan saya semua dijawab dengan penuh kesabaran dan boleh nampak staf tau apa yang dia nak sampaikan.",
+              },
+              {
+                itemTitle: "Fatimah binti Said",
+                itemDescription: "Sgt efisien dr segi kelulusan. Sentiasa bagi update.",
+              },
+              {
+                itemTitle: "Mr. Wong",
+                itemDescription:
+                  "The process is very fast... and friendly staff.. they will guide from a-z so no need worry bc they will not leave u hanging. answer many questions quite good..",
+              },
+            ];
           const testimonials =
             testimonialSection?.items && testimonialSection.items.length > 0
               ? testimonialSection.items.map((tItem: any, idx: number) => ({
-                  ...tItem,
-                  itemTitle: tItem.itemTitle || defaultTestimonials[idx]?.itemTitle || "",
-                  itemDescription: tItem.itemDescription || defaultTestimonials[idx]?.itemDescription || "",
-                }))
+                ...tItem,
+                itemTitle: tItem.itemTitle || defaultTestimonials[idx]?.itemTitle || "",
+                itemDescription: tItem.itemDescription || defaultTestimonials[idx]?.itemDescription || "",
+              }))
               : defaultTestimonials;
 
           return (

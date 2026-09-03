@@ -20,20 +20,11 @@ export default function PembayaranPage() {
       .catch(() => {});
   }, [language]);
 
-  // Only question 0 ("Bagaimanakah cara saya meminta penyelesaian penuh/awal?") is open by default
-  const [openFaqs, setOpenFaqs] = useState<{ [key: number]: boolean }>({
-    0: true,
-    1: false,
-    2: false,
-    3: false,
-    4: false,
-    5: false,
-    6: false,
-    7: false,
-  });
+  // Single open FAQ — only one open at a time (accordion style)
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
-    setOpenFaqs((prev) => ({ ...prev, [index]: !prev[index] }));
+    setOpenFaq((prev) => (prev === index ? null : index));
   };
 
   const defaultBranches = [
@@ -299,7 +290,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[0] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 0 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -317,8 +308,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[0] ? "1fr" : "0fr",
-                      opacity: openFaqs[0] ? 1 : 0,
+                      gridTemplateRows: openFaq === 0 ? "1fr" : "0fr",
+                      opacity: openFaq === 0 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -364,7 +355,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[1] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 1 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -382,8 +373,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[1] ? "1fr" : "0fr",
-                      opacity: openFaqs[1] ? 1 : 0,
+                      gridTemplateRows: openFaq === 1 ? "1fr" : "0fr",
+                      opacity: openFaq === 1 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -424,7 +415,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[2] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 2 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -442,8 +433,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[2] ? "1fr" : "0fr",
-                      opacity: openFaqs[2] ? 1 : 0,
+                      gridTemplateRows: openFaq === 2 ? "1fr" : "0fr",
+                      opacity: openFaq === 2 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -483,7 +474,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[3] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 3 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -501,8 +492,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[3] ? "1fr" : "0fr",
-                      opacity: openFaqs[3] ? 1 : 0,
+                      gridTemplateRows: openFaq === 3 ? "1fr" : "0fr",
+                      opacity: openFaq === 3 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -549,7 +540,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[4] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 4 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -567,8 +558,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[4] ? "1fr" : "0fr",
-                      opacity: openFaqs[4] ? 1 : 0,
+                      gridTemplateRows: openFaq === 4 ? "1fr" : "0fr",
+                      opacity: openFaq === 4 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -608,7 +599,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[5] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 5 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -626,8 +617,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[5] ? "1fr" : "0fr",
-                      opacity: openFaqs[5] ? 1 : 0,
+                      gridTemplateRows: openFaq === 5 ? "1fr" : "0fr",
+                      opacity: openFaq === 5 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -673,7 +664,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[6] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 6 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -691,8 +682,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[6] ? "1fr" : "0fr",
-                      opacity: openFaqs[6] ? 1 : 0,
+                      gridTemplateRows: openFaq === 6 ? "1fr" : "0fr",
+                      opacity: openFaq === 6 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}
@@ -757,7 +748,7 @@ export default function PembayaranPage() {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       style={{
-                        transform: openFaqs[7] ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: openFaq === 7 ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.35s ease",
                         flexShrink: 0,
                       }}
@@ -775,8 +766,8 @@ export default function PembayaranPage() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateRows: openFaqs[7] ? "1fr" : "0fr",
-                      opacity: openFaqs[7] ? 1 : 0,
+                      gridTemplateRows: openFaq === 7 ? "1fr" : "0fr",
+                      opacity: openFaq === 7 ? 1 : 0,
                       transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                       overflow: "hidden",
                     }}

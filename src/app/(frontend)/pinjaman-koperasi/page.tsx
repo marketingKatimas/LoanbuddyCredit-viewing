@@ -127,16 +127,20 @@ export default function PinjamanPeribadiPage() {
   const amountPercentage = ((loanAmount - 1000) / (50000 - 1000)) * 100;
   const tenurePercentage = ((loanTenure - 12) / (60 - 12)) * 100;
 
-  const heroHeading =
-    pageData?.hero?.heading || t.pinjamanKoperasiPage.heroHeading;
-  const heroSubheading =
-    pageData?.hero?.subheading || t.pinjamanKoperasiPage.heroSubheading;
-  const heroCtaText =
-    pageData?.hero?.primaryCtaText || t.pinjamanKoperasiPage.heroCtaText;
+  const heroHeading = isEnglish
+    ? t.pinjamanKoperasiPage.heroHeading
+    : (pageData?.hero?.heading || t.pinjamanKoperasiPage.heroHeading);
+  const heroSubheading = isEnglish
+    ? t.pinjamanKoperasiPage.heroSubheading
+    : (pageData?.hero?.subheading || t.pinjamanKoperasiPage.heroSubheading);
+  const heroCtaText = isEnglish
+    ? t.pinjamanKoperasiPage.heroCtaText
+    : (pageData?.hero?.primaryCtaText || t.pinjamanKoperasiPage.heroCtaText);
   const heroCtaLink = pageData?.hero?.primaryCtaLink || "/mohon-pinjaman-online";
 
-  const videoSectionTitle =
-    pageData?.sections?.[0]?.sectionTitle || t.pinjamanKoperasiPage.videoSectionTitle;
+  const videoSectionTitle = isEnglish
+    ? t.pinjamanKoperasiPage.videoSectionTitle
+    : (pageData?.sections?.[0]?.sectionTitle || t.pinjamanKoperasiPage.videoSectionTitle);
 
   const videoUrlRaw =
     pageData?.sections?.[0]?.videoUrl ||
@@ -161,19 +165,104 @@ export default function PinjamanPeribadiPage() {
     pageData?.sections?.[0]?.thumbnailImage || pageData?.sections?.[0]?.sectionImage;
   const thumbnailUrl = getMediaUrl(thumbnailMedia, "");
 
-  const kelebihanSectionTitle =
-    pageData?.sections?.[1]?.sectionTitle || t.pinjamanKoperasiPage.kelebihanSectionTitle;
-  const kaedahSectionTitle =
-    pageData?.sections?.[2]?.sectionTitle || t.pinjamanKoperasiPage.kaedahSectionTitle;
-  const stepsSectionTitle =
-    pageData?.sections?.[3]?.sectionTitle || t.pinjamanPeribadiPage.stepsTitle;
-  const ctaSectionTitle =
-    pageData?.sections?.[4]?.sectionTitle || t.pinjamanPeribadiPage.ctaBannerTitle;
-  const ctaButtonText =
-    pageData?.sections?.[4]?.items?.[0]?.itemTitle || t.pinjamanPeribadiPage.ctaBannerBtn;
+  const kelebihanSectionTitle = isEnglish
+    ? t.pinjamanKoperasiPage.kelebihanSectionTitle
+    : (pageData?.sections?.[1]?.sectionTitle || t.pinjamanKoperasiPage.kelebihanSectionTitle);
+  const kaedahSectionTitle = isEnglish
+    ? t.pinjamanKoperasiPage.kaedahSectionTitle
+    : (pageData?.sections?.[2]?.sectionTitle || t.pinjamanKoperasiPage.kaedahSectionTitle);
+  const stepsSectionTitle = isEnglish
+    ? t.pinjamanPeribadiPage.stepsTitle
+    : (pageData?.sections?.[3]?.sectionTitle || t.pinjamanPeribadiPage.stepsTitle);
+  const ctaSectionTitle = isEnglish
+    ? t.pinjamanPeribadiPage.ctaBannerTitle
+    : (pageData?.sections?.[4]?.sectionTitle || t.pinjamanPeribadiPage.ctaBannerTitle);
+  const ctaButtonText = isEnglish
+    ? t.pinjamanPeribadiPage.ctaBannerBtn
+    : (pageData?.sections?.[4]?.items?.[0]?.itemTitle || t.pinjamanPeribadiPage.ctaBannerBtn);
   const ctaButtonLink = "/mohon-pinjaman-online";
-  const faqSectionTitle =
-    pageData?.sections?.[5]?.sectionTitle || t.pinjamanPeribadiPage.faqTitle;
+  const faqSectionTitle = isEnglish
+    ? t.pinjamanPeribadiPage.faqTitle
+    : (pageData?.sections?.[5]?.sectionTitle || t.pinjamanPeribadiPage.faqTitle);
+
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const [isInteracting, setIsInteracting] = useState<boolean>(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsInteracting(true);
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    setIsInteracting(false);
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+
+    if (isLeftSwipe && activeStep < 2) {
+      setActiveStep((prev) => prev + 1);
+    }
+    if (isRightSwipe && activeStep > 0) {
+      setActiveStep((prev) => prev - 1);
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  useEffect(() => {
+    if (isInteracting) return;
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev >= 2 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isInteracting]);
+
+  // Kelebihan Slider State
+  const [activeBenefitStep, setActiveBenefitStep] = useState<number>(0);
+  const touchStartBenefitX = useRef<number | null>(null);
+  const touchEndBenefitX = useRef<number | null>(null);
+  const [isInteractingBenefit, setIsInteractingBenefit] = useState<boolean>(false);
+
+  const handleTouchStartBenefit = (e: React.TouchEvent) => {
+    setIsInteractingBenefit(true);
+    touchStartBenefitX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMoveBenefit = (e: React.TouchEvent) => {
+    touchEndBenefitX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEndBenefit = () => {
+    setIsInteractingBenefit(false);
+    if (!touchStartBenefitX.current || !touchEndBenefitX.current) return;
+    const distance = touchStartBenefitX.current - touchEndBenefitX.current;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+
+    if (isLeftSwipe && activeBenefitStep < 3) {
+      setActiveBenefitStep((prev) => prev + 1);
+    }
+    if (isRightSwipe && activeBenefitStep > 0) {
+      setActiveBenefitStep((prev) => prev - 1);
+    }
+    touchStartBenefitX.current = null;
+    touchEndBenefitX.current = null;
+  };
+
+  useEffect(() => {
+    if (isInteractingBenefit) return;
+    const interval = setInterval(() => {
+      setActiveBenefitStep((prev) => (prev >= 3 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isInteractingBenefit]);
 
   return (
     <div className="page_wrapper bg-white">
@@ -188,7 +277,7 @@ export default function PinjamanPeribadiPage() {
           style={{ backgroundImage: `url('/assets/images/banner/home-mohon/white-3d-bg.webp')` }}
         >
           <div className="w-full px-[15px] lg:!px-[8vw] !px-0 lg:!h-[100%]">
-            <div 
+            <div
               className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat !min-h-[500px] lg:!min-h-[700px] lg:h-full flex items-center justify-start"
               style={{ backgroundImage: `url('/assets/images/fimage-tambah-nilai.png')` }}
             >
@@ -295,8 +384,8 @@ export default function PinjamanPeribadiPage() {
               <h2 className="text-[23px] lg:!text-[25px] font-bold text-blue mb-4">{kelebihanSectionTitle}</h2>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 lg:gap-12 relative z-10">
-
+            {/* Desktop Layout (>= md) */}
+            <div className="hidden md:flex flex-row justify-center items-center gap-6 lg:gap-12 relative z-10">
               <div className="w-[250px] h-[250px] aspect-square flex flex-col items-center justify-center text-center bg-white p-6 shadow-md">
                 <Image src="/assets/images/rekod-pembayaran-baik.png" alt="Rekod Baik" width={100} height={100} className="w-[100px] h-[100px] object-contain mb-4" style={{ width: "auto", height: "auto" }} />
                 <p className="text-[12px] font-medium text-[#424143]">{isEnglish ? t.pinjamanKoperasiPage.benefit1 : "Tersedia untuk pelanggan Loanbuddy Credit yang mempunyai perjanjian pinjaman sedia dan rekod pembayaran baik"}</p>
@@ -326,6 +415,118 @@ export default function PinjamanPeribadiPage() {
               </div>
             </div>
 
+            {/* Mobile Slider (< md) with left icon, right text layout */}
+            <div className="md:hidden flex flex-col items-center relative z-10 w-full">
+              <div className="flex items-center justify-between w-full">
+
+                {/* Left Side Arrow */}
+                <button
+                  type="button"
+                  onClick={() => setActiveBenefitStep(prev => prev - 1)}
+                  disabled={activeBenefitStep === 0}
+                  aria-label={isEnglish ? "Previous benefit" : "Kelebihan sebelumnya"}
+                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[#044BD9] transition-all duration-200 ${activeBenefitStep === 0
+                    ? "opacity-30 cursor-not-allowed"
+                    : "opacity-100 hover:bg-gray-50 active:scale-95 cursor-pointer"
+                    }`}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Viewport */}
+                <div
+                  className="overflow-hidden w-full max-w-[280px]"
+                  onTouchStart={handleTouchStartBenefit}
+                  onTouchMove={handleTouchMoveBenefit}
+                  onTouchEnd={handleTouchEndBenefit}
+                >
+                  <div
+                    className="flex transition-transform duration-300 ease-out"
+                    style={{ transform: `translateX(-${activeBenefitStep * 100}%)` }}
+                  >
+                    {/* Item 1 */}
+                    <div className="w-full flex-shrink-0 flex justify-center px-1">
+                      <div className="flex flex-row items-center w-full min-h-[120px] bg-white p-4 shadow-md rounded-[10px]">
+                        <div className="w-[70px] flex-shrink-0 flex items-center justify-center mr-4">
+                          <Image src="/assets/images/rekod-pembayaran-baik.png" alt="Rekod Baik" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
+                        </div>
+                        <p className="text-[13px] font-medium text-[#424143] text-left leading-tight">
+                          {isEnglish ? t.pinjamanKoperasiPage.benefit1 : "Tersedia untuk pelanggan Loanbuddy Credit yang mempunyai perjanjian pinjaman sedia dan rekod pembayaran baik"}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 2 */}
+                    <div className="w-full flex-shrink-0 flex justify-center px-1">
+                      <div className="flex flex-row items-center w-full min-h-[120px] bg-white p-4 shadow-md rounded-[10px]">
+                        <div className="w-[70px] flex-shrink-0 flex items-center justify-center mr-4">
+                          <Image src="/assets/images/senang-top-up.png" alt="Senang Top Up" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
+                        </div>
+                        <p className="text-[13px] font-medium text-[#424143] text-left leading-tight">
+                          {isEnglish ? t.pinjamanKoperasiPage.benefit2 : "Senang untuk Top Up pinjaman sedia ada untuk menampung keperluan kewangan tambahan"}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 3 */}
+                    <div className="w-full flex-shrink-0 flex justify-center px-1">
+                      <div className="flex flex-row items-center w-full min-h-[120px] bg-white p-4 shadow-md rounded-[10px]">
+                        <div className="w-[70px] flex-shrink-0 flex items-center justify-center mr-4">
+                          <Image src="/assets/images/tiada-caj-tambahan.png" alt="Tiada Caj" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
+                        </div>
+                        <p className="text-[13px] font-medium text-[#424143] text-left leading-tight">
+                          {isEnglish ? t.pinjamanKoperasiPage.benefit3 : "Tiada caj tambahan atau tersembunyi—proses lebih mudah dan lancar"}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Item 4 */}
+                    <div className="w-full flex-shrink-0 flex justify-center px-1">
+                      <div className="flex flex-row items-center w-full min-h-[120px] bg-white p-4 shadow-md rounded-[10px]">
+                        <div className="w-[70px] flex-shrink-0 flex items-center justify-center mr-4">
+                          <Image src="/assets/images/faedah-dahulu-dikecualikan.png" alt="Faedah Dikecualikan" width={60} height={60} className="w-[60px] h-[60px] object-contain" />
+                        </div>
+                        <p className="text-[13px] font-medium text-[#424143] text-left leading-tight">
+                          {isEnglish ? t.pinjamanKoperasiPage.benefit4 : "Selepas Top Up, sebarang faedah tertunggak daripada pinjaman terdahulu akan dikecualikan"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Side Arrow */}
+                <button
+                  type="button"
+                  onClick={() => setActiveBenefitStep(prev => prev + 1)}
+                  disabled={activeBenefitStep === 3}
+                  aria-label={isEnglish ? "Next benefit" : "Kelebihan seterusnya"}
+                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-[#044BD9] transition-all duration-200 ${activeBenefitStep === 3
+                    ? "opacity-30 cursor-not-allowed"
+                    : "opacity-100 hover:bg-gray-50 active:scale-95 cursor-pointer"
+                    }`}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Step Indicator Dots for Mobile */}
+              <div className="flex justify-center items-center mt-6 gap-3">
+                {[0, 1, 2, 3].map((dotIdx: number) => (
+                  <div
+                    key={dotIdx}
+                    onClick={() => setActiveBenefitStep(dotIdx)}
+                    aria-label={`${isEnglish ? "Step" : "Langkah"} ${dotIdx + 1}`}
+                    className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${activeBenefitStep === dotIdx ? "w-8 bg-blue-600" : "w-3 bg-gray-300"
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -333,9 +534,9 @@ export default function PinjamanPeribadiPage() {
         <section className="py-12 lg:py-20 bg-white relative z-20">
           {/* Mascot wrapped in a div to preserve positioning while animating */}
           <div className="absolute left-0 -translate-y-[35%] -translate-x-[45%] w-[250px] md:w-[200px] lg:w-[600px] z-0 pointer-events-none">
-            <img 
-              src="/assets/images/Loanbuddy-Ladybug-Mirror.png" 
-              alt="Loanbuddy Mascot" 
+            <img
+              src="/assets/images/Loanbuddy-Ladybug-Mirror.png"
+              alt="Loanbuddy Mascot"
               className="w-full h-full object-contain"
               style={{ animation: "mascotFloat 5s ease-in-out infinite" }}
             />
@@ -529,7 +730,8 @@ export default function PinjamanPeribadiPage() {
             </div>
 
             <div className="max-w-[1040px] mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-6 lg:gap-4 relative z-10">
+              {/* Desktop Steps Layout (>= md) */}
+              <div className="hidden md:flex flex-row justify-between items-center gap-6 lg:gap-4 relative z-10">
 
                 {/* Step 1 */}
                 <div className="w-full md:w-[300px] lg:w-[315px] h-[340px] lg:h-[360px] flex flex-col items-center justify-center text-center bg-white p-6 lg:p-8 rounded-[22px] shadow-[0_4px_25px_rgba(0,0,0,0.04)] transition-transform duration-300 hover:-translate-y-1">
@@ -606,6 +808,132 @@ export default function PinjamanPeribadiPage() {
                   <p className="text-[13.5px] lg:text-[14px] text-[#555555] font-normal leading-relaxed max-w-[250px] whitespace-pre-line">
                     {isEnglish ? t.pinjamanPeribadiPage.step3Desc : "Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat"}
                   </p>
+                </div>
+              </div>
+
+              {/* Mobile Steps Slider (< md) with side navigation arrows */}
+              <div className="md:hidden flex flex-col items-center relative z-10">
+                <div className="flex items-center justify-center w-full gap-2 sm:gap-4">
+                  {/* Left Side Arrow */}
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(prev => prev - 1)}
+                    disabled={activeStep === 0}
+                    aria-label={isEnglish ? "Previous step" : "Langkah sebelumnya"}
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-[#044BD9] transition-all duration-200 ${activeStep === 0
+                      ? "opacity-30 cursor-not-allowed"
+                      : "opacity-100 hover:bg-gray-50 active:scale-95 cursor-pointer"
+                      }`}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Step Card Viewport */}
+                  <div
+                    className="overflow-hidden w-[300px] sm:w-[280px]"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                  >
+                    <div
+                      className="flex transition-transform duration-300 ease-out"
+                      style={{ transform: `translateX(-${activeStep * 100}%)` }}
+                    >
+                      {/* Mobile Step 1 */}
+                      <div className="w-full flex-shrink-0 flex justify-center px-1">
+                        <div className="w-full h-[340px] flex flex-col items-center justify-center text-center bg-white p-6 rounded-[10px]">
+                          <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                            <Image
+                              src="/assets/images/tekan-butang.png"
+                              alt="Langkah 1 - Tekan Butang"
+                              width={90}
+                              height={90}
+                              className="h-[80px] w-auto max-w-[90px] object-contain"
+                            />
+                          </div>
+                          <h3 className="text-[19px] font-bold text-[#222222] mb-2.5">
+                            {isEnglish ? t.pinjamanPeribadiPage.step1Title : "Langkah 1"}
+                          </h3>
+                          <p className="text-[13.5px] text-[#555555] font-normal leading-relaxed max-w-[220px] whitespace-pre-line">
+                            {isEnglish ? t.pinjamanPeribadiPage.step1Desc : "Tekan butang \n'Mohon Sekarang'"}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Mobile Step 2 */}
+                      <div className="w-full flex-shrink-0 flex justify-center px-1">
+                        <div className="w-full h-[340px] flex flex-col items-center justify-center text-center bg-white p-6 rounded-[10px]">
+                          <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                            <Image
+                              src="/assets/images/isi-maklumat.png"
+                              alt="Langkah 2 - Isi Maklumat"
+                              width={90}
+                              height={90}
+                              className="h-[75px] w-auto max-w-[90px] object-contain"
+                            />
+                          </div>
+                          <h3 className="text-[19px] font-bold text-[#222222] mb-2.5">
+                            {isEnglish ? t.pinjamanPeribadiPage.step2Title : "Langkah 2"}
+                          </h3>
+                          <p className="text-[13.5px] text-[#555555] font-normal leading-relaxed max-w-[220px] whitespace-pre-line">
+                            {isEnglish ? t.pinjamanPeribadiPage.step2Desc : "Isi maklumat yang diperlukan dan \nhantar permohonan"}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Mobile Step 3 */}
+                      <div className="w-full flex-shrink-0 flex justify-center px-1">
+                        <div className="w-full h-[340px] flex flex-col items-center justify-center text-center bg-white p-6 rounded-[10px]">
+                          <div className="h-[95px] w-full flex items-center justify-center mb-4">
+                            <Image
+                              src="/assets/images/hubungi-anda.png"
+                              alt="Langkah 3 - Dihubungi"
+                              width={90}
+                              height={90}
+                              className="h-[80px] w-auto max-w-[90px] object-contain"
+                            />
+                          </div>
+                          <h3 className="text-[19px] font-bold text-[#222222] mb-2.5">
+                            {isEnglish ? t.pinjamanPeribadiPage.step3Title : "Langkah 3"}
+                          </h3>
+                          <p className="text-[13.5px] text-[#555555] font-normal leading-relaxed max-w-[220px] whitespace-pre-line">
+                            {isEnglish ? t.pinjamanPeribadiPage.step3Desc : "Pakar kredit kami akan menghubungi anda melalui WhatsApp atau emel dalam masa terdekat"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Side Arrow */}
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(prev => prev + 1)}
+                    disabled={activeStep === 2}
+                    aria-label={isEnglish ? "Next step" : "Langkah seterusnya"}
+                    className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-[#044BD9] transition-all duration-200 ${activeStep === 2
+                      ? "opacity-30 cursor-not-allowed"
+                      : "opacity-100 hover:bg-gray-50 active:scale-95 cursor-pointer"
+                      }`}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Step Indicator Dots for Mobile */}
+                <div className="flex justify-center items-center mt-8 gap-3">
+                  {[0, 1, 2].map((dotIdx: number) => (
+                    <div
+                      key={dotIdx}
+                      onClick={() => setActiveStep(dotIdx)}
+                      aria-label={`${isEnglish ? "Step" : "Langkah"} ${dotIdx + 1}`}
+                      className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${activeStep === dotIdx ? "w-8 bg-blue-600" : "w-3 bg-gray-300"
+                        }`}
+                    />
+                  ))}
                 </div>
               </div>
 

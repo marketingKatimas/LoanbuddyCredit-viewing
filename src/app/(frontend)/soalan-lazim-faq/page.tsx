@@ -214,15 +214,15 @@ export default function FAQPage() {
           setPageData(data.doc);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [language]);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const heroHeading = pageData?.hero?.heading || t.faqPage.heroTitle;
-  const heroSubheading = pageData?.hero?.subheading || t.faqPage.heroDesc;
+  const heroHeading = isEnglish ? t.faqPage.heroTitle : (pageData?.hero?.heading || t.faqPage.heroTitle);
+  const heroSubheading = isEnglish ? t.faqPage.heroDesc : (pageData?.hero?.subheading || t.faqPage.heroDesc);
 
   return (
     <div className="page_wrapper">
@@ -259,7 +259,7 @@ export default function FAQPage() {
             paddingBottom: "60px",
           }}
         >
-          <div className="container">
+          <div className="container px-4 lg:px-8">
             <div className="row justify-content-center">
               <div className="col-12 col-lg-10">
                 <h1
@@ -284,7 +284,7 @@ export default function FAQPage() {
           className="faq_section section_space_lg bg_white animate-fade-in-up delay-200"
           style={{ paddingTop: "50px", paddingBottom: "80px" }}
         >
-          <div className="container">
+          <div className="container px-5 px-md-4">
             {/* Pill Tabs with equal width */}
             <div className="row justify-content-center mb-5">
               <div className="col-12 col-md-11 col-lg-9">
@@ -356,7 +356,7 @@ export default function FAQPage() {
             </div>
 
             <div className="row justify-content-center">
-              <div className="col-12 col-lg-10">
+              <div className="col-12 col-md-10 col-lg-8">
                 {/* SECTION: Pertanyaan Umum */}
                 {(activeTab === "all" || activeTab === "umum") && (
                   <div className="mb-5">
@@ -408,7 +408,7 @@ export default function FAQPage() {
                               </p>
                               <div className="mt-3 w-100" style={{ width: "100%" }}>
                                 <img
-                                  src="/assets/images/Jadual-umum.png"
+                                  src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"}
                                   loading="lazy"
                                   className="img-fluid rounded shadow-sm border w-100"
                                   style={{ width: "100%", height: "auto", display: "block" }}
@@ -480,7 +480,7 @@ export default function FAQPage() {
                           style={{
                             display: "grid",
                             gridTemplateRows: openFaq === 2 ? "1fr" : "0fr",
-                            opacity: openFaq === 1 ? 1 : 0,
+                            opacity: openFaq === 2 ? 1 : 0,
                             transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out",
                             overflow: "hidden",
                           }}
@@ -991,7 +991,7 @@ export default function FAQPage() {
                                     : "*² Loanbuddy Credit menyediakan tempoh tangguh selama 5 hari dari tarikh tamat tempoh, di mana caj pembayaran lewat tidak akan dikenakan. Namun, selepas tempoh tangguh, caj pembayaran lewat akan dikenakan termasuk 5 hari sebelumnya."}
                                 </p>
                               </div>
-                              <WhatsAppButtons />
+
                             </div>
                           </div>
                         </div>
