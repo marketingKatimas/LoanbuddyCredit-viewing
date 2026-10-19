@@ -328,7 +328,7 @@ export default function HubungiKamiPage() {
                                     {isEnglish ? t.contactUs.branchPlaceholder : "Cawangan"}
                                   </option>
                                   <option value="bintulu">{isEnglish ? t.contactUs.branchBintuluOpt : "Bintulu"}</option>
-                                  <option value="kotaSamarahan">{isEnglish ? t.contactUs.branchKotaSamarahanOpt : "Kota Samarahan"}</option>
+                                  <option value="kuching">{isEnglish ? t.contactUs.branchKotaSamarahanOpt : "Kota Samarahan"}</option>
                                   <option value="kualaLumpur">{isEnglish ? t.contactUs.branchKualaLumpurOpt : "Kuala Lumpur"}</option>
                                 </select>
                               </div>

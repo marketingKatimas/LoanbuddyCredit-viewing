@@ -170,6 +170,67 @@ export default function MohonPinjamanOnlinePage() {
       return;
     }
 
+    // Branch WhatsApp phone numbers mapping
+    const getBranchPhone = (branch: string): string => {
+      const normalized = (branch || "").toLowerCase().trim();
+      if (normalized.includes("kuala") || normalized.includes("kl")) {
+        return "60187856072";
+      }
+      if (normalized.includes("samarahan") || normalized.includes("kuching")) {
+        return "60109329976";
+      }
+      if (normalized.includes("bintulu")) {
+        return "60109098557";
+      }
+      return "60187856072";
+    };
+
+    const getBranchLabel = (branch: string): string => {
+      const normalized = (branch || "").toLowerCase().trim();
+      if (normalized.includes("kuala") || normalized.includes("kl")) {
+        return "Kuala Lumpur";
+      }
+      if (normalized.includes("samarahan") || normalized.includes("kuching")) {
+        return "Kota Samarahan";
+      }
+      if (normalized.includes("bintulu")) {
+        return "Bintulu";
+      }
+      return branch;
+    };
+
+    const getSectorLabel = (sector: string): string => {
+      switch (sector) {
+        case "Penjawat-Awam":
+          return "Penjawat Awam";
+        case "Pekerja-GLC":
+          return "Pekerja GLC";
+        case "Pekerja-Swasta":
+          return "Pekerja Swasta";
+        case "Bekerja-Sendiri":
+          return "Bekerja Sendiri";
+        case "Freelance-Pekerja-Gig":
+          return "Freelance / Pekerja Gig";
+        case "Pelajar":
+          return "Pelajar";
+        default:
+          return sector;
+      }
+    };
+
+    const branchPhone = getBranchPhone(formData.branch);
+    const branchLabel = getBranchLabel(formData.branch);
+    const sectorLabel = getSectorLabel(formData.sector);
+
+    const whatsappMessage = `Hi, I would like to apply for Loanbuddy Credit loan. Loan Amount: RM${formData.amount} Name: ${formData.name} Phone: ${formData.phone} Age: ${formData.age} Email: ${formData.email} Gross Salary: RM${formData.salary} Net Salary: RM${formData.netSalary} Employment Sector: ${sectorLabel} Branch: ${branchLabel}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${branchPhone}&text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Open a new tab immediately within user action to avoid browser popup blockers
+    let whatsappWindow: Window | null = null;
+    if (typeof window !== "undefined") {
+      whatsappWindow = window.open("", "_blank");
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -240,15 +301,29 @@ export default function MohonPinjamanOnlinePage() {
 
       if (response.ok) {
         const data = await response.json();
+
+        // Redirect the opened tab to WhatsApp with pre-filled message
+        if (whatsappWindow) {
+          whatsappWindow.location.href = whatsappUrl;
+        } else if (typeof window !== "undefined") {
+          window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+        }
+
         if (data.applicationId) {
           window.location.href = `/muat-naik-dokumen?uploadId=${data.applicationId}`;
         } else {
           setSubmitted(true);
         }
       } else {
+        if (whatsappWindow) {
+          whatsappWindow.close();
+        }
         throw new Error("Submission failed");
       }
     } catch (err) {
+      if (whatsappWindow) {
+        whatsappWindow.close();
+      }
       console.error(err);
       setError(t.applyForm.valSubmitFailed);
     } finally {
@@ -467,7 +542,7 @@ export default function MohonPinjamanOnlinePage() {
                                 {t.applyForm.branchPlaceholder}
                               </option>
                               <option value="bintulu">{t.applyForm.branchBintulu}</option>
-                              <option value="kotaSamarahan">{t.applyForm.branchKotaSamarahan}</option>
+                              <option value="kuching">{t.applyForm.branchKotaSamarahan}</option>
                               <option value="kualaLumpur">{t.applyForm.branchKualaLumpur}</option>
                             </select>
                           </div>

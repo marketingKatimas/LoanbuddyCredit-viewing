@@ -229,7 +229,7 @@ export const defaultPagesData: DefaultPageData[] = [
           },
           {
             itemTitle: 'Tempoh Pinjaman',
-            itemDescription: 'Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan.',
+            itemDescription: 'Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan',
           },
           {
             itemTitle: 'Tiada Pegang Kad ATM',
@@ -659,7 +659,7 @@ export const defaultPagesData: DefaultPageData[] = [
         items: [
           {
             itemTitle: 'Kadar Faedah',
-            itemDescription: 'Kadar faedah 1.5% sebulan atau 18% setahun',
+            itemDescription: 'Kadar faedah 1.5% sebulan atau 18% setahun (tetap)',
           },
           {
             itemTitle: 'Amaun Pinjaman',
@@ -667,27 +667,22 @@ export const defaultPagesData: DefaultPageData[] = [
           },
           {
             itemTitle: 'Tempoh Pinjaman',
-            itemDescription: 'Tempoh pinjaman fleksibel 12 hingga 60 bulan',
+            itemDescription:
+              'Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan',
           },
           {
             itemTitle: 'Kad ATM',
-            itemDescription: 'Tidak pegang kad ATM',
+            itemDescription: 'Tidak pegang kad ATM, tiada bayaran pendahuluan',
           },
           {
             itemTitle: 'Kelulusan Pantas',
-            itemDescription: 'Kelulusan dalam masa 1-2 hari bekerja',
+            itemDescription:
+              'Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama',
           },
           {
             itemTitle: 'Pemberi Pinjaman Berlesen',
-            itemDescription: 'Pemberi pinjaman berlesen di bawah KPKT',
-          },
-          {
-            itemTitle: 'Pindahan Hari Sama',
-            itemDescription: 'Kelulusan dan pemindahan pada hari yang sama',
-          },
-          {
-            itemTitle: 'Permohonan Mudah',
-            itemDescription: 'Permohonan mudah, pantas dan efisien',
+            itemDescription:
+              'Pemberi pinjaman berlesen di bawah Kementerian Perumahan dan Kerajaan Tempatan (KPKT)',
           },
         ],
       },
@@ -1732,35 +1727,31 @@ export const defaultPagesDataEn: DefaultPageData[] = [
         items: [
           {
             itemTitle: 'Interest Rate',
-            itemDescription: 'Interest rate of 1.5% per month or 18% per year',
+            itemDescription:
+              'Interest rate 1.5% monthly or 18% per annum (fixed)',
           },
           {
             itemTitle: 'Loan Amount',
-            itemDescription: 'Loan amount from RM1,000 up to RM50,000',
+            itemDescription: 'Loan amounts from RM1,000 up to RM50,000',
           },
           {
             itemTitle: 'Loan Tenure',
-            itemDescription: 'Flexible loan tenure 12 to 60 months',
+            itemDescription:
+              'Flexible loan tenure from 12 months up to 60 months',
           },
           {
-            itemTitle: 'ATM Card',
-            itemDescription: 'No ATM card holding',
+            itemTitle: 'No ATM Card Retention',
+            itemDescription: 'No ATM card retention, no upfront fees',
           },
           {
             itemTitle: 'Fast Approval',
-            itemDescription: 'Approval within 1-2 business days',
+            itemDescription:
+              'Loan approval within 1-2 business days with same-day fund disbursement',
           },
           {
             itemTitle: 'Licensed Moneylender',
-            itemDescription: 'Licensed moneylender under KPKT',
-          },
-          {
-            itemTitle: 'Same Day Transfer',
-            itemDescription: 'Approval and disbursement on the same day',
-          },
-          {
-            itemTitle: 'Easy Application',
-            itemDescription: 'Easy, fast, and efficient application',
+            itemDescription:
+              'Licensed moneylender under the Ministry of Housing and Local Government (KPKT)',
           },
         ],
       },

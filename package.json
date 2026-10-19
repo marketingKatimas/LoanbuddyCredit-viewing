@@ -10,6 +10,7 @@
     "generate:importmap": "payload generate:importmap",
     "postinstall": "node scripts/patch-vercel-blob.js",
     "start": "next start",
+    "reset-password": "tsx --env-file=.env scripts/reset-admin-password.ts",
     "lint": "eslint"
   },
   "dependencies": {
