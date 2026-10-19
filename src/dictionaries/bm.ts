@@ -294,7 +294,7 @@ export const bm = {
     whyChooseTitle: "Kenapa Pilih Loanbuddy Credit?",
     feature1: "Kadar faedah 1.5% sebulan atau 18% setahun (tetap)",
     feature2: "Amaun pinjaman dari RM1,000 sehingga RM50,000",
-    feature3: "Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan.",
+    feature3: "Tempoh pinjaman fleksibel dari 12 bulan sehingga 60 bulan",
     feature4: "Tidak pegang kad ATM, tiada bayaran pendahuluan",
     feature5:
       "Kelulusan permohonan pinjaman dalam masa 1-2 hari bekerja dan pindahan wang pada hari yang sama",

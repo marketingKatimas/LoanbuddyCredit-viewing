@@ -65,6 +65,13 @@
     column-gap: 50px;
 }
 
+/* Let the form column shrink to the card; without min-width: 0 the fixed-width
+   buttons/fields force it wider than the card on narrow phones and tablets */
+.form-mohon-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .sec-relative {
     position: relative;
 }
@@ -297,6 +304,15 @@ div#termsOfUseModal {
 
     .button-row {
         margin-top: 30px;
+    }
+
+    /* Two 180px buttons + gap don't fit small phones; share the row instead */
+    .btn-mohon-short {
+        width: auto !important;
+        flex: 1 1 0;
+        max-width: 180px;
+        min-width: 0;
+        padding: 0 12px;
     }
 }
 

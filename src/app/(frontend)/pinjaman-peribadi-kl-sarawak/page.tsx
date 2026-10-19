@@ -218,7 +218,7 @@ export default function PinjamanPeribadiPage() {
 
   const uspItems =
     pageData?.sections?.[0]?.items && pageData.sections[0].items.length > 0
-      ? pageData.sections[0].items.map((item: any, idx: number) => ({
+      ? pageData.sections[0].items.slice(0, 6).map((item: any, idx: number) => ({
         img: item.itemImage
           ? getMediaUrl(item.itemImage, `/assets/images/${defaultUspItems[idx % defaultUspItems.length].img}`)
           : `/assets/images/${defaultUspItems[idx % defaultUspItems.length].img}`,
