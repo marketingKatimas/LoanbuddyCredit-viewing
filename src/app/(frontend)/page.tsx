@@ -818,7 +818,12 @@ export default function Home() {
                           {isEnglish ? t.home.faq1Interest : "Kadar Faedah:"} <strong>{isEnglish ? t.home.faq1InterestVal : "18.0% setahun"}</strong> <br />
                           {isEnglish ? t.home.faq1Fees : "Fi:"} <strong>{isEnglish ? t.home.faq1FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong> <br />
                           <br />
-                          <img src="/assets/images/Jadual.png" alt="Jadual Pembayaran Balik" loading="lazy" className="w-100" />
+                          <img
+                            src={isEnglish ? "/assets/images/Jadual-eng.png" : "/assets/images/Jadual.png"}
+                            alt={isEnglish ? "Repayment Schedule" : "Jadual Pembayaran Balik"}
+                            loading="lazy"
+                            className="w-100"
+                          />
                           <br />
                           <br />
                         </div>

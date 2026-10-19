@@ -1009,7 +1009,7 @@ export default function PinjamanPeribadiPage() {
                           {isEnglish ? t.faqPage.faq0Interest : "Kadar Faedah:"} <strong>{isEnglish ? t.faqPage.faq0InterestVal : "18.0% setahun"}</strong> <br />
                           {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <strong>{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong> <br />
                           <br />
-                          <img src="/assets/images/Jadual-umum.png" loading="lazy" className="w-100" alt="Jadual Pembayaran Balik" />
+                          <img src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"} loading="lazy" className="w-100" alt={isEnglish ? "Repayment Schedule" : "Jadual Pembayaran Balik"} />
                           <br />
                           <br />
                         </div>
