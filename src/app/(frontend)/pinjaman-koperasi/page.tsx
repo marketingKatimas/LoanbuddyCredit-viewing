@@ -144,7 +144,7 @@ export default function PinjamanPeribadiPage() {
 
   const videoUrlRaw =
     pageData?.sections?.[0]?.videoUrl ||
-    "https://drive.google.com/file/d/1i2ifqzZ7n0sjni1v9hsa3Asf9gBup8Xv/preview";
+    "https://youtu.be/uYYwAh_Ixho?si=4geteCd2hzkKW2tH";
 
   const getEmbedUrl = (url: string) => {
     if (!url) return "";
@@ -349,7 +349,7 @@ export default function PinjamanPeribadiPage() {
                     <iframe
                       src={videoUrl ? (thumbnailUrl && isPlaying && !videoUrl.includes("autoplay=1") ? (videoUrl.includes("?") ? `${videoUrl}&autoplay=1` : `${videoUrl}?autoplay=1`) : videoUrl) : ""}
                       className="absolute inset-0 w-full h-full z-10 border-0 rounded-2xl"
-                      allow="autoplay; fullscreen"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                     ></iframe>
                   )}

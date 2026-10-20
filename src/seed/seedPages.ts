@@ -770,7 +770,7 @@ export const defaultPagesData: DefaultPageData[] = [
         sectionDescription:
           'Pinjaman Tambah Nilai merupakan pinjaman di mana anda boleh tambah ke atas pinjaman sedia ada anda.\n\n- Top up pinjaman sedia ada anda untuk menampung keperluan kewangan tambahan.\n- Sebarang faedah tertunggak daripada pinjaman terdahulu akan dikecualikan selepas pinjaman tambah nilai anda diluluskan.\n\nTiada caj tambahan atau tersembunyi, menjadikan proses lebih mudah dan lancar.',
         videoUrl:
-          'https://drive.google.com/file/d/1i2ifqzZ7n0sjni1v9hsa3Asf9gBup8Xv/preview',
+          'https://youtu.be/uYYwAh_Ixho?si=4geteCd2hzkKW2tH',
         items: [],
       },
       {
@@ -1839,7 +1839,7 @@ export const defaultPagesDataEn: DefaultPageData[] = [
         sectionDescription:
           'A Top-Up Loan is a financing facility where you can add to your existing loan.\n\n- Top up your existing loan for additional financial needs.\n- Outstanding interest from previous loan will be waived upon top-up approval.\n\nNo extra or hidden charges, ensuring a smooth process.',
         videoUrl:
-          'https://drive.google.com/file/d/1i2ifqzZ7n0sjni1v9hsa3Asf9gBup8Xv/preview',
+          'https://youtu.be/uYYwAh_Ixho?si=4geteCd2hzkKW2tH',
         items: [],
       },
       {
@@ -2194,6 +2194,17 @@ export async function seedDefaultPages(payload: Payload) {
       existingPages.docs.map((page: any) => [page.slug, page])
     )
 
+    const sanitizeMedia = (val: any) => {
+      if (!val) return undefined
+      if (typeof val === 'string') {
+        return /^[0-9a-fA-F]{24}$/.test(val) ? val : undefined
+      }
+      if (typeof val === 'object' && val.id) {
+        return typeof val.id === 'string' && /^[0-9a-fA-F]{24}$/.test(val.id) ? val.id : undefined
+      }
+      return undefined
+    }
+
     for (let i = 0; i < defaultPagesDataMs.length; i++) {
       const pageMs = defaultPagesDataMs[i]
       const pageEn = defaultPagesDataEn[i]
@@ -2201,9 +2212,32 @@ export async function seedDefaultPages(payload: Payload) {
 
       if (!existing) {
         // Create new page entry in MS
+        const msSections = pageMs.sections?.map((sec) => ({
+          ...sec,
+          sectionImage: sanitizeMedia(sec.sectionImage),
+          thumbnailImage: sanitizeMedia(sec.thumbnailImage),
+          items: sec.items?.map((item) => ({
+            ...item,
+            itemImage: sanitizeMedia(item.itemImage),
+          })),
+        }))
+
+        const msBanners = pageMs.banners?.map((b) => ({
+          ...b,
+          bannerImage: sanitizeMedia(b.bannerImage),
+        }))
+
         const created = await payload.create({
           collection: 'pages',
-          data: pageMs as any,
+          data: {
+            ...pageMs,
+            hero: {
+              ...pageMs.hero,
+              heroImage: sanitizeMedia(pageMs.hero?.heroImage),
+            },
+            banners: msBanners,
+            sections: msSections,
+          } as any,
           locale: 'ms',
         })
 
@@ -2212,11 +2246,14 @@ export async function seedDefaultPages(payload: Payload) {
           return {
             ...sec,
             id: currentSec?.id,
+            sectionImage: sanitizeMedia(sec.sectionImage),
+            thumbnailImage: sanitizeMedia(sec.thumbnailImage),
             items: sec.items?.map((item, iIdx) => {
               const currentItem = currentSec?.items?.[iIdx]
               return {
                 ...item,
                 id: currentItem?.id,
+                itemImage: sanitizeMedia(item.itemImage),
               }
             }),
           }
@@ -2227,6 +2264,7 @@ export async function seedDefaultPages(payload: Payload) {
           return {
             ...b,
             id: currentBanner?.id,
+            bannerImage: sanitizeMedia(b.bannerImage),
           }
         })
 
@@ -2236,6 +2274,10 @@ export async function seedDefaultPages(payload: Payload) {
           id: created.id,
           data: {
             ...pageEn,
+            hero: {
+              ...pageEn.hero,
+              heroImage: sanitizeMedia(pageEn.hero?.heroImage),
+            },
             banners: enBanners,
             sections: enSections,
           } as any,
@@ -2249,13 +2291,14 @@ export async function seedDefaultPages(payload: Payload) {
           return {
             ...defaultSec,
             id: existingSec?.id,
-            sectionImage: existingSec?.sectionImage || undefined,
+            sectionImage: sanitizeMedia(existingSec?.sectionImage || defaultSec.sectionImage),
+            thumbnailImage: sanitizeMedia(existingSec?.thumbnailImage || defaultSec.thumbnailImage),
             items: defaultSec.items?.map((defaultItem, iIdx) => {
               const existingItem = existingSec?.items?.[iIdx]
               return {
                 ...defaultItem,
                 id: existingItem?.id,
-                itemImage: existingItem?.itemImage || undefined,
+                itemImage: sanitizeMedia(existingItem?.itemImage || defaultItem.itemImage),
               }
             }),
           }
@@ -2267,7 +2310,7 @@ export async function seedDefaultPages(payload: Payload) {
             return {
               ...b,
               id: existingBanner?.id,
-              bannerImage: idx === 0 && existing.hero?.heroImage ? existing.hero.heroImage : (existingBanner?.bannerImage || b.bannerImage || undefined),
+              bannerImage: sanitizeMedia(idx === 0 && existing.hero?.heroImage ? existing.hero.heroImage : (existingBanner?.bannerImage || b.bannerImage)),
             }
           })
 
@@ -2279,7 +2322,7 @@ export async function seedDefaultPages(payload: Payload) {
             banners: updatedBannersMs,
             hero: {
               ...pageMs.hero,
-              heroImage: existing.hero?.heroImage || undefined,
+              heroImage: sanitizeMedia(existing.hero?.heroImage || pageMs.hero?.heroImage),
             },
             sections: updatedSectionsMs,
             seo: pageMs.seo,
@@ -2293,13 +2336,14 @@ export async function seedDefaultPages(payload: Payload) {
           return {
             ...defaultSec,
             id: currentSec?.id,
-            sectionImage: currentSec?.sectionImage || undefined,
+            sectionImage: sanitizeMedia(currentSec?.sectionImage || defaultSec.sectionImage),
+            thumbnailImage: sanitizeMedia(currentSec?.thumbnailImage || defaultSec.thumbnailImage),
             items: defaultSec.items?.map((defaultItem, iIdx) => {
               const currentItem = currentSec?.items?.[iIdx]
               return {
                 ...defaultItem,
                 id: currentItem?.id,
-                itemImage: currentItem?.itemImage || undefined,
+                itemImage: sanitizeMedia(currentItem?.itemImage || defaultItem.itemImage),
               }
             }),
           }
@@ -2310,7 +2354,7 @@ export async function seedDefaultPages(payload: Payload) {
           return {
             ...b,
             id: currentBanner?.id,
-            bannerImage: idx === 0 && existing.hero?.heroImage ? existing.hero.heroImage : (currentBanner?.bannerImage || b.bannerImage || undefined),
+            bannerImage: sanitizeMedia(idx === 0 && existing.hero?.heroImage ? existing.hero.heroImage : (currentBanner?.bannerImage || b.bannerImage)),
           }
         })
 
@@ -2322,7 +2366,7 @@ export async function seedDefaultPages(payload: Payload) {
             banners: updatedBannersEn,
             hero: {
               ...pageEn.hero,
-              heroImage: existing.hero?.heroImage || undefined,
+              heroImage: sanitizeMedia(existing.hero?.heroImage || pageEn.hero?.heroImage),
             },
             sections: updatedSectionsEn,
             seo: pageEn.seo,

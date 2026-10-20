@@ -760,6 +760,49 @@ export const bm = {
     downloadCtaText:
       "Muat turun sekarang di Google Play & Apple App Store dan nikmati kemudahan mengurus pinjaman di hujung jari anda!",
   },
+  privacyPolicyPage: {
+    heroTitle: "Dasar Privasi (Privacy Policy)",
+    heroDesc:
+      "Loanbuddy Credit Sdn. Bhd. komited dalam melindungi privasi data peribadi anda di bawah Akta Perlindungan Data Peribadi 2010 (PDPA).",
+    section1Title: "1. Pengumpulan Maklumat Peribadi",
+    section1Text:
+      "Kami mengumpul maklumat peribadi yang diserahkan secara sukarela oleh anda melalui borang permohonan online, termasuk nama, nombor IC, maklumat hubungan, penyata gaji, dan dokumen berkaitan kewangan yang lain.",
+    section2Title: "2. Penggunaan Maklumat Peribadi",
+    section2Intro: "Maklumat anda digunakan untuk tujuan:",
+    section2Item1:
+      "Memproses permohonan pinjaman peribadi dan menilai kelayakan kredit anda.",
+    section2Item2:
+      "Menghubungi anda mengenai permohonan, tawaran pinjaman, atau pertanyaan khidmat pelanggan.",
+    section2Item3:
+      "Memenuhi keperluan undang-undang dan pengawalseliaan di bawah KPKT dan Akta Pemberi Pinjam Wang 1951.",
+    section3Title: "3. Keselamatan dan Kerahsiaan Data",
+    section3Text:
+      "Kami mengambil langkah fizikal, elektronik, dan pengurusan yang sewajarnya bagi memastikan data peribadi anda dilindungi daripada sebarang akses, kehilangan, atau penyalahgunaan yang tidak sah.",
+    section4Title: "4. Hak Anda",
+    section4TextPrefix:
+      "Anda berhak untuk mengakses, mengemas kini, atau meminta pembetulan maklumat peribadi anda pada bila-bila masa dengan menghubungi pegawai perlindungan data kami di ",
+    section4TextSuffix: ".",
+  },
+  disclaimerPage: {
+    heroTitle: "Kenyataan Penafian (Disclaimer Notice)",
+    heroDesc:
+      "Penafian undang-undang berhubung maklumat dan perkhidmatan yang disediakan oleh Loanbuddy Credit.",
+    section1Title: "1. Tujuan Maklumat General",
+    section1Text:
+      "Semua kandungan yang terdapat pada laman web ini disediakan untuk tujuan maklumat umum sahaja. Walaupun kami berusaha memastikan maklumat dikemas kini dan tepat, Loanbuddy Credit tidak membuat sebarang jaminan nyata atau tersirat berhubung ketepatan atau kebolehgunaan maklumat ini.",
+    section2Title: "2. Bukan Nasihat Kewangan Rasmi",
+    section2Text:
+      "Kandungan artikel dan alat kalkulator di laman web ini tidak boleh dianggap sebagai nasihat kewangan, perundangan, atau pelaburan rasmi. Pemohon dinasihatkan untuk menilai keupayaan kewangan peribadi sebelum membuat sebarang komitmen pinjaman.",
+    section3Title: "3. Status Lesen KPKT",
+    section3TextPrefix: "Loanbuddy Credit Sdn. Bhd. (",
+    section3TextSuffix:
+      " / 882536-K) beroperasi secara sah di bawah Akta Pemberi Pinjam Wang 1951 di bawah kawal selia Kementerian Perumahan dan Kerajaan Tempatan (KPKT) dengan Nombor Lesen WL7830/14/01-3/030527.",
+    section4Title: "4. Amaran Penipuan (Scam Alert)",
+    section4TextPrefix: "Loanbuddy Credit ",
+    section4TextEmphasis: "TIDAK PERNAH",
+    section4TextSuffix:
+      " meminta sebarang bayaran pendahuluan (upfront fee), yuran pemprosesan, atau wang penjamin sebelum pinjaman anda diluluskan dan dimasukkan ke akaun bank anda. Sila berwaspada terhadap pihak yang menyamar sebagai ejen kami.",
+  },
   common: {
     close: "Tutup",
     back: "Kembali",

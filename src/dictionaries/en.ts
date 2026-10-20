@@ -762,6 +762,49 @@ export const en = {
     downloadCtaText:
       "Download now on Google Play & Apple App Store and enjoy the convenience of managing your loan at your fingertips!",
   },
+  privacyPolicyPage: {
+    heroTitle: "Privacy Policy",
+    heroDesc:
+      "Loanbuddy Credit Sdn. Bhd. is committed to protecting the privacy of your personal data under the Personal Data Protection Act 2010 (PDPA).",
+    section1Title: "1. Collection of Personal Information",
+    section1Text:
+      "We collect personal information that you voluntarily submit through our online application form, including your name, IC number, contact details, salary slips, and other related financial documents.",
+    section2Title: "2. Use of Personal Information",
+    section2Intro: "Your information is used for the following purposes:",
+    section2Item1:
+      "To process your personal loan application and assess your credit eligibility.",
+    section2Item2:
+      "To contact you regarding your application, loan offers, or customer service enquiries.",
+    section2Item3:
+      "To comply with legal and regulatory requirements under KPKT and the Moneylenders Act 1951.",
+    section3Title: "3. Data Security and Confidentiality",
+    section3Text:
+      "We take appropriate physical, electronic, and administrative measures to ensure your personal data is protected from any unauthorised access, loss, or misuse.",
+    section4Title: "4. Your Rights",
+    section4TextPrefix:
+      "You have the right to access, update, or request correction of your personal information at any time by contacting our data protection officer at ",
+    section4TextSuffix: ".",
+  },
+  disclaimerPage: {
+    heroTitle: "Disclaimer Notice",
+    heroDesc:
+      "Legal disclaimer regarding the information and services provided by Loanbuddy Credit.",
+    section1Title: "1. General Information Purposes",
+    section1Text:
+      "All content on this website is provided for general information purposes only. While we strive to keep the information up to date and accurate, Loanbuddy Credit makes no express or implied warranties regarding the accuracy or usability of this information.",
+    section2Title: "2. Not Official Financial Advice",
+    section2Text:
+      "The articles and calculator tools on this website should not be considered official financial, legal, or investment advice. Applicants are advised to assess their personal financial capacity before making any loan commitment.",
+    section3Title: "3. KPKT License Status",
+    section3TextPrefix: "Loanbuddy Credit Sdn. Bhd. (",
+    section3TextSuffix:
+      " / 882536-K) operates legally under the Moneylenders Act 1951 and is regulated by the Ministry of Housing and Local Government (KPKT) with License No. WL7830/14/01-3/030527.",
+    section4Title: "4. Scam Alert",
+    section4TextPrefix: "Loanbuddy Credit will ",
+    section4TextEmphasis: "NEVER",
+    section4TextSuffix:
+      " ask for any upfront fee, processing fee, or guarantor deposit before your loan is approved and disbursed into your bank account. Please beware of parties impersonating our agents.",
+  },
   common: {
     close: "Close",
     back: "Back",

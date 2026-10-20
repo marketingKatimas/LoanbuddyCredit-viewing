@@ -8,6 +8,7 @@ import { seedFooter } from '@/seed/seedFooter'
 export async function GET() {
   try {
     const payload = await getPayload({ config: configPromise })
+    // Re-seed all collections
     await seedDefaultPages(payload)
     await seedBlogPosts(payload)
     await seedFooter(payload)

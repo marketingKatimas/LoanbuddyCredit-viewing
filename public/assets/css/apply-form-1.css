@@ -728,4 +728,9 @@ div#termsOfUseModal {
         min-height: 784px !important;
         flex: 0 0 564px !important;
     }
+    /* Upload document card is shorter than the apply form: stretch to the sidebar's height instead */
+    .course-card-mohon.h-max.upload-doc-card {
+        height: auto;
+        min-height: 0 !important;
+    }
 }

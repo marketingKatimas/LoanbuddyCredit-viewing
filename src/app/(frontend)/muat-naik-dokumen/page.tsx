@@ -272,8 +272,8 @@ export default function MuatNaikDokumenPage() {
           <div className="container container-mohon">
             <div className="row row-mohon-1 col-12 z-index-10">
               <div
-                className="course-card-mohon h-max col-12 col-lg-7 animate-slide-in-left delay-300"
-                style={{ borderRadius: "10px", width: "100%", maxWidth: "854px", minHeight: "913px" }}
+                className="course-card-mohon h-max upload-doc-card col-12 col-lg-7 d-flex flex-column justify-content-center animate-slide-in-left delay-300"
+                style={{ borderRadius: "10px", width: "100%", maxWidth: "854px", paddingTop: "45px", paddingBottom: "45px" }}
               >
                 <form id="applyUploadForm" onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="inner-mohon">
@@ -286,7 +286,7 @@ export default function MuatNaikDokumenPage() {
                           flexDirection: "column",
                           justifyContent: "center",
                           alignItems: "center",
-                          padding: "10px 20px 25px 20px",
+                          padding: "0 20px 25px 20px",
                           margin: "0 0 25px 0"
                         }}
                       >

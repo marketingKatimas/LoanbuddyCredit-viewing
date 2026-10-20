@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PrivacyPolicyPage() {
-  
+  const { t } = useLanguage();
 
   return (
     <div className="page_wrapper">
@@ -47,10 +48,10 @@ export default function PrivacyPolicyPage() {
             <div className="row d-flex align-items-center justify-content-center">
               <div className="col col-12">
                 <h1 className="banner-mohon-big-title text-center justify-content-center">
-                  Dasar Privasi (Privacy Policy)
+                  {t.privacyPolicyPage.heroTitle}
                 </h1>
-                <p className="banner_description banner-mohon-description text-center text-grey">
-                  Loanbuddy Credit Sdn. Bhd. komited dalam melindungi privasi data peribadi anda di bawah Akta Perlindungan Data Peribadi 2010 (PDPA).
+                <p className="banner_description banner-mohon-description text-center text-grey mx-auto">
+                  {t.privacyPolicyPage.heroDesc}
                 </p>
               </div>
             </div>
@@ -62,27 +63,25 @@ export default function PrivacyPolicyPage() {
             <div className="row justify-content-center">
               <div className="col-lg-10">
                 <div className="legal-content text-secondary leading-relaxed fs-6">
-                  <h3 className="text-blue mt-4 mb-3 fs-4">1. Pengumpulan Maklumat Peribadi</h3>
-                  <p>
-                    Kami mengumpul maklumat peribadi yang diserahkan secara sukarela oleh anda melalui borang permohonan online, termasuk nama, nombor IC, maklumat hubungan, penyata gaji, dan dokumen berkaitan kewangan yang lain.
-                  </p>
+                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section1Title}</h3>
+                  <p>{t.privacyPolicyPage.section1Text}</p>
 
-                  <h3 className="text-blue mt-4 mb-3 fs-4">2. Penggunaan Maklumat Peribadi</h3>
-                  <p>Maklumat anda digunakan untuk tujuan:</p>
+                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section2Title}</h3>
+                  <p>{t.privacyPolicyPage.section2Intro}</p>
                   <ul>
-                    <li>Memproses permohonan pinjaman peribadi dan menilai kelayakan kredit anda.</li>
-                    <li>Menghubungi anda mengenai permohonan, tawaran pinjaman, atau pertanyaan khidmat pelanggan.</li>
-                    <li>Memenuhi keperluan undang-undang dan pengawalseliaan di bawah KPKT dan Akta Pemberi Pinjam Wang 1951.</li>
+                    <li>{t.privacyPolicyPage.section2Item1}</li>
+                    <li>{t.privacyPolicyPage.section2Item2}</li>
+                    <li>{t.privacyPolicyPage.section2Item3}</li>
                   </ul>
 
-                  <h3 className="text-blue mt-4 mb-3 fs-4">3. Keselamatan dan Kerahsiaan Data</h3>
-                  <p>
-                    Kami mengambil langkah fizikal, elektronik, dan pengurusan yang sewajarnya bagi memastikan data peribadi anda dilindungi daripada sebarang akses, kehilangan, atau penyalahgunaan yang tidak sah.
-                  </p>
+                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section3Title}</h3>
+                  <p>{t.privacyPolicyPage.section3Text}</p>
 
-                  <h3 className="text-blue mt-4 mb-3 fs-4">4. Hak Anda</h3>
+                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section4Title}</h3>
                   <p>
-                    Anda berhak untuk mengakses, mengemas kini, atau meminta pembetulan maklumat peribadi anda pada bila-bila masa dengan menghubungi pegawai perlindungan data kami di <a href="mailto:info@loanbuddy.com.my">info@loanbuddy.com.my</a>.
+                    {t.privacyPolicyPage.section4TextPrefix}
+                    <a href="mailto:info@loanbuddy.com.my">info@loanbuddy.com.my</a>
+                    {t.privacyPolicyPage.section4TextSuffix}
                   </p>
                 </div>
               </div>
