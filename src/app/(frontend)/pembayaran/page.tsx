@@ -17,7 +17,7 @@ export default function PembayaranPage() {
           setPageData(data.doc);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [language]);
 
   // Single open FAQ — only one open at a time (accordion style)
@@ -54,18 +54,18 @@ export default function PembayaranPage() {
   const branches =
     pageData?.sections?.[0]?.items && pageData.sections[0].items.length > 0
       ? pageData.sections[0].items.map((item: any, idx: number) => {
-          const defaultB = defaultBranches[idx] || defaultBranches[0];
-          const parts = (item.itemDescription || "").split("|").map((s: string) => s.trim());
-          const email = parts[0]?.includes("@") ? parts[0] : defaultB.email;
-          const phone = parts[1] || (!parts[0]?.includes("@") ? parts[0] : defaultB.phone);
-          return {
-            name: item.itemTitle || defaultB.name,
-            shortName: item.itemTitle ? item.itemTitle.replace(", Sarawak", "") : defaultB.shortName,
-            email: email,
-            phone: phone,
-            link: item.itemLink || defaultB.link,
-          };
-        })
+        const defaultB = defaultBranches[idx] || defaultBranches[0];
+        const parts = (item.itemDescription || "").split("|").map((s: string) => s.trim());
+        const email = parts[0]?.includes("@") ? parts[0] : defaultB.email;
+        const phone = parts[1] || (!parts[0]?.includes("@") ? parts[0] : defaultB.phone);
+        return {
+          name: item.itemTitle || defaultB.name,
+          shortName: item.itemTitle ? item.itemTitle.replace(", Sarawak", "") : defaultB.shortName,
+          email: email,
+          phone: phone,
+          link: item.itemLink || defaultB.link,
+        };
+      })
       : defaultBranches;
 
   const pageHeading =
@@ -191,7 +191,7 @@ export default function PembayaranPage() {
             paddingBottom: "70px",
           }}
         >
-          <div className="container">
+          <div className="container !px-[45px] md:!px-[15px]">
             <div className="row justify-content-center">
               <div className="col-12 col-lg-10">
                 {/* Section Title */}
@@ -257,7 +257,7 @@ export default function PembayaranPage() {
 
         {/* Soalan Lazim Section */}
         <section className="faq_section section_space_lg bg_white animate-fade-in-up delay-200" style={{ paddingTop: "60px", paddingBottom: "80px" }}>
-          <div className="container">
+          <div className="container !px-[45px] md:!px-[15px]">
             <h2
               className="fw-bold text-center mb-5 animate-fade-in-up delay-200"
               style={{ color: "#0d4ed8", fontSize: "28px" }}
@@ -500,7 +500,7 @@ export default function PembayaranPage() {
                   >
                     <div style={{ minHeight: 0 }}>
                       <div className="pt-3">
-                        <ol className="ps-3 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
+                        <ol className="ps-2 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
                           <li className="mb-2">
                             {isEnglish
                               ? t.pembayaran.faq4Step1

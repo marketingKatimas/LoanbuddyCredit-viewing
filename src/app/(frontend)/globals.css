@@ -1809,8 +1809,9 @@ textarea {
   }
 
   /* Mobile Logo Sizing and Vertical Centering */
-  .site_header .mobile-logo {
-    max-height: 40px !important;
+  .site_header .mobile-logo,
+  .site_header .site-header-logo {
+    max-height: 45px !important;
     height: auto !important;
     width: auto !important;
     display: inline-block !important;
@@ -1860,9 +1861,19 @@ textarea {
   /* But show the mobile-only CTA (overrides the rule above) */
   .site_header .header_right_area .mobile-header-cta {
     display: inline-flex !important;
-    font-size: 11px !important;
+    align-items: center !important;
+    justify-content: center !important;
     padding: 6px 12px !important;
     white-space: nowrap !important;
+    border-width: 1.5px !important;
+    height: auto !important;
+  }
+
+  .site_header .header_right_area .mobile-header-cta span small {
+    font-size: 12px !important;
+    padding: 0 !important;
+    line-height: 1.2 !important;
+    width: auto !important;
   }
 
   /* Language switcher alignment */
@@ -2031,6 +2042,72 @@ textarea {
 
   .site_header .main_menu_list .dropdown-menu.show {
     animation: mobileDrawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  }
+}
+
+/* =====================================================
+   Small Screen Mobile Header (<= 375px width, e.g. 370x800)
+   Prevents "Mohon Sekarang" button from blocking the logo
+   ===================================================== */
+@media (max-width: 375px) {
+  .site_header .container,
+  .site_header.site_header_1 .container,
+  .site_header_2 .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* Compact Logo Sizing on <= 375px */
+  .site_header .site-header-logo,
+  .site_header .site_link img,
+  .site_header .mobile-logo {
+    height: 36px !important;
+    max-height: 36px !important;
+    width: auto !important;
+  }
+
+  .site_header .site_logo_wrap {
+    min-width: unset !important;
+    margin-right: 6px !important;
+  }
+
+  .site_header .header_right_area {
+    gap: 4px !important;
+  }
+
+  /* Compact "Mohon Sekarang" button so it never crowds the logo */
+  .site_header .header_right_area .mobile-header-cta {
+    padding: 4px 8px !important;
+    margin-right: 3px !important;
+    border-width: 1.5px !important;
+  }
+
+  .site_header .header_right_area .mobile-header-cta span small {
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+    padding: 0 !important;
+  }
+
+  .site_header .mobile_menu_btn {
+    padding: 2px 4px !important;
+    margin-right: 3px !important;
+  }
+
+  .site_header .mobile_menu_btn svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .site_header .header_right_area .header_lang_switcher {
+    margin-left: 2px !important;
+    gap: 2px !important;
+  }
+
+  .site_header .header_right_area .header_lang_switcher .lang_item,
+  .site_header .header_right_area .header_lang_switcher .lang_divider {
+    font-size: 11px !important;
+    padding: 0 2px !important;
   }
 }
 

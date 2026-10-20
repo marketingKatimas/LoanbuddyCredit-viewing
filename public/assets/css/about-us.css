@@ -775,8 +775,9 @@
     }
 
     .about-us-box-mobile {
-        padding-left: 42px;
-        padding-right: 42px;
+        /* Match the 45px edge spacing used by the other sections */
+        padding-left: 45px;
+        padding-right: 45px;
     }
 
     .section_space_lg {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
@@ -141,6 +141,62 @@ export default function PinjamanPeribadiPage() {
     }, 4000);
     return () => clearInterval(interval);
   }, [isInteracting]);
+
+  // USP Marquee (auto-scroll + draggable)
+  const USP_LOOP_SECONDS = 35; // time to scroll through one full set of items
+  const uspTrackRef = useRef<HTMLDivElement>(null);
+  const uspOffsetRef = useRef<number>(0);
+  const uspHoverRef = useRef<boolean>(false);
+  const uspDragRef = useRef<{ active: boolean; startX: number; startOffset: number }>({
+    active: false,
+    startX: 0,
+    startOffset: 0,
+  });
+
+  useEffect(() => {
+    const track = uspTrackRef.current;
+    if (!track) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let rafId = 0;
+    let last = performance.now();
+
+    const tick = (now: number) => {
+      const dt = Math.min(now - last, 100) / 1000;
+      last = now;
+      const half = track.scrollWidth / 2; // items are duplicated, so half = one full set
+      if (half > 0) {
+        if (!uspDragRef.current.active && !uspHoverRef.current && !reduceMotion) {
+          uspOffsetRef.current -= (half / USP_LOOP_SECONDS) * dt;
+        }
+        // Wrap offset into (-half, 0] for a seamless infinite loop in both directions
+        uspOffsetRef.current = ((uspOffsetRef.current % half) - half) % half;
+        track.style.transform = `translate3d(${uspOffsetRef.current}px, 0, 0)`;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  const handleUspPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    uspDragRef.current = { active: true, startX: e.clientX, startOffset: uspOffsetRef.current };
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handleUspPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!uspDragRef.current.active) return;
+    uspOffsetRef.current = uspDragRef.current.startOffset + (e.clientX - uspDragRef.current.startX);
+  };
+
+  const handleUspPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!uspDragRef.current.active) return;
+    uspDragRef.current.active = false;
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
 
 
   useEffect(() => {
@@ -314,27 +370,21 @@ export default function PinjamanPeribadiPage() {
         {/* 2. USP Auto Side Scroll (Marquee) */}
         <section className="pt-16 pb-6 md:py-8 lg:py-10 bg-white overflow-hidden relative border-b border-gray-100">
 
-          <style dangerouslySetInnerHTML={{
-            __html: `
-            @keyframes marquee {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-marquee {
-              animation: marquee 35s linear infinite;
-              display: flex;
-              width: max-content;
-            }
-            .animate-marquee:hover {
-              animation-play-state: paused;
-            }
-          `}} />
-
           {/* Fade gradients */}
           <div className="absolute top-0 left-0 w-16 md:w-32 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute top-0 right-0 w-16 md:w-32 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
-          <div className="animate-marquee cursor-grab active:cursor-grabbing">
+          <div
+            ref={uspTrackRef}
+            className="flex w-max cursor-grab active:cursor-grabbing select-none will-change-transform"
+            style={{ touchAction: "pan-y" }}
+            onPointerDown={handleUspPointerDown}
+            onPointerMove={handleUspPointerMove}
+            onPointerUp={handleUspPointerUp}
+            onPointerCancel={handleUspPointerUp}
+            onPointerEnter={(e) => { if (e.pointerType === "mouse") uspHoverRef.current = true; }}
+            onPointerLeave={(e) => { if (e.pointerType === "mouse") uspHoverRef.current = false; }}
+          >
             {[...uspItems, ...uspItems].map((item, index) => (
               <div key={index} className="flex flex-col items-center justify-start text-center w-[220px] md:w-[280px] flex-shrink-0 px-4 group">
                 <div className="h-[60px] md:h-[70px] flex items-center justify-center mb-3">
@@ -343,7 +393,8 @@ export default function PinjamanPeribadiPage() {
                     alt="USP Icon"
                     width={70}
                     height={70}
-                    className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] group-hover:scale-110 transition-transform duration-300 object-contain"
+                    draggable={false}
+                    className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] group-hover:scale-110 transition-transform duration-300 object-contain pointer-events-none"
                   />
                 </div>
                 <p className="text-[13px] md:text-[14px] text-[#424143] leading-snug m-0 whitespace-normal font-medium">
@@ -351,13 +402,6 @@ export default function PinjamanPeribadiPage() {
                 </p>
               </div>
             ))}
-          </div>
-
-          {/* Modern Draggable Indicator */}
-          <div className="flex justify-center items-center mt-10 md:mt-12 gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#044BD9]"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-[#d1d5db]"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-[#d1d5db]"></div>
           </div>
 
         </section>

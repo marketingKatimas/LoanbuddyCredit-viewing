@@ -19,7 +19,7 @@ export default function TentangKamiPage() {
           setPageData(data.doc);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [language]);
 
   const defaultKelebihan = [
@@ -53,10 +53,10 @@ export default function TentangKamiPage() {
   const kelebihanItems =
     pageData?.sections?.[1]?.items && pageData.sections[1].items.length > 0
       ? pageData.sections[1].items.map((item: any, idx: number) => ({
-          title: item.itemTitle || defaultKelebihan[idx]?.title || "",
-          desc: item.itemDescription || defaultKelebihan[idx]?.desc || "",
-          bg: defaultKelebihan[idx]?.bg || "#034BD9",
-        }))
+        title: item.itemTitle || defaultKelebihan[idx]?.title || "",
+        desc: item.itemDescription || defaultKelebihan[idx]?.desc || "",
+        bg: defaultKelebihan[idx]?.bg || "#034BD9",
+      }))
       : defaultKelebihan;
 
   const defaultFeatures = [
@@ -97,9 +97,9 @@ export default function TentangKamiPage() {
   const features =
     pageData?.sections?.[3]?.items && pageData.sections[3].items.length > 0
       ? pageData.sections[3].items.map((item: any, idx: number) => ({
-          img: defaultFeatures[idx]?.img || "permohonan-mudah.png",
-          text: item.itemDescription || item.itemTitle || defaultFeatures[idx]?.text || "",
-        }))
+        img: defaultFeatures[idx]?.img || "permohonan-mudah.png",
+        text: item.itemDescription || item.itemTitle || defaultFeatures[idx]?.text || "",
+      }))
       : defaultFeatures;
 
   const heroHeading = pageData?.hero?.heading || t.aboutUs.heroTitle;
@@ -176,7 +176,7 @@ export default function TentangKamiPage() {
                   alt="About Us"
                 />
               </div>
-              <div className="col col-lg-7 about-us-box-mobile text-left flex flex-col justify-center self-center py-4 lg:!py-6 lg:!pl-[70px]">
+              <div className="col col-lg-7 about-us-box-mobile text-left flex flex-col justify-center self-center py-4 !px-[45px] md:!px-[15px] lg:!py-6 lg:!pl-[70px] lg:!pr-[15px]">
                 <div className="col-lg-12 !mt-0 justify-content-start text-grey">
                   <h3 className="item_title item_title_about mb-4 text-blue" style={{ fontWeight: 800, lineHeight: 1.25 }}>
                     {heroHeading}
