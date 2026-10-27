@@ -11,9 +11,8 @@ export const defaultFooterDataMs = {
   hoursWeekdays: 'Isnin - Jumaat: 8am - 5pm',
   hoursSaturday: 'Sabtu: 8am - 1.30pm',
   hoursClosed: 'Ahad dan Cuti Umum Tutup',
-  facebookUrl: 'https://facebook.com',
-  instagramUrl: 'https://instagram.com',
-  tiktokUrl: 'https://tiktok.com',
+  facebookUrl: 'https://www.facebook.com/loanbuddycreditkl',
+  instagramUrl: 'https://www.instagram.com/loanbuddy.credit',
   servicesLinks: [
     { label: 'Pinjaman Peribadi Online', url: '/pinjaman-peribadi-kl-sarawak' },
     { label: 'Pinjaman Tambah Nilai', url: '/pinjaman-koperasi' },
@@ -41,9 +40,8 @@ export const defaultFooterDataEn = {
   hoursWeekdays: 'Monday - Friday: 8am - 5pm',
   hoursSaturday: 'Saturday: 8am - 1.30pm',
   hoursClosed: 'Closed on Sundays & Public Holidays',
-  facebookUrl: 'https://facebook.com',
-  instagramUrl: 'https://instagram.com',
-  tiktokUrl: 'https://tiktok.com',
+  facebookUrl: 'https://www.facebook.com/loanbuddycreditkl',
+  instagramUrl: 'https://www.instagram.com/loanbuddy.credit',
   servicesLinks: [
     { label: 'Online Personal Loan', url: '/pinjaman-peribadi-kl-sarawak' },
     { label: 'Top-Up Loan', url: '/pinjaman-koperasi' },

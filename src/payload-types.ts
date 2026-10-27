@@ -641,7 +641,6 @@ export interface Footer {
   hoursClosed?: string | null;
   facebookUrl?: string | null;
   instagramUrl?: string | null;
-  tiktokUrl?: string | null;
   servicesLinks?:
     | {
         label: string;
@@ -676,7 +675,6 @@ export interface FooterSelect<T extends boolean = true> {
   hoursClosed?: T;
   facebookUrl?: T;
   instagramUrl?: T;
-  tiktokUrl?: T;
   servicesLinks?:
     | T
     | {

@@ -2181,6 +2181,19 @@ textarea {
   transition: left 0.75s ease-in-out;
 }
 
+/* Branch Facebook / Instagram links (Hubungi Kami) */
+.branch-social-link {
+  color: #666 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.branch-social-link:hover,
+.branch-social-link:focus-visible {
+  color: #0d4ed8 !important;
+  text-decoration: underline !important;
+}
+
 /* =====================================================
    Fix Extra Top Gaps Across All Pages on Mobile (< 992px)
    ===================================================== */

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
+import { PrivacyNoticeModal, TermsOfServiceModal } from "@/components/LegalModals";
 
 export default function MohonPinjamanOnlinePage() {
   const { t, isEnglish, language } = useLanguage();
@@ -618,7 +619,7 @@ export default function MohonPinjamanOnlinePage() {
                             </div>
                             <label htmlFor="mohon-agree-2" className="checkbox-text">
                               {t.applyForm.checkbox2Prefix}
-                              <a href="#" onClick={(e) => { e.preventDefault(); setShowTermsModal(true); }}>
+                              <a href="#" onClick={(e) => { e.preventDefault(); setShowPrivacyModal(true); }}>
                                 {t.applyForm.checkbox2Privacy}
                               </a>
                               {t.applyForm.checkbox2And}
@@ -711,196 +712,8 @@ export default function MohonPinjamanOnlinePage() {
       {/* Footer */}
       <Footer />
 
-      {/* Privacy Policy Modal */}
-      {showPrivacyModal && (
-        <div className="modal fade show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)", zIndex: 1050 }} tabIndex={-1} aria-hidden="true">
-          <div className="modal-dialog modal-xl modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title modal-title-custom-1">DASAR PRIVASI</h5>
-                <button type="button" className="btn-close" onClick={() => setShowPrivacyModal(false)} aria-label="Close"></button>
-              </div>
-              <div className="modal-body privay-policy-modal">
-                <div className="container">
-                  <p>
-                    LoanBuddy (bakal dirujuk sebagai “LoanBuddy” atau “kami”), berkomited untuk menghormati dan melindungi privasi dan data peribadi anda.
-                  </p>
-                  <p>
-                    Dasar privasi ini (bersama dengan terma dan syarat dan sebarang dokumen lain yang dirujuk kepadanya) menentukan kaedah pengurusan maklumat peribadi yang dikumpulkan atau yang diberikan kepada kami.
-                  </p>
-                  <p>
-                    Dalam mengumpul dan mengendalikan data peribadi anda, kami terikat dengan Akta Perlindungan Data Peribadi 2012 (bakal dirujuk sebagai “Akta”) dan undang-undang lain seperti garis panduan privasi yang terpakai. Dengan memberikan Data Peribadi anda kepada kami, anda dianggap telah membaca dan bersetuju dengan pengumpulan, penggunaan, pemprosesan, pendedahan dan pengendalian data peribadi anda mengikut dasar privasi ini.
-                  </p>
-
-                  <h5>1. DATA PERIBADI</h5>
-                  <p className="p-dasar-privasi">
-                    Ungkapan “data peribadi” hendaklah membawa maksud seperti yang ditakrifkan oleh Akta dan termasuk maklumat mengenai nama, nombor kad pengenalan, nombor pasport, alamat, jantina, tarikh lahir, maklumat perhubungan, alamat e-mel, bangsa dan kewarganegaraan.
-                  </p>
-                  <p className="p-dasar-privasi">
-                    Data Peribadi yang diberikan kepada kami melalui borang di laman web kami di loanbuddy.com.my, atau melalui pautan di platform sosial digital kami atau melalui pautan WhatsApp (bakal dirujuk sebagai “laman web kami”) mungkin perlu didedahkan untuk tujuan memproses permohonan pinjaman, melanjutkan atau memperbaharui permohonan pinjaman atau menyediakan perkhidmatan lain yang berkaitan.
-                  </p>
-                  <p className="p-dasar-privasi">
-                    Jika anda menghubungi kami, kami mungkin menyimpan rekod komunikasi itu. Kami mungkin meminta anda untuk melengkapkan tinjauan secara sukarela untuk penyelidikan, menjejak butiran transaksi anda dan memantau lawatan laman web anda dan sumber yang diakses.
-                  </p>
-                  <p className="p-dasar-privasi">
-                    Adalah diperlukan bagi pihak kami untuk mengumpul dan memproses data peribadi anda. Kegagalan untuk memberikan data peribadi yang diperlukan atau persetujuan kepada notis ini boleh menyebabkan LoanBuddy tidak dapat memproses permohonan pinjaman anda, membuka akaun baharu atau mengekalkan akaun sedia ada.
-                  </p>
-
-                  <h5>2. PENGGUNAAN DATA PERIBADI</h5>
-                  <p className="p-dasar-privasi">
-                    Dengan memberikan Data Peribadi anda, anda membenarkan penggunaannya untuk tujuan berikut:
-                  </p>
-                  <ul>
-                    <li className="li-dasar-privasi">
-                      <strong>a.</strong> Penilaian Permohonan Pinjaman: Data Peribadi anda boleh digunakan untuk menilai merit dan kelayakan permohonan anda untuk kemudahan pinjaman, termasuk penilaian oleh penyedia pinjaman.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>b.</strong> Komunikasi Berkenaan Ciri Pinjaman: Kami mungkin menggunakan Data Peribadi anda untuk memaklumkan kepada anda tentang sebarang kemas kini, perubahan atau pengubahsuaian kepada terma, syarat, atau ciri produk atau perkhidmatan pinjaman yang anda mohon.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>c.</strong> Pengurusan Akaun yang Sedang Berjalan: Data Peribadi anda juga boleh digunakan untuk mengurus dan menyelenggara akaun pinjaman anda, termasuk sebarang sambungan atau pembaharuan kemudahan pinjaman.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>d.</strong> Komunikasi dan Penyelesaian Pertikaian: Data Peribadi anda boleh digunakan untuk berkomunikasi dengan anda mengenai permohonan atau akaun pinjaman anda, termasuk menangani sebarang pertanyaan atau menyelesaikan pertikaian yang berkaitan dengan kemudahan pinjaman.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>e.</strong> Penambahbaikan Perkhidmatan: Kami mungkin menggunakan Data Peribadi anda untuk menganalisi dan menambahbaik produk dan perkhidmatan kami untuk memenuhi keperluan anda dengan lebih baik.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>f.</strong> Pematuhan Undang-undang dan Kontrak: Untuk memastikan pematuhan terhadap kewajipan undang-undang dan kontrak.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>g.</strong> Pematuhan Dasar Dalaman: Data Peribadi anda boleh digunakan untuk mematuhi dasar dan prosedur dalaman, termasuk yang berkaitan dengan pencegahan pengubahan wang haram, penipuan atau aktiviti haram yang lain.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>h.</strong> Pentadbiran dan Perakaunan: Untuk memenuhi keperluan pentadbiran dan perakaunan dalaman kami.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>i.</strong> Penyelenggaraan Sejarah Kredit: Kami mungkin menggunakan Data Peribadi anda untuk mengekalkan rekod sejarah kredit anda untuk rujukan dan penilaian masa depan yang berkaitan dengan perkhidmatan kewangan.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>j.</strong> Pemprofilan dan Tinjauan Pelanggan: Data Peribadi anda boleh digunakan untuk mereka bentuk dan menjalankan tinjauan yang bertujuan untuk memahami keutamaan dan pemprofilan pelanggan untuk tujuan pemasaran dan pembangunan produk.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>k.</strong> Analisis Statistik: Kami mungkin menggunakan Data Peribadi anda untuk analisis statistik untuk lebih memahami arah aliran pasaran dan gelagat pelanggan, yang akan membantu dalam meningkatkan produk dan perkhidmatan kami.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>l.</strong> Penyediaan Makluman dan Bahan Pendidikan: Data Peribadi anda boleh digunakan untuk memberi anda pemakluman, surat berita dan bahan pendidikan, serta sebarang maklumat yang telah anda minta atau daftar untuk menerima.
-                    </li>
-                  </ul>
-
-                  <h5>3. PENDEDAHAN DAN TUJUAN DATA PERIBADI</h5>
-                  <p className="p-dasar-privasi">
-                    Data peribadi yang diberi akan dirahsiakan dan direkod tetapi mungkin akan diberikan kepada pihak-pihak berikut dan digunakan untuk tujuan yang digariskan di bawah:
-                  </p>
-                  <ul>
-                    <li className="li-dasar-privasi">
-                      <strong>a. Kakitangan:</strong> Dikongsi dengan pekerja dan kakitangan kami yang memerlukan akses untuk melaksanakan kerja hakiki yang berkaitan dengan perkhidmatan kami.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>b. Ejen dan Penasihat:</strong> Didedahkan kepada ejen, kontraktor dan penasihat kami yang membantu dalam menyampaikan perkhidmatan kami, dengan syarat mereka terikat dengan obligasi kerahsiaan.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>c. Agensi Pelaporan Kredit:</strong> Dikongsi dengan agensi pelaporan kredit untuk menilai kelayakan kredit, menilai permohonan pinjaman dan mengekalkan rekod kredit yang tepat.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>d. Agensi Kutipan Hutang:</strong> Didedahkan kepada agensi kutipan hutang sekiranya terdapat hutang tertunggak untuk tujuan mengutip bayaran kepada kami.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>e. Obligasi Kerahsiaan:</strong> Dikongsi dengan individu atau entiti yang berada di bawah obligasi kerahsiaan untuk memastikan pengendalian maklumat yang bertanggungjawab.
-                    </li>
-                    <li className="li-dasar-privasi">
-                      <strong>f. Keperluan Undang-undang dan Kawal Selia:</strong> Didedahkan kepada pihak yang berkaitan di bawah undang-undang dan peraturan yang berkenaan, dalam Malaysia dan antarabangsa, untuk memastikan kepatuhan.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowPrivacyModal(false)}>Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Terms of Use Modal */}
-      {showTermsModal && (
-        <div className="modal fade show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)", zIndex: 1050 }} tabIndex={-1} aria-hidden="true">
-          <div className="modal-dialog modal-xl modal-dialog-scrollable">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title modal-title-custom-1">TERMA PENGGUNAAN</h5>
-                <button type="button" className="btn-close" onClick={() => setShowTermsModal(false)} aria-label="Close"></button>
-              </div>
-              <div className="modal-body term-of-use-modal">
-                <p>
-                  Terma dan syarat yang terkandung tertakluk kepada pemohon yang sah (bakal dirujuk sebagai <strong>“Pelanggan”</strong>) dan yang telah diberikan pembiayaan peribadi (bakal dirujuk sebagai <strong>“Perkhidmatan”</strong>) oleh Klien (bakal dirujuk sebagai <strong>“Pembiaya”</strong>). Segala produk dan perkhidmatan dari LoanBuddy adalah tertakluk kepada terma dan syarat yang berkenaan. Sila baca bersama-sama dengan mana-mana perjanjian khusus untuk transaksi dan perkhidmatan.
-                  <br /><br />
-                  Terma dan Syarat yang dinyatakan di sini adalah sebagai tambahan kepada, dan bukan sebagai pengganti kepada atau pengurangan mana-mana terma dan syarat yang terikat kepada Pelanggan dari semasa ke semasa. LoanBuddy berhak untuk menukar maklumat dan kandungan di laman web ini pada bila-bila masa. Dengan meneruskan penggunaan laman web ini bermakna anda menerima perubahan-perubahan ini.
-                </p>
-
-                <h5>1. PERMOHONAN PERKHIDMATAN</h5>
-                <ul>
-                  <li className="li-terma-syarat">
-                    <strong>a.</strong> Pelanggan boleh memohon Perkhidmatan melalui laman web LoanBuddy.
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>b.</strong> Apabila pemohonan dibuat oleh Pelanggan, Pembiaya kemudiannya akan menilai permohonan tersebut dan hendaklah menasihati Pelanggan jika permohon tersebut telah diluluskan.
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>c.</strong> Apabila permohonan Pelanggan diluluskan, Pembiaya hendaklah memaklumkan Pelanggan mengenai kelulusan tersebut, jumlah pembiayaan yang diluluskan untuk Perkhidmatan, dan jadual pembayaran Ansuran di bawah Perkhidmatan, melalui Platform Perkhidmatan Pembiaya (atau laman web Pembiaya, sebagai kes mungkin).
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>d.</strong> Pelanggan boleh menerima Perkhidmatan melalui Platform Perkhidmatan Pembiaya (atau laman web Pembiaya, mengikut mana-mana yang berkatan) dengan menandatangani perjanjian pembiayaan dengan Pembiaya (“Perjanjian”).
-                  </li>
-                </ul>
-
-                <h5>2. MEKANISME PEMBIAYAAN</h5>
-                <p className="p-terma-syarat">
-                  Pembiaya hendaklah bertanggungjawab sepenuhnya untuk runding dan muktamadkan Perjanjian Pembiayaaan dengan Pelanggan. Semua dokumen yang disediakan oleh LoanBuddy, termasuk tetapi tidak terhad kepada laporan, helaian perbandingan, atau mana-mana dokumen lain yang berkaitan dengan pembiayaan pinjaman peribadi, adalah untuk tujuan permakluman sahaja dan bukan nasihat kewangan.
-                </p>
-
-                <h5>3. PERWAKILAN DAN WARANTI</h5>
-                <p className="p-terma-syarat">
-                  Pelanggan mewakili dan menjamin kepada Pembiaya seperti yang berikut:-
-                </p>
-                <ul>
-                  <li className="li-terma-syarat">
-                    <strong>a.</strong> Pelanggan mengisytiharkan bahawa dia bukan bankrap yang belum dilepaskan atau tertakluk kepada prosiding kebankrapan;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>b.</strong> bahawa Perjanjian Pembiayaan merupakan obligasi Pelanggan yang sah mengikut undang-undang dan terikat, dan dikuatkuasakan mengikut terma dan kewajipan Pelanggan berkenaan dengan pembayaran yang perlu dibayar oleh Pelanggan, dan perbelanjaan dan caj lain yang dilakukan tidak melanggar mana-mana perundangan atau peraturan yang terikat kepada Pelanggan;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>c.</strong> bahawa pemberian Perkhidmatan kepada Pelanggan tidak akan melanggar atau melanggar mana-mana perundangan;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>d.</strong> bahawa tiada perintah mahkamah atau agensi kerajaan lain atau mana-mana peruntukan perjanjian sedia ada yang mengikat Pelanggan atau yang tertakluk kepadanya yang akan dilanggar atau dilanggar oleh pelaksanaan, penyerahan dan pelaksanaan Perjanjian;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>e.</strong> bahawa tiada pelanggaran mana-mana peruntukan perundangan, perintah mahkamah dan penghakiman telah dilakukan oleh Pelanggan;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>f.</strong> bahawa semua maklumat penyata kewangan dan data lain yang diberikan oleh Pelanggan kepada Pembiaya adalah lengkap dan tepat;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>g.</strong> bahawa Pelanggan telah mendedahkan sepenuhnya dan tepat, secara bertulis, kepada Pembiaya, semua fakta yang berkaitan dengan perniagaannya yang Pelanggan tahu atau patut semunasabahnya tahu dan yang penting untuk didedahkan kepada Pembiaya dalam konteks Perkhidmatan dan Perjanjian ini;
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>h.</strong> segala maklumat yang diberikan atau yang akan diberikan oleh Pelanggan berkaitan dengan Perjanjian ini tidak mengundang sebarang kenyataan yang tidak benar atau meninggalkan sebarang fakta dalam kenyataannya, berdasarkan keadaan di mana ia dibuat, dan semua unjuran yang terkandung dalamnya dibuat secara jujur atas alasan yang munasabah selepas pertanyaan yang sewajarnya telah diteliti oleh Pelanggan; dan
-                  </li>
-                  <li className="li-terma-syarat">
-                    <strong>i.</strong> Pelanggan mempunyai kapasitas undang-undang untuk bertindak secara individu, tanpa mengira bahawa Pelanggan telah dilantik secara sah sebagai wakil perkongsian, syarikat atau entiti perniagaan.
-                  </li>
-                </ul>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowTermsModal(false)}>Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {showPrivacyModal && <PrivacyNoticeModal onClose={() => setShowPrivacyModal(false)} />}
+      {showTermsModal && <TermsOfServiceModal onClose={() => setShowTermsModal(false)} />}
     </div>
   );
 }
