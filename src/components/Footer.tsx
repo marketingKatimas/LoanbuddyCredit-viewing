@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useFooterContent } from "@/context/FooterContentContext";
 
 interface FooterLink {
   label: string;
@@ -55,20 +56,12 @@ const defaultFooterValues: FooterData = {
 };
 
 export default function Footer() {
-  const { t, isEnglish, language } = useLanguage();
-  const [footer, setFooter] = useState<FooterData>(defaultFooterValues);
-
-  useEffect(() => {
-    fetch(`/api/globals/footer?locale=${language}`, { cache: "no-store" })
-      .then((res) => res.json())
-      .then((data) => {
-        const doc = data?.doc || data;
-        if (doc && (doc.tagline || doc.nomborLesen || doc.description)) {
-          setFooter((prev) => ({ ...prev, ...doc }));
-        }
-      })
-      .catch(() => {});
-  }, [language]);
+  const { t, isEnglish } = useLanguage();
+  const doc = useFooterContent();
+  const footer: FooterData =
+    doc && (doc.tagline || doc.nomborLesen || doc.description)
+      ? { ...defaultFooterValues, ...doc }
+      : defaultFooterValues;
 
   const defaultServices = [
     { label: t.footer.personalLoanOnline, url: "/pinjaman-peribadi-kl-sarawak" },

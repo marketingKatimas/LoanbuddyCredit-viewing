@@ -19,12 +19,17 @@ export const metadata: Metadata = {
 };
 
 import { LanguageProvider } from "@/context/LanguageContext";
+import { FooterContentProvider } from "@/context/FooterContentContext";
+import { getFooterContent, getRequestLanguage } from "@/lib/content";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const language = await getRequestLanguage();
+  const footer = await getFooterContent(language);
+
   const cssFiles = [
     "/assets/css/home-first.css",
     "/assets/css/home-start.css",
@@ -55,7 +60,7 @@ export default function RootLayout({
 
   return (
     <html
-      lang="ms"
+      lang={language}
       className={`${redditSans.variable} h-full antialiased`}
     >
       <head>
@@ -83,8 +88,10 @@ export default function RootLayout({
         ))}
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <LanguageProvider>
-          {children}
+        <LanguageProvider initialLanguage={language}>
+          <FooterContentProvider initial={{ language, data: footer }}>
+            {children}
+          </FooterContentProvider>
         </LanguageProvider>
       </body>
     </html>

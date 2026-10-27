@@ -1723,6 +1723,128 @@ textarea {
 }
 
 /* =====================================================
+   Desktop header below 1600px: keep the logo / menu / CTA group clear of
+   the pinned BM | EN switcher by reserving its space on the right, and
+   tighten the spacing step by step as the header gets narrower.
+   (`header.site_header` outranks the same !important rules in home-custom.css)
+   ===================================================== */
+@media (min-width: 992px) and (max-width: 1599.98px) {
+  /* switcher offset (30px) + switcher width + 24px breathing room */
+  header.site_header .header_main_cluster {
+    padding-right: 135px !important;
+  }
+
+  header.site_header .site_logo_wrap {
+    margin-right: 20px !important;
+  }
+
+  header.site_header .header_main_cluster .btn_semak_layak {
+    margin-left: 20px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  header.site_header .header_main_cluster {
+    gap: 20px !important;
+  }
+
+  header.site_header .site_logo_wrap {
+    margin-right: 0 !important;
+  }
+
+  header.site_header .header_main_cluster .btn_semak_layak {
+    margin-left: 0 !important;
+    min-width: 0 !important;
+  }
+
+  header.site_header .main_menu_list {
+    gap: 4px !important;
+  }
+
+  header.site_header .main_menu_list > li:not(.site_logo) > a {
+    padding: 10px 10px !important;
+  }
+
+  /* Fixed slots = BM text widths at this padding, so switching language doesn't shift the menu */
+  header.site_header .main_menu_list > li:nth-child(1) {
+    min-width: 128px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(2) {
+    min-width: 104px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(3) {
+    min-width: 126px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(4) {
+    min-width: 51px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(5) {
+    min-width: 116px !important;
+  }
+}
+
+/* Small laptops & tablets in landscape */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  header.site_header .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  header.site_header .header_right_area {
+    right: 16px !important;
+  }
+
+  header.site_header .header_lang_switcher .lang_item,
+  header.site_header .header_lang_switcher .lang_divider {
+    font-size: 14px !important;
+  }
+
+  /* switcher offset (16px) + switcher width + 20px breathing room */
+  header.site_header .header_main_cluster {
+    gap: 16px !important;
+    padding-right: 116px !important;
+  }
+
+  /* Crop the logo PNG's transparent side padding (~18px each side at 85px tall)
+     instead of shrinking it, so the logo and header height stay the same */
+  header.site_header .site-header-logo,
+  header.site_header .site_link img {
+    width: 114px !important;
+    object-fit: cover !important;
+  }
+
+  header.site_header .main_menu_list {
+    gap: 2px !important;
+  }
+
+  header.site_header .main_menu_list > li:not(.site_logo) > a {
+    font-size: 14px !important;
+    padding: 10px 7px !important;
+  }
+
+  header.site_header .main_menu_list > li:nth-child(1) {
+    min-width: 116px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(2) {
+    min-width: 92px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(3) {
+    min-width: 114px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(4) {
+    min-width: 43px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(5) {
+    min-width: 103px !important;
+  }
+
+  header.site_header .header_main_cluster .btn_semak_layak {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+/* =====================================================
    Testimonial Styling Customizations
    ===================================================== */
 /* Reduce space on top of the section */
