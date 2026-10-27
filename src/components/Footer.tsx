@@ -46,7 +46,7 @@ const defaultFooterValues: FooterData = {
     { label: "Hubungi Kami", url: "/hubungi-kami" },
     { label: "FAQ", url: "/soalan-lazim-faq" },
     { label: "Dasar Privasi", url: "/privacy-policy" },
-    { label: "Kenyataan Penafian", url: "/disclaimer-notice" },
+    { label: "Terma dan Syarat", url: "/terma-dan-syarat" },
   ],
   copyrightText:
     "© Copyright 2026 Loanbuddy Credit Sdn. Bhd. [Registration No. 200901039396 (882536-K)]. All Rights Reserved.",
@@ -85,7 +85,7 @@ export default function Footer() {
     { label: t.nav.contactUs, url: "/hubungi-kami" },
     { label: t.nav.faq, url: "/soalan-lazim-faq" },
     { label: t.footer.privacyPolicy, url: "/privacy-policy" },
-    { label: t.footer.disclaimer, url: "/disclaimer-notice" },
+    { label: t.footer.termsConditions, url: "/terma-dan-syarat" },
   ];
 
   const services =
@@ -104,10 +104,16 @@ export default function Footer() {
 
   const customerServices =
     footer.customerServiceLinks && footer.customerServiceLinks.length > 0
-      ? footer.customerServiceLinks.map((c: any, idx: number) => ({
-          label: c.label || defaultCustomerServices[idx]?.label || "",
-          url: c.url || defaultCustomerServices[idx]?.url || "#",
-        }))
+      ? footer.customerServiceLinks.map((c: any, idx: number) => {
+          // The Disclaimer Notice link was replaced by Terms & Conditions
+          if (c.url === "/disclaimer-notice" || c.url === "disclaimer-notice") {
+            return { label: t.footer.termsConditions, url: "/terma-dan-syarat" };
+          }
+          return {
+            label: c.label || defaultCustomerServices[idx]?.label || "",
+            url: c.url || defaultCustomerServices[idx]?.url || "#",
+          };
+        })
       : defaultCustomerServices;
 
   return (
@@ -126,7 +132,7 @@ export default function Footer() {
         style={{ maxWidth: "1280px", margin: "0 auto", paddingLeft: "20px", paddingRight: "20px" }}
       >
         <div
-          className="d-flex flex-wrap justify-content-between pb-5"
+          className="footer_columns d-flex flex-wrap justify-content-between pb-5"
           style={{
             rowGap: "35px",
             columnGap: "24px",

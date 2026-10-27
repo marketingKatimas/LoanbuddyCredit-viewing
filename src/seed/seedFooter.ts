@@ -21,7 +21,7 @@ export const defaultFooterDataMs = {
     { label: 'Hubungi Kami', url: '/hubungi-kami' },
     { label: 'FAQ', url: '/soalan-lazim-faq' },
     { label: 'Dasar Privasi', url: '/privacy-policy' },
-    { label: 'Kenyataan Penafian', url: '/disclaimer-notice' },
+    { label: 'Terma dan Syarat', url: '/terma-dan-syarat' },
   ],
   copyrightText:
     '© Copyright 2026 Loanbuddy Credit Sdn. Bhd. [Registration No. 200901039396 (882536-K)]. All Rights Reserved.',
@@ -50,7 +50,7 @@ export const defaultFooterDataEn = {
     { label: 'Contact Us', url: '/hubungi-kami' },
     { label: 'FAQ', url: '/soalan-lazim-faq' },
     { label: 'Privacy Policy', url: '/privacy-policy' },
-    { label: 'Disclaimer Notice', url: '/disclaimer-notice' },
+    { label: 'Terms and Conditions', url: '/terma-dan-syarat' },
   ],
   copyrightText:
     '© Copyright 2026 Loanbuddy Credit Sdn. Bhd. [Registration No. 200901039396 (882536-K)]. All Rights Reserved.',

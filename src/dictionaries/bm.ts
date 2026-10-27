@@ -764,24 +764,11 @@ export const bm = {
     heroTitle: "Dasar Privasi (Privacy Policy)",
     heroDesc:
       "Loanbuddy Credit Sdn. Bhd. komited dalam melindungi privasi data peribadi anda di bawah Akta Perlindungan Data Peribadi 2010 (PDPA).",
-    section1Title: "1. Pengumpulan Maklumat Peribadi",
-    section1Text:
-      "Kami mengumpul maklumat peribadi yang diserahkan secara sukarela oleh anda melalui borang permohonan online, termasuk nama, nombor IC, maklumat hubungan, penyata gaji, dan dokumen berkaitan kewangan yang lain.",
-    section2Title: "2. Penggunaan Maklumat Peribadi",
-    section2Intro: "Maklumat anda digunakan untuk tujuan:",
-    section2Item1:
-      "Memproses permohonan pinjaman peribadi dan menilai kelayakan kredit anda.",
-    section2Item2:
-      "Menghubungi anda mengenai permohonan, tawaran pinjaman, atau pertanyaan khidmat pelanggan.",
-    section2Item3:
-      "Memenuhi keperluan undang-undang dan pengawalseliaan di bawah KPKT dan Akta Pemberi Pinjam Wang 1951.",
-    section3Title: "3. Keselamatan dan Kerahsiaan Data",
-    section3Text:
-      "Kami mengambil langkah fizikal, elektronik, dan pengurusan yang sewajarnya bagi memastikan data peribadi anda dilindungi daripada sebarang akses, kehilangan, atau penyalahgunaan yang tidak sah.",
-    section4Title: "4. Hak Anda",
-    section4TextPrefix:
-      "Anda berhak untuk mengakses, mengemas kini, atau meminta pembetulan maklumat peribadi anda pada bila-bila masa dengan menghubungi pegawai perlindungan data kami di ",
-    section4TextSuffix: ".",
+  },
+  termsPage: {
+    heroTitle: "Terma dan Syarat (Terms & Conditions)",
+    heroDesc:
+      "Sila baca terma dan syarat penggunaan laman web serta permohonan pinjaman Loanbuddy Credit.",
   },
   disclaimerPage: {
     heroTitle: "Kenyataan Penafian (Disclaimer Notice)",

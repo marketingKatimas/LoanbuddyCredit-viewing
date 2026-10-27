@@ -35,6 +35,17 @@ export default function HubungiKamiPage() {
       .catch(() => {});
   }, [language]);
 
+  // The branch map is the same in every language, so always use the map set in the BM content
+  // (the English CMS entry may still hold an old map).
+  const [bmMapUrl, setBmMapUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/content?slug=hubungi-kami&locale=ms", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => setBmMapUrl(data?.doc?.hero?.secondaryCtaText || null))
+      .catch(() => {});
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -101,7 +112,7 @@ export default function HubungiKamiPage() {
       : defaultBranches;
 
   const rawMapUrl =
-    pageData?.hero?.secondaryCtaText ||
+    bmMapUrl ||
     "https://www.google.com/maps/d/embed?mid=1_Q6pIm1rAxMyXKvZ4nAlypvYi3L9ruM";
 
   // Automatically convert edit or sharing links to embed format

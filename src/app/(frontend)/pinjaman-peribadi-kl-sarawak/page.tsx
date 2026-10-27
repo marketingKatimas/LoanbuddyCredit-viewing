@@ -695,7 +695,7 @@ export default function PinjamanPeribadiPage() {
               {/* Terms and Privacy Policy footer */}
               <div className="mt-12 md:mt-14 text-left">
                 <p className="text-[12px] md:text-[13px] text-[#424143]">
-                  <Link href="/terma-dan-syarat" className="text-[#044BD9] underline hover:text-blue-700">{isEnglish ? t.pinjamanPeribadiPage.termsText : "Terma & Syarat"}</Link> {isEnglish ? t.pinjamanPeribadiPage.andText : "dan"} <Link href="/dasar-privasi" className="text-[#044BD9] underline hover:text-blue-700">{isEnglish ? t.pinjamanPeribadiPage.privacyText : "Dasar Privasi"}</Link>
+                  <Link href="/terma-dan-syarat" className="text-[#044BD9] underline hover:text-blue-700">{isEnglish ? t.pinjamanPeribadiPage.termsText : "Terma & Syarat"}</Link> {isEnglish ? t.pinjamanPeribadiPage.andText : "dan"} <Link href="/privacy-policy" className="text-[#044BD9] underline hover:text-blue-700">{isEnglish ? t.pinjamanPeribadiPage.privacyText : "Dasar Privasi"}</Link>
                 </p>
               </div>
             </div>

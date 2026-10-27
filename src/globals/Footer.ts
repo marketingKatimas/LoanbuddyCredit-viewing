@@ -154,7 +154,7 @@ export const Footer: GlobalConfig = {
                 { label: 'Hubungi Kami', url: '/hubungi-kami' },
                 { label: 'FAQ', url: '/soalan-lazim-faq' },
                 { label: 'Dasar Privasi', url: '/privacy-policy' },
-                { label: 'Kenyataan Penafian', url: '/disclaimer-notice' },
+                { label: 'Terma dan Syarat', url: '/terma-dan-syarat' },
               ],
               fields: [
                 {

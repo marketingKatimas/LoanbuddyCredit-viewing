@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { TermsOfServiceContent } from "@/components/LegalModals";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TermaDanSyaratPage() {
-  
+  const { t } = useLanguage();
 
   return (
     <div className="page_wrapper">
@@ -46,10 +48,10 @@ export default function TermaDanSyaratPage() {
             <div className="row d-flex align-items-center justify-content-center">
               <div className="col col-12">
                 <h1 className="banner-mohon-big-title text-center justify-content-center">
-                  Terma dan Syarat (Terms & Conditions)
+                  {t.termsPage.heroTitle}
                 </h1>
                 <p className="banner_description banner-mohon-description text-center text-grey">
-                  Sila baca terma dan syarat penggunaan laman web serta permohonan pinjaman Loanbuddy Credit.
+                  {t.termsPage.heroDesc}
                 </p>
               </div>
             </div>
@@ -61,23 +63,7 @@ export default function TermaDanSyaratPage() {
             <div className="row justify-content-center">
               <div className="col-lg-10">
                 <div className="legal-content text-secondary leading-relaxed fs-6">
-                  <h3 className="text-blue mt-4 mb-3 fs-4">1. Kelayakan Permohonan Pinjaman</h3>
-                  <p>Pemohon yang ingin membuat permohonan pinjaman hendaklah memenuhi kriteria berikut:</p>
-                  <ul>
-                    <li>Warganegara Malaysia berumur antara 18 hingga 60 tahun.</li>
-                    <li>Mempunyai pendapatan bulanan tetap sekurang-kurangnya RM1,700 sebulan.</li>
-                    <li>Bekerja dalam sektor Swasta, Kerajaan, atau GLC di Kuala Lumpur, Selangor, atau Sarawak.</li>
-                  </ul>
-
-                  <h3 className="text-blue mt-4 mb-3 fs-4">2. Syarat Kadar Faedah & Pembayaran</h3>
-                  <p>
-                    Kadar faedah tetap adalah 1.5% sebulan (18% setahun) mengikut garis panduan Kementerian Perumahan dan Kerajaan Tempatan (KPKT) di bawah Akta Pemberi Pinjam Wang 1951. Tempoh bayaran balik adalah fleksibel antara 12 hingga 60 bulan.
-                  </p>
-
-                  <h3 className="text-blue mt-4 mb-3 fs-4">3. Ketepatan Maklumat</h3>
-                  <p>
-                    Dengan mengemukakan borang permohonan, pemohon mengesahkan bahawa semua maklumat dan dokumen yang diberikan adalah betul, benar, dan lengkap. Sebarang maklumat palsu boleh menyebabkan permohonan ditolak serta-merta.
-                  </p>
+                  <TermsOfServiceContent headingAs="h3" headingClassName="text-blue mt-4 mb-3 fs-4" />
                 </div>
               </div>
             </div>

@@ -298,8 +298,9 @@ export default function Home() {
                     )}
 
                     {/* Layout specifically for Banner 2 (App Banner Layout) */}
+                    {/* On desktop the top padding grows with the window: the QR codes in the image move down as it widens */}
                     {hasText && isAppBanner && (
-                      <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-4 lg:pb-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
+                      <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-36 md:!pt-20 lg:!pt-[clamp(16px,calc(10vw_-_120px),96px)] lg:pb-24 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
                         {banner.heading && (
                           <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-white md:!text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
                             {typeof banner.heading === "string" && banner.heading.includes("\n")
@@ -352,7 +353,7 @@ export default function Home() {
         </section>
 
         {/* Mascot Divider */}
-        <div className="mascot-divider d-none d-lg-block">
+        <div className="mascot-divider">
           <img src="/assets/images/ladybird-1.png" alt="Loanbuddy Mascot" />
         </div>
 

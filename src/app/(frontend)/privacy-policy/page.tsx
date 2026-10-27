@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { PrivacyNoticeContent } from "@/components/LegalModals";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function PrivacyPolicyPage() {
@@ -63,26 +64,7 @@ export default function PrivacyPolicyPage() {
             <div className="row justify-content-center">
               <div className="col-lg-10">
                 <div className="legal-content text-secondary leading-relaxed fs-6">
-                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section1Title}</h3>
-                  <p>{t.privacyPolicyPage.section1Text}</p>
-
-                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section2Title}</h3>
-                  <p>{t.privacyPolicyPage.section2Intro}</p>
-                  <ul>
-                    <li>{t.privacyPolicyPage.section2Item1}</li>
-                    <li>{t.privacyPolicyPage.section2Item2}</li>
-                    <li>{t.privacyPolicyPage.section2Item3}</li>
-                  </ul>
-
-                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section3Title}</h3>
-                  <p>{t.privacyPolicyPage.section3Text}</p>
-
-                  <h3 className="text-blue mt-4 mb-3 fs-4">{t.privacyPolicyPage.section4Title}</h3>
-                  <p>
-                    {t.privacyPolicyPage.section4TextPrefix}
-                    <a href="mailto:info@loanbuddy.com.my">info@loanbuddy.com.my</a>
-                    {t.privacyPolicyPage.section4TextSuffix}
-                  </p>
+                  <PrivacyNoticeContent headingAs="h3" headingClassName="text-blue mt-4 mb-3 fs-4" />
                 </div>
               </div>
             </div>

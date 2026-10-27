@@ -1,10 +1,15 @@
 "use client";
 
 import React, { ReactNode } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import type { Language } from "@/dictionaries";
+
+// Each privacy item is [bold label, text]; a null label renders the text alone.
+type PrivacySection = { title: string; intro?: string; items: [string | null, string][] };
+type TermsSection = { title: string; clauses: string[] };
 
 // Loanbuddy Privacy Notice (source: "Privacy Notice.docx", last updated 27 October 2026).
-// Each item is [bold label, text]; a null label renders the text alone.
-const PRIVACY_NOTICE_SECTIONS: { title: string; intro?: string; items: [string | null, string][] }[] = [
+const PRIVACY_NOTICE_SECTIONS_EN: PrivacySection[] = [
   {
     title: "PERSONAL DATA WE COLLECT",
     intro: "To evaluate your account registration and process credit facilities, we must collect and process your personal data. This includes:",
@@ -73,7 +78,7 @@ const PRIVACY_NOTICE_SECTIONS: { title: string; intro?: string; items: [string |
 
 // Loanbuddy Terms of Service (source: "Term of Service.docx", last updated 27 October 2026).
 // Rendered as numbered sections (1.) with clauses (1.1.); clause 8.2 refers to "Section 8.1", so keep the order.
-const TERMS_OF_SERVICE_SECTIONS: { title: string; clauses: string[] }[] = [
+const TERMS_OF_SERVICE_SECTIONS_EN: TermsSection[] = [
   {
     title: "INTRODUCTION",
     clauses: [
@@ -155,13 +160,166 @@ const TERMS_OF_SERVICE_SECTIONS: { title: string; clauses: string[] }[] = [
   },
 ];
 
+// Bahasa Malaysia translation of the Privacy Notice (same sections and items as the English version).
+const PRIVACY_NOTICE_SECTIONS_MS: PrivacySection[] = [
+  {
+    title: "DATA PERIBADI YANG KAMI KUMPUL",
+    intro: "Bagi menilai pendaftaran akaun anda dan memproses kemudahan kredit, kami perlu mengumpul dan memproses data peribadi anda. Ini termasuk:",
+    items: [
+      ["Data Identiti:", "Nama penuh, nombor kad pengenalan (MyKad), tarikh lahir, jantina, kewarganegaraan dan imbasan biometrik muka secara langsung (dikumpul melalui platform)."],
+      ["Data Hubungan:", "Alamat kediaman, alamat surat-menyurat, alamat e-mel dan nombor telefon bimbit."],
+      ["Data Kewangan:", "Sejarah pekerjaan, butiran majikan, pendapatan bulanan, nombor akaun bank, slip gaji, penyata bank, penyata KWSP dan fail cukai."],
+      ["Data Profil Kredit:", "Skor kredit, sejarah pembayaran, semakan kebankrapan dan rekod litigasi aktif yang diperoleh daripada agensi pelaporan kredit berdaftar."],
+      ["Data Teknikal:", "Alamat IP, jenis peranti, sistem pengendalian dan maklumat penjejakan pelayar apabila anda berinteraksi dengan Platform kami."],
+    ],
+  },
+  {
+    title: "SUMBER DATA PERIBADI ANDA",
+    intro: "Kami mengumpul data peribadi anda secara langsung daripada anda apabila anda mengisi borang, mendaftar akaun atau memuat naik fail ke Platform kami. Selain itu, kami mengumpul data daripada sumber pihak ketiga, termasuk:",
+    items: [
+      [null, "Agensi pelaporan kredit berdaftar (cth., CTOS, CRIF, Experian) dan Sistem Maklumat Rujukan Kredit Pusat (CCRIS) Bank Negara Malaysia."],
+      [null, "Agensi kerajaan atau badan berkanun (cth., LHDN, KWSP) di mana dibenarkan."],
+      [null, "Agensi pencegahan penipuan dan pangkalan data awam."],
+    ],
+  },
+  {
+    title: "TUJUAN PEMPROSESAN DATA ANDA",
+    intro: "Data peribadi anda diproses bagi tujuan operasi, undang-undang dan penilaian kredit yang perlu, termasuk:",
+    items: [
+      ["Pengesahan Identiti:", "Mengesahkan identiti anda melalui aliran kerja Kenali Pelanggan Anda secara elektronik (eKYC)."],
+      ["Penilaian Kredit:", "Menilai kelayakan kredit, nisbah hutang kepada pendapatan dan kelayakan kewangan anda untuk kemudahan pembiayaan."],
+      ["Obligasi Kontrak:", "Menjana, menandatangani secara digital dan melaksanakan Perjanjian Pemberian Pinjaman Wang berkanun anda (Jadual J/K)."],
+      ["Pengeluaran & Kutipan:", "Menguruskan pengeluaran dana pinjaman, menjejak bayaran balik bulanan, mengeluarkan penyata dan menjalankan tindakan pemulihan sekiranya berlaku keingkaran."],
+      ["Pematuhan Peraturan:", "Memenuhi obligasi berkanun di bawah Akta Pemberi Pinjam Wang 1951, Akta Pencegahan Pengubahan Wang Haram, Pencegahan Pembiayaan Keganasan dan Hasil daripada Aktiviti Haram 2001 (AMLA) dan peraturan cukai."],
+    ],
+  },
+  {
+    title: "PENDEDAHAN DATA PERIBADI ANDA",
+    intro: "Kami merahsiakan data anda. Walau bagaimanapun, bagi mengendalikan Perkhidmatan dan memenuhi keperluan undang-undang, kami mungkin mendedahkan data anda kepada pihak ketiga berikut:",
+    items: [
+      ["Pengawal Selia & Pihak Berkuasa Kerajaan:", "Kementerian Perumahan dan Kerajaan Tempatan (KPKT), Bank Negara Malaysia (BNM), Lembaga Hasil Dalam Negeri (LHDN), Polis Diraja Malaysia (PDRM) dan pihak berkuasa kerajaan lain yang berkaitan."],
+      ["Agensi Pelaporan Kredit:", "Biro kredit yang diberi kuasa untuk merekodkan tingkah laku bayaran balik atau mengemas kini status keingkaran aktif."],
+      ["Rakan Kongsi Perkhidmatan:", "Rakan kongsi gerbang pembayaran kami yang ditetapkan (seperti penyedia FPX), rakan kongsi perisian pengesahan identiti yang selamat dan penyedia storan awan."],
+      ["Penasihat Profesional:", "Peguam, juruaudit dan agensi kutipan hutang kami yang diberi kuasa sekiranya berlaku tindakan pemulihan undang-undang akibat keingkaran."],
+    ],
+  },
+  {
+    title: "HAK ANDA DI BAWAH PDPA",
+    intro: "Sebagai subjek data di Malaysia, anda mempunyai hak berkanun tertentu berkenaan maklumat anda:",
+    items: [
+      ["Hak Akses & Pembetulan:", "Anda berhak meminta salinan data peribadi anda atau meminta kemas kini kepada data yang tidak tepat atau lapuk melalui tetapan Akaun anda."],
+      ["Hak Menarik Balik Persetujuan:", "Anda boleh menarik balik persetujuan anda untuk kami memproses data anda bagi tujuan pemasaran atau ciri yang tidak penting. Walau bagaimanapun, sila ambil perhatian bahawa penarikan balik persetujuan bagi data operasi teras akan menyebabkan penamatan serta-merta Akaun platform dan kelayakan pinjaman anda."],
+    ],
+  },
+  {
+    title: "PENYIMPANAN DAN KESELAMATAN DATA",
+    items: [
+      ["Keselamatan:", "Kami melindungi data peribadi anda menggunakan penyulitan Secure Socket Layer (SSL) bertaraf industri, tembok api (firewall) dan protokol akses pentadbiran yang terhad."],
+      ["Penyimpanan:", "Kami menyimpan data kewangan dan identiti anda selagi akaun anda kekal aktif, atau bagi tempoh wajib tujuh (7) tahun selepas penyelesaian penuh kemudahan pinjaman anda bagi mematuhi undang-undang penyimpanan rekod cukai, audit dan pemberian pinjaman wang berkanun."],
+    ],
+  },
+  {
+    title: "HUBUNGAN DAN ADUAN",
+    intro: "Sekiranya anda mempunyai sebarang pertanyaan berkenaan Notis Privasi ini, atau ingin melaksanakan hak akses dan pembetulan data anda, sila hubungi pasukan kami di:",
+    items: [
+      ["E-mel:", "support@loanbuddy.com.my"],
+      ["Alamat Surat-Menyurat:", "Loanbuddy Credit Sdn. Bhd., No. 15, Tingkat 4, Jalan Medan Tuanku 1, 50300 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur"],
+    ],
+  },
+];
+
+// Bahasa Malaysia translation of the Terms of Service (same numbering: clause 8.2 refers to 8.1).
+const TERMS_OF_SERVICE_SECTIONS_MS: TermsSection[] = [
+  {
+    title: "PENGENALAN",
+    clauses: [
+      "Selamat datang ke Platform Pemberian Pinjaman Wang Digital (\"Perkhidmatan\") yang dikendalikan oleh Loanbuddy Credit Sdn. Bhd. (No. Pendaftaran Syarikat 200901039396/882536-K) (dahulunya dikenali sebagai Loan Buddy Sdn. Bhd.) (dirujuk sebagai \"Loanbuddy\", \"Syarikat\" atau \"kami\"). Loanbuddy ialah pemberi pinjam wang berlesen, dan perkhidmatan kami tertakluk sepenuhnya kepada peraturan dan perlindungan yang ditetapkan di bawah Akta Pemberi Pinjam Wang 1951. Terma Penggunaan ini mengawal akses dan penggunaan anda terhadap laman web dan aplikasi mudah alih kami (secara kolektif, \"Platform\").",
+      "Sila baca Terma Penggunaan ini dengan teliti sebelum mendaftar akaun (\"Akaun\"). Dengan menandakan kotak semak \"Terima\" atau mewujudkan Akaun di Platform, anda menyatakan persetujuan anda yang tidak boleh dibatalkan untuk terikat dengan Terma Penggunaan ini. Jika anda tidak bersetuju, sila jangan gunakan Perkhidmatan kami.",
+      "Untuk mendaftar Akaun atau menggunakan Perkhidmatan, anda mestilah warganegara atau pemastautin Malaysia yang berumur sekurang-kurangnya lapan belas (18) tahun dan tidak melebihi enam puluh (60) tahun. Kami berhak menolak akses ke Platform atau menolak pendaftaran Akaun mengikut budi bicara mutlak kami.",
+      "Kami berhak untuk menaik taraf, mengubah suai atau melaksanakan penyelenggaraan teknikal rutin terhadap antara muka Platform dan infrastruktur perisian asasnya pada bila-bila masa. Sekiranya pengubahsuaian tersebut memberi kesan secara langsung kepada saluran bayaran balik, akses penyata atau pengurusan akaun aktif anda, kami akan memberikan notis awal yang munasabah melalui e-mel berdaftar anda atau melalui pemberitahuan dalam aplikasi. Untuk mengelakkan keraguan, tiada pengubahsuaian platform atau penggantungan teknikal akan mengubah, menggantikan atau membatalkan terma kewangan tetap, kadar faedah atau jadual pembayaran yang dipersetujui secara nyata dalam Perjanjian Pemberian Pinjaman Wang berkanun anda yang telah dilaksanakan (Jadual J/K).",
+    ],
+  },
+  {
+    title: "PENERIMAAN PERKHIDMATAN",
+    clauses: [
+      "Terma Penggunaan ini mengawal akses digital anda ke Platform. Terma ini tidak membentuk tawaran pinjaman yang tersendiri atau perjanjian pinjaman.",
+      "Setiap permohonan pinjaman individu yang diluluskan melalui Platform ini tertakluk sepenuhnya kepada pelaksanaan secara elektronik perjanjian pemberian pinjaman wang berkanun yang tersendiri dalam format yang ditetapkan di bawah Jadual J (Pinjaman Tidak Bercagar) atau Jadual K (Pinjaman Bercagar) Peraturan-Peraturan Pemberi Pinjam Wang (Kawalan dan Pelesenan) 2003 (setiap satunya dirujuk sebagai \"Perjanjian Pemberian Pinjaman Wang\").",
+      "Sekiranya terdapat sebarang percanggahan atau ketidakselarasan secara langsung antara Terma Penggunaan ini dan Perjanjian Pemberian Pinjaman Wang berkanun yang telah dilaksanakan, terma Perjanjian Pemberian Pinjaman Wang berkanun tersebut hendaklah diguna pakai setakat ketidakselarasan itu.",
+    ],
+  },
+  {
+    title: "PENGAKTIFAN AKAUN DIGITAL & SEMAKAN KREDIT",
+    clauses: [
+      "Setelah menerima pendaftaran atau permohonan pinjaman anda, kami akan menjalankan usaha wajar undang-undang dan kredit yang diperlukan.",
+      "Anda dengan nyata bersetuju untuk memberikan data peribadi yang benar dan tepat, termasuk nama penuh, nombor kad pengenalan, penyata pendapatan, penyata bank dan sebarang butiran pengesahan lain yang diminta oleh Platform (\"Maklumat Usaha Wajar\").",
+      "Anda memberi kuasa kepada kami untuk menjalankan semakan kredit dan undang-undang dengan institusi yang berkaitan, termasuk tetapi tidak terhad kepada Sistem Maklumat Rujukan Kredit Pusat (CCRIS) yang diuruskan oleh Bank Negara Malaysia, dan mana-mana agensi pelaporan kredit berdaftar yang beroperasi di bawah Akta Agensi Pelaporan Kredit 2010.",
+      "Anda mengakui bahawa butiran berkenaan tingkah laku bayaran balik anda atau keingkaran Akaun boleh dilaporkan kepada agensi pelaporan kredit berdaftar, yang boleh berkongsi maklumat ini dengan pelanggan mereka.",
+    ],
+  },
+  {
+    title: "PELAKSANAAN DIGITAL & PENGHANTARAN DOKUMEN ELEKTRONIK",
+    clauses: [
+      "Dengan menggunakan Platform ini, anda bersetuju untuk menjalankan semua transaksi dan melaksanakan semua perjanjian secara elektronik. Anda mengakui bahawa melengkapkan langkah pengesahan dalam aplikasi, memasukkan kata laluan sekali guna (OTP), atau menekan mana-mana butang atau kotak semak \"Terima\", \"Sahkan\" atau \"Tandatangan\" merupakan tandatangan elektronik anda. Anda bersetuju bahawa format elektronik ini mempunyai kesahan undang-undang, kebolehkuatkuasaan dan kuasa mengikat yang sama seperti tandatangan tulisan tangan tradisional di atas kertas.",
+      "Dengan pematuhan ketat kepada Akta Pemberi Pinjam Wang 1951, salinan digital Perjanjian Pemberian Pinjaman Wang berkanun anda yang telah dilaksanakan sepenuhnya dan disetemkan akan dijana dan dihantar ke e-mel berdaftar anda atau boleh dimuat turun serta-merta di dalam portal Akaun anda. Dokumen ini akan dihantar kepada anda sebelum atau pada masa yang sama dengan pengeluaran pinjaman, bagi memastikan anda memegang salinan undang-undang yang sah sebelum dana dikeluarkan.",
+    ],
+  },
+  {
+    title: "KADAR FAEDAH, FI BERKANUN DAN PENGELUARAN PINJAMAN",
+    clauses: [
+      "Kadar faedah berbeza mengikut produk pinjaman tetapi tidak akan melebihi 18% setahun faedah ringkas bagi pinjaman tidak bercagar, atau 12% setahun faedah ringkas bagi pinjaman bercagar, seperti yang ditetapkan oleh Seksyen 17A Akta Pemberi Pinjam Wang 1951.",
+      "Faedah dikira setiap hari berdasarkan 365 hari setahun, bermula dari hari sebenar dana pinjaman anda dikeluarkan ke dalam akaun bank anda.",
+      "Sebelum kami mengeluarkan pinjaman anda, kami akan menolak duti setem dan fi pengesahan undang-undang yang diperlukan daripada jumlah keseluruhan yang diluluskan. Dengan pematuhan ketat kepada Akta Pemberi Pinjam Wang 1951, tiada fi guaman, caj pemprosesan, kos pentadbiran atau fi perkhidmatan platform akan ditolak daripada jumlah pengeluaran pinjaman anda. Jumlah tunai akhir yang dihantar ke akaun bank anda ialah pinjaman yang diluluskan ditolak hanya dua kos berkanun yang dibenarkan ini.",
+    ],
+  },
+  {
+    title: "BAYARAN BALIK DAN FI LEWAT",
+    clauses: [
+      "Jumlah bayaran balik bulanan dan tarikh matang anda akan disenaraikan dengan jelas dalam portal Akaun digital anda dan dikeluarkan melalui Penyata Bulanan di Platform. Bayaran mesti dijelaskan selewat-lewatnya 11.59 malam pada tarikh matang yang ditetapkan menggunakan saluran pembayaran kami yang diluluskan (seperti Perbankan Dalam Talian FPX).",
+      "Sekiranya anda gagal membayar ansuran pada tarikh matang, fi bayaran lewat akan dikenakan. Dengan pematuhan ketat kepada Jadual J/K, fi lewat ini dikira pada kadar faedah ringkas 8% setahun ke atas amaun ansuran tertunggak sahaja, dikenakan secara harian dari tarikh keingkaran sehingga dijelaskan sepenuhnya.",
+      "Untuk mengelakkan keraguan, faedah lewat tidak akan dikompaunkan, dan tidak akan dikenakan ke atas baki prinsipal pinjaman yang belum dibayar dan belum matang.",
+    ],
+  },
+  {
+    title: "FLEKSIBILITI BAYARAN BALIK DAN MEKANISME ADUAN",
+    clauses: [
+      "Peminjam berhak menjelaskan baki pinjaman mereka lebih awal daripada jadual pada bila-bila masa. Setelah menerima permohonan penyelesaian awal anda melalui Platform, Syarikat akan mengira prinsipal tertunggak yang tepat dan faedah ringkas yang terakru sehingga hari tersebut untuk memberikan anda jumlah penyelesaian akhir.",
+      "Sekiranya anda mendapati kesilapan dalam penyata bulanan dalam talian anda atau ingin membuat pertikaian rasmi berkenaan pengiraan platform, anda boleh menghubungi talian khidmat dalaman kami di support@loanbuddy.com.my.",
+    ],
+  },
+  {
+    title: "PENGGUNAAN PLATFORM YANG DIBENARKAN DAN PENGGANTUNGAN",
+    clauses: [
+      "Anda bersetuju untuk tidak mengeksploitasi, menggodam atau melakukan kejuruteraan balikan terhadap infrastruktur digital Platform, dan tidak menggunakan skrip automatik, bot atau pengikis (scraper) untuk mengekstrak data platform. Anda dilarang sama sekali daripada memberikan dokumentasi kewangan yang dipalsukan atau diubah suai sepanjang proses permohonan.",
+      "Sekiranya anda gagal menjelaskan jumlah tertunggak pada tarikh matang yang ditetapkan, atau sekiranya kami mempunyai alasan munasabah untuk mengesyaki aktiviti penipuan atau pelanggaran Klausa 8.1, kami berhak untuk mengehadkan, menyekat atau menggantung sementara Akaun Platform digital anda.",
+      "Sekiranya keingkaran akaun berterusan melebihi empat belas (14) hari dari tarikh notis bertulis (dihantar secara fizikal atau elektronik), kami berhak menuntut bayaran balik penuh dengan serta-merta bagi semua prinsipal tertunggak dan fi lewat berkanun, serta memulakan tindakan pemulihan undang-undang setakat yang dibenarkan oleh undang-undang Malaysia.",
+    ],
+  },
+  {
+    title: "INDEMNITI DAN HAD LIABILITI",
+    clauses: [
+      "Anda bersetuju untuk menanggung rugi dan melepaskan Syarikat, para pengarah dan pekerjanya daripada sebarang tuntutan pihak ketiga atau perbelanjaan guaman yang timbul daripada pelanggaran Terma Penggunaan ini oleh anda, penyalahgunaan Platform oleh anda, atau pelanggaran anda terhadap mana-mana undang-undang yang terpakai.",
+      "Penafian Gangguan Platform: Walaupun kami berusaha secara munasabah untuk mengekalkan operasi 24/7, kami tidak akan bertanggungjawab atas kegagalan atau kelewatan dalam memproses bayaran balik, mengesahkan dokumentasi atau menghantar pemberitahuan digital sekiranya kejadian tersebut berpunca daripada gangguan gerbang pembayaran pihak ketiga, ralat rangkaian telekomunikasi atau naik taraf infrastruktur sistem yang dijadualkan.",
+      "Setakat maksimum yang dibenarkan oleh undang-undang Malaysia, jumlah liabiliti korporat kami di bawah Terma Penggunaan platform ini tidak akan melebihi Ringgit Malaysia Lima Ratus (RM500). Had ini tidak menjejaskan atau mengubah sebarang obligasi yang dikawal secara nyata oleh Perjanjian Pemberian Pinjaman Wang berkanun anda yang telah dilaksanakan.",
+    ],
+  },
+  {
+    title: "UNDANG-UNDANG YANG MENTADBIR DAN BIDANG KUASA",
+    clauses: [
+      "Terma Penggunaan ini hendaklah ditadbir, ditafsir dan dihuraikan mengikut undang-undang Malaysia.",
+      "Sebarang pertikaian, tindakan undang-undang atau tuntutan yang timbul daripada penggunaan Platform oleh anda atau keingkaran di bawah Terma Penggunaan ini hendaklah dibawa secara eksklusif ke Mahkamah Sivil Malaysia (termasuk Mahkamah Rendah atau Mahkamah Tinggi, bergantung pada nilai monetari bidang kuasa tuntutan tersebut).",
+    ],
+  },
+];
+
 function LegalModal({
   title,
+  closeLabel,
   bodyClassName,
   onClose,
   children,
 }: {
   title: string;
+  closeLabel: string;
   bodyClassName: string;
   onClose: () => void;
   children: ReactNode;
@@ -184,7 +342,7 @@ function LegalModal({
           <div className={`modal-body ${bodyClassName}`}>{children}</div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>
-              Close
+              {closeLabel}
             </button>
           </div>
         </div>
@@ -193,46 +351,99 @@ function LegalModal({
   );
 }
 
-export function PrivacyNoticeModal({ onClose }: { onClose: () => void }) {
-  return (
-    <LegalModal title="LOANBUDDY PRIVACY NOTICE" bodyClassName="privay-policy-modal" onClose={onClose}>
-      <div className="container">
-        <p>
-          <strong>LAST UPDATED:</strong> 27 October 2026
-        </p>
-        <p>
-          Loanbuddy Credit Sdn. Bhd. (Company Registration No. 200901039396/882536-K) (&quot;<strong>the Company</strong>&quot;, &quot;<strong>we</strong>&quot;, &quot;<strong>us</strong>&quot;, or &quot;<strong>our</strong>&quot;) values your privacy. This Privacy Notice is issued in accordance with the Malaysian <strong>Personal Data Protection Act 2010 (PDPA)</strong>. It explains how we collect, use, process, disclose, and protect your personal data when you access our website, mobile application, and digital services (collectively, the &quot;<strong>Platform</strong>&quot;).
-        </p>
+const LEGAL_COPY: Record<
+  Language,
+  {
+    privacyTitle: string;
+    termsTitle: string;
+    privacyLastUpdated: string;
+    termsLastUpdated: string;
+    date: string;
+    close: string;
+    privacySections: PrivacySection[];
+    termsSections: TermsSection[];
+  }
+> = {
+  ms: {
+    privacyTitle: "NOTIS PRIVASI LOANBUDDY",
+    termsTitle: "TERMA PERKHIDMATAN LOANBUDDY",
+    privacyLastUpdated: "KEMAS KINI TERAKHIR:",
+    termsLastUpdated: "Kemas kini terakhir:",
+    date: "27 Oktober 2026",
+    close: "Tutup",
+    privacySections: PRIVACY_NOTICE_SECTIONS_MS,
+    termsSections: TERMS_OF_SERVICE_SECTIONS_MS,
+  },
+  en: {
+    privacyTitle: "LOANBUDDY PRIVACY NOTICE",
+    termsTitle: "LOANBUDDY TERMS OF SERVICE",
+    privacyLastUpdated: "LAST UPDATED:",
+    termsLastUpdated: "Last updated:",
+    date: "27 October 2026",
+    close: "Close",
+    privacySections: PRIVACY_NOTICE_SECTIONS_EN,
+    termsSections: TERMS_OF_SERVICE_SECTIONS_EN,
+  },
+};
 
-        {PRIVACY_NOTICE_SECTIONS.map((section, sectionIdx) => (
-          <React.Fragment key={section.title}>
-            <h5>{sectionIdx + 1}. {section.title}</h5>
-            {section.intro && <p className="p-dasar-privasi">{section.intro}</p>}
-            <ul style={{ listStyle: "disc", paddingLeft: "1.5rem" }}>
-              {section.items.map(([label, text]) => (
-                <li key={text} className="li-dasar-privasi" style={{ marginBottom: "6px" }}>
-                  {label && <strong>{label} </strong>}
-                  {text}
-                </li>
-              ))}
-            </ul>
-          </React.Fragment>
-        ))}
-      </div>
-    </LegalModal>
+function PrivacyIntro({ language }: { language: Language }) {
+  if (language === "en") {
+    return (
+      <p>
+        Loanbuddy Credit Sdn. Bhd. (Company Registration No. 200901039396/882536-K) (&quot;<strong>the Company</strong>&quot;, &quot;<strong>we</strong>&quot;, &quot;<strong>us</strong>&quot;, or &quot;<strong>our</strong>&quot;) values your privacy. This Privacy Notice is issued in accordance with the Malaysian <strong>Personal Data Protection Act 2010 (PDPA)</strong>. It explains how we collect, use, process, disclose, and protect your personal data when you access our website, mobile application, and digital services (collectively, the &quot;<strong>Platform</strong>&quot;).
+      </p>
+    );
+  }
+  return (
+    <p>
+      Loanbuddy Credit Sdn. Bhd. (No. Pendaftaran Syarikat 200901039396/882536-K) (&quot;<strong>Syarikat</strong>&quot; atau &quot;<strong>kami</strong>&quot;) menghargai privasi anda. Notis Privasi ini dikeluarkan menurut <strong>Akta Perlindungan Data Peribadi 2010 (PDPA)</strong> Malaysia. Notis ini menerangkan cara kami mengumpul, menggunakan, memproses, mendedahkan dan melindungi data peribadi anda apabila anda mengakses laman web, aplikasi mudah alih dan perkhidmatan digital kami (secara kolektif, &quot;<strong>Platform</strong>&quot;).
+    </p>
   );
 }
 
-export function TermsOfServiceModal({ onClose }: { onClose: () => void }) {
+// The notice text in the visitor's language, shared by the pop-ups (h5 headings) and the full pages (styled h3 headings)
+type LegalContentProps = { headingAs?: "h3" | "h5"; headingClassName?: string };
+
+export function PrivacyNoticeContent({ headingAs: Heading = "h5", headingClassName }: LegalContentProps) {
+  const { language } = useLanguage();
+  const copy = LEGAL_COPY[language];
   return (
-    <LegalModal title="LOANBUDDY TERMS OF SERVICE" bodyClassName="term-of-use-modal" onClose={onClose}>
+    <>
       <p>
-        <strong>Last updated:</strong> 27 October 2026
+        <strong>{copy.privacyLastUpdated}</strong> {copy.date}
+      </p>
+      <PrivacyIntro language={language} />
+
+      {copy.privacySections.map((section, sectionIdx) => (
+        <React.Fragment key={section.title}>
+          <Heading className={headingClassName}>{sectionIdx + 1}. {section.title}</Heading>
+          {section.intro && <p className="p-dasar-privasi">{section.intro}</p>}
+          <ul style={{ listStyle: "disc", paddingLeft: "1.5rem" }}>
+            {section.items.map(([label, text]) => (
+              <li key={text} className="li-dasar-privasi" style={{ marginBottom: "6px" }}>
+                {label && <strong>{label} </strong>}
+                {text}
+              </li>
+            ))}
+          </ul>
+        </React.Fragment>
+      ))}
+    </>
+  );
+}
+
+export function TermsOfServiceContent({ headingAs: Heading = "h5", headingClassName }: LegalContentProps) {
+  const { language } = useLanguage();
+  const copy = LEGAL_COPY[language];
+  return (
+    <>
+      <p>
+        <strong>{copy.termsLastUpdated}</strong> {copy.date}
       </p>
 
-      {TERMS_OF_SERVICE_SECTIONS.map((section, sectionIdx) => (
+      {copy.termsSections.map((section, sectionIdx) => (
         <React.Fragment key={section.title}>
-          <h5>{sectionIdx + 1}. {section.title}</h5>
+          <Heading className={headingClassName}>{sectionIdx + 1}. {section.title}</Heading>
           <ul style={{ listStyle: "none", paddingLeft: 0 }}>
             {section.clauses.map((clause, clauseIdx) => (
               <li key={clause} className="li-terma-syarat d-flex" style={{ gap: "10px", marginBottom: "8px" }}>
@@ -245,6 +456,26 @@ export function TermsOfServiceModal({ onClose }: { onClose: () => void }) {
           </ul>
         </React.Fragment>
       ))}
+    </>
+  );
+}
+
+export function PrivacyNoticeModal({ onClose }: { onClose: () => void }) {
+  const copy = LEGAL_COPY[useLanguage().language];
+  return (
+    <LegalModal title={copy.privacyTitle} closeLabel={copy.close} bodyClassName="privay-policy-modal" onClose={onClose}>
+      <div className="container">
+        <PrivacyNoticeContent />
+      </div>
+    </LegalModal>
+  );
+}
+
+export function TermsOfServiceModal({ onClose }: { onClose: () => void }) {
+  const copy = LEGAL_COPY[useLanguage().language];
+  return (
+    <LegalModal title={copy.termsTitle} closeLabel={copy.close} bodyClassName="term-of-use-modal" onClose={onClose}>
+      <TermsOfServiceContent />
     </LegalModal>
   );
 }

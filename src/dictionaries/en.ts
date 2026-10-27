@@ -766,24 +766,11 @@ export const en = {
     heroTitle: "Privacy Policy",
     heroDesc:
       "Loanbuddy Credit Sdn. Bhd. is committed to protecting the privacy of your personal data under the Personal Data Protection Act 2010 (PDPA).",
-    section1Title: "1. Collection of Personal Information",
-    section1Text:
-      "We collect personal information that you voluntarily submit through our online application form, including your name, IC number, contact details, salary slips, and other related financial documents.",
-    section2Title: "2. Use of Personal Information",
-    section2Intro: "Your information is used for the following purposes:",
-    section2Item1:
-      "To process your personal loan application and assess your credit eligibility.",
-    section2Item2:
-      "To contact you regarding your application, loan offers, or customer service enquiries.",
-    section2Item3:
-      "To comply with legal and regulatory requirements under KPKT and the Moneylenders Act 1951.",
-    section3Title: "3. Data Security and Confidentiality",
-    section3Text:
-      "We take appropriate physical, electronic, and administrative measures to ensure your personal data is protected from any unauthorised access, loss, or misuse.",
-    section4Title: "4. Your Rights",
-    section4TextPrefix:
-      "You have the right to access, update, or request correction of your personal information at any time by contacting our data protection officer at ",
-    section4TextSuffix: ".",
+  },
+  termsPage: {
+    heroTitle: "Terms & Conditions",
+    heroDesc:
+      "Please read the terms and conditions for using the Loanbuddy Credit website and applying for a loan.",
   },
   disclaimerPage: {
     heroTitle: "Disclaimer Notice",

@@ -867,10 +867,13 @@ textarea {
 }
 
 .mascot-divider img {
+  /* Full size (420px) on large screens, shrinking with the window on smaller ones */
+  --mascot-width: clamp(220px, 26vw, 420px);
   position: absolute;
   right: 2%;
-  top: -350px;
-  width: 420px;
+  /* Offset scales with the width (was -350px at 420px) so the feet stay on the hero's bottom edge */
+  top: calc(var(--mascot-width) * -0.8333);
+  width: var(--mascot-width);
   height: auto;
   animation: mascotFloat 5s ease-in-out infinite;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
@@ -947,9 +950,107 @@ textarea {
 
 @media (max-width: 991.98px) {
 
-  .mascot-divider,
   .mascot-star-between {
     display: none !important;
+  }
+}
+
+/* =====================================================
+   Mobile & tablet hero (< 992px): light layout matching desktop.
+   Text on white at the top, the skyline + ribbons as a band along the
+   bottom, and a smaller mascot standing on the hero's bottom edge.
+   (Slide 2, the app banner, keeps its own layout.)
+   ===================================================== */
+@media (max-width: 991.98px) {
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) {
+    --hero-band: clamp(220px, 62vw, 370px);
+    position: relative;
+    min-height: 0;
+    aspect-ratio: auto;
+    justify-content: flex-start;
+    padding: clamp(60px, 15vw, 96px) 20px calc(var(--hero-band) + 12px) !important;
+    background-color: #ffffff;
+    /* At least band-tall and always full-width (banner art is 1577x655); any extra
+       height sits behind the white fade */
+    background-size: max(100%, calc(var(--hero-band) * 2.408)) auto !important;
+    background-position: 38% 100% !important;
+  }
+
+  /* Soft tint at the top, fading the skyline's sky into the white text area
+     (replaces the dark photo overlay) */
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      #eef3fd 0%,
+      #ffffff 34%,
+      #ffffff calc(100% - var(--hero-band)),
+      rgba(255, 255, 255, 0) calc(100% - var(--hero-band) + 80px)
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) .hero-content {
+    max-width: 560px;
+    padding: 0;
+  }
+
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) h1 {
+    color: #0d4ed8 !important;
+    font-size: 27px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px !important;
+    text-wrap: balance;
+  }
+
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) p {
+    color: #4b5563 !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+    max-width: 34em;
+  }
+
+  /* Bigger, easier-to-tap call to action; both stacked labels match the
+     button height so the hover slide still lines up */
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) .hero-content .cta_semak {
+    height: 48px !important;
+    padding: 0 36px !important;
+    box-shadow: 0 8px 20px rgba(242, 5, 5, 0.25) !important;
+  }
+
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) .hero-content .cta_semak span {
+    display: block;
+    height: 48px !important;
+  }
+
+  .hero-carousel .carousel-slide.has-text-slide:not(.slide-2) .hero-content .cta_semak span small {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    height: 48px !important;
+    padding: 0 !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Mascot: same placement as desktop, scaled down for small screens */
+  /* Mascot peeking in from the right edge, leaning towards the content;
+     the part past the edge is clipped so the page can't scroll sideways */
+  .mascot-divider {
+    overflow-x: clip;
+  }
+
+  .mascot-divider img {
+    --mascot-width: clamp(195px, 52vw, 320px);
+    right: calc(var(--mascot-width) * -0.32);
+    /* Stand a little higher than on desktop so the feet clear the next section's heading */
+    top: calc(var(--mascot-width) * -1.08);
+    rotate: -8deg;
   }
 }
 
@@ -1720,6 +1821,128 @@ textarea {
 .site_header .header_lang_switcher .lang_divider {
   color: #ffffff !important;
   font-size: 15px !important;
+}
+
+/* =====================================================
+   Desktop header below 1600px: keep the logo / menu / CTA group clear of
+   the pinned BM | EN switcher by reserving its space on the right, and
+   tighten the spacing step by step as the header gets narrower.
+   (`header.site_header` outranks the same !important rules in home-custom.css)
+   ===================================================== */
+@media (min-width: 992px) and (max-width: 1599.98px) {
+  /* switcher offset (30px) + switcher width + 24px breathing room */
+  header.site_header .header_main_cluster {
+    padding-right: 135px !important;
+  }
+
+  header.site_header .site_logo_wrap {
+    margin-right: 20px !important;
+  }
+
+  header.site_header .header_main_cluster .btn_semak_layak {
+    margin-left: 20px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  header.site_header .header_main_cluster {
+    gap: 20px !important;
+  }
+
+  header.site_header .site_logo_wrap {
+    margin-right: 0 !important;
+  }
+
+  header.site_header .header_main_cluster .btn_semak_layak {
+    margin-left: 0 !important;
+    min-width: 0 !important;
+  }
+
+  header.site_header .main_menu_list {
+    gap: 4px !important;
+  }
+
+  header.site_header .main_menu_list > li:not(.site_logo) > a {
+    padding: 10px 10px !important;
+  }
+
+  /* Fixed slots = BM text widths at this padding, so switching language doesn't shift the menu */
+  header.site_header .main_menu_list > li:nth-child(1) {
+    min-width: 128px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(2) {
+    min-width: 104px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(3) {
+    min-width: 126px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(4) {
+    min-width: 51px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(5) {
+    min-width: 116px !important;
+  }
+}
+
+/* Small laptops & tablets in landscape */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  header.site_header .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  header.site_header .header_right_area {
+    right: 16px !important;
+  }
+
+  header.site_header .header_lang_switcher .lang_item,
+  header.site_header .header_lang_switcher .lang_divider {
+    font-size: 14px !important;
+  }
+
+  /* switcher offset (16px) + switcher width + 20px breathing room */
+  header.site_header .header_main_cluster {
+    gap: 16px !important;
+    padding-right: 116px !important;
+  }
+
+  /* Crop the logo PNG's transparent side padding (~18px each side at 85px tall)
+     instead of shrinking it, so the logo and header height stay the same */
+  header.site_header .site-header-logo,
+  header.site_header .site_link img {
+    width: 114px !important;
+    object-fit: cover !important;
+  }
+
+  header.site_header .main_menu_list {
+    gap: 2px !important;
+  }
+
+  header.site_header .main_menu_list > li:not(.site_logo) > a {
+    font-size: 14px !important;
+    padding: 10px 7px !important;
+  }
+
+  header.site_header .main_menu_list > li:nth-child(1) {
+    min-width: 116px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(2) {
+    min-width: 92px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(3) {
+    min-width: 114px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(4) {
+    min-width: 43px !important;
+  }
+  header.site_header .main_menu_list > li:nth-child(5) {
+    min-width: 103px !important;
+  }
+
+  header.site_header .header_main_cluster .btn_semak_layak {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 /* =====================================================
@@ -2592,5 +2815,19 @@ body {
 
   .faq_section.section_space_faq .faq-bottom-text {
     font-size: 14px !important;
+  }
+}
+
+/* Footer on phones: the logo block on top, then two columns whose left edges line up
+   (with flex wrapping, each right-hand column sat flush right, so narrower ones started further right) */
+@media (min-width: 360px) and (max-width: 575.98px) {
+  .site_footer .footer_columns {
+    display: grid !important;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+
+  .site_footer .footer_columns > :first-child {
+    grid-column: 1 / -1;
   }
 }

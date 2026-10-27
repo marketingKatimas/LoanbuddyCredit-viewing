@@ -227,7 +227,8 @@ export default function AplikasiPage() {
               style={{ backgroundImage: `url('${heroBannerImg}')` }}
             >
               {/* Content Container */}
-              <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-10 md:!pt-20 lg:!pt-4 pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
+              {/* On desktop the top padding grows with the window: the QR codes in the image move down as it widens */}
+              <div className="relative z-10 w-full lg:w-[57%] px-6 md:pl-8 lg:!pl-14 md:pr-6 pt-10 md:!pt-20 lg:!pt-[clamp(16px,calc(10vw_-_120px),96px)] pb-0 text-center md:text-left flex flex-col items-center md:!items-start h-full md:justify-start">
                 {heroHeading ? (
                   <h1 className="text-[25px] md:text-[32px] lg:text-[35px] font-extrabold !font-[800] tracking-[-0.5px] !text-[#044BD9] leading-tight mb-3 !text-center md:!text-left whitespace-pre-line">
                     {typeof heroHeading === "string" && heroHeading.includes("\n")
