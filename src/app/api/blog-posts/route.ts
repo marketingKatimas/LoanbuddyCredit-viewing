@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { defaultBlogPosts } from '@/seed/seedBlogPosts'
-import { getBlogPosts } from '@/lib/content'
 
 export const dynamic = 'force-dynamic'
 
@@ -62,8 +61,24 @@ export async function GET(request: Request) {
     }
 
     // Otherwise, return all published blog posts
+    const allPosts = await payload.find({
+      collection: 'blog-posts',
+      locale: locale as any,
+      fallbackLocale: false as any,
+      sort: '-createdAt',
+      limit: 100,
+      depth: 2,
+    })
+
+    if (allPosts.docs && allPosts.docs.length > 0) {
+      return NextResponse.json(
+        { docs: allPosts.docs },
+        { headers: { 'Cache-Control': 'no-store, max-age=0' } }
+      )
+    }
+
     return NextResponse.json(
-      { docs: await getBlogPosts(locale) },
+      { docs: defaultBlogPosts },
       { headers: { 'Cache-Control': 'no-store, max-age=0' } }
     )
   } catch (error) {
