@@ -205,6 +205,7 @@ export default function FAQPage() {
   const [pageData, setPageData] = useState<any>(null);
   const [activeTab, setActiveTab] = useState<"all" | "umum" | "bayaran">("all");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [showSchedule, setShowSchedule] = useState(false);
 
   useEffect(() => {
     fetch(`/api/content?slug=soalan-lazim-faq&locale=${language}`, { cache: "no-store" })
@@ -384,7 +385,7 @@ export default function FAQPage() {
                             className="fw-bold mb-0 pe-3 text-start flex-grow-1"
                             style={{ color: "#0d4ed8", fontSize: "19px", lineHeight: "1.4" }}
                           >
-                            {isEnglish ? t.faqPage.faq0Q : "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?"}
+                            {isEnglish ? t.faqPage.faq0Q : "Apakah contoh jadual pembayaran balik bagi pinjaman RM3,000?"}
                           </h3>
                           <FaqArrowIcon isOpen={openFaq === 0} />
                         </div>
@@ -400,12 +401,18 @@ export default function FAQPage() {
                           <div style={{ minHeight: 0 }}>
                             <div className="pt-3 text-start">
                               <p style={{ color: "#444", fontSize: "15px", lineHeight: "1.6" }}>
-                                {isEnglish ? t.faqPage.faq0Example : "Contoh Wakil:"} <br />
+                                {isEnglish ? t.faqPage.faq0Example : "Contoh Pengiraan Pinjaman:"} <br />
                                 {isEnglish ? t.faqPage.faq0Amount : "Amaun Pinjaman:"} <span className="fw-bold">{isEnglish ? t.faqPage.faq0AmountVal : "RM3,000"}</span> <br />
                                 {isEnglish ? t.faqPage.faq0Tenure : "Tempoh Pinjaman:"} <span className="fw-bold">{isEnglish ? t.faqPage.faq0TenureVal : "12 bulan"}</span> <br />
                                 {isEnglish ? t.faqPage.faq0Interest : "Kadar Faedah:"} <span className="fw-bold">{isEnglish ? t.faqPage.faq0InterestVal : "18.0% setahun"}</span> <br />
                                 {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <span className="fw-bold">{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</span>
                               </p>
+                              <button type="button" onClick={() => setShowSchedule((v) => !v)} aria-expanded={showSchedule} className="btn d-inline-flex align-items-center gap-2 mt-2 text-white fw-semibold" style={{ backgroundColor: "#0d4ed8", borderRadius: "50px", padding: "10px 22px", fontSize: "14px" }}>
+                                {isEnglish ? t.faqPage.faq0ViewSchedule : "Lihat Contoh Jadual Pembayaran Balik"}
+                                <span style={{ display: "inline-block", transition: "transform 0.3s", transform: showSchedule ? "rotate(180deg)" : "none" }}>&#9662;</span>
+                              </button>
+                              <div style={{ display: "grid", gridTemplateRows: showSchedule ? "1fr" : "0fr", opacity: showSchedule ? 1 : 0, transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out", overflow: "hidden" }}>
+                                <div style={{ minHeight: 0 }}>
                               <div className="mt-3 w-100" style={{ width: "100%" }}>
                                 <img
                                   src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"}
@@ -414,6 +421,8 @@ export default function FAQPage() {
                                   style={{ width: "100%", height: "auto", display: "block" }}
                                   alt="Jadual Pembayaran Balik"
                                 />
+                                </div>
+                              </div>
                               </div>
                             </div>
                           </div>
