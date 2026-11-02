@@ -653,7 +653,7 @@ export default function MohonPinjamanOnlinePage() {
                         <div className="button-row button-row-left">
                           <button
                             type="submit"
-                            className="btn border_red_reverse btn-mohon-short"
+                            className="btn border_red_reverse btn-mohon-auto"
                             id="Submit"
                             disabled={isSubmitting}
                             style={{ height: "auto" }}

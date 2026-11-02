@@ -178,6 +178,13 @@
     width: 180px !important;
 }
 
+/* Grows to fit longer labels (e.g. "Submit Application") on one line */
+.btn-mohon-auto {
+    width: auto !important;
+    min-width: 180px;
+    white-space: nowrap;
+}
+
 .btn-mohon:hover {
     transform: translateY(-7px);
     box-shadow: 0 5px 10px 0 rgba(16, 18, 19, 0);

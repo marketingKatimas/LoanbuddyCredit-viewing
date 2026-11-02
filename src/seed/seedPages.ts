@@ -46,9 +46,9 @@ export const defaultPagesData: DefaultPageData[] = [
     slug: 'home',
     banners: [
       {
-        heading: 'Selamat Datang ke Loanbuddy Credit',
+        heading: 'Pinjaman Peribadi Sehingga RM50,000',
         subheading:
-          'Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan. Dengan proses permohonan yang ringkas dan kelulusan pantas, anda boleh mendapatkan dana yang diperlukan tepat pada masanya untuk mengurus keperluan kewangan anda.',
+          'Mohon pinjaman peribadi secara dalam talian. Semak syarat kelayakan dan hantar permohonan anda untuk semakan.',
         primaryCtaText: 'Mohon Sekarang',
         primaryCtaLink: 'mohon-pinjaman-online',
       },
@@ -62,9 +62,9 @@ export const defaultPagesData: DefaultPageData[] = [
       },
     ],
     hero: {
-      heading: 'Selamat Datang ke Loanbuddy Credit',
+      heading: 'Pinjaman Peribadi Sehingga RM50,000',
       subheading:
-        'Kami sedia membantu dengan menawarkan pembiayaan yang cepat, mudah, dan tanpa sebarang kerumitan. Dengan proses permohonan yang ringkas dan kelulusan pantas, anda boleh mendapatkan dana yang diperlukan tepat pada masanya untuk mengurus keperluan kewangan anda.',
+        'Mohon pinjaman peribadi secara dalam talian. Semak syarat kelayakan dan hantar permohonan anda untuk semakan.',
       primaryCtaText: 'Mohon Sekarang',
       primaryCtaLink: 'mohon-pinjaman-online',
     },
@@ -75,13 +75,13 @@ export const defaultPagesData: DefaultPageData[] = [
           {
             itemTitle: 'Pinjaman Peribadi Online',
             itemDescription:
-              'Mohon pinjaman peribadi dengan mudah dan pantas melalui permohonan atas talian.',
+              'Semak syarat kelayakan dan mohon pinjaman peribadi secara dalam talian.',
             itemLink: 'pinjaman-peribadi-kl-sarawak',
           },
           {
             itemTitle: 'Pinjaman Tambah Nilai',
             itemDescription:
-              'Pinjaman peribadi tidak mencukupi? Pinjaman Tambah Nilai boleh selesaikan masalah anda.',
+              'Permohonan pinjaman tambah nilai tertakluk pada syarat kelayakan dan kelulusan.',
             itemLink: 'pinjaman-koperasi',
           },
         ],
@@ -394,11 +394,11 @@ export const defaultPagesData: DefaultPageData[] = [
     title: 'Mohon Pinjaman Online (Apply Form)',
     slug: 'mohon-pinjaman-online',
     hero: {
-      badgeText: 'Selamat Datang ke Loanbuddy Credit!',
-      heading: 'Pinjaman Peribadi Sehingga RM50,000\nMohon Hari ini!',
+      badgeText: 'Borang Permohonan Pinjaman Peribadi',
+      heading: 'Mohon Pinjaman Peribadi Sehingga RM50,000!',
       subheading:
-        'Satu Langkah mudah untuk mencapai kestabilan kewangan yang anda perlukan. Pilih Loanbuddy Credit!',
-      primaryCtaText: 'Hantar',
+        'Lengkapkan borang di bawah untuk menghantar permohonan anda bagi semakan.',
+      primaryCtaText: 'Hantar Permohonan',
       primaryCtaLink: '#applyForm',
       secondaryCtaText:
         'Permohonan pinjaman hanya terbuka untuk warganegara Malaysia sahaja.',
@@ -406,7 +406,7 @@ export const defaultPagesData: DefaultPageData[] = [
     sections: [
       {
         sectionBadge: 'Dokumen & Panduan',
-        sectionTitle: 'Apa yang anda perlukan untuk memohon?',
+        sectionTitle: 'Dokumen yang Diperlukan',
         sectionDescription: 'Dokumen Diperlukan Untuk Permohonan',
         items: [
           {
@@ -1122,17 +1122,17 @@ export const defaultPagesDataEn: DefaultPageData[] = [
     slug: 'home',
     banners: [
       {
-        heading: 'Easy & Fast Personal Loans Up To RM50,000',
+        heading: 'Personal Loan Up to RM50,000',
         subheading:
-          'We are here to help by offering quick, easy, and hassle-free financing solutions tailored for you. With a simple application process and fast approval, you can obtain the funds you need right on time to manage your finances.',
+          'Apply for a personal loan online. Check eligibility requirements and submit your application for review.',
         primaryCtaText: 'Apply Now',
         primaryCtaLink: 'mohon-pinjaman-online',
       },
     ],
     hero: {
-      heading: 'Easy & Fast Personal Loans Up To RM50,000',
+      heading: 'Personal Loan Up to RM50,000',
       subheading:
-        'We are here to help by offering quick, easy, and hassle-free financing solutions tailored for you.',
+        'Apply for a personal loan online. Check eligibility requirements and submit your application for review.',
       primaryCtaText: 'Apply Now',
       primaryCtaLink: 'mohon-pinjaman-online',
     },
@@ -1143,13 +1143,13 @@ export const defaultPagesDataEn: DefaultPageData[] = [
           {
             itemTitle: 'Online Personal Loan',
             itemDescription:
-              'Simple, fast, and transparent personal loan applications up to RM50,000.',
+              'Check eligibility requirements and apply for an online personal loan.',
             itemLink: 'pinjaman-peribadi-kl-sarawak',
           },
           {
             itemTitle: 'Top Up Loan',
             itemDescription:
-              'Top up your existing loan for emergency cash requirements anytime.',
+              'Top-up loan applications are subject to eligibility requirements and approval.',
             itemLink: 'pinjaman-koperasi',
           },
         ],
@@ -1462,11 +1462,11 @@ export const defaultPagesDataEn: DefaultPageData[] = [
     title: 'Online Loan Application (Apply Form)',
     slug: 'mohon-pinjaman-online',
     hero: {
-      badgeText: 'Welcome to Loanbuddy Credit!',
-      heading: 'Personal Loan Up to RM50,000\nApply Today!',
+      badgeText: 'Personal Loan Application Form',
+      heading: 'Apply for a Personal Loan Up to RM50,000!',
       subheading:
-        'One simple step to achieve the financial stability you need. Choose Loanbuddy Credit!',
-      primaryCtaText: 'Submit',
+        'Complete the form below to submit your application for review.',
+      primaryCtaText: 'Submit Application',
       primaryCtaLink: '#applyForm',
       secondaryCtaText:
         'Loan applications are only open to Malaysian citizens.',
@@ -1474,7 +1474,7 @@ export const defaultPagesDataEn: DefaultPageData[] = [
     sections: [
       {
         sectionBadge: 'Documents & Guide',
-        sectionTitle: 'What do you need to apply?',
+        sectionTitle: 'Required Documents',
         sectionDescription: 'Documents Required For Application',
         items: [
           {
