@@ -106,6 +106,7 @@ export default function PinjamanPeribadiPage() {
 
   // FAQ State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [showSchedule, setShowSchedule] = useState<boolean>(false);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -998,20 +999,27 @@ export default function PinjamanPeribadiPage() {
                       role="button"
                       onClick={() => toggleFaq(0)}
                     >
-                      {isEnglish ? t.faqPage.faq0Q : "Sekiranya saya membuat pinjaman RM3,000. Apakah gambaran jadual pembayaran balik?"}
+                      {isEnglish ? t.faqPage.faq0Q : "Apakah contoh jadual pembayaran balik bagi pinjaman RM3,000?"}
                     </div>
                     <div className={`faq-answer-collapse ${openFaq === 0 ? "open" : ""}`}>
                       <div className="accordion-body">
                         <div className="mb-0">
-                          {isEnglish ? t.faqPage.faq0Example : "Contoh Wakil:"} <br />
+                          {isEnglish ? t.faqPage.faq0Example : "Contoh Pengiraan Pinjaman:"} <br />
                           {isEnglish ? t.faqPage.faq0Amount : "Amaun Pinjaman:"} <strong>{isEnglish ? t.faqPage.faq0AmountVal : "RM3,000"}</strong> <br />
                           {isEnglish ? t.faqPage.faq0Tenure : "Tempoh Pinjaman:"} <strong>{isEnglish ? t.faqPage.faq0TenureVal : "12 bulan"}</strong> <br />
                           {isEnglish ? t.faqPage.faq0Interest : "Kadar Faedah:"} <strong>{isEnglish ? t.faqPage.faq0InterestVal : "18.0% setahun"}</strong> <br />
-                          {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <strong>{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong> <br />
-                          <br />
+                          {isEnglish ? t.faqPage.faq0Fees : "Fi:"} <strong>{isEnglish ? t.faqPage.faq0FeesVal : "Fi pesuruhjaya sumpah RM10 dan caj LHDN RM15"}</strong>
+                          <button type="button" onClick={() => setShowSchedule((v) => !v)} aria-expanded={showSchedule} className="btn d-flex align-items-center gap-2 text-white fw-semibold" style={{ width: "fit-content", marginTop: "24px", backgroundColor: "#0d4ed8", borderRadius: "50px", padding: "10px 22px", fontSize: "14px" }}>
+                            {isEnglish ? t.faqPage.faq0ViewSchedule : "Lihat Contoh Jadual Pembayaran Balik"}
+                            <span style={{ display: "inline-block", transition: "transform 0.3s", transform: showSchedule ? "rotate(180deg)" : "none" }}>&#9662;</span>
+                          </button>
+                          <div style={{ display: "grid", gridTemplateRows: showSchedule ? "1fr" : "0fr", opacity: showSchedule ? 1 : 0, transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out", overflow: "hidden" }}>
+                            <div style={{ minHeight: 0 }}>
+                          <div className="mt-3 w-100">
                           <img src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"} loading="lazy" className="w-100" alt={isEnglish ? "Repayment Schedule" : "Jadual Pembayaran Balik"} />
-                          <br />
-                          <br />
+                          </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
