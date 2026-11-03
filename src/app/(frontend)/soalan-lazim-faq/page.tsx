@@ -413,16 +413,16 @@ export default function FAQPage() {
                               </button>
                               <div style={{ display: "grid", gridTemplateRows: showSchedule ? "1fr" : "0fr", opacity: showSchedule ? 1 : 0, transition: "grid-template-rows 0.35s ease-in-out, opacity 0.3s ease-in-out", overflow: "hidden" }}>
                                 <div style={{ minHeight: 0 }}>
-                              <div className="mt-3 w-100" style={{ width: "100%" }}>
-                                <img
-                                  src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"}
-                                  loading="lazy"
-                                  className="img-fluid rounded shadow-sm border w-100"
-                                  style={{ width: "100%", height: "auto", display: "block" }}
-                                  alt="Jadual Pembayaran Balik"
-                                />
+                                  <div className="mt-3 w-100" style={{ width: "100%" }}>
+                                    <img
+                                      src={isEnglish ? "/assets/images/Jadual-umum-eng.png" : "/assets/images/Jadual-umum.png"}
+                                      loading="lazy"
+                                      className="img-fluid rounded shadow-sm border w-100"
+                                      style={{ width: "100%", height: "auto", display: "block" }}
+                                      alt="Jadual Pembayaran Balik"
+                                    />
+                                  </div>
                                 </div>
-                              </div>
                               </div>
                             </div>
                           </div>
@@ -572,10 +572,10 @@ export default function FAQPage() {
                                   {isEnglish ? t.faqPage.faq4DocTitle : "Dokumen dan kelayakan yang diperlukan termasuk:"}
                                 </span>
                                 <ol className="ps-3 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
-                                  <li>{isEnglish ? t.faqPage.faq4Doc1 : "Salinan kad pengenalan (depan dan belakang)"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4Doc2 : "Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4Doc3 : "Slip gaji 3 bulan terkini (format PDF) dan/atau"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4Doc4 : "Bil utiliti 1 bulan terkini (air, elektrik, dll.)"}</li>
+                                  <li>{isEnglish ? `1. ${t.faqPage.faq4Doc1}` : "1. Salinan kad pengenalan (depan dan belakang)"}</li>
+                                  <li>{isEnglish ? `2. ${t.faqPage.faq4Doc2}` : "2. Penyata bank pengkreditan gaji 3 bulan terkini (format PDF)"}</li>
+                                  <li>{isEnglish ? `3. ${t.faqPage.faq4Doc3}` : "3. Slip gaji 3 bulan terkini (format PDF) dan/atau"}</li>
+                                  <li>{isEnglish ? `4. ${t.faqPage.faq4Doc4}` : "4. Bil utiliti 1 bulan terkini (air, elektrik, dll.)"}</li>
                                 </ol>
                               </div>
 
@@ -584,11 +584,11 @@ export default function FAQPage() {
                                   {isEnglish ? t.faqPage.faq4Eligibility1Title : "Kelayakan Pinjaman Peribadi Atas Talian"}
                                 </span>
                                 <ol className="ps-3 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
-                                  <li>{isEnglish ? t.faqPage.faq4E1 : "Berumur antara 18 sehingga 60 tahun"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4E2 : "Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4E3 : "Pendapatan bulanan kasar minimum RM1,700"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4E4 : "Tidak muflis dan mampu membayar balik pinjaman"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4E5 : "Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
+                                  <li>{isEnglish ? `1. ${t.faqPage.faq4E1}` : "1. Berumur antara 18 sehingga 60 tahun"}</li>
+                                  <li>{isEnglish ? `2. ${t.faqPage.faq4E2}` : "2. Ada pekerjaan tetap (sektor swasta/kerajaan/GLC) dengan sekurang-kurangnya 3 bulan bekerja (dengan slip gaji dan gaji dikreditkan ke dalam akaun bank)"}</li>
+                                  <li>{isEnglish ? `3. ${t.faqPage.faq4E3}` : "3. Pendapatan bulanan kasar minimum RM1,700"}</li>
+                                  <li>{isEnglish ? `4. ${t.faqPage.faq4E4}` : "4. Tidak muflis dan mampu membayar balik pinjaman"}</li>
+                                  <li>{isEnglish ? `5. ${t.faqPage.faq4E5}` : "5. Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
                                 </ol>
                               </div>
 
@@ -597,14 +597,14 @@ export default function FAQPage() {
                                   {isEnglish ? t.faqPage.faq4Eligibility2Title : "Kelayakan Pinjaman Tambah Nilai"}
                                 </span>
                                 <ol className="ps-3 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp1 : "Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp2 : "Rekod pembayaran yang baik dengan Loanbuddy Credit"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp3 : "Individu berumur 18 hingga 60 tahun"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp4 : "Pendapatan kasar bulanan minimum RM1,700"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp5 : "Kakitangan swasta dan kerajaan sahaja"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp6 : "Warganegara Malaysia"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp7 : "Tidak muflis dan mampu membayar balik pinjaman"}</li>
-                                  <li>{isEnglish ? t.faqPage.faq4TopUp8 : "Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
+                                  <li>{isEnglish ? `1. ${t.faqPage.faq4TopUp1}` : "1. Pelanggan yang mempunyai kontrak sedia ada dengan baki jumlah pinjaman"}</li>
+                                  <li>{isEnglish ? `2. ${t.faqPage.faq4TopUp2}` : "2. Rekod pembayaran yang baik dengan Loanbuddy Credit"}</li>
+                                  <li>{isEnglish ? `3. ${t.faqPage.faq4TopUp3}` : "3. Individu berumur 18 hingga 60 tahun"}</li>
+                                  <li>{isEnglish ? `4. ${t.faqPage.faq4TopUp4}` : "4. Pendapatan kasar bulanan minimum RM1,700"}</li>
+                                  <li>{isEnglish ? `5. ${t.faqPage.faq4TopUp5}` : "5. Kakitangan swasta dan kerajaan sahaja"}</li>
+                                  <li>{isEnglish ? `6. ${t.faqPage.faq4TopUp6}` : "6. Warganegara Malaysia"}</li>
+                                  <li>{isEnglish ? `7. ${t.faqPage.faq4TopUp7}` : "7. Tidak muflis dan mampu membayar balik pinjaman"}</li>
+                                  <li>{isEnglish ? `8. ${t.faqPage.faq4TopUp8}` : "8. Bukan individu berstatus Orang Terdedah Politik (PEP)"}</li>
                                 </ol>
                               </div>
                             </div>

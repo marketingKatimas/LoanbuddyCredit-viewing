@@ -503,13 +503,13 @@ export default function PembayaranPage() {
                         <ol className="ps-2 mb-0" style={{ color: "#444", fontSize: "15px", lineHeight: "1.7" }}>
                           <li className="mb-2">
                             {isEnglish
-                              ? t.pembayaran.faq4Step1
-                              : "Jika kontrak ditandatangani sebelum atau pada 14 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan seterusnya."}
+                              ? `1. ${t.pembayaran.faq4Step1}`
+                              : "1. Jika kontrak ditandatangani sebelum atau pada 14 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan seterusnya."}
                           </li>
                           <li>
                             {isEnglish
-                              ? t.pembayaran.faq4Step2
-                              : "Jika kontrak ditandatangani pada atau selepas 15 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan selepas bulan seterusnya."}
+                              ? `2. ${t.pembayaran.faq4Step2}`
+                              : "2. Jika kontrak ditandatangani pada atau selepas 15 haribulan, tarikh pembayaran balik pertama anda ialah pada 1 haribulan selepas bulan seterusnya."}
                           </li>
                         </ol>
                       </div>
